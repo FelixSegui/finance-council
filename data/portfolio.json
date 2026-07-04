@@ -1,0 +1,120 @@
+{
+  "last_updated": "2026-07-03",
+  "base_currency": "SEK",
+  "total_estimate_sek": "190000-195000",
+  "cash": {
+    "amount": 0,
+    "currency": "SEK"
+  },
+  "accounts": [
+    {
+      "account_id": "hb-main",
+      "wrapper": "UNKNOWN - RESOLVE FIRST",
+      "institution": "Handelsbanken",
+      "approx_value_sek": 134000,
+      "notes": "70% of total portfolio. Two bank-managed portfolios (one risky, one conservative). WRAPPER UNKNOWN. If fondkonto/depa: taxable at 30% on gains AND likely 1.2-1.6% fund fees = the largest structural inefficiency in the portfolio. Test: has any sale here ever generated capital gains tax in deklaration? Ask Handelsbanken directly. No agent output about this account is trustworthy until wrapper is confirmed."
+    },
+    {
+      "account_id": "avanza-isk",
+      "wrapper": "ISK",
+      "institution": "Avanza",
+      "approx_value_sek": 36000,
+      "notes": "Confirmed ISK. Tax-free allowance headroom = allowance threshold minus ALL ISK/KF savings capital across institutions. With only this ISK, ~264k SEK headroom remains (verify current threshold with Skatteverket)."
+    },
+    {
+      "account_id": "swedbank-fund",
+      "wrapper": "AF",
+      "institution": "Swedbank",
+      "approx_value_sek": 10000,
+      "notes": "Confirmed taxable - user paid capital gains tax on a prior sale. Childhood fund, likely low cost basis = high gain percentage but small absolute tax on full disposal. Prime candidate for move-to-ISK math: one-time tax hit vs permanent tax-free compounding."
+    },
+    {
+      "account_id": "eth-wallet",
+      "wrapper": "SELF_CUSTODY",
+      "institution": "personal wallet",
+      "approx_value_sek": 12500,
+      "notes": "Direct ETH, no wrapper possible. Swedish tax: 30% on gains via K4, and EVERY disposal is a taxable event - including token swaps, not just SEK sales. Alternative for crypto exposure: certificate inside ISK (no per-trade tax, but ~2%/yr fee + issuer counterparty risk). Agents must never treat a wallet swap as tax-neutral."
+    }
+  ],
+  "holdings": [
+    {
+      "ticker": "TBD",
+      "name": "Handelsbanken portfolio - risky",
+      "account_id": "hb-main",
+      "instrument_type": "fund",
+      "exposure_class": "mixed",
+      "quantity": null,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "TBD - if the honest answer is 'my bank put me in it', record that. It is a real answer and thesis-review will treat it correctly.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "TBD",
+      "name": "Handelsbanken portfolio - conservative",
+      "account_id": "hb-main",
+      "instrument_type": "fund",
+      "exposure_class": "mixed",
+      "quantity": null,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "TBD",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "TBD",
+      "name": "Avanza ISK holdings - itemize each stock/fund separately",
+      "account_id": "avanza-isk",
+      "instrument_type": "stock",
+      "exposure_class": "equity",
+      "quantity": null,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "TBD - one entry per holding, one thesis per holding",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "TBD",
+      "name": "Swedbank fund",
+      "account_id": "swedbank-fund",
+      "instrument_type": "fund",
+      "exposure_class": "mixed",
+      "quantity": null,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "Legacy childhood savings - no active thesis. Decision needed: keep, or realize small gain and move into ISK.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "ethereum",
+      "name": "ETH (self-custody wallet)",
+      "account_id": "eth-wallet",
+      "instrument_type": "spot_crypto",
+      "exposure_class": "crypto",
+      "quantity": null,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": 0,
+      "date_acquired": null,
+      "thesis": "TBD",
+      "target_weight_pct": null
+    }
+  ],
+  "targets": {
+    "equity_pct": null,
+    "crypto_pct": null,
+    "fixed_income_pct": null,
+    "cash_pct": null,
+    "notes": "Targets measured on EXPOSURE class. The two Handelsbanken mixed portfolios must have their actual equity/bond split looked up from factsheets before exposure math is meaningful - 'mixed' as 70% of the portfolio makes allocation analysis blind."
+  },
+  "open_structural_questions": [
+    "1. Handelsbanken wrapper: ISK or fondkonto? (Determines the single largest action in the system.)",
+    "2. Handelsbanken portfolio fees: forvaltningsavgift per portfolio from factsheets.",
+    "3. Actual equity/bond split inside each Handelsbanken portfolio.",
+    "4. ETH cost basis and acquisition dates (needed for any future K4 math).",
+    "5. Swedbank fund: current gain vs cost basis (feeds move-to-ISK calculation)."
+  ]
+}

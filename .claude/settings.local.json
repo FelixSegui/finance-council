@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m py_compile scripts/fetch_market_data.py scripts/screen_candidates.py scripts/fetch_calendar.py scripts/backtest.py scripts/performance.py)",
+      "Bash(python3 -c \"import yfinance; print\\('yfinance', yfinance.__version__\\)\")",
+      "Bash(python3 -m pip install --user --quiet yfinance)",
+      "Bash(python3 *)",
+      "Bash(echo \"exit: $?\")"
+    ]
+  }
+}

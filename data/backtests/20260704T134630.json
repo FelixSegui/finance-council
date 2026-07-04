@@ -1,0 +1,36 @@
+{
+  "run_at_utc": "2026-07-04T13:46:30.809739+00:00",
+  "allocation": {
+    "SPY": 0.8,
+    "BTC-USD": 0.2
+  },
+  "period": {
+    "start": "2018-08-01",
+    "end": "2026-07-01"
+  },
+  "tickers_missing_data": [],
+  "caveats": [
+    "Past performance is not predictive. Use for risk tolerance, not return expectation.",
+    "FX drift between currency legs not modeled \u2014 each leg in native currency.",
+    "No fees, taxes, or spreads modeled. ISK schablonskatt and fund fees reduce these numbers.",
+    "Only 7.9 years of overlapping data \u2014 short histories (esp. crypto) overweight recent regimes."
+  ],
+  "portfolio": {
+    "months": 95,
+    "cagr_pct": 20.84,
+    "annual_vol_pct": 22.38,
+    "max_drawdown_pct": -32.61,
+    "worst_rolling_12m_pct": -29.04,
+    "sharpe_rf0": 0.96
+  },
+  "benchmark": {
+    "SPY": {
+      "months": 95,
+      "cagr_pct": 14.38,
+      "annual_vol_pct": 16.85,
+      "max_drawdown_pct": -23.93,
+      "worst_rolling_12m_pct": -18.18,
+      "sharpe_rf0": 0.89
+    }
+  }
+}

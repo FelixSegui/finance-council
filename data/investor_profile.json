@@ -1,0 +1,31 @@
+{
+  "note": "The client profile — what a human advisor would establish before any recommendation. USER-MAINTAINED. Update when life circumstances change, not when markets move.",
+  "last_updated": "2026-07-04",
+  "risk": {
+    "max_drawdown_tolerance_pct": -30,
+    "risk_capacity_notes": "Stated tolerance -30% (~57k SEK at current size). TENSION: primary goal is a house deposit in 3-7y — a hard-deadline goal means usable risk SHRINKS as the date approaches, regardless of stated tolerance. A -30% drawdown in year 6 is not recoverable before the deposit is needed. The portfolio agent must treat this as a glidepath problem: current tolerance applies now, not in year 5+."
+  },
+  "horizon": {
+    "primary_goal": "House deposit",
+    "years_until_needed": "3-7",
+    "planned_monthly_contribution_sek": "1000-3000"
+  },
+  "buffer": {
+    "emergency_fund_months": "3-6",
+    "notes": "Standard buffer confirmed 2026-07-04 — the portfolio's risk budget is genuine, not partly an emergency fund."
+  },
+  "constraints": {
+    "exclusions": [],
+    "notes": "None stated yet"
+  },
+  "reference_targets": {
+    "note": "Deliberately still null: deriving target weights from this profile is the FIRST job of the next Council sweep, done against fetched data — not invented here. The glidepath (equity taper toward the deposit date) must be part of that proposal.",
+    "equity_pct": null,
+    "crypto_pct": null,
+    "fixed_income_pct": null,
+    "cash_pct": null,
+    "max_single_position_pct": 15,
+    "max_single_institution_pct": 80,
+    "max_annual_fee_drag_pct": 0.4
+  }
+}

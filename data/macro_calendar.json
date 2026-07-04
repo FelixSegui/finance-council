@@ -1,0 +1,28 @@
+{
+  "note": "MANUALLY MAINTAINED. fetch_calendar.py only filters this file — it never invents dates. FOMC dates are from the Fed's published 2026 schedule but still need one-time verification against the source (IMPROVEMENTS #2). Riksbank H2 2026 dates provided by the user on 2026-07-04.",
+  "last_verified": "2026-07-04",
+  "sources": {
+    "fomc": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "riksbank": "https://www.riksbank.se/en-gb/press-and-published/calendar/",
+    "us_cpi": "https://www.bls.gov/schedule/news_release/cpi.htm",
+    "scb_cpi": "https://www.scb.se/en/finding-statistics/statistics-by-subject-area/prices-and-consumption/"
+  },
+  "unverified_sources": [
+    "FOMC dates written from model knowledge — one-time verification pending (IMPROVEMENTS #2)",
+    "US/SE CPI release dates missing — fill month by month from BLS/SCB schedules"
+  ],
+  "events": [
+    {"date": "2026-08-20", "name": "Riksbank rate decision + Monetary Policy Report", "type": "riksbank"},
+    {"date": "2026-09-24", "name": "Riksbank rate decision", "type": "riksbank"},
+    {"date": "2026-11-04", "name": "Riksbank rate decision", "type": "riksbank"},
+    {"date": "2026-12-16", "name": "Riksbank rate decision", "type": "riksbank"},
+    {"date": "2026-07-28", "name": "FOMC meeting (day 1)", "type": "fomc"},
+    {"date": "2026-07-29", "name": "FOMC meeting (day 2, statement)", "type": "fomc"},
+    {"date": "2026-09-15", "name": "FOMC meeting (day 1)", "type": "fomc"},
+    {"date": "2026-09-16", "name": "FOMC meeting (day 2, statement + projections)", "type": "fomc"},
+    {"date": "2026-10-27", "name": "FOMC meeting (day 1)", "type": "fomc"},
+    {"date": "2026-10-28", "name": "FOMC meeting (day 2, statement)", "type": "fomc"},
+    {"date": "2026-12-08", "name": "FOMC meeting (day 1)", "type": "fomc"},
+    {"date": "2026-12-09", "name": "FOMC meeting (day 2, statement + projections)", "type": "fomc"}
+  ]
+}

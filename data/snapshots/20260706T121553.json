@@ -1,0 +1,45 @@
+{
+  "fetched_at_utc": "2026-07-06T12:15:48.111182+00:00",
+  "equities": {},
+  "crypto": {
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  "macro": {
+    "fed_funds_rate": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "us_10y_yield": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "us_2y_yield": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "dollar_index": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "sek_per_usd": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "vix": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "us_cpi_yoy": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "riksbank_policy_rate": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "ecb_deposit_rate": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "se_cpi_yoy": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "10y_2y_spread": null
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  }
+}

@@ -1,276 +1,276 @@
-# Council Memo — 2026-07-06
+# Finance Council Decision Memo — 2026-07-06
 
-This is structured synthesis of this system's own agent outputs, not advice from a
-licensed advisor. It exists to force disagreements into the open and attach a
-confidence/horizon tag to every call — it does not execute anything.
-
----
-
-## Open first: Handelsbanken wrapper (blocking question #1)
-
-Per CLAUDE.md's blocking-questions rule, this must open every memo while
-unresolved, and it is still unresolved. **134,000 SEK — 69.6% of the entire
-portfolio — sits in a Handelsbanken wrapper of unknown type.** If it is
-ISK/KF, tax-sheltered capital is up to ~170,000 SEK. If it is fondkonto/depa,
-confirmed tax-sheltered capital stays at 36,000 SEK (Avanza only). That is a
-swing of over 100,000 SEK on a single unanswered question, and it makes
-every allocation, tax, and rebalancing conclusion touching that account
-untrustworthy until answered. Action: ask Handelsbanken directly, or check
-whether any sale in that account has ever generated capital-gains tax in a
-prior deklaration. This is not new this week — it is the standing #1 item
-in `portfolio.json`'s `open_structural_questions` and nothing this week
-resolves it.
-
-## Operational fact this week: total data outage
-
-The market-data fetch (`data/snapshots/20260706T121553.json`) failed
-completely — every field (equities, crypto, macro, sentiment) returned 403
-errors. This was diagnosed as an **organization-level network egress
-policy** blocking Yahoo Finance/yfinance, CoinGecko, FRED, Riksbank SWEA,
-ECB Data Portal, SCB PxWeb, and alternative.me simultaneously — not a
-per-ticker or data-quality issue, and not fixable by retrying inside this
-session. Valuation, macro-regime, and thesis-review all returned "no data"
-as a direct result. This is an environment configuration problem: these
-six domains need to be allowlisted for this environment before next week's
-sweep can produce a real valuation, regime, or thesis read. Until that is
-fixed, this system is running on one leg — the structural/portfolio lens,
-which uses only user-maintained figures and does not depend on external
-fetches.
+*This memo is not investment advice from a licensed advisor. It is structured
+synthesis of this session's own agent outputs (valuation, macro-regime,
+portfolio, thesis-review) — nothing here executes anything.*
 
 ---
 
-## Portfolio health scorecard
+## Open blocking question (per CLAUDE.md — must open here)
 
-Carried over verbatim from the portfolio agent. **Provisional** — four of
-eight rows are UNKNOWN because `investor_profile.json`'s `reference_targets`
-(equity_pct, crypto_pct, fixed_income_pct, cash_pct) are still null and
-`portfolio.json` holdings carry placeholder "TBD" tickers instead of
-itemized positions. Unanswered questions driving the UNKNOWNs: the 5 items
-in `open_structural_questions` (HB wrapper, HB fees, HB equity/bond split,
-ETH cost basis/dates, Swedbank cost basis) plus the unset `reference_targets`.
+**Question 1 (open_structural_questions, portfolio.json): is the
+Handelsbanken account (hb-main, 134,000 SEK, 69.6% of the portfolio) an ISK
+or a fondkonto?**
 
-- **Asset allocation vs profile targets:** UNKNOWN (targets null; 88% of
-  portfolio has no verified equity/bond split)
-- **Equity sector concentration:** UNKNOWN (no sector data — fetch failed,
-  Avanza ISK unitemized)
-- **Geography (home bias):** UNKNOWN (no country data)
-- **Currency exposure:** UNKNOWN (no per-holding currency data; even
-  sek_per_usd errored)
-- **Single-position concentration: ACT** — confirmed math, not a guess:
-  the two Handelsbanken sub-portfolios sum to 134,000 SEK; 15% of total =
-  28,875 SEK; for both to be ≤28,875 SEK their sum would need to be
-  ≤57,750 SEK, but it's 134,000 SEK — at least one HB sub-portfolio MUST
-  exceed the 15% max-single-position threshold regardless of the actual
-  split. Only which one (or both) needs itemization.
-- **Institution concentration: WATCH** — Handelsbanken = 69.6% of total,
-  below the 80% ceiling but the largest counterparty concentration in the
-  file, compounded by the wrapper being unconfirmed.
-- **Fee drag:** UNKNOWN — `annual_fee_pct` null on every holding except
-  ETH (0%); cannot compute SEK/year drag; declining to substitute a
-  "typical" bank-fund rate.
-- **Wrapper efficiency: ACT** — HB wrapper (134,000 SEK, 70% of portfolio)
-  still unconfirmed, the single largest open item in the system.
-  Separately, confirmed-AF Swedbank fund (10,000 SEK) sits taxable while
-  ISK headroom exists.
-- **Drawdown-tolerance fit:** UNKNOWN — no backtest file available this
-  session to compare against the -30% max drawdown tolerance.
+This is unresolved. Until it is answered, no allocation conclusion, no
+drift number, no tax conclusion, and no rebalancing action touching
+hb-main is trustworthy — 70% of the portfolio is riding on an unknown. If
+it is a fondkonto, portfolio.json's own note calls it "the largest
+structural inefficiency in the portfolio" (30% tax on gains, plus likely
+1.2–1.6% fund fees). If it is an ISK, none of that applies. This is the
+single highest-value open item in the whole system and outranks every
+other call below. Answer this before anything else.
+
+---
+
+## Portfolio health scorecard (carried over verbatim from portfolio agent)
+
+Provisional — `investor_profile.json` reference_targets are still null, so
+several rows below are UNKNOWN because there is nothing to grade against
+yet, not because the portfolio is confirmed fine.
+
+| Dimension | Grade | Note |
+|---|---|---|
+| Asset allocation vs profile targets | UNKNOWN | targets null in both files |
+| Equity sector concentration | UNKNOWN | no sector data, equities snapshot empty |
+| Geography / home bias | UNKNOWN | no country field |
+| Currency exposure | UNKNOWN | no revenue-currency data for 93.5% of portfolio |
+| Single-position concentration | UNKNOWN / partial | only Swedbank fund (5.2%, OK) and ETH (6.5%, OK) gradable; Avanza ISK aggregate shows 18.7% but is a non-itemization artifact, not a confirmed breach; hb-main's internal split unknown (open Q3) |
+| Institution concentration | OK, with caveat | Handelsbanken 69.6% of total, below the 80% threshold — but this is a size fact only; it says nothing about the account's tax status, which is the open blocking question above |
+| Fee drag | UNKNOWN | fee data known for only 1 of 5 holdings (ETH = 0%); 180,000 SEK / 93.5% ungraded against the 0.4% max ceiling; graded UNKNOWN not OK because bank-managed portfolios are the category most likely to breach it |
+| Wrapper efficiency | **ACT** | Swedbank fund (10,000 SEK) sits in confirmed-taxable AF with ~264,000 SEK of unused ISK headroom; separately, hb-main wrapper status is the open blocking question above |
+| Drawdown-tolerance fit | UNKNOWN | no backtest run this sweep against the stated -30% tolerance |
+
+Unanswered questions driving the UNKNOWNs above: `reference_targets` in
+`investor_profile.json` (all null), hb-main wrapper type (Q1), hb-main
+equity/bond split (Q3), fee data for 4 of 5 holdings, cost basis for the
+Swedbank fund (Q5) and for ETH (Q4).
 
 ---
 
 ## Headline calls
 
-All headline calls this week are structural/**Long horizon** — the
-Medium-horizon lenses (valuation, thesis health, regime positioning) could
-not run at all this week, so there is nothing at that horizon to call.
+1. **Resolve the Handelsbanken wrapper before any other portfolio
+   decision.** This blocks 69.6% of the book. No workaround exists — it
+   requires contacting Handelsbanken or checking the account statement,
+   not more analysis.
+2. **Route new contributions to Avanza ISK, not AF or hb-main.** Confirmed
+   clean wrapper, ~264,000 SEK of headroom, no tax event. This is a
+   default forced by data gaps (nowhere else is confirmed-clean), not a
+   drift-closing calculation — there is no target to close drift against
+   yet.
+3. **Get real cost basis for the Swedbank fund (Q5) before moving it to
+   ISK.** Tax on disposal is bounded between ~0 SEK (if cost basis ≈
+   value) and ≤3,000 SEK (worst case, cost basis → 0, on a 10,000 SEK
+   position) — small in absolute terms either way, but not a real number
+   without the basis.
+4. **Do not act on ETH this sweep.** Valuation reads it as fair-to-cheap
+   on cycle position; macro-regime reads the current regime as hostile to
+   exactly this asset; thesis-review finds no documented thesis for it at
+   all. Three lenses, three different answers, zero basis to net them into
+   a single call today. See disagreement section below.
+5. **Write an actual ETH thesis now, while the setup is legible** (per
+   thesis-review) — price up double digits over 7d/30d while Fear & Greed
+   reads 24/Extreme Fear is an unusual, nameable divergence. This is a
+   documentation action, not a trade.
 
-1. **Resolve the HB wrapper before any further contribution or
-   rebalancing decision touching that account.** Long horizon. Confidence:
-   High that this is the top-priority action (the >100k SEK swing is
-   confirmed math); confidence in what the answer will turn out to be:
-   none — that's the point of asking.
-2. **Treat the single-position ACT flag as real, not hypothetical.**
-   At least one Handelsbanken sub-portfolio already breaches the 15%
-   max-single-position threshold by confirmed arithmetic, independent of
-   any itemization. Long horizon. Confidence: High (math, not modeling).
-3. **Institution concentration at Handelsbanken (69.6%) stays on WATCH,
-   not ACT** — under the 80% ceiling, but the largest single-counterparty
-   exposure in the portfolio, and it compounds the wrapper question rather
-   than being independent of it. Long horizon. Confidence: Medium (the
-   69.6% figure is solid; whether it deserves escalation to ACT depends on
-   the wrapper answer).
-4. **ETH's actual weight (6.5% of portfolio, 12,500/192,500 SEK) already
-   exceeds the proposed default glidepath crypto ceiling** under the
-   current-default phase (see proposed glidepath below, 0-3% given the
-   unresolved 3-7y horizon). Long horizon (allocation policy), though the
-   underlying asset is volatile. Confidence: Medium — the percentage is
-   simple arithmetic on user-maintained figures, not a live price; the
-   ceiling itself is a proposal pending horizon narrowing.
-5. **Swedbank AF→ISK move remains correctly deferred, not decided.** The
-   fund (10,000 SEK) sits taxable while ISK headroom exists, but cost
-   basis is unknown, so the one-time tax cost of realizing the gain can't
-   be sized against the permanent benefit of tax-free compounding. Long
-   horizon. Confidence: Low to act this week (missing input), High that
-   the missing input — cost basis — is the actual blocker.
+---
 
 ## Where the agents disagreed
 
-There is no ordinary fundamentals disagreement to report this week, and
-manufacturing one would be worse than admitting there isn't one:
-valuation, macro-regime, and thesis-review all independently returned "no
-data" for the same reason (the network egress failure), so there is
-nothing for them to disagree about on direction, pricing, or thesis
-health.
+**ETH: valuation vs macro-regime vs thesis-review — a real three-way
+split, not noise.**
 
-The real tension this week is structural, not fundamental: **the portfolio
-lens's concentration and wrapper math stands on its own, fully computed
-from user-maintained `approx_value_sek` figures, with zero dependency on
-the failed fetch — while every other lens is completely dark.** That is
-not "the agents agree" and it is not "the agents disagree" — it is that
-one lens (portfolio) had inputs that didn't require live data and the
-other three didn't. Do not read the silence from valuation/macro/thesis as
-implicit confirmation that "everything looks fine" on those fronts. The
-macro-regime agent was explicit on this point: every regime-dependent read
-this sweep — ETH (~12,500 SEK), Avanza ISK equity (~36,000 SEK),
-Handelsbanken mixed portfolios (~134,000 SEK) — carries **zero macro
-confirmation**, and any bullish/bearish framing on these assets from
-elsewhere this week is unconfirmed by rates or dollar data. There is
-nothing to frame bullishly or bearishly from this sweep's other lenses in
-any case, since they returned no output — but the caveat is recorded so it
-isn't silently dropped next week when data returns and framing resumes.
+- *Valuation* calls ETH fair-to-cheap, but explicitly on cycle-position
+  signal only (distance from ATH -64.05%, momentum +10.35% 7d / +11.51%
+  30d) — it says outright this is not a valuation call, since crypto has
+  no earnings/cash-flow anchor. It flags the Fear & Greed 24 / rising
+  price divergence as worth attention, not as "buy the fear."
+- *Macro-regime* calls the current regime "transitional, tilted risk-off
+  for dollar-sensitive assets," driven by DXY at 120.89 (extreme
+  strength, well above the 90–110 historical range) and a yield curve
+  that just un-inverted (+0.31 spread, still inside the late-cycle
+  stress window, not an all-clear). It explicitly flags ETH (~6.5% of
+  portfolio) as sitting on the wrong side of this regime, and states
+  directly: "cheap and in extreme fear during a strong-dollar regime is
+  not the same as regime-supportive" — a direct rebuttal aimed at any
+  "buy the dip" reading of the valuation output above.
+- *Thesis-review* finds no thesis exists for ETH to test either framing
+  against. There is real data (price, drawdown, sentiment, momentum) but
+  no documented view on what ETH is for in this portfolio or what would
+  change the holder's mind — so "cheap" and "hostile regime" are both
+  floating without a claim to attach to.
 
-## Broken theses requiring a decision
+Net: the cycle-position signal says maybe-cheap, the regime signal says
+headwind, and there is no written thesis to arbitrate between them.
+**Confidence: Low. No action on ETH sizing this sweep; wait for regime
+clarity (VIX at 16.59 has not yet caught up to what crypto sentiment is
+already pricing at Extreme Fear — that cross-asset gap could resolve
+either direction) and write the missing thesis in the meantime.**
 
-Pulled straight from thesis-review, unsoftened. **All 5 holdings fail
-thesis-review this week**, for two distinct, compounding reasons that
-should not be blurred together:
+**Institution concentration "OK" vs wrapper-unknown — a clean number is
+not a clean bill of health.** Portfolio agent grades Handelsbanken
+institution concentration OK (69.6%, under the 80% threshold). That
+number is real, but it answers a different question than "is this
+account safe to hold as-is." A concentration grade cannot substitute for
+the wrapper answer — an OK-concentration, unknown-tax-status account is
+still a blocking issue, and this memo treats it as one (see blocking
+question above), not as a clean row that happens to sit next to an
+unrelated open item.
 
-1. **Pre-existing structural gap, independent of this week's outage:** 4
-   of 5 holdings have no thesis recorded at all — Handelsbanken risky
-   (thesis = "TBD"), Handelsbanken conservative (thesis = "TBD"), Avanza
-   ISK holdings (thesis field is a placeholder instruction, not itemized
-   per-holding), ETH (thesis = "TBD"). The Swedbank fund is the exception:
-   its thesis explicitly states "Legacy childhood savings - no active
-   thesis" — an honest recorded absence of conviction, still functionally
-   "no thesis to test."
-2. **This week's total data outage:** even where a thesis existed, no
-   holding's fundamentals could be re-tested this week — no
-   Intact/Weakening/Broken/Played-out status can be honestly assigned to
-   anyone this week.
-
-Decision required, not a data problem: write an actual thesis (even if it's
-"my bank put me in it" for the HB accounts, or itemize Avanza ISK holding
-by holding) so that thesis-review has something to test once data access
-is restored. This is a one-time input cost, not something waiting on the
-network fix.
-
-## Rebalancing actions
-
-Pulled straight from the portfolio agent, with SEK amounts. **None
-computed this week** — no targets exist anywhere: `portfolio.json`'s
-`targets` block and `investor_profile.json`'s `reference_targets` are both
-null (target-setting was deliberately deferred to this Council sweep, see
-proposed glidepath below), and 88% of portfolio value has no verified
-exposure breakdown to rebalance against in any case. The one live wrapper
-decision in the file (Swedbank AF→ISK) cannot be sized without cost basis.
-**The single actionable lever right now is the recurring monthly
-contribution (1,000-3,000 SEK), tax-neutral wherever it lands** — it does
-not require the wrapper question resolved and does not require live
-prices.
+**Everywhere else, agreement is not real agreement — it is absence of
+data.** Valuation, macro-regime, and thesis-review all return
+"insufficient data" / "unscoreable" / "broken by absence" for the
+Handelsbanken funds and the Avanza ISK holdings. That is not four lenses
+converging on a view — it is four lenses independently confirming the
+same missing tickers. Do not read that as "the rest of the portfolio
+looks fine."
 
 ---
 
-## Proposed target allocation (glidepath) — PROPOSAL ONLY
+## Broken theses requiring a decision (unsoftened, from thesis-review)
 
-This section is a **proposal for consideration**, not a fetched-data-backed
-number, and it has **not** been written to `portfolio.json` or
-`investor_profile.json`. It is pure policy/planning reasoning applied to
-the user's own stated facts in `investor_profile.json` — no market data
-claim is made here. Per CLAUDE.md's scope rule, individual bonds/options/
-alts stay out of scope even in this proposal: "fixed income/cash" below
-means cash and cash-like vehicles the user would select themselves, not a
-specific bond product recommendation.
+- **Handelsbanken risky fund, Handelsbanken conservative fund, Avanza ISK
+  holdings (3 of 5 holdings):** Broken, by absence. No thesis recorded
+  (the thesis field is an unfilled instruction, not a claim), and no
+  ticker recorded either, so there is no fundamental basis to check even
+  if a thesis existed. Fix is populating `portfolio.json` (ticker,
+  thesis) — not a re-test, there is nothing yet to re-test.
+- **Swedbank fund:** Broken, by absence — but explicit. The thesis field
+  honestly states "no active thesis." This is correctly a decision
+  holding (keep vs. move to ISK), not a conviction holding, and should
+  not be scored as if it were failing a live investment case.
+- **ETH:** No thesis recorded, so status cannot even be classified as
+  "broken" — there is nothing to break. But real, current data exists
+  (price €1,520.44, -64.05% from ATH, +10.35%/7d, +11.51%/30d, Fear &
+  Greed 24) that a thesis, once written, would immediately have to
+  contend with. Action: write it now.
 
-**Governing facts:** goal is a house deposit needed in 3-7 years (a range,
-not a fixed date); stated max drawdown tolerance is -30% (~57,750 SEK at
-current 192,500 SEK size); the profile's own recorded tension is that this
--30% tolerance applies **now**, not in year 5+, because a hard-deadline
-goal means usable risk shrinks as the date approaches; monthly
-contributions of 1,000-3,000 SEK continue; the 3-6mo emergency buffer is
-confirmed separate from this portfolio, so the portfolio's risk budget is
-genuine, not partly a safety net.
-
-Standard goal-based glidepath convention applies: taper growth assets as
-the deadline nears, and because the deadline is an uncertain range, treat
-the **short end (3 years)** as the effective planning deadline until
-narrowed — being wrong short (running out of recovery time before a
-forced withdrawal) is worse than being wrong long (holding a bit too
-conservative for a few extra years).
-
-| Phase | When it applies | Equity | Crypto | Cash/cash-like |
-|---|---|---|---|---|
-| 1 — Growth | Only once the range is narrowed toward the long end (e.g., confirmed 6-7y out) | 55-70% | 0-5% | 25-40% |
-| 2 — Mid-approach (**current default, given the unresolved range**) | 2-4y out, and where this portfolio should sit today because 3 years cannot be ruled out | 35-50% | 0-3% | 50-65% |
-| 3 — Final approach | Final 12 months before the deposit is needed | 0-15% | 0% | 85-100% |
-
-Because the 3-7y range has not been narrowed, this portfolio cannot be run
-as if Phase 1 applies — 3 years remains possible, so Phase 2 is the
-correct current default until told otherwise. Under that default, ETH's
-current 6.5% weight already sits above the 0-3% crypto ceiling (see
-headline call #4).
-
-**Explicit recommendation:** narrow the 3-7y range to a firmer number.
-This single fact changes which phase this portfolio should sit in — and
-therefore the growth/cash split on 192,500 SEK plus every future monthly
-contribution — more than any other input available this sweep.
+Thesis-review's own count stands: **4 of 5 holdings are broken-by-absence.**
+Not softened to "worth monitoring" here either.
 
 ---
 
-## Confidence and horizon per call
+## Rebalancing actions (from portfolio agent, tax-priority order, SEK amounts)
 
-| Call | Confidence | Horizon |
+**(a) New contributions (1,000–3,000 SEK/mo):** direct to Avanza ISK.
+Confirmed clean wrapper, ~264,000 SEK of headroom, no tax event. This is
+the only unambiguous no-regret action in this memo — it does not require
+the wrapper question or the reference targets to be resolved first.
+
+**(b) ISK/KF sales:** none indicated. No confirmed target allocation
+exists to close drift against.
+
+**(c) AF sale — Swedbank fund, 10,000 SEK, move to ISK:** tax on
+disposal = 30% × (value − cost basis). Cost basis is null (Q5), so the
+exact figure is not computable. Bound: worst case (cost basis → 0) tax ≤
+3,000 SEK; best case (cost basis ≈ value) tax ≈ 0 SEK. Portfolio.json's
+own note suggests a low cost basis / high gain%, but the absolute tax is
+small given the position size regardless — likely outweighed by moving
+into a tax-free wrapper, but get the real cost basis from Swedbank before
+executing.
+
+**(d) ETH (self-custody, 12,500 SEK):** no adjustment proposed this
+sweep. Cost basis is null (Q4) and there is no confirmed target crypto
+weight to size against. Framework only: a wallet sale today triggers 30%
+× (value − cost basis), unknown amount. A certificate-in-ISK move is
+**not** tax-neutral either — it requires disposing of the wallet ETH
+first (a K4 event now), plus an ongoing certificate fee (~2%/yr reference
+point, unverified TER) plus issuer/counterparty risk, versus the wallet's
+0% running fee but fully taxable future disposals. Get ETH cost basis
+before this comparison is real.
+
+---
+
+## Proposed target allocation (PROPOSAL ONLY — not written to any file this sweep)
+
+Portfolio agent produced an illustrative target this session, driven by
+the profile's 3–7 year house-deposit window and its own noted tension
+that the stated -30% drawdown tolerance is a "now" number that must
+shrink as the deadline approaches:
+
+| Bucket | Illustrative range |
+|---|---|
+| Equity | 35–45% |
+| Crypto (satellite) | 0–5% |
+| Fixed income | 30–40% |
+| Cash (deposit-specific, separate from emergency buffer) | 15–25% |
+
+Recommended sizing point: the **short end** of the 3–7y range now, with
+re-risking upward only if the deposit timeline is later confirmed
+longer — not the reverse. Glidepath: reduce equity+crypto / increase cash
+and short-duration starting no later than ~24 months before the actual
+purchase date, reaching near-100% cash/short-duration by T-minus 6–12
+months.
+
+This is a proposal to consider adopting into `investor_profile.json`, not
+a drift calculation against the current book — it cannot be made precise
+today because the equity/bond split inside the 74.8% "mixed" hb-main
+bucket is unknown (Q3). **Nothing has been written to `portfolio.json` or
+`investor_profile.json` this sweep.**
+
+---
+
+## Confidence level per call
+
+| Call | Confidence | Why |
 |---|---|---|
-| Resolve HB wrapper | High (that it's top priority) | Long |
-| Single-position ACT (≥1 HB sub-portfolio >15%) | High (confirmed math) | Long |
-| Institution concentration WATCH (HB 69.6%) | Medium | Long |
-| ETH overweight vs. proposed default ceiling | Medium | Long |
-| Swedbank AF→ISK move | Low (blocked on cost basis) | Long |
-| Proposed glidepath phase assignment | Medium (policy logic solid; phase depends on unresolved horizon) | Long |
-| Any valuation/regime/thesis read | N/A — no data this week | Medium (would be, once restored) |
+| Resolve hb-main wrapper before other decisions | High | Not a judgment call — a fact-finding action with a single unambiguous next step |
+| Route new contributions to Avanza ISK | High | Confirmed wrapper, confirmed headroom, no tax event, no dependency on unresolved data |
+| Get Swedbank cost basis before AF→ISK move | Medium | Direction (favor ISK) is likely right; exact tax cost unknown, so "execute now" is not yet supported |
+| No action on ETH sizing this sweep | Low | Valuation, macro-regime, and thesis-review point three different directions; genuinely regime-dependent, could flip on the next DXY or VIX print |
+| Write an ETH thesis now | Medium | Documentation action, not a market call — "medium" because acquisition-date/cost-basis data is still missing, so the thesis can't be fully grounded yet |
+| Proposed target allocation (glidepath) | Low | Cannot be verified against the current book while hb-main's internal split (Q3) and profile reference_targets are both unknown |
 
-Per CLAUDE.md's horizon policy, no Short-horizon (<6mo) tactical call is
-made this week — there is no live pricing to support one, and the free-data
-system carries no demonstrated short-term edge in any week, let alone one
-with zero data.
+---
+
+## Horizon tag per call
+
+| Call | Horizon | Note |
+|---|---|---|
+| Resolve hb-main wrapper | Long (3y+) | Structural, owned by portfolio agent per CLAUDE.md priority order |
+| Route contributions to ISK | Long (3y+) | Wrapper/fee-drag category, highest edge per CLAUDE.md |
+| Swedbank AF→ISK move | Long (3y+) | Structural wrapper efficiency, not a timing trade |
+| ETH sizing decision | Medium (6mo–3y) | Regime-positioning call, owned jointly by valuation/macro-regime/thesis-review; explicitly not short-term tactical, and given the three-way disagreement it cannot be High confidence regardless of horizon |
+| Write ETH thesis | N/A (documentation, not a market call) | — |
+| Proposed glidepath allocation | Long (3y+), with a Medium-horizon trigger point | The glidepath is a long-horizon structural plan, but its trigger (T-minus 24 months from a 3–7y-out deposit) falls inside the medium-horizon band and needs the deposit date narrowed before it can be actioned |
+
+No call in this memo carries a Short-horizon tag. No tactical overlay is
+proposed this sweep, so the 10%-of-portfolio cap / never-High-confidence
+rule for Short-horizon calls does not currently apply to anything above.
+
+---
 
 ## Cost of being wrong
 
-One row per headline call with a stateable SEK downside. Calls without a
-stateable downside are not included, per this memo's own rule.
-
-| Call | If wrong, realistic downside | Recoverable? |
+| Headline call | If wrong, realistic downside (SEK) | Recoverable? |
 |---|---|---|
-| HB wrapper turns out to be fondkonto (taxable), acted on late | Ongoing fee drag ~1.2-1.6%/yr on 134,000 SEK ≈ 1,600-2,150 SEK/yr vs. an ISK-typical index fee, plus 30% tax on any unrealized gain if ever sold outside ISK (magnitude unknown, no cost basis — likely the largest single line item in the portfolio) | Fee drag: yes, by switching. Tax on past gains inside the wrong wrapper: no, that's sunk once realized |
-| Single-position ACT flag ignored (no itemization, no trim) | Up to 134,000 SEK (69.6% of portfolio) concentrated in one bank-managed strategy if the split turns out lopsided, vs. a 28,875 SEK (15%) ceiling | Yes, once itemized — but any move inside HB may itself trigger tax if the wrapper turns out to be AF/fondkonto |
-| Institution concentration (69.6% at HB) not diversified | Single-institution operational/counterparty risk on 134,000 SEK if something goes wrong at the institution level (not a market-return scenario) | Only by diversifying future flows elsewhere — existing balance can't be un-concentrated without a wrapper-aware move |
-| ETH left at 6.5% against a 0-3% proposed ceiling | Excess crypto exposure of roughly 6,750-12,500 SEK depending on which ceiling applies; at -50% to -80% drawdown scenarios historically seen in this asset class, that's an incremental 3,400-10,000 SEK of portfolio-level downside beyond what the proposed policy intends | Yes — reversible by trimming, but only after a taxable K4 disposal event (30% on any gain) |
-| Swedbank AF→ISK move deferred another week | Continued 30% tax drag on this fund's future gains vs. 0% in ISK; base is only 10,000 SEK so absolute SEK at stake is small this week | Yes, fully — small position, no urgency cost |
-| No rebalancing targets exist; monthly 1,000-3,000 SEK contributions land un-targeted | Over a year, 12,000-36,000 SEK of new money could land in an unintended exposure (e.g., adding to an already-overweight HB sub-portfolio) | Yes — flow-based, easy to redirect once targets and itemization exist |
-
-## Timing collisions
-
-No contemplated rebalancing action exists this week (none was computed —
-see Rebalancing actions above), so there is nothing to collide with the
-upcoming macro calendar. Stated explicitly per this memo's own rule against
-flagging a false collision. For reference, the next macro prints are:
-**2026-07-28/29 FOMC meeting** and **2026-08-20 Riksbank rate decision +
-Monetary Policy Report**. The FOMC dates are flagged in
-`data/macro_calendar.json` as "written from model knowledge — one-time
-verification pending" (IMPROVEMENTS #2) — treat those two dates as
-provisional until verified against the Fed's published calendar, and
-re-check before scheduling any future action near them.
+| hb-main assumed ISK (or left unresolved) when it is actually a fondkonto | Full 134,000 SEK exposed to 30% tax on unrealized gains at eventual disposal, plus ongoing 1.2–1.6% fund fees vs ~0.2% index compounding over years | Fee drag: recoverable by switching. Tax on gains already accrued in the wrong wrapper: not recoverable once realized |
+| Contributions routed to Avanza ISK instead of held pending target clarity | Opportunity-cost only — 1,000–3,000 SEK/month exposed to Avanza ISK's current (unitemized) holdings rather than a confirmed target mix | Fully recoverable — future contributions can be redirected any month, no lock-in |
+| Swedbank fund moved to ISK before confirming cost basis, tax lands at the ≤3,000 SEK worst-case bound | Up to ~3,000 SEK one-time tax cost on a 10,000 SEK position | Recoverable — bounded, small in absolute terms, and avoidable entirely by checking basis first |
+| ETH treated as "cheap, buy the dip" per valuation's cycle-position framing while macro-regime's risk-off flag is live | Full 12,500 SEK (6.5% of portfolio) exposed to further downside if the strong-dollar/risk-off regime persists or deepens; no thesis exists to define a stop or a re-entry rule | Recoverable in that 12,500 SEK is a small absolute amount, but there is currently no documented exit rule, so a bad entry has no defined unwind point |
+| Proposed glidepath allocation adopted now, before hb-main's equity/bond split (Q3) is known | Portfolio could be unknowingly under- or over-risked relative to the proposed 35–45% equity target, since 74.8% of the book's actual composition is unverified | Recoverable — a targeting/labeling error, not a realized loss, correctable the moment Q3 is answered |
 
 ---
 
-**Journal must run next.** This memo is not logged until `journal` appends
-this sweep to `reports/SESSION_LOG.md` — an unlogged memo is invisible to
-the next session and can never be reconciled against future data.
+## Timing collisions
+
+Calendar agent flagged two macro events inside the 45-day lookahead:
+**FOMC meeting 2026-07-28/29** and **Riksbank rate decision
+2026-08-20.** No rebalancing action in this memo is being executed this
+sweep, so no action lands near either date — but both dates are directly
+relevant to the one live regime-dependent call above (ETH / risk-off
+positioning): a Fed decision in three weeks and a Riksbank decision in
+six weeks are both plausible triggers for the "next macro print" that
+could move that call out of Low confidence in either direction. No
+equity earnings collisions to report — there are no itemized equity
+tickers yet to check against.
+
+---
+
+**Full agreement check:** the four agents do not agree cleanly on
+anything this sweep that matters. Where they appear to agree — 4 of 5
+holdings return "insufficient data" / "unscoreable" / "broken by
+absence" — it is because the same tickers are missing from
+`portfolio.json` across every lens, not because the lenses converged on
+a view. That is treated above as a data gap, not a clean bill of health.

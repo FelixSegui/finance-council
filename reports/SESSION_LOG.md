@@ -17,6 +17,35 @@ Entry format:
 
 ---
 
+## 2026-07-06 (second sweep) — Network outage resolved; two between-sweep inconsistencies logged for calibration
+- **Snapshot:** data/snapshots/20260706T130833.json (crypto/macro/sentiment fetched cleanly, no 403s; equities still `{}` — but now because portfolio.json's 4 fund/equity holdings are still ticker "TBD," not a network failure)
+- **Memo:** reports/2026-07-06-council-memo.md
+- **Headline calls:**
+  - Resolve hb-main wrapper before any other portfolio decision → confidence High → horizon Long
+  - Route new contributions to Avanza ISK, not AF or hb-main → confidence High → horizon Long
+  - Get real cost basis for the Swedbank fund (Q5) before moving it to ISK → confidence Medium → horizon Long
+  - No action on ETH sizing this sweep (three-way lens disagreement: valuation fair-to-cheap, macro-regime risk-off, thesis-review no thesis exists) → confidence Low → horizon Medium
+  - Write an actual ETH thesis now, while the setup (price up double digits 7d/30d vs Fear & Greed 24/Extreme Fear) is legible → confidence Medium → horizon N/A (documentation, not a market call)
+  - Proposed target allocation (glidepath): Equity 35-45%, Crypto 0-5%, Fixed income 30-40%, Cash 15-25%, sizing to the short end of the 3-7y range now → confidence Low → horizon Long (proposal only, not written to any file)
+- **User decisions:** none yet — awaiting user review of this memo
+- **Reconciliation (against last session's 2026-07-06 first-sweep entry):**
+  - **Infrastructure — RESOLVED, genuinely good news.** Last sweep's 100%-fetch-outage (403s across all 6 providers, diagnosed as an org network egress policy denial) is fixed: today's fetch pulled crypto (ETH) and macro/sentiment cleanly with zero 403s. Equities remain empty, but that is now purely a portfolio.json itemization gap (tickers still "TBD"), not a network block. Close out the "NEW/URGENT" infrastructure item from last entry — the underlying cause is gone.
+  - **Call 1 (resolve HB wrapper):** unchanged / too early to tell in substance — open_structural_question #1 is still open, and it still correctly led this week's memo per CLAUDE.md's blocking-question rule.
+  - **Call 2 (single-position ACT on a HB sub-portfolio, "confirmed arithmetic," High confidence):** looks overstated in hindsight. This week's portfolio lens declined to grade either Handelsbanken fund against the 15% max_single_position_pct threshold at all, explicitly flagging it "ungradable" because portfolio.json never actually records a per-fund approx_value_sek split — only the 134,000 SEK account-level total exists. Last week asserted a confirmed breach on a sub-portfolio that was never itemized in the underlying data. This is a calibration flag: the Council's "High" confidence label on call 2 last week does not hold up against this week's more careful read of the same file.
+  - **Call 3 (institution concentration WATCH at 69.6%, Medium confidence):** the underlying number is unchanged (still 69.6%, same holdings) but this week's verdict flipped to "OK, with caveat" against investor_profile.json's explicit 80% max_single_institution_pct threshold. Same data, different grade, and the 80% threshold existed before both sweeps — this is not new information, it is inconsistent application between sweeps. Logged as-is, not silently corrected, for the meta agent to pick up.
+  - **Call 4 (ETH exceeds crypto glidepath ceiling, Medium confidence):** substantive call held up — ETH is still ~6.5% of portfolio (12,500 / 192,500 SEK, unchanged holding) and still exceeds even this week's new, looser proposed ceiling. But the ceiling itself moved without new data behind the move: last week's "Phase 2: 0-3%" became this week's "0-5% satellite." The framework drifted under a call whose substance didn't.
+  - **Call 5 (Swedbank AF→ISK deferred, blocked on cost basis):** aged correctly. Still deferred, open_structural_question #5 still open, no cost basis obtained this sweep either — too early to act, for the same stated reason as last week.
+  - **Call 6 (3-phase glidepath proposal):** superseded, not validated — this week produced a second, differently-shaped proposal (Equity 35-45% / Crypto 0-5% / Fixed income 30-40% / Cash 15-25%) with no new data justifying the change from last week's 3-phase equity/crypto/cash framing. Two different glidepath proposals in two sweeps. Flag: stabilize this framework (put a version in investor_profile.json and iterate on it) or explain the change each time — do not let it silently reset week to week.
+- **Open items carried forward:**
+  - All 5 `open_structural_questions` in portfolio.json remain open: (1) Handelsbanken wrapper ISK-or-fondkonto — still blocks and leads every memo; (2) Handelsbanken per-portfolio fees; (3) equity/bond split inside each Handelsbanken portfolio; (4) ETH cost basis/acquisition dates; (5) Swedbank fund cost basis vs current value.
+  - investor_profile.json `reference_targets` still null — two different glidepath proposals offered in two sweeps, neither adopted; needs to be stabilized rather than re-proposed from scratch each week.
+  - 4 of 5 holdings still broken-by-absence on thesis (no ticker, no thesis); only the Swedbank fund has an explicit ("no active thesis") non-decision recorded.
+  - Fee data known for only 1 of 5 holdings (ETH, 0%); 93.5% of the portfolio (180,000 SEK) ungraded against the 0.4% fee ceiling.
+  - data/valuations.csv is still empty — no row logged yet despite the portfolio having a valuation this sweep (see reminder below).
+  - Calibration note for the meta agent: two between-sweep inconsistencies logged above (call 2's overstated "confirmed arithmetic," call 3's same-number-different-grade flip) — worth tracing as a possible pattern before next sweep, not dismissing as one-offs.
+
+---
+
 ## 2026-07-06 — First automated weekly sweep: total data-fetch outage, structural findings stand
 - **Snapshot:** data/snapshots/20260706T121553.json (equities `{}`, crypto/macro/sentiment all 403 errors — see reconciliation)
 - **Memo:** reports/2026-07-06-council-memo.md
@@ -55,3 +84,5 @@ Entry format:
   - FOMC dates in macro_calendar.json need one-time verification (IMPROVEMENTS #2)
   - data/universe.json: verify Nordic crypto certificate tickers before adding them
   - data/valuations.csv is empty — log first valuation row at next sweep
+</content>
+</invoke>

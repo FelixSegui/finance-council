@@ -17,6 +17,35 @@ Entry format:
 
 ---
 
+## 2026-07-13 — Third sweep: institution-concentration flip-flop resolved, new possible 15% breach flagged in avanza-isk, glidepath deliberately stabilized
+- **Snapshot:** data/snapshots/20260713T060815.json (ETH price_eur 1562.02, 24h -0.64%, 7d +0.50%, 30d +8.65%, ATH drawdown -63.07%; crypto Fear & Greed 28 "Fear")
+- **Calendar:** data/calendar/20260713-events.json (FOMC 2026-07-28/29, Riksbank 2026-08-20 — no equity earnings, no tickers to check)
+- **Memo:** reports/2026-07-13-council-memo.md
+- **Headline calls:**
+  - Resolve Handelsbanken wrapper before any further action on that account → confidence High → horizon Long
+  - Route all new contributions (1,000-3,000 SEK/mo) to Avanza ISK, not AF or hb-main → confidence High → horizon Long
+  - Itemize the avanza-isk 36,000 SEK line before next sweep — currently one un-itemized entry at 18.70% of portfolio, above the 15% single-position cap if it is a single holding → confidence High → horizon Long
+  - No action on ETH this sweep — valuation and macro-regime disagree on the same numbers, and no thesis for holding it has ever been written → confidence Low → horizon Medium
+  - Swedbank AF→ISK move directionally sound, blocked on real cost-basis data; worst-case tax bound 3,000 SEK → confidence Medium → horizon Long
+- **User decisions:** none yet — awaiting user review of this memo (automated unattended sweep)
+- **Reconciliation (against the 2026-07-06 second-sweep entry):**
+  - **Call 1 (resolve HB wrapper, High/Long):** unchanged / too early to tell in substance — open_structural_question #1 is still open. This is now the third consecutive sweep it has led the memo, exactly as the blocking-question rule requires. Not resolved; not worsened either.
+  - **Call 2 (route contributions to Avanza ISK, High/Long):** holds up — nothing in this sweep's data contradicts it, and it remains a zero-downside default per today's own cost-of-being-wrong table (~0 SEK realized loss if wrong).
+  - **Call 4 (Swedbank AF→ISK deferred, blocked on cost basis, Medium/Long — was called 3 last sweep):** aged correctly again. Still deferred, question #5 still open, no cost basis obtained this sweep either. Two sweeps running with the same correct non-action.
+  - **Call 4 (no action on ETH, Low/Medium — was called 4 last sweep):** substance held but the underlying picture moved. ETH is up 30d (+8.65%) since last sweep while Fear & Greed *worsened* slightly (24 → 28, still Fear, not a big move) and the ATH drawdown is now -63.07%. Position size is essentially unchanged (~12,500 SEK, ~6.49% of portfolio, still above the proposed 0-5% crypto ceiling). The valuation/macro-regime disagreement flagged last sweep is still exactly the same disagreement this sweep — no new data resolved it either direction, so Low confidence remains correctly calibrated, not stale.
+  - **Call 6 / institution concentration (flagged as a flip-flop last sweep):** RESOLVED, correctly. Same number as always (Handelsbanken 134,000/192,500 = 69.61%), and this sweep graded it fresh and consistently as "OK" against the 80% cap, closing out last sweep's calibration flag about inconsistent grading of an unchanged number. Good process fix — the fix was "grade strictly off the file," not "change the number."
+  - **NEW this sweep, not previously flagged:** avanza-isk's 36,000 SEK line, at 18.70% of total if it is a single position, is a *specific* possible 15%-cap breach — last sweep's "ungradable" note for HB was a data gap without a number attached; this is a data gap with a number attached, and it is worse-looking on its face. This is new information, not a restatement.
+  - **Glidepath (flagged as "superseded, not validated" last sweep, two different shapes in two sweeps):** process fix applied. This sweep deliberately carried forward the second 2026-07-06 shape (Equity 35-45% / Crypto 0-5% / Fixed income 30-40% / Cash 15-25%) unchanged, explicitly to stop the week-to-week drift flagged in last sweep's reconciliation. No new data justified a third shape, so none was produced. This is the system correcting a defect it identified in itself last week — logged as a process fix, not treated as a new open item.
+- **Open items carried forward:**
+  - All 5 `open_structural_questions` in portfolio.json remain open: (1) Handelsbanken wrapper ISK-or-fondkonto — third consecutive sweep, still blocks and leads every memo; (2) Handelsbanken per-portfolio fees; (3) equity/bond split inside each Handelsbanken portfolio; (4) ETH cost basis/acquisition dates; (5) Swedbank fund cost basis vs current value.
+  - avanza-isk itemization gap is now a specifically flagged *possible 15% single-position breach* (18.70% if single holding) — no longer just a generic "not itemized" note; itemize before next sweep.
+  - Fee drag remains UNKNOWN on 74.8% of the portfolio (Handelsbanken + Swedbank) against the 0.4%/yr ceiling — still the system's biggest blind spot per CLAUDE.md priority #2.
+  - ETH has fetched market data every sweep but still no written thesis in portfolio.json (field literally "TBD") — a distinct human-side gap from the other 4 holdings' pure data-fetch gap; should be closed independent of how the valuation/macro-regime disagreement resolves.
+  - Glidepath proposal (Equity 35-45% / Crypto 0-5% / Fixed income 30-40% / Cash 15-25%) is now deliberately stabilized rather than re-derived each sweep — this is a process fix from last sweep's flagged defect, not a new open item; `investor_profile.json` `reference_targets` remain null pending user adoption.
+  - data/valuations.csv is still empty — no row logged yet despite three sweeps now having a portfolio valuation (192,500 SEK this sweep). See reminder below.
+
+---
+
 ## 2026-07-06 (second sweep) — Network outage resolved; two between-sweep inconsistencies logged for calibration
 - **Snapshot:** data/snapshots/20260706T130833.json (crypto/macro/sentiment fetched cleanly, no 403s; equities still `{}` — but now because portfolio.json's 4 fund/equity holdings are still ticker "TBD," not a network failure)
 - **Memo:** reports/2026-07-06-council-memo.md
@@ -85,4 +114,3 @@ Entry format:
   - data/universe.json: verify Nordic crypto certificate tickers before adding them
   - data/valuations.csv is empty — log first valuation row at next sweep
 </content>
-</invoke>

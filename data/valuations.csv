@@ -1,1 +1,3 @@
 date,total_value_sek,net_contribution_since_last_sek,note
+2026-07-13,192500,0,third automated sweep - holdings unchanged since 2026-07-06 second sweep, no new contributions logged in portfolio.json
+2026-07-13,226935,0,"same-day reconciliation, NOT organic growth: PayPal balance counted for the first time (14321 SEK), SEB final settlement confirmed exact (17382 vs prior ~18k estimate), Avanza ISK itemized exactly (36120 vs 36000 approx), HB now confirmed-sold cash (136612 vs 134894 pre-sale estimate). Do not treat the ~34.4k jump from the prior row as investment gain - it is data completeness. See SESSION_LOG.md 2026-07-13 entries."

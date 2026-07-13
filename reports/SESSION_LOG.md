@@ -17,6 +17,169 @@ Entry format:
 
 ---
 
+## 2026-07-13 (local session, reconciled with automated routine) — Git divergence resolved, SEB fully settled, Avanza ISK fully itemized, new crypto-overshoot found (~12.36% vs 5% target) ahead of ~154k ISK deployment
+- **Snapshot:** no new fetch this session; pulled data/snapshots/20260713T060815.json from origin/main (the automated routine's snapshot — see entry immediately below) via `git checkout origin/main -- data/snapshots/...` during git-divergence reconciliation.
+- **Calendar:** data/calendar/20260713-events.json — pulled from origin/main alongside the snapshot, same reconciliation.
+- **Memo:** reports/2026-07-13-council-memo.md (the automated routine's memo, annotated this session with a prominent superseded-data warning at the top — the routine ran against portfolio.json as of commit 34bc915 / 2026-07-06, before HB's 07-12 exit and this session's SEB settlement/Avanza itemization).
+- **Headline findings:**
+  - Git divergence discovered and reconciled: origin/main had advanced 3 commits (68c4ee5, 8d0e26e, b616b93 — the automated routine) while local carried uncommitted work spanning 07-07 through 07-13. No direct file conflicts (routine touched calendar/snapshot/memo/SESSION_LOG.md/valuations.csv; local touched portfolio.json/investor_profile.json/fetch_market_data.py — disjoint except SESSION_LOG.md). Resolution: non-conflicting files (new snapshot, new calendar, valuations.csv row, the new memo) pulled in via `git checkout origin/main -- <path>`; the memo annotated with the superseded-data warning; SESSION_LOG.md reconciled by hand in this write rather than a raw git merge, to preserve correct chronological ordering of entries from both branches → confidence High → horizon N/A (process).
+  - SEB fully settled: final figure 17,382.43 SEK (all legs landed, supersedes 07-12's partial "5 of 7 confirmed, ~17,381 SEK" estimate) — portfolio.json seb-fund account and holding updated.
+  - HB confirmed already fully sold (07-12 figures stand, 136,611.83 SEK). User intends to transfer both HB (136,611.83 SEK) and SEB (17,382.43 SEK) cash to Avanza ISK today — NOT yet executed as of this log entry.
+  - Avanza ISK fully itemized from a live user-provided snapshot: Handelsbanken A (1 share), Investor A (5 shares), Avanza Auto 3 (fund), Tundra Sustainable Frontier Fund A SEK (fund), CoinShares XBT Provider Bitcoin Tracker One (BTC certificate, 6 units), plus 565 SEK cash. Exact total 36,120 SEK. This retires the automated routine's 15%-concentration flag as moot (no single holding breaches 15% of total portfolio) and resolves the long-standing "TBD — itemize" placeholder → confidence High → horizon Long.
+  - NEW FINDING, not yet Council-reconciled: total identified crypto exposure, once the BTC certificate (15,540 SEK) is counted alongside the ETH wallet (12,500 SEK), is 28,040 SEK = ~12.36% of the ~226,935 SEK total portfolio — well above the adopted 5% glidepath target. This was invisible before itemization since the Avanza 36k line was previously assumed to be pure equity. Flagged as new open_structural_question 7 — directly relevant since ~154,000 SEK of new cash (HB+SEB proceeds) is about to be deployed today under a plan that assumed only ~5.5% existing crypto exposure → confidence High that the number is right (traceable to itemization) but the "what to do about it" question is unreconciled → horizon Medium.
+  - Total portfolio value now ~226,935.29 SEK (up from the ~211,400 SEK figure before PayPal/itemization/final settlements).
+- **User decisions:** SEB settlement confirmed and recorded (17,382.43 SEK). Avanza ISK itemization confirmed from a live snapshot and recorded. HB+SEB→ISK cash transfer INTENDED for today but NOT YET EXECUTED as of this entry. No decision yet on the new crypto-overshoot finding — it surfaced during this session, ahead of the planned ~154k deployment, and has not been put to Council or resolved by the user.
+- **Reconciliation (against the automated routine's 2026-07-13 entry immediately below):**
+  - Routine's call "resolve Handelsbanken wrapper before any further action" (High/Long) — MOOT: already resolved and fully executed on 07-12, a day before the routine ran. The routine didn't know because local work hadn't been pushed to origin.
+  - Routine's call "route new contributions to Avanza ISK, not AF or hb-main" (High/Long) — stands, though hb-main no longer exists post-sale; directionally correct, now trivially true.
+  - Routine's call "itemize the avanza-isk 36,000 SEK line — possible 15% breach" (High/Long) — RESOLVED this session, and the resolution is better news than feared on the concentration question (no single holding breaches 15%) but WORSE news on a dimension the routine's per-line framing was structurally unable to see: aggregate crypto exposure across two separate holdings (ETH wallet + BTC certificate) is 12.36% against a 5% target.
+  - Routine's call "no action on ETH — no thesis ever written" (Low/Medium) — aged badly in scope, not direction: the no-thesis problem just got bigger (now two crypto holdings, ETH and a BTC certificate, both without theses), and the ETH-only framing undersold the real crypto exposure by roughly half.
+  - Routine's call "Swedbank AF→ISK directionally sound, blocked on cost-basis data" (Medium/Long) — unchanged, still blocked, no new data this session.
+- **Open items carried forward:**
+  - Crypto-overshoot reconciliation needed before/alongside today's ~154k deployment (open question 7) — highest priority, time-sensitive.
+  - Avanza Auto 3 / Tundra / BTC certificate fee percentages unknown (open question 8).
+  - No thesis on any of the 5 newly itemized Avanza holdings (open question 9, lower priority except the BTC certificate given the crypto-overshoot finding).
+  - The 70% risk-tier question from 07-12 still unanswered by user.
+  - Full account inventory still not done.
+  - HB+SEB→ISK cash transfer still pending execution.
+  - Swedbank cost basis, ETH cost basis still unknown.
+  - Process fix needed: push local work to origin more promptly to avoid repeat of today's stale-automated-sweep problem — flag for the meta agent's improvement backlog (second distinct process gap in two sessions; see also the missed-journal-call failure on 07-12, below).
+  - REMINDER: append a row to data/valuations.csv for today's ~226,935.29 SEK valuation (date, total_value_sek, net_contribution_since_last_sek, note) — performance tracking is dead without it.
+
+---
+
+## 2026-07-13 — Third sweep: institution-concentration flip-flop resolved, new possible 15% breach flagged in avanza-isk, glidepath deliberately stabilized
+- **Snapshot:** data/snapshots/20260713T060815.json (ETH price_eur 1562.02, 24h -0.64%, 7d +0.50%, 30d +8.65%, ATH drawdown -63.07%; crypto Fear & Greed 28 "Fear")
+- **Calendar:** data/calendar/20260713-events.json (FOMC 2026-07-28/29, Riksbank 2026-08-20 — no equity earnings, no tickers to check)
+- **Memo:** reports/2026-07-13-council-memo.md
+- **Headline calls:**
+  - Resolve Handelsbanken wrapper before any further action on that account → confidence High → horizon Long
+  - Route all new contributions (1,000-3,000 SEK/mo) to Avanza ISK, not AF or hb-main → confidence High → horizon Long
+  - Itemize the avanza-isk 36,000 SEK line before next sweep — currently one un-itemized entry at 18.70% of portfolio, above the 15% single-position cap if it is a single holding → confidence High → horizon Long
+  - No action on ETH this sweep — valuation and macro-regime disagree on the same numbers, and no thesis for holding it has ever been written → confidence Low → horizon Medium
+  - Swedbank AF→ISK move directionally sound, blocked on real cost-basis data; worst-case tax bound 3,000 SEK → confidence Medium → horizon Long
+- **User decisions:** none yet — awaiting user review of this memo (automated unattended sweep)
+- **PROCESS NOTE added retroactively:** this sweep ran against portfolio.json as of commit 34bc915 (2026-07-06) because a parallel local session's work from 2026-07-07 onward had not been pushed to origin/main before the 06:00 UTC routine executed. Every portfolio-status claim above is STALE/SUPERSEDED as of this write — HB wrapper was resolved and the funds sold on 2026-07-12, avanza-isk was fully itemized on 2026-07-13 with no cap breach. See reports/2026-07-13-council-memo.md for the full superseded-memo caveat, and Part C below for what's actually true now. Root cause: local session work needs to be pushed more promptly so the cloud routine and local sessions don't diverge - flag for the meta agent's improvement backlog.
+- **Open items carried forward:** all 5 original open_structural_questions were carried in this automated sweep's view but are now stale — see current portfolio.json open_structural_questions for the real, current list (renumbered and different content as of 2026-07-13).
+
+---
+
+## 2026-07-12 — Full health-check sweep: PayPal account disclosed, risk-tier framework proposed (unreconciled), HB exit EXECUTED with actual figures, SEB partially settled — journal not run at session end (process failure, backfilled here)
+- **Snapshot:** data/snapshots/20260712T082357.json (crypto ETH, macro complete, sentiment fear/greed 26; equities empty, holdings still TBD). Fetch script permanently gained sek_per_eur support (derived from FRED DEXSDUS x DEXUSEU) — closes a standing data gap.
+- **Memo:** amendment appended to reports/2026-07-07-council-memo.md as "Amendment 2026-07-12".
+- **Headline calls:**
+  - Council ruling (A): 10% tactical tier ADOPTED as an additional lens (matches CLAUDE.md's existing short-horizon rule) → confidence Medium → horizon Short. The 70% "secure" figure was NOT adopted — forced back to the user as a real, unresolved question (a Low-confidence provisional lean was stated but not acted on).
+  - Council ruling (B): PayPal FX recommendation adopted uncontested — convert promptly via lowest-spread path, no macro-timing signal since idle cash earns 0% either way — both agents agreed for the same structural reason → confidence High → horizon Long.
+  - Council ruling (C): constraint ranking established — 1) HB+SEB execution staleness, 2) operational sprawl / overdue full account inventory (3 surprise accounts this quarter: SEB, HB wrapper type, PayPal), 3) missing equity/fund data, 4) unresolved cost bases, 5) FX routing.
+  - Single-position concentration ACT flag on HB Auto 50/75 ruled MOOT — a bookkeeping artifact of not-yet-sold holdings, not a fresh breach.
+  - HB exit EXECUTED (upgraded from user-committed): Auto 50 sold for 97,659.99 SEK (cost 78,441.28, gain 19,218.71, tax 5,765.61), Auto 75 sold for 35,997.42 SEK (cost 27,029.93, gain 8,967.49, tax 2,690.25); total tax 8,455.86 SEK; total account balance 136,611.83 SEK (includes 2,954.42 SEK pre-existing cash). exit_plans.hb-af-exit in portfolio.json marked EXECUTED with these actual figures.
+- **User decisions:**
+  - Disclosed a PayPal account: 1,177.49 USD + 266.88 EUR = 14,321.03 SEK, recurring inflow ~750-1000 EUR/~2mo. Recorded in portfolio.json.
+  - Separately proposed a risk-tier framework (70% secure / 20% medium / 10% high-risk actively-traded) alongside the already-adopted exposure-class glidepath (50/40/5/5) — recorded in investor_profile.json as `risk_tier_framework_proposed`, explicitly flagged unreconciled against the existing glidepath.
+  - Executed the HB sale with the actual figures above (not the earlier estimated exit-plan figures).
+  - Pasted 5 confirmed SEB transaction rows + 2 pending legs. Columns were ambiguous at first read this session — "Saldo" was misread as per-row proceeds, producing a false ~46k total; this was corrected in the following (07-13) session once the true figure was confirmed. As of the end of this 07-12 session, SEB was reported as "5 of 7 settlements confirmed, 2 pending, settling 2026-07-13," approx. 17,381 SEK.
+- **Reconciliation (against the 2026-07-07 same-day-amendment entry below):**
+  - The 07-07 amendment's "both sales (HB + SEB) user-committed today" open item: HB call progressed all the way to EXECUTED this session, with real sale prices now in portfolio.json — aged well, fully closed on the HB side. SEB progressed to partially settled (5 of 7 legs) — in progress, not yet closed.
+  - The 07-07 amendment's institution-cap and single-position concentration items: the HB Auto 50/75 single-position ACT flag (originally raised 2026-07-06) is now formally ruled moot by Council — it was always a bookkeeping artifact of unsold holdings, not a live breach, and is now fully resolved by the sale itself.
+  - One dropped Council attempt occurred mid-session due to an API connection error mid-response; confirmed via file mtime check before retry that this left no partial/corrupt file — logged here as a minor infrastructure event, not a data-quality issue.
+- **PROCESS FAILURE, logged honestly per CLAUDE.md:** this session did real, material work (execution figures, a new disclosed account, a new proposed framework, a Council ruling) but `journal` was never invoked at the end of it. This entry is a backfill written retroactively during the 2026-07-13 session. Per CLAUDE.md: "If a session did meaningful work without a log entry, that's a process failure — fix it before ending the session." Flagged for the meta agent's improvement backlog alongside the git-push-timing gap (see 2026-07-13 local-session entry above).
+- **Open items carried forward:**
+  - All numbered decisions from the 07-07 amendment still pending.
+  - NEW: the 70% risk-tier question needs a direct user answer (Council declined to adopt it unilaterally).
+  - NEW: PayPal routing/conversion needs execution.
+  - HB/SEB → ISK transfer not yet executed.
+  - Full account inventory still not done — now 3 surprise accounts (SEB, HB wrapper type, PayPal) surfaced across recent sessions.
+  - SEB settlement not yet final — 5 of 7 legs confirmed, 2 pending, expected to settle 2026-07-13 (see following session's entry for the corrected final figure).
+
+---
+
+## 2026-07-07 (same-day amendment to second session) — TWO Council calls reversed within hours: surprise SEB account (~18k) disclosed, house-deposit goal softened; final deployment now 142,867 at 50% equity, no currency tilt
+- **Snapshot:** same as second session — data/snapshots/20260707T153216.json. No new fetch; this amendment is driven by user disclosures, not market data.
+- **Memo:** amendment appended to reports/2026-07-07-council-memo.md (portfolio agent filed a formal challenge to two Council calls; Council ruled same day).
+- **User disclosures (after the memo was delivered):**
+  - Previously unknown SEB fund account, ~18,000 SEK (user estimate), wrapper presumed AF but UNCONFIRMED, cost basis unknown. User is selling it today alongside the HB funds, proceeds to Avanza ISK. Recorded in portfolio.json as account `seb-fund` + holding, plus new open questions 4 (avräkningsnota: fund name, wrapper, realized gain → additional tax earmark) and 5 (full account inventory — this is the second surprise account class).
+  - Goal SOFTENED: NOT a hard-deadline house deposit — user is "not completely sure what I am saving for"; most likely an apartment, with one live idea being a Mediterranean vacation apartment (a EUR liability) rented out while renting in Sweden. investor_profile.json horizon rewritten accordingly, with a currency_note trigger.
+- **Amended calls (Council rulings on the portfolio agent's challenge):**
+  - Call 2 REVERSED: equity start 50% (was 45%) — the hard-deadline premise behind the 45% cut is gone; portfolio agent upheld → confidence Medium → horizon Long. Control extracted: backtest must run the 50/40/5/5 drawdown profile next sweep.
+  - Call 3 REVERSED: 20% SEK/Nordic equity tilt DROPPED — the SEK-liability assumption was load-bearing and is now unknown; equity goes plain global unhedged, FI + cash stay SEK; reopens when the goal currency firms up → confidence Medium → horizon Medium.
+  - Call 5 unchanged: institution cap accept-and-amend 80% → 90%, now measured at 88.8% Avanza post-move → confidence High → horizon Long.
+  - ETH default stays goal-corpus — it does NOT flip to risk capital despite the goal softening (flipping would reward three sweeps of non-answering); the bucket + cost-basis deadline stands → confidence Medium → horizon Medium.
+  - New decision item 8: full account inventory — today's portfolio denominator was ~9% wrong before the SEB disclosure.
+- **FINAL deployment (supersedes the second-session split; execute by ~2026-07-21):** 142,867 SEK into Avanza ISK = 59,684 global equity index / 75,547 SEK short räntefond / 7,636 cash. Earmarks to sparkonto outside the ISK: 8,826.91 (HB) + 1,200 provisional (SEB — illustration only, pending avräkningsnota). Post-move allocation 50.0 equity / 40.0 FI / 3.8 crypto / 6.2 cash; Avanza 88.8%; ISK total 178,867, under allowance.
+- **User decisions:** the SEB sale is user-committed alongside the HB sale (both being sold today). All 8 numbered memo decisions remain pending — none answered yet.
+- **Reconciliation note for next session:** TWO Council calls were reversed within hours of the memo, not because the analysis was wrong on its inputs but because material user facts (an entire account; the goal itself) arrived after the memo. This feeds open question 5 (full account inventory) and is a pattern for the meta agent: profile/holdings discovery is happening mid-sweep instead of up front. Next session's reconciliation should grade the AMENDED calls (50% equity, no tilt, 142,867 deployment), not the superseded originals — but keep the reversal itself on the record as a calibration event.
+- **Open items carried forward (delta vs second-session entry, which otherwise stands):**
+  - Open questions now number 5: adds (4) SEB avräkningsnota — fund name, wrapper confirmation, realized gain → firm up the 1,200 provisional tax earmark; (5) full account inventory to fix the denominator.
+  - Both sales (HB + SEB) user-committed today: when settled, update portfolio.json (zero out hb-main and seb-fund, itemize new ISK holdings, mark hb-af-exit EXECUTED with actual prices) and move both earmarks to the sparkonto.
+  - Backtest owes a 50/40/5/5 drawdown profile next sweep (control extracted for the equity reversal).
+  - Currency-tilt question parked with an explicit reopen trigger (goal currency firms — see investor_profile.json currency_note).
+  - All second-session carry-forwards remain: 8 memo decisions pending, deploy by ~2026-07-21, fetch-script sek_per_eur gap, index proxy tickers next sweep, ETH thesis three sweeps unwritten, valuations.csv still empty.
+
+---
+
+## 2026-07-07 (second session) — Full sweep: user commits to HB exit; Council allocates the ~134k proceeds (45% equity start, deploy both legs by ~2026-07-21)
+- **Snapshot:** data/snapshots/20260707T153216.json — full fetch. Equities `{}` (holdings tickers still TBD — expected, not a failure); crypto: ETH returned in EUR with no sek_per_eur in the snapshot (fetch-script gap, logged below); macro complete; Fear & Greed 20 (Extreme Fear). All five lenses ran (macro-regime, portfolio, thesis-review, valuation, calendar) + council.
+- **Memo:** reports/2026-07-07-council-memo.md
+- **Headline calls:**
+  - Deploy the exit proceeds now, do not wait for index data — both legs in by ~2026-07-21 to stay clear of FOMC 2026-07-28/29 → confidence High → horizon Long.
+  - Adopt reference_targets v1 AMENDED to a 45% equity start — Council overruled portfolio's 50% on zero-slack stress math plus a guessed T-5 deposit anchor. Deployment of 126,067 SEK net: 33,650 global index / 8,405 Nordic-European / 78,055 SEK short fixed income / 5,957 cash. The 50% column unlocks only if user confirms the deposit is ≥5y out → confidence Medium → horizon Long.
+  - Currency: cap 20% of the equity sleeve to Nordic/European or SEK-hedged (macro-regime's tilt won, but capped) → confidence Medium → horizon Medium.
+  - ETH: hold-and-dilute with a hard deadline — if the bucket question (deposit corpus vs risk capital) is unanswered by next sweep, the default is deposit corpus → sell by T-2 → confidence Medium → horizon Medium. ETH thesis is now unwritten THREE sweeps running.
+  - Institution cap: accept-and-amend 80% → 90% for diversified-fund-only exposure, revisit at 500k → confidence High → horizon Long.
+  - Tax earmark: 8,826.91 SEK → sparkonto outside the ISK (money already owed to Skatteverket, not investable).
+  - No tactical (short-horizon) calls this sweep.
+- **User decisions:**
+  - COMMITTED to executing the HB fund sale (exit plan hb-af-exit moves from PROPOSED this morning to user-committed) — this sweep was run specifically because the user decided to sell and asked how to invest the ~134k proceeds.
+  - Everything else pending: the memo ends with 7 numbered yes/no/amend decisions (adopt v1-amended targets, currency tilt, institution-cap amendment, ETH bucket answer, deposit-date anchor, etc.). None answered yet — user was told to read the memo.
+- **Reconciliation (against this morning's 2026-07-07 structural-session entry):**
+  - **Morning's single headline call (execute single-step full exit of hb-main, High, Long, status PROPOSED): aged well, fast.** User committed to the sale the same day. The call moves from PROPOSED to user-committed; it becomes EXECUTED only when trades are actually placed and portfolio.json is updated with real sale prices.
+  - **Morning's carried-forward "reference_targets null / glidepath unpinned" (flagged urgent because ~126k needs a target allocation): progressed.** There is now a concrete v1-amended proposal (45% equity start) on the table awaiting adoption — the first sweep where the glidepath is a specific, adoptable object rather than a from-scratch re-proposal. Not yet adopted, so not yet closed.
+  - **Morning's carried-forward "ETH thesis still unwritten": aged badly — now THREE sweeps running.** This is an escalating pattern, not a one-off; flagged for the meta agent. This sweep at least attached a forcing mechanism (bucket-question deadline with a sell-by-T-2 default).
+- **Data caveats for next sweep's reconciliation (use fetched data only, and know these gaps):**
+  - sek_per_usd in the snapshot is 5 days stale (2026-07-02).
+  - sek_per_eur is missing entirely from the fetch script — ETH arrived in EUR unconverted. Fetch-script gap, needs fixing.
+  - se_cpi is 2025M12.
+  - FOMC dates (2026-07-28/29) are model-knowledge-unverified; US/SE CPI release dates missing from macro_calendar.json.
+  - Equity entry valuation was a stated blind spot this sweep — next sweep MUST fetch global index proxy tickers (VWCE.DE etc.) and sek_per_eur before grading the deployment call.
+- **Open items carried forward:**
+  - 7 numbered memo decisions awaiting user answers — in particular: adopt reference_targets v1-amended (or not), ETH bucket answer (deadline: next sweep, default = deposit corpus → sell by T-2), and the deposit-date anchor (T-5 was guessed; confirming ≥5y out unlocks the 50% equity column).
+  - Execute the HB sale (user-committed): when trades are placed, update portfolio.json (zero out hb-main, itemize new ISK holdings, mark hb-af-exit EXECUTED with actual prices) and move 8,826.91 SEK to a sparkonto outside the ISK for the tax bill.
+  - Deployment window: both legs invested by ~2026-07-21 (ahead of FOMC 07-28/29).
+  - Fix fetch script: add sek_per_eur; fetch global index proxy tickers next sweep (equity entry valuation blind spot).
+  - ETH thesis still unwritten — three sweeps; escalating pattern for meta.
+  - 3 open_structural_questions remain in portfolio.json: (1) Auto 50/75 actual equity/bond split (moot once exit executes), (2) ETH cost basis and acquisition dates, (3) Swedbank fund cost basis.
+  - data/valuations.csv still empty — see reminder at end of session.
+
+---
+
+## 2026-07-07 — BLOCKING QUESTION RESOLVED: hb-main is fondkonto (AF); exact holdings recorded; tax-optimized exit plan proposed
+- **Snapshot:** none — NOT a full sweep. No market data fetched, no analysis agents run. This was a structural data-update session driven by user-confirmed facts (Handelsbanken account statement dated 2026-07-07). All numbers below are statement values, not fetched snapshot data.
+- **Memo:** no Council memo — structural session, not an analysis sweep. Exit-plan analysis written to reports/2026-07-07-hb-exit-plan.md; machine-readable version in portfolio.json `exit_plans.hb-af-exit`.
+- **Headline calls:**
+  - Execute single-step full exit of hb-main (sell both Auto Criteria funds, realize gain 29,423.03 SEK, tax 8,826.91 SEK due at deklaration, net 126,067.33 SEK), move proceeds to Avanza ISK (~171k post-move, under ISK allowance → zero ongoing tax), reinvest in ~0.2% index fund → confidence High (structural: flat 30% tax means phasing has zero tax benefit; addresses priority levers #1 wrapper and #2 fees simultaneously) → horizon Long. Status: PROPOSED, awaiting user execution.
+- **User decisions:**
+  - Confirmed (with account statement) that hb-main is FONDKONTO (AF) — resolves the blocking structural question open since 2026-07-03.
+  - Confirmed HB fund fees: Auto 50 Criteria 0.66%/yr, Auto 75 Criteria 0.67%/yr total cost (resolves former open question 2).
+  - Provided exact hb-main holdings, now recorded in portfolio.json: Handelsbanken Auto 50 Criteria (A1 SEK) — cost basis 78,441.28, market value 98,492.98, gain 20,051.70; Handelsbanken Auto 75 Criteria (A1 SEK) — cost basis 27,029.93, market value 36,401.26, gain 9,371.33. Total hb-main 134,894.24 SEK, unrealized gain 29,423.03 SEK.
+  - Approved portfolio.json restructuring: wrapper set to AF, exact values and fees recorded, two former TBD holdings replaced with real fund names, questions 1-2 moved to a new `resolved_structural_questions` list, remaining open questions renumbered to 3 items (Auto fund equity/bond split, ETH cost basis, Swedbank cost basis).
+  - NO decision yet on executing the exit plan itself — it stands as PROPOSED.
+- **Reconciliation (against 2026-07-06 second-sweep calls; no market data this session, so market-dependent calls get "too early"):**
+  - **Call 1 (resolve hb-main wrapper before any other portfolio decision, High, Long): RESOLVED — CLOSED. Aged well.** The answer is fondkonto (AF), user-confirmed with a statement. The system's insistence on leading every memo with this was vindicated: the answer is the bad-case one (taxable, plus 0.66-0.67% fees), and it immediately produced the largest structural action this system has generated (the exit plan). The blocking-question rule in CLAUDE.md no longer forces this to lead memos.
+  - **Call 2 (route new contributions to Avanza ISK, not AF or hb-main, High, Long): strengthened, not yet acted on.** The AF confirmation makes this call strictly more correct than when it was made. No user decision recorded on contribution routing yet.
+  - **Call 3 (get Swedbank cost basis before moving it to ISK, Medium, Long): unchanged / too early.** Still open — now renumbered as open question 3. No cost basis obtained this session.
+  - **Call 4 (no action on ETH sizing, Low, Medium): too early to tell.** No market data fetched this session; ETH untouched. ETH cost basis (now open question 2) also still unknown.
+  - **Call 5 (write an ETH thesis now, Medium, documentation): not done.** ETH thesis is still "TBD" in portfolio.json. Two sessions running without it — carry forward explicitly rather than letting it fade.
+  - **Call 6 (proposed glidepath Equity 35-45% / Crypto 0-5% / FI 30-40% / Cash 15-25%, Low, Long): not adopted, still unpinned.** investor_profile.json reference_targets remains null. Last entry flagged the glidepath resetting week to week; nothing this session stabilized it, and the exit plan now makes it urgent — ~126k of proceeds needs a target allocation inside the ISK.
+- **Open items carried forward:**
+  - Exit plan hb-af-exit is PROPOSED, awaiting user execution decision. If executed: update portfolio.json (zero out hb-main, itemize new ISK holdings, mark plan EXECUTED with actual sale prices) and earmark 8,827 SEK for the tax bill.
+  - investor_profile.json `reference_targets` still null — the replacement allocation inside the ISK needs Council confirmation before (or alongside) reinvesting exit proceeds; glidepath still unpinned after three sessions of proposals.
+  - 3 open_structural_questions remain (renumbered): (1) actual equity/bond split inside Auto 50 / Auto 75 (name-implied ~50/50 and ~75/25 until factsheets confirm — matters for exposure math until the exit executes); (2) ETH cost basis and acquisition dates; (3) Swedbank fund cost basis vs current value.
+  - data/valuations.csv is still empty — hb-main now has an exact statement value, but the other accounts are approximate and no full portfolio valuation was done this session.
+  - ETH thesis still unwritten (see reconciliation of call 5).
+  - Exit-plan assumption flags to verify before execution: no exit/redemption fees on the HB funds; current ISK allowance threshold per Skatteverket.
+
+---
+
 ## 2026-07-06 (second sweep) — Network outage resolved; two between-sweep inconsistencies logged for calibration
 - **Snapshot:** data/snapshots/20260706T130833.json (crypto/macro/sentiment fetched cleanly, no 403s; equities still `{}` — but now because portfolio.json's 4 fund/equity holdings are still ticker "TBD," not a network failure)
 - **Memo:** reports/2026-07-06-council-memo.md
@@ -84,5 +247,3 @@ Entry format:
   - FOMC dates in macro_calendar.json need one-time verification (IMPROVEMENTS #2)
   - data/universe.json: verify Nordic crypto certificate tickers before adding them
   - data/valuations.csv is empty — log first valuation row at next sweep
-</content>
-</invoke>

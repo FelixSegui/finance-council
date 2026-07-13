@@ -35,6 +35,7 @@ FRED_SERIES = {
     "us_2y_yield": "DGS2",
     "dollar_index": "DTWEXBGS",
     "sek_per_usd": "DEXSDUS",
+    "usd_per_eur": "DEXUSEU",  # used to derive sek_per_eur (no direct FRED SEK/EUR series)
     "vix": "VIXCLS",
 }
 
@@ -264,6 +265,19 @@ def fetch_macro():
         out["10y_2y_spread"] = round(y10 - y2, 3)
     except (KeyError, TypeError, ValueError):
         out["10y_2y_spread"] = None
+    # No FRED series quotes SEK/EUR directly; derive it from sek_per_usd x
+    # usd_per_eur (both DEXSDUS and DEXUSEU are noon buying rates from the
+    # same source, same day) rather than leaving it unfetched.
+    try:
+        sek_usd = float(out["sek_per_usd"]["value"])
+        usd_eur = float(out["usd_per_eur"]["value"])
+        out["sek_per_eur"] = {
+            "date": out["sek_per_usd"]["date"],
+            "value": round(sek_usd * usd_eur, 4),
+            "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)",
+        }
+    except (KeyError, TypeError, ValueError):
+        out["sek_per_eur"] = {"error": "could not derive: sek_per_usd or usd_per_eur missing/invalid"}
     return out
 
 

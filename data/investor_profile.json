@@ -1,14 +1,15 @@
 {
   "note": "The client profile — what a human advisor would establish before any recommendation. USER-MAINTAINED. Update when life circumstances change, not when markets move.",
-  "last_updated": "2026-07-04",
+  "last_updated": "2026-07-12",
   "risk": {
     "max_drawdown_tolerance_pct": -30,
-    "risk_capacity_notes": "Stated tolerance -30% (~57k SEK at current size). TENSION: primary goal is a house deposit in 3-7y — a hard-deadline goal means usable risk SHRINKS as the date approaches, regardless of stated tolerance. A -30% drawdown in year 6 is not recoverable before the deposit is needed. The portfolio agent must treat this as a glidepath problem: current tolerance applies now, not in year 5+."
+    "risk_capacity_notes": "Stated tolerance -30% (~57k SEK at current size). REVISED 2026-07-07: the goal is softer than previously recorded (see horizon) — not a hard deadline. That eases the original glidepath tension (a -30% drawdown in year 6 is less catastrophic if the purchase can slip), but vagueness cuts both ways: an uncommitted goal can also crystallize EARLIER or the money be wanted for something else. Treat the glidepath re-anchor trigger (goal becomes concrete) as the operative control, not the calendar."
   },
   "horizon": {
-    "primary_goal": "House deposit",
-    "years_until_needed": "3-7",
-    "planned_monthly_contribution_sek": "1000-3000"
+    "primary_goal": "Property purchase, nature UNCERTAIN (user statement 2026-07-07): 'not completely sure what I am saving for' — most likely an apartment or similar. One live idea: a Mediterranean vacation apartment, rented out when not used, while renting in Sweden (rental income offsetting Swedish rent). Explicitly vague, not set in stone, a potential long-term goal.",
+    "years_until_needed": "3-7 (SOFT — goal not committed; treat as flexible, not a hard deadline)",
+    "planned_monthly_contribution_sek": "1000-3000",
+    "currency_note": "If the Mediterranean option materializes, the future liability is EUR, not SEK — this reverses the standing rationale for tilting the equity sleeve toward SEK/Nordic. Flag for the Council whenever the goal firms up."
   },
   "buffer": {
     "emergency_fund_months": "3-6",
@@ -18,14 +19,40 @@
     "exclusions": [],
     "notes": "None stated yet"
   },
+  "cash_flow": {
+    "recurring_foreign_currency_inflow": "~750-1000 EUR roughly every 2 months, irregular occasions, landing in PayPal (disclosed 2026-07-12). Not salary - described as money that 'comes in at different occasions'.",
+    "fx_note": "PRIORITY: repeated small FX conversions through PayPal's native conversion are a structural fee-drag risk (PayPal's spread is typically well above mid-market - CONFIRM actual rate, do not assume) that compounds every ~2 months indefinitely. This is a lever #2-class problem (fee drag) even though the sums are small, because it recurs forever. See portfolio.json open_structural_questions 6 for the routing options to evaluate. Do not let 'the amounts are small' excuse ignoring this - it's the recurring nature, not the size of one instance, that makes it structural."
+  },
   "reference_targets": {
-    "note": "Deliberately still null: deriving target weights from this profile is the FIRST job of the next Council sweep, done against fetched data — not invented here. The glidepath (equity taper toward the deposit date) must be part of that proposal.",
-    "equity_pct": null,
-    "crypto_pct": null,
-    "fixed_income_pct": null,
-    "cash_pct": null,
+    "note": "v1-amended, ADOPTED by Council ruling 2026-07-07 (same-day amendment to reports/2026-07-07-council-memo.md) - transcribed here 2026-07-12 after discovering it was decided but never written back to this file, a process gap in its own right. Anchor: today treated as T-5 (midpoint of the 3-7y SOFT range in `horizon`); re-anchor trigger is the goal firming up, not the calendar. Equity reverted to 50% (from an initially proposed 45%) because the goal lost its hard deadline: with `horizon.years_until_needed` now soft, the recoverability constraint that justified 45% no longer binds, and 50% sits at the stated -30% drawdown tolerance with zero slack - not beyond it. The 20% SEK/Nordic currency tilt originally proposed alongside 45% was DROPPED (liability currency now unknown - could be SEK or EUR per `horizon.currency_note` - so currency matching is void in both directions; plain global unhedged equity is the neutral stance).",
+    "glidepath_table": {
+      "now_T5plus": { "equity_pct": 50, "fixed_income_pct": 40, "cash_pct": 5, "crypto_pct": 5 },
+      "T3y": { "equity_pct": 40, "fixed_income_pct": 45, "cash_pct": 10, "crypto_pct": 5 },
+      "T2y": { "equity_pct": 30, "fixed_income_pct": 50, "cash_pct": 17, "crypto_pct": 3 },
+      "T1y": { "equity_pct": 15, "fixed_income_pct": 45, "cash_pct": 40, "crypto_pct": 0 },
+      "deposit_year": { "equity_pct": 10, "fixed_income_pct": "remainder", "cash_pct": 50, "crypto_pct": 0, "note": "equity is a ceiling (<=10%), cash is a floor (>=50%)" }
+    },
+    "equity_pct": 50,
+    "crypto_pct": 5,
+    "fixed_income_pct": 40,
+    "cash_pct": 5,
+    "PENDING_RECONCILIATION": "2026-07-12: user has separately proposed a RISK-TIER framework (70% secure/non-volatile, 20% medium risk, 10% high risk actively traded weekly/daily) - see risk_tier_framework_proposed below. This is a materially different decomposition (risk-tier, not exposure-class) and the two have NOT been reconciled. Do not silently merge them - next Council sweep must adjudicate.",
     "max_single_position_pct": 15,
     "max_single_institution_pct": 80,
     "max_annual_fee_drag_pct": 0.4
+  },
+  "risk_tier_framework_proposed": {
+    "status": "PROPOSED by user 2026-07-12, NOT YET ADOPTED - needs Council reconciliation against reference_targets above before either is treated as authoritative.",
+    "structure": {
+      "secure_non_volatile_pct": 70,
+      "medium_risk_pct": 20,
+      "high_risk_pct": 10
+    },
+    "user_description": "User wants investments explicitly split into risk-categorized tiers: ~70% secure and non-volatile, ~20% medium risk, ~10% high risk. The high-risk tier is intended to be actively worked - user wants to try to grow it on a weekly or even daily basis.",
+    "system_flags_for_council": [
+      "The 10% high-risk/active-trading tier lines up almost exactly with CLAUDE.md's existing short-horizon rule (Short <6mo: tactical overlay ONLY, capped at 10% of portfolio, never High confidence, always flagged tactical) - this is a point IN FAVOR of the proposal fitting the system's existing guardrails, not a new risk. Council should say so explicitly rather than treating it as a fresh debate.",
+      "The 70% 'secure' figure is MORE conservative than the currently adopted glidepath's 45% fixed_income+cash (40+5) at the 'now' column - a straight read implies either the risk-tier framework should replace the exposure-class glidepath's starting point, or 'secure' is being defined more broadly than fixed_income+cash (e.g. including part of the equity sleeve if it's low-volatility/index vs the high-risk tier being carved OUT of the existing crypto+tactical allocation rather than added on top). Definitional mapping is unresolved - Council must define which existing holdings/exposure-classes map to which risk tier before producing SEK numbers.",
+      "Does not override reference_targets.glidepath_table by default - both are recorded as of 2026-07-12; whichever framework wins (or how they're merged) is a Council decision, not assumed here."
+    ]
   }
 }

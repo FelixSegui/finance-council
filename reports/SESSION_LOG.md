@@ -17,6 +17,42 @@ Entry format:
 
 ---
 
+## 2026-07-20 (automated weekly sweep) — HB/SEB transfer still unexecuted 8 days after settlement, COIN-XBT.ST thesis deadline missed (standing trim default triggered), equities data blackout confirmed as org egress policy block, risk-tier vs. glidepath gap quantified for the first time
+- **Snapshot:** data/snapshots/20260720T060716.json — equities fetch (SHB-A.ST, INVE-A.ST, COIN-XBT.ST) failed with a 403 at the proxy level (fc.yahoo.com blocked by org egress policy, confirmed non-transient via the agent-proxy status endpoint's `recentRelayFailures`); crypto (ETH via CoinGecko) and macro (FRED/Riksbank/ECB) fetched fresh.
+- **Calendar:** data/calendar/20260720-events.json — equity earnings fetch failed for the same reason (all three tickers); macro events found: FOMC 2026-07-28/29 (8-9 days out), Riksbank 2026-08-20. No collisions with this sweep's planned actions, but earnings collisions for the three equity/certificate tickers are unverifiable until the block is fixed.
+- **Memo:** reports/2026-07-20-council-memo.md
+- **Headline calls:**
+  - Execute the already-approved HB+SEB → Avanza ISK cash transfer (154,559.26 SEK combined) — no new decision needed, 8 days overdue → confidence High → horizon Long
+  - Trim COIN-XBT.ST (15,540 SEK, price 7 days stale) toward the 5% crypto target — standing Council default triggered (open question 7 deadline missed, no thesis filed); all three lenses touching crypto point the same direction → confidence Medium → horizon Long
+  - Force a decision on the risk-tier framework (70/20/10) vs. the adopted glidepath (50/40/5/5) — third consecutive sweep flagged; this sweep quantified the gap for the first time (45% vs. 70% "secure," ≈45,381 SEK of the portfolio affected) → confidence Low (that either framework is being followed correctly while open) → horizon Long
+  - Equities data blackout (yfinance/Yahoo blocked by org egress policy, confirmed non-transient) is a system defect, not a one-off — flagged for the meta agent's backlog → confidence High → horizon N/A (process)
+  - No action on Swedbank fund (10,000 SEK, AF) — still blocked on cost basis, worst-case tax bound 3,000 SEK → confidence Medium → horizon Long
+- **User decisions:** none yet — awaiting user review of this memo (automated unattended sweep).
+- **Reconciliation (against the 2026-07-13 local-session entry immediately below):**
+  - **Crypto-overshoot / open question 7 (flagged 07-13 as new, unreconciled):** progressed, not closed. No thesis was filed for COIN-XBT.ST by this sweep's deadline, so the standing Council default (trim the certificate, never ETH) is now formally triggered — a concrete, ready-to-execute action rather than an open question. Still pending user execution.
+  - **HB+SEB → Avanza ISK transfer (intended 07-13, not yet executed as of that entry):** UNCHANGED IN SUBSTANCE, WORSE IN AGING. Still not executed — now 8 days past both settlements (07-12/07-13). This is the third session this has been logged as pending with no user action; portfolio lens this sweep called it "the single dominant fact about the portfolio's structure." Flagging explicitly as a recurring non-execution pattern, not a new finding.
+  - **Avanza Auto 3 / Tundra / BTC certificate fee % (open question 8):** unchanged, still unconfirmed. Fee-drag scorecard row remains UNKNOWN on 14.8% of the portfolio.
+  - **No thesis on the 5 newly itemized Avanza holdings (open question 9):** unchanged in substance, but COIN-XBT.ST — the one with a deadline — has now formally missed it (see above). The other four (SHB-A.ST, INVE-A.ST, Avanza Auto 3, Tundra) remain thesis-less with no deadline attached.
+  - **70% risk-tier question (unanswered since 07-12):** substance unchanged (still unanswered) but this sweep is the first to attempt an actual numeric reconciliation rather than re-flagging it verbatim. Found a genuine, quantified gap: the glidepath's cash+FI ("secure") share at the `now_T5plus` column is 45%, 25 percentage points below the user's stated 70% target, and the gap doesn't resolve even under a generous re-mapping (the portfolio holds zero index-fund equity exposure to credit as "secure"). Escalated as a headline call this sweep rather than left as a standing footnote.
+  - **Full account inventory (open question 5):** unchanged, not addressed this sweep.
+  - **Swedbank and ETH cost basis (open questions 2, 3):** unchanged, both still unknown.
+  - **Process fix from 07-13 (push local work to origin promptly to avoid divergence):** held. `git status` at the start of this sweep showed local and `origin/main` already in sync — no repeat of the prior divergence incident.
+  - **valuations.csv reminder from 07-13:** addressed prior to this sweep (both 07-13 rows are present in the file). This session appends a new 2026-07-20 row.
+  - **NEW this sweep, not previously flagged:** the equities fetch failure is now confirmed as a **policy-level block** (org egress denies `fc.yahoo.com`), not a transient network error — verified via the agent-proxy's own failure log. This is a standing infrastructure gap that will recur every sweep until fixed, materially different from a one-off fetch miss. Flagged for the `meta` agent's improvement backlog.
+- **Open items carried forward:**
+  - HB+SEB → Avanza ISK transfer still not executed — now the single highest-priority open item, 8 days overdue on an already-approved plan.
+  - COIN-XBT.ST trim (15,540 SEK, 6 units, price stale) recommended but not yet executed — re-verify live price before executing once equities fetch is restored.
+  - Risk-tier framework (70/20/10) vs. adopted glidepath (50/40/5/5) reconciliation — quantified gap now on record, needs a direct user decision, not another sweep of re-flagging.
+  - Equities/earnings fetch blocked by org egress policy (fc.yahoo.com 403) — needs an infrastructure fix (alternate data source, or policy exception) before valuation/thesis-review/calendar can assess SHB-A.ST, INVE-A.ST, COIN-XBT.ST again. Flag for `meta`.
+  - Avanza Auto 3 / Tundra / BTC certificate fee percentages still unknown (open question 8).
+  - Full account inventory still not done (open question 5).
+  - Swedbank fund and ETH cost basis still unknown (open questions 2, 3).
+  - PayPal FX routing still unresolved — actual PayPal fee schedule still not confirmed (open question 6).
+  - SEB avräkningsnota / realized gain still unknown, final tax earmark beyond the illustrative ~1,200 SEK not firm (open question 4).
+  - REMINDER: data/valuations.csv row for today's ≈226,905 SEK valuation has been appended this session — confirm it lands (see below).
+
+---
+
 ## 2026-07-13 (local session, reconciled with automated routine) — Git divergence resolved, SEB fully settled, Avanza ISK fully itemized, new crypto-overshoot found (~12.36% vs 5% target) ahead of ~154k ISK deployment
 - **Snapshot:** no new fetch this session; pulled data/snapshots/20260713T060815.json from origin/main (the automated routine's snapshot — see entry immediately below) via `git checkout origin/main -- data/snapshots/...` during git-divergence reconciliation.
 - **Calendar:** data/calendar/20260713-events.json — pulled from origin/main alongside the snapshot, same reconciliation.

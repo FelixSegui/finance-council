@@ -12,7 +12,7 @@
       "wrapper": "SPARKONTO",
       "institution": "Handelsbanken",
       "approx_value_sek": 9000,
-      "notes": "REPURPOSED 2026-07-20 (user-reported, same-session): fund sale proceeds transferred out to Avanza ISK, this account now holds only the deliberate 9,000 SEK tax-reserve set-aside for the 2027 deklaration (capital-gains tax on the 2026-07-12 Auto 50/Auto 75 sale, confirmed 8,455.86 SEK - user rounded up, leaving a ~544.14 SEK buffer against the HB tax alone). CORRECTED same session: user initially stated this reserve also covers SEB's tax, then reconsidered and does NOT believe 9,000 SEK covers both. Confirmed: there is no real SEB tax figure anywhere in this system - the only number ever recorded is an unconfirmed ~1,200 SEK PLACEHOLDER from 2026-07-07 (reports/2026-07-07-council-memo.md), explicitly labeled provisional/illustrative every time it appears, pending an avrakningsnota that was never supplied (open question 4, unresolved since 2026-07-07). If that placeholder is roughly right, combined tax need is ~9,656 SEK against the 9,000 SEK reserve (~656 SEK short), but the placeholder itself is not derived from real cost-basis data and could be wrong in either direction. Get the actual SEB avrakningsnota before the 2027 deklaration - this is the only way to know the real number. Prior history: both Auto Criteria funds sold 2026-07-12, Auto 50 settled 97,659.99 SEK (cost 78,441.28, gain 19,218.71, tax 5,765.61), Auto 75 settled 35,997.42 SEK (cost 27,029.93, gain 8,967.49, tax 2,690.25), total fund-sale proceeds 133,657.41 SEK + 2,954.42 SEK pre-existing cash = 136,611.83 SEK total account balance pre-transfer. See exit_plans.hb-af-exit for the full history."
+      "notes": "REPURPOSED 2026-07-20 (user-reported, same-session): fund sale proceeds transferred out to Avanza ISK, this account now holds only the deliberate 9,000 SEK tax-reserve set-aside for the 2027 deklaration (capital-gains tax on the 2026-07-12 Auto 50/Auto 75 sale, confirmed 8,455.86 SEK). CONFIRMED SHORTFALL 2026-07-20: SEB's real tax (see seb-fund.confirmed_tax_owed_sek) is 3,037.42 SEK, not the earlier ~1,200 SEK placeholder. Combined confirmed tax owed: 8,455.86 (HB) + 3,037.42 (SEB) = 11,493.28 SEK, against only 9,000 SEK reserved here - a confirmed 2,493.28 SEK shortfall. Recommend topping up this sparkonto by ~2,493.28 SEK (round to ~2,500 SEK) before the 2027 deklaration; not yet done as of this update. Prior history: both Auto Criteria funds sold 2026-07-12, Auto 50 settled 97,659.99 SEK (cost 78,441.28, gain 19,218.71, tax 5,765.61), Auto 75 settled 35,997.42 SEK (cost 27,029.93, gain 8,967.49, tax 2,690.25), total fund-sale proceeds 133,657.41 SEK + 2,954.42 SEK pre-existing cash = 136,611.83 SEK total account balance pre-transfer. See exit_plans.hb-af-exit for the full history."
     },
     {
       "account_id": "avanza-isk",
@@ -33,7 +33,19 @@
       "wrapper": "AF",
       "institution": "SEB",
       "approx_value_sek": 0,
-      "notes": "FULLY TRANSFERRED to Avanza ISK 2026-07-20 (user-reported, same-session) - full 17,382.43 SEK sent, no separate tax reserve carved out here. User initially believed the 9,000 SEK reserve at hb-main covered SEB's tax too, then reconsidered same session - it likely does NOT (see hb-main notes). No real SEB tax figure exists; only an unconfirmed ~1,200 SEK placeholder from 2026-07-07, not derived from real cost-basis data. Cost basis / realized gain STILL UNKNOWN - open question 4 (get anskaffningsvarde and the real gain from the avrakningsnota) remains open and is the only way to know the actual tax owed. History: fully sold and settled 2026-07-13, final figure 17,382.43 SEK, all legs landed."
+      "confirmed_realized_gain_sek_2026": 10124.74,
+      "confirmed_tax_owed_sek": 3037.42,
+      "tax_confirmed_date": "2026-07-20",
+      "tax_breakdown_by_fund": [
+        { "fund": "SEB Europafond", "date": "2026-07-08", "kapitalvinst_sek": 696.32 },
+        { "fund": "SEB Nordenfond A (remaining)", "date": "2026-07-08", "kapitalvinst_sek": 4182.43 },
+        { "fund": "SEB Obligationsfond Flexibel A", "date": "2026-07-08", "kapitalvinst_sek": 178.94 },
+        { "fund": "SEB Sverigefond", "date": "2026-07-08", "kapitalvinst_sek": 2324.80 },
+        { "fund": "SEB Global Focus C USD (remaining)", "date": "2026-07-09", "kapitalvinst_sek": 1715.49 },
+        { "fund": "SEB Emerging Markets C USD Lux", "date": "2026-07-10", "kapitalvinst_sek": 502.73 },
+        { "fund": "SEB Emerging Marketsfond", "date": "2026-07-10", "kapitalvinst_sek": 524.03 }
+      ],
+      "notes": "FULLY TRANSFERRED to Avanza ISK 2026-07-20 (user-reported, same-session) - full 17,382.43 SEK sent, no separate tax reserve carved out here. Tax liability CONFIRMED 2026-07-20 from user-supplied 2026 tax-year figures (per-fund kapitalvinst, see tax_breakdown_by_fund): total realized gain 10,124.74 SEK across 7 fund lots sold 2026-07-08 to 2026-07-10, tax at 30% = 3,037.42 SEK. This SUPERSEDES and is materially higher than the earlier ~1,200 SEK placeholder (2026-07-07) - open question 4 is now RESOLVED with real numbers, see resolved_structural_questions. Combined with HB's confirmed 8,455.86 SEK tax, total owed is 11,493.28 SEK against the 9,000 SEK reserve at hb-main - a 2,493.28 SEK SHORTFALL, confirmed (not estimated). History: fully sold and settled 2026-07-13, final figure 17,382.43 SEK, all legs landed."
     },
     {
       "account_id": "eth-wallet",
@@ -281,12 +293,12 @@
     "1. Actual equity/bond split inside Auto 50 / Auto 75 (name-implied ~50/50 and ~75/25; confirm from factsheets - matters for exposure math until the exit executes).",
     "2. ETH cost basis and acquisition dates (needed for any future K4 math).",
     "3. Swedbank fund: current gain vs cost basis (feeds move-to-ISK calculation).",
-    "4. SEB fund: realized gain from the avrakningsnota still unknown - RE-ESCALATED 2026-07-20. User initially believed the 9,000 SEK hb-main reserve covered SEB's tax too, then reconsidered - it likely does not. No real SEB tax figure has ever been computed; the only number on record is an unconfirmed ~1,200 SEK placeholder from 2026-07-07 (not derived from real cost-basis data). Get the actual avrakningsnota before the 2027 deklaration - needed to know the real number and whether the 9,000 SEK reserve is sufficient (currently only sized against the confirmed 8,455.86 SEK HB tax).",
     "5. Any OTHER undisclosed accounts? SEB and PayPal both surfaced only in passing - a one-time full inventory (every bank/broker login) would close this class of surprise, and is now overdue (2 surprise accounts in one week).",
     "6. PayPal FX routing: what is PayPal's actual conversion fee/spread (do not assume ~3-4%, confirm from PayPal's fee schedule), and what is the cheapest path to get the 1,177.49 USD + 266.88 EUR (plus each ~750-1000 EUR recurring inflow) into SEK or into a wrapper without repeatedly paying it. Council ruling 2026-07-12: convert promptly via lowest-spread path, don't hold either currency waiting on FX levels - see reports/2026-07-07-council-memo.md Amendment 2026-07-12.",
     "7. BTC certificate (COIN-XBT.ST, 15,540 SEK) thesis - Council ruling 2026-07-13: no trim today (today's deployment is equity/FI only), but if no written thesis exists for this holding by NEXT sweep, the default becomes trimming it to bring crypto back near the 5% target (tax-free, ISK-internal - trim the certificate first, never ETH, which carries real K4 tax exposure on an unknown cost basis). Same deadline pattern as the ETH thesis question below.",
     "8. Avanza Auto 3, Tundra Sustainable Frontier, and the CoinShares XBT Bitcoin Tracker certificate all have unconfirmed annual fee percentages - get factsheet figures, they feed the fee-drag scorecard row.",
-    "9. No thesis recorded for any of the 5 newly itemized Avanza ISK holdings (Handelsbanken A, Investor A, Avanza Auto 3, Tundra Sustainable Frontier, BTC certificate) - same class of gap as ETH, ranked lower priority since positions are small except the BTC certificate."
+    "9. No thesis recorded for any of the 5 newly itemized Avanza ISK holdings (Handelsbanken A, Investor A, Avanza Auto 3, Tundra Sustainable Frontier, BTC certificate) - same class of gap as ETH, ranked lower priority since positions are small except the BTC certificate.",
+    "10. hb-main tax-reserve sparkonto (9,000 SEK) is confirmed 2,493.28 SEK short of the combined HB+SEB tax owed (11,493.28 SEK total, see resolved question 4's replacement entry below) - needs a top-up before the 2027 deklaration, not yet done as of 2026-07-20."
   ],
   "resolved_structural_questions": [
     "RESOLVED 2026-07-07: Handelsbanken wrapper is FONDKONTO (AF), confirmed by user. Was question 1 / the blocking question since 2026-07-03. Consequence: exit plan hb-af-exit.",
@@ -294,6 +306,7 @@
     "RESOLVED 2026-07-12: HB fund sale EXECUTED - actual proceeds 133,657.41 SEK (gain 28,186.20, tax 8,455.86), plus 2,954.42 SEK pre-existing cash, total 136,611.83 SEK now sitting as cash in hb-main awaiting ISK transfer. See exit_plans.hb-af-exit.actual_execution.",
     "RESOLVED 2026-07-12: SEB transaction column semantics clarified (Datum, Kontotext, Insattning, Uttag, Saldo) - confirmed sold proceeds 13,558.12 SEK, self-consistent against the running Saldo balance.",
     "RESOLVED 2026-07-13: SEB fully sold and settled, final figure 17,382.43 SEK (user-confirmed) - close to the original ~18,000 SEK estimate, not the ~46k SEK a column misread had implied.",
-    "RESOLVED 2026-07-13: Avanza ISK holdings fully itemized from a live user snapshot - 2 stocks, 2 funds, 1 crypto certificate, plus 565 SEK cash, exact total 36,120 SEK. Prior 15%-single-position-cap concern (18.7% if it were one holding) is moot - no individual holding breaches the cap."
+    "RESOLVED 2026-07-13: Avanza ISK holdings fully itemized from a live user snapshot - 2 stocks, 2 funds, 1 crypto certificate, plus 565 SEK cash, exact total 36,120 SEK. Prior 15%-single-position-cap concern (18.7% if it were one holding) is moot - no individual holding breaches the cap.",
+    "RESOLVED 2026-07-20: SEB fund realized gain and tax CONFIRMED from user-supplied 2026 tax-year figures (7 fund lots sold 2026-07-08 to 2026-07-10) - total kapitalvinst 10,124.74 SEK, tax at 30% = 3,037.42 SEK. Materially higher than the earlier ~1,200 SEK placeholder. See seb-fund.confirmed_tax_owed_sek and tax_breakdown_by_fund for the full detail. Consequence: the 9,000 SEK hb-main tax reserve is confirmed short by 2,493.28 SEK against the combined 11,493.28 SEK HB+SEB tax owed - see open question 10."
   ]
 }

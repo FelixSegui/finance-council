@@ -31,6 +31,16 @@ has TBDs, say so and name the unanswered questions.
 **Headline calls** — 3-5 bullets max, the things that actually need a
 decision this session. Not a recap of every agent's output.
 
+**Open actions vs. open decisions — always separate the two explicitly:**
+- **Open actions** are things the user can just go do (execute a pending
+  transfer, top up a reserve, get a document from a bank). List them
+  concretely: what, how much, by when if there's a deadline.
+- **Open decisions** are forks where the data doesn't pick a single
+  answer for the user. For every open decision, give **1-3 concrete
+  suggested options**, each with its trade-off in one line — never leave
+  a decision as a bare open question with no path forward. "It depends
+  on your preference" is not a suggestion; name the actual options.
+
 **Where the agents disagreed** — explicit. "Valuation calls X cheap on
 fundamentals; macro-regime flags X as exactly the profile that gets
 re-rated down in a risk-off regime. Confidence: low, wait for regime

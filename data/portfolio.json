@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-07-20",
+  "last_updated": "2026-07-22",
   "base_currency": "SEK",
-  "total_estimate_sek": "~226,905 (hb-main now 9,000 SEK tax-reserve sparkonto only, remainder transferred; seb-fund now 0, fully transferred; avanza-isk 181,114.26 SEK post-transfer, most of it uninvested cash pending fund selection; paypal 14,321.03 SEK converted at stale 2026-07-02 FX rates; swedbank-fund 10,000 still approximate/unitemized; eth-wallet 12,500 approximate). HB+SEB->ISK TRANSFER EXECUTED 2026-07-20 (user-reported, same-session, see hb-af-exit and account notes below). CRYPTO FLAG unchanged: identified crypto exposure ETH 12,500 + Avanza ISK BTC certificate 15,540 = 28,040 SEK = ~12.36% of total, still above the adopted 5% glidepath target - see open_structural_questions #7, Council's 2026-07-20 memo triggered the standing trim default on COIN-XBT.ST, not yet executed.",
+  "total_estimate_sek": "~227,703 (hb-main sparkonto 9,017 SEK - found money, +17 vs prior 9,000, PLUS 1,750 SEK confirmed incoming within days, NOT yet included in this total; hb-checking 611 SEK, newly disclosed 2026-07-22; avanza-isk CONFIRMED 181,254 SEK live total, 144,864 SEK of it available for purchase - supersedes the 181,114.26 SEK computed estimate; paypal 14,321.03 SEK converted at stale 2026-07-02 FX rates; swedbank-fund 10,000 still approximate/unitemized; eth-wallet 12,500 approximate). CRYPTO FLAG unchanged: identified crypto exposure ETH 12,500 + Avanza ISK BTC certificate ~15,540-ish (stale price, equities fetch still blocked) = ~28,040 SEK, still above the adopted 5% glidepath target - open_structural_questions #7's standing trim default on COIN-XBT.ST is still triggered, not yet executed.",
   "cash": {
     "amount": 0,
     "currency": "SEK"
@@ -11,15 +11,24 @@
       "account_id": "hb-main",
       "wrapper": "SPARKONTO",
       "institution": "Handelsbanken",
-      "approx_value_sek": 9000,
-      "notes": "REPURPOSED 2026-07-20 (user-reported, same-session): fund sale proceeds transferred out to Avanza ISK, this account now holds only the deliberate 9,000 SEK tax-reserve set-aside for the 2027 deklaration (capital-gains tax on the 2026-07-12 Auto 50/Auto 75 sale, confirmed 8,455.86 SEK). CONFIRMED SHORTFALL 2026-07-20: SEB's real tax (see seb-fund.confirmed_tax_owed_sek) is 3,037.42 SEK, not the earlier ~1,200 SEK placeholder. Combined confirmed tax owed: 8,455.86 (HB) + 3,037.42 (SEB) = 11,493.28 SEK, against only 9,000 SEK reserved here - a confirmed 2,493.28 SEK shortfall. Recommend topping up this sparkonto by ~2,493.28 SEK (round to ~2,500 SEK) before the 2027 deklaration; not yet done as of this update. Prior history: both Auto Criteria funds sold 2026-07-12, Auto 50 settled 97,659.99 SEK (cost 78,441.28, gain 19,218.71, tax 5,765.61), Auto 75 settled 35,997.42 SEK (cost 27,029.93, gain 8,967.49, tax 2,690.25), total fund-sale proceeds 133,657.41 SEK + 2,954.42 SEK pre-existing cash = 136,611.83 SEK total account balance pre-transfer. See exit_plans.hb-af-exit for the full history."
+      "approx_value_sek": 9017,
+      "pending_inflow_sek": 1750,
+      "pending_inflow_expected": "within a few days of 2026-07-22 (user-reported)",
+      "notes": "UPDATED 2026-07-22 (user-reported): balance is now 9,017 SEK (+17 SEK found in an old account, discovered by user). A further 1,750 SEK is confirmed incoming within days - NOT yet landed, not included in approx_value_sek above (see pending_inflow_sek). CONFIRMED SHORTFALL vs. combined HB+SEB tax owed (11,493.28 SEK, see seb-fund.confirmed_tax_owed_sek): at the current 9,017 SEK balance, shortfall is 2,476.28 SEK; once the 1,750 SEK inflow lands (10,767 SEK total), remaining shortfall narrows to 726.28 SEK. Recommend topping up by the remaining shortfall before the 2027 deklaration; not yet done as of this update. Prior history: this account held the Auto 50/Auto 75 Handelsbanken funds, sold 2026-07-12 (Auto 50 gain 19,218.71 SEK tax 5,765.61 SEK; Auto 75 gain 8,967.49 SEK tax 2,690.25 SEK; total confirmed tax 8,455.86 SEK), repurposed 2026-07-20 as a pure tax-reserve sparkonto after 127,611.83 SEK was transferred to Avanza ISK. See exit_plans.hb-af-exit for the full history."
+    },
+    {
+      "account_id": "hb-checking",
+      "wrapper": "NONE",
+      "institution": "Handelsbanken",
+      "approx_value_sek": 611,
+      "notes": "NEWLY DISCLOSED 2026-07-22 (user-reported): 'normal' Handelsbanken transaction/checking account, distinct from the hb-main sparkonto (tax reserve) and the now-closed AF fund holdings. Ordinary spending/transaction cash, not an investment - not part of any glidepath or risk-tier target. Adds to the open_structural_questions #5 pattern (undisclosed accounts surfacing over time) though this one is small and low-impact."
     },
     {
       "account_id": "avanza-isk",
       "wrapper": "ISK",
       "institution": "Avanza",
-      "approx_value_sek": 181114.26,
-      "notes": "Confirmed ISK. TRANSFER EXECUTED 2026-07-20 (user-reported, same-session): received 127,611.83 SEK from hb-main (136,611.83 total minus the 9,000 SEK tax reserve left at HB) and 17,382.43 SEK from seb-fund (full amount - user states the SEB tax liability is covered by the HB-side reserve, see hb-main notes for a flagged buffer-sufficiency concern). New total: 181,114.26 SEK (35,555 SEK securities, unchanged this update, + 145,559.26 SEK cash, up from 565 SEK). The incoming 144,994.26 SEK is UNDEPLOYED CASH pending fund/instrument selection - not yet invested in specific holdings, do not treat as already allocated to equity/FI. Pre-transfer state (2026-07-13 itemization): total value 36,120 SEK (35,555 SEK securities + 565 SEK available cash), YTD -10.32%, 1y -23.62%, 3y +48.27%, since-inception -33.88%. Account-level risk stats (securities only, pre-transfer): Sharpe -1.19, standard deviation 22.55%, CAGR -4.52%. Tax-free allowance headroom = allowance threshold minus ALL ISK/KF savings capital across institutions - verify current threshold with Skatteverket (181,114.26 SEK is comfortably under the previously-cited ~300k SEK threshold, but that threshold itself is unverified this session)."
+      "approx_value_sek": 181254,
+      "notes": "Confirmed ISK. CONFIRMED LIVE FIGURES 2026-07-22 (user-reported, from Avanza directly): total account value 181,254 SEK, of which 144,864 SEK is available for purchase (uninvested cash). This SUPERSEDES the 2026-07-20 computed estimate (181,114.26 SEK total / 145,559.26 SEK cash) - the ~140 SEK total variance and ~695 SEK cash-vs-computed variance likely reflect price movement on the 5 non-cash holdings (SHB-A.ST, INVE-A.ST, Avanza Auto 3, Tundra, COIN-XBT.ST) since their last fetched prices (2026-07-13) - equities fetch has been blocked by an org egress policy every sweep since 2026-07-20, so no fresh per-ticker breakdown is available; implied aggregate non-cash value is 181,254 - 144,864 = 36,390 SEK (up 835 SEK from the stale 35,555 SEK itemized total, unattributed to specific tickers pending a working equities fetch). The 144,864 SEK cash is UNDEPLOYED - pending fund/instrument selection per the adopted risk-tier framework (see investor_profile.json), not yet invested. Historical context (2026-07-13 itemization, now stale): YTD -10.32%, 1y -23.62%, 3y +48.27%, since-inception -33.88%; Sharpe -1.19, standard deviation 22.55%, CAGR -4.52% (securities only, pre-transfer). Tax-free allowance headroom = allowance threshold minus ALL ISK/KF savings capital across institutions - verify current threshold with Skatteverket (181,254 SEK is comfortably under the previously-cited ~300k SEK threshold, itself unverified this session)."
     },
     {
       "account_id": "swedbank-fund",
@@ -65,16 +74,30 @@
   "holdings": [
     {
       "ticker": "CASH_SEK",
-      "name": "Tax-reserve sparkonto (2027 deklaration - HB capital-gains tax, and per user statement, SEB's tax liability too)",
+      "name": "Tax-reserve sparkonto (2027 deklaration - confirmed HB + SEB capital-gains tax)",
       "account_id": "hb-main",
       "instrument_type": "cash",
       "exposure_class": "cash",
       "currency": "SEK",
-      "quantity": 9000,
+      "quantity": 9017,
       "cost_basis_per_unit": null,
       "annual_fee_pct": null,
       "date_acquired": "2026-07-20",
-      "thesis": "Not an investment - deliberate tax reserve, not deployable. 127,611.83 SEK of the original 136,611.83 SEK HB balance was transferred to Avanza ISK 2026-07-20 (see avanza-isk notes); this 9,000 SEK remainder stays here for the 2027 deklaration. Confirmed HB tax owed is 8,455.86 SEK; user also intends this reserve to cover SEB's tax liability, which is not yet confirmed from an avrakningsnota (open question 4) - flagged possible ~656 SEK shortfall if SEB's tax lands near the prior ~1,200 SEK illustrative estimate.",
+      "thesis": "Not an investment - deliberate tax reserve, not deployable. Combined confirmed tax owed is 11,493.28 SEK (8,455.86 HB + 3,037.42 SEB, both confirmed, see seb-fund.confirmed_tax_owed_sek). Current balance 9,017 SEK (found money +17 SEK, 2026-07-22) leaves a 2,476.28 SEK shortfall; a further 1,750 SEK inflow expected within days would narrow it to 726.28 SEK. Top-up recommended before the 2027 deklaration.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "CASH_SEK",
+      "name": "Handelsbanken normal/checking account",
+      "account_id": "hb-checking",
+      "instrument_type": "cash",
+      "exposure_class": "cash",
+      "currency": "SEK",
+      "quantity": 611,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": "2026-07-22",
+      "thesis": "Not an investment - ordinary transaction/checking cash, newly disclosed 2026-07-22. Not part of any glidepath or risk-tier target.",
       "target_weight_pct": null
     },
     {
@@ -159,11 +182,11 @@
       "instrument_type": "cash",
       "exposure_class": "cash",
       "currency": "SEK",
-      "quantity": 145559.26,
+      "quantity": 144864,
       "cost_basis_per_unit": null,
       "annual_fee_pct": null,
-      "date_acquired": "2026-07-20",
-      "thesis": "Not an investment - uninvested cash. 565 SEK pre-existing (itemized 2026-07-13) + 144,994.26 SEK received 2026-07-20 from the executed hb-main (127,611.83) and seb-fund (17,382.43) transfers. Awaiting fund/instrument selection - not yet allocated to equity/FI per the risk-tier framework being adopted this session (see investor_profile.json). Do not treat this as already deployed.",
+      "date_acquired": "2026-07-22",
+      "thesis": "Not an investment - uninvested cash, CONFIRMED 2026-07-22 directly from Avanza (144,864 SEK available for purchase; supersedes the 145,559.26 SEK computed estimate from 2026-07-20). Awaiting fund/instrument selection per the adopted risk-tier framework (see investor_profile.json). Do not treat this as already deployed.",
       "target_weight_pct": null
     },
     {
@@ -245,7 +268,7 @@
   "exit_plans": {
     "hb-af-exit": {
       "created": "2026-07-07",
-      "status": "FULLY EXECUTED 2026-07-20: HB fund sale settled 2026-07-12 (actual figures below); HB->ISK cash transfer executed 2026-07-20 (127,611.83 SEK to avanza-isk, 9,000 SEK tax reserve retained at hb-main sparkonto, user-reported same-session). SEB leg (tracked in the seb-fund account) also fully settled 2026-07-13 and transferred to Avanza ISK 2026-07-20. The 144,994.26 SEK combined transfer sits as undeployed cash in avanza-isk pending fund/instrument selection under the risk-tier framework - see investor_profile.json.",
+      "status": "FULLY EXECUTED 2026-07-20, figures confirmed live 2026-07-22: HB fund sale settled 2026-07-12; HB->ISK cash transfer executed 2026-07-20 (127,611.83 SEK to avanza-isk, tax reserve retained at hb-main sparkonto, now 9,017 SEK after found money). SEB leg also fully settled 2026-07-13 and transferred to Avanza ISK 2026-07-20. Avanza confirmed live 2026-07-22: 181,254 SEK total, 144,864 SEK undeployed cash pending fund/instrument selection under the risk-tier framework - see investor_profile.json.",
       "actual_execution": {
         "date": "2026-07-12",
         "auto_50": { "sale_proceeds_sek": 97659.99, "cost_basis_sek": 78441.28, "gain_sek": 19218.71, "tax_at_30pct_sek": 5765.61 },
@@ -298,7 +321,9 @@
     "7. BTC certificate (COIN-XBT.ST, 15,540 SEK) thesis - Council ruling 2026-07-13: no trim today (today's deployment is equity/FI only), but if no written thesis exists for this holding by NEXT sweep, the default becomes trimming it to bring crypto back near the 5% target (tax-free, ISK-internal - trim the certificate first, never ETH, which carries real K4 tax exposure on an unknown cost basis). Same deadline pattern as the ETH thesis question below.",
     "8. Avanza Auto 3, Tundra Sustainable Frontier, and the CoinShares XBT Bitcoin Tracker certificate all have unconfirmed annual fee percentages - get factsheet figures, they feed the fee-drag scorecard row.",
     "9. No thesis recorded for any of the 5 newly itemized Avanza ISK holdings (Handelsbanken A, Investor A, Avanza Auto 3, Tundra Sustainable Frontier, BTC certificate) - same class of gap as ETH, ranked lower priority since positions are small except the BTC certificate.",
-    "10. hb-main tax-reserve sparkonto (9,000 SEK) is confirmed 2,493.28 SEK short of the combined HB+SEB tax owed (11,493.28 SEK total, see resolved question 4's replacement entry below) - needs a top-up before the 2027 deklaration, not yet done as of 2026-07-20."
+    "10. hb-main tax-reserve sparkonto (9,017 SEK as of 2026-07-22, +1,750 SEK expected within days) is confirmed short of the combined HB+SEB tax owed (11,493.28 SEK total, see resolved question 4's entry below) - currently short 2,476.28 SEK, narrowing to 726.28 SEK once the 1,750 SEK inflow lands. Needs a top-up before the 2027 deklaration, not yet done as of 2026-07-22.",
+    "11. hb-checking (611 SEK, newly disclosed 2026-07-22) and the broader account-inventory question (#5) - is this genuinely the last undisclosed account, or should a one-time full inventory still happen?",
+    "12. avanza-isk's 36,390 SEK aggregate non-cash value (implied 2026-07-22 from confirmed totals) has not been re-itemized per-ticker since equities fetch broke 2026-07-20 - re-itemize once a working data source is available."
   ],
   "resolved_structural_questions": [
     "RESOLVED 2026-07-07: Handelsbanken wrapper is FONDKONTO (AF), confirmed by user. Was question 1 / the blocking question since 2026-07-03. Consequence: exit plan hb-af-exit.",

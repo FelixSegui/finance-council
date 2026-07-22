@@ -1,0 +1,39 @@
+{
+  "fetched_at_utc": "2026-07-22T07:57:00.711831+00:00",
+  "lookahead_days": 45,
+  "earnings": {
+    "SHB-A.ST": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "INVE-A.ST": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "COIN-XBT.ST": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    }
+  },
+  "macro_events": {
+    "upcoming": [
+      {
+        "date": "2026-07-28",
+        "name": "FOMC meeting (day 1)",
+        "type": "fomc"
+      },
+      {
+        "date": "2026-07-29",
+        "name": "FOMC meeting (day 2, statement)",
+        "type": "fomc"
+      },
+      {
+        "date": "2026-08-20",
+        "name": "Riksbank rate decision + Monetary Policy Report",
+        "type": "riksbank"
+      }
+    ],
+    "calendar_last_verified": "2026-07-04",
+    "unverified_sources": [
+      "FOMC dates written from model knowledge \u2014 one-time verification pending (IMPROVEMENTS #2)",
+      "US/SE CPI release dates missing \u2014 fill month by month from BLS/SCB schedules"
+    ]
+  }
+}

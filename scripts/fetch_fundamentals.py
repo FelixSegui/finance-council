@@ -1,0 +1,214 @@
+#!/usr/bin/env python3
+"""
+Fundamentals + price/momentum for the coarse ranker, sourced to survive the
+Yahoo fundamentals blackout.
+
+Two independent sources, each chosen because it is reachable through the agent
+proxy where Yahoo's quoteSummary (fundamentals) endpoint is NOT:
+
+  - FUNDAMENTALS: SEC EDGAR XBRL companyfacts (US filers only). Authoritative,
+    free, no key. Gives revenue, net income, equity, liabilities, shares from
+    annual 10-K filings — enough for margin, revenue growth, debt/equity, ROE,
+    and (with a price) earnings yield / P/E. Non-US tickers (no CIK) return a
+    skip, not a guess.
+  - PRICE / MOMENTUM: Yahoo's v8 `chart` endpoint. This one IS reachable
+    (only the crumb-gated quoteSummary endpoint is blocked), and it covers
+    Nordic (.ST) listings too, so momentum works even where SEC fundamentals
+    don't.
+
+Every value traces to a fetched response. A field that cannot be computed is
+returned as None with the reason recorded — never imputed, never guessed.
+
+Not a CLI entry point for normal use — imported by rank_candidates.py. Run
+directly with tickers/ciks only for spot-checking:
+  python scripts/fetch_fundamentals.py AAPL:0000320193 MSFT:0000789019
+"""
+import json
+import sys
+import time
+import urllib.request
+import urllib.error
+from datetime import datetime
+
+SEC_UA = {"User-Agent": "finance-council personal research (seguifelix@gmail.com)"}
+
+# Revenue is reported under several XBRL concepts depending on the filer/era —
+# try them in order of preference.
+REVENUE_CONCEPTS = [
+    "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "Revenues",
+    "RevenueFromContractWithCustomerIncludingAssessedTax",
+    "SalesRevenueNet",
+]
+SHARE_CONCEPTS_DEI = ["EntityCommonStockSharesOutstanding"]
+SHARE_CONCEPTS_GAAP = ["CommonStockSharesOutstanding", "CommonStockSharesIssued"]
+
+
+def _get_json(url, timeout=30):
+    req = urllib.request.Request(url, headers=SEC_UA)
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return json.loads(resp.read().decode())
+
+
+def _annual_flow(facts_gaap, concepts):
+    """Latest and prior full-year value for a flow concept (revenue, income).
+    Full-year = a 10-K row spanning ~a year. Returns (latest, prior) vals."""
+    for concept in concepts:
+        node = facts_gaap.get(concept)
+        if not node:
+            continue
+        rows = []
+        for unit_rows in node.get("units", {}).values():
+            for r in unit_rows:
+                if r.get("form", "").startswith("10-K") and r.get("start") and r.get("end"):
+                    try:
+                        d0 = datetime.fromisoformat(r["start"])
+                        d1 = datetime.fromisoformat(r["end"])
+                    except ValueError:
+                        continue
+                    if (d1 - d0).days >= 300:  # ~annual, not a quarter
+                        rows.append((r["end"], r["val"]))
+        if not rows:
+            continue
+        # dedupe by period-end, keep the latest filing's value, sort by end date
+        by_end = {}
+        for end, val in rows:
+            by_end[end] = val
+        ordered = [by_end[e] for e in sorted(by_end)]
+        if ordered:
+            latest = ordered[-1]
+            prior = ordered[-2] if len(ordered) >= 2 else None
+            return latest, prior
+    return None, None
+
+
+def _annual_instant(facts_gaap, concepts):
+    """Latest full-year value for an instant concept (equity, liabilities)."""
+    for concept in concepts:
+        node = facts_gaap.get(concept)
+        if not node:
+            continue
+        rows = []
+        for unit_rows in node.get("units", {}).values():
+            for r in unit_rows:
+                if r.get("form", "").startswith("10-K") and r.get("end"):
+                    rows.append((r["end"], r["val"]))
+        if rows:
+            rows.sort(key=lambda x: x[0])
+            return rows[-1][1]
+    return None
+
+
+def _shares(facts):
+    for c in SHARE_CONCEPTS_DEI:
+        node = facts.get("dei", {}).get(c)
+        if node:
+            for unit_rows in node.get("units", {}).values():
+                rows = sorted((r["end"], r["val"]) for r in unit_rows if r.get("end"))
+                if rows:
+                    return rows[-1][1]
+    return _annual_instant(facts.get("us-gaap", {}), SHARE_CONCEPTS_GAAP)
+
+
+def fetch_sec_fundamentals(cik):
+    """Derived fundamentals for one CIK, or {'error': ...}. Price-independent."""
+    if not cik:
+        return {"error": "no CIK (non-US or unmapped ticker)"}
+    try:
+        facts = _get_json(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json")["facts"]
+    except urllib.error.HTTPError as e:
+        return {"error": f"SEC companyfacts HTTP {e.code}"}
+    except Exception as e:
+        return {"error": f"SEC companyfacts fetch failed: {e}"}
+
+    gaap = facts.get("us-gaap", {})
+    revenue, revenue_prior = _annual_flow(gaap, REVENUE_CONCEPTS)
+    net_income, _ = _annual_flow(gaap, ["NetIncomeLoss"])
+    equity = _annual_instant(gaap, ["StockholdersEquity"])
+    liabilities = _annual_instant(gaap, ["Liabilities"])
+    shares = _shares(facts)
+
+    def ratio(n, d):
+        if n is None or d in (None, 0):
+            return None
+        return n / d
+
+    return {
+        "revenue": revenue,
+        "revenue_prior": revenue_prior,
+        "net_income": net_income,
+        "equity": equity,
+        "liabilities": liabilities,
+        "shares": shares,
+        "profit_margin": ratio(net_income, revenue),
+        "revenue_growth": (ratio(revenue, revenue_prior) - 1) if revenue_prior else None,
+        "debt_to_equity": ratio(liabilities, equity),
+        "roe": ratio(net_income, equity),
+        "_source": "sec_edgar_companyfacts",
+    }
+
+
+def _yahoo_symbol(ticker):
+    # Yahoo uses '-' where the S&P list uses '.', e.g. BRK.B -> BRK-B
+    return ticker.replace(".", "-") if not ticker.endswith(".ST") else ticker
+
+
+def fetch_price_momentum(ticker):
+    """Last price, 52w range position, and momentum from Yahoo's chart endpoint
+    (the reachable one). Returns {'error': ...} on failure."""
+    sym = _yahoo_symbol(ticker)
+    url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}"
+           "?range=1y&interval=1d")
+    try:
+        data = _get_json(url, timeout=20)
+        res = data["chart"]["result"][0]
+        closes = [c for c in res["indicators"]["quote"][0]["close"] if c is not None]
+        if len(closes) < 30:
+            return {"error": "insufficient price history"}
+        price = closes[-1]
+        hi, lo = max(closes), min(closes)
+        mom_12m = price / closes[0] - 1
+        mom_6m = price / closes[-126] - 1 if len(closes) >= 126 else None
+        return {
+            "price": price,
+            "currency": res["meta"].get("currency"),
+            "52w_high": hi,
+            "52w_low": lo,
+            "pct_of_52w_high": price / hi if hi else None,
+            "momentum_6m": mom_6m,
+            "momentum_12m": mom_12m,
+            "_source": "yahoo_chart_v8",
+        }
+    except (urllib.error.HTTPError, urllib.error.URLError) as e:
+        return {"error": f"yahoo chart unreachable: {e}"}
+    except (KeyError, IndexError, TypeError) as e:
+        return {"error": f"yahoo chart parse failed: {e}"}
+
+
+def fetch_one(ticker, cik, polite_delay=0.12):
+    """Combine both sources for a single name, joining P/E where possible."""
+    fund = fetch_sec_fundamentals(cik)
+    time.sleep(polite_delay)  # SEC asks for <10 req/s
+    px = fetch_price_momentum(ticker)
+    rec = {"ticker": ticker, "cik": cik}
+    rec.update({k: v for k, v in px.items() if not k.startswith("_")})
+    rec["price_error"] = px.get("error")
+    rec.update({k: v for k, v in fund.items() if not k.startswith("_")})
+    rec["fundamentals_error"] = fund.get("error")
+    # earnings yield / PE need both a price and SEC earnings+shares
+    price = px.get("price")
+    ni, sh = fund.get("net_income"), fund.get("shares")
+    if price and ni and sh:
+        eps = ni / sh
+        rec["eps"] = eps
+        rec["pe"] = price / eps if eps > 0 else None
+        rec["earnings_yield"] = eps / price
+    else:
+        rec["eps"] = rec["pe"] = rec["earnings_yield"] = None
+    return rec
+
+
+if __name__ == "__main__":
+    for arg in sys.argv[1:]:
+        tkr, _, cik = arg.partition(":")
+        print(json.dumps(fetch_one(tkr, cik.zfill(10) if cik else None), indent=2))

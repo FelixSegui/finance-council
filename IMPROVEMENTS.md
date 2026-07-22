@@ -36,3 +36,40 @@ Status: `open` | `approved` | `done` | `rejected (reason)`
 ## #6 — Optional Alpha Vantage / FMP key support for earnings calendar
 - **Status:** open
 - **Why:** yfinance earnings dates are spotty for non-US tickers. A free-tier key would firm up the calendar agent. Blocked on: user creating a key.
+
+## #8 — Discovery funnel: index-sourced universe + coarse factor ranker
+- **Status:** done (2026-07-22 — user-requested and applied same session)
+- **What:** Replaced the ~30-name hand-typed universe with a two-stage
+  selection funnel. `scripts/build_universe.py` fetches the S&P 500 (~503
+  names, with GICS sector + SEC CIK) from a public constituents CSV and merges
+  it with the preserved user-maintained categories. `scripts/rank_candidates.py`
+  (stage 1) computes cross-sectional factor z-scores — value (earnings yield),
+  quality (margin/ROE/low debt), growth (revenue growth), momentum — over the
+  universe and writes a ranked shortlist to `data/rankings/`. `scout.md` now
+  drives rank -> hard screen -> valuation. Factor data is cached in
+  `data/universe_cache/factors.json` (7-day TTL).
+- **Why it mattered:** the old screener could only filter names already
+  hand-typed into the universe — a filter over a wishlist, not a discovery
+  engine. This was the user's self-identified biggest bottleneck.
+- **Follow-ups (open):** (a) add a reachable Nordic universe source — Wikipedia
+  and Nasdaq Nordic are proxy-blocked, so Nordic large caps remain a manual
+  seed; SEC fundamentals also don't cover them, so Nordic names rank on momentum
+  only. (b) The full 503-name fundamentals fetch takes several minutes on a cold
+  cache; consider a scheduled weekly refresh so sessions always read a warm cache.
+
+## #9 — Correct the "equities data blackout" diagnosis (Yahoo crumb, not egress)
+- **Status:** done (2026-07-22 — diagnosis corrected; workaround shipped with #8)
+- **What:** The session log (2026-07-20/22) attributed the equities fetch
+  failures to an "org egress policy block on Yahoo Finance." Direct probing on
+  2026-07-22 showed that is imprecise: Yahoo's price/chart endpoint
+  (`query1.../v8/finance/chart`) returns 200 and is fully reachable; only the
+  crumb-gated fundamentals endpoint (`quoteSummary`) fails — the cookie host
+  `fc.yahoo.com` is proxy-blocked, so the crumb auth 401s. i.e. PRICES work,
+  FUNDAMENTALS via Yahoo don't.
+- **Consequence:** `fetch_market_data.py:fetch_equities()` relies on `yf.info`
+  (quoteSummary) and so still returns nulls for SHB-A.ST/INVE-A.ST/COIN-XBT.ST.
+  The ranker sidesteps this by taking fundamentals from SEC EDGAR and prices
+  from the working chart endpoint. Follow-up: rework `fetch_equities()` to pull
+  price/52w/momentum from the chart endpoint (so per-ticker holding prices
+  refresh again) and source US fundamentals from SEC EDGAR, mirroring
+  `fetch_fundamentals.py`. Non-US fundamentals remain unavailable for free.

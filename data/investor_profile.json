@@ -36,16 +36,17 @@
     "crypto_pct": 5,
     "fixed_income_pct": 40,
     "cash_pct": 5,
-    "PENDING_RECONCILIATION": "2026-07-12: user has separately proposed a RISK-TIER framework (70% secure/non-volatile, 20% medium risk, 10% high risk actively traded weekly/daily) - see risk_tier_framework_proposed below. This is a materially different decomposition (risk-tier, not exposure-class) and the two have NOT been reconciled. Do not silently merge them - next Council sweep must adjudicate.",
+    "RECONCILED_2026-07-22": "The risk-tier framework (now 60/30/10, see risk_tier_framework_proposed) is the OPERATING allocation control. The exposure-class glidepath below is retained for reference and re-engages only when the property goal firms up (the re-anchor trigger). Live override: user has set fixed income to near-zero and accepts total equity >70% (see risk_tier_framework_proposed.fixed_income_stance) - so the glidepath_table.now_T5plus 40% fixed_income / 50% equity split is NOT the current operating target. Current operating target is tier-based: 60% secure (broad index funds, primarily global equity + a very small short-duration/cash ballast), 30% medium (individual quality stocks), 10% high-risk (crypto).",
     "max_single_position_pct": 15,
     "max_single_institution_pct": 80,
     "max_annual_fee_drag_pct": 0.4
   },
   "risk_tier_framework_proposed": {
-    "status": "ADOPTED 2026-07-20 as the operating framework, clarified by the user after the Council's 2026-07-20 memo quantified the gap against reference_targets.glidepath_table and asked for a direct decision. Nested with, not competing against, the exposure-class glidepath: the glidepath still describes composition (equity/FI/cash/crypto) inside the tiers below; this framework describes intent and trading behavior per tier. Numeric percentages (70/20/10) unchanged from the original 2026-07-12 proposal - not revised this session, carried forward.",
+    "status": "REVISED 2026-07-22 to 60/30/10 (from 70/20/10) at user's direction. Nested with, not competing against, the exposure-class glidepath: the glidepath still describes composition inside the tiers, but the user has now overridden its fixed-income weight - see fixed_income_stance below. Rationale (user's words 2026-07-22): 'I am ready to take a little risk, but to keep it diversified and mature. I do not have enough money or salary to make a lot of money only from fixed income yet. And I will earn more later on so I have the possibility to have a little bit more risky portfolio.' The larger medium tier (30% vs 20%) reflects appetite for more individual-stock exposure alongside the secure index core. History: 70/20/10 was ADOPTED 2026-07-20, itself carried forward from the original 2026-07-12 proposal.",
+    "fixed_income_stance": "USER DIRECTION 2026-07-22: fixed income / savings-account allocation should be VERY SMALL (near-zero). User explicitly accepts total portfolio equity pushing above 70% ('The push of equity above 70% is fine. I don't mind.'). This overrides reference_targets.glidepath_table's now_T5plus 40% fixed_income weight. Reason: at current portfolio size (~200-230k SEK) and income level, fixed income cannot build meaningful wealth; user prefers a diversified, 'mature' equity-led portfolio and expects rising income to support higher risk over time. The glidepath's FI ballast re-engages only if/when the property goal firms up (the re-anchor trigger in reference_targets.note), not now. Any de-risking ballast used before then should favour a short-duration/money-market sleeve over traditional bonds, and kept minimal.",
     "structure": {
-      "secure_non_volatile_pct": 70,
-      "medium_risk_pct": 20,
+      "secure_non_volatile_pct": 60,
+      "medium_risk_pct": 30,
       "high_risk_pct": 10
     },
     "tier_definitions": {

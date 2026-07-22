@@ -17,6 +17,47 @@ Entry format:
 
 ---
 
+## 2026-07-22 (user-triggered follow-up sweep) — HB/SEB transfer executed with real numbers, real SEB tax confirmed (3,037.42 SEK, not the ~1,200 SEK placeholder), risk-tier framework fully adopted with user's own definitions, deployment plan proposed for 144,864 SEK cash, Council memo format changed to separate open actions from open decisions with suggested options
+- **Snapshot:** data/snapshots/20260722T075654.json — equities (SHB-A.ST, INVE-A.ST, COIN-XBT.ST) failed again, 3rd consecutive sweep, confirmed non-transient (org egress policy block on fc.yahoo.com). Crypto (ETH) and macro fetched fresh.
+- **Calendar:** data/calendar/20260722-events.json — same equities-fetch failure for earnings; macro events unchanged (FOMC 2026-07-28/29, Riksbank 2026-08-20).
+- **Memo:** reports/2026-07-22-council-memo.md
+- **User-provided updates this session (not from any fetch):**
+  - HB+SEB → Avanza ISK transfer executed: 127,611.83 SEK (HB) + 17,382.43 SEK (SEB) = 144,994.26 SEK sent, confirmed by user. 9,000 SEK kept at hb-main as a tax reserve (later revised to 9,017 SEK, see below).
+  - Real SEB tax CONFIRMED from user-supplied 2026 tax-year kapitalvinst figures (7 fund lots, 2026-07-08 to 07-10): total gain 10,124.74 SEK, tax 3,037.42 SEK — materially higher than the ~1,200 SEK placeholder standing since 2026-07-07. Combined with HB's confirmed 8,455.86 SEK, total tax owed is 11,493.28 SEK.
+  - Risk-tier framework (secure/medium/high-risk-active, 70/20/10) ADOPTED with user's own clarified definitions: secure = invested-but-low-risk, grows from monthly contributions, minimal trading (not cash sitting idle); medium = individual stocks with good trend, moved occasionally without raising risk; high-risk-active = weekly-traded, money the user can afford to lose more of. New profit-recycling rule recorded: gains from medium/high-risk should flow toward the secure tier by default ("monetising machine" framing).
+  - Budget/income-expense numbers requested but NOT recorded — user's figures (1900 income, -850/-350/-350/-145/-250 expenses) sum to 1,945 against a stated 1,900 income (45 over) and currency was ambiguous; still awaiting clarification, not written to investor_profile.json.
+  - Found money: hb-main sparkonto now 9,017 SEK (+17), plus a confirmed 1,750 SEK inflow expected within days.
+  - NEW account disclosed: hb-checking, 611 SEK, ordinary Handelsbanken transaction account, not previously known to the system.
+  - Avanza ISK confirmed live (direct from Avanza, not computed): 181,254 SEK total, 144,864 SEK available for purchase — supersedes the system's own computed estimate (181,114.26 / 145,559.26).
+- **Process change this session:** `.claude/agents/council.md` updated per explicit user request — every future Council memo must separate "open actions" (things to just go do) from "open decisions" (forks needing a call), and give 1-3 concrete suggested options for every open decision rather than leaving it as a bare question. Applied starting with this sweep's memo.
+- **Headline calls (this sweep, deployment-focused):**
+  - Deploy 144,864 SEK ISK cash into the secure tier now, no reason to phase → confidence High (timing) / Medium (exact split, 3 options given) → horizon Long
+  - Trim COIN-XBT.ST — full 4-lens agreement on direction; reconciled the 5% glidepath vs. 10% tier-cap tension by recommending the 10% cap as the actionable near-term target (~5,270 SEK trim) → confidence Medium → horizon Long
+  - Tax-reserve shortfall confirmed: 11,493.28 SEK owed vs. 9,017 SEK reserved (726.28 SEK short once the pending 1,750 SEK lands) → confidence High → horizon Long
+  - Equities data blackout confirmed non-transient across 3 sweeps, now materially constraining decisions (can't verify COIN-XBT.ST's live price before trimming) → confidence High → horizon N/A (process)
+  - Institution concentration (Avanza 79.6%) touching its own 80% cap, correct byproduct of consolidation, WATCH not ACT → confidence High → horizon Long
+- **User decisions:** none yet on this memo's open decisions (deployment split, crypto trim sizing, Tundra tier classification, equities-data-gap handling) — awaiting user review.
+- **Reconciliation (against the 2026-07-20 entry immediately below):**
+  - **HB+SEB transfer (flagged 07-20 as 8 days overdue, the dominant issue):** RESOLVED. Executed same-session 2026-07-22 (reported as already done by the time of this sweep) with exact figures, superseding all projections. The system's own computed cash-split math (127,611.83 + 17,382.43) matched the user's report exactly — the reconciliation math held up.
+  - **SEB tax placeholder (~1,200 SEK, standing since 07-07):** RESOLVED, and it aged badly in magnitude — real figure (3,037.42 SEK) was 2.5x the placeholder. This is exactly the kind of gap the "no numbers from memory, no estimating" rule exists to catch: the placeholder was always labeled illustrative, and it undershot materially. Good process, bad guess.
+  - **COIN-XBT.ST trim (triggered 07-20, not yet executed):** still not executed, but progressed — this sweep resolved the 5%-vs-10% ambiguity created by the newly adopted tier framework and produced an exact trim amount (~5,270 SEK) pending live-price confirmation.
+  - **Risk-tier vs. glidepath reconciliation (escalated as a headline call 07-20):** RESOLVED at the framework level (user clarified definitions, framework adopted), but produced a NEW, more granular tension this sweep — deploying the full 144,864 SEK to secure overshoots secure's own 70% target (~79%) while medium stays near-empty (~1-2% vs 20%). Flagged as an open decision, not silently resolved.
+  - **Equities data blackout (flagged as a new infra defect 07-20):** unchanged, now confirmed persistent (3rd sweep) rather than a one-off — escalated from "flag for meta" to an active constraint on today's trim-sizing decision.
+  - **Swedbank fund cost basis, ETH cost basis, PayPal FX routing, full account inventory:** all unchanged, still open (open questions 2, 3, 6, 5/11).
+- **Open items carried forward:**
+  - Deployment split decision (144,864 SEK, 3 options given) — awaiting user choice.
+  - COIN-XBT.ST trim sizing/execution (5%-vs-10% reconciliation, ~5,270 SEK, live price needed) — awaiting user choice + price confirmation.
+  - Tundra's risk-tier classification (3 options given) — awaiting user choice.
+  - hb-main tax-reserve top-up (726.28 SEK after the pending inflow, or 2,476.28 SEK now) — awaiting user action, low urgency.
+  - Budget/income-expense numbers still not captured — arithmetic mismatch (1,945 vs 1,900) and currency still unresolved.
+  - Fee-drag factsheets (Avanza Auto 3, Tundra, COIN-XBT.ST, Swedbank fund) still needed — 19.1% of the portfolio ungraded on fees.
+  - Swedbank fund cost basis still needed before any AF→ISK move math is possible.
+  - Equities/earnings data fetch still blocked by org egress policy — 3 sweeps running, needs an infrastructure decision (policy exception, alternate data source, or accept manual updates) — flag for `meta`.
+  - Full account inventory still an open question — hb-checking was the latest small surprise; unclear if there are more.
+  - REMINDER: data/valuations.csv row for today's ≈227,703 SEK valuation appended this session.
+
+---
+
 ## 2026-07-20 (automated weekly sweep) — HB/SEB transfer still unexecuted 8 days after settlement, COIN-XBT.ST thesis deadline missed (standing trim default triggered), equities data blackout confirmed as org egress policy block, risk-tier vs. glidepath gap quantified for the first time
 - **Snapshot:** data/snapshots/20260720T060716.json — equities fetch (SHB-A.ST, INVE-A.ST, COIN-XBT.ST) failed with a 403 at the proxy level (fc.yahoo.com blocked by org egress policy, confirmed non-transient via the agent-proxy status endpoint's `recentRelayFailures`); crypto (ETH via CoinGecko) and macro (FRED/Riksbank/ECB) fetched fresh.
 - **Calendar:** data/calendar/20260720-events.json — equity earnings fetch failed for the same reason (all three tickers); macro events found: FOMC 2026-07-28/29 (8-9 days out), Riksbank 2026-08-20. No collisions with this sweep's planned actions, but earnings collisions for the three equity/certificate tickers are unverifiable until the block is fixed.

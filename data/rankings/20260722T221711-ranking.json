@@ -1,0 +1,1713 @@
+{
+  "generated_utc": "2026-07-22T22:17:11.286924+00:00",
+  "universe_categories": "sp500",
+  "universe_size": 503,
+  "weights": {
+    "value": 1.0,
+    "quality": 1.0,
+    "growth": 1.0,
+    "momentum": 1.0
+  },
+  "method": "cross-sectional z-scores per factor, clipped +/-3, equal-weighted within category, weighted across categories; relative ranking only, NOT a return forecast",
+  "coverage": {
+    "ranked": 469,
+    "partial_data": 34
+  },
+  "ranking": [
+    {
+      "ticker": "KLAC",
+      "name": "KLA Corporation",
+      "sector": "Information Technology",
+      "composite": 1.408,
+      "z": {
+        "value": 3.0,
+        "quality": 0.63,
+        "growth": 1.23,
+        "momentum": 0.77
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 6.904699108810116,
+        "earnings_yield": 0.14482890336583104,
+        "profit_margin": 0.33412215138297763,
+        "roe": 0.8655692449130551,
+        "debt_to_equity": 2.4242060602418394,
+        "revenue_growth": 0.2388764775285417,
+        "momentum_12m": 1.3931824378581394,
+        "pct_of_52w_high": 0.7115773707261254,
+        "price": 214.69000244140625
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "sector": "Information Technology",
+      "composite": 1.093,
+      "z": {
+        "value": -0.6,
+        "quality": 1.66,
+        "growth": 3.0,
+        "momentum": 0.3
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 42.74156879840397,
+        "earnings_yield": 0.023396427134357817,
+        "profit_margin": 4.46113546852939,
+        "roe": 0.7633333969089534,
+        "debt_to_equity": 0.3147628947251308,
+        "revenue_growth": 0.6140329835082459,
+        "momentum_12m": 0.2417144810537446,
+        "pct_of_52w_high": 0.8995503207653188,
+        "price": 212.05999755859375
+      }
+    },
+    {
+      "ticker": "APA",
+      "name": "APA Corporation",
+      "sector": "Energy",
+      "composite": 1.061,
+      "z": {
+        "value": 2.31,
+        "quality": 0.23,
+        "growth": null,
+        "momentum": 0.64
+      },
+      "coverage": [
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 8.918098271081279,
+        "earnings_yield": 0.11213152957090644,
+        "profit_margin": null,
+        "roe": 0.23535204332840964,
+        "debt_to_equity": null,
+        "revenue_growth": null,
+        "momentum_12m": 0.8843749410162394,
+        "pct_of_52w_high": 0.815048452413649,
+        "price": 36.18000030517578
+      }
+    },
+    {
+      "ticker": "CPT",
+      "name": "Camden Property Trust",
+      "sector": "Real Estate",
+      "composite": 1.016,
+      "z": {
+        "value": -0.24,
+        "quality": 1.08,
+        "growth": 3.0,
+        "momentum": 0.23
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 29.2856391426287,
+        "earnings_yield": 0.03414642907842097,
+        "profit_margin": 29.649263515076733,
+        "roe": 0.0881283605840015,
+        "debt_to_equity": 1.0555213118647169,
+        "revenue_growth": 0.8168698332632758,
+        "momentum_12m": -0.02769092792116079,
+        "pct_of_52w_high": 0.9526280012920267,
+        "price": 112.01000213623047
+      }
+    },
+    {
+      "ticker": "EIX",
+      "name": "Edison International",
+      "sector": "Utilities",
+      "composite": 0.996,
+      "z": {
+        "value": 3.0,
+        "quality": -0.03,
+        "growth": 0.06,
+        "momentum": 0.95
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 6.936473631018586,
+        "earnings_yield": 0.14416547271630803,
+        "profit_margin": 0.2308329450742869,
+        "roe": 0.2536549291768588,
+        "debt_to_equity": 4.25319984071904,
+        "revenue_growth": 0.09761918290811988,
+        "momentum_12m": 0.5369024555636996,
+        "pct_of_52w_high": 1.0,
+        "price": 80.37999725341797
+      }
+    },
+    {
+      "ticker": "EXE",
+      "name": "Expand Energy",
+      "sector": "Energy",
+      "composite": 0.972,
+      "z": {
+        "value": 1.31,
+        "quality": 0.07,
+        "growth": 3.0,
+        "momentum": -0.49
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 12.253409248647001,
+        "earnings_yield": 0.08160994052413766,
+        "profit_margin": 0.1500329924117453,
+        "roe": 0.09791150823554742,
+        "debt_to_equity": 0.5226073850791259,
+        "revenue_growth": 1.862809917355372,
+        "momentum_12m": -0.05602835815888407,
+        "pct_of_52w_high": 0.7581576908754825,
+        "price": 93.16999816894531
+      }
+    },
+    {
+      "ticker": "OKE",
+      "name": "Oneok",
+      "sector": "Energy",
+      "composite": 0.968,
+      "z": {
+        "value": 0.56,
+        "quality": -0.11,
+        "growth": 3.0,
+        "momentum": 0.41
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 17.03669736840554,
+        "earnings_yield": 0.058696822416678854,
+        "profit_margin": 0.1008950608106099,
+        "roe": 0.15090060040026684,
+        "debt_to_equity": null,
+        "revenue_growth": 0.5498663471287677,
+        "momentum_12m": 0.12342355892065604,
+        "pct_of_52w_high": 0.9633557544933843,
+        "price": 91.75
+      }
+    },
+    {
+      "ticker": "SBAC",
+      "name": "SBA Communications",
+      "sector": "Real Estate",
+      "composite": 0.961,
+      "z": {
+        "value": 0.47,
+        "quality": 1.08,
+        "growth": 3.0,
+        "momentum": -0.71
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 17.9202404060337,
+        "earnings_yield": 0.055802822804949796,
+        "profit_margin": 4.3093685837920965,
+        "roe": -0.21708620075454532,
+        "debt_to_equity": null,
+        "revenue_growth": 0.5993955609050887,
+        "momentum_12m": -0.24857540196419792,
+        "pct_of_52w_high": 0.7514245980358021,
+        "price": 178.02000427246094
+      }
+    },
+    {
+      "ticker": "V",
+      "name": "Visa Inc.",
+      "sector": "Financials",
+      "composite": 0.936,
+      "z": {
+        "value": 2.6,
+        "quality": 0.64,
+        "growth": 0.19,
+        "momentum": 0.3
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 8.268682893659314,
+        "earnings_yield": 0.12093824528775092,
+        "profit_margin": 0.50145,
+        "roe": 0.7587093845746492,
+        "debt_to_equity": 2.3345311495252865,
+        "revenue_growth": 0.11339976618604908,
+        "momentum_12m": -0.0052632921619327755,
+        "pct_of_52w_high": 0.96790272018807,
+        "price": 353.4200134277344
+      }
+    },
+    {
+      "ticker": "ACGL",
+      "name": "Arch Capital Group",
+      "sector": "Financials",
+      "composite": 0.922,
+      "z": {
+        "value": 2.82,
+        "quality": 0.05,
+        "growth": 0.44,
+        "momentum": 0.38
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 7.833665402321627,
+        "earnings_yield": 0.1276541629801593,
+        "profit_margin": 0.22073360429524813,
+        "roe": 0.1817318020325539,
+        "debt_to_equity": 2.2736098487978187,
+        "revenue_growth": 0.14271788990825685,
+        "momentum_12m": 0.11295412092753532,
+        "pct_of_52w_high": 0.9570153268958002,
+        "price": 98.62999725341797
+      }
+    },
+    {
+      "ticker": "LLY",
+      "name": "Lilly (Eli)",
+      "sector": "Health Care",
+      "composite": 0.918,
+      "z": {
+        "value": -0.74,
+        "quality": 0.8,
+        "growth": 2.95,
+        "momentum": 0.66
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 53.06466481534658,
+        "earnings_yield": 0.018844931999095465,
+        "profit_margin": 0.31666641096058545,
+        "roe": 0.7778405879027699,
+        "debt_to_equity": null,
+        "revenue_growth": 0.44703949559309986,
+        "momentum_12m": 0.45578238360811585,
+        "pct_of_52w_high": 0.9412816493026671,
+        "price": 1163.010009765625
+      }
+    },
+    {
+      "ticker": "XOM",
+      "name": "ExxonMobil",
+      "sector": "Energy",
+      "composite": 0.907,
+      "z": {
+        "value": 0.11,
+        "quality": 0.04,
+        "growth": 3.0,
+        "momentum": 0.47
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 22.19480919849969,
+        "earnings_yield": 0.045055579935672406,
+        "profit_margin": 0.10424587628120799,
+        "roe": 0.11120106713546606,
+        "debt_to_equity": 0.703021751366689,
+        "revenue_growth": 0.5494528878784146,
+        "momentum_12m": 0.404984958787181,
+        "pct_of_52w_high": 0.9007406301318323,
+        "price": 154.4499969482422
+      }
+    },
+    {
+      "ticker": "RF",
+      "name": "Regions Financial Corporation",
+      "sector": "Financials",
+      "composite": 0.905,
+      "z": {
+        "value": 1.32,
+        "quality": 0.65,
+        "growth": 1.22,
+        "momentum": 0.42
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 12.214885465464533,
+        "earnings_yield": 0.08186732514417154,
+        "profit_margin": 20.73076923076923,
+        "roe": 0.11321745523289398,
+        "debt_to_equity": 7.336606627107074,
+        "revenue_growth": 0.23809523809523814,
+        "momentum_12m": 0.17026923125606896,
+        "pct_of_52w_high": 0.952469109783921,
+        "price": 30.860000610351562
+      }
+    },
+    {
+      "ticker": "ALL",
+      "name": "Allstate",
+      "sector": "Financials",
+      "composite": 0.859,
+      "z": {
+        "value": 3.0,
+        "quality": 0.09,
+        "growth": -0.28,
+        "momentum": 0.63
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 6.3048349808647925,
+        "earnings_yield": 0.15860843353315435,
+        "profit_margin": 0.15190958114796485,
+        "roe": 0.3359032995753022,
+        "debt_to_equity": 2.913067624959164,
+        "revenue_growth": 0.05582940754375576,
+        "momentum_12m": 0.27437883231231,
+        "pct_of_52w_high": 0.9819847527546739,
+        "price": 251.8300018310547
+      }
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "sector": "Information Technology",
+      "composite": 0.85,
+      "z": {
+        "value": -1.1,
+        "quality": 0.16,
+        "growth": 3.0,
+        "momentum": 1.35
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 126.9036325638857,
+        "earnings_yield": 0.00787999507812813,
+        "profit_margin": 0.22844989030980792,
+        "roe": 0.1576479276285424,
+        "debt_to_equity": 0.5286254961691129,
+        "revenue_growth": 0.4885110111106685,
+        "momentum_12m": 7.736046294023231,
+        "pct_of_52w_high": 0.7906324649317948,
+        "price": 959.47998046875
+      }
+    },
+    {
+      "ticker": "SYF",
+      "name": "Synchrony Financial",
+      "sector": "Financials",
+      "composite": 0.843,
+      "z": {
+        "value": 3.0,
+        "quality": -0.27,
+        "growth": null,
+        "momentum": -0.2
+      },
+      "coverage": [
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 6.906932981848227,
+        "earnings_yield": 0.1447820621146971,
+        "profit_margin": null,
+        "roe": 0.21185733031134438,
+        "debt_to_equity": 6.103363950852916,
+        "revenue_growth": null,
+        "momentum_12m": 0.010127576428897278,
+        "pct_of_52w_high": 0.8229908054025805,
+        "price": 72.80999755859375
+      }
+    },
+    {
+      "ticker": "WDC",
+      "name": "Western Digital",
+      "sector": "Information Technology",
+      "composite": 0.842,
+      "z": {
+        "value": -1.04,
+        "quality": 0.22,
+        "growth": 3.0,
+        "momentum": 1.19
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 101.57448172218434,
+        "earnings_yield": 0.009844992394202837,
+        "profit_margin": 0.19842436974789915,
+        "roe": 0.3556768970062135,
+        "debt_to_equity": 1.593296930898136,
+        "revenue_growth": 0.5070444831407313,
+        "momentum_12m": 7.030438334692031,
+        "pct_of_52w_high": 0.7459764382027104,
+        "price": 556.6699829101562
+      }
+    },
+    {
+      "ticker": "UDR",
+      "name": "UDR, Inc.",
+      "sector": "Real Estate",
+      "composite": 0.79,
+      "z": {
+        "value": -0.4,
+        "quality": 1.04,
+        "growth": 2.28,
+        "momentum": 0.24
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 34.01384474903407,
+        "earnings_yield": 0.0293997931541802,
+        "profit_margin": 33.24566499427867,
+        "roe": 0.1148573406048177,
+        "debt_to_equity": 1.9635048238355803,
+        "revenue_growth": 0.36599735481543827,
+        "momentum_12m": -0.03584485408852123,
+        "pct_of_52w_high": 0.9587778687257644,
+        "price": 39.540000915527344
+      }
+    },
+    {
+      "ticker": "APH",
+      "name": "Amphenol",
+      "sector": "Information Technology",
+      "composite": 0.784,
+      "z": {
+        "value": -0.64,
+        "quality": 0.18,
+        "growth": 3.0,
+        "momentum": 0.6
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 45.37719145588609,
+        "earnings_yield": 0.022037503157773888,
+        "profit_margin": 0.1849038956990132,
+        "roe": 0.3183678642521117,
+        "debt_to_equity": 1.694403232660608,
+        "revenue_growth": 0.5171224552806006,
+        "momentum_12m": 0.5639955906932446,
+        "pct_of_52w_high": 0.8933188972548374,
+        "price": 157.50999450683594
+      }
+    },
+    {
+      "ticker": "FANG",
+      "name": "Diamondback Energy",
+      "sector": "Energy",
+      "composite": 0.745,
+      "z": {
+        "value": -0.41,
+        "quality": 0.02,
+        "growth": 2.71,
+        "momentum": 0.65
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 34.32225165795677,
+        "earnings_yield": 0.02913561761523226,
+        "profit_margin": 0.1739494041396613,
+        "roe": 0.0450070323488045,
+        "debt_to_equity": 0.7598182408308991,
+        "revenue_growth": 0.4178153253297763,
+        "momentum_12m": 0.4129027825387379,
+        "pct_of_52w_high": 0.9500678644436301,
+        "price": 203.02000427246094
+      }
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "sector": "Information Technology",
+      "composite": 0.745,
+      "z": {
+        "value": -0.89,
+        "quality": 0.23,
+        "growth": 2.74,
+        "momentum": 0.9
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 69.12627122782665,
+        "earnings_yield": 0.014466280073232881,
+        "profit_margin": 0.3258365264930564,
+        "roe": 0.1866106622683179,
+        "debt_to_equity": 0.557497693662464,
+        "revenue_growth": 0.42087285211450776,
+        "momentum_12m": 1.87962351794553,
+        "pct_of_52w_high": 0.6667825755359021,
+        "price": 210.99000549316406
+      }
+    },
+    {
+      "ticker": "CBOE",
+      "name": "Cboe Global Markets",
+      "sector": "Financials",
+      "composite": 0.737,
+      "z": {
+        "value": -0.14,
+        "quality": 0.32,
+        "growth": 3.0,
+        "momentum": -0.23
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 26.810395503352716,
+        "earnings_yield": 0.03729896486886764,
+        "profit_margin": 0.49347270198734916,
+        "roe": 0.2140785863028628,
+        "debt_to_equity": 0.8109686082945722,
+        "revenue_growth": 2.170388280472195,
+        "momentum_12m": 0.17050877587941327,
+        "pct_of_52w_high": 0.7684755342573326,
+        "price": 281.79998779296875
+      }
+    },
+    {
+      "ticker": "HIG",
+      "name": "Hartford (The)",
+      "sector": "Financials",
+      "composite": 0.729,
+      "z": {
+        "value": 1.9,
+        "quality": 0.99,
+        "growth": -0.47,
+        "momentum": 0.5
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 10.064802837565942,
+        "earnings_yield": 0.09935614399395812,
+        "profit_margin": 2.547144754316069,
+        "roe": 0.2021181305653617,
+        "debt_to_equity": 3.53116602560725,
+        "revenue_growth": 0.03292181069958855,
+        "momentum_12m": 0.14290345290302375,
+        "pct_of_52w_high": 0.9812582563625419,
+        "price": 140.83999633789062
+      }
+    },
+    {
+      "ticker": "CF",
+      "name": "CF Industries",
+      "sector": "Materials",
+      "composite": 0.692,
+      "z": {
+        "value": 1.22,
+        "quality": 0.18,
+        "growth": 0.86,
+        "momentum": 0.51
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 12.710945822167574,
+        "earnings_yield": 0.078672351687317,
+        "profit_margin": 0.21727837380011292,
+        "roe": 0.31814799503927244,
+        "debt_to_equity": null,
+        "revenue_growth": 0.19339622641509435,
+        "momentum_12m": 0.3589798283886916,
+        "pct_of_52w_high": 0.9255086687882592,
+        "price": 127.3499984741211
+      }
+    },
+    {
+      "ticker": "DUK",
+      "name": "Duke Energy",
+      "sector": "Utilities",
+      "composite": 0.68,
+      "z": {
+        "value": 0.27,
+        "quality": -0.05,
+        "growth": 2.16,
+        "momentum": 0.35
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 20.078368274156833,
+        "earnings_yield": 0.049804844016488874,
+        "profit_margin": 0.2531593966571545,
+        "roe": 0.09582963620230701,
+        "debt_to_equity": null,
+        "revenue_growth": 0.35067795443595573,
+        "momentum_12m": 0.07062166062377684,
+        "pct_of_52w_high": 0.9587141503938462,
+        "price": 127.94999694824219
+      }
+    }
+  ],
+  "partial_data": [
+    {
+      "ticker": "ABNB",
+      "name": "Airbnb",
+      "sector": "Consumer Discretionary",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.18,
+        "growth": 0.1,
+        "momentum": 0.21
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.20513029981210684,
+        "roe": 0.3062568605927552,
+        "debt_to_equity": 1.70862300280522,
+        "revenue_growth": 0.10259412718429117,
+        "momentum_12m": 0.0015733477638721904,
+        "pct_of_52w_high": 0.9403747394028612,
+        "price": 140.0500030517578
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "BSX",
+      "name": "Boston Scientific",
+      "sector": "Health Care",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": 0.9,
+        "momentum": -2.04
+      },
+      "coverage": [
+        "growth",
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": 0.1986624470054339,
+        "momentum_12m": -0.6012435006601027,
+        "pct_of_52w_high": 0.397355293723225,
+        "price": 42.970001220703125
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum'])"
+    },
+    {
+      "ticker": "CVNA",
+      "name": "Carvana",
+      "sector": "Consumer Discretionary",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.12,
+        "growth": 3.0,
+        "momentum": -0.89
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.06923531148509005,
+        "roe": 0.40889276373147343,
+        "debt_to_equity": 2.6149375181633245,
+        "revenue_growth": 0.4862868426826592,
+        "momentum_12m": -0.08527694758372284,
+        "pct_of_52w_high": 0.6557633859234525,
+        "price": 62.75
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "DASH",
+      "name": "DoorDash",
+      "sector": "Consumer Discretionary",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.01,
+        "growth": 1.57,
+        "momentum": -1.15
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.0681635926222935,
+        "roe": 0.09319246486594239,
+        "debt_to_equity": 0.9581381441243895,
+        "revenue_growth": 0.2793322141391532,
+        "momentum_12m": -0.26118225169898013,
+        "pct_of_52w_high": 0.6308298498189352,
+        "price": 177.72999572753906
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "DDOG",
+      "name": "Datadog",
+      "sector": "Information Technology",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.07,
+        "growth": 1.54,
+        "momentum": 0.71
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.03143741840907247,
+        "roe": 0.02886791350745377,
+        "debt_to_equity": 0.7801386097123256,
+        "revenue_growth": 0.2767536858183308,
+        "momentum_12m": 0.7067361407809787,
+        "pct_of_52w_high": 0.8856896209657056,
+        "price": 245.77000427246094
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "DOW",
+      "name": "Dow Inc.",
+      "sector": "Materials",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": -1.32,
+        "momentum": -0.45
+      },
+      "coverage": [
+        "growth",
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": -0.06973279955311429,
+        "momentum_12m": 0.02897593468715942,
+        "pct_of_52w_high": 0.7463577931023675,
+        "price": 31.25
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum'])"
+    },
+    {
+      "ticker": "ECHO",
+      "name": "EchoStar",
+      "sector": "Communication Services",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -1.45,
+        "growth": -1.17,
+        "momentum": 0.85
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": -0.966157322741123,
+        "roe": -2.514346704628547,
+        "debt_to_equity": 6.452610260807551,
+        "revenue_growth": -0.051848356792915995,
+        "momentum_12m": 2.1165145855159517,
+        "pct_of_52w_high": 0.6507757178652115,
+        "price": 92.27999877929688
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "EL",
+      "name": "Est\u00e9e Lauder Companies (The)",
+      "sector": "Consumer Staples",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.04,
+        "growth": -1.42,
+        "momentum": -0.76
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.04774535809018567,
+        "roe": 0.1223613595706619,
+        "debt_to_equity": 1.5644007155635062,
+        "revenue_growth": -0.0821373654536135,
+        "momentum_12m": -0.0786128794354044,
+        "pct_of_52w_high": 0.690828499554968,
+        "price": 82.62999725341797
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "ERIE",
+      "name": "Erie Indemnity",
+      "sector": "Financials",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.18,
+        "growth": -0.15,
+        "momentum": -1.52
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.13752139647890543,
+        "roe": 0.24495987078770276,
+        "debt_to_equity": 0.469527550020277,
+        "revenue_growth": 0.07170876244856883,
+        "momentum_12m": -0.4228863797567146,
+        "pct_of_52w_high": 0.5714982802844745,
+        "price": 210.86000061035156
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "FCX",
+      "name": "Freeport-McMoRan",
+      "sector": "Materials",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.27,
+        "growth": -0.74,
+        "momentum": 0.53
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": 1.4498650722260438,
+        "revenue_growth": 0.0006754340657157965,
+        "momentum_12m": 0.4495985677700449,
+        "pct_of_52w_high": 0.9063022712447572,
+        "price": 65.0
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "FDXF",
+      "name": "FedEx Freight",
+      "sector": "Industrials",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": null,
+        "momentum": -0.33
+      },
+      "coverage": [
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": null,
+        "momentum_12m": -0.011125779309809625,
+        "pct_of_52w_high": 0.7923166826101548,
+        "price": 149.32000732421875
+      },
+      "reason": "insufficient fundamentals (have ['momentum'])"
+    },
+    {
+      "ticker": "FOX",
+      "name": "Fox Corporation (Class B)",
+      "sector": "Communication Services",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": 0.63,
+        "momentum": -0.5
+      },
+      "coverage": [
+        "growth",
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": 0.1659513590844064,
+        "momentum_12m": -0.024658038587158426,
+        "pct_of_52w_high": 0.7471959780391443,
+        "price": 50.630001068115234
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum'])"
+    },
+    {
+      "ticker": "FOXA",
+      "name": "Fox Corporation (Class A)",
+      "sector": "Communication Services",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": 0.63,
+        "momentum": -0.5
+      },
+      "coverage": [
+        "growth",
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": 0.1659513590844064,
+        "momentum_12m": -0.0003541784546011728,
+        "pct_of_52w_high": 0.7416896637793721,
+        "price": 56.45000076293945
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum'])"
+    },
+    {
+      "ticker": "GDDY",
+      "name": "GoDaddy",
+      "sector": "Information Technology",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": null,
+        "momentum": -1.69
+      },
+      "coverage": [
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": null,
+        "momentum_12m": -0.4650870644767586,
+        "pct_of_52w_high": 0.5349129355232414,
+        "price": 89.4000015258789
+      },
+      "reason": "insufficient fundamentals (have ['momentum'])"
+    },
+    {
+      "ticker": "HONA",
+      "name": "Honeywell Aerospace",
+      "sector": "Industrials",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": null,
+        "momentum": null
+      },
+      "coverage": [],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": null,
+        "momentum_12m": null,
+        "pct_of_52w_high": null,
+        "price": null
+      },
+      "reason": "insufficient fundamentals (have nothing)"
+    },
+    {
+      "ticker": "HOOD",
+      "name": "Robinhood Markets",
+      "sector": "Financials",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.1,
+        "growth": 3.0,
+        "momentum": -0.68
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.4209702660406886,
+        "roe": 0.23620170597089815,
+        "debt_to_equity": 3.6359759157049676,
+        "revenue_growth": 0.515757370382921,
+        "momentum_12m": 0.023510986312980098,
+        "pct_of_52w_high": 0.6852944953165248,
+        "price": 104.4800033569336
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "HRL",
+      "name": "Hormel Foods",
+      "sector": "Consumer Staples",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.26,
+        "growth": -0.62,
+        "momentum": -0.24
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.03950030397747924,
+        "roe": 0.06052229473327435,
+        "debt_to_equity": null,
+        "revenue_growth": 0.015549547568002309,
+        "momentum_12m": -0.14600275428374865,
+        "pct_of_52w_high": 0.8539972457162514,
+        "price": 25.209999084472656
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "ITW",
+      "name": "Illinois Tool Works",
+      "sector": "Industrials",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": -0.67,
+        "momentum": 0.16
+      },
+      "coverage": [
+        "growth",
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": 0.009183545100012624,
+        "momentum_12m": 0.04060934067004185,
+        "pct_of_52w_high": 0.9143190490494681,
+        "price": 273.92999267578125
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum'])"
+    },
+    {
+      "ticker": "LEN",
+      "name": "Lennar",
+      "sector": "Consumer Discretionary",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.02,
+        "growth": -1.04,
+        "momentum": -1.38
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.060788691960501635,
+        "roe": 0.09463725744631563,
+        "debt_to_equity": 0.5596609418182641,
+        "revenue_growth": -0.03539691319644578,
+        "momentum_12m": -0.29942009185332796,
+        "pct_of_52w_high": 0.5768961028579584,
+        "price": 82.1500015258789
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms",
+      "sector": "Communication Services",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.28,
+        "growth": 1.09,
+        "momentum": -0.43
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.3008369574952977,
+        "roe": 0.2782966539773433,
+        "debt_to_equity": 0.6848460019425252,
+        "revenue_growth": 0.22167038498246217,
+        "momentum_12m": -0.12109368551559085,
+        "pct_of_52w_high": 0.7938860543166535,
+        "price": 627.1699829101562
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "MKC",
+      "name": "McCormick & Company",
+      "sector": "Consumer Staples",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.03,
+        "growth": -0.6,
+        "momentum": -0.87
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.11540429513325438,
+        "roe": 0.13761004096574567,
+        "debt_to_equity": 1.295615793602371,
+        "revenue_growth": 0.017341642250546574,
+        "momentum_12m": -0.28159097048928006,
+        "pct_of_52w_high": 0.7144623293786083,
+        "price": 52.02000045776367
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "MNST",
+      "name": "Monster Beverage",
+      "sector": "Consumer Staples",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": 0.14,
+        "momentum": 0.88
+      },
+      "coverage": [
+        "growth",
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": 0.106988540459799,
+        "momentum_12m": 0.6163203309448133,
+        "pct_of_52w_high": 0.9572743229122453,
+        "price": 95.66999816894531
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum'])"
+    },
+    {
+      "ticker": "PNC",
+      "name": "PNC Financial Services",
+      "sector": "Financials",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -1.23,
+        "growth": 0.39,
+        "momentum": 0.66
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": 8.466386069159032,
+        "revenue_growth": 0.13667830305899065,
+        "momentum_12m": 0.2768507358454011,
+        "pct_of_52w_high": 0.9894592379562144,
+        "price": 252.50999450683594
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "Q",
+      "name": "Qnity Electronics",
+      "sector": "Information Technology",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.38,
+        "growth": 0.06,
+        "momentum": 0.12
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": 0.9448907681465821,
+        "revenue_growth": 0.09665513264129189,
+        "momentum_12m": 0.45582372560695306,
+        "pct_of_52w_high": 0.7899112159831907,
+        "price": 138.74000549316406
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "RL",
+      "name": "Ralph Lauren Corporation",
+      "sector": "Consumer Discretionary",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.15,
+        "growth": 0.47,
+        "momentum": 0.5
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.11597757101484996,
+        "roe": 0.3312099669177166,
+        "debt_to_equity": 1.7238333216020272,
+        "revenue_growth": 0.1462777228422094,
+        "momentum_12m": 0.31532644416230626,
+        "pct_of_52w_high": 0.9345564626395595,
+        "price": 387.1400146484375
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "SPG",
+      "name": "Simon Property Group",
+      "sector": "Real Estate",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.81,
+        "growth": -0.19,
+        "momentum": 0.74
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": 6.509087665995683,
+        "revenue_growth": 0.06718990146882908,
+        "momentum_12m": 0.36490885557520736,
+        "pct_of_52w_high": 0.9891561182307304,
+        "price": 226.22000122070312
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "STZ",
+      "name": "Constellation Brands",
+      "sector": "Consumer Staples",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.09,
+        "growth": -1.61,
+        "momentum": -0.71
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.18456067403435825,
+        "roe": 0.2086880134613481,
+        "debt_to_equity": 1.6719786202118183,
+        "revenue_growth": -0.10478317513493396,
+        "momentum_12m": -0.24992898757512194,
+        "pct_of_52w_high": 0.7500710124248781,
+        "price": 132.0800018310547
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "TAP",
+      "name": "Molson Coors Beverage Company",
+      "sector": "Consumer Staples",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.35,
+        "growth": -1.16,
+        "momentum": -0.66
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": -0.1640759798470894,
+        "roe": -0.20914342687897716,
+        "debt_to_equity": 1.1921155782332873,
+        "revenue_growth": -0.05053042382939066,
+        "momentum_12m": -0.21198157694657227,
+        "pct_of_52w_high": 0.7546892259917669,
+        "price": 41.040000915527344
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "TFC",
+      "name": "Truist Financial",
+      "sector": "Financials",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -1.0,
+        "growth": null,
+        "momentum": 0.29
+      },
+      "coverage": [
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": 7.39923913543696,
+        "revenue_growth": null,
+        "momentum_12m": 0.12898297439490602,
+        "pct_of_52w_high": 0.9268947907066841,
+        "price": 51.72999954223633
+      },
+      "reason": "insufficient fundamentals (have ['momentum', 'quality'])"
+    },
+    {
+      "ticker": "TKO",
+      "name": "TKO Group Holdings",
+      "sector": "Communication Services",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.11,
+        "growth": -1.0,
+        "momentum": -0.18
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.04126647703526244,
+        "roe": 0.052283403806034225,
+        "debt_to_equity": 1.671154747134424,
+        "revenue_growth": -0.030524701790923148,
+        "momentum_12m": 0.0831195911070497,
+        "pct_of_52w_high": 0.8074768335490405,
+        "price": 181.64999389648438
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "TTD",
+      "name": "Trade Desk (The)",
+      "sector": "Communication Services",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.07,
+        "growth": 0.78,
+        "momentum": -2.04
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.1530595756493493,
+        "roe": 0.178435681018004,
+        "debt_to_equity": 1.476751847837156,
+        "revenue_growth": 0.18465611733489973,
+        "momentum_12m": -0.7922722380450503,
+        "pct_of_52w_high": 0.19585560946204694,
+        "price": 17.579999923706055
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "UHS",
+      "name": "Universal Health Services",
+      "sector": "Health Care",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.05,
+        "growth": 0.06,
+        "momentum": -1.05
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.08573628913938629,
+        "roe": 0.2046232217743443,
+        "debt_to_equity": null,
+        "revenue_growth": 0.09710009549571685,
+        "momentum_12m": -0.09392070318184897,
+        "pct_of_52w_high": 0.6115980048217226,
+        "price": 149.33999633789062
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "VTRS",
+      "name": "Viatris",
+      "sector": "Health Care",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.41,
+        "growth": -0.99,
+        "momentum": 1.11
+      },
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.0,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": -0.030109985843406295,
+        "momentum_12m": 0.8153682429705704,
+        "pct_of_52w_high": 0.9670267243504984,
+        "price": 17.010000228881836
+      },
+      "reason": "insufficient fundamentals (have ['growth', 'momentum', 'quality'])"
+    },
+    {
+      "ticker": "XYZ",
+      "name": "Block, Inc.",
+      "sector": "Financials",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": 0.16,
+        "growth": null,
+        "momentum": 0.21
+      },
+      "coverage": [
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.4073111839026673,
+        "roe": 0.05880110130128978,
+        "debt_to_equity": 0.7827322734835152,
+        "revenue_growth": null,
+        "momentum_12m": -0.028105369504897282,
+        "pct_of_52w_high": 0.9468280331996642,
+        "price": 77.45999908447266
+      },
+      "reason": "insufficient fundamentals (have ['momentum', 'quality'])"
+    }
+  ]
+}

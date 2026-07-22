@@ -114,20 +114,36 @@ def gather(tickers, meta, cache, cache_days, refresh):
     return records
 
 
-def zscores(values):
-    """Map ticker->raw to ticker->z (clipped to +/-3), over non-null values."""
+def zscores(values, winsor=0.02):
+    """Map ticker->raw to ticker->z (clipped to +/-3), over non-null values.
+
+    Values are WINSORIZED to the [winsor, 1-winsor] percentile range before the
+    mean/stdev are computed and before each point is standardized. Without this,
+    a single bad-data extreme — e.g. BRK.B's garbage earnings yield from a
+    multi-class share-count mismatch — inflates the stdev so much that every
+    other name collapses to ~0, and the factor stops discriminating. Winsorizing
+    makes the ranker robust to those outliers instead of hostage to them."""
     pts = {t: v for t, v in values.items() if v is not None}
     if len(pts) < 2:
         return {t: None for t in values}
-    mean = statistics.fmean(pts.values())
-    sd = statistics.pstdev(pts.values())
+    sv = sorted(pts.values())
+    n = len(sv)
+    lo = sv[max(0, int(winsor * n))]
+    hi = sv[min(n - 1, int((1 - winsor) * n))]
+
+    def clamp(v):
+        return min(hi, max(lo, v))
+
+    clamped = [clamp(v) for v in pts.values()]
+    mean = statistics.fmean(clamped)
+    sd = statistics.pstdev(clamped)
     out = {}
     for t in values:
         v = values[t]
         if v is None or sd == 0:
             out[t] = None
         else:
-            z = (v - mean) / sd
+            z = (clamp(v) - mean) / sd
             out[t] = max(-3.0, min(3.0, z))
     return out
 

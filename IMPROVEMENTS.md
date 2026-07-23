@@ -57,6 +57,29 @@ Status: `open` | `approved` | `done` | `rejected (reason)`
   only. (b) The full 503-name fundamentals fetch takes several minutes on a cold
   cache; consider a scheduled weekly refresh so sessions always read a warm cache.
 
+## #10 — Extend the funnel: crypto context, European seed, sustainability screen
+- **Status:** done (2026-07-22 — user-requested and applied same session)
+- **What:** (a) `scripts/rank_crypto.py` — high-risk-tier CONTEXT (CoinGecko
+  momentum/ATH-distance + Fear & Greed), explicitly not a buy-ranker, since
+  crypto has no fundamentals to standardise. (b) `scripts/add_manual_tickers.py`
+  — validated ticker adder for non-US categories (verifies each against Yahoo
+  price data, drops anything that doesn't resolve); seeded `europe_large_cap`
+  with 27 validated European large-caps tilted to growth/quality + renewables.
+  (c) `rank_candidates.py` gains `--exclude-sectors` (sustainability negative
+  screen on GICS sector) and a `momentum_only_ranking` for names without
+  fundamentals (non-US), kept separate from the full-factor composite.
+- **Known limits / follow-ups:** European names rank on momentum ONLY — no free
+  European fundamentals source exists (SEC is US-only; Yahoo fundamentals
+  blocked). Sector exclusion can't touch non-US names (no GICS metadata). The
+  clean growth-preserving way to get Europe + sustainability remains a
+  FUND-level choice in the secure tier (European index fund / ESG fund), not
+  individual-stock ranking — real ESG scoring needs paid data (MSCI/
+  Sustainalytics) and must not be faked from free sources.
+- **Bug fixed in build:** `_yahoo_symbol()` was rewriting every dotted ticker's
+  dot to a dash (for US class shares like BRK.B->BRK-B), which mangled European
+  exchange suffixes (SAP.DE->SAP-DE, a 404). Now only US class-share dots are
+  rewritten; real exchange suffixes (.DE/.AS/.PA/.CO/.MI/.SW/.MC/.L...) are kept.
+
 ## #9 — Correct the "equities data blackout" diagnosis (Yahoo crumb, not egress)
 - **Status:** done (2026-07-22 — diagnosis corrected; workaround shipped with #8)
 - **What:** The session log (2026-07-20/22) attributed the equities fetch

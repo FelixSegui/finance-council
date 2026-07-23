@@ -43,6 +43,7 @@ SP500_CSV_URL = (
 MANUAL_CATEGORIES = {
     "us_mega_cap", "us_quality_dividend", "semis_and_ai_infra",
     "nordic_large_cap", "broad_index_etfs", "crypto_usd_proxies",
+    "europe_large_cap",
 }
 
 

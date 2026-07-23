@@ -43,8 +43,22 @@ a hand-typed sample), not a return forecast. Say this once per output.
    quality (margin, ROE, low debt), growth (revenue growth), and momentum, then
    composites and ranks. Fundamentals come from SEC EDGAR, price/momentum from
    Yahoo's chart endpoint — the combination that works while Yahoo's
-   fundamentals endpoint is blocked. Names with no fundamentals (non-US, ETFs)
-   land in `partial_data`, not the main ranking.
+   fundamentals endpoint is blocked.
+   - **Sustainability negative screen:** add `--exclude-sectors "Energy,..."`
+     (GICS sectors) to drop sectors from the US ranking. It can only exclude
+     names carrying GICS metadata (US/sp500), not non-US names.
+   - **Non-US names** (`europe_large_cap` or any manual non-US seed) have NO
+     free fundamentals (SEC is US-only), so they can't be value/quality ranked.
+     They appear in a SEPARATE `momentum_only_ranking` — a research watchlist on
+     price momentum alone (the weakest single factor), never merged into the
+     full-factor composite. Research those by hand, don't treat them as vetted.
+     Add validated non-US tickers with `python scripts/add_manual_tickers.py
+     --category ... --tickers ...` (it verifies each against real price data and
+     drops anything that doesn't resolve — never hand-edit tickers in unverified).
+   - **High-risk (crypto) tier is NOT ranked here.** Crypto has no fundamentals
+     to standardise; use `python scripts/rank_crypto.py` for cycle CONTEXT
+     (momentum, distance from ATH, Fear & Greed) to inform discretionary
+     management — it is explicitly not a buy-ranker.
 
 3. **Stage 2 — hard screen.** Feed the top-ranked tickers into the pass/fail
    screen for absolute thresholds:

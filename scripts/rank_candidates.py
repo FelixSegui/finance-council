@@ -189,6 +189,9 @@ def main():
                    help="value,quality,growth,momentum weights")
     p.add_argument("--cache-days", type=int, default=7)
     p.add_argument("--refresh", action="store_true")
+    p.add_argument("--exclude-sectors", default="",
+                   help="comma-separated GICS sectors to drop (sustainability "
+                        "negative screen), e.g. 'Energy,Tobacco'")
     args = p.parse_args()
 
     try:
@@ -198,6 +201,19 @@ def main():
         sys.exit("--weights must be four numbers, e.g. 1,1,1,1")
 
     tickers, meta = load_universe([c.strip() for c in args.categories.split(",")])
+    excluded_sectors = {s.strip() for s in args.exclude_sectors.split(",") if s.strip()}
+    excluded = []
+    if excluded_sectors:
+        kept = []
+        for t in tickers:
+            if (meta.get(t) or {}).get("sector") in excluded_sectors:
+                excluded.append(t)
+            else:
+                kept.append(t)
+        tickers = kept
+        print(f"Excluded {len(excluded)} names in sectors {sorted(excluded_sectors)} "
+              "(note: names without GICS sector metadata, e.g. non-US, can't be "
+              "sector-excluded)", file=sys.stderr)
     if args.limit:
         tickers = tickers[:args.limit]
     print(f"Universe: {len(tickers)} tickers from [{args.categories}]", file=sys.stderr)
@@ -208,13 +224,14 @@ def main():
 
     cat_scores = category_scores(records)
 
-    ranked, partial = [], []
+    ranked, momentum_only, partial = [], [], []
     for t in records:
         score, present = composite(cat_scores[t], weights)
         row = {
             "ticker": t,
             "name": (meta.get(t) or {}).get("name"),
             "sector": (meta.get(t) or {}).get("sector"),
+            "currency": (meta.get(t) or {}).get("currency"),
             "composite": round(score, 3) if score is not None else None,
             "z": {c: (round(v, 2) if v is not None else None)
                   for c, v in cat_scores[t].items()},
@@ -223,12 +240,21 @@ def main():
                     ["pe", "earnings_yield", "profit_margin", "roe", "debt_to_equity",
                      "revenue_growth", "momentum_12m", "pct_of_52w_high", "price"]},
         }
-        if score is None:
-            row["reason"] = f"insufficient fundamentals (have {present or 'nothing'})"
-            partial.append(row)
-        else:
+        if score is not None:
             ranked.append(row)
+        elif cat_scores[t].get("momentum") is not None:
+            # No fundamentals (typically non-US: SEC is US-only, Yahoo fundamentals
+            # blocked) but a real price history exists — rank on momentum ALONE,
+            # in its own list. Momentum is the weakest single factor, so this is a
+            # research watchlist, NOT a factor-vetted shortlist. Never merged into
+            # the main composite ranking.
+            row["reason"] = "no fundamentals — momentum-only (weak signal, research manually)"
+            momentum_only.append(row)
+        else:
+            row["reason"] = f"insufficient data (have {present or 'nothing'})"
+            partial.append(row)
     ranked.sort(key=lambda r: r["composite"], reverse=True)
+    momentum_only.sort(key=lambda r: r["z"].get("momentum") or -9, reverse=True)
 
     result = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
@@ -238,11 +264,15 @@ def main():
         "method": ("cross-sectional z-scores per factor, clipped +/-3, "
                    "equal-weighted within category, weighted across categories; "
                    "relative ranking only, NOT a return forecast"),
+        "excluded_sectors": sorted(excluded_sectors),
+        "excluded_tickers": excluded,
         "coverage": {
             "ranked": len(ranked),
+            "momentum_only": len(momentum_only),
             "partial_data": len(partial),
         },
         "ranking": ranked[:args.top],
+        "momentum_only_ranking": momentum_only[:args.top],
         "partial_data": partial,
     }
     os.makedirs("data/rankings", exist_ok=True)
@@ -251,13 +281,21 @@ def main():
         json.dump(result, f, indent=2)
 
     print(f"\nWrote {fname}")
-    print(f"Ranked {len(ranked)} names; {len(partial)} set aside (no fundamentals).\n")
+    print(f"Ranked {len(ranked)} (full factors); {len(momentum_only)} momentum-only "
+          f"(no fundamentals); {len(partial)} set aside.\n")
     print(f"{'#':>3}  {'TICKER':<8}{'COMPOSITE':>10}  {'VAL':>5}{'QUAL':>6}{'GRW':>6}{'MOM':>6}  SECTOR")
+    def f(x): return f"{x:>5.2f}" if x is not None else "    ."
     for i, r in enumerate(ranked[:args.top], 1):
         z = r["z"]
-        def f(x): return f"{x:>5.2f}" if x is not None else "    ."
         print(f"{i:>3}  {r['ticker']:<8}{r['composite']:>10.3f}  "
               f"{f(z['value'])}{f(z['quality'])}{f(z['growth'])}{f(z['momentum'])}  {r['sector'] or ''}")
+    if momentum_only:
+        print(f"\nMomentum-only (no fundamentals — research watchlist, NOT factor-vetted):")
+        print(f"{'#':>3}  {'TICKER':<12}{'MOM z':>7}  {'12m%':>8}  CURRENCY")
+        for i, r in enumerate(momentum_only[:args.top], 1):
+            m12 = r["raw"].get("momentum_12m")
+            print(f"{i:>3}  {r['ticker']:<12}{f(r['z'].get('momentum')):>7}  "
+                  f"{(m12*100 if m12 is not None else 0):>7.1f}  {r.get('currency') or ''}")
 
 
 if __name__ == "__main__":

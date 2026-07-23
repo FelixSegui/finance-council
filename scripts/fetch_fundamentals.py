@@ -148,9 +148,37 @@ def fetch_sec_fundamentals(cik):
     }
 
 
+# Yahoo exchange suffixes we keep as-is; only US class-share dots (BRK.B) get
+# rewritten to dashes (BRK-B). Without this, SAP.DE would become SAP-DE (404).
+_EXCH_SUFFIXES = {
+    "ST", "DE", "AS", "PA", "CO", "MI", "SW", "MC", "L", "BR", "HE", "OL",
+    "VI", "LS", "IR", "F", "BE", "MU", "SG", "TO", "HK", "T", "AX", "NZ",
+}
+
+
 def _yahoo_symbol(ticker):
-    # Yahoo uses '-' where the S&P list uses '.', e.g. BRK.B -> BRK-B
-    return ticker.replace(".", "-") if not ticker.endswith(".ST") else ticker
+    if "." in ticker:
+        base, suf = ticker.rsplit(".", 1)
+        if suf.upper() in _EXCH_SUFFIXES:
+            return ticker  # foreign exchange-suffixed symbol — keep the dot
+        return ticker.replace(".", "-")  # US class share, e.g. BRK.B -> BRK-B
+    return ticker
+
+
+def _get_json_retry(url, timeout=20, tries=3):
+    """Yahoo throttles bursts by returning sporadic 404/429 (not just 429), so
+    retry transient HTTP errors with backoff before giving up."""
+    last = None
+    for i in range(tries):
+        try:
+            return _get_json(url, timeout=timeout)
+        except urllib.error.HTTPError as e:
+            last = e
+            if e.code in (404, 429, 500, 502, 503) and i < tries - 1:
+                time.sleep(0.6 * (i + 1))
+                continue
+            raise
+    raise last
 
 
 def fetch_price_momentum(ticker):
@@ -160,7 +188,7 @@ def fetch_price_momentum(ticker):
     url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}"
            "?range=1y&interval=1d")
     try:
-        data = _get_json(url, timeout=20)
+        data = _get_json_retry(url, timeout=20)
         res = data["chart"]["result"][0]
         closes = [c for c in res["indicators"]["quote"][0]["close"] if c is not None]
         if len(closes) < 30:

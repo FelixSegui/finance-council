@@ -1,0 +1,59 @@
+{
+  "screened_at_utc": "2026-07-27T22:48:36.010954+00:00",
+  "filters": [
+    "min_dividend_yield min 0.0"
+  ],
+  "universe_size": 16,
+  "passed": {},
+  "missing_data": {
+    "AAPL": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "AMZN": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "ASSA-B.ST": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "ATCO-A.ST": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "ERIC-B.ST": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "EVO.ST": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "GOOGL": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "HM-B.ST": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "INVE-B.ST": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "META": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "MSFT": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "NOVO-B.CO": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "NVDA": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "SAND.ST": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "SEB-A.ST": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "VOLV-B.ST": {
+      "reason": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    }
+  },
+  "failed": {}
+}

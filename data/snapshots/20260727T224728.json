@@ -1,0 +1,88 @@
+{
+  "fetched_at_utc": "2026-07-27T22:47:08.602047+00:00",
+  "equities": {
+    "AAPL": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "AMZN": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "GOOGL": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "MSFT": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "INVE-B.ST": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "ATCO-A.ST": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "VOLV-B.ST": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "ASSA-B.ST": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    }
+  },
+  "crypto": {},
+  "macro": {
+    "fed_funds_rate": {
+      "date": "2026-06-01",
+      "value": "3.63"
+    },
+    "us_10y_yield": {
+      "date": "2026-07-24",
+      "value": "4.69"
+    },
+    "us_2y_yield": {
+      "date": "2026-07-24",
+      "value": "4.33"
+    },
+    "dollar_index": {
+      "date": "2026-07-24",
+      "value": "120.7105"
+    },
+    "sek_per_usd": {
+      "date": "2026-07-24",
+      "value": "9.6998"
+    },
+    "usd_per_eur": {
+      "date": "2026-07-24",
+      "value": "1.1385"
+    },
+    "vix": {
+      "date": "2026-07-24",
+      "value": "18.58"
+    },
+    "us_cpi_yoy": {
+      "date": "2026-06-01",
+      "value": 3.73
+    },
+    "riksbank_policy_rate": {
+      "date": "2026-07-27",
+      "value": 1.75
+    },
+    "ecb_deposit_rate": {
+      "date": "2026-07-27",
+      "value": "2.25"
+    },
+    "se_cpi_yoy": {
+      "period": "2025M12",
+      "value": 0.3
+    },
+    "10y_2y_spread": 0.36,
+    "sek_per_eur": {
+      "date": "2026-07-24",
+      "value": 11.0432,
+      "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)"
+    }
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "value": 30,
+      "classification": "Fear"
+    }
+  }
+}

@@ -151,13 +151,13 @@
       "account_id": "avanza-isk",
       "instrument_type": "fund",
       "exposure_class": "equity",
-      "quantity": null,
+      "quantity": 0,
       "cost_basis_total_sek": 1000,
-      "market_value_sek": 1563,
-      "market_value_as_of": "2026-07-13",
+      "market_value_sek": 0,
+      "market_value_as_of": "2026-07-27",
       "annual_fee_pct": 2.6,
       "date_acquired": null,
-      "thesis": "SELL DECISION 2026-07-22 (user-directed): user will sell this holding in full. Reason: 2.6% total annual fee (6.7x Avanza Auto 3's 0.39%) is unjustifiable fee drag on a ~1,563 SEK position - lever #2. Sale is inside the ISK so NO capital-gains tax event (the +56.27% gain is tax-free here); only broker fees apply. Proceeds (~1,563 SEK, stale 2026-07-13 price) recycle into the deployment plan (secure tier). Was open question 14, now resolved. History: CONFIRMED from factsheet 2026-07-22 as an actively managed frontier/EM equity fund, >=80% frontier/EM, ESG exclusions, recommended holding period 5 years. Awaiting execution - update quantity to 0 and record proceeds when the sale is placed.",
+      "thesis": "SOLD 2026-07-27 (user-confirmed): full position sold, proceeds approximately 1,528 SEK (user-reported). Tax-free (ISK) - only broker fees apply. Proceeds recycled into avanza-isk cash per the profit-recycling rule - see that holding. History: sale decided 2026-07-22 on fee-drag grounds (2.6% total annual fee, 6.7x Avanza Auto 3's 0.39%), executed 2026-07-27.",
       "target_weight_pct": null
     },
     {
@@ -172,7 +172,7 @@
       "market_value_as_of": "2026-07-22",
       "annual_fee_pct": 2.5,
       "date_acquired": null,
-      "thesis": "TRIM DECISION 2026-07-22 (user-directed): trim to bring total crypto (ETH 12,500 + COIN 16,503.12 = 29,003, currently 14.2% of the 203,754 SEK investable base) down to the 10% high-risk cap (~20,375 SEK). Target trim ~8,628 SEK; practical execution = SELL 3 of 6 units (~8,251.56 SEK at the live 2,750.52/unit price), leaving 3 units (~8,251.56 SEK) and total crypto ~20,752 SEK (~10.2%). Tax-free (ISK, ordinary exchange sale - no issuer redemption fee). Proceeds recycle to the SECURE tier per the profit-recycling rule (add to the Avanza Global core). Trimming COIN rather than ETH is deliberate: ETH is self-custody (a sale is a 30% K4 event, cost basis unknown - open Q2), COIN inside the ISK is tax-clean. NOTE the tension: this cuts against the user's own active bullish BTC thesis (below) - user chose cap discipline over the thesis 2026-07-22. The certificate-vs-self-custody structural question (open Q13) is SEPARATE and still open. Awaiting execution - update quantity to 3 and record actual proceeds when placed. --- Original thesis (still held for the retained 3 units), user's own words: crypto is 'pretty low valued right now,' mid-2028 Bitcoin halving ahead, and there are 'positive buy-in signals now' - this is a cycle-position thesis for BTC exposure generally, not specific to the certificate structure. Separately, user has stated a structural preference for 'real bitcoin instead of certificates' going forward - see open_structural_questions for the certificate-vs-self-custody decision, not yet resolved. Factsheet CONFIRMED 2026-07-22: 2.5% annual management fee, tracks BTC ~1:1 before fees, no capital protection, high volatility/USD currency risk. Early redemption directly with the issuer incurs a 2% exit fee - does NOT apply to an ordinary exchange sale (broker fees apply instead). Live price CONFIRMED 2026-07-22 (user-reported from Avanza): market value 16,503.12 SEK (2,750.52/unit), up 36.39% (+4,403.12 SEK) since purchase (12,100 SEK cost basis for 6 units, consistent with the recorded 2,016.67/unit cost basis). Combined with the ETH wallet (12,500 SEK), total crypto exposure is now ~29,003.12 SEK - above both the 5% glidepath target and the 10% risk-tier cap; sizing decision pending, see open_structural_questions.",
+      "thesis": "HOLD DECISION (corrected 2026-07-27 - supersedes an inaccurate 2026-07-22 'TRIM' entry, see resolved_structural_questions): user confirmed 2026-07-27 that COIN-XBT.ST will NOT be trimmed - the full 6 units are kept as-is. The prior entry recorded here (a decision to sell 3 of 6 units to hit the 10% cap) does not match what the user actually decided. The real decision: let crypto's percentage weight decline naturally as new contributions grow the equity side of the portfolio ('eventually the split will even out'), not by selling BTC exposure now. Consequence: total crypto (ETH 12,500 + COIN 16,503.12 = 29,003.12 SEK) will likely sit above the 10% high-risk cap and the newly-adopted 10% crypto target for some time - this is accepted, expected to close via denominator growth, not a trim. The certificate-vs-self-custody structural question (open Q13) remains separate and unresolved. --- Original thesis (still held), user's own words: crypto is 'pretty low valued right now,' mid-2028 Bitcoin halving ahead, and there are 'positive buy-in signals now.' Separately, user has stated a structural preference for 'real bitcoin instead of certificates' going forward - see Q13. Factsheet CONFIRMED 2026-07-22: 2.5% annual management fee, tracks BTC ~1:1 before fees, no capital protection, high volatility/USD currency risk. Early redemption directly with the issuer incurs a 2% exit fee - does NOT apply to an ordinary exchange sale. Live price last confirmed 2026-07-22 (user-reported from Avanza): 16,503.12 SEK (2,750.52/unit) - stale, not refreshed since; equities fetch has been blocked by an org egress policy every sweep since 2026-07-20.",
       "target_weight_pct": null
     },
     {
@@ -182,11 +182,11 @@
       "instrument_type": "cash",
       "exposure_class": "cash",
       "currency": "SEK",
-      "quantity": 144864,
+      "quantity": 146392,
       "cost_basis_per_unit": null,
       "annual_fee_pct": null,
-      "date_acquired": "2026-07-22",
-      "thesis": "Not an investment - uninvested cash, CONFIRMED 2026-07-22 directly from Avanza (144,864 SEK available for purchase; supersedes the 145,559.26 SEK computed estimate from 2026-07-20). Awaiting fund/instrument selection per the adopted risk-tier framework (see investor_profile.json). Do not treat this as already deployed.",
+      "date_acquired": "2026-07-27",
+      "thesis": "Not an investment - uninvested cash. Base 144,864 SEK confirmed 2026-07-22 directly from Avanza, plus approximately 1,528 SEK (user-reported) Tundra sale proceeds landed 2026-07-27 and recycled here per the profit-recycling rule. Awaiting fund/instrument selection per the newly-adopted 85% equity / 5% cash / 10% crypto target (see investor_profile.json). Do not treat this as already deployed. Total not reconfirmed against a fresh Avanza statement since 2026-07-22 - verify at next full itemization.",
       "target_weight_pct": null
     },
     {
@@ -340,6 +340,8 @@
     "RESOLVED 2026-07-22: Open question 14 (Tundra Sustainable Frontier) - user decided to SELL in full (2.6% fee unjustifiable). Tax-free inside ISK. Proceeds recycle to secure tier. See the Tundra holding thesis. Awaiting execution.",
     "RESOLVED 2026-07-22: Open question 15 (equity/fixed-income split) - user directed near-zero fixed income and explicitly accepts total equity >70% ('the push of equity above 70% is fine'). The 50/40 equity/FI glidepath target is superseded by the tier framework; any ballast should be a very small short-duration/money-market sleeve, not traditional bonds. See investor_profile.json risk_tier_framework_proposed.fixed_income_stance. NOTE: this spawned new open question 16 (how to fill the 30% medium tier).",
     "RESOLVED 2026-07-22: Medium-tier fill (open Q16) - user chose PHASE-IN (option b): park the intended ~59,050 SEK in the Avanza Global secure core now, migrate into individual stocks one vetted position at a time (tax-free in ISK). 30% target stands; timing phased. Q16 reworded to track the migration.",
-    "RESOLVED 2026-07-22: Crypto cap - user chose to TRIM COIN-XBT.ST now (not soft-cap), ~8,628 SEK / 3 of 6 units, tax-free in ISK, proceeds to secure tier per profit-recycling rule, bringing crypto to ~10%. Chose cap discipline over the active BTC thesis. See COIN-XBT.ST holding. Certificate-vs-self-custody (open Q13) remains separate and open."
+    "RESOLVED 2026-07-22: Crypto cap - user chose to TRIM COIN-XBT.ST now (not soft-cap), ~8,628 SEK / 3 of 6 units, tax-free in ISK, proceeds to secure tier per profit-recycling rule, bringing crypto to ~10%. Chose cap discipline over the active BTC thesis. See COIN-XBT.ST holding. Certificate-vs-self-custody (open Q13) remains separate and open.",
+    "CORRECTED 2026-07-27: The 2026-07-22 entry immediately above was inaccurate. User clarified 2026-07-27 that the actual decision was to HOLD the full 6-unit COIN-XBT.ST position and let crypto's percentage weight decline naturally as the portfolio grows, not to sell. See COIN-XBT.ST holding thesis for the corrected record. PROCESS FAILURE, logged for the meta agent: a decision given by the user was mis-recorded in portfolio.json and then treated as ground truth by all four analysis lenses and the Council memo in the 2026-07-27 sweep (reports/2026-07-27-council-memo.md), which recommended executing a trim that the user says was never the actual decision. Same-day, a second instance of the same failure pattern surfaced: the user states they provided Swedbank fund's cost basis previously, but it was never written to this file (open question 3 remains unanswered as of 2026-07-27).",
+    "ADOPTED 2026-07-27: Council's proposed target allocation (85% equity / 5% cash-ballast / ~0% fixed income / 10% crypto, from the 2026-07-27 memo) approved by the user. See investor_profile.json reference_targets. Supersedes the prior null exposure-class targets; the 60/30/10 risk-tier framework's secure/medium split (~55pp/~30pp) still describes composition inside the 85% equity figure."
   ]
 }

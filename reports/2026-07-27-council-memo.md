@@ -268,3 +268,44 @@ unresolved, not confirmed-fine.
 until `journal` appends the session entry to `reports/SESSION_LOG.md` —
 an unlogged sweep is invisible to the next session and cannot be
 reconciled against future data.
+
+---
+
+## Amendment 2026-07-27 (same-day, post-memo user correction)
+
+Three corrections from the user after reading this memo:
+
+1. **Tundra sale executed** — sold in full, landing ~1,528 SEK (approximate,
+   user-reported). Recycled to `avanza-isk` cash per the profit-recycling
+   rule. `portfolio.json` updated.
+2. **COIN-XBT.ST will NOT be trimmed** — the user states this was the
+   actual decision made 2026-07-22 (let crypto's percentage weight decline
+   naturally as the equity side grows, not by selling BTC exposure). This
+   memo's headline calls #1 and #3, and this sweep's rebalancing-actions
+   section, recommended executing a trim on the strength of `portfolio.json`'s
+   2026-07-22 thesis text, which read as a firm "TRIM DECISION." That text did
+   not match what the user says was actually decided.
+   **PROCESS FAILURE, not a market-data problem:** a user decision was
+   mis-recorded (or a later correction was never written back), and every
+   downstream agent this sweep — valuation, macro-regime, thesis-review,
+   portfolio, and this Council synthesis — treated the mis-recorded version
+   as ground truth without any of them flagging the possibility that the
+   file could be wrong. `portfolio.json`'s COIN-XBT.ST thesis and
+   `resolved_structural_questions` have been corrected. Flagged for the
+   `meta` agent as a system defect: this system currently has no way to
+   detect that a "decided" action sitting unexecuted for 5+ days might mean
+   the record is wrong rather than that the user is simply slow to act —
+   worth a standing check ("if a decided action is still unexecuted after
+   N sweeps, ask the user to reconfirm it rather than re-flagging it as
+   overdue").
+3. **Swedbank fund cost basis — same failure pattern.** The user states this
+   was also provided previously; it is not present anywhere in
+   `portfolio.json`, and open question 3 has been carried forward,
+   unanswered, across every sweep since 2026-07-04. Re-requested from the
+   user this session.
+
+**Target allocation adopted.** The user approved the proposed 85% equity /
+5% cash-ballast / ~0% fixed income / 10% crypto target from this memo.
+Written to `investor_profile.json` `reference_targets` (`ADOPTED_2026-07-27`).
+The -30% drawdown-tolerance caveat from this memo's original text stands
+unresolved — no backtest has been run against this specific split yet.

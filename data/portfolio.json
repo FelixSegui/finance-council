@@ -1,7 +1,7 @@
 {
   "last_updated": "2026-07-22",
   "base_currency": "SEK",
-  "total_estimate_sek": "~227,703 (hb-main sparkonto 9,017 SEK + hb-checking 611 SEK, both counted by user toward the tax reserve, PLUS 1,750 SEK confirmed incoming within days, NOT yet included in this total; avanza-isk CONFIRMED 181,254 SEK live total including COIN-XBT.ST's live 2026-07-22 price, 144,864 SEK of it available for purchase; paypal 14,321.03 SEK converted at stale 2026-07-02 FX rates; swedbank-fund 10,000 still approximate/unitemized; eth-wallet 12,500 approximate). CRYPTO FLAG: identified crypto exposure ETH 12,500 + Avanza ISK BTC certificate 16,503.12 (live 2026-07-22) = ~29,003.12 SEK, still above both the 5% glidepath target and the 10% risk-tier cap - sizing/structure decision pending, see open_structural_questions #13.",
+  "total_estimate_sek": "~217,703 (hb-main sparkonto 9,017 SEK + hb-checking 611 SEK, both counted by user toward the tax reserve, PLUS 1,750 SEK confirmed incoming within days, NOT yet included in this total; avanza-isk CONFIRMED 181,254 SEK live total as of 2026-07-22 including COIN-XBT.ST's live price, 144,864 SEK of it available for purchase, PLUS ~1,528 SEK Tundra sale proceeds landed 2026-07-27 not yet reconfirmed in a fresh statement; paypal 14,321.03 SEK converted at stale 2026-07-02 FX rates; eth-wallet 12,500 approximate). CORRECTED 2026-07-27: removed a phantom ~10,000 SEK 'swedbank-fund' account that duplicated seb-fund under a mislabeled institution name - user confirmed no Swedbank account ever existed; see resolved_structural_questions. CRYPTO FLAG: identified crypto exposure ETH 12,500 + Avanza ISK BTC certificate 16,503.12 (live 2026-07-22) = ~29,003.12 SEK, above the newly-adopted 10% crypto target - user has directed this stays as-is (no trim), expected to even out as the equity side grows, see COIN-XBT.ST holding.",
   "cash": {
     "amount": 0,
     "currency": "SEK"
@@ -31,13 +31,6 @@
       "notes": "Confirmed ISK. CONFIRMED LIVE FIGURES 2026-07-22 (user-reported, from Avanza directly): total account value 181,254 SEK, of which 144,864 SEK is available for purchase (uninvested cash). This SUPERSEDES the 2026-07-20 computed estimate (181,114.26 SEK total / 145,559.26 SEK cash) - the ~140 SEK total variance and ~695 SEK cash-vs-computed variance likely reflect price movement on the 5 non-cash holdings (SHB-A.ST, INVE-A.ST, Avanza Auto 3, Tundra, COIN-XBT.ST) since their last fetched prices (2026-07-13) - equities fetch has been blocked by an org egress policy every sweep since 2026-07-20, so no fresh per-ticker breakdown is available; implied aggregate non-cash value is 181,254 - 144,864 = 36,390 SEK (up 835 SEK from the stale 35,555 SEK itemized total, unattributed to specific tickers pending a working equities fetch). The 144,864 SEK cash is UNDEPLOYED - pending fund/instrument selection per the adopted risk-tier framework (see investor_profile.json), not yet invested. Historical context (2026-07-13 itemization, now stale): YTD -10.32%, 1y -23.62%, 3y +48.27%, since-inception -33.88%; Sharpe -1.19, standard deviation 22.55%, CAGR -4.52% (securities only, pre-transfer). Tax-free allowance headroom = allowance threshold minus ALL ISK/KF savings capital across institutions - verify current threshold with Skatteverket (181,254 SEK is comfortably under the previously-cited ~300k SEK threshold, itself unverified this session)."
     },
     {
-      "account_id": "swedbank-fund",
-      "wrapper": "AF",
-      "institution": "Swedbank",
-      "approx_value_sek": 10000,
-      "notes": "Confirmed taxable - user paid capital gains tax on a prior sale. Childhood fund, likely low cost basis = high gain percentage but small absolute tax on full disposal. Prime candidate for move-to-ISK math: one-time tax hit vs permanent tax-free compounding. Cost basis still unknown (open question)."
-    },
-    {
       "account_id": "seb-fund",
       "wrapper": "AF",
       "institution": "SEB",
@@ -52,9 +45,10 @@
         { "fund": "SEB Sverigefond", "date": "2026-07-08", "cost_basis_sek": 517.10, "sale_proceeds_sek": 2841.90, "kapitalvinst_sek": 2324.80 },
         { "fund": "SEB Global Focus C USD (remaining)", "date": "2026-07-09", "cost_basis_sek": 472.50, "sale_proceeds_sek": 2187.99, "kapitalvinst_sek": 1715.49 },
         { "fund": "SEB Emerging Markets C USD Lux", "date": "2026-07-10", "cost_basis_sek": 250.00, "sale_proceeds_sek": 752.73, "kapitalvinst_sek": 502.73 },
-        { "fund": "SEB Emerging Marketsfond", "date": "2026-07-10", "cost_basis_sek": 2465.84, "sale_proceeds_sek": 2989.87, "kapitalvinst_sek": 524.03 }
+        { "fund": "SEB Emerging Marketsfond", "date": "2026-07-10", "cost_basis_sek": 2465.84, "sale_proceeds_sek": 2989.87, "kapitalvinst_sek": 524.03 },
+        { "fund": "SEB Osteuropafond", "date": null, "cost_basis_sek": 0.25, "sale_proceeds_sek": null, "kapitalvinst_sek": null, "note": "Surfaced 2026-07-27 (user-supplied cost-basis table) - not part of the original 7-fund breakdown above. Cost basis is immaterial (0.25 SEK). Sale date/proceeds unconfirmed - do not assume it was sold with the others. The ~81.71 SEK gap between the 7-fund sale-proceeds sum (17,300.72 SEK) and the confirmed final transferred figure (17,382.43 SEK) may be this fund's sale proceeds, but that is NOT confirmed - flag only, do not treat as fact." }
       ],
-      "notes": "FULLY TRANSFERRED to Avanza ISK 2026-07-20 (user-reported, same-session) - full 17,382.43 SEK sent, no separate tax reserve carved out here. Tax liability CONFIRMED 2026-07-20 from user-supplied 2026 tax-year figures (per-fund kapitalvinst, see tax_breakdown_by_fund): total realized gain 10,124.74 SEK across 7 fund lots sold 2026-07-08 to 2026-07-10, tax at 30% = 3,037.42 SEK. This SUPERSEDES and is materially higher than the earlier ~1,200 SEK placeholder (2026-07-07) - open question 4 is now RESOLVED with real numbers, see resolved_structural_questions. Combined with HB's confirmed 8,455.86 SEK tax, total owed is 11,493.28 SEK against the 9,000 SEK reserve at hb-main - a 2,493.28 SEK SHORTFALL, confirmed (not estimated). History: fully sold and settled 2026-07-13, final figure 17,382.43 SEK, all legs landed."
+      "notes": "FULLY TRANSFERRED to Avanza ISK 2026-07-20 (user-reported, same-session) - full 17,382.43 SEK sent, no separate tax reserve carved out here. Tax liability CONFIRMED 2026-07-20 from user-supplied 2026 tax-year figures (per-fund kapitalvinst, see tax_breakdown_by_fund): total realized gain 10,124.74 SEK across 7 fund lots sold 2026-07-08 to 2026-07-10, tax at 30% = 3,037.42 SEK. This SUPERSEDES and is materially higher than the earlier ~1,200 SEK placeholder (2026-07-07) - open question 4 is now RESOLVED with real numbers, see resolved_structural_questions. Combined with HB's confirmed 8,455.86 SEK tax, total owed is 11,493.28 SEK against the 9,000 SEK reserve at hb-main - a 2,493.28 SEK SHORTFALL, confirmed (not estimated). History: fully sold and settled 2026-07-13, final figure 17,382.43 SEK, all legs landed. CORRECTION 2026-07-27: this account was previously duplicated in this file under a separate, erroneous 'swedbank-fund' account (10,000 SEK, institution 'Swedbank') - user confirmed 2026-07-27 they never held a Swedbank account; that was a mislabeling of this same SEB fund. The phantom account and its holding have been removed - see resolved_structural_questions."
     },
     {
       "account_id": "eth-wallet",
@@ -190,19 +184,6 @@
       "target_weight_pct": null
     },
     {
-      "ticker": "TBD",
-      "name": "Swedbank fund",
-      "account_id": "swedbank-fund",
-      "instrument_type": "fund",
-      "exposure_class": "mixed",
-      "quantity": null,
-      "cost_basis_per_unit": null,
-      "annual_fee_pct": null,
-      "date_acquired": null,
-      "thesis": "Legacy childhood savings - no active thesis. Decision needed: keep, or realize small gain and move into ISK.",
-      "target_weight_pct": null
-    },
-    {
       "ticker": "CASH_SEK",
       "name": "SEB fund proceeds - fully transferred to Avanza ISK 2026-07-20",
       "account_id": "seb-fund",
@@ -315,7 +296,6 @@
   "open_structural_questions": [
     "1. Actual equity/bond split inside Auto 50 / Auto 75 (name-implied ~50/50 and ~75/25; confirm from factsheets - matters for exposure math until the exit executes).",
     "2. ETH cost basis and acquisition dates (needed for any future K4 math).",
-    "3. Swedbank fund: current gain vs cost basis (feeds move-to-ISK calculation).",
     "5. Any OTHER undisclosed accounts? SEB and PayPal both surfaced only in passing - a one-time full inventory (every bank/broker login) would close this class of surprise, and is now overdue (2 surprise accounts in one week).",
     "6. PayPal FX routing: what is PayPal's actual conversion fee/spread (do not assume ~3-4%, confirm from PayPal's fee schedule), and what is the cheapest path to get the 1,177.49 USD + 266.88 EUR (plus each ~750-1000 EUR recurring inflow) into SEK or into a wrapper without repeatedly paying it. Council ruling 2026-07-12: convert promptly via lowest-spread path, don't hold either currency waiting on FX levels - see reports/2026-07-07-council-memo.md Amendment 2026-07-12.",
     "9. No thesis recorded for Handelsbanken A, Investor A - both still TBD. Avanza Auto 3 and COIN-XBT.ST now have context/thesis (see their holdings entries); Tundra's status is tied to open question 14.",
@@ -342,6 +322,7 @@
     "RESOLVED 2026-07-22: Medium-tier fill (open Q16) - user chose PHASE-IN (option b): park the intended ~59,050 SEK in the Avanza Global secure core now, migrate into individual stocks one vetted position at a time (tax-free in ISK). 30% target stands; timing phased. Q16 reworded to track the migration.",
     "RESOLVED 2026-07-22: Crypto cap - user chose to TRIM COIN-XBT.ST now (not soft-cap), ~8,628 SEK / 3 of 6 units, tax-free in ISK, proceeds to secure tier per profit-recycling rule, bringing crypto to ~10%. Chose cap discipline over the active BTC thesis. See COIN-XBT.ST holding. Certificate-vs-self-custody (open Q13) remains separate and open.",
     "CORRECTED 2026-07-27: The 2026-07-22 entry immediately above was inaccurate. User clarified 2026-07-27 that the actual decision was to HOLD the full 6-unit COIN-XBT.ST position and let crypto's percentage weight decline naturally as the portfolio grows, not to sell. See COIN-XBT.ST holding thesis for the corrected record. PROCESS FAILURE, logged for the meta agent: a decision given by the user was mis-recorded in portfolio.json and then treated as ground truth by all four analysis lenses and the Council memo in the 2026-07-27 sweep (reports/2026-07-27-council-memo.md), which recommended executing a trim that the user says was never the actual decision. Same-day, a second instance of the same failure pattern surfaced: the user states they provided Swedbank fund's cost basis previously, but it was never written to this file (open question 3 remains unanswered as of 2026-07-27).",
-    "ADOPTED 2026-07-27: Council's proposed target allocation (85% equity / 5% cash-ballast / ~0% fixed income / 10% crypto, from the 2026-07-27 memo) approved by the user. See investor_profile.json reference_targets. Supersedes the prior null exposure-class targets; the 60/30/10 risk-tier framework's secure/medium split (~55pp/~30pp) still describes composition inside the 85% equity figure."
+    "ADOPTED 2026-07-27: Council's proposed target allocation (85% equity / 5% cash-ballast / ~0% fixed income / 10% crypto, from the 2026-07-27 memo) approved by the user. See investor_profile.json reference_targets. Supersedes the prior null exposure-class targets; the 60/30/10 risk-tier framework's secure/medium split (~55pp/~30pp) still describes composition inside the 85% equity figure.",
+    "RESOLVED / CLOSED 2026-07-27: Former open question 3 ('Swedbank fund cost basis') is now moot - user confirmed there never was a Swedbank account. The 'swedbank-fund' account (10,000 SEK, AF) was a mislabeled duplicate of seb-fund, created before SEB's details were itemized, and was never reconciled away once seb-fund was fully detailed. Removed from accounts/holdings and from total_estimate_sek (was ~227,703, now ~217,703). The user's SEB cost-basis figures given 2026-07-27 match the existing seb-fund.tax_breakdown_by_fund exactly for 7 of 8 funds, confirming that data was captured correctly under the right institution the first time - the error was purely the phantom duplicate entry, not lost cost-basis data. One genuinely new item surfaced: SEB Ostoeuropafond, cost basis 0.25 SEK, added to tax_breakdown_by_fund (immaterial size, sale details unconfirmed). PROCESS FAILURE, for the meta agent: a childhood-fund narrative got recorded twice under two different institution names early on (2026-07-04 era) and nothing in four sweeps' worth of portfolio/wrapper-efficiency analysis caught that 'Swedbank fund, 10,000 SEK, AF' and 'seb-fund, fully detailed, AF' told the same childhood-fund story - worth a standing cross-check for near-duplicate account narratives, not just per-account data completeness."
   ]
 }

@@ -17,6 +17,50 @@ Entry format:
 
 ---
 
+## 2026-07-27 (automated weekly sweep) — Two decided rebalancing actions (Tundra sale, COIN-XBT.ST trim) now 5 days overdue and unexecuted; valuation/macro-regime split on crypto direction ahead of tomorrow's FOMC; 154,678.56 SEK undeployed cash is now the single largest line item in the portfolio; ETH thesis still blank after ~10 sweeps; equities data outage confirmed persistent across 4 consecutive sweeps (07-13→07-27)
+- **Snapshot:** data/snapshots/20260727T060716.json — equities (SHB-A.ST, INVE-A.ST, COIN-XBT.ST) failed 403 again, same outage as 07-13/07-20/07-22; crypto (ETH) and macro fetched cleanly; sek_per_eur derived successfully this sweep.
+- **Calendar:** data/calendar/20260727-events.json — FOMC 2026-07-28/29 (tomorrow/day after), Riksbank 2026-08-20; earnings fetch also 403'd (same outage), so no fresh earnings dates for the three equity/certificate tickers.
+- **Memo:** reports/2026-07-27-council-memo.md
+- **Headline calls (from today's memo):**
+  - Execute the Tundra sale now (~1,563 SEK proceeds, decided 2026-07-22, 5 days overdue) → confidence High → horizon Medium
+  - Execute the COIN-XBT.ST trim, 3 of 6 units (~8,251.56 SEK, decided 2026-07-22, 5 days overdue, timing flexible around FOMC) → confidence Medium → horizon Medium
+  - Hold off adding new crypto money until FOMC clarity → confidence Low → horizon Short (tactical, capped per CLAUDE.md rule)
+  - Deploy the 154,678.56 SEK undeployed cash (144,864 existing + 9,814.56 pending tax-free proceeds from the two overdue trims) → confidence Medium → horizon Long
+  - Adopt the proposed 85% equity / 5% cash / ~0% fixed income / 10% crypto target allocation (replacing the stale null glidepath) → confidence Low-Medium → horizon Long — **proposal only, not written to any file**
+  - Write the ETH thesis this session (process fix, not a market call) → confidence High → horizon N/A
+- **User decisions:** none yet on today's open decisions (cash deployment split, Swedbank AF→ISK routing, COIN-XBT.ST certificate-vs-self-custody, ETH thesis content, whether to adopt the 85/5/0/10 target) — this was an automated/unattended sweep, awaiting user review of the memo.
+- **Reconciliation (against the 2026-07-22 entry immediately below):**
+  - **Tundra SELL decision (decided 07-22):** NOT EXECUTED. Per today's portfolio.json, the Tundra holding thesis still reads "Awaiting execution — update quantity to 0 and record proceeds when the sale is placed," and today's memo counts it as still-open action, 5 days overdue. Aged badly on execution speed, not on the merits of the call itself (2.6% fee logic is untouched and still correct).
+  - **COIN-XBT.ST trim decision (decided 07-22, 3 of 6 units, ~8,251.56 SEK at 2,750.52/unit):** NOT EXECUTED. Portfolio.json still shows quantity 6 (unchanged), and today's memo restates the same trim size at the same stale price, now flagged 5 days overdue and sitting directly in front of tomorrow's FOMC decision — the decision itself doesn't depend on FOMC, but the execution price now does, which is a real cost of the delay.
+  - **Risk-tier framework revision to 60/30/10 (decided 07-22):** HOLDS. Confirmed still current in investor_profile.json (`risk_tier_framework_proposed.status`) and used as the operating allocation control in today's scorecard (secure/medium/high-risk grading against 60/30/10). No reversal.
+  - **Fixed-income near-zero override (decided 07-22):** HOLDS. Still recorded in investor_profile.json (`fixed_income_stance`) and directly underlies today's proposed 85/5/0/10 target's ~0% fixed-income column. No new data challenges it this sweep.
+  - **Crypto cap trim decision (decided 07-22 — trim COIN now rather than soft-cap, cap discipline over the active BTC thesis):** the DECISION holds (nothing reversed it), but as above, EXECUTION has not happened — it is a decided, unexecuted action, not an open question.
+  - **Deployment of the 144,864 SEK cash (open decision as of 07-22, 3 options given):** UNCHANGED, still undecided, and the pool has grown — today's figure is 154,678.56 SEK once the two overdue trims' tax-free proceeds (9,814.56 SEK) are added, even though those proceeds are themselves not yet realized because the trims haven't executed. This is now flagged by today's memo as "the single largest open item in the entire portfolio, larger than every invested position combined" — a stronger framing than 07-22's.
+  - **Tax-reserve shortfall (open question 10 as of 07-22, ~115.28 SEK residual gap, user judged "enough for now"):** unchanged, not revisited this sweep, still low priority per portfolio.json.
+  - **Equities data blackout:** CONFIRMED PERSISTENT, not a fresh finding. This is now the 4th consecutive sweep (07-13, 07-20, 07-22, 07-27) with the same 403 on SHB-A.ST/INVE-A.ST/COIN-XBT.ST and the same earnings-calendar failure, same org egress policy block on Yahoo Finance/yfinance. This has moved well past "infrastructure event" into a standing system defect — no per-ticker equity price or fundamental data has been fetched fresh since 2026-07-13, meaning the geography/sector scorecard rows are now UNKNOWN two sweeps running (07-22 and 07-27) rather than just stale. Flag for `meta`: this needs an actual fix (alternate data source, policy exception, or a documented manual-update fallback), not another sweep of re-flagging the same 403.
+  - **Institution concentration (Avanza 79.6% as of 07-22 — WATCH, just under the 80% cap):** essentially unchanged this sweep at 79.6% of the 227,679 SEK grand total (88.9% on the narrower 203,754 SEK investable-base view) — same number, same grade, consistent application. Note both of today's live open decisions (deploying the 154,678.56 SEK cash into Avanza, and any Swedbank AF→ISK move) push this closer to or over the cap — flagged as a live tension in today's memo, not new information but sharper framing.
+  - **NEW this sweep — headline disagreement:** valuation and macro-regime read the same ETH data in opposite directions this week — valuation calls the 30-day momentum-outpacing-sentiment gap a re-accumulation signal, macro-regime calls the same setup (strong dollar 120.53, Fear & Greed 30, FOMC as a binary catalyst tomorrow) risk-off. Explicitly unresolved, confidence Low, not reconcilable by averaging — carried here as a fresh disagreement, not a reconciliation of a prior call.
+  - **ETH thesis (flagged unwritten every sweep since 2026-07-06):** UNCHANGED, now ~10 consecutive sweeps (2026-07-06, 07-07 x2, 07-12, 07-13 x2, 07-20, 07-22, 07-27) with fresh ETH market data fetched every time and the thesis field still literally "TBD." This is the system's longest-running unresolved item and is called out prominently in today's memo as "a process failure, not a market call."
+  - **Proposed 85/5/0/10 target allocation:** NEW this sweep (supersedes the still-null exposure-class glidepath) — explicitly a proposal only, not written to portfolio.json or investor_profile.json, and no backtest yet exists to confirm it fits the -30% drawdown tolerance. Do not treat as adopted.
+- **Open items carried forward:**
+  - Execute the Tundra sale (~1,563 SEK, verify price) — 5 days overdue.
+  - Execute the COIN-XBT.ST trim (3 of 6 units, ~8,251.56 SEK, verify price) — 5 days overdue, execute before or after FOMC per the memo's either-timing-acceptable framing, but do not let it slide into a third week.
+  - Recycle both trims' combined proceeds (9,814.56 SEK) to the secure tier once executed, per the adopted profit-recycling rule.
+  - Decide where the 154,678.56 SEK undeployed cash goes (3 options given in today's memo: lump-sum to Avanza ISK index fund, split across a second ISK provider, or phase over 2-3 sweeps around the FOMC/Riksbank windows) — largest open item in the portfolio.
+  - Write the ETH thesis — ~10 sweeps overdue, two options given (adopt the same cycle-position thesis as COIN-XBT.ST, or state explicit diversification-only with a written rebalance trigger).
+  - Decide on the proposed 85/5/0/10 target allocation — not adopted, needs a backtest against the -30% drawdown tolerance before it can be treated as more than a proposal.
+  - Swedbank fund AF→ISK (open question 3) — still blocked on cost basis; two options given (move to Avanza ISK vs. a different ISK provider to avoid compounding institution concentration) vs. leave in AF.
+  - COIN-XBT.ST certificate vs. self-custody BTC (open question 13) — still open, two options given.
+  - PayPal FX routing/conversion fee schedule (open question 6) — still unconfirmed, ~14,296.72 SEK sitting idle.
+  - hb-main tax-reserve residual ~115.28 SEK gap (open question 10) — low priority, monitor at deklaration prep.
+  - Full account inventory (open question 11) — still an open question whether hb-checking was the last surprise account.
+  - avanza-isk non-cash holdings (SHB-A.ST, INVE-A.ST, Avanza Auto 3, Tundra) still not re-itemized per-ticker since the equities fetch broke 2026-07-20 (open question 12) — blocked on the same outage flagged for `meta` below.
+  - Equities/earnings data fetch blocked by org egress policy (fc.yahoo.com 403) — now confirmed persistent across 4 consecutive sweeps (07-13, 07-20, 07-22, 07-27), a standing system defect, not a one-off — flag for the `meta` agent's backlog: needs an actual infrastructure decision (policy exception, alternate data source, or a documented manual-update fallback), not another sweep of re-flagging the same 403.
+  - Medium-tier migration (open question 16) — the ~59,050 SEK migration into individual quality stocks has not yet started; still parked in the secure core.
+  - REMINDER: if the portfolio was valued this sweep (today's memo cites a ~227,679 SEK grand total), append a row to `data/valuations.csv` (`date,total_value_sek,net_contribution_since_last_sek,note`) — performance tracking is dead without it. No row has been confirmed appended this session.
+
+---
+
 ## 2026-07-22 (user-triggered follow-up sweep) — HB/SEB transfer executed with real numbers, real SEB tax confirmed (3,037.42 SEK, not the ~1,200 SEK placeholder), risk-tier framework fully adopted with user's own definitions, deployment plan proposed for 144,864 SEK cash, Council memo format changed to separate open actions from open decisions with suggested options
 - **Snapshot:** data/snapshots/20260722T075654.json — equities (SHB-A.ST, INVE-A.ST, COIN-XBT.ST) failed again, 3rd consecutive sweep, confirmed non-transient (org egress policy block on fc.yahoo.com). Crypto (ETH) and macro fetched fresh.
 - **Calendar:** data/calendar/20260722-events.json — same equities-fetch failure for earnings; macro events unchanged (FOMC 2026-07-28/29, Riksbank 2026-08-20).
@@ -338,3 +382,4 @@ Entry format:
   - FOMC dates in macro_calendar.json need one-time verification (IMPROVEMENTS #2)
   - data/universe.json: verify Nordic crypto certificate tickers before adding them
   - data/valuations.csv is empty — log first valuation row at next sweep
+</content>

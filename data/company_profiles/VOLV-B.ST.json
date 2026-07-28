@@ -31,12 +31,12 @@
   },
 
   "insider_activity_cache": {
-    "source": "NONE - Finansinspektionen's actual tool (marknadssok.fi.se) blocked by egress policy, confirmed 2026-07-28. SEC EDGAR N/A (non-US ticker).",
-    "as_of_date": null,
-    "notes": "Not obtainable this session."
+    "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), fetched 2026-07-28, data/snapshots/20260728T122437.json. CAUTION: search term 'Volvo' also returned Volvo Car AB (Volvo Cars, a SEPARATE listed company, ~19 SEK/share) - those rows excluded below, only 'Volvo, AB ser. B' (AB Volvo, our actual ticker) counted.",
+    "as_of_date": "2026-07-28 (transactions through 2026-07-27)",
+    "notes": "Helena Stjernholm, Member of the Board of Directors, made 7 separate Acquisition transactions on 2026-07-27 (yesterday relative to this review) totaling ~1,300,000 shares at ~360 SEK/share - approximately 468M SEK. Single insider, but exceptional size and very recent - worth independent verification given the magnitude, reported here as-is from the register."
   },
 
   "review_history": [
-    { "date": "2026-07-28", "composite_score": 55, "dimensions_scored": 4, "provisional": true, "action": "Hold/further research - see swedish-equity-review output for full scoring breakdown. Revenue declining 2 straight fiscal years (552.8B FY2023 peak to 479.2B FY2025, -13%); high leverage (D/E 147); valuation more reasonable than Atlas Copco (P/E 20.5, forward 14.5)." }
+    { "date": "2026-07-28", "score": 60, "coverage_pct": 80, "dimensions_scored": "5 of 6 (Business Quality not scored)", "action": "Hold/further research. Dimension scores: Financial Strength 5, Valuation 7, Dividend Quality 6, Insider Activity 8, Growth Outlook 4. Tension worth noting: revenue declining 2 straight fiscal years (552.8B FY2023 peak to 479.2B FY2025, -13%) and high leverage (D/E 147), but valuation reasonable (P/E 20.5, forward 14.5) AND a very large, very recent single-insider purchase (~468M SEK, 2026-07-27)." }
   ]
 }

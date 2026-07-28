@@ -105,7 +105,7 @@
       "market_value_as_of": "2026-07-28",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "TBD - still no stated reason for holding (open question 9). swedish-equity-review 2026-07-28 (real fundamentals, see data/company_profiles/SHB-A.ST.json): provisional composite ~50/100 (4/6 dimensions - business quality and insider activity not scored, no source). P/E 12.0 looks cheap but PEG ~19.8 and analyst consensus 'underperform' both signal stalled growth priced into that low P/E, not a clean bargain. Live price 144.25-144.85/share (2026-07-28).",
+      "thesis": "TBD - still no stated reason for holding (open question 9). swedish-equity-review 2026-07-28 (full real data, see data/company_profiles/SHB-A.ST.json): Score 58/100, Coverage 80% (5/6, only Business Quality missing). REAL TENSION: fundamentals say caution (revenue declined FY2025, PEG ~19.8, analyst 'underperform') but Chairman Par Boman + board member Fredrik Lundberg both bought very heavily (>750M SEK combined) within 48 hours, 2026-07-20/21 - the two signals disagree, not averaged away. Live price 144.25-144.85/share (2026-07-28).",
       "target_weight_pct": null
     },
     {
@@ -120,7 +120,7 @@
       "market_value_as_of": "2026-07-28",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "TBD - still no stated reason for holding (open question 9). swedish-equity-review 2026-07-28 (real fundamentals, see data/company_profiles/INVE-A.ST.json): provisional composite ~59/100, LOW CONFIDENCE - Investor is a holding company, so Yahoo's margin/P/E figures are accounting artifacts of investment income, not a real operating-company read; the metric that actually matters (NAV discount/premium) wasn't obtained. Live price 397.00-400.80/share (2026-07-28).",
+      "thesis": "TBD - still no stated reason for holding (open question 9). swedish-equity-review 2026-07-28 (see data/company_profiles/INVE-A.ST.json): Score 58/100, Coverage only 45% (3/6) - LOWEST of any candidate reviewed, since Financial Strength/Growth Outlook are structurally not scored for a holding company without NAV discount/premium data (not obtained). Insider activity: sustained modest CEO/board buying over 6 months, a milder signal than SHB/Volvo's large one-off purchases. Live price 397.00-400.80/share (2026-07-28).",
       "target_weight_pct": null
     },
     {

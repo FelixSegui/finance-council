@@ -32,12 +32,12 @@
   },
 
   "insider_activity_cache": {
-    "source": "NONE - Finansinspektionen's actual tool (marknadssok.fi.se) blocked by egress policy, confirmed 2026-07-28. SEC EDGAR N/A (non-US ticker).",
-    "as_of_date": null,
-    "notes": "Not obtainable this session."
+    "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), fetched 2026-07-28, data/snapshots/20260728T122437.json. Search term 'Handelsbanken' matched cleanly.",
+    "as_of_date": "2026-07-28 (transactions through 2026-07-21)",
+    "notes": "TWO senior insiders bought heavily within 2 days: Par Boman (Chairman of the Board), 8 Acquisitions on 2026-07-21 totaling ~2,500,000 shares at ~140 SEK (~350M SEK); Fredrik Lundberg (Board Member - also chairs Lundbergforetagen, another candidate on this list), 2 Acquisitions on 2026-07-20 totaling 3,000,000 shares at ~139 SEK (~417M SEK). Combined: >5.5M shares, >750M SEK, two of the most senior people at the company, within a 48-hour window. This is exactly the 'multiple insiders buying' pattern the skill's rules weight most highly."
   },
 
   "review_history": [
-    { "date": "2026-07-28", "composite_score": 50, "dimensions_scored": 4, "provisional": true, "action": "Hold/further research - see swedish-equity-review output for full scoring breakdown. Low P/E (12.0) but PEG of ~20 and analyst consensus 'underperform' both signal the market expects little/no growth - a cheap stock, not necessarily a bargain. Revenue declined FY2025 vs FY2024." }
+    { "date": "2026-07-28", "score": 58, "coverage_pct": 80, "dimensions_scored": "5 of 6 (Business Quality not scored)", "action": "Hold/further research - REAL TENSION FLAGGED. Dimension scores: Financial Strength 6, Valuation 5, Dividend Quality 6, Insider Activity 9, Growth Outlook 3. Fundamentals say caution (revenue declined FY2025, PEG ~20, analyst consensus 'underperform') but insider activity says strong conviction from the Chairman AND a senior board member, both buying very large sums within 48 hours of each other, very recently (2026-07-20/21). These two signals genuinely disagree - flagged, not averaged away." }
   ]
 }

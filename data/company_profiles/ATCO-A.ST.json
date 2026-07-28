@@ -31,12 +31,12 @@
   },
 
   "insider_activity_cache": {
-    "source": "NONE - Finansinspektionen's actual tool (marknadssok.fi.se) blocked by egress policy, confirmed 2026-07-28. SEC EDGAR N/A (non-US ticker).",
-    "as_of_date": null,
-    "notes": "Not obtainable this session."
+    "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), fetched 2026-07-28, data/snapshots/20260728T122437.json. Search term 'Atlas Copco' matched issuer 'Atlas Copco Aktiebolag' cleanly, no name collisions.",
+    "as_of_date": "2026-07-28 (transactions through 2026-07-24)",
+    "notes": "10 recent transactions, mostly option exercises (low weight per skill rules) by Henrik Elmin and Sara Hagg Liljedal. One genuine open-market Acquisition: Kenneth Lagerborg, board member, 7,000 shares at 161.57 SEK (~1.13M SEK), 2026-06-09 - modest size, single insider."
   },
 
   "review_history": [
-    { "date": "2026-07-28", "composite_score": 50, "dimensions_scored": 4, "provisional": true, "action": "Hold/further research - see swedish-equity-review output for full scoring breakdown. Real gap: revenue declined FY2025 vs FY2024 (168.3B vs 176.8B SEK); valuation rich (P/E 35.8, P/B 8.98)." }
+    { "date": "2026-07-28", "score": 50, "coverage_pct": 80, "dimensions_scored": "5 of 6 (Business Quality not scored)", "action": "Hold/further research. Dimension scores: Financial Strength 7, Valuation 3, Dividend Quality 5, Insider Activity 5, Growth Outlook 5. Real gaps: revenue declined FY2025 vs FY2024 (168.3B vs 176.8B SEK); valuation rich (P/E 35.8, P/B 8.98); insider activity modest, not a strong signal either way." }
   ]
 }

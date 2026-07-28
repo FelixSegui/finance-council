@@ -32,12 +32,12 @@
   },
 
   "insider_activity_cache": {
-    "source": "NONE - Finansinspektionen's actual tool (marknadssok.fi.se) blocked by egress policy, confirmed 2026-07-28. SEC EDGAR N/A (non-US ticker).",
-    "as_of_date": null,
-    "notes": "Not obtainable this session. Also flagged: 'insider activity' is a structurally less meaningful signal for a holding company than an operating company."
+    "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), fetched 2026-07-28, data/snapshots/20260728T122437.json. Search term 'Investor' matched cleanly.",
+    "as_of_date": "2026-07-28 (transactions from 2026-02-02 through 2026-07-17)",
+    "notes": "Recurring, modest Acquisitions over 6 months by CEO Christian Cederholm (5 separate purchases, 1,250-3,000 shares each) plus smaller buys by 3 other board members (Jessica Haggstrom, Thomas Kidane, Jacob Lund, Yuriy Prilutskiy). Sustained small-scale insider buying, not a single dramatic event - a genuinely different pattern than Volvo/Handelsbanken's large one-off purchases."
   },
 
   "review_history": [
-    { "date": "2026-07-28", "composite_score": 59, "dimensions_scored": 4, "provisional": true, "action": "Hold/further research, LOW CONFIDENCE - see swedish-equity-review output. The generic operating-company rubric (margins, P/E, revenue growth) does not fit an investment holding company well; a real assessment needs Investor's NAV discount/premium and underlying-holdings performance, neither obtained this session." }
+    { "date": "2026-07-28", "score": 58, "coverage_pct": 45, "dimensions_scored": "3 of 6 (Valuation - flagged low-confidence, Dividend Quality, Insider Activity). Business Quality not scored (no source); Financial Strength and Growth Outlook NOT SCORED - structurally inapplicable for a holding company without NAV discount/premium data (not obtained).", "action": "Hold/further research, LOWEST COVERAGE of the four candidates reviewed 2026-07-28. Dimension scores: Valuation 6 (P/E 4.6 is a weak substitute for the real metric - NAV discount/premium - which was not obtained), Dividend Quality 5, Insider Activity 6 (sustained modest CEO/board buying over 6 months). To improve coverage: get Investor's own reported NAV per share and discount/premium from their investor relations page." }
   ]
 }

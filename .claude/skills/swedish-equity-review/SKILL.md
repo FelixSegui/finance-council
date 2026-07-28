@@ -47,18 +47,17 @@ every source is a free no-key API, so use this order and label accordingly:
    once a new quarterly report is out, static profile rarely) get
    re-requested. No file yet for a ticker means step 0 is a no-op, not an
    error - proceed to steps 1-4 and create one at the end (see State below).
-1. **Automated fetch (real API, no key)** - price AND full fundamentals
-   (P/E, P/S, P/B, margins, ROE/ROA, debt/equity, 4-year revenue history,
-   trailing FCF, sector/industry/country) via `scripts/fetch_market_data.py`
-   - RESOLVED 2026-07-28, works for both US and Nordic tickers. Free cash
-   flow is trailing-only, not a multi-year series (Yahoo's legacy module
+1. **Automated fetch (real API, no key)** - RESOLVED 2026-07-28, both
+   halves now work: price AND full fundamentals (P/E, P/S, P/B, margins,
+   ROE/ROA, debt/equity, 4-year revenue history, trailing FCF, sector/
+   industry/country) via `scripts/fetch_market_data.py --tickers ...`;
+   real insider transactions (person, position, nature, instrument,
+   volume, price, date) via the same script's
+   `--fi-issuers "Company Name,..."` flag (Finansinspektionen's
+   Insynsregister, searched by issuer NAME not ticker). Free cash flow is
+   trailing-only, not a multi-year series (Yahoo's legacy module
    limitation) - get a real FCF trend from a company's own cash flow
-   statement (PDF) if needed. Finansinspektionen's Insynsregister has
-   genuine free public insider-transaction data, but the actual tool lives
-   at `marknadssok.fi.se` (a different subdomain than `www.fi.se`, which is
-   unblocked) and is STILL blocked by this environment's egress policy as
-   of 2026-07-28 - treat insider activity as tier-2 (user-relayed) until
-   that specific subdomain is also allowed.
+   statement (PDF) if needed.
 2. **User-supplied, from a named source** - ask for the SPECIFIC missing
    figure and name where to find it (e.g. "EV/EBIT and ROIC - check the
    Nyckeltal table in the latest kvartalsrapport, or Avanza's company page
@@ -76,35 +75,96 @@ Industri/Affärsvärlden/Börskollen (editorial content, not structured data)
 are NOT automatable under this system's free/no-key rule - treat them as
 tier-2/3 (user relays what they read), not tier-1 fetches.
 
-## Method - per company
+## Step 0 - classify the entity before scoring anything
 
-For every Swedish holding in `portfolio.json` tagged as medium-tier, plus
-any `scout`-screened candidate under consideration, score each dimension
-0-10 and cite the source + date for every input number used:
+Not every candidate is an operating company, and forcing the same metrics
+onto all of them produces nonsense, not caution (found 2026-07-28: Yahoo
+reported an 85%+ "profit margin" for Investor AB, which means nothing -
+it's an artifact of investment-income accounting, not operating
+excellence). Classify first, then only pull the signals that genuinely
+apply to that type. Do not invent a "sales" figure for an entity that has
+none - that is a category error, not a missing-data gap, and it does not
+belong in the Missing Data section either (nothing to chase).
+
+- **Operating company** (Atlas Copco, Volvo, AstraZeneca, ABB, Alfa Laval,
+  Assa Abloy, Saab, ...): revenue/earnings growth, margins, ROIC/ROE, FCF
+  all apply directly, per the Financial Strength / Growth Outlook clusters
+  below.
+- **Bank / financial institution** (Handelsbanken, Swedbank, SEB): revenue,
+  ROE, and dividend metrics still apply, but gross/EBITDA margin do NOT
+  (Yahoo returns null/0 for these on banks - expected, not a data gap).
+  Prefer ROE and net interest income trend over margin fields.
+- **Holding/investment company** (Investor, Kinnevik, Latour,
+  Industrivärden): NO revenue-based metric applies - do not score or
+  report Yahoo's "revenue," "margins," or margin-derived ratios for these
+  at all, full stop, not even with a caveat attached. Financial Strength
+  and Growth Outlook instead draw on whatever of these are actually
+  obtainable: NAV per share and its trend, premium/discount to NAV,
+  the underlying portfolio's aggregate return, leverage/loan-to-value at
+  the holding-company level, and capital allocation track record (net
+  buying/selling of stakes, buybacks). None of this is fetched by
+  `fetch_market_data.py` today - it comes from the company's own investor
+  relations page/report (tier 2/3). If none of it is obtainable, Financial
+  Strength and Growth Outlook are simply NOT SCORED for that entity - do
+  not substitute the operating-company fields as a fallback.
+- **Fund** (Swedbank Robur Technology A, Spiltan Aktiefond Investmentbolag,
+  Avanza Auto 3, Tundra, ...): OUT OF SCOPE for this skill entirely. A
+  fund has no P/E, no single management team to assess, no PDMR insider
+  filings in the sense this skill scores, and Yahoo has no ticker for most
+  Swedish retail funds anyway (same pattern as Auto 3/Tundra all session).
+  Evaluate funds on fee (TER), category/benchmark, historical return vs.
+  that benchmark, top holdings and concentration/overlap with what's
+  already held - a fundamentally different, simpler checklist, not this
+  6-dimension rubric. If asked to review a fund, say so and use that
+  checklist instead of forcing this Method section onto it.
+
+## Method - per company (operating companies and holding companies)
+
+Score each dimension 0-10 and cite the source + date for every input
+number used. Business Quality, Valuation, Dividend Quality, and Insider
+Activity apply to both operating and holding companies (with the
+valuation caveat below for holdcos); Financial Strength and Growth Outlook
+are CLUSTERS whose actual inputs depend on the Step 0 classification, not
+a fixed field name:
 
 - **Business quality** - market position, competitive advantage, brand,
   pricing power, industry attractiveness, management quality.
-- **Financial strength** - revenue growth, earnings growth, EBIT margin,
-  free cash flow, ROIC, ROE, debt levels.
+- **Financial strength** (cluster - use whichever apply per Step 0):
+  operating company/bank → revenue growth, earnings growth, EBIT margin,
+  free cash flow, ROIC, ROE, debt levels. Holding company → NAV growth,
+  portfolio leverage, capital allocation track record - NOT revenue/margin.
 - **Valuation** - P/E, EV/EBIT, price/FCF, vs. own historical range, vs.
-  peers. Frame explicitly: "great company at a reasonable price, or average
+  peers, for an operating company. For a HOLDING COMPANY, P/E is a weak
+  substitute for the metric that actually matters (NAV discount/premium) -
+  report P/E only as a secondary data point, explicitly flagged low-
+  confidence, and prefer the NAV discount/premium if obtainable. Frame
+  explicitly either way: "great company at a reasonable price, or average
   company at a cheap price?"
 - **Dividend quality** - yield, dividend growth, payout ratio,
   sustainability, consistency. A growing dividend from a strong company
   outranks a high but fragile yield - do not default to highest-yield-wins.
-- **Insider activity** - insider buys/sells, transaction size relative to
-  ownership/salary, number of distinct insiders, timing vs. recent price
-  moves. Weight multiple insiders buying after a decline highly; weight
-  small or scheduled/incentive-program transactions low.
-- **Growth outlook** - market opportunity, expansion potential, structural
-  tailwinds, expected earnings trajectory.
+- **Insider activity** - insider buys/sells (via `--fi-issuers`, real data
+  since 2026-07-28), transaction size relative to ownership/salary, number
+  of distinct insiders, timing vs. recent price moves. Weight multiple
+  insiders buying after a decline highly; weight small or scheduled/
+  incentive-program transactions (option exercises, routine disposals) low.
+  For a holding company, the PDMR's OWN transactions in the holdco's stock
+  still count normally here - this dimension does not change for holdcos,
+  only Financial Strength/Growth Outlook/Valuation do.
+- **Growth outlook** (cluster, same split as Financial Strength): operating
+  company → revenue/earnings trajectory, market opportunity, structural
+  tailwinds. Holding company → NAV trend, underlying portfolio's aggregate
+  growth, capital redeployment activity - NOT a revenue growth percentage.
 
 **Missing-data / composite-confidence gate:** if a dimension has no real
-number behind it, mark it "not scored - missing: [specific field], get
-from: [named source]" and EXCLUDE it from the composite rather than
-guessing a mid-range value. Weights: Business Quality 20%, Financial
-Strength 20%, Valuation 20%, Insider Activity 15%, Dividend Quality 10%,
-Growth Outlook 15%.
+number behind it (genuinely missing, not structurally inapplicable per
+Step 0), mark it "not scored - missing: [specific field], get from:
+[named source]" and EXCLUDE it from the composite rather than guessing a
+mid-range value. A dimension ruled inapplicable by Step 0 (e.g. Financial
+Strength for a holdco with no NAV data obtained) is excluded the same way,
+just for a different reason - state which reason it was. Weights: Business
+Quality 20%, Financial Strength 20%, Valuation 20%, Insider Activity 15%,
+Dividend Quality 10%, Growth Outlook 15%.
 
 - If 5-6 of 6 dimensions are scored: compute the composite normally,
   rescaling weights over the scored dimensions if one is missing.
@@ -113,25 +173,6 @@ Growth Outlook 15%.
   weight) - provisional, not a full score."
 - If fewer than 3 of 6 are scored: do NOT compute a composite. List what's
   known, list what's missing and where to get it, stop there.
-
-## Holding/investment companies need different handling
-
-**FOUND 2026-07-28, real methodology gap:** the generic Financial Strength
-and Valuation rubric above assumes an operating company. For a holding/
-investment company (Investor, and by extension - per the user's own
-candidate list - Kinnevik, Latour, Industrivärden, Spiltan Aktiefond
-Investmentbolag), Yahoo's reported "revenue" and margins are an accounting
-artifact of investment income, not operating sales - an 85%+ "profit
-margin" means nothing like it does for an industrial company, and a very
-low P/E can be equally misleading since the metric that actually matters
-is the NAV discount/premium to the company's underlying holdings, which
-Yahoo does not report. When reviewing a holding company: score Financial
-Strength/Valuation with an explicit lower-confidence flag, note this
-caveat plainly in the output, and treat "insider activity" as a
-structurally weaker signal too (an investment company's own trading in
-its portfolio companies is a different thing than an operating company's
-management buying/selling their own stock). Do not silently apply the
-operating-company scoring as if it means the same thing.
 
 ## Categorization
 

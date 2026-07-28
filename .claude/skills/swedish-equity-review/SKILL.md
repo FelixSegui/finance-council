@@ -31,13 +31,22 @@ reasonable valuation, long-term shareholder returns.
 Avoid: momentum-chasing without valuation support, selling a good company
 purely because its price rose, decisions driven by short-term price moves.
 
-## Data sourcing - tiered, and be explicit about which tier a number came from
+## Data sourcing - check the cache first, then tier, and label the source
 
 This system's core rule (CLAUDE.md) still applies: never estimate a number
 from training knowledge. Every figure traces to a fetched file or a
 user-confirmed source, with a date. For Swedish equities specifically, not
 every source is a free no-key API, so use this order and label accordingly:
 
+0. **Check `data/company_profiles/<TICKER>.json` first** (see
+   `data/company_profiles/_SCHEMA.md`). If it exists and
+   `fundamentals_cache.next_report_expected` hasn't passed yet, reuse those
+   figures instead of re-asking the user or re-parsing a PDF - this is the
+   whole point of the cache. Only the fields actually due for refresh
+   (price/momentum every run, insider activity every run, fundamentals only
+   once a new quarterly report is out, static profile rarely) get
+   re-requested. No file yet for a ticker means step 0 is a no-op, not an
+   error - proceed to steps 1-4 and create one at the end (see State below).
 1. **Automated fetch (real API, no key)** - price/momentum via the Yahoo
    chart endpoint (`scripts/fetch_market_data.py`, works without a crumb -
    see the 2026-07-28 fix). Attempt Finansinspektionen's Insynsregister for
@@ -142,9 +151,14 @@ composite scores and current position sizes, not gut feel.
 
 ## State - write into the SAME files, no separate journal
 
-- Update each holding's `thesis` field in `portfolio.json` with the
-  current thesis, score, and date - do not create a parallel per-stock
-  record.
+- Update or create `data/company_profiles/<TICKER>.json` for every company
+  reviewed (per `_SCHEMA.md`) - this is where the reusable, slow-changing
+  research lives, so next month's review doesn't re-derive or re-ask for
+  it. Keep `review_history` entries one line each, not prose.
+- Update each holding's `thesis` field in `portfolio.json` with a SHORT
+  current thesis and a pointer to the company profile file for the detail
+  - do not duplicate the full research into portfolio.json too; that
+  defeats the point of caching it once.
 - Respect `open_structural_questions`/`resolved_structural_questions` -
   this skill's output is what resolves or updates open question #16.
 - Append a dated entry to `reports/SESSION_LOG.md` in the existing format

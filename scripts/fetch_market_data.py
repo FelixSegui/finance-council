@@ -25,6 +25,7 @@ import json
 import sys
 import urllib.request
 import urllib.error
+import urllib.parse
 import csv
 import io
 from datetime import datetime, timezone, timedelta
@@ -214,6 +215,49 @@ def fetch_equities(tickers):
                 out[t] = chart
             except Exception as e2:
                 out[t] = {"error": f"{e}; chart fallback also failed: {e2}"}
+    return out
+
+
+def fetch_insider_activity_fi(issuer_names, max_rows=15, timeout=15):
+    """Finansinspektionen's PDMR/Insynsregister - real, free, public insider
+    transaction data for Swedish-listed companies. Search is by issuer NAME
+    (not ticker). Returns the most recent transactions per issuer; the
+    register itself is unreviewed/self-reported by the notifying party -
+    FI states it cannot guarantee completeness or correctness."""
+    out = {}
+    for name in issuer_names:
+        try:
+            from bs4 import BeautifulSoup
+            params = urllib.parse.urlencode({
+                "SearchFunctionType": "Insyn",
+                "Utgivare": name,
+                "PageNumber": 1,
+            })
+            url = f"https://marknadssok.fi.se/Publiceringsklient/en-GB/Search/Search?{params}"
+            req = urllib.request.Request(url, headers=CHART_UA)
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                html = resp.read().decode()
+            soup = BeautifulSoup(html, "html.parser")
+            table = soup.find("table")
+            if table is None:
+                out[name] = {"transactions": [], "note": "no results table found - issuer name may not match FI's registry spelling"}
+                continue
+            rows = table.find_all("tr")
+            headers = [th.get_text(strip=True) for th in rows[0].find_all(["th", "td"])] if rows else []
+            transactions = []
+            for row in rows[1:1 + max_rows]:
+                cells = [td.get_text(strip=True) for td in row.find_all("td")]
+                if len(cells) == len(headers):
+                    transactions.append(dict(zip(headers, cells)))
+            out[name] = {
+                "transactions": transactions,
+                "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), free public data, "
+                          "attribution required. FI does not review notifications before publication - "
+                          "cannot guarantee completeness/correctness.",
+                "note": f"showing up to {max_rows} most recent transactions, may not be the full set",
+            }
+        except Exception as e:
+            out[name] = {"error": str(e)}
     return out
 
 
@@ -417,10 +461,15 @@ def main():
     parser.add_argument("--crypto", default="", help="Comma-separated CoinGecko coin ids")
     parser.add_argument("--insiders", action="store_true",
                         help="Also fetch SEC EDGAR Form 4 counts for US tickers")
+    parser.add_argument("--fi-issuers", default="",
+                        help="Comma-separated Swedish issuer names (not tickers) to fetch "
+                             "PDMR insider transactions for, from Finansinspektionen's "
+                             "Insynsregister, e.g. 'Atlas Copco,Volvo,Handelsbanken'")
     args = parser.parse_args()
 
     tickers = [t.strip() for t in args.tickers.split(",") if t.strip()]
     coins = [c.strip() for c in args.crypto.split(",") if c.strip()]
+    fi_issuers = [n.strip() for n in args.fi_issuers.split(",") if n.strip()]
 
     snapshot = {
         "fetched_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -431,6 +480,8 @@ def main():
     }
     if args.insiders and tickers:
         snapshot["insider_activity"] = fetch_insider_activity(tickers)
+    if fi_issuers:
+        snapshot["insider_activity_fi"] = fetch_insider_activity_fi(fi_issuers)
 
     import os
     import glob

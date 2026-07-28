@@ -1,0 +1,147 @@
+{
+  "fetched_at_utc": "2026-07-28T07:38:09.866893+00:00",
+  "equities": {
+    "AAPL": {
+      "price": 336.91,
+      "prev_close": 326.59,
+      "52w_high": 339.57,
+      "52w_low": 201.5,
+      "currency": "USD",
+      "fundamentals_error": "fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo crumb, unavailable this session: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "AMZN": {
+      "price": 231.39,
+      "prev_close": 249.99,
+      "52w_high": 278.56,
+      "52w_low": 196.0,
+      "currency": "USD",
+      "fundamentals_error": "fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo crumb, unavailable this session: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "GOOGL": {
+      "price": 326.56,
+      "prev_close": 351.99,
+      "52w_high": 408.61,
+      "52w_low": 187.82,
+      "currency": "USD",
+      "fundamentals_error": "fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo crumb, unavailable this session: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "MSFT": {
+      "price": 389.1,
+      "prev_close": 402.29,
+      "52w_high": 555.45,
+      "52w_low": 349.2,
+      "currency": "USD",
+      "fundamentals_error": "fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo crumb, unavailable this session: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "INVE-B.ST": {
+      "price": 406.2,
+      "prev_close": 402.1,
+      "52w_high": 407.85,
+      "52w_low": 278.7,
+      "currency": "SEK",
+      "fundamentals_error": "fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo crumb, unavailable this session: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "ATCO-A.ST": {
+      "price": 198.3,
+      "prev_close": 200.9,
+      "52w_high": 204.8,
+      "52w_low": 143.3,
+      "currency": "SEK",
+      "fundamentals_error": "fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo crumb, unavailable this session: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "VOLV-B.ST": {
+      "price": 363.2,
+      "prev_close": 348.0,
+      "52w_high": 363.5,
+      "52w_low": 244.9,
+      "currency": "SEK",
+      "fundamentals_error": "fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo crumb, unavailable this session: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "ASSA-B.ST": {
+      "price": 353.3,
+      "prev_close": 344.1,
+      "52w_high": 396.9,
+      "52w_low": 314.2,
+      "currency": "SEK",
+      "fundamentals_error": "fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo crumb, unavailable this session: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "SHB-A.ST": {
+      "price": 143.95,
+      "prev_close": 142.75,
+      "52w_high": 149.7,
+      "52w_low": 116.8,
+      "currency": "SEK",
+      "fundamentals_error": "fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo crumb, unavailable this session: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "INVE-A.ST": {
+      "price": 398.0,
+      "prev_close": 393.0,
+      "52w_high": 400.0,
+      "52w_low": 278.6,
+      "currency": "SEK",
+      "fundamentals_error": "fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo crumb, unavailable this session: Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "COIN-XBT.ST": {
+      "error": "Failed to perform, curl: (56) CONNECT tunnel failed, response 403. See https://curl.se/libcurl/c/libcurl-errors.html first for more details.; chart fallback also failed: HTTP Error 404: Not Found"
+    }
+  },
+  "crypto": {},
+  "macro": {
+    "fed_funds_rate": {
+      "date": "2026-06-01",
+      "value": "3.63"
+    },
+    "us_10y_yield": {
+      "date": "2026-07-24",
+      "value": "4.69"
+    },
+    "us_2y_yield": {
+      "date": "2026-07-24",
+      "value": "4.33"
+    },
+    "dollar_index": {
+      "date": "2026-07-24",
+      "value": "120.7105"
+    },
+    "sek_per_usd": {
+      "date": "2026-07-24",
+      "value": "9.6998"
+    },
+    "usd_per_eur": {
+      "date": "2026-07-24",
+      "value": "1.1385"
+    },
+    "vix": {
+      "date": "2026-07-24",
+      "value": "18.58"
+    },
+    "us_cpi_yoy": {
+      "date": "2026-06-01",
+      "value": 3.73
+    },
+    "riksbank_policy_rate": {
+      "date": "2026-07-28",
+      "value": 1.75
+    },
+    "ecb_deposit_rate": {
+      "date": "2026-07-28",
+      "value": "2.25"
+    },
+    "se_cpi_yoy": {
+      "period": "2025M12",
+      "value": 0.3
+    },
+    "10y_2y_spread": 0.36,
+    "sek_per_eur": {
+      "date": "2026-07-24",
+      "value": 11.0432,
+      "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)"
+    }
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "value": 29,
+      "classification": "Fear"
+    }
+  }
+}

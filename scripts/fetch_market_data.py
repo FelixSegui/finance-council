@@ -49,6 +49,38 @@ def _get_json(url, headers=None, timeout=15):
         return json.loads(resp.read().decode())
 
 
+CHART_UA = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+}
+
+
+def _fetch_chart_direct(ticker, timeout=15):
+    """Yahoo's v8 chart endpoint needs no crumb/cookie - only the
+    quoteSummary (fundamentals) endpoint requires one. Used as a fallback
+    when yfinance's own crumb negotiation fails (e.g. an egress policy
+    blocks fc.yahoo.com and guce.yahoo.com, the two hosts yfinance uses to
+    mint a crumb, while leaving the plain data hosts reachable). Returns
+    price fields only - fundamentals genuinely need the crumb and are not
+    obtainable this way."""
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?range=5d&interval=1d"
+    req = urllib.request.Request(url, headers=CHART_UA)
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        data = json.loads(resp.read().decode())
+    result = (data.get("chart") or {}).get("result")
+    if not result:
+        err = (data.get("chart") or {}).get("error")
+        raise ValueError(f"no chart result (error: {err})")
+    meta = result[0].get("meta", {})
+    return {
+        "price": meta.get("regularMarketPrice"),
+        "prev_close": meta.get("chartPreviousClose"),
+        "52w_high": meta.get("fiftyTwoWeekHigh"),
+        "52w_low": meta.get("fiftyTwoWeekLow"),
+        "currency": meta.get("currency"),
+    }
+
+
 def fetch_equities(tickers):
     try:
         import yfinance as yf
@@ -83,7 +115,20 @@ def fetch_equities(tickers):
                 "currency": fundamentals.get("currency"),
             }
         except Exception as e:
-            out[t] = {"error": str(e)}
+            # yfinance's crumb negotiation failed (commonly a blocked
+            # fc.yahoo.com/guce.yahoo.com egress policy, not a data problem).
+            # Fall back to the crumb-free chart endpoint for price only;
+            # fundamentals genuinely require a crumb and are marked as such,
+            # never silently guessed.
+            try:
+                chart = _fetch_chart_direct(t)
+                chart["fundamentals_error"] = (
+                    f"fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo "
+                    f"crumb, unavailable this session: {e}"
+                )
+                out[t] = chart
+            except Exception as e2:
+                out[t] = {"error": f"{e}; chart fallback also failed: {e2}"}
     return out
 
 

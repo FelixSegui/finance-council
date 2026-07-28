@@ -4,47 +4,40 @@
   "profile_last_updated": "2026-07-28",
 
   "static_profile": {
-    "business_description": "Swedish universal bank (Svenska Handelsbanken). Existing holding in this portfolio (1 share, avanza-isk) - see data/portfolio.json. No stated reason for holding on file (open question 9).",
-    "sector": "Financials - banking (unconfirmed via fetched data - general knowledge only, verify)",
-    "competitive_moat_notes": "Not yet assessed - needs a real source, not filled in from memory.",
+    "business_description": "Swedish universal bank (Svenska Handelsbanken). Existing holding in this portfolio (1 share, avanza-isk). No stated reason for holding on file (open question 9).",
+    "sector": "Financial Services / Banks - Diversified (Yahoo assetProfile, fetched 2026-07-28)",
+    "competitive_moat_notes": "Not yet assessed from a real source - NOT scored this review.",
     "management_notes": "Not yet assessed.",
     "last_reviewed": "2026-07-28"
   },
 
   "fundamentals_cache": {
-    "source": "STALE - P/E 11.95, direktavkastning 5.58% recorded 2026-07-13 from a live Avanza snapshot, not refreshed since (Yahoo fundamentals blocked, Finansinspektionen blocked).",
-    "as_of_period": "2026-07-13 snapshot",
-    "extracted_date": "2026-07-13",
-    "next_report_expected": null,
+    "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+    "as_of_period": "trailing/most recent fiscal year 2025-12-31",
+    "extracted_date": "2026-07-28",
+    "next_report_expected": "check Handelsbanken's own IR calendar - not confirmed this session",
     "figures": {
-      "trailing_pe": 11.95,
-      "direktavkastning_pct": 5.58,
-      "ebit_margin_pct": null,
-      "roic_pct": null,
-      "roe_pct": null,
-      "revenue_growth_pct": null,
-      "fcf_sek": null,
-      "net_debt_to_ebitda": null,
-      "payout_ratio_pct": null
+      "trailing_pe": 12.04, "forward_pe": 12.63, "price_to_sales": 5.13, "price_to_book": 1.55, "peg_ratio": 19.76,
+      "dividend_yield_pct": 5.54, "payout_ratio_pct": 66.83, "beta": 0.503,
+      "gross_margin_pct": null, "operating_margin_pct": 50.09, "ebitda_margin_pct": null, "profit_margin_pct": 41.73,
+      "roe_pct": 12.75, "roa_pct": 0.63, "debt_to_equity": null,
+      "note_on_bank_metrics": "gross/EBITDA margin and D/E are not meaningful/reported for banks in Yahoo's generic template - a bank's balance sheet isn't structured like an industrial company's. Do not treat the nulls as missing data to chase.",
+      "revenue_history_sek_m": [
+        {"fy": "2022-12-31", "revenue": 50249}, {"fy": "2023-12-31", "revenue": 62249},
+        {"fy": "2024-12-31", "revenue": 62345}, {"fy": "2025-12-31", "revenue": 56796}
+      ],
+      "free_cashflow_sek": null,
+      "analyst_recommendation": "underperform"
     }
   },
 
-  "price_cache": {
-    "source": "Yahoo chart endpoint (fetch_market_data.py), data/snapshots/20260728T112101.json",
-    "as_of": "2026-07-28",
-    "price_sek": 144.25,
-    "prev_close_sek": 142.75,
-    "52w_high_sek": 149.7,
-    "52w_low_sek": 116.8
-  },
-
   "insider_activity_cache": {
-    "source": "NONE - Finansinspektionen (www.fi.se) blocked by this environment's egress policy, confirmed 2026-07-28.",
+    "source": "NONE - Finansinspektionen's actual tool (marknadssok.fi.se) blocked by egress policy, confirmed 2026-07-28. SEC EDGAR N/A (non-US ticker).",
     "as_of_date": null,
     "notes": "Not obtainable this session."
   },
 
   "review_history": [
-    { "date": "2026-07-28", "composite_score": null, "dimensions_scored": 1, "action": "diagnostic test run - only stale P/E + dividend yield (2026-07-13) plus fresh price; insufficient for a composite" }
+    { "date": "2026-07-28", "composite_score": 50, "dimensions_scored": 4, "provisional": true, "action": "Hold/further research - see swedish-equity-review output for full scoring breakdown. Low P/E (12.0) but PEG of ~20 and analyst consensus 'underperform' both signal the market expects little/no growth - a cheap stock, not necessarily a bargain. Revenue declined FY2025 vs FY2024." }
   ]
 }

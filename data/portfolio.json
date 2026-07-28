@@ -105,7 +105,7 @@
       "market_value_as_of": "2026-07-28",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "TBD - still no stated reason for holding (open question 9). Live price 144.25-144.85/share (2026-07-28, fetched + user statement), +12% since purchase. Research cache: data/company_profiles/SHB-A.ST.json (fundamentals stale since 2026-07-13, diagnostic swedish-equity-review test run 2026-07-28 - insufficient data for a composite score).",
+      "thesis": "TBD - still no stated reason for holding (open question 9). swedish-equity-review 2026-07-28 (real fundamentals, see data/company_profiles/SHB-A.ST.json): provisional composite ~50/100 (4/6 dimensions - business quality and insider activity not scored, no source). P/E 12.0 looks cheap but PEG ~19.8 and analyst consensus 'underperform' both signal stalled growth priced into that low P/E, not a clean bargain. Live price 144.25-144.85/share (2026-07-28).",
       "target_weight_pct": null
     },
     {
@@ -120,7 +120,7 @@
       "market_value_as_of": "2026-07-28",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "TBD - still no stated reason for holding (open question 9). Live price 397.00-400.80/share (2026-07-28, fetched + user statement), +38% since purchase. Research cache: data/company_profiles/INVE-A.ST.json (fundamentals stale since 2026-07-13, diagnostic swedish-equity-review test run 2026-07-28 - insufficient data for a composite score).",
+      "thesis": "TBD - still no stated reason for holding (open question 9). swedish-equity-review 2026-07-28 (real fundamentals, see data/company_profiles/INVE-A.ST.json): provisional composite ~59/100, LOW CONFIDENCE - Investor is a holding company, so Yahoo's margin/P/E figures are accounting artifacts of investment income, not a real operating-company read; the metric that actually matters (NAV discount/premium) wasn't obtained. Live price 397.00-400.80/share (2026-07-28).",
       "target_weight_pct": null
     },
     {

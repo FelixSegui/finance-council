@@ -17,6 +17,22 @@ Entry format:
 
 ---
 
+## 2026-07-28 (same day, follow-up) — Yahoo fundamentals FIXED after user unblocked network policy; real swedish-equity-review scoring run on 4 companies; holding-company methodology gap found
+- **Snapshot:** data/snapshots/20260728T115647.json — full real fundamentals for ATCO-A.ST, VOLV-B.ST, SHB-A.ST, INVE-A.ST (P/E, P/S, P/B, PEG, margins, ROE/ROA, debt/equity, 4-year revenue history, trailing FCF, sector/industry).
+- **Infrastructure:** user unblocked fc.yahoo.com/guce.yahoo.com/www.fi.se in the environment's network policy. yfinance's own client still failed (curl_cffi TLS-fingerprint impersonation gets connection-reset by Yahoo's anti-bot layer) - rewrote `fetch_equities()` to talk to Yahoo's quoteSummary API directly via plain urllib + a cookie jar, which works reliably. Finansinspektionen still doesn't work: the real tool is at `marknadssok.fi.se`, a different subdomain than the one unblocked, confirmed still blocked via the proxy log.
+- **Real scoring run (ATCO-A.ST, VOLV-B.ST, SHB-A.ST, INVE-A.ST), 4 of 6 dimensions scored (Business Quality and Insider Activity had no source, correctly left unscored) - all composites PROVISIONAL:**
+  - Atlas Copco (ATCO-A.ST): ~50/100. Rich valuation (P/E 35.8, P/B 8.98), revenue declined FY2025 vs FY2024.
+  - Volvo (VOLV-B.ST): ~55/100. Revenue declining 2 straight fiscal years (-13% off the FY2023 peak), high leverage (D/E 147), but valuation more reasonable (P/E 20.5, forward 14.5).
+  - Handelsbanken A (SHB-A.ST, existing holding): ~50/100. P/E 12.0 looks cheap but PEG ~19.8 and analyst consensus "underperform" both signal stalled growth priced into that low P/E.
+  - Investor A (INVE-A.ST, existing holding): ~59/100, LOW CONFIDENCE - see methodology gap below.
+  - **None reached "Strong Buy" (needs a non-provisional composite above 80) - all four categorized Hold/further research needed**, given 2 whole dimensions are unscored and the scored ones show real flags (rich valuation, declining revenue, or stalled-growth signals) rather than clean buys.
+- **Real methodology gap found and fixed in the skill definition:** Investor A is a holding/investment company - Yahoo's reported "revenue" and 80%+ margins are an investment-income accounting artifact, not comparable to an operating company, and its P/E is a poor substitute for the metric that actually matters (NAV discount/premium, not obtained this session). Same issue will apply to Kinnevik, Latour, Industrivarden, and Spiltan Aktiefond Investmentbolag from the user's own candidate list. Added an explicit "Holding/investment companies need different handling" section to the skill.
+- **User decisions:** none yet - this was a diagnostic/build session, no purchase decided. User confirmed network policy update themselves (their own environment config, not something done from inside the session).
+- **Reconciliation:** N/A - same-day follow-up to the entry immediately below, not a new sweep cycle.
+- **Open items carried forward:** all open items from the entry below still stand, PLUS: this system now has a real, working fundamentals pipeline - the earlier entry's framing ("cannot produce a real composite score for any Swedish equity") is SUPERSEDED, was accurate only until this fix. Still open: Finansinspektionen needs marknadssok.fi.se specifically allowed (one more domain); no company yet has a real Business Quality or Insider Activity score; the 26,400.30 SEK medium/high-risk allocation decision is still not made - none of today's four companies scored well enough to be an obvious pick, and none of the user's originally-proposed candidates (Swedbank Robur Technology A, Spiltan Aktiefond Investmentbolag) have been run through this yet.
+
+---
+
 ## 2026-07-28 — swedish-equity-review skill built and diagnostic-tested; Avanza Global (119,999 SEK) and Tundra sale (1,535 SEK) confirmed executed; yfinance root cause diagnosed and partially fixed; Finansinspektionen confirmed blocked; portfolio.json streamlined
 - **Snapshot:** data/snapshots/20260728T112101.json (ATCO-A.ST, VOLV-B.ST, SHB-A.ST, INVE-A.ST price/momentum fetched cleanly via the new chart-endpoint fallback; fundamentals still crumb-gated/unavailable).
 - **Memo:** none — this was a build/diagnostic session, not a Council sweep.

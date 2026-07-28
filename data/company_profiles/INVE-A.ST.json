@@ -4,47 +4,40 @@
   "profile_last_updated": "2026-07-28",
 
   "static_profile": {
-    "business_description": "Swedish investment company (Wallenberg sphere) - holds stakes in listed companies (e.g. Atlas Copco, AstraZeneca, ABB, Ericsson among others - exact current holdings unconfirmed, verify from Investor's own factsheet) plus unlisted/patient-capital investments. Existing holding in this portfolio (5 shares, avanza-isk) - see data/portfolio.json. No stated reason for holding on file (open question 9).",
-    "sector": "Financials - investment company (unconfirmed via fetched data - general knowledge only, verify)",
-    "competitive_moat_notes": "Not yet assessed - needs a real source, not filled in from memory.",
+    "business_description": "Swedish investment company (Wallenberg sphere) - holds stakes in listed companies plus unlisted/patient-capital investments; exact current holdings unconfirmed, verify from Investor's own factsheet. Existing holding in this portfolio (5 shares, avanza-isk). No stated reason for holding on file (open question 9).",
+    "sector": "Financial Services / Asset Management (Yahoo assetProfile, fetched 2026-07-28)",
+    "competitive_moat_notes": "Not yet assessed from a real source - NOT scored this review.",
     "management_notes": "Not yet assessed.",
     "last_reviewed": "2026-07-28"
   },
 
   "fundamentals_cache": {
-    "source": "STALE - P/E 6.22, direktavkastning 1.45% recorded 2026-07-13 from a live Avanza snapshot, not refreshed since (Yahoo fundamentals blocked, Finansinspektionen blocked).",
-    "as_of_period": "2026-07-13 snapshot",
-    "extracted_date": "2026-07-13",
-    "next_report_expected": null,
+    "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+    "as_of_period": "trailing/most recent fiscal year 2025-12-31",
+    "extracted_date": "2026-07-28",
+    "next_report_expected": "check Investor AB's own IR calendar - not confirmed this session",
     "figures": {
-      "trailing_pe": 6.22,
-      "direktavkastning_pct": 1.45,
-      "ebit_margin_pct": null,
-      "roic_pct": null,
-      "roe_pct": null,
-      "revenue_growth_pct": null,
-      "fcf_sek": null,
-      "net_debt_to_ebitda": null,
-      "payout_ratio_pct": null
+      "trailing_pe": 4.62, "forward_pe": null, "price_to_sales": 3.70, "price_to_book": 1.12, "peg_ratio": 4.91,
+      "dividend_yield_pct": 1.41, "payout_ratio_pct": 6.36, "beta": 0.778,
+      "gross_margin_pct": 89.44, "operating_margin_pct": 88.70, "ebitda_margin_pct": 82.92, "profit_margin_pct": 80.07,
+      "roe_pct": 27.25, "roa_pct": 15.07, "debt_to_equity": 11.59,
+      "note_on_holding_company_metrics": "CRITICAL CAVEAT: margins and 'revenue' here are a holding-company accounting artifact (investment income/dividends received, not operating sales), not comparable to an operating company like Atlas Copco or Volvo - do not read the 80%+ margins as operational excellence. Likewise P/E (4.62) is a poor substitute for the metric that actually matters for an investment company - NAV discount/premium to its underlying holdings' market value - which Yahoo does not report and was not obtained this session. Score treat with lower confidence than the other three companies for exactly this reason.",
+      "revenue_history_sek_m": [
+        {"fy": "2022-12-31", "revenue": 51812}, {"fy": "2023-12-31", "revenue": 71862},
+        {"fy": "2024-12-31", "revenue": 75681}, {"fy": "2025-12-31", "revenue": 64826}
+      ],
+      "free_cashflow_sek": 166005374976,
+      "analyst_recommendation": "buy"
     }
   },
 
-  "price_cache": {
-    "source": "Yahoo chart endpoint (fetch_market_data.py), data/snapshots/20260728T112101.json",
-    "as_of": "2026-07-28",
-    "price_sek": 397.0,
-    "prev_close_sek": 393.0,
-    "52w_high_sek": 400.0,
-    "52w_low_sek": 278.6
-  },
-
   "insider_activity_cache": {
-    "source": "NONE - Finansinspektionen (www.fi.se) blocked by this environment's egress policy, confirmed 2026-07-28.",
+    "source": "NONE - Finansinspektionen's actual tool (marknadssok.fi.se) blocked by egress policy, confirmed 2026-07-28. SEC EDGAR N/A (non-US ticker).",
     "as_of_date": null,
-    "notes": "Not obtainable this session. Note: 'insider' activity for an investment company like Investor is a less meaningful signal than for an operating company - worth reconsidering how much weight this dimension should carry for holding-company candidates specifically, flagged for the skill's own calibration."
+    "notes": "Not obtainable this session. Also flagged: 'insider activity' is a structurally less meaningful signal for a holding company than an operating company."
   },
 
   "review_history": [
-    { "date": "2026-07-28", "composite_score": null, "dimensions_scored": 1, "action": "diagnostic test run - only stale P/E + dividend yield (2026-07-13) plus fresh price; insufficient for a composite" }
+    { "date": "2026-07-28", "composite_score": 59, "dimensions_scored": 4, "provisional": true, "action": "Hold/further research, LOW CONFIDENCE - see swedish-equity-review output. The generic operating-company rubric (margins, P/E, revenue growth) does not fit an investment holding company well; a real assessment needs Investor's NAV discount/premium and underlying-holdings performance, neither obtained this session." }
   ]
 }

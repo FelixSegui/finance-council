@@ -4,45 +4,39 @@
   "profile_last_updated": "2026-07-28",
 
   "static_profile": {
-    "business_description": "Swedish manufacturer of trucks, buses, construction equipment, and marine/industrial engines (AB Volvo - distinct from Volvo Cars, spun off separately). Long-standing Nasdaq Stockholm large-cap, not yet held in this portfolio (universe.json candidate).",
-    "sector": "Industrials (unconfirmed via fetched data - general knowledge only, verify)",
-    "competitive_moat_notes": "Not yet assessed - needs a real source, not filled in from memory.",
+    "business_description": "Swedish manufacturer of trucks, buses, construction equipment, and marine/industrial engines (AB Volvo, distinct from Volvo Cars). Not yet held in this portfolio (universe.json candidate).",
+    "sector": "Industrials / Farm & Heavy Construction Machinery (Yahoo assetProfile, fetched 2026-07-28)",
+    "competitive_moat_notes": "Not yet assessed from a real source - NOT scored this review.",
     "management_notes": "Not yet assessed.",
     "last_reviewed": "2026-07-28"
   },
 
   "fundamentals_cache": {
-    "source": "NONE - Yahoo fundamentals blocked (crumb-gated, egress policy), Finansinspektionen blocked (egress policy). No fundamentals obtained yet.",
-    "as_of_period": null,
-    "extracted_date": null,
-    "next_report_expected": null,
+    "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+    "as_of_period": "trailing/most recent fiscal year 2025-12-31",
+    "extracted_date": "2026-07-28",
+    "next_report_expected": "check Volvo's own IR calendar - not confirmed this session",
     "figures": {
-      "ebit_margin_pct": null,
-      "roic_pct": null,
-      "roe_pct": null,
-      "revenue_growth_pct": null,
-      "fcf_sek": null,
-      "net_debt_to_ebitda": null,
-      "payout_ratio_pct": null
+      "trailing_pe": 20.52, "forward_pe": 14.53, "price_to_sales": 1.56, "price_to_book": 3.86, "peg_ratio": 1.43,
+      "dividend_yield_pct": 2.39, "payout_ratio_pct": 48.24, "beta": 0.969,
+      "gross_margin_pct": 24.36, "operating_margin_pct": 10.56, "ebitda_margin_pct": 11.91, "profit_margin_pct": 7.60,
+      "roe_pct": 20.88, "roa_pct": 4.51, "debt_to_equity": 147.35,
+      "revenue_history_sek_m": [
+        {"fy": "2022-12-31", "revenue": 473479}, {"fy": "2023-12-31", "revenue": 552764},
+        {"fy": "2024-12-31", "revenue": 526816}, {"fy": "2025-12-31", "revenue": 479183}
+      ],
+      "free_cashflow_sek": 24019875840,
+      "analyst_recommendation": "buy"
     }
   },
 
-  "price_cache": {
-    "source": "Yahoo chart endpoint (fetch_market_data.py), data/snapshots/20260728T112101.json",
-    "as_of": "2026-07-28",
-    "price_sek": 362.0,
-    "prev_close_sek": 348.0,
-    "52w_high_sek": 364.3,
-    "52w_low_sek": 244.9
-  },
-
   "insider_activity_cache": {
-    "source": "NONE - Finansinspektionen (www.fi.se) blocked by this environment's egress policy, confirmed 2026-07-28.",
+    "source": "NONE - Finansinspektionen's actual tool (marknadssok.fi.se) blocked by egress policy, confirmed 2026-07-28. SEC EDGAR N/A (non-US ticker).",
     "as_of_date": null,
     "notes": "Not obtainable this session."
   },
 
   "review_history": [
-    { "date": "2026-07-28", "composite_score": null, "dimensions_scored": 0, "action": "diagnostic test run - price only, no fundamentals/dividend/insider data available" }
+    { "date": "2026-07-28", "composite_score": 55, "dimensions_scored": 4, "provisional": true, "action": "Hold/further research - see swedish-equity-review output for full scoring breakdown. Revenue declining 2 straight fiscal years (552.8B FY2023 peak to 479.2B FY2025, -13%); high leverage (D/E 147); valuation more reasonable than Atlas Copco (P/E 20.5, forward 14.5)." }
   ]
 }

@@ -114,6 +114,25 @@ Growth Outlook 15%.
 - If fewer than 3 of 6 are scored: do NOT compute a composite. List what's
   known, list what's missing and where to get it, stop there.
 
+## Holding/investment companies need different handling
+
+**FOUND 2026-07-28, real methodology gap:** the generic Financial Strength
+and Valuation rubric above assumes an operating company. For a holding/
+investment company (Investor, and by extension - per the user's own
+candidate list - Kinnevik, Latour, Industrivärden, Spiltan Aktiefond
+Investmentbolag), Yahoo's reported "revenue" and margins are an accounting
+artifact of investment income, not operating sales - an 85%+ "profit
+margin" means nothing like it does for an industrial company, and a very
+low P/E can be equally misleading since the metric that actually matters
+is the NAV discount/premium to the company's underlying holdings, which
+Yahoo does not report. When reviewing a holding company: score Financial
+Strength/Valuation with an explicit lower-confidence flag, note this
+caveat plainly in the output, and treat "insider activity" as a
+structurally weaker signal too (an investment company's own trading in
+its portfolio companies is a different thing than an operating company's
+management buying/selling their own stock). Do not silently apply the
+operating-company scoring as if it means the same thing.
+
 ## Categorization
 
 - **Strong Buy** - composite (non-provisional) above 80, attractive

@@ -4,9 +4,32 @@ Personal investment advisory system. Runs locally via Claude Code. No brokerage
 integration — you are the human-in-the-loop for every action. This system
 produces analysis and flags; it never executes trades.
 
-Data sources (all free, no keys): yfinance, CoinGecko, FRED, Riksbank
-SWEA, SCB PxWeb, ECB Data Portal, alternative.me Fear & Greed, SEC EDGAR
-(Form 4 insider counts, US tickers, `--insiders` flag).
+Data sources (all free, no keys): yfinance (equities price/momentum only
+as of 2026-07-28 - see note below), CoinGecko, FRED, Riksbank SWEA, SCB
+PxWeb, ECB Data Portal, alternative.me Fear & Greed, SEC EDGAR (Form 4
+insider counts, US tickers, `--insiders` flag).
+
+**yfinance data-availability note (2026-07-28):** Yahoo's fundamentals
+endpoint (P/E, dividend yield, sector, margins, growth, debt/equity)
+requires a "crumb" token, and both hosts yfinance uses to mint one
+(fc.yahoo.com, guce.yahoo.com) are blocked by this environment's egress
+policy - confirmed via the proxy status log, not a transient outage.
+`scripts/fetch_market_data.py` falls back to Yahoo's crumb-free chart
+endpoint for price/prev_close/52w-range/currency, which works reliably.
+Fundamentals genuinely cannot be fetched via yfinance in this environment;
+agents must say so explicitly (`fundamentals_error` field in the
+snapshot), never estimate them.
+
+**Swedish-equity data sources (for the `swedish-equity-review` skill):**
+Finansinspektionen's Insynsregister (insider transactions) likely has
+real public data worth building a fetcher for - unconfirmed/unbuilt as of
+2026-07-28. Börsdata requires registration/API key - NOT free/no-key,
+usable only if that tradeoff is deliberately accepted for one source.
+Placera, Dagens Industri, Affärsvärlden, Börskollen are editorial content,
+not structured APIs - treat as user-relayed information, not a fetch
+target. Kvartalsrapporter/årsredovisningar are PDFs - use the `pdf` skill
+to extract real figures from a user-provided report rather than asking
+for manual transcription.
 
 ## Scope (Phase 1 — locked 2026-07-03)
 

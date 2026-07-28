@@ -1,6 +1,6 @@
 {
   "note": "Seed screening universe for the scout agent. USER-MAINTAINED — add/remove tickers as your interests change. Tickers here are candidates to SCREEN, not recommendations. Nordic crypto certificate tickers must be verified on Avanza/Nasdaq Stockholm before adding: provider tickers (Virtune, Valour, XBT Provider) change and must not be guessed.",
-  "last_updated": "2026-07-04",
+  "last_updated": "2026-07-28",
   "categories": {
     "us_mega_cap": ["AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META"],
     "us_quality_dividend": ["JNJ", "PG", "KO", "PEP", "ABBV", "HD"],
@@ -10,11 +10,16 @@
       "SEB-A.ST", "EVO.ST", "HM-B.ST", "SAND.ST", "ASSA-B.ST",
       "NOVO-B.CO"
     ],
+    "nordic_swedish_equity_review_candidates": [
+      "SAAB-B.ST", "ABB.ST", "ALFA.ST", "HEXA-B.ST", "AZN.ST",
+      "INDU-C.ST", "LATO-B.ST", "LUND-B.ST"
+    ],
     "broad_index_etfs": ["VWCE.DE", "EUNL.DE", "IS3N.DE", "SPY", "QQQ"],
     "crypto_usd_proxies": ["BTC-USD", "ETH-USD"]
   },
   "category_notes": {
     "broad_index_etfs": "ETF fundamentals (P/E etc.) from yfinance are unreliable — screen these on fee and tracking, not fundamentals. Fee data is NOT in the snapshot; look up TER manually.",
-    "crypto_usd_proxies": "USD spot proxies for screening/backtesting only. Actual purchase vehicle for ISK is a SEK certificate on Nasdaq Stockholm — verify ticker and 2%/yr fee before any action."
+    "crypto_usd_proxies": "USD spot proxies for screening/backtesting only. Actual purchase vehicle for ISK is a SEK certificate on Nasdaq Stockholm — verify ticker and 2%/yr fee before any action.",
+    "nordic_swedish_equity_review_candidates": "Added 2026-07-28 for the swedish-equity-review skill's candidate list (Saab, ABB, Alfa Laval, Hexagon, AstraZeneca, Industrivarden, Latour, Lundbergforetagen). Tickers verified via Yahoo's returned sector/industry/country matching expectations (not blindly guessed), but not independently confirmed by the user against Avanza - correct if wrong. ABB.ST and AZN.ST are cross-listings (country Switzerland/UK respectively, not Sweden) - both are dual-listed on Nasdaq Stockholm. Investor A (INVE-A.ST, held) and Industrivarden (INDU-C.ST) are BOTH holding companies with no revenue in the operating sense - see swedish-equity-review's entity-classification step, do not score them like Atlas Copco/Volvo. FI insider search (--fi-issuers) requires exact Swedish spelling incl. diacritics (a, o) - ASCII transliteration returns zero results, confirmed for Industrivarden/Lundbergforetagen."
   }
 }

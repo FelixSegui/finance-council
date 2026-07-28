@@ -75,6 +75,28 @@ Industri/Affärsvärlden/Börskollen (editorial content, not structured data)
 are NOT automatable under this system's free/no-key rule - treat them as
 tier-2/3 (user relays what they read), not tier-1 fetches.
 
+**Known bottlenecks with `--fi-issuers`, found 2026-07-28:**
+- **Exact spelling required, including diacritics** (ä/ö/å) - "Industrivarden"
+  and "Lundbergforetagen" (ASCII) both returned zero results; "Industrivärden"
+  and "Lundbergföretagen" (correct spelling) worked. Always use the real
+  Swedish spelling.
+- **Common names collide across unrelated companies** - searching "Volvo"
+  returns transactions from BOTH AB Volvo (trucks, VOLV-B.ST) AND Volvo Car
+  AB (Volvo Cars, a separate listed company, unrelated ticker/price level).
+  Filter the returned `transactions` by the exact `Instrument name`/`Issuer`
+  field before using them - do not assume every row matches the company you
+  searched for.
+- **Register spells the same issuer inconsistently** across filings (seen:
+  "Hexagon AB" vs. "Hexagon Aktiebolag"; "Investmentaktiebolaget Latour" vs.
+  "Latour, Investmentab.") - group by these variants when counting distinct
+  insiders/transactions, don't treat them as different companies.
+- **Results are capped at the first page** (`max_rows=15` in the fetch
+  function) - a very actively-traded issuer's older transactions won't show;
+  fine for "recent activity" framing, a real limit for a full history.
+- Scale-tested 2026-07-28: 8 tickers' fundamentals + 8 FI searches completed
+  in ~29 seconds with correct search terms, no rate-limiting encountered -
+  this is not a performance bottleneck at the sizes this system deals in.
+
 ## Step 0 - classify the entity before scoring anything
 
 Not every candidate is an operating company, and forcing the same metrics

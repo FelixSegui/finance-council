@@ -47,13 +47,18 @@ every source is a free no-key API, so use this order and label accordingly:
    once a new quarterly report is out, static profile rarely) get
    re-requested. No file yet for a ticker means step 0 is a no-op, not an
    error - proceed to steps 1-4 and create one at the end (see State below).
-1. **Automated fetch (real API, no key)** - price/momentum via the Yahoo
-   chart endpoint (`scripts/fetch_market_data.py`, works without a crumb -
-   see the 2026-07-28 fix). Finansinspektionen's Insynsregister has genuine
-   free public insider-transaction data, but `www.fi.se` is BLOCKED by this
-   environment's egress policy (confirmed 2026-07-28) - do not attempt it
-   again this session; treat insider activity as tier-2 (user-relayed)
-   until the environment's network policy changes.
+1. **Automated fetch (real API, no key)** - price AND full fundamentals
+   (P/E, P/S, P/B, margins, ROE/ROA, debt/equity, 4-year revenue history,
+   trailing FCF, sector/industry/country) via `scripts/fetch_market_data.py`
+   - RESOLVED 2026-07-28, works for both US and Nordic tickers. Free cash
+   flow is trailing-only, not a multi-year series (Yahoo's legacy module
+   limitation) - get a real FCF trend from a company's own cash flow
+   statement (PDF) if needed. Finansinspektionen's Insynsregister has
+   genuine free public insider-transaction data, but the actual tool lives
+   at `marknadssok.fi.se` (a different subdomain than `www.fi.se`, which is
+   unblocked) and is STILL blocked by this environment's egress policy as
+   of 2026-07-28 - treat insider activity as tier-2 (user-relayed) until
+   that specific subdomain is also allowed.
 2. **User-supplied, from a named source** - ask for the SPECIFIC missing
    figure and name where to find it (e.g. "EV/EBIT and ROIC - check the
    Nyckeltal table in the latest kvartalsrapport, or Avanza's company page

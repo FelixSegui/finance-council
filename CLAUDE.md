@@ -4,31 +4,37 @@ Personal investment advisory system. Runs locally via Claude Code. No brokerage
 integration — you are the human-in-the-loop for every action. This system
 produces analysis and flags; it never executes trades.
 
-Data sources (all free, no keys): yfinance (equities price/momentum only
-as of 2026-07-28 - see note below), CoinGecko, FRED, Riksbank SWEA, SCB
+Data sources (all free, no keys): yfinance (price + full fundamentals as
+of 2026-07-28 - see note below), CoinGecko, FRED, Riksbank SWEA, SCB
 PxWeb, ECB Data Portal, alternative.me Fear & Greed, SEC EDGAR (Form 4
 insider counts, US tickers, `--insiders` flag).
 
-**yfinance data-availability note (2026-07-28):** Yahoo's fundamentals
-endpoint (P/E, dividend yield, sector, margins, growth, debt/equity)
-requires a "crumb" token, and both hosts yfinance uses to mint one
-(fc.yahoo.com, guce.yahoo.com) are blocked by this environment's egress
-policy - confirmed via the proxy status log, not a transient outage.
-`scripts/fetch_market_data.py` falls back to Yahoo's crumb-free chart
-endpoint for price/prev_close/52w-range/currency, which works reliably.
-Fundamentals genuinely cannot be fetched via yfinance in this environment;
-agents must say so explicitly (`fundamentals_error` field in the
-snapshot), never estimate them.
+**yfinance data-availability note (RESOLVED 2026-07-28):** Yahoo's
+fundamentals endpoint (P/E, dividend yield, sector, margins, growth,
+debt/equity, 4-year revenue history) requires a "crumb" token from
+fc.yahoo.com, which the user unblocked in this environment's network
+policy. yfinance's own Python client still fails on this network (its
+curl_cffi-based browser-TLS-fingerprint impersonation gets
+connection-reset by Yahoo's anti-bot layer) - `scripts/fetch_market_data.py`
+bypasses yfinance's client entirely and talks to Yahoo's quoteSummary API
+directly via plain `urllib` + a cookie jar, which works reliably and is
+NOT detected the way curl_cffi is. Full fundamentals now fetch cleanly for
+both US and Nordic tickers. One real gap remains: Yahoo's legacy
+multi-year cash-flow module only exposes `netIncome` per year, not
+capex/FCF - free cash flow is trailing-only (a single current figure), not
+a multi-year series. For a genuine FCF trend, use a company's own cash
+flow statement (PDF via the `pdf` skill).
 
 **Swedish-equity data sources (for the `swedish-equity-review` skill):**
 Finansinspektionen's Insynsregister (insider transactions) does have real
-public data (PDMR transaction register, free, attribution only) but
-`www.fi.se` itself is BLOCKED by this environment's egress policy -
-confirmed 2026-07-28 via the proxy status log, same pattern as Yahoo's
-crumb hosts. Not fixable from inside the session; would need the
-environment's network policy updated to allow fi.se. Until then, insider
-activity for Swedish names is user-relayed, not fetched. Börsdata
-requires registration/API key - NOT free/no-key,
+public data (PDMR transaction register, free, attribution only), but the
+actual search/data tool lives at `marknadssok.fi.se` - a DIFFERENT
+subdomain from `www.fi.se` (which the user unblocked 2026-07-28).
+`marknadssok.fi.se` is still blocked by this environment's egress policy,
+confirmed via the proxy status log - would need that specific subdomain
+added too. Until then, insider activity for Swedish names stays
+user-relayed, not fetched. Börsdata requires registration/API key - NOT
+free/no-key,
 usable only if that tradeoff is deliberately accepted for one source.
 Placera, Dagens Industri, Affärsvärlden, Börskollen are editorial content,
 not structured APIs - treat as user-relayed information, not a fetch

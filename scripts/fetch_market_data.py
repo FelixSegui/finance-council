@@ -57,12 +57,9 @@ CHART_UA = {
 
 def _fetch_chart_direct(ticker, timeout=15):
     """Yahoo's v8 chart endpoint needs no crumb/cookie - only the
-    quoteSummary (fundamentals) endpoint requires one. Used as a fallback
-    when yfinance's own crumb negotiation fails (e.g. an egress policy
-    blocks fc.yahoo.com and guce.yahoo.com, the two hosts yfinance uses to
-    mint a crumb, while leaving the plain data hosts reachable). Returns
-    price fields only - fundamentals genuinely need the crumb and are not
-    obtainable this way."""
+    quoteSummary (fundamentals) endpoint requires one. Used as a last-resort
+    fallback (price only) if the crumb-based fetch below fails for any
+    reason (network hiccup, ticker not covered, etc)."""
     url = f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker}?range=5d&interval=1d"
     req = urllib.request.Request(url, headers=CHART_UA)
     with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -81,51 +78,139 @@ def _fetch_chart_direct(ticker, timeout=15):
     }
 
 
-def fetch_equities(tickers):
-    try:
-        import yfinance as yf
-    except ImportError:
-        return {"error": "yfinance not installed. pip install yfinance"}
+class _YahooCrumbSession:
+    """Yahoo's fundamentals endpoint (quoteSummary) requires a 'crumb' token
+    minted from a cookie obtained at fc.yahoo.com. yfinance's own client
+    (curl_cffi, browser-TLS-fingerprint impersonation) gets connection-reset
+    by Yahoo's anti-bot layer even once the network path is open - plain
+    urllib with a cookie jar does not trigger that and works reliably.
+    One cookie+crumb per script run, reused across all tickers."""
 
+    def __init__(self, timeout=15):
+        self.timeout = timeout
+        self._cookie_jar = None
+        self._crumb = None
+        self._init_error = None
+        self._initialized = False
+
+    def _ensure_init(self):
+        if self._initialized:
+            return
+        self._initialized = True
+        try:
+            import http.cookiejar
+            self._cookie_jar = http.cookiejar.CookieJar()
+            opener = urllib.request.build_opener(
+                urllib.request.HTTPCookieProcessor(self._cookie_jar))
+            req = urllib.request.Request("https://fc.yahoo.com", headers=CHART_UA)
+            try:
+                opener.open(req, timeout=self.timeout)  # sets cookies; a 404 status is expected and fine
+            except urllib.error.HTTPError:
+                pass  # cookies are set by the CookieProcessor before the error is raised
+            req = urllib.request.Request(
+                "https://query1.finance.yahoo.com/v1/test/getcrumb", headers=CHART_UA)
+            with opener.open(req, timeout=self.timeout) as resp:
+                self._crumb = resp.read().decode().strip()
+            self._opener = opener
+            if not self._crumb or "<html" in self._crumb.lower():
+                raise ValueError(f"no usable crumb returned: {self._crumb!r}")
+        except Exception as e:
+            self._init_error = str(e)
+
+    def fetch_quote_summary(self, ticker):
+        self._ensure_init()
+        if self._init_error:
+            raise RuntimeError(f"crumb session init failed: {self._init_error}")
+        modules = "summaryDetail,defaultKeyStatistics,financialData,assetProfile,incomeStatementHistory"
+        url = (f"https://query1.finance.yahoo.com/v10/finance/quoteSummary/{ticker}"
+               f"?modules={modules}&crumb={self._crumb}")
+        req = urllib.request.Request(url, headers=CHART_UA)
+        with self._opener.open(req, timeout=self.timeout) as resp:
+            data = json.loads(resp.read().decode())
+        result = (data.get("quoteSummary") or {}).get("result")
+        if not result:
+            err = (data.get("quoteSummary") or {}).get("error")
+            raise ValueError(f"no quoteSummary result (error: {err})")
+        return result[0]
+
+
+_yahoo_session = _YahooCrumbSession()
+
+
+def _raw(field):
+    """Yahoo wraps numeric fields as {'raw': ..., 'fmt': ...}; pass through
+    plain numbers/None unchanged."""
+    if isinstance(field, dict):
+        return field.get("raw")
+    return field
+
+
+def _fetch_fundamentals_direct(ticker):
+    r = _yahoo_session.fetch_quote_summary(ticker)
+    summary = r.get("summaryDetail", {})
+    stats = r.get("defaultKeyStatistics", {})
+    fin = r.get("financialData", {})
+    profile = r.get("assetProfile", {})
+    income_stmts = r.get("incomeStatementHistory", {}).get("incomeStatementHistory", [])
+    revenue_history = [
+        {"fiscal_year_end": _raw(s.get("endDate")) and s["endDate"].get("fmt"),
+         "total_revenue": _raw(s.get("totalRevenue"))}
+        for s in income_stmts
+    ]
+    return {
+        "price": _raw(summary.get("regularMarketPreviousClose")) or _raw(fin.get("currentPrice")),
+        "prev_close": _raw(summary.get("previousClose")),
+        "52w_high": _raw(summary.get("fiftyTwoWeekHigh")),
+        "52w_low": _raw(summary.get("fiftyTwoWeekLow")),
+        "market_cap": _raw(summary.get("marketCap")),
+        "trailing_pe": _raw(summary.get("trailingPE")),
+        "forward_pe": _raw(summary.get("forwardPE")),
+        "price_to_sales": _raw(summary.get("priceToSalesTrailing12Months")),
+        "price_to_book": _raw(stats.get("priceToBook")),
+        "peg_ratio": _raw(stats.get("pegRatio")),
+        "dividend_yield": _raw(summary.get("dividendYield")),
+        "payout_ratio": _raw(summary.get("payoutRatio")),
+        "beta": _raw(summary.get("beta")),
+        "revenue_growth": _raw(fin.get("revenueGrowth")),
+        "total_revenue": _raw(fin.get("totalRevenue")),
+        "free_cashflow": _raw(fin.get("freeCashflow")),
+        "revenue_history_last_n_fiscal_years": revenue_history,
+        "gross_margins": _raw(fin.get("grossMargins")),
+        "operating_margins": _raw(fin.get("operatingMargins")),
+        "ebitda_margins": _raw(fin.get("ebitdaMargins")),
+        "profit_margins": _raw(fin.get("profitMargins")),
+        "return_on_equity": _raw(fin.get("returnOnEquity")),
+        "return_on_assets": _raw(fin.get("returnOnAssets")),
+        "debt_to_equity": _raw(fin.get("debtToEquity")),
+        "recommendation": fin.get("recommendationKey"),
+        # sector/country feed the portfolio agent's balance scorecard
+        "sector": profile.get("sector"),
+        "industry": profile.get("industry"),
+        "country": profile.get("country"),
+        "currency": summary.get("currency"),
+        "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - "
+                                "yfinance's own client fails on this network (curl_cffi TLS fingerprint "
+                                "gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+        "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is "
+                "TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module "
+                "only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own "
+                "cash flow statement (PDF via the pdf skill).",
+    }
+
+
+def fetch_equities(tickers):
     out = {}
     for t in tickers:
         try:
-            tk = yf.Ticker(t)
-            info = tk.fast_info
-            fundamentals = tk.info if hasattr(tk, "info") else {}
-            out[t] = {
-                "price": getattr(info, "last_price", None),
-                "prev_close": getattr(info, "previous_close", None),
-                "52w_high": getattr(info, "year_high", None),
-                "52w_low": getattr(info, "year_low", None),
-                "market_cap": fundamentals.get("marketCap"),
-                "trailing_pe": fundamentals.get("trailingPE"),
-                "forward_pe": fundamentals.get("forwardPE"),
-                "peg_ratio": fundamentals.get("pegRatio"),
-                "dividend_yield": fundamentals.get("dividendYield"),
-                "beta": fundamentals.get("beta"),
-                "revenue_growth": fundamentals.get("revenueGrowth"),
-                "profit_margins": fundamentals.get("profitMargins"),
-                "debt_to_equity": fundamentals.get("debtToEquity"),
-                "recommendation": fundamentals.get("recommendationKey"),
-                # sector/country feed the portfolio agent's balance scorecard
-                "sector": fundamentals.get("sector"),
-                "industry": fundamentals.get("industry"),
-                "country": fundamentals.get("country"),
-                "currency": fundamentals.get("currency"),
-            }
+            out[t] = _fetch_fundamentals_direct(t)
         except Exception as e:
-            # yfinance's crumb negotiation failed (commonly a blocked
-            # fc.yahoo.com/guce.yahoo.com egress policy, not a data problem).
-            # Fall back to the crumb-free chart endpoint for price only;
-            # fundamentals genuinely require a crumb and are marked as such,
-            # never silently guessed.
+            # Fundamentals fetch failed (network hiccup, ticker not covered,
+            # crumb session couldn't init). Fall back to the crumb-free
+            # chart endpoint for price only - never silently guess
+            # fundamentals.
             try:
                 chart = _fetch_chart_direct(t)
-                chart["fundamentals_error"] = (
-                    f"fundamentals (P/E, dividend yield, sector, etc.) need a Yahoo "
-                    f"crumb, unavailable this session: {e}"
-                )
+                chart["fundamentals_error"] = f"fundamentals fetch failed: {e}"
                 out[t] = chart
             except Exception as e2:
                 out[t] = {"error": f"{e}; chart fallback also failed: {e2}"}

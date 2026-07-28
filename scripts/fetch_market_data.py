@@ -348,7 +348,20 @@ def main():
         snapshot["insider_activity"] = fetch_insider_activity(tickers)
 
     import os
+    import glob
     os.makedirs("data/snapshots", exist_ok=True)
+    today_prefix = datetime.now(timezone.utc).strftime("%Y%m%d")
+    existing_today = glob.glob(f"data/snapshots/{today_prefix}T*.json")
+    if existing_today:
+        # Not a hard block - a same-day re-fetch can be legitimate (intraday
+        # price move, testing a fix). But macro series (FRED, Riksbank, ECB)
+        # update at most daily/monthly, so re-fetching them repeatedly in one
+        # day is pure waste - flag it so a human notices the pattern rather
+        # than silently accumulating near-duplicate snapshots.
+        print(f"Note: {len(existing_today)} snapshot(s) already exist for "
+              f"today ({', '.join(os.path.basename(f) for f in existing_today)}) "
+              f"- macro data won't have changed since the last one today; "
+              f"only re-fetch if you specifically need fresher equity/crypto prices.")
     fname = f"data/snapshots/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.json"
     with open(fname, "w") as f:
         json.dump(snapshot, f, indent=2)

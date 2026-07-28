@@ -123,6 +123,18 @@ value observations for `scripts/performance.py` (are we beating "just
 buy the index"?). If a session did meaningful work without a log entry,
 that's a process failure — fix it before ending the session.
 
+**Token/cost hygiene (added 2026-07-28):** `data/portfolio.json` keeps
+short current-state summaries only — resolved questions and superseded
+account/holding narratives live in `data/portfolio_history_archive.md`
+instead, read only during `journal` reconciliation or deep audits, not
+every sweep. Per-company research that doesn't change monthly (business
+description, quarterly-report figures) lives in
+`data/company_profiles/<TICKER>.json` (schema:
+`data/company_profiles/_SCHEMA.md`), checked before re-asking the user or
+re-parsing a report. When editing `portfolio.json`, keep this shape: trim
+to current state, archive the history, don't let notes/thesis fields
+regrow into essays.
+
 ## Self-improvement
 
 The `meta` agent owns `IMPROVEMENTS.md`, a numbered backlog of changes to

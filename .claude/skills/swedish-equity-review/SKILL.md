@@ -166,13 +166,25 @@ just for a different reason - state which reason it was. Weights: Business
 Quality 20%, Financial Strength 20%, Valuation 20%, Insider Activity 15%,
 Dividend Quality 10%, Growth Outlook 15%.
 
-- If 5-6 of 6 dimensions are scored: compute the composite normally,
-  rescaling weights over the scored dimensions if one is missing.
-- If 3-4 of 6 are scored: compute a composite but label it explicitly
-  provisional, e.g. "58/100 based on 4 of 6 dimensions (70% of full
-  weight) - provisional, not a full score."
-- If fewer than 3 of 6 are scored: do NOT compute a composite. List what's
-  known, list what's missing and where to get it, stop there.
+**Presentation - two separate numbers, never blended into one:**
+1. **Score** - the weighted average OVER THE SCORED DIMENSIONS ONLY,
+   rescaled so their weights sum to 100%. This number is NOT reduced by
+   missing dimensions - a company scoring well on 4 covered dimensions
+   gets full credit for those 4, full stop. Report as "Score: 71/100."
+2. **Coverage** - how much of the full rubric that score is actually
+   based on, e.g. "Coverage: 65% (4 of 6 dimensions - Business Quality and
+   Insider Activity not scored)." This is a data-completeness flag, not a
+   discount applied to the score above - never write "71/100 (65%
+   coverage)" as if 65% multiplies into the 71; keep them visually and
+   verbally distinct so neither reads as qualifying the other numerically.
+
+- 5-6 of 6 dimensions scored: Score computed normally (Coverage 83-100%).
+- 3-4 of 6 scored: Score computed over just those dimensions; Coverage
+  states plainly which are missing and why (genuinely unobtainable vs.
+  structurally inapplicable per Step 0).
+- Fewer than 3 of 6 scored: do NOT compute a Score at all. List what's
+  known, list what's missing and where to get it, stop there - a
+  "score" from 1-2 dimensions is noise, not a number worth reporting.
 
 ## Categorization
 

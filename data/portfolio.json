@@ -105,7 +105,7 @@
       "market_value_as_of": "2026-07-28",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "TBD - still no stated reason for holding (open question 9). Live price 2026-07-28 (user statement): 144.85/share, +12.07% since purchase. Prior fundamentals (P/E 11.95, direktavkastning 5.58%) are stale as of 2026-07-13, not refreshed - equities fetch still 403'd.",
+      "thesis": "TBD - still no stated reason for holding (open question 9). Live price 144.25-144.85/share (2026-07-28, fetched + user statement), +12% since purchase. Research cache: data/company_profiles/SHB-A.ST.json (fundamentals stale since 2026-07-13, diagnostic swedish-equity-review test run 2026-07-28 - insufficient data for a composite score).",
       "target_weight_pct": null
     },
     {
@@ -120,7 +120,7 @@
       "market_value_as_of": "2026-07-28",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "TBD - still no stated reason for holding (open question 9). Live price 2026-07-28 (user statement): 400.80/share, +38.10% since purchase. Prior fundamentals (P/E 6.22, direktavkastning 1.45%) are stale as of 2026-07-13, not refreshed - equities fetch still 403'd.",
+      "thesis": "TBD - still no stated reason for holding (open question 9). Live price 397.00-400.80/share (2026-07-28, fetched + user statement), +38% since purchase. Research cache: data/company_profiles/INVE-A.ST.json (fundamentals stale since 2026-07-13, diagnostic swedish-equity-review test run 2026-07-28 - insufficient data for a composite score).",
       "target_weight_pct": null
     },
     {

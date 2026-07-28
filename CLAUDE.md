@@ -21,9 +21,14 @@ agents must say so explicitly (`fundamentals_error` field in the
 snapshot), never estimate them.
 
 **Swedish-equity data sources (for the `swedish-equity-review` skill):**
-Finansinspektionen's Insynsregister (insider transactions) likely has
-real public data worth building a fetcher for - unconfirmed/unbuilt as of
-2026-07-28. Börsdata requires registration/API key - NOT free/no-key,
+Finansinspektionen's Insynsregister (insider transactions) does have real
+public data (PDMR transaction register, free, attribution only) but
+`www.fi.se` itself is BLOCKED by this environment's egress policy -
+confirmed 2026-07-28 via the proxy status log, same pattern as Yahoo's
+crumb hosts. Not fixable from inside the session; would need the
+environment's network policy updated to allow fi.se. Until then, insider
+activity for Swedish names is user-relayed, not fetched. Börsdata
+requires registration/API key - NOT free/no-key,
 usable only if that tradeoff is deliberately accepted for one source.
 Placera, Dagens Industri, Affärsvärlden, Börskollen are editorial content,
 not structured APIs - treat as user-relayed information, not a fetch

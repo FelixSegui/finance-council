@@ -49,10 +49,11 @@ every source is a free no-key API, so use this order and label accordingly:
    error - proceed to steps 1-4 and create one at the end (see State below).
 1. **Automated fetch (real API, no key)** - price/momentum via the Yahoo
    chart endpoint (`scripts/fetch_market_data.py`, works without a crumb -
-   see the 2026-07-28 fix). Attempt Finansinspektionen's Insynsregister for
-   insider transactions - this has genuine public data; whether it has a
-   clean scriptable export is unconfirmed as of this skill's creation and
-   should be verified/built out, not assumed working.
+   see the 2026-07-28 fix). Finansinspektionen's Insynsregister has genuine
+   free public insider-transaction data, but `www.fi.se` is BLOCKED by this
+   environment's egress policy (confirmed 2026-07-28) - do not attempt it
+   again this session; treat insider activity as tier-2 (user-relayed)
+   until the environment's network policy changes.
 2. **User-supplied, from a named source** - ask for the SPECIFIC missing
    figure and name where to find it (e.g. "EV/EBIT and ROIC - check the
    Nyckeltal table in the latest kvartalsrapport, or Avanza's company page

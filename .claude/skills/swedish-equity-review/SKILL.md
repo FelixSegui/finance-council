@@ -117,18 +117,11 @@ belong in the Missing Data section either (nothing to chase).
   (Yahoo returns null/0 for these on banks - expected, not a data gap).
   Prefer ROE and net interest income trend over margin fields.
 - **Holding/investment company** (Investor, Kinnevik, Latour,
-  Industrivärden): NO revenue-based metric applies - do not score or
-  report Yahoo's "revenue," "margins," or margin-derived ratios for these
-  at all, full stop, not even with a caveat attached. Financial Strength
-  and Growth Outlook instead draw on whatever of these are actually
-  obtainable: NAV per share and its trend, premium/discount to NAV,
-  the underlying portfolio's aggregate return, leverage/loan-to-value at
-  the holding-company level, and capital allocation track record (net
-  buying/selling of stakes, buybacks). None of this is fetched by
-  `fetch_market_data.py` today - it comes from the company's own investor
-  relations page/report (tier 2/3). If none of it is obtainable, Financial
-  Strength and Growth Outlook are simply NOT SCORED for that entity - do
-  not substitute the operating-company fields as a fallback.
+  Industrivärden): a DIFFERENT rubric, defined fully in "Method - holding
+  companies" below, not a patched version of the operating-company one.
+  NO revenue-based metric applies - do not score or report Yahoo's
+  "revenue," "margins," or margin-derived ratios for these at all, full
+  stop, not even with a caveat attached.
 - **Fund** (Swedbank Robur Technology A, Spiltan Aktiefond Investmentbolag,
   Avanza Auto 3, Tundra, ...): OUT OF SCOPE for this skill entirely. A
   fund has no P/E, no single management team to assess, no PDMR insider
@@ -140,28 +133,23 @@ belong in the Missing Data section either (nothing to chase).
   6-dimension rubric. If asked to review a fund, say so and use that
   checklist instead of forcing this Method section onto it.
 
-## Method - per company (operating companies and holding companies)
+## Method - operating companies and banks
 
 Score each dimension 0-10 and cite the source + date for every input
-number used. Business Quality, Valuation, Dividend Quality, and Insider
-Activity apply to both operating and holding companies (with the
-valuation caveat below for holdcos); Financial Strength and Growth Outlook
-are CLUSTERS whose actual inputs depend on the Step 0 classification, not
-a fixed field name:
+number used. Weights: Business Quality 20%, Financial Strength 20%,
+Valuation 20%, Insider Activity 15%, Dividend Quality 10%, Growth 15%.
 
 - **Business quality** - market position, competitive advantage, brand,
   pricing power, industry attractiveness, management quality.
-- **Financial strength** (cluster - use whichever apply per Step 0):
-  operating company/bank → revenue growth, earnings growth, EBIT margin,
-  free cash flow, ROIC, ROE, debt levels. Holding company → NAV growth,
-  portfolio leverage, capital allocation track record - NOT revenue/margin.
+- **Financial strength** - revenue growth, earnings growth, EBIT margin,
+  free cash flow, ROIC, ROE, debt levels. For a bank, margin fields
+  (gross/EBITDA) don't apply - Yahoo returns null/0, expected, not a gap;
+  prefer ROE and the revenue/earnings trend instead.
 - **Valuation** - P/E, EV/EBIT, price/FCF, vs. own historical range, vs.
-  peers, for an operating company. For a HOLDING COMPANY, P/E is a weak
-  substitute for the metric that actually matters (NAV discount/premium) -
-  report P/E only as a secondary data point, explicitly flagged low-
-  confidence, and prefer the NAV discount/premium if obtainable. Frame
-  explicitly either way: "great company at a reasonable price, or average
+  peers. Frame explicitly: "great company at a reasonable price, or average
   company at a cheap price?"
+- **Growth** - revenue/earnings trajectory, market opportunity, structural
+  tailwinds, expected earnings growth.
 - **Dividend quality** - yield, dividend growth, payout ratio,
   sustainability, consistency. A growing dividend from a strong company
   outranks a high but fragile yield - do not default to highest-yield-wins.
@@ -170,23 +158,73 @@ a fixed field name:
   of distinct insiders, timing vs. recent price moves. Weight multiple
   insiders buying after a decline highly; weight small or scheduled/
   incentive-program transactions (option exercises, routine disposals) low.
-  For a holding company, the PDMR's OWN transactions in the holdco's stock
-  still count normally here - this dimension does not change for holdcos,
-  only Financial Strength/Growth Outlook/Valuation do.
-- **Growth outlook** (cluster, same split as Financial Strength): operating
-  company → revenue/earnings trajectory, market opportunity, structural
-  tailwinds. Holding company → NAV trend, underlying portfolio's aggregate
-  growth, capital redeployment activity - NOT a revenue growth percentage.
 
-**Missing-data / composite-confidence gate:** if a dimension has no real
-number behind it (genuinely missing, not structurally inapplicable per
-Step 0), mark it "not scored - missing: [specific field], get from:
-[named source]" and EXCLUDE it from the composite rather than guessing a
-mid-range value. A dimension ruled inapplicable by Step 0 (e.g. Financial
-Strength for a holdco with no NAV data obtained) is excluded the same way,
-just for a different reason - state which reason it was. Weights: Business
-Quality 20%, Financial Strength 20%, Valuation 20%, Insider Activity 15%,
-Dividend Quality 10%, Growth Outlook 15%.
+## Method - holding/investment companies (Investor, Kinnevik, Latour, Industrivärden, and similar - a DIFFERENT rubric, not a patch)
+
+Same weights and the same Business Quality, Dividend Quality, and Insider
+Activity dimensions as above (Insider Activity is unchanged - a holdco
+PDMR's own transactions in the holdco's stock score exactly the same way).
+Two dimensions are replaced entirely, not adjusted:
+
+- **Financial Strength → NOT SCORED for holding companies**, structurally,
+  not as a data gap. Its usual inputs (revenue, margins) don't exist in a
+  meaningful form for a holdco - do not substitute anything here. Excluded
+  from the Score/Coverage math like any inapplicable dimension.
+- **Valuation → replaced by "Holding Company Valuation."** Score 0-10,
+  analyzing:
+  - Current NAV discount/premium (see fallback hierarchy below)
+  - Historical average discount (is today's discount wide or narrow vs.
+    this company's own norm, if obtainable)
+  - Quality of the underlying holdings (are the portfolio companies
+    themselves strong - lean on Business Quality assessments already done
+    for any that are also reviewed separately, e.g. Investor holding
+    Atlas Copco)
+  - Capital allocation (has management grown NAV per share over time,
+    bought back shares when cheap, exited/entered positions well - the
+    valuation-relevant angle on management, distinct from the general
+    reputational read under Business Quality)
+  - Leverage (loan-to-value / net debt at the holding-company level -
+    this is where leverage lives for a holdco, since Financial Strength
+    isn't scored)
+  - Portfolio concentration (a handful of dominant stakes vs. genuinely
+    diversified - concentration risk one level up from the portfolio's own
+    single-position cap)
+  This is a richer, more meaningful read than a plain P/E for a holdco -
+  a low P/E on investment income accounting tells you much less than
+  knowing the actual discount to what the company owns.
+- **Growth → NAV/portfolio growth**, not a revenue growth percentage: NAV
+  per share trend, the underlying portfolio's aggregate return, capital
+  redeployment activity. Kept as its own dimension, separate from Holding
+  Company Valuation above - growth is about trajectory, valuation is
+  about price paid for it.
+
+### NAV discount/premium - fallback hierarchy (do not skip levels)
+
+1. **Level 1 (preferred):** a current NAV discount/premium figure from a
+   reliable Swedish source - the holdco's own investor relations page
+   (most Swedish investment companies publish substansvärde/NAV
+   regularly), or a named Swedish financial media source. Cite the source
+   and date.
+2. **Level 2:** if no current figure is published or obtainable, ESTIMATE
+   NAV from the latest quarterly report's disclosed listed holdings
+   (sum their market values using fresh prices) plus disclosed unlisted/
+   other assets, compare to market cap. State CLEARLY that this is an
+   estimate, not a reported figure, and show the arithmetic so it can be
+   checked.
+3. **Level 3:** if neither is possible, do NOT guess. Write exactly:
+   "NAV discount could not be verified this month. The valuation score is
+   marked as 'Not Available' and excluded from the overall score." Then
+   renormalize the remaining scored dimensions' weights so the Score is
+   still out of 100 (same mechanism as any other excluded dimension -
+   see Score/Coverage below).
+
+**Missing-data / Score-confidence gate:** if a dimension has no real
+number behind it (genuinely missing, not structurally inapplicable), mark
+it "not scored - missing: [specific field], get from: [named source]" and
+EXCLUDE it from the composite rather than guessing a mid-range value. A
+dimension ruled inapplicable (Financial Strength for any holdco; Holding
+Company Valuation at NAV fallback Level 3) is excluded the same way, just
+state which reason it was.
 
 **Presentation - two separate numbers, never blended into one:**
 1. **Score** - the weighted average OVER THE SCORED DIMENSIONS ONLY,
@@ -210,8 +248,10 @@ Dividend Quality 10%, Growth Outlook 15%.
 
 ## Categorization
 
-- **Strong Buy** - composite (non-provisional) above 80, attractive
-  valuation, no major flagged risk.
+- **Strong Buy** - Score above 80 AND Coverage at least 83% (5-6 of 6
+  dimensions), attractive valuation, no major flagged risk. A high Score
+  on low Coverage is not a Strong Buy candidate - not enough of the
+  picture is in yet, regardless of how good the scored part looks.
 - **Buy/Increase** - good company, attractive entry.
 - **Hold** - good company, fairly valued.
 - **Reduce** - position size, valuation, or fundamentals warrant trimming.
@@ -233,16 +273,16 @@ within the medium tier, and concentration risk.
 
 Given available capital this review: recommend split between adding to
 existing holdings vs. new positions vs. holding cash temporarily, and state
-explicitly why - "why here instead of elsewhere" - referencing the
-composite scores and current position sizes, not gut feel.
+explicitly why - "why here instead of elsewhere" - referencing the Score
+and Coverage of each candidate and current position sizes, not gut feel.
 
 ## Output format
 
 1. Executive summary
 2. Portfolio changes since last review (diff against the last
    swedish-equity-review entry in `reports/SESSION_LOG.md`)
-3. Ranking of all Swedish holdings/candidates by composite (with
-   provisional flags where relevant)
+3. Ranking of all Swedish holdings/candidates by Score, with each one's
+   Coverage shown alongside (never blended into the Score itself)
 4. Top 3 opportunities
 5. Biggest risks
 6. Recommended actions this review

@@ -1,7 +1,7 @@
 {
   "last_updated": "2026-07-28",
   "base_currency": "SEK",
-  "total_estimate_sek": "~219,134 SEK: hb-main 10,752.76 + hb-checking 611 + avanza-isk 180,949.35 (24,864.30 available, 120,000 reserved for a pending order) + paypal 14,321.03 (stale FX) + eth-wallet 12,500 (approx). Crypto exposure ~28,718 SEK sits above the 10% target - held deliberately, not being trimmed, see COIN-XBT.ST holding. Full history and superseded figures: data/portfolio_history_archive.md.",
+  "total_estimate_sek": "~219,141 SEK: hb-main 10,752.76 + hb-checking 611 + avanza-isk ~180,956 (Avanza Global buy 119,999 and Tundra sale 1,535 both EXECUTED and confirmed 2026-07-28; 26,400.30 SEK cash available; account total not yet reconfirmed via a fresh post-execution statement) + paypal 14,321.03 (stale FX) + eth-wallet 12,500 (approx). Crypto exposure ~28,718 SEK sits above the 10% target - held deliberately, not being trimmed, see COIN-XBT.ST holding. Full history and superseded figures: data/portfolio_history_archive.md.",
   "cash": {
     "amount": 0,
     "currency": "SEK"
@@ -26,11 +26,8 @@
       "wrapper": "ISK",
       "institution": "Avanza",
       "approx_value_sek": 180949.35,
-      "notes": "Confirmed ISK. LIVE STATEMENT 2026-07-28: total 180,949.35 SEK = securities 36,085.05 + cash 144,864.30 (120,000 reserved for the pending Avanza Global order, 24,864.30 available - see pending_orders). Tax-free allowance headroom vs. the ~300k SEK threshold (unverified) is comfortable. Full history: data/portfolio_history_archive.md#avanza-isk.",
-      "pending_orders": [
-        { "type": "buy", "instrument": "Avanza Global", "amount_sek": 120000, "created": "2026-07-28", "status": "submitted (Skickad), not yet executed/settled", "note": "User placed this order today, then reconsidered the size: the 2026-07-27 memo's secure-tier gap calc suggested ~90,240 SEK; 120,000 SEK overshoots by ~29,760 SEK and pushes the secure/safe tier well above the 60% risk-tier target. User is correcting forward with the remaining cash rather than reversing this order. Falls inside the FOMC window (2026-07-28/29) flagged in the 2026-07-27 memo - noted, not blocking, order already placed." },
-        { "type": "sell", "instrument": "Tundra Sustainable Frontier Fund A SEK", "units": 4.34669, "amount_sek": 1528, "created": "2026-07-22", "status": "submitted (Skickad), NOT yet executed/settled as of the 2026-07-28 statement - still shows as a live 1,528 SEK holding, not yet converted to cash. Corrects an earlier 2026-07-27 session note that had prematurely marked this SOLD/quantity 0 - reverted, see Tundra holding." }
-      ]
+      "notes": "Confirmed ISK. LIVE STATEMENT 2026-07-28 (pre-execution): total 180,949.35 SEK = securities 36,085.05 + cash 144,864.30. Both pending orders EXECUTED same day (user-confirmed): Avanza Global buy at 119,999 SEK (ordered 120,000), Tundra sale at 1,535 SEK. New cash = 144,864.30 - 119,999 + 1,535 = 26,400.30 SEK, genuinely available. Account total not yet reconfirmed post-execution via a fresh full statement - the 180,949.35 figure predates both fills. Tax-free allowance headroom vs. the ~300k SEK threshold (unverified) is comfortable. Full history: data/portfolio_history_archive.md#avanza-isk.",
+      "pending_orders": []
     },
     {
       "account_id": "seb-fund",
@@ -147,13 +144,13 @@
       "account_id": "avanza-isk",
       "instrument_type": "fund",
       "exposure_class": "equity",
-      "quantity": 4.34669,
+      "quantity": 0,
       "cost_basis_total_sek": 1000,
-      "market_value_sek": 1528,
-      "market_value_as_of": "2026-07-24",
+      "market_value_sek": 0,
+      "market_value_as_of": "2026-07-28",
       "annual_fee_pct": 2.6,
       "date_acquired": null,
-      "thesis": "SELL ORDER PENDING, not yet settled (created 2026-07-22, fee drag - 2.6%/yr vs. Auto 3's 0.39%). Still 4.34669 units / 1,528 SEK as of the 2026-07-28 statement. Proceeds recycle to avanza-isk cash once settled, per the profit-recycling rule - see avanza-isk.pending_orders. Full history: data/portfolio_history_archive.md#tundra.",
+      "thesis": "SOLD 2026-07-28, CONFIRMED - proceeds 1,535 SEK (order placed 2026-07-22 on fee-drag grounds, 2.6%/yr vs. Auto 3's 0.39%). Tax-free (ISK). Proceeds now included in avanza-isk cash. Full history: data/portfolio_history_archive.md#tundra.",
       "target_weight_pct": null
     },
     {
@@ -172,17 +169,32 @@
       "target_weight_pct": null
     },
     {
+      "ticker": "TBD",
+      "name": "Avanza Global (fund)",
+      "account_id": "avanza-isk",
+      "instrument_type": "fund",
+      "exposure_class": "equity",
+      "quantity": null,
+      "cost_basis_total_sek": 119999,
+      "market_value_sek": 119999,
+      "market_value_as_of": "2026-07-28",
+      "annual_fee_pct": null,
+      "date_acquired": "2026-07-28",
+      "thesis": "BOUGHT 2026-07-28, CONFIRMED - broad global index fund, core secure-tier holding. Order placed at 120,000 SEK, executed at 119,999 SEK. This purchase overshot the calculated ~90,240 SEK secure-tier gap by ~29,760 SEK - see open question 16. Annual fee (TER) not yet confirmed - get from Avanza's factsheet before grading fee drag.",
+      "target_weight_pct": null
+    },
+    {
       "ticker": "CASH_SEK",
       "name": "Avanza ISK available cash",
       "account_id": "avanza-isk",
       "instrument_type": "cash",
       "exposure_class": "cash",
       "currency": "SEK",
-      "quantity": 144864.30,
+      "quantity": 26400.30,
       "cost_basis_per_unit": null,
       "annual_fee_pct": null,
       "date_acquired": "2026-07-28",
-      "thesis": "Not an investment - uninvested cash. LIVE 2026-07-28: 144,864.30 SEK total, 120,000 reserved for the pending Avanza Global order (see pending_orders), 24,864.30 genuinely available. Tundra's 1,528 SEK proceeds are NOT yet in this figure (sale still pending, see Tundra holding). User plan for the 24,864.30 available: ~18-20k to medium tier (Swedbank Robur Technology A, Spiltan Aktiefond Investmentbolag, open to others), ~4-7k to high-risk (TBD) - see open question 16, neither candidate scout/valuation-vetted yet.",
+      "thesis": "Not an investment - uninvested cash. CONFIRMED 2026-07-28 post-execution: 144,864.30 - 119,999 (Avanza Global buy) + 1,535 (Tundra sale proceeds) = 26,400.30 SEK available. User plan: ~18-20k to medium tier (Swedbank Robur Technology A, Spiltan Aktiefond Investmentbolag, open to others), ~4-7k to high-risk (TBD) - see open question 16, neither candidate scout/valuation-vetted yet.",
       "target_weight_pct": null
     },
     {
@@ -296,16 +308,16 @@
     }
   },
   "open_structural_questions": [
-    "1. Actual equity/bond split inside Auto 50 / Auto 75 (name-implied ~50/50 and ~75/25; confirm from factsheets - matters for exposure math until the exit executes).",
     "2. ETH cost basis and acquisition dates (needed for any future K4 math).",
     "5. Any OTHER undisclosed accounts? SEB and PayPal both surfaced only in passing - a one-time full inventory (every bank/broker login) would close this class of surprise, and is now overdue (2 surprise accounts in one week).",
     "6. PayPal FX routing: what is PayPal's actual conversion fee/spread (do not assume ~3-4%, confirm from PayPal's fee schedule), and what is the cheapest path to get the 1,177.49 USD + 266.88 EUR (plus each ~750-1000 EUR recurring inflow) into SEK or into a wrapper without repeatedly paying it. Council ruling 2026-07-12: convert promptly via lowest-spread path, don't hold either currency waiting on FX levels - see reports/2026-07-07-council-memo.md Amendment 2026-07-12.",
-    "9. No thesis recorded for Handelsbanken A, Investor A - both still TBD. Avanza Auto 3 and COIN-XBT.ST now have context/thesis (see their holdings entries); Tundra's status is tied to open question 14.",
+    "9. No thesis recorded for Handelsbanken A, Investor A - both still TBD.",
     "10. hb-main + hb-checking tax reserve (10,752.76 + 611 = 11,363.76 SEK, confirmed 2026-07-28) has a residual ~129.52 SEK gap against the confirmed 11,493.28 SEK HB+SEB tax owed - user judged this 'enough for now' 2026-07-22, plans to top up further from other income before the 2027 deklaration. Low priority, monitor at deklaration prep, not urgent.",
     "11. hb-checking (611 SEK, newly disclosed 2026-07-22) and the broader account-inventory question (#5) - is this genuinely the last undisclosed account, or should a one-time full inventory still happen?",
-    "12. avanza-isk's non-cash holdings (SHB-A.ST, INVE-A.ST, Avanza Auto 3, Tundra) have not been re-itemized per-ticker since equities fetch broke 2026-07-20, except COIN-XBT.ST which got a live user-reported update 2026-07-22 - re-itemize the rest once a working data source is available.",
     "13. COIN-XBT.ST certificate vs. self-custody 'real bitcoin' - user stated 2026-07-22 a preference to eventually hold direct BTC instead of the certificate. Tax mechanics not simple: selling the certificate inside the ISK is tax-free, but moving proceeds to self-custody BTC permanently exits ISK's tax shelter for that capital and every future disposal becomes a 30% K4 event (same regime as the ETH wallet). Also loses the certificate's 2% issuer-redemption-fee risk (moot if sold via exchange) but gains self-custody key-management risk. Not yet decided - Council recommendation given in the 2026-07-22 chat exchange, pending user confirmation.",
-    "16. MEDIUM-TIER MIGRATION (in progress, phase-in adopted 2026-07-22, overshot 2026-07-28): the plan was to park the medium-tier allocation in Avanza Global temporarily and migrate into individual quality stocks one vetted position at a time. Instead, a 120,000 SEK Avanza Global order (placed 2026-07-28) overshot the calculated ~90,240 SEK secure-tier gap by ~29,760 SEK, over-filling the secure tier rather than reserving room for medium-tier migration. User is now directing the remaining 24,864.30 SEK toward medium tier directly: candidates Swedbank Robur Technology A and Spiltan Aktiefond Investmentbolag, ~18,000-20,000 SEK, plus ~4,000-7,000 SEK to high-risk (instrument TBD). NEITHER candidate has had scout->valuation vetting yet - no ticker/ISIN on file, equities fetch still 403'd, and these are Swedish retail funds unlikely to be on yfinance (same pattern as Avanza Auto 3/Tundra). Flag before executing: Spiltan Aktiefond Investmentbolag invests in listed Swedish investment companies and structurally likely holds Investor AB - if so, buying it would double up on the existing direct INVE-A.ST position; Swedbank Robur Technology A is a single-sector active fund, a more concentrated bet than the diversified-holding-company approach. Neither flag is fetched data - both are structural/category-level observations pending factsheet confirmation."
+    "16. MEDIUM-TIER MIGRATION (Avanza Global purchase EXECUTED 2026-07-28 at 119,999 SEK, overshot the calculated ~90,240 SEK secure-tier gap by ~29,760 SEK): 26,400.30 SEK now available (confirmed post-execution) for the medium/high-risk split - candidates Swedbank Robur Technology A and Spiltan Aktiefond Investmentbolag for medium tier (~18-20k), high-risk instrument still TBD (~4-7k). NEITHER medium-tier candidate has had scout->valuation vetting yet - no ticker/ISIN on file, and these are Swedish retail funds unlikely to be on yfinance (same pattern as Avanza Auto 3/Tundra). Flag before executing: Spiltan Aktiefond Investmentbolag invests in listed Swedish investment companies and structurally likely holds Investor AB - if so, buying it would double up on the existing direct INVE-A.ST position; Swedbank Robur Technology A is a single-sector active fund, a more concentrated bet than the diversified-holding-company approach. Neither flag is fetched data - both are structural/category-level observations pending factsheet confirmation.",
+    "17. Avanza Global's actual annual fee (TER) is not yet confirmed - needed to grade the fee-drag scorecard row for the largest single holding in the portfolio. Get from Avanza's factsheet.",
+    "18. Ticker confirmation still pending for the expanded Swedish-equity candidate list (Saab, ABB, Alfa Laval, Latour, AstraZeneca, Industrivarden, Swedbank, Kinnevik) before they can be added to data/universe.json - this system does not guess Nordic tickers."
   ],
   "resolved_structural_questions_note": "Full text of every entry below archived at data/portfolio_history_archive.md - these are one-line pointers, not the complete record.",
   "resolved_structural_questions": [
@@ -327,6 +339,10 @@
     "2026-07-27 CORRECTION: the 2026-07-22 COIN-XBT.ST trim decision above was inaccurate - actual decision was HOLD. Process failure logged for meta - see archive and COIN-XBT.ST holding thesis.",
     "2026-07-27: 85% equity / 5% cash / 0% FI / 10% crypto target adopted. See investor_profile.json reference_targets.",
     "2026-07-27: Phantom 'swedbank-fund' account (duplicate of seb-fund) identified and removed - no Swedbank account ever existed.",
-    "2026-07-28: Live Avanza statement obtained - Tundra sale confirmed still pending; hb-main tax reserve confirmed 10,752.76; 120,000 SEK Avanza Global order placed, overshooting the calculated secure-tier gap - see open question 16."
+    "2026-07-28: Live Avanza statement obtained - Tundra sale confirmed still pending; hb-main tax reserve confirmed 10,752.76; 120,000 SEK Avanza Global order placed, overshooting the calculated secure-tier gap - see open question 16.",
+    "2026-07-28: Avanza Global purchase EXECUTED, confirmed 119,999 SEK (ordered 120,000). New holding added.",
+    "2026-07-28: Tundra sale EXECUTED, confirmed 1,535 SEK (was estimated ~1,528). Holding zeroed, proceeds in avanza-isk cash.",
+    "2026-07-28: Former open question 1 (Auto 50/Auto 75 equity/bond split) closed as MOOT - those funds were fully sold 2026-07-12 and no longer exist in the portfolio.",
+    "2026-07-28: Former open question 12 (re-itemize avanza-isk non-cash holdings) CLOSED - all holdings repriced via the 2026-07-28 live statement plus the Yahoo chart-endpoint fetch fix; equities pricing is no longer stale."
   ]
 }

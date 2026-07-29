@@ -57,6 +57,26 @@ Status: `open` | `approved` | `done` | `rejected (reason)`
   only. (b) The full 503-name fundamentals fetch takes several minutes on a cold
   cache; consider a scheduled weekly refresh so sessions always read a warm cache.
 
+## #12 — Fix contaminated quality factor (revenue-concept mismatch)
+- **Status:** done (2026-07-29 — caught during the first stacked decision run)
+- **What:** The margin/quality factor and P/E were garbage for a subset of names:
+  NVDA showed a 446% net margin (revenue 26.9B vs net income 120B — impossible),
+  banks/REITs showed 400-2000% margins. Two root causes, both fixed in
+  `fetch_fundamentals.py`: (a) `_annual_flow` returned the first XBRL concept that
+  had ANY data, so when a filer switched revenue tags it returned a STALE year's
+  revenue against the current year's net income — now it MERGES across all
+  revenue concepts by period-end and takes the latest. (b) Banks/REITs have no
+  representative "Revenues" tag at all — added a plausibility guard that nulls any
+  net margin outside [-100%, +100%], so a meaningless margin is set aside by the
+  ranker rather than poisoning the cross-sectional quality z-score. Verified:
+  NVDA 446%→55.6%, RF 2073%→null, LLY unchanged 31.7%.
+- **Consequence:** the factor cache built before this fix carries the bad margins;
+  a `--refresh` re-fetch is needed for the corrected values to flow into rankings.
+- **Follow-up (open):** financials/REITs still can't be margin-ranked on free data
+  (no clean revenue tag) — they'll rank on value/momentum only, quality null.
+  A bank-specific revenue proxy (net interest income + noninterest income) would
+  restore them but needs more XBRL concept handling.
+
 ## #11 — Stack thesis-driven judgment onto the data-driven funnel (quantamental)
 - **Status:** done (2026-07-29 — user-requested, planned, and applied)
 - **What:** A thesis layer on top of the data funnel, governed by "thesis

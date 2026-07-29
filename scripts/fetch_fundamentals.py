@@ -54,12 +54,19 @@ def _get_json(url, timeout=30):
 
 def _annual_flow(facts_gaap, concepts):
     """Latest and prior full-year value for a flow concept (revenue, income).
-    Full-year = a 10-K row spanning ~a year. Returns (latest, prior) vals."""
+    Full-year = a 10-K row spanning ~a year. Returns (latest, prior) vals.
+
+    MERGES across all listed concepts (dedupe by period-end, first-listed concept
+    wins ties) rather than returning the first concept that has any data. Filers
+    switch XBRL revenue tags over time, so picking one concept can return a stale
+    year for revenue while net income comes from the current year — producing an
+    impossible margin (e.g. net income > revenue). Merging captures the most
+    recent year whichever tag it's under."""
+    by_end = {}
     for concept in concepts:
         node = facts_gaap.get(concept)
         if not node:
             continue
-        rows = []
         for unit_rows in node.get("units", {}).values():
             for r in unit_rows:
                 if r.get("form", "").startswith("10-K") and r.get("start") and r.get("end"):
@@ -68,20 +75,14 @@ def _annual_flow(facts_gaap, concepts):
                         d1 = datetime.fromisoformat(r["end"])
                     except ValueError:
                         continue
-                    if (d1 - d0).days >= 300:  # ~annual, not a quarter
-                        rows.append((r["end"], r["val"]))
-        if not rows:
-            continue
-        # dedupe by period-end, keep the latest filing's value, sort by end date
-        by_end = {}
-        for end, val in rows:
-            by_end[end] = val
-        ordered = [by_end[e] for e in sorted(by_end)]
-        if ordered:
-            latest = ordered[-1]
-            prior = ordered[-2] if len(ordered) >= 2 else None
-            return latest, prior
-    return None, None
+                    if (d1 - d0).days >= 300 and r["end"] not in by_end:
+                        by_end[r["end"]] = r["val"]
+    if not by_end:
+        return None, None
+    ordered = [by_end[e] for e in sorted(by_end)]
+    latest = ordered[-1]
+    prior = ordered[-2] if len(ordered) >= 2 else None
+    return latest, prior
 
 
 def _annual_instant(facts_gaap, concepts):
@@ -135,6 +136,14 @@ def fetch_sec_fundamentals(cik):
             return None
         return n / d
 
+    margin = ratio(net_income, revenue)
+    # Plausibility guard: a net margin outside [-100%, +100%] means the revenue
+    # figure is wrong for this filer (a bank/REIT with no clean "Revenues" tag, or
+    # a mismatched concept). Drop it rather than poison the quality factor with a
+    # 446%/2073% margin. Better a null the ranker sets aside than a false number.
+    if margin is not None and not (-1.0 <= margin <= 1.0):
+        margin = None
+
     return {
         "revenue": revenue,
         "revenue_prior": revenue_prior,
@@ -142,7 +151,7 @@ def fetch_sec_fundamentals(cik):
         "equity": equity,
         "liabilities": liabilities,
         "shares": shares,
-        "profit_margin": ratio(net_income, revenue),
+        "profit_margin": margin,
         "revenue_growth": (ratio(revenue, revenue_prior) - 1) if revenue_prior else None,
         "debt_to_equity": ratio(liabilities, equity),
         "roe": ratio(net_income, equity),

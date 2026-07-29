@@ -1,0 +1,1024 @@
+{
+  "generated_utc": "2026-07-29T15:08:52.153526+00:00",
+  "universe_categories": "sp500,europe_large_cap,thesis_candidates",
+  "stacked": true,
+  "universe_size": 510,
+  "weights": {
+    "value": 1.0,
+    "quality": 1.0,
+    "growth": 1.0,
+    "momentum": 1.0
+  },
+  "method": "cross-sectional z-scores per factor, clipped +/-3, equal-weighted within category, weighted across categories; relative ranking only, NOT a return forecast. data_risk_score is an absolute 0-100 objective risk read (volatility 40%, max_drawdown 35%, leverage 15%, size 10%); risk_tag is the SEPARATE subjective thesis tag \u2014 the two are never merged",
+  "excluded_sectors": [
+    "Energy"
+  ],
+  "excluded_tickers": [
+    "APA",
+    "BKR",
+    "COP",
+    "CVX",
+    "DVN",
+    "EOG",
+    "EQT",
+    "EXE",
+    "FANG",
+    "HAL",
+    "KMI",
+    "MPC",
+    "OKE",
+    "OXY",
+    "PSX",
+    "SLB",
+    "TPL",
+    "TRGP",
+    "VLO",
+    "WMB",
+    "XOM"
+  ],
+  "coverage": {
+    "ranked": 449,
+    "momentum_only": 61,
+    "partial_data": 0
+  },
+  "ranking": [
+    {
+      "ticker": "KLAC",
+      "name": "KLA Corporation",
+      "sector": "Information Technology",
+      "currency": null,
+      "composite": 1.427,
+      "z": {
+        "value": 3.0,
+        "quality": 1.19,
+        "growth": 1.41,
+        "momentum": 0.11
+      },
+      "data_risk_score": 76,
+      "risk_components": {
+        "volatility": 97,
+        "max_drawdown": 62,
+        "leverage": 79,
+        "size": 40
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 5.717627207492775,
+        "earnings_yield": 0.17489772657607525,
+        "profit_margin": 0.33412215138297763,
+        "roe": 0.8655692449130551,
+        "debt_to_equity": 2.4242060602418394,
+        "revenue_growth": 0.2388764775285417,
+        "momentum_12m": 0.940638982292133,
+        "pct_of_52w_high": 0.5892413370929637,
+        "price": 177.77999877929688,
+        "volatility": 0.5870720024727575,
+        "max_drawdown": -0.41075866290703633
+      }
+    },
+    {
+      "ticker": "LLY",
+      "name": "Lilly (Eli)",
+      "sector": "Health Care",
+      "currency": null,
+      "composite": 1.23,
+      "z": {
+        "value": -0.73,
+        "quality": 1.57,
+        "growth": 3.0,
+        "momentum": 1.08
+      },
+      "data_risk_score": 36,
+      "risk_components": {
+        "volatility": 51,
+        "max_drawdown": 27,
+        "size": 5
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 55.75574474424644,
+        "earnings_yield": 0.01793537158524265,
+        "profit_margin": 0.31666641096058545,
+        "roe": 0.7778405879027699,
+        "debt_to_equity": null,
+        "revenue_growth": 0.44704913337788366,
+        "momentum_12m": 0.601664552962587,
+        "pct_of_52w_high": 0.9890170710318852,
+        "price": 1221.989990234375,
+        "volatility": 0.38041824055796836,
+        "max_drawdown": -0.2331026299547282
+      }
+    },
+    {
+      "ticker": "V",
+      "name": "Visa Inc.",
+      "sector": "Financials",
+      "currency": null,
+      "composite": 1.16,
+      "z": {
+        "value": 2.54,
+        "quality": 1.4,
+        "growth": 0.27,
+        "momentum": 0.43
+      },
+      "data_risk_score": 25,
+      "risk_components": {
+        "volatility": 16,
+        "max_drawdown": 15,
+        "leverage": 75,
+        "size": 20
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 8.657995176229676,
+        "earnings_yield": 0.11550017985058213,
+        "profit_margin": 0.50145,
+        "roe": 0.7587093845746492,
+        "debt_to_equity": 2.3345311495252865,
+        "revenue_growth": 0.11339976618604908,
+        "momentum_12m": 0.0534316051043382,
+        "pct_of_52w_high": 1.0,
+        "price": 370.05999755859375,
+        "volatility": 0.22029854702583596,
+        "max_drawdown": -0.17350936617219126
+      }
+    },
+    {
+      "ticker": "EIX",
+      "name": "Edison International",
+      "sector": "Utilities",
+      "currency": null,
+      "composite": 1.093,
+      "z": {
+        "value": 3.0,
+        "quality": 0.28,
+        "growth": 0.13,
+        "momentum": 0.96
+      },
+      "data_risk_score": 27,
+      "risk_components": {
+        "volatility": 20,
+        "max_drawdown": 1,
+        "leverage": 100,
+        "size": 40
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 6.840684999179702,
+        "earnings_yield": 0.1461841906358668,
+        "profit_margin": 0.2308329450742869,
+        "roe": 0.2536549291768588,
+        "debt_to_equity": 4.25319984071904,
+        "revenue_growth": 0.09761918290811988,
+        "momentum_12m": 0.5113440512869858,
+        "pct_of_52w_high": 0.986190586610099,
+        "price": 79.2699966430664,
+        "volatility": 0.2421092969044307,
+        "max_drawdown": -0.10393032557550763
+      }
+    },
+    {
+      "ticker": "ACGL",
+      "name": "Arch Capital Group",
+      "sector": "Financials",
+      "currency": null,
+      "composite": 1.035,
+      "z": {
+        "value": 2.73,
+        "quality": 0.33,
+        "growth": 0.54,
+        "momentum": 0.54
+      },
+      "data_risk_score": 23,
+      "risk_components": {
+        "volatility": 14,
+        "max_drawdown": 8,
+        "leverage": 73,
+        "size": 40
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 8.249057245494539,
+        "earnings_yield": 0.12122597410100153,
+        "profit_margin": 0.22073360429524813,
+        "roe": 0.1817318020325539,
+        "debt_to_equity": 2.2736098487978187,
+        "revenue_growth": 0.14271788990825685,
+        "momentum_12m": 0.2059916081978248,
+        "pct_of_52w_high": 0.9753944152518528,
+        "price": 103.86000061035156,
+        "volatility": 0.21239323998259368,
+        "max_drawdown": -0.14081192525647457
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "sector": "Information Technology",
+      "currency": null,
+      "composite": 0.98,
+      "z": {
+        "value": -0.47,
+        "quality": 1.54,
+        "growth": 3.0,
+        "momentum": -0.14
+      },
+      "data_risk_score": 27,
+      "risk_components": {
+        "volatility": 47,
+        "max_drawdown": 20,
+        "leverage": 1,
+        "size": 5
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 38.915546323224746,
+        "earnings_yield": 0.025696671240182524,
+        "profit_margin": 0.5560253406070261,
+        "roe": 0.7633333969089534,
+        "debt_to_equity": 0.3147628947251308,
+        "revenue_growth": 0.6547353579009478,
+        "momentum_12m": 0.10009343411269289,
+        "pct_of_52w_high": 0.8190268434677025,
+        "price": 193.077392578125,
+        "volatility": 0.36136366616517096,
+        "max_drawdown": -0.20223143583337766
+      }
+    },
+    {
+      "ticker": "ALL",
+      "name": "Allstate",
+      "sector": "Financials",
+      "currency": null,
+      "composite": 0.957,
+      "z": {
+        "value": 3.0,
+        "quality": 0.19,
+        "growth": -0.25,
+        "momentum": 0.89
+      },
+      "data_risk_score": 26,
+      "risk_components": {
+        "volatility": 22,
+        "max_drawdown": 3,
+        "leverage": 97,
+        "size": 20
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 6.893683587499773,
+        "earnings_yield": 0.145060327661874,
+        "profit_margin": 0.15190958114796485,
+        "roe": 0.3359032995753022,
+        "debt_to_equity": 2.913067624959164,
+        "revenue_growth": 0.05582940754375576,
+        "momentum_12m": 0.4200619637487675,
+        "pct_of_52w_high": 1.0,
+        "price": 275.3500061035156,
+        "volatility": 0.24697690939684952,
+        "max_drawdown": -0.11483808337945689
+      }
+    },
+    {
+      "ticker": "SYF",
+      "name": "Synchrony Financial",
+      "sector": "Financials",
+      "currency": null,
+      "composite": 0.908,
+      "z": {
+        "value": 3.0,
+        "quality": -0.26,
+        "growth": null,
+        "momentum": -0.01
+      },
+      "data_risk_score": 46,
+      "risk_components": {
+        "volatility": 36,
+        "max_drawdown": 36,
+        "leverage": 100,
+        "size": 40
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 7.012144931011544,
+        "earnings_yield": 0.14260971640466993,
+        "profit_margin": null,
+        "roe": 0.21185733031134438,
+        "debt_to_equity": 6.103363950852916,
+        "revenue_growth": null,
+        "momentum_12m": 0.07363253541783088,
+        "pct_of_52w_high": 0.8652650841587659,
+        "price": 76.55000305175781,
+        "volatility": 0.3130038992003346,
+        "max_drawdown": -0.2790776771870155
+      }
+    },
+    {
+      "ticker": "CF",
+      "name": "CF Industries",
+      "sector": "Materials",
+      "currency": null,
+      "composite": 0.851,
+      "z": {
+        "value": 1.32,
+        "quality": 0.58,
+        "growth": 1.0,
+        "momentum": 0.51
+      },
+      "data_risk_score": 46,
+      "risk_components": {
+        "volatility": 60,
+        "max_drawdown": 31,
+        "size": 40
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 12.637085807502512,
+        "earnings_yield": 0.07913216822555007,
+        "profit_margin": 0.21727837380011292,
+        "roe": 0.31814799503927244,
+        "debt_to_equity": null,
+        "revenue_growth": 0.19339622641509435,
+        "momentum_12m": 0.3340005871361871,
+        "pct_of_52w_high": 0.9201307775749926,
+        "price": 126.61000061035156,
+        "volatility": 0.4197912831724392,
+        "max_drawdown": -0.25748551135903686
+      }
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "sector": "Information Technology",
+      "currency": null,
+      "composite": 0.829,
+      "z": {
+        "value": -0.73,
+        "quality": 0.79,
+        "growth": 3.0,
+        "momentum": 0.26
+      },
+      "data_risk_score": 69,
+      "risk_components": {
+        "volatility": 100,
+        "max_drawdown": 73,
+        "leverage": 10,
+        "size": 20
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 55.36588772159092,
+        "earnings_yield": 0.018061662896629256,
+        "profit_margin": 0.3258365264930564,
+        "roe": 0.1866106622683179,
+        "debt_to_equity": 0.557497693662464,
+        "revenue_growth": 0.42087285211450776,
+        "momentum_12m": 1.2136496410766462,
+        "pct_of_52w_high": 0.5340517947245085,
+        "price": 168.99000549316406,
+        "volatility": 0.7707398730630985,
+        "max_drawdown": -0.4659482052754915
+      }
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "sector": "Information Technology",
+      "currency": null,
+      "composite": 0.822,
+      "z": {
+        "value": -1.01,
+        "quality": 0.46,
+        "growth": 3.0,
+        "momentum": 0.84
+      },
+      "data_risk_score": 59,
+      "risk_components": {
+        "volatility": 100,
+        "max_drawdown": 50,
+        "leverage": 8,
+        "size": 5
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 104.61270337154438,
+        "earnings_yield": 0.009559068523909394,
+        "profit_margin": 0.22844989030980792,
+        "roe": 0.1576479276285424,
+        "debt_to_equity": 0.5286254961691129,
+        "revenue_growth": 0.4885110111106685,
+        "momentum_12m": 6.064532098892382,
+        "pct_of_52w_high": 0.6517559652059994,
+        "price": 790.9450073242188,
+        "volatility": 0.7832875137969427,
+        "max_drawdown": -0.34824403479400057
+      }
+    },
+    {
+      "ticker": "APH",
+      "name": "Amphenol",
+      "sector": "Information Technology",
+      "currency": null,
+      "composite": 0.81,
+      "z": {
+        "value": -0.57,
+        "quality": 0.36,
+        "growth": 3.0,
+        "momentum": 0.45
+      },
+      "data_risk_score": 48,
+      "risk_components": {
+        "volatility": 64,
+        "max_drawdown": 37,
+        "leverage": 52,
+        "size": 20
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality",
+        "value"
+      ],
+      "raw": {
+        "pe": 43.87911980761257,
+        "earnings_yield": 0.02278988285053317,
+        "profit_margin": 0.1849038956990132,
+        "roe": 0.3183678642521117,
+        "debt_to_equity": 1.694403232660608,
+        "revenue_growth": 0.5171224552806006,
+        "momentum_12m": 0.44630140622545866,
+        "pct_of_52w_high": 0.8638270827571191,
+        "price": 152.30999755859375,
+        "volatility": 0.4396826868821139,
+        "max_drawdown": -0.28330826149847277
+      }
+    }
+  ],
+  "momentum_only_ranking": [
+    {
+      "ticker": "VTRS",
+      "name": "Viatris",
+      "sector": "Health Care",
+      "currency": null,
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -1.3,
+        "growth": -1.03,
+        "momentum": 1.53
+      },
+      "data_risk_score": 31,
+      "risk_components": {
+        "volatility": 39,
+        "max_drawdown": 19,
+        "size": 40
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.0,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": -0.030109985843406295,
+        "momentum_12m": 0.9374321129656855,
+        "pct_of_52w_high": 0.9969204757392951,
+        "price": 17.80500030517578,
+        "volatility": 0.32485789352923433,
+        "max_drawdown": -0.19652816413841467
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "ASML.AS",
+      "name": "ASML Holding",
+      "sector": null,
+      "currency": "EUR",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": null,
+        "momentum": 1.09
+      },
+      "data_risk_score": 43,
+      "risk_components": {
+        "volatility": 60,
+        "max_drawdown": 23
+      },
+      "risk_tag": "med",
+      "thesis": "Effective monopoly on EUV lithography \u2014 no advanced chip exists without its machines. Wide moat, high margins, secular semiconductor demand.",
+      "thesis_source": "claude",
+      "coverage": [
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": null,
+        "momentum_12m": 1.173354735152488,
+        "pct_of_52w_high": 0.7865690605301812,
+        "price": 1354.0,
+        "volatility": 0.42127409420250694,
+        "max_drawdown": -0.21343093946981884
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "MNST",
+      "name": "Monster Beverage",
+      "sector": "Consumer Staples",
+      "currency": null,
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": 0.21,
+        "momentum": 1.07
+      },
+      "data_risk_score": 21,
+      "risk_components": {
+        "volatility": 26,
+        "max_drawdown": 15,
+        "size": 20
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": 0.106988540459799,
+        "momentum_12m": 0.6025411016701652,
+        "pct_of_52w_high": 0.9843905828509171,
+        "price": 98.37999725341797,
+        "volatility": 0.2653334879461848,
+        "max_drawdown": -0.17701365473161546
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "DDOG",
+      "name": "Datadog",
+      "sector": "Information Technology",
+      "currency": null,
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.28,
+        "growth": 1.75,
+        "momentum": 0.99
+      },
+      "data_risk_score": 77,
+      "risk_components": {
+        "volatility": 100,
+        "max_drawdown": 77,
+        "leverage": 18
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": 0.03143741840907247,
+        "roe": 0.02886791350745377,
+        "debt_to_equity": 0.7801386097123256,
+        "revenue_growth": 0.2767536858183308,
+        "momentum_12m": 0.7072270322331375,
+        "pct_of_52w_high": 0.9245198834417415,
+        "price": 256.5450134277344,
+        "volatility": 0.6475649207491381,
+        "max_drawdown": -0.4862057017996233
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "SPG",
+      "name": "Simon Property Group",
+      "sector": "Real Estate",
+      "currency": null,
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -0.76,
+        "growth": -0.15,
+        "momentum": 0.85
+      },
+      "data_risk_score": 23,
+      "risk_components": {
+        "volatility": 10,
+        "max_drawdown": 5,
+        "leverage": 100
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": 6.509087665995683,
+        "revenue_growth": 0.06718990146882908,
+        "momentum_12m": 0.40126720211023015,
+        "pct_of_52w_high": 0.9950358974782127,
+        "price": 235.52499389648438,
+        "volatility": 0.1936417334252314,
+        "max_drawdown": -0.1254844300473804
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "NOVN.SW",
+      "name": null,
+      "sector": null,
+      "currency": "CHF",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": null,
+        "momentum": 0.79
+      },
+      "data_risk_score": 8,
+      "risk_components": {
+        "volatility": 10,
+        "max_drawdown": 7
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": null,
+        "momentum_12m": 0.3635979940620888,
+        "pct_of_52w_high": 0.9897318288284244,
+        "price": 129.16000366210938,
+        "volatility": 0.1940709666741373,
+        "max_drawdown": -0.13409961685823757
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "RWE.DE",
+      "name": null,
+      "sector": null,
+      "currency": "EUR",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": null,
+        "momentum": 0.7
+      },
+      "data_risk_score": 15,
+      "risk_components": {
+        "volatility": 24,
+        "max_drawdown": 6
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": null,
+        "momentum_12m": 0.5373625477649333,
+        "pct_of_52w_high": 0.9028718860563828,
+        "price": 55.959999084472656,
+        "volatility": 0.25804035856268115,
+        "max_drawdown": -0.1277831272578217
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "PNC",
+      "name": "PNC Financial Services",
+      "sector": "Financials",
+      "currency": null,
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -1.16,
+        "growth": -0.11,
+        "momentum": 0.68
+      },
+      "data_risk_score": 28,
+      "risk_components": {
+        "volatility": 15,
+        "max_drawdown": 14,
+        "leverage": 100,
+        "size": 20
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": 8.466386069159032,
+        "revenue_growth": 0.07163071213175587,
+        "momentum_12m": 0.29764447912267444,
+        "pct_of_52w_high": 0.9832504294374571,
+        "price": 250.92550659179688,
+        "volatility": 0.2181567967483085,
+        "max_drawdown": -0.1720966531788819
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "IBE.MC",
+      "name": "Iberdrola",
+      "sector": null,
+      "currency": "EUR",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": null,
+        "momentum": 0.64
+      },
+      "data_risk_score": 0,
+      "risk_components": {
+        "volatility": 0,
+        "max_drawdown": 0
+      },
+      "risk_tag": "low",
+      "thesis": "Renewables-heavy regulated utility \u2014 a real sustainability holding and a steadier ballast within the medium tier.",
+      "thesis_source": "claude",
+      "coverage": [
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": null,
+        "momentum_12m": 0.35997378067290486,
+        "pct_of_52w_high": 0.9505494543882554,
+        "price": 20.760000228881836,
+        "volatility": 0.148721791505072,
+        "max_drawdown": -0.06951548293000442
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "MRK.DE",
+      "name": null,
+      "sector": null,
+      "currency": "EUR",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": null,
+        "momentum": 0.63
+      },
+      "data_risk_score": 28,
+      "risk_components": {
+        "volatility": 32,
+        "max_drawdown": 23
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": null,
+        "momentum_12m": 0.2769163318735961,
+        "pct_of_52w_high": 0.9769491939221399,
+        "price": 144.10000610351562,
+        "volatility": 0.29577726460980586,
+        "max_drawdown": -0.21676188151041664
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "ITX.MC",
+      "name": null,
+      "sector": null,
+      "currency": "EUR",
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": null,
+        "growth": null,
+        "momentum": 0.62
+      },
+      "data_risk_score": 19,
+      "risk_components": {
+        "volatility": 24,
+        "max_drawdown": 13
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "momentum"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": null,
+        "roe": null,
+        "debt_to_equity": null,
+        "revenue_growth": null,
+        "momentum_12m": 0.29240705362409436,
+        "pct_of_52w_high": 0.9668508592948343,
+        "price": 56.0,
+        "volatility": 0.25771933078851134,
+        "max_drawdown": -0.16298340685670776
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    },
+    {
+      "ticker": "ECHO",
+      "name": "EchoStar",
+      "sector": "Communication Services",
+      "currency": null,
+      "composite": null,
+      "z": {
+        "value": null,
+        "quality": -1.96,
+        "growth": -1.22,
+        "momentum": 0.6
+      },
+      "data_risk_score": 86,
+      "risk_components": {
+        "volatility": 100,
+        "max_drawdown": 63,
+        "leverage": 100
+      },
+      "risk_tag": null,
+      "thesis": null,
+      "thesis_source": null,
+      "coverage": [
+        "growth",
+        "momentum",
+        "quality"
+      ],
+      "raw": {
+        "pe": null,
+        "earnings_yield": null,
+        "profit_margin": -0.966157322741123,
+        "roe": -2.514346704628547,
+        "debt_to_equity": 6.452610260807551,
+        "revenue_growth": -0.051848356792915995,
+        "momentum_12m": 1.8070483867392024,
+        "pct_of_52w_high": 0.5841748713144994,
+        "price": 82.83599853515625,
+        "volatility": 0.9377925534136171,
+        "max_drawdown": -0.4158251286855006
+      },
+      "reason": "no fundamentals \u2014 momentum-only (weak signal, research manually)"
+    }
+  ],
+  "partial_data": []
+}

@@ -12,7 +12,9 @@ get averaged away into mush.
 ## Job
 
 1. Read the outputs of market-data, valuation, macro-regime, portfolio, and
-   thesis-review from this session.
+   thesis-review from this session. If a selection sweep ran, also read the
+   latest `data/rankings/*.json` (the factor rank + risk scores) and
+   `data/thesis_candidates.json` (the judgment nominations).
 2. For each holding or candidate under discussion, check: do valuation and
    macro-regime agree on direction? Does thesis-review's status match what
    valuation is currently saying? Where they conflict, that conflict is the
@@ -53,6 +55,32 @@ thesis-review, unsoftened.
 
 **Rebalancing actions** — pulled straight from portfolio agent, with SEK
 amounts.
+
+**Candidate decision (only when a selection sweep ran)** — the stacked-funnel
+output the user acts on:
+- **Present candidates grouped by risk tier** (secure / medium / high), and
+  **ranked within each tier by composite score**. Each row shows: composite,
+  objective `data_risk_score`, subjective `risk_tag`, screen pass/fail, and —
+  for thesis-nominated names — the one-line thesis and its `source`. Keep the
+  objective score and subjective tag in separate columns; never merge them.
+- **Data-rank vs thesis reconciliation** — where do the factor rank and the
+  thesis view AGREE (both like a name → higher confidence) vs DISAGREE (a
+  thesis favourite the data screens out, or a data leader with no thesis)?
+  Name the disagreements; that's the "judgment vs tool" signal the user wants.
+- **Then give ONE explicit verdict** — and it must genuinely choose, never
+  default to buying:
+  1. **BUY** — specific name(s) now, with conviction, tier, and SEK sizing.
+  2. **NO GOOD MATCH → re-sweep** — nothing cleared the bar; say why and what to
+     change next run (factor weights, universe breadth, screen thresholds).
+  3. **ADJUST THE PORTFOLIO INSTEAD** — the better move is elsewhere (trim/sell,
+     rebalance a drifted tier, fix a fee/wrapper/tax lever). Per CLAUDE.md's
+     priority order this is FIRST-CLASS, not a fallback — never lead with a
+     stock pick while a bigger lever sits open.
+  4. **Anything else material** you spot (crypto over cap, AF→ISK move, etc.).
+- **Anti-action-bias rule:** "no good buy right now" is a valid, complete
+  verdict. Never manufacture a purchase to fill the list.
+- A thesis name that FAILED the hard screen may still be actioned, but ONLY as
+  an explicit override — state the failed metric and that buying is an override.
 
 **Confidence level per call** — High / Medium / Low, based on: do the
 agents agree, is the underlying data complete, is this a regime-dependent

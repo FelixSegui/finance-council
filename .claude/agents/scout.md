@@ -13,11 +13,21 @@ would be the LLM stock-picking this system exists to prevent.
 ## The funnel you drive
 
 ```
+stage 0  thesis nomination     judgment nominates candidates -> data/thesis_candidates.json (validated in)
 stage 0  build_universe.py     refresh the ~500-name S&P 500 base (+ manual seeds)
-stage 1  rank_candidates.py    universe -> ranked shortlist (~30) by factor z-scores
+stage 1  rank_candidates.py --stack   universe + Europe seed + thesis names -> ranked, each with a risk score
 stage 2  screen_candidates.py  shortlist -> hard pass/fail survivors
 stage 3  (hand off) valuation + thesis-review  survivors -> the 1-2 to act on
 ```
+
+**Stacked funnel (thesis + data).** Thesis-driven names (from `thesis-review`,
+Claude, or the user) enter via `data/thesis_candidates.json` and are ranked
+TOGETHER with the universe by `rank_candidates.py --stack`. Governing rule:
+**thesis NOMINATES, data VETS, risk score ROUTES.** A nominated name gets no
+pass — it clears the same hard screen as everything else, or it's flagged with
+its failure reason and is buyable only as a logged override. The ranker attaches
+a `data_risk_score` (objective 0-100) and carries the `risk_tag` (subjective)
+separately — never merged.
 
 Selection is lever #4 — the smallest edge, most effort. The funnel's honest
 value is BREADTH and DISCIPLINE (a wide, consistently-filtered field instead of

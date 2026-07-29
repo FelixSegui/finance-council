@@ -57,6 +57,35 @@ Status: `open` | `approved` | `done` | `rejected (reason)`
   only. (b) The full 503-name fundamentals fetch takes several minutes on a cold
   cache; consider a scheduled weekly refresh so sessions always read a warm cache.
 
+## #11 — Stack thesis-driven judgment onto the data-driven funnel (quantamental)
+- **Status:** done (2026-07-29 — user-requested, planned, and applied)
+- **What:** A thesis layer on top of the data funnel, governed by "thesis
+  NOMINATES, data VETS, risk score ROUTES." (a) `data/thesis_candidates.json`
+  — nomination store (ticker, thesis, policy_tailwind, source, date, subjective
+  risk_tag); seeded with 6 Claude picks. (b) `rank_candidates.py --stack` ranks
+  universe + European seed + thesis names together, and emits a HYBRID risk read
+  per name: objective `data_risk_score` (0-100 from volatility 40% / max_drawdown
+  35% / leverage 15% / size 10%) shown SEPARATELY from the subjective `risk_tag`.
+  (c) `fetch_fundamentals.py` now returns volatility + max_drawdown (same formulas
+  as backtest.py). (d) `thesis-review.md` extended to nominate candidates + assign
+  risk_tag. (e) `council.md` gains the candidate DECISION MEMO: candidates grouped
+  by tier + score, a data-rank-vs-thesis reconciliation, and a forced verdict
+  (BUY / re-sweep / adjust-portfolio-instead / other) with an anti-action-bias
+  rule. (f) `investor_profile.json` records risk_score -> tier routing + the
+  medium-tier "hold risk constant" rule.
+- **Guardrails:** a thesis name never silently overrides a hard-screen failure —
+  it's flagged with its reason and buyable only as a logged override; every
+  number still traces to fetched data; objective and subjective risk stay
+  decomposed; theses are dated and flagged when they lean on training knowledge.
+- **Bug fixed in build:** the factor cache didn't invalidate when the record
+  schema changed (added volatility/max_drawdown), so risk scores were silently
+  computed on partial inputs for pre-existing cached names. gather() now treats a
+  record missing `volatility` as stale and refetches.
+- **Known limit:** thesis picks that are non-US (most of the seed) have no free
+  fundamentals, so they rank momentum-only — the data can partially, not fully,
+  vet them. That is itself signal: those names carry more thesis-reliance and the
+  memo should say so.
+
 ## #10 — Extend the funnel: crypto context, European seed, sustainability screen
 - **Status:** done (2026-07-22 — user-requested and applied same session)
 - **What:** (a) `scripts/rank_crypto.py` — high-risk-tier CONTEXT (CoinGecko

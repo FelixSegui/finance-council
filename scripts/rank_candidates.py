@@ -47,6 +47,8 @@ from fetch_fundamentals import fetch_one  # noqa: E402
 
 UNIVERSE_PATH = "data/universe.json"
 CACHE_PATH = "data/universe_cache/factors.json"
+THESIS_PATH = "data/thesis_candidates.json"
+STACK_CATEGORIES = "sp500,europe_large_cap,thesis_candidates"
 
 # factor -> (record field, direction). "high" = bigger is better.
 FACTOR_FIELDS = {
@@ -57,6 +59,52 @@ FACTOR_FIELDS = {
 }
 # A name needs at least these categories present to earn a composite rank.
 REQUIRED_CATEGORIES = {"value", "quality"}
+
+
+def load_thesis():
+    """ticker -> {thesis, risk_tag, source, ...} from the nomination store."""
+    if not os.path.exists(THESIS_PATH):
+        return {}
+    with open(THESIS_PATH) as f:
+        data = json.load(f)
+    return {c["ticker"]: c for c in data.get("candidates", []) if c.get("ticker")}
+
+
+def _band(value, lo, hi):
+    """Map value in [lo, hi] to a 0-100 sub-score, clamped. hi = riskier end."""
+    if value is None:
+        return None
+    return max(0.0, min(100.0, (value - lo) / (hi - lo) * 100))
+
+
+def _size_score(market_cap):
+    if not market_cap:
+        return None
+    for threshold, score in [(200e9, 5), (50e9, 20), (10e9, 40), (2e9, 65)]:
+        if market_cap >= threshold:
+            return score
+    return 85  # micro/small cap
+
+
+def compute_data_risk(rec):
+    """Objective 0-100 risk score (higher = riskier) from FETCHED data only:
+    annualized volatility, 1y max drawdown, leverage, and size. Averages the
+    sub-scores that are available (non-US momentum-only names still get a
+    vol+drawdown score), or None if nothing is available. Absolute-ish thresholds
+    (not peer-relative) so the score can route names into tiers consistently."""
+    mc = (rec.get("price") or 0) * (rec.get("shares") or 0) or None
+    subs = {
+        "volatility": (_band(rec.get("volatility"), 0.15, 0.60), 0.40),
+        "max_drawdown": (_band(abs(rec["max_drawdown"]) if rec.get("max_drawdown") is not None else None, 0.10, 0.60), 0.35),
+        "leverage": (_band(rec.get("debt_to_equity"), 0.3, 3.0), 0.15),
+        "size": (_size_score(mc), 0.10),
+    }
+    present = {k: (s, w) for k, (s, w) in subs.items() if s is not None}
+    if not present:
+        return None, {}
+    wsum = sum(w for _, w in present.values())
+    score = sum(s * w for s, w in present.values()) / wsum
+    return round(score), {k: round(s) for k, (s, _w) in present.items()}
 
 
 def load_universe(categories):
@@ -100,7 +148,11 @@ def gather(tickers, meta, cache, cache_days, refresh):
         if entry and not refresh:
             try:
                 age = (now - datetime.fromisoformat(entry["fetched_utc"])).days
-                fresh = age < cache_days
+                # schema check: records cached before a field was added (e.g.
+                # volatility/max_drawdown for the risk score) must be refetched,
+                # else the risk score is silently computed on partial inputs.
+                has_schema = "volatility" in entry.get("record", {})
+                fresh = age < cache_days and has_schema
             except (KeyError, ValueError):
                 fresh = False
         if fresh:
@@ -183,6 +235,9 @@ def composite(cat_score, weights):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--categories", default="sp500")
+    p.add_argument("--stack", action="store_true",
+                   help=f"rank the stacked funnel ({STACK_CATEGORIES}) — universe "
+                        "+ European seed + thesis-nominated candidates together")
     p.add_argument("--limit", type=int, default=None, help="cap universe size (quick runs)")
     p.add_argument("--top", type=int, default=30, help="how many ranked names to write/print")
     p.add_argument("--weights", default="1,1,1,1",
@@ -200,7 +255,9 @@ def main():
     except ValueError:
         sys.exit("--weights must be four numbers, e.g. 1,1,1,1")
 
-    tickers, meta = load_universe([c.strip() for c in args.categories.split(",")])
+    categories_arg = STACK_CATEGORIES if args.stack else args.categories
+    tickers, meta = load_universe([c.strip() for c in categories_arg.split(",")])
+    thesis = load_thesis()
     excluded_sectors = {s.strip() for s in args.exclude_sectors.split(",") if s.strip()}
     excluded = []
     if excluded_sectors:
@@ -227,18 +284,28 @@ def main():
     ranked, momentum_only, partial = [], [], []
     for t in records:
         score, present = composite(cat_scores[t], weights)
+        data_risk, risk_components = compute_data_risk(records[t])
+        nom = thesis.get(t, {})
         row = {
             "ticker": t,
-            "name": (meta.get(t) or {}).get("name"),
+            "name": nom.get("name") or (meta.get(t) or {}).get("name"),
             "sector": (meta.get(t) or {}).get("sector"),
             "currency": (meta.get(t) or {}).get("currency"),
             "composite": round(score, 3) if score is not None else None,
             "z": {c: (round(v, 2) if v is not None else None)
                   for c, v in cat_scores[t].items()},
+            # risk score: OBJECTIVE data component and SUBJECTIVE thesis tag kept
+            # separate on purpose (never merged) — see plan guardrail 3.
+            "data_risk_score": data_risk,
+            "risk_components": risk_components,
+            "risk_tag": nom.get("risk_tag"),
+            "thesis": nom.get("thesis"),
+            "thesis_source": nom.get("source") if nom else None,
             "coverage": present,
             "raw": {k: records[t].get(k) for k in
                     ["pe", "earnings_yield", "profit_margin", "roe", "debt_to_equity",
-                     "revenue_growth", "momentum_12m", "pct_of_52w_high", "price"]},
+                     "revenue_growth", "momentum_12m", "pct_of_52w_high", "price",
+                     "volatility", "max_drawdown"]},
         }
         if score is not None:
             ranked.append(row)
@@ -258,12 +325,16 @@ def main():
 
     result = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "universe_categories": args.categories,
+        "universe_categories": categories_arg,
+        "stacked": args.stack,
         "universe_size": len(tickers),
         "weights": weights,
         "method": ("cross-sectional z-scores per factor, clipped +/-3, "
                    "equal-weighted within category, weighted across categories; "
-                   "relative ranking only, NOT a return forecast"),
+                   "relative ranking only, NOT a return forecast. data_risk_score "
+                   "is an absolute 0-100 objective risk read (volatility 40%, "
+                   "max_drawdown 35%, leverage 15%, size 10%); risk_tag is the "
+                   "SEPARATE subjective thesis tag — the two are never merged"),
         "excluded_sectors": sorted(excluded_sectors),
         "excluded_tickers": excluded,
         "coverage": {
@@ -283,19 +354,27 @@ def main():
     print(f"\nWrote {fname}")
     print(f"Ranked {len(ranked)} (full factors); {len(momentum_only)} momentum-only "
           f"(no fundamentals); {len(partial)} set aside.\n")
-    print(f"{'#':>3}  {'TICKER':<8}{'COMPOSITE':>10}  {'VAL':>5}{'QUAL':>6}{'GRW':>6}{'MOM':>6}  SECTOR")
+    print(f"{'#':>3}  {'TICKER':<8}{'COMP':>7}{'RISK':>5}{'TAG':>5}  "
+          f"{'VAL':>5}{'QUAL':>6}{'GRW':>6}{'MOM':>6}  SECTOR/SRC")
     def f(x): return f"{x:>5.2f}" if x is not None else "    ."
     for i, r in enumerate(ranked[:args.top], 1):
         z = r["z"]
-        print(f"{i:>3}  {r['ticker']:<8}{r['composite']:>10.3f}  "
-              f"{f(z['value'])}{f(z['quality'])}{f(z['growth'])}{f(z['momentum'])}  {r['sector'] or ''}")
+        rk = f"{r['data_risk_score']:>4}" if r["data_risk_score"] is not None else "   ."
+        tag = (r["risk_tag"] or "")[:4]
+        label = r["sector"] or ""
+        if r.get("thesis_source"):
+            label = f"{label} [{r['thesis_source']}]"
+        print(f"{i:>3}  {r['ticker']:<8}{r['composite']:>7.2f}{rk}{tag:>5}  "
+              f"{f(z['value'])}{f(z['quality'])}{f(z['growth'])}{f(z['momentum'])}  {label}")
     if momentum_only:
         print(f"\nMomentum-only (no fundamentals — research watchlist, NOT factor-vetted):")
-        print(f"{'#':>3}  {'TICKER':<12}{'MOM z':>7}  {'12m%':>8}  CURRENCY")
+        print(f"{'#':>3}  {'TICKER':<12}{'MOM z':>7}{'RISK':>5}{'TAG':>5}  {'12m%':>7}  SRC")
         for i, r in enumerate(momentum_only[:args.top], 1):
             m12 = r["raw"].get("momentum_12m")
-            print(f"{i:>3}  {r['ticker']:<12}{f(r['z'].get('momentum')):>7}  "
-                  f"{(m12*100 if m12 is not None else 0):>7.1f}  {r.get('currency') or ''}")
+            rk = f"{r['data_risk_score']:>4}" if r["data_risk_score"] is not None else "   ."
+            src = r.get("thesis_source") or (r.get("currency") or "")
+            print(f"{i:>3}  {r['ticker']:<12}{f(r['z'].get('momentum')):>7}{rk}"
+                  f"{(r['risk_tag'] or ''):>5}  {(m12*100 if m12 is not None else 0):>6.1f}  {src}")
 
 
 if __name__ == "__main__":

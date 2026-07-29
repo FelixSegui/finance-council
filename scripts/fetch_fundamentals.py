@@ -24,6 +24,8 @@ directly with tickers/ciks only for spot-checking:
   python scripts/fetch_fundamentals.py AAPL:0000320193 MSFT:0000789019
 """
 import json
+import math
+import statistics
 import sys
 import time
 import urllib.request
@@ -197,6 +199,13 @@ def fetch_price_momentum(ticker):
         hi, lo = max(closes), min(closes)
         mom_12m = price / closes[0] - 1
         mom_6m = price / closes[-126] - 1 if len(closes) >= 126 else None
+        # Risk metrics from the same series (same formulas as backtest.py:metrics)
+        rets = [closes[i] / closes[i - 1] - 1 for i in range(1, len(closes))]
+        vol = statistics.pstdev(rets) * math.sqrt(252) if len(rets) > 1 else None
+        run_max, max_dd = closes[0], 0.0
+        for c in closes:
+            run_max = max(run_max, c)
+            max_dd = min(max_dd, c / run_max - 1)
         return {
             "price": price,
             "currency": res["meta"].get("currency"),
@@ -205,6 +214,8 @@ def fetch_price_momentum(ticker):
             "pct_of_52w_high": price / hi if hi else None,
             "momentum_6m": mom_6m,
             "momentum_12m": mom_12m,
+            "volatility": vol,          # annualized stdev of daily returns
+            "max_drawdown": max_dd,     # most negative peak-to-trough over 1y
             "_source": "yahoo_chart_v8",
         }
     except (urllib.error.HTTPError, urllib.error.URLError) as e:

@@ -57,6 +57,53 @@ Status: `open` | `approved` | `done` | `rejected (reason)`
   only. (b) The full 503-name fundamentals fetch takes several minutes on a cold
   cache; consider a scheduled weekly refresh so sessions always read a warm cache.
 
+## #14 — Add pending_executions tracker (committed-but-unsettled trades)
+- **Status:** done (2026-07-29 — user flagged the gap directly)
+- **What:** The user bought Avanza Global (119,999 SEK) and sold Tundra, but
+  portfolio.json still showed the OLD 144,864 SEK undeployed cash and Tundra as
+  "awaiting execution" days later - both had been mentioned in conversation but
+  never confirmed executed, so they stayed invisible in the source-of-truth file.
+  Root cause: the file only records SETTLED holdings on explicit confirmation
+  (correct - it must never guess a trade happened), but there was no visible
+  place to track "committed, not yet confirmed" trades in between, so they
+  silently fell through the cracks until the user noticed and asked.
+- **Fix:** added `portfolio.json.pending_executions` - a array for
+  committed-but-unsettled trades (ticker, amount, date committed, status,
+  rationale), separate from `holdings` and excluded from tier/exposure totals.
+  An entry moves into `holdings` only on explicit user confirmation of actual
+  execution. Seeded with Visa (7,500 SEK) and Schneider (5,000 SEK), both
+  committed 2026-07-29, execution not yet confirmed.
+- **Process note:** this is a recurring pattern worth watching - the user
+  committing to a trade in conversation should immediately prompt logging it as
+  PENDING (not skipping it entirely), so "did I log that?" doesn't have to be
+  asked. `journal` should check `pending_executions` each sweep and ask the user
+  whether any have settled.
+
+## #13 — Fix multi-class share-count staleness (false-cheap valuations)
+- **Status:** done (2026-07-29 — caught reviewing the user's Visa buy before
+  confirming it as a reasonable purchase)
+- **What:** Visa's ranker PE showed 8.7 (implying deeply cheap) when its real
+  PE is ~30-35 (premium). Root cause in `fetch_fundamentals.py:_shares()`: SEC's
+  `EntityCommonStockSharesOutstanding` DEI tag for Visa has no rows after
+  2010-01-27 (Visa later moved to per-class share reporting that the free,
+  non-dimensional companyfacts API can't cleanly aggregate) - the function had
+  NO staleness check, so `sorted(rows)[-1]` silently returned a 16-year-stale
+  share count as if it were current, understating shares ~4x and inflating the
+  computed EPS/deflating the computed PE by the same factor. Same bug also hit
+  BRK.B (the earlier outlier that had already required winsorizing the value
+  factor, IMPROVEMENTS #12's sibling issue - never root-caused until now).
+- **Fix:** `_shares()` now rejects any share-count row older than
+  `_SHARES_MAX_AGE_DAYS` (400 days) and returns None (checked at both the DEI
+  and us-gaap fallback stage) instead of returning it as current. Per this
+  system's own rule, "no data" beats "wrong data" - Visa and BRK.B now correctly
+  show null EPS/PE (insufficient data) instead of a false number. Verified:
+  Visa shares None (was 469M vs real ~2.0B), BRK.B shares None, GOOGL unaffected
+  (24,088,000,000... reports a clean current count), LLY/NVDA/EIX unaffected.
+- **Consequence:** any multi-class US filer with this reporting pattern will now
+  correctly rank on value/quality-minus-margin only, flagged as insufficient
+  rather than confidently wrong. Re-run `rank_candidates.py --stack --refresh`
+  for the corrected rankings to take effect (cached pre-fix records are stale).
+
 ## #12 — Fix contaminated quality factor (revenue-concept mismatch)
 - **Status:** done (2026-07-29 — caught during the first stacked decision run)
 - **What:** The margin/quality factor and P/E were garbage for a subset of names:

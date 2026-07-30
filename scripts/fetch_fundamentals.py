@@ -30,7 +30,7 @@ import sys
 import time
 import urllib.request
 import urllib.error
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 SEC_UA = {"User-Agent": "finance-council personal research (seguifelix@gmail.com)"}
 
@@ -102,15 +102,42 @@ def _annual_instant(facts_gaap, concepts):
     return None
 
 
+_SHARES_MAX_AGE_DAYS = 400  # a bit over a year, to tolerate annual-only filers
+
+
 def _shares(facts):
+    """Latest share count, but ONLY if it's recent. Some multi-class filers
+    (e.g. Visa) stop reporting the single-figure EntityCommonStockSharesOutstanding
+    tag once they switch to per-class reporting the free companyfacts API can't
+    cleanly aggregate (dimensioned facts aren't distinguishable in this feed).
+    Without a staleness guard, `sorted(...)[-1]` silently returns the LAST time
+    that tag was ever reported — years stale — presented as current, which then
+    poisons EPS/PE with a false number (this is exactly how Visa's PE showed 8.7
+    instead of its real ~30-35). Per this system's own rule: no data beats wrong
+    data, so an old count is treated as missing, not returned."""
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=_SHARES_MAX_AGE_DAYS)).date().isoformat()
     for c in SHARE_CONCEPTS_DEI:
         node = facts.get("dei", {}).get(c)
         if node:
             for unit_rows in node.get("units", {}).values():
                 rows = sorted((r["end"], r["val"]) for r in unit_rows if r.get("end"))
-                if rows:
+                if rows and rows[-1][0] >= cutoff:
                     return rows[-1][1]
-    return _annual_instant(facts.get("us-gaap", {}), SHARE_CONCEPTS_GAAP)
+    gaap = facts.get("us-gaap", {})
+    for concept in SHARE_CONCEPTS_GAAP:
+        node = gaap.get(concept)
+        if not node:
+            continue
+        rows = []
+        for unit_rows in node.get("units", {}).values():
+            for r in unit_rows:
+                if r.get("form", "").startswith("10-K") and r.get("end"):
+                    rows.append((r["end"], r["val"]))
+        if rows:
+            rows.sort(key=lambda x: x[0])
+            if rows[-1][0] >= cutoff:
+                return rows[-1][1]
+    return None
 
 
 def fetch_sec_fundamentals(cik):

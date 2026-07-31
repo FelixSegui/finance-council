@@ -10,8 +10,14 @@ its history — not "will it go up."
 
 ## Inputs
 
-Read the latest file in `data/snapshots/` and `data/portfolio.json`.
-If a ticker you need isn't in the snapshot, say so — don't estimate.
+Read the latest file in `data/snapshots/` and `data/portfolio.json`. For
+candidate tickers (not just holdings), also check the latest
+`data/rankings/*.json` (factor scores, risk_score) and
+`data/thesis_candidates.json` (thesis + policy tailwind) — that's where
+`scout`'s funnel output and thesis nominations live. Fields there (pe,
+profit_margin, revenue_growth, momentum, volatility, max_drawdown) are
+fetched, not estimated — use them directly. If a ticker you need isn't in
+any of these, say so — don't estimate.
 
 ## Method
 

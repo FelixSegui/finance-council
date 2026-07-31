@@ -57,6 +57,23 @@ Status: `open` | `approved` | `done` | `rejected (reason)`
   only. (b) The full 503-name fundamentals fetch takes several minutes on a cold
   cache; consider a scheduled weekly refresh so sessions always read a warm cache.
 
+## #15 — Wire nordic_large_cap into --stack; valuation/thesis-review read the funnel
+- **Status:** done (2026-07-30 — caught while re-running the finalist analysis)
+- **What:** `rank_candidates.py`'s `STACK_CATEGORIES` was
+  `sp500,europe_large_cap,thesis_candidates` — it silently EXCLUDED
+  `nordic_large_cap` (the Swedish seed), so every `--stack` run to date ranked
+  Swedish names not at all. Fixed: now
+  `sp500,europe_large_cap,nordic_large_cap,thesis_candidates`. Also:
+  `valuation.md` and `thesis-review.md` only listed `data/snapshots/` and
+  `portfolio.json` as inputs, not `data/rankings/*.json` or
+  `data/thesis_candidates.json` — so those agents couldn't actually see scout's
+  funnel output for candidate tickers despite valuation's own job description
+  saying it covers "candidates," not just holdings. Both agent specs now list
+  the funnel outputs as inputs.
+- **Consequence of the bug:** every "candidate" answer prior to this fix that
+  claimed to cover Swedish names was working from ad-hoc individual fetches,
+  not the stacked ranking - now closed.
+
 ## #14 — Add pending_executions tracker (committed-but-unsettled trades)
 - **Status:** done (2026-07-29 — user flagged the gap directly)
 - **What:** The user bought Avanza Global (119,999 SEK) and sold Tundra, but

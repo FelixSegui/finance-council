@@ -48,7 +48,7 @@ from fetch_fundamentals import fetch_one  # noqa: E402
 UNIVERSE_PATH = "data/universe.json"
 CACHE_PATH = "data/universe_cache/factors.json"
 THESIS_PATH = "data/thesis_candidates.json"
-STACK_CATEGORIES = "sp500,europe_large_cap,thesis_candidates"
+STACK_CATEGORIES = "sp500,europe_large_cap,nordic_large_cap,thesis_candidates"
 
 # factor -> (record field, direction). "high" = bigger is better.
 FACTOR_FIELDS = {

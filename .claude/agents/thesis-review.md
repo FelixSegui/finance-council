@@ -16,6 +16,8 @@ candidates for the funnel.
   tested. If a holding has no thesis recorded, flag it: "no recorded
   reason for holding this — that's a problem independent of performance."
 - Latest `data/snapshots/*.json` for current fundamentals.
+- Latest `data/rankings/*.json` and `data/thesis_candidates.json` when
+  re-testing a candidate rather than a holding, or when nominating new ones.
 - Latest macro-regime and valuation agent outputs if available in this
   session.
 

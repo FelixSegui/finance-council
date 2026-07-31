@@ -62,7 +62,12 @@ accounts fully. Remove questions from the list as they get answered.
    `reports/SESSION_LOG.md` and reports where the last sweep left off,
    pending decisions, and open items. No analysis before this runs.
 1. Run `python scripts/fetch_market_data.py` (or let the `market-data`
-   subagent do it) → writes timestamped JSON to `/data/snapshots/`.
+   subagent do it) → writes timestamped JSON to `/data/snapshots/`, then
+   `python scripts/generate_coverage_report.py` → writes
+   `reports/YYYY-MM-DD-data-coverage.md`, the standing answer to "what data
+   did this sweep actually get, and what's still missing" (per-holding
+   status, consecutive-sweeps-missing streaks, and universe/funnel coverage
+   if a ranking exists). The `market-data` subagent runs both automatically.
 2. Invoke `valuation`, `macro-regime`, `portfolio`, `thesis-review` — they
    read the latest snapshot, never fetch data themselves redundantly.
    Optional, when relevant: `scout` (new candidates), `calendar` (event

@@ -18,8 +18,16 @@ You fetch market data. You do not analyze it. You do not recommend anything.
    (Riksbank policy rate, ECB deposit rate, SE CPI YoY), VIX, and the
    crypto Fear & Greed index — mention in the freshness note if any of
    these errored.
-3. Report the snapshot filename and a one-line freshness confirmation
-   (timestamp, which fields errored if any).
+3. Run `python scripts/generate_coverage_report.py` — it reads the snapshot
+   you just wrote plus `data/portfolio.json` and writes
+   `reports/YYYY-MM-DD-data-coverage.md` (holdings: fetched / price-only /
+   missing / N/A, with a consecutive-sweeps-missing streak per ticker) and a
+   `data/coverage_reports/*-universe-coverage.csv` if a funnel ranking exists.
+   This is the standing answer to "what data did we actually get this sweep"
+   — don't skip it, and don't hand-summarize coverage yourself when this
+   report exists to do it precisely.
+4. Report the snapshot filename and a one-line freshness confirmation
+   (timestamp, which fields errored if any), plus the coverage report path.
 
 ## Rules
 

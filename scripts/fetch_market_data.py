@@ -22,12 +22,15 @@ Usage:
 """
 import argparse
 import json
+import os
 import sys
 import urllib.request
 import urllib.error
 import csv
 import io
 from datetime import datetime, timezone, timedelta
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 FRED_SERIES = {
     "fed_funds_rate": "FEDFUNDS",
@@ -49,41 +52,87 @@ def _get_json(url, headers=None, timeout=15):
         return json.loads(resp.read().decode())
 
 
+def _equity_fallback(ticker):
+    """Price/momentum via Yahoo's chart endpoint (reachable) + SEC EDGAR
+    fundamentals for US names, used when yfinance/quoteSummary fails (the
+    known crumb-cookie block — see IMPROVEMENTS #9). Preserves the same field
+    schema as the primary path so downstream agents don't need to branch on
+    which path produced a given record; fields genuinely unavailable from
+    free sources (non-US fundamentals) are null with a reason, not guessed."""
+    from fetch_fundamentals import fetch_price_momentum
+    px = fetch_price_momentum(ticker)
+    if px.get("error"):
+        return {"error": f"{px['error']} (fallback path also failed)"}
+    return {
+        "price": px.get("price"),
+        "prev_close": px.get("prev_close"),
+        "52w_high": px.get("52w_high"),
+        "52w_low": px.get("52w_low"),
+        "market_cap": None,
+        "trailing_pe": None,
+        "forward_pe": None,
+        "peg_ratio": None,
+        "dividend_yield": None,
+        "beta": None,
+        "revenue_growth": None,
+        "profit_margins": None,
+        "debt_to_equity": None,
+        "recommendation": None,
+        "sector": None,
+        "industry": None,
+        "country": None,
+        "currency": px.get("currency"),
+        "_source": "yahoo_chart_v8 (fallback — quoteSummary/yfinance unavailable)",
+        "_fundamentals_unavailable_reason": (
+            "Yahoo's fundamentals endpoint (quoteSummary) is blocked in this "
+            "environment; no free fundamentals source exists for non-US "
+            "tickers (SEC EDGAR is US-listed-filer only). Price/momentum are "
+            "real and fresh; market_cap/PE/margins/etc. are null, not "
+            "estimated."
+        ),
+    }
+
+
 def fetch_equities(tickers):
     try:
         import yfinance as yf
+        yf_available = True
     except ImportError:
-        return {"error": "yfinance not installed. pip install yfinance"}
+        yf_available = False
 
     out = {}
     for t in tickers:
-        try:
-            tk = yf.Ticker(t)
-            info = tk.fast_info
-            fundamentals = tk.info if hasattr(tk, "info") else {}
-            out[t] = {
-                "price": getattr(info, "last_price", None),
-                "prev_close": getattr(info, "previous_close", None),
-                "52w_high": getattr(info, "year_high", None),
-                "52w_low": getattr(info, "year_low", None),
-                "market_cap": fundamentals.get("marketCap"),
-                "trailing_pe": fundamentals.get("trailingPE"),
-                "forward_pe": fundamentals.get("forwardPE"),
-                "peg_ratio": fundamentals.get("pegRatio"),
-                "dividend_yield": fundamentals.get("dividendYield"),
-                "beta": fundamentals.get("beta"),
-                "revenue_growth": fundamentals.get("revenueGrowth"),
-                "profit_margins": fundamentals.get("profitMargins"),
-                "debt_to_equity": fundamentals.get("debtToEquity"),
-                "recommendation": fundamentals.get("recommendationKey"),
-                # sector/country feed the portfolio agent's balance scorecard
-                "sector": fundamentals.get("sector"),
-                "industry": fundamentals.get("industry"),
-                "country": fundamentals.get("country"),
-                "currency": fundamentals.get("currency"),
-            }
-        except Exception as e:
-            out[t] = {"error": str(e)}
+        if yf_available:
+            try:
+                tk = yf.Ticker(t)
+                info = tk.fast_info
+                fundamentals = tk.info if hasattr(tk, "info") else {}
+                if fundamentals:  # non-empty means quoteSummary actually returned data
+                    out[t] = {
+                        "price": getattr(info, "last_price", None),
+                        "prev_close": getattr(info, "previous_close", None),
+                        "52w_high": getattr(info, "year_high", None),
+                        "52w_low": getattr(info, "year_low", None),
+                        "market_cap": fundamentals.get("marketCap"),
+                        "trailing_pe": fundamentals.get("trailingPE"),
+                        "forward_pe": fundamentals.get("forwardPE"),
+                        "peg_ratio": fundamentals.get("pegRatio"),
+                        "dividend_yield": fundamentals.get("dividendYield"),
+                        "beta": fundamentals.get("beta"),
+                        "revenue_growth": fundamentals.get("revenueGrowth"),
+                        "profit_margins": fundamentals.get("profitMargins"),
+                        "debt_to_equity": fundamentals.get("debtToEquity"),
+                        "recommendation": fundamentals.get("recommendationKey"),
+                        "sector": fundamentals.get("sector"),
+                        "industry": fundamentals.get("industry"),
+                        "country": fundamentals.get("country"),
+                        "currency": fundamentals.get("currency"),
+                        "_source": "yfinance",
+                    }
+                    continue
+            except Exception:
+                pass  # fall through to the chart-endpoint fallback below
+        out[t] = _equity_fallback(t)
     return out
 
 

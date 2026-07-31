@@ -232,6 +232,7 @@ def fetch_price_momentum(ticker):
         if len(closes) < 30:
             return {"error": "insufficient price history"}
         price = closes[-1]
+        prev_close = closes[-2] if len(closes) >= 2 else None
         hi, lo = max(closes), min(closes)
         mom_12m = price / closes[0] - 1
         mom_6m = price / closes[-126] - 1 if len(closes) >= 126 else None
@@ -244,6 +245,7 @@ def fetch_price_momentum(ticker):
             max_dd = min(max_dd, c / run_max - 1)
         return {
             "price": price,
+            "prev_close": prev_close,
             "currency": res["meta"].get("currency"),
             "52w_high": hi,
             "52w_low": lo,

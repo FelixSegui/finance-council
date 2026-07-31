@@ -57,6 +57,54 @@ Status: `open` | `approved` | `done` | `rejected (reason)`
   only. (b) The full 503-name fundamentals fetch takes several minutes on a cold
   cache; consider a scheduled weekly refresh so sessions always read a warm cache.
 
+## #18 — Data coverage report generator (each sweep)
+- **Status:** done (2026-07-30, user-requested — "so I can see exactly what
+  data was being fetched and what data was not")
+- **What:** `scripts/generate_coverage_report.py`, run automatically by the
+  `market-data` agent after every fetch (also wired into CLAUDE.md's flow).
+  Writes `reports/YYYY-MM-DD-data-coverage.md`: per-holding status (OK /
+  price-only-no-fundamentals / MISSING / ERROR / N-A), the reason, and a
+  **consecutive-sweeps-missing streak** per ticker (state carried in
+  `data/coverage_reports/_streak_state.json`) — this is what turns "blocked
+  3rd consecutive sweep" from a buried prose note into a first-class,
+  automatically-tracked flag. Also writes a full per-ticker universe/funnel
+  coverage CSV (`data/coverage_reports/*-universe-coverage.csv`) for
+  Excel-style filtering across 500+ candidate names, plus a structural +
+  empirical coverage summary by category in the markdown report.
+- **Explicitly scoped as diagnostic, not performance tracking** — the user
+  asked directly whether this means giving up portfolio-vs-market tracking;
+  it doesn't, because that's already a separate, existing mechanism
+  (`scripts/performance.py` + `data/valuations.csv`), untouched by this build.
+- **Real finding from the first run:** "Avanza Global (fund)" has no
+  ticker/ISIN on file (`TBD`), so it cannot be fetched at all — correctly
+  surfaced as N/A rather than silently skipped. Worth resolving next session.
+- **No new dependency:** deliberately CSV + Markdown, not `.xlsx` —
+  `openpyxl` isn't installed in this environment and the stdlib `csv`/`json`
+  approach matches the rest of the codebase's minimal-dependency philosophy.
+  CSVs open natively in Excel.
+
+## #17 — Fix fetch_equities() blackout for SHB-A.ST/INVE-A.ST; COIN-XBT.ST still open
+- **Status:** done for SHB-A.ST/INVE-A.ST (2026-07-30); COIN-XBT.ST remains
+  genuinely unresolved
+- **What:** Closed the follow-up flagged in IMPROVEMENTS #9. `fetch_equities()`
+  in `fetch_market_data.py` now falls back to the chart-endpoint approach
+  (`fetch_fundamentals.py:fetch_price_momentum`, proven reachable) whenever
+  yfinance/quoteSummary is unavailable or empty, instead of returning nothing.
+  Verified: SHB-A.ST and INVE-A.ST now fetch real, fresh prices — the
+  multi-week equities blackout on these two holdings (blocked every sweep
+  since 2026-07-20) is fixed. Fundamentals (PE, margin, etc.) stay null for
+  these — expected and correctly labeled, since no free non-US fundamentals
+  source exists (SEC EDGAR is US-filer-only) — but price/52w-range/momentum
+  are real again, which is what the holdings snapshot actually needs.
+- **COIN-XBT.ST still fails** — tried the on-file ticker plus several plausible
+  variants (COINXBT.ST, XBT-A.ST, BITC.ST, COIN-XBT-A.ST, BTC-XBT.ST), all
+  404. Per CLAUDE.md's own rule ("Nordic crypto certificate tickers must be
+  verified on Avanza/Nasdaq Stockholm before adding... must not be guessed"),
+  stopped rather than keep guessing. This is a genuine open gap: verify the
+  live ticker directly on Avanza/Nasdaq Stockholm next session, or accept
+  COIN-XBT.ST stays user-reported (as it already has been) rather than
+  system-fetched.
+
 ## #16 — AI Council deep-dive mode (5 personas + Chairman) for major decisions
 - **Status:** done (2026-07-30 — user-requested, scope confirmed via
   AskUserQuestion: auto-triggered for major decisions/system-improvement

@@ -12,18 +12,21 @@ Diagnostic report: what was actually fetched this sweep, what wasn't, and why. N
 | CASH_SEK | Handelsbanken normal/checking account | hb-checking | **N/A** | cash — not a market instrument |  |
 | SHB-A.ST | Handelsbanken A (stock) | avanza-isk | **OK (price only)** | Yahoo's fundamentals endpoint (quoteSummary) is blocked in this environment; no free fundamentals source exists for non-US tickers (SEC EDGAR is US-listed-filer only). Price/momentum are real and fresh; market_cap/PE/margins/etc. are null, not estimated. |  |
 | INVE-A.ST | Investor A (stock) | avanza-isk | **OK (price only)** | Yahoo's fundamentals endpoint (quoteSummary) is blocked in this environment; no free fundamentals source exists for non-US tickers (SEC EDGAR is US-listed-filer only). Price/momentum are real and fresh; market_cap/PE/margins/etc. are null, not estimated. |  |
-| TBD | Avanza Auto 3 (fund) | avanza-isk | **N/A** | no resolved ticker/ISIN on file yet — cannot be fetched until named |  |
+| TBD | Avanza Auto 3 (fund) | avanza-isk | **N/A (permanent)** | UNLISTED FUND (user-confirmed 2026-07-31) - Avanza Auto 3 exists only on Avanza's own fund platform, not on a public exchange. No ticker/ISIN will ever resolve for it via Yahoo/SEC or any exchange-based fetch. This is PERMANENT, not a data gap awaiting a fix - do not keep re-flagging it as an open item each sweep. |  |
 | TBD | Tundra Sustainable Frontier Fund A SEK | avanza-isk | **N/A** | no resolved ticker/ISIN on file yet — cannot be fetched until named |  |
-| COIN-XBT.ST | CoinShares XBT Provider Bitcoin Tracker One (certificate) | avanza-isk | **ERROR** | yahoo chart unreachable: HTTP Error 404: Not Found (fallback path also failed) | 1 |
-| TBD | Avanza Global (fund) | avanza-isk | **N/A** | no resolved ticker/ISIN on file yet — cannot be fetched until named |  |
+| COIN-XBT.ST | CoinShares XBT Provider Bitcoin Tracker One (certificate) | avanza-isk | **ERROR** | yahoo chart unreachable: HTTP Error 404: Not Found (fallback path also failed) | 2 |
+| TBD | Avanza Global (fund) | avanza-isk | **N/A (permanent)** | UNLISTED FUND (user-confirmed 2026-07-31) - Avanza Global exists only on Avanza's own fund platform, not on a public exchange. No ticker/ISIN will ever resolve for it via Yahoo/SEC or any exchange-based fetch. This is PERMANENT, not a data gap awaiting a fix - do not keep re-flagging it as an open item each sweep. |  |
 | CASH_SEK | Avanza ISK available cash | avanza-isk | **N/A** | cash — not a market instrument |  |
-| TBD | Swedbank fund | swedbank-fund | **N/A** | no resolved ticker/ISIN on file yet — cannot be fetched until named |  |
+| TBD | Swedbank fund | swedbank-fund | **N/A (permanent)** | LIKELY UNLISTED FUND (inferred 2026-07-31, NOT explicitly confirmed by user - flag if this differs): probably a Swedbank Robur-style fund on Swedbank's own platform, same structural situation as Avanza Auto 3/Avanza Global. Treated as probably-permanent pending user confirmation, not re-flagged as an urgent open item each sweep. |  |
 | CASH_SEK | SEB fund proceeds - fully transferred to Avanza ISK 2026-07-20 | seb-fund | **N/A** | cash — not a market instrument |  |
 | ethereum | ETH (self-custody wallet) | eth-wallet | **OK** | CoinGecko, 3 fields |  |
 | CASH_USD | PayPal USD balance | paypal | **N/A** | cash — not a market instrument |  |
 | CASH_EUR | PayPal EUR balance | paypal | **N/A** | cash — not a market instrument |  |
 
-**Summary: 1 fully OK, 2 price-only (no free fundamentals source), 1 missing/error, 10 not applicable (cash / no ticker on file).**
+**Summary: 1 fully OK, 2 price-only (no free fundamentals source), 4 missing/error, 7 not applicable (cash / no ticker on file).**
+
+**Flagged — failing for 2+ consecutive sweeps (a real gap, not a blip):**
+- COIN-XBT.ST (CoinShares XBT Provider Bitcoin Tracker One (certificate)): 2 sweeps — yahoo chart unreachable: HTTP Error 404: Not Found (fallback path also failed)
 
 ## Screening universe / funnel — structural + empirical coverage
 

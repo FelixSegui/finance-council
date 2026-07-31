@@ -79,6 +79,9 @@ def classify_holding(h, snapshot_equities, snapshot_crypto):
         return "N/A", "cash — not a market instrument", []
 
     if ticker == "TBD":
+        permanent_reason = h.get("no_ticker_reason")
+        if permanent_reason:
+            return "N/A (permanent)", permanent_reason, []
         return "N/A", "no resolved ticker/ISIN on file yet — cannot be fetched until named", []
 
     if itype == "spot_crypto" or ticker == "ethereum":

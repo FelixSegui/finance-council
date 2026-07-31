@@ -57,6 +57,23 @@ Status: `open` | `approved` | `done` | `rejected (reason)`
   only. (b) The full 503-name fundamentals fetch takes several minutes on a cold
   cache; consider a scheduled weekly refresh so sessions always read a warm cache.
 
+## #19 — Tag structurally-unlisted funds so the coverage report stops re-flagging them
+- **Status:** done (2026-07-31 — user clarified: "traditional unlisted funds
+  doesn't necessarily have tickers... Avanza auto and avanza global are
+  unlisted funds... this 'issue' will not be resolved")
+- **What:** Avanza Auto 3 and Avanza Global exist only on Avanza's own fund
+  platform — no exchange ticker/ISIN will ever resolve for them via
+  Yahoo/SEC. Added a `no_ticker_reason` field to their `portfolio.json`
+  entries and taught `generate_coverage_report.py` to report
+  `N/A (permanent)` with the reason, instead of the generic "no resolved
+  ticker yet — cannot be fetched until named" message that implied it was a
+  pending, fixable gap. Also tagged Swedbank fund the same way, flagged as an
+  inference (not explicitly confirmed by the user this time) rather than a
+  confirmed fact.
+- **Why it mattered:** every future coverage report would otherwise keep
+  presenting the same permanent structural fact as if it were an open
+  question — exactly the kind of noise that erodes trust in the report.
+
 ## #18 — Data coverage report generator (each sweep)
 - **Status:** done (2026-07-30, user-requested — "so I can see exactly what
   data was being fetched and what data was not")

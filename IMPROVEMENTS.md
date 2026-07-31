@@ -57,6 +57,31 @@ Status: `open` | `approved` | `done` | `rejected (reason)`
   only. (b) The full 503-name fundamentals fetch takes several minutes on a cold
   cache; consider a scheduled weekly refresh so sessions always read a warm cache.
 
+## #16 — AI Council deep-dive mode (5 personas + Chairman) for major decisions
+- **Status:** done (2026-07-30 — user-requested, scope confirmed via
+  AskUserQuestion: auto-triggered for major decisions/system-improvement
+  proposals, kept as a SEPARATE optional mode rather than replacing the
+  existing adversarial cross-examination method)
+- **What:** added a "AI Council deep-dive mode" section to both `council.md`
+  and `meta.md` — a structured 6-voice technique (Contrarian, First
+  Principles, Expansionist, Outsider, Executor, then a Chairman verdict:
+  decision + biggest risk + next action) applied to ONE specific decision that
+  meets a defined trigger, never as a second pass over an entire memo/backlog.
+  - `council`: triggers on a single capital allocation >= 20,000 SEK (or
+    >=10% of total portfolio, whichever smaller), a risk-tier/glidepath/
+    wrapper-structure change, or an explicit user request. If nothing in a
+    given memo meets the bar, council says so in one line and skips it.
+  - `meta`: triggers on a NEW or materially revised backlog entry proposing a
+    structural change (new data source, new agent, redesigned process) - NOT
+    routine bug fixes. Only the Chairman's verdict gets folded into the
+    entry's Why/How; the five voices are the working, kept brief (1-3
+    sentences each) specifically to control token cost, per the user's own
+    stated concern.
+- **Why kept separate, not a replacement:** the existing council method
+  (cross-examine valuation/macro/thesis-review, force disagreement into the
+  open) already works and runs every sweep at low cost; the persona structure
+  is a heavier, deliberately rarer tool for calls big enough to warrant it.
+
 ## #15 — Wire nordic_large_cap into --stack; valuation/thesis-review read the funnel
 - **Status:** done (2026-07-30 — caught while re-running the finalist analysis)
 - **What:** `rank_candidates.py`'s `STACK_CATEGORIES` was

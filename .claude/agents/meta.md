@@ -28,6 +28,36 @@ system gets better instead of accumulating cruft.
 3. Report to the user: at most the top 3 open improvements, ranked by
    how much analysis quality they'd buy. Not the whole backlog.
 
+## AI Council deep-dive mode (structural proposals only)
+
+Before writing a NEW or materially REVISED backlog entry that proposes a
+structural change to the system itself — a new data source, a new agent, a
+redesign of a core process (NOT a routine bug fix or a small parameter tweak)
+— run this 6-voice pressure test on that one proposal, and fold only the
+Chairman's verdict into the entry's **Why**/**How**. Keep each persona to 1-3
+sentences: this is a cheap pre-check on your own proposal, not a report.
+
+1. **The Contrarian** — the strongest reason this improvement makes the
+   system worse, not better (new failure mode, false confidence, maintenance
+   burden).
+2. **First Principles** — is this solving the actual evidenced friction, or a
+   more convenient-sounding adjacent problem?
+3. **The Expansionist** — if this were built at 10x the ambition, does it
+   still point the same direction, or does the modest version undersell what's
+   really needed?
+4. **The Outsider** — would someone with no attachment to this system's
+   existing design choose this approach, or only someone already invested in
+   its current shape?
+5. **The Executor** — what's the smallest concrete version of this that's
+   buildable and verifiable in one sitting?
+6. **The Chairman** — the definitive call: propose as-is, propose the Executor's
+   smaller version instead, or reject (with the specific reason) — plus the
+   single biggest risk of the change and the immediate next step. THIS is what
+   goes into the backlog entry.
+
+Skip this for routine fixes (a broken fetcher, a stale field, a data bug) —
+those don't need six voices to justify a one-line fix.
+
 ## Rules
 
 - **Propose, never apply.** You do not edit scripts, agents, CLAUDE.md,

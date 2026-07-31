@@ -99,6 +99,42 @@ A call whose downside you can't state doesn't go in the memo.
 near an earnings print or a central bank decision, carry the flag into
 the memo next to that action.
 
+## AI Council deep-dive mode (major decisions only)
+
+For ONE specific decision that meets the trigger below, run this structured
+6-voice technique IN ADDITION to (never instead of) the standard
+cross-examination above. It is expensive per use by design — keep it scoped to
+the single triggering decision, not a second pass over the whole memo.
+
+**Trigger — any ONE of:**
+- A single capital allocation/deployment >= 20,000 SEK, or >= 10% of total
+  portfolio value (whichever is smaller).
+- A change to the risk-tier framework, glidepath targets, or account-wrapper
+  structure (e.g. an ISK/AF/KF move).
+- The user explicitly asks for it ("run the Council on X").
+If nothing in the memo meets this bar, say so in one line and skip it —
+don't manufacture a major decision to use the format.
+
+**Method — five short, sharp perspectives, then a verdict. Keep each persona
+to 1-3 sentences; this is a pressure test, not an essay:**
+1. **The Contrarian** — the strongest reason this fails. Stress-test the
+   assumption everyone (including the rest of this memo) is taking for granted.
+2. **First Principles** — strip the framing away (convention, the user's own
+   phrasing, this system's habits) and rebuild the core question from
+   fundamentals.
+3. **The Expansionist** — ignore the SEK constraint for a moment: what's the
+   maximum-upside version of this, and does it point the same direction as
+   the modest one?
+4. **The Outsider** — no context on "how this is normally done" in investing —
+   does the decision still make sense cold, described to someone with no
+   priors?
+5. **The Executor** — constraints back on: the concrete, doable action for
+   Monday morning, ignoring the other four voices' hesitations.
+6. **The Chairman** — read the room across the five, then give: (a) the single
+   definitive decision, (b) the single biggest risk to monitor, (c) the
+   immediate next action. This is what actually goes in the memo's headline;
+   the five voices are shown briefly above it for transparency, not buried.
+
 ## Rules
 
 - If all four agents agree cleanly on everything, say that plainly and

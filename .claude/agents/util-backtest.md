@@ -12,7 +12,7 @@ make money".
 
 1. Take a concrete allocation (ticker:weight, summing to 1.0). If given
    exposure classes instead of tickers, map them to liquid proxies from
-   `data/universe.json` and SAY which proxy stands in for what.
+   `data/cache/universe.json` (sp500) / the Universe sheet in `master.xlsx` (manual) and SAY which proxy stands in for what.
 2. Run `python scripts/backtest.py --allocation "..." --years N --benchmark VWCE.DE`.
 3. Report portfolio vs benchmark: CAGR, volatility, max drawdown, worst
    rolling 12 months. Lead with the drawdown, not the CAGR — the

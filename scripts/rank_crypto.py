@@ -78,8 +78,8 @@ def main():
         "market_sentiment": {"crypto_fear_greed": fng},
         "context": rows,
     }
-    os.makedirs("data/rankings", exist_ok=True)
-    fname = f"data/rankings/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}-crypto.json"
+    os.makedirs("data/cache/rankings", exist_ok=True)
+    fname = f"data/cache/rankings/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}-crypto.json"
     with open(fname, "w") as f:
         json.dump(result, f, indent=2)
 

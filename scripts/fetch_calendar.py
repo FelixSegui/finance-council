@@ -77,8 +77,8 @@ def main():
         "macro_events": load_macro_events(args.days),
     }
 
-    os.makedirs("data/calendar", exist_ok=True)
-    fname = f"data/calendar/{datetime.now(timezone.utc).strftime('%Y%m%d')}-events.json"
+    os.makedirs("data/cache/calendar", exist_ok=True)
+    fname = f"data/cache/calendar/{datetime.now(timezone.utc).strftime('%Y%m%d')}-events.json"
     with open(fname, "w") as f:
         json.dump(result, f, indent=2)
 

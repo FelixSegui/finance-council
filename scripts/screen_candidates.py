@@ -25,7 +25,7 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fetch_market_data import fetch_equities  # noqa: E402
 
-UNIVERSE_PATH = "data/universe.json"
+UNIVERSE_PATH = "data/cache/universe.json"
 
 # (cli_name, snapshot_field, direction) — direction "max" means value must
 # be <= threshold to pass, "min" means >=.
@@ -123,8 +123,8 @@ def main():
         "missing_data": missing,
         "failed": failed,
     }
-    os.makedirs("data/screens", exist_ok=True)
-    fname = f"data/screens/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}-screen.json"
+    os.makedirs("data/cache/screens", exist_ok=True)
+    fname = f"data/cache/screens/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}-screen.json"
     with open(fname, "w") as f:
         json.dump(result, f, indent=2)
 

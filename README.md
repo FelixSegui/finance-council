@@ -1,0 +1,95 @@
+# Finance Council
+
+Personal investment advisory system. No brokerage integration — you're the
+human-in-the-loop for every action. This produces analysis and flags; it
+never executes trades. See `SYSTEM.md` for the architecture and design
+philosophy behind everything below.
+
+## First time here
+
+```
+pip install openpyxl
+python data/sync/workbook.py            # builds an empty master.xlsx
+python scripts/migrate_from_json.py     # only if migrating from a pre-Excel version
+```
+
+If `master.xlsx` already exists (it does if you cloned this repo), skip both
+— just open it.
+
+## Running a sweep
+
+1. **Edit `master.xlsx`** if anything changed since last time — new
+   holdings, a trade you placed, an updated thesis, a resolved question.
+   Portfolio, Transactions, Watchlist, Universe, Investment Thesis, Pending
+   Orders, Settings, and Notes are all plain sheets — edit them like any
+   spreadsheet.
+
+2. **Run the deterministic prep:**
+   ```
+   python run.py prep
+   ```
+   This syncs the workbook, fetches fresh market data, and computes a
+   coverage summary — no LLM calls, just data plumbing. Takes under a
+   minute for a typical holdings list.
+
+3. **Open a Claude Code session in this directory** and run the sweep:
+   ```
+   journal          # where did we leave off
+   market-data      # (if you skipped step 2) fetch + sync + coverage
+   valuation
+   macro-regime
+   portfolio
+   thesis-review
+   council          # writes reports/YYYY-MM-DD-sweep.md
+   journal          # reconcile, log
+   ```
+   Optional, when relevant: `scout` (find new candidates), `calendar`
+   (event collisions), `backtest` (stress-test a proposed allocation),
+   `controller` (system health check).
+
+4. **Read `reports/YYYY-MM-DD-sweep.md`.** That's the one file with
+   everything: portfolio summary, new candidates, council's conclusions,
+   open actions/decisions, missing data, and system health. You decide.
+   Nothing here executes anything.
+
+## The Dashboard
+
+Open `master.xlsx` and look at the **Dashboard** tab — total value, risk-tier
+breakdown vs. target, fee drag, all computed by formula from the Portfolio
+sheet and the (hidden) `_MarketCache` sheet that `run.py fetch` refreshes.
+Add your own charts/KPIs below the existing rows; it's designed to grow.
+
+## Finding candidates
+
+```
+python scripts/build_universe.py                       # refresh the S&P 500 base (run occasionally, not every sweep)
+python scripts/rank_candidates.py --stack --top 30      # coarse factor rank across the whole universe
+python scripts/screen_candidates.py --tickers ... --max-pe 25 ...   # hard pass/fail on the shortlist
+```
+Or just invoke the `scout` agent in a session — it drives this whole funnel
+and hands the survivors to `valuation`/`thesis-review`.
+
+## Recording something new mid-session
+
+`master.xlsx` is Zone-1/human-owned — only `data/sync/sync.py` touches it.
+To record a thesis nomination, a resolved note, or anything else without
+opening the spreadsheet by hand:
+```
+python data/sync/sync.py append --sheet Watchlist --row '{"ticker": "V", "name": "Visa Inc.", "date_added": "2026-08-01", "source": "user"}'
+python data/sync/sync.py read     # flow it into data/sync/*.json
+```
+
+## Checking system health
+
+```
+python run.py controller
+```
+Module run counts, failure counts, average duration per step — the raw
+numbers behind the `controller` agent's narrative recommendations.
+
+## Where things live
+
+See `SYSTEM.md`'s "The project structure" section, or just: **human edits go
+in `master.xlsx`, machine output lives in `data/cache/`, AI output lives in
+`reports/`.** If you're ever unsure where a piece of information belongs,
+that's the rule.

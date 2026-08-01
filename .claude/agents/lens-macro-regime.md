@@ -10,7 +10,7 @@ or bearishness can be checked against it.
 
 ## Inputs
 
-Read `macro` block from the latest `data/snapshots/*.json` file. Do not use
+Read `macro` block from the latest `data/cache/snapshots/*.json` file. Do not use
 memory for current rate levels — they change and your training data is
 stale. If the macro block has errors, say so and work with what's there.
 
@@ -30,7 +30,7 @@ stale. If the macro block has errors, say so and work with what's there.
 1. Regime call (one line).
 2. What this regime typically rewards and punishes (equities/growth vs.
    value, crypto, cash).
-3. Explicit flag: which current holdings (from portfolio.json) sit on the
+3. Explicit flag: which current holdings (from data/sync/portfolio.json) sit on the
    wrong side of this regime, if any.
 
 ## Rule

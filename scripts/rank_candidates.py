@@ -45,9 +45,9 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fetch_fundamentals import fetch_one  # noqa: E402
 
-UNIVERSE_PATH = "data/universe.json"
-CACHE_PATH = "data/universe_cache/factors.json"
-THESIS_PATH = "data/thesis_candidates.json"
+UNIVERSE_PATH = "data/cache/universe.json"
+CACHE_PATH = "data/cache/universe_cache/factors.json"
+THESIS_PATH = "data/cache/thesis_candidates.json"
 STACK_CATEGORIES = "sp500,europe_large_cap,nordic_large_cap,thesis_candidates"
 
 # factor -> (record field, direction). "high" = bigger is better.
@@ -346,8 +346,8 @@ def main():
         "momentum_only_ranking": momentum_only[:args.top],
         "partial_data": partial,
     }
-    os.makedirs("data/rankings", exist_ok=True)
-    fname = f"data/rankings/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}-ranking.json"
+    os.makedirs("data/cache/rankings", exist_ok=True)
+    fname = f"data/cache/rankings/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}-ranking.json"
     with open(fname, "w") as f:
         json.dump(result, f, indent=2)
 

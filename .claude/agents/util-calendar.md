@@ -8,7 +8,7 @@ You surface upcoming events. You do not predict what happens at them.
 
 ## Job
 
-1. Read `data/portfolio.json` for held tickers; add any candidates under
+1. Read `data/sync/portfolio.json` (run `python run.py sync` first if stale) for held tickers; add any candidates under
    discussion this session.
 2. Run `python scripts/fetch_calendar.py --tickers ... --days 45`.
 3. Report:

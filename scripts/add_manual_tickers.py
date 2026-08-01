@@ -26,7 +26,7 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fetch_fundamentals import fetch_price_momentum  # noqa: E402
 
-UNIVERSE_PATH = "data/universe.json"
+UNIVERSE_PATH = "data/cache/universe.json"
 
 
 def main():

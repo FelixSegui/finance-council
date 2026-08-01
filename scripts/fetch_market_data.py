@@ -352,8 +352,8 @@ def main():
         snapshot["insider_activity"] = fetch_insider_activity(tickers)
 
     import os
-    os.makedirs("data/snapshots", exist_ok=True)
-    fname = f"data/snapshots/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.json"
+    os.makedirs("data/cache/snapshots", exist_ok=True)
+    fname = f"data/cache/snapshots/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.json"
     with open(fname, "w") as f:
         json.dump(snapshot, f, indent=2)
 

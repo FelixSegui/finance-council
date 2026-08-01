@@ -1,0 +1,147 @@
+{
+  "module_runs": [
+    {
+      "module": "sync",
+      "utc": "2026-08-01T07:46:35.228279+00:00",
+      "duration_sec": 0.2,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "read",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "fetch_market_data",
+      "utc": "2026-08-01T07:46:55.752755+00:00",
+      "duration_sec": 15.01,
+      "success": true,
+      "argv": [
+        "scripts/fetch_market_data.py",
+        "--tickers",
+        "SHB-A.ST,INVE-A.ST,COIN-XBT.ST",
+        "--crypto",
+        "ethereum"
+      ]
+    },
+    {
+      "module": "write_market_cache",
+      "utc": "2026-08-01T07:46:55.961138+00:00",
+      "duration_sec": 0.21,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "write-cache",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "coverage_report",
+      "utc": "2026-08-01T07:47:08.992807+00:00",
+      "duration_sec": 0.05,
+      "success": true,
+      "argv": [
+        "scripts/generate_coverage_report.py"
+      ]
+    },
+    {
+      "module": "sync",
+      "utc": "2026-08-01T07:58:06.808614+00:00",
+      "duration_sec": 0.19,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "read",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "fetch_market_data",
+      "utc": "2026-08-01T07:58:21.073884+00:00",
+      "duration_sec": 14.26,
+      "success": true,
+      "argv": [
+        "scripts/fetch_market_data.py",
+        "--tickers",
+        "SHB-A.ST,INVE-A.ST,COIN-XBT.ST",
+        "--crypto",
+        "ethereum"
+      ]
+    },
+    {
+      "module": "write_market_cache",
+      "utc": "2026-08-01T07:58:21.291727+00:00",
+      "duration_sec": 0.22,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "write-cache",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "coverage_report",
+      "utc": "2026-08-01T07:58:21.326241+00:00",
+      "duration_sec": 0.03,
+      "success": true,
+      "argv": [
+        "scripts/generate_coverage_report.py"
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "id": 2,
+      "date": "2026-07-04",
+      "status": "open",
+      "why": "FOMC 2026 dates in macro_calendar.json were written from model knowledge, which violates the no-unverified-numbers ethos.",
+      "how": "One-time check against federalreserve.gov, then set last_verified in macro_calendar.json."
+    },
+    {
+      "id": 3,
+      "date": "2026-07-04",
+      "status": "done",
+      "why": "\"Avanza ISK holdings\" as one TBD line made thesis-review and valuation blind to real holdings.",
+      "how": "RESOLVED by the 2026-08-01 Excel migration: Portfolio sheet now carries one row per holding with an explicit risk_tier column."
+    },
+    {
+      "id": 4,
+      "date": "2026-07-04",
+      "status": "open",
+      "why": "The ISK-wrapped route to crypto exposure (Bitcoin certificates) can't be screened until the actual .ST tickers are confirmed on Avanza - COIN-XBT.ST's own ticker still fails to resolve via Yahoo (see id 17), and the Valour Bitcoin Zero SEK candidate (Notes sheet, open item from 2026-07-31) has an ISIN and Avanza product ID but no confirmed Yahoo-compatible ticker either.",
+      "how": "Verify live tickers directly on Avanza/Nasdaq Stockholm/Nordic MTF for both COIN-XBT.ST and Valour Bitcoin Zero SEK; add via scripts/add_manual_tickers.py or a Universe-sheet row, never guessed."
+    },
+    {
+      "id": 5,
+      "date": "2026-07-04",
+      "status": "open",
+      "why": "SEC Form 4 filing counts alone are weak signal - a CFO selling for taxes and a cluster buy look identical.",
+      "how": "Parse the Form 4 XML from EDGAR for transaction type/direction; ~1 more fetch per filing. Note: the Swedish Insynsregistret integration explored 2026-07-31 (marknadssok.fi.se, real buy/sell direction, richer than Form 4) could supersede this for Nordic holdings - evaluate together."
+    },
+    {
+      "id": 6,
+      "date": "2026-07-04",
+      "status": "open",
+      "why": "yfinance earnings dates are spotty for non-US tickers, weakening the calendar agent's coverage.",
+      "how": "Optional Alpha Vantage / FMP key support for earnings calendar. Blocked on: user creating a key."
+    },
+    {
+      "id": 7,
+      "date": "2026-07-04",
+      "status": "open",
+      "why": "Live test returned se_cpi_yoy for a ~7-month-stale period. Either the SCB KPItotM table lags on the English endpoint or the query needs a different table (KPIF). Stale inflation silently mislabels the Swedish rate regime.",
+      "how": "Check the SCB PxWeb table's latest period manually; switch table/endpoint in fetch_se_cpi_yoy() if a fresher one exists. Until fixed, macro-regime should treat se_cpi_yoy as dated by its period field."
+    },
+    {
+      "id": 17,
+      "date": "2026-07-30",
+      "status": "open",
+      "why": "COIN-XBT.ST's ticker fails to resolve via Yahoo's chart endpoint under every plausible variant tried - fetch_equities() itself was fixed for SHB-A.ST/INVE-A.ST (see id 9/17 history), but this one specific ticker remains genuinely unresolved, not a code bug.",
+      "how": "Verify the live ticker directly on Avanza/Nasdaq Stockholm next session rather than continuing to guess variants - or accept it stays user-reported. Same verification need as id 4's Valour Bitcoin Zero SEK ticker - worth doing together."
+    }
+  ]
+}

@@ -12,15 +12,20 @@ of the whole council.
 
 ## Inputs
 
-`data/portfolio.json` (holdings, accounts, targets), the latest
-`data/snapshots/*.json` (prices, sector/country per equity), and
-`data/investor_profile.json` (the client profile: risk tolerance,
-horizon, buffer, constraints).
+Run `python run.py sync` first if any of these look stale:
+- `data/sync/portfolio.json` — holdings, accounts, risk_tier per holding
+  (synced from master.xlsx's Portfolio sheet).
+- Latest `data/cache/snapshots/*.json` — prices, sector/country per equity.
+- `data/sync/settings.json` — the client profile as flat key/value pairs
+  (synced from master.xlsx's Settings sheet): `max_drawdown_tolerance_pct`,
+  `tier_secure_pct`/`tier_medium_pct`/`tier_high_pct`, `max_single_position_pct`,
+  `max_single_institution_pct`, `max_annual_fee_drag_pct`, etc. — read the
+  `key`/`value` rows directly, there is no nested structure anymore.
 
-The profile is what makes this advisory rather than generic. If profile
-fields are TBD, run anyway but label the scorecard "provisional —
-measured against rules of thumb, not your situation" and list which
-questions are unanswered. Nag exactly once per session, not per finding.
+The profile is what makes this advisory rather than generic. If a settings
+key is missing, run anyway but label the scorecard "provisional — measured
+against rules of thumb, not your situation" and list which are unanswered.
+Nag exactly once per session, not per finding.
 
 ## Method
 
@@ -66,8 +71,8 @@ questions are unanswered. Nag exactly once per session, not per finding.
 
 7. **Balance scorecard (run every session).** Grade each dimension
    OK / WATCH / ACT with a one-line reason and the number behind it.
-   Thresholds come from `investor_profile.json` `reference_targets`;
-   dimensions that need per-holding data the portfolio.json doesn't have
+   Thresholds come from the `data/sync/settings.json` keys listed above;
+   dimensions that need per-holding data the Portfolio sheet doesn't have
    yet get UNKNOWN, never a guess:
    - Asset allocation vs profile targets (or UNKNOWN if targets null)
    - Equity sector concentration (sector field in snapshot; any sector
@@ -79,9 +84,13 @@ questions are unanswered. Nag exactly once per session, not per finding.
    - Fee drag (vs max_annual_fee_drag_pct)
    - Wrapper efficiency (from the wrapper audit)
    - Drawdown-tolerance fit: if the profile has a max drawdown number
-     and a backtest of the current allocation exists in data/backtests/,
+     and a backtest of the current allocation exists in data/cache/backtests/,
      compare them. A portfolio whose historical drawdown exceeds the
      user's stated tolerance is unbalanced no matter how good the parts.
+   - Risk-tier drift: the Portfolio sheet now carries an explicit `risk_tier`
+     column (secure/medium/high/cash/unassigned) per holding — use it
+     directly instead of inferring tier from prose; compare tier weights
+     against `tier_secure_pct`/`tier_medium_pct`/`tier_high_pct`.
 
 ## Output format
 

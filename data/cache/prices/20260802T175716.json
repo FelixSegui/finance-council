@@ -1,0 +1,60 @@
+{
+  "fetched_at_utc": "2026-08-02T17:57:16.061742+00:00",
+  "prices": {
+    "SHB-A.ST": {
+      "price": 145.64999389648438,
+      "prev_close": 144.14999389648438,
+      "currency": "SEK",
+      "52w_high": 146.85000610351562,
+      "52w_low": 117.6500015258789,
+      "pct_of_52w_high": 0.9918283135365663,
+      "momentum_6m": 0.03591740806362931,
+      "momentum_12m": 0.21679195998194434,
+      "volatility": 0.22420701786149003,
+      "max_drawdown": -0.19884237905345015,
+      "_source": "yahoo_chart_v8"
+    },
+    "SHB-B.ST": {
+      "price": 232.8000030517578,
+      "prev_close": 230.8000030517578,
+      "currency": "SEK",
+      "52w_high": 246.0,
+      "52w_low": 190.3000030517578,
+      "pct_of_52w_high": 0.9463414758201537,
+      "momentum_6m": -0.004277159909953587,
+      "momentum_12m": 0.21566581228071957,
+      "volatility": 0.23615724847960348,
+      "max_drawdown": -0.1682926581157902,
+      "_source": "yahoo_chart_v8"
+    },
+    "SHB-D.ST": {
+      "error": "yahoo chart unreachable: HTTP Error 404: Not Found"
+    },
+    "INVE-A.ST": {
+      "price": 404.0,
+      "prev_close": 401.79998779296875,
+      "currency": "SEK",
+      "52w_high": 404.0,
+      "52w_low": 280.3999938964844,
+      "pct_of_52w_high": 1.0,
+      "momentum_6m": 0.18544605185087137,
+      "momentum_12m": 0.4185393866438014,
+      "volatility": 0.16904171914904792,
+      "max_drawdown": -0.10597974255254206,
+      "_source": "yahoo_chart_v8"
+    },
+    "INVE-B.ST": {
+      "price": 411.0,
+      "prev_close": 407.8999938964844,
+      "currency": "SEK",
+      "52w_high": 411.0,
+      "52w_low": 280.5,
+      "pct_of_52w_high": 1.0,
+      "momentum_6m": 0.19755240495757675,
+      "momentum_12m": 0.4446397188049209,
+      "volatility": 0.1716514668054842,
+      "max_drawdown": -0.10536065597079747,
+      "_source": "yahoo_chart_v8"
+    }
+  }
+}

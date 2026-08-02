@@ -25,6 +25,7 @@ directly with tickers/ciks only for spot-checking:
 """
 import json
 import math
+import os
 import statistics
 import sys
 import time
@@ -138,6 +139,46 @@ def _shares(facts):
             if rows[-1][0] >= cutoff:
                 return rows[-1][1]
     return None
+
+
+UNIVERSE_CIK_CACHE = "data/cache/universe.json"
+
+
+def resolve_ciks(tickers):
+    """ticker -> CIK, preferring the already-fetched S&P 500 metadata cache
+    (data/cache/universe.json, populated by build_universe.py) over a live
+    www.sec.gov/files/company_tickers.json lookup. This matters: that lookup
+    endpoint has been observed 403-blocked at the proxy level (a genuine,
+    reportable org-policy denial — see /root/.ccr/README.md's rule not to
+    retry 403s) while data.sec.gov's own fundamentals API stays reachable.
+    Only tickers NOT already in the cache (non-S&P-500 US names) trigger the
+    live lookup; if that also fails, they get "unresolved", not a guess."""
+    resolved = {}
+    remaining = list(tickers)
+    if os.path.exists(UNIVERSE_CIK_CACHE):
+        try:
+            with open(UNIVERSE_CIK_CACHE) as f:
+                meta = json.load(f).get("metadata", {})
+            for t in list(remaining):
+                cik = (meta.get(t) or {}).get("cik")
+                if cik:
+                    resolved[t] = cik
+                    remaining.remove(t)
+        except (json.JSONDecodeError, OSError):
+            pass
+    if remaining:
+        try:
+            mapping = _get_json("https://www.sec.gov/files/company_tickers.json")
+            by_ticker = {v["ticker"].upper(): str(v["cik_str"]).zfill(10) for v in mapping.values()}
+            for t in remaining:
+                cik = by_ticker.get(t.upper())
+                if cik:
+                    resolved[t] = cik
+        except Exception as e:
+            for t in remaining:
+                resolved.setdefault(t, None)
+            resolved["_lookup_error"] = str(e)
+    return resolved
 
 
 def fetch_sec_fundamentals(cik):

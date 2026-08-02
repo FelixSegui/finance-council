@@ -48,8 +48,40 @@ data," never an estimate from training knowledge.
 
 yfinance / Yahoo chart endpoint, CoinGecko, FRED, Riksbank SWEA, SCB PxWeb, ECB
 Data Portal, alternative.me Fear & Greed, SEC EDGAR (Form 4 insider counts, US
-tickers, `--insiders` flag), Finansinspektionen's Insynsregistret (Swedish
-insider register — explored, not yet wired in, see the Notes sheet).
+tickers), Finansinspektionen's Insynsregistret (Swedish insider register, real
+buy/sell direction — richer than Form 4's count-only feed).
+
+Each data KIND is its own independently runnable module — not one monolith —
+so a broken source is isolated and debuggable on its own:
+
+| Module | Data |
+|---|---|
+| `scripts/fetch_prices.py` | equity/ETF prices |
+| `scripts/fetch_fundamentals_us.py` | equity fundamentals (US-listed only — no free source exists for non-US) |
+| `scripts/fetch_crypto_prices.py` | crypto prices |
+| `scripts/fetch_macro.py` | FRED / Riksbank / SCB / ECB |
+| `scripts/fetch_sentiment.py` | crypto Fear & Greed |
+| `scripts/fetch_insiders_us.py` | SEC Form 4 filing counts |
+| `scripts/fetch_insiders_se.py` | Finansinspektionen Insynsregistret (issuer-based, run separately) |
+
+`scripts/fetch_market_data.py` is a thin orchestrator that calls the first
+five and assembles one combined snapshot (what the lenses read).
+`python run.py fetch --only <kind>` runs exactly one module standalone —
+use this when a specific source breaks instead of re-running everything.
+
+## Manual data — filling what the automated fetch can't find
+
+Some fields have no free source at all (non-US equity fundamentals — SEC
+EDGAR is US-filer-only). The **Manual Data sheet** in `master.xlsx` is where
+you supply them: `ticker, field, value, currency, as_of, source, notes`.
+
+`python run.py fetch` applies these as a fallback — filling a field ONLY if
+the automated fetch genuinely couldn't get it, NEVER overwriting a real
+fetched value — and tags every filled field in the snapshot's
+`_manual_overrides`, so a hand-entered number is never silently presented as
+if it were live-fetched. `generate_coverage_report.py` lists the exact
+missing field names per holding (not just a status word) specifically so you
+know what to go find and enter.
 
 ## Scope (Phase 1 — locked 2026-07-03)
 

@@ -91,6 +91,68 @@
       "argv": [
         "scripts/generate_coverage_report.py"
       ]
+    },
+    {
+      "module": "sync",
+      "utc": "2026-08-02T09:07:03.049003+00:00",
+      "duration_sec": 0.2,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "read",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "fetch_market_data",
+      "utc": "2026-08-02T09:07:21.072284+00:00",
+      "duration_sec": 12.03,
+      "success": true,
+      "argv": [
+        "scripts/fetch_market_data.py",
+        "--tickers",
+        "SHB-A.ST,INVE-A.ST,COIN-XBT.ST",
+        "--crypto",
+        "ethereum"
+      ]
+    },
+    {
+      "module": "write_market_cache",
+      "utc": "2026-08-02T09:07:21.269422+00:00",
+      "duration_sec": 0.2,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "write-cache",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "fetch_market_data",
+      "utc": "2026-08-02T09:09:09.965298+00:00",
+      "duration_sec": 12.61,
+      "success": true,
+      "argv": [
+        "scripts/fetch_market_data.py",
+        "--tickers",
+        "SHB-A.ST,INVE-A.ST,COIN-XBT.ST",
+        "--crypto",
+        "ethereum"
+      ]
+    },
+    {
+      "module": "write_market_cache",
+      "utc": "2026-08-02T09:09:10.152746+00:00",
+      "duration_sec": 0.19,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "write-cache",
+        "--xlsx",
+        "master.xlsx"
+      ]
     }
   ],
   "recommendations": [

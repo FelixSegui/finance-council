@@ -52,6 +52,38 @@ If `master.xlsx` already exists (it does if you cloned this repo), skip both
    open actions/decisions, missing data, and system health. You decide.
    Nothing here executes anything.
 
+## Filling data gaps by hand
+
+Some fields have no free automated source (non-US equity fundamentals, mainly —
+SEC EDGAR only covers US filers). Run `python run.py coverage` and check the
+report's `fields_missing` per ticker, then add rows to the **Manual Data**
+sheet in `master.xlsx`: `ticker, field, value, currency, as_of, source, notes`.
+The next `python run.py fetch` fills those fields ONLY where the automated
+fetch came back empty — it never overwrites a real fetched number — and tags
+every filled field so agents cite it as user-supplied, not live data.
+
+## Debugging one data source
+
+Each data kind fetches independently, so a broken source doesn't block the
+rest:
+```
+python run.py fetch --only prices          # equity/ETF prices
+python run.py fetch --only fundamentals    # US equity fundamentals
+python run.py fetch --only crypto          # crypto prices
+python run.py fetch --only macro           # FRED / Riksbank / SCB / ECB
+python run.py fetch --only sentiment       # crypto Fear & Greed
+```
+`--only` runs just that one module and prints its raw output — it does not
+update the Dashboard (that needs the full combined snapshot). Once the
+source is fixed, re-run `python run.py fetch` without `--only`.
+
+Two more modules run standalone, not part of the orchestrator (issuer/CIK
+scoped rather than ticker-list scoped):
+```
+python scripts/fetch_insiders_us.py --tickers V,AAPL     # SEC Form 4 filing counts
+python scripts/fetch_insiders_se.py --issuer Volvo --days 60   # Finansinspektionen Insynsregistret
+```
+
 ## The Dashboard
 
 Open `master.xlsx` and look at the **Dashboard** tab — total value, risk-tier

@@ -48,6 +48,10 @@ SHEETS = {
         "id", "date", "status", "text", "resolved_date", "resolution",
     ],
 
+    "Manual Data": [
+        "ticker", "field", "value", "currency", "as_of", "source", "notes",
+    ],
+
     "_MarketCache": [
         "ticker", "last_price", "currency", "price_as_of",
         "market_value_sek", "fetch_status", "data_source",

@@ -52,3 +52,11 @@ not an essay. Save the depth for the Council synthesis.
 Never output a number that isn't in the snapshot or basic arithmetic on
 numbers that are. If you don't have forward earnings estimates, don't
 invent a forward P/E.
+
+A snapshot field may carry `_manual_overrides` — a value the user typed into
+the Manual Data sheet because no free source exists (common for non-US
+fundamentals), not something fetched live. Use it, but flag it: "P/E 11.8
+(user-supplied from Avanza, 2026-08-02, not live-fetched)" — never present
+it identically to a number the automated fetch actually got. If a field is
+still null and has no override, that's a real gap — name it and suggest the
+user add it to the Manual Data sheet rather than silently working around it.

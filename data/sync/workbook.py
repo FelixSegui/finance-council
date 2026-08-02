@@ -44,7 +44,8 @@ def build_workbook(out_path):
 
     # --- Zone 1: human-owned input sheets ---
     for name in ["Portfolio", "Transactions", "Watchlist", "Universe",
-                 "Investment Thesis", "Pending Orders", "Settings", "Notes"]:
+                 "Investment Thesis", "Pending Orders", "Settings", "Notes",
+                 "Manual Data"]:
         cols = SHEETS[name]
         ws = wb.create_sheet(name)
         for i, col in enumerate(cols, 1):

@@ -1,0 +1,10 @@
+{
+  "fetched_at_utc": "2026-08-02T09:03:18.994882+00:00",
+  "insiders": {
+    "AAPL": {
+      "form4_filings_90d": 5,
+      "latest_form4_date": "2026-06-17",
+      "note": "filing count only; direction (buy vs sell) not extracted"
+    }
+  }
+}

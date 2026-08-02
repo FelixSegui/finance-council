@@ -72,11 +72,24 @@ def cmd_sync(args):
     _run_tracked("sync", ["data/sync/sync.py", "read", "--xlsx", args.xlsx])
 
 
+FETCH_MODULES = {
+    "prices": ["scripts/fetch_prices.py", "--tickers"],           # + equities (comma list)
+    "fundamentals": ["scripts/fetch_fundamentals_us.py", "--tickers"],  # + equities
+    "crypto": ["scripts/fetch_crypto_prices.py", "--coins"],      # + crypto (comma list)
+    "macro": ["scripts/fetch_macro.py"],
+    "sentiment": ["scripts/fetch_sentiment.py"],
+}
+
+
 def cmd_fetch(args):
     """Fetch fresh market data for every Portfolio-sheet holding that has a
     real ticker, then write it into _MarketCache. Reads data/sync/portfolio.json
     (the synced output) — never portfolio.json directly, and never master.xlsx
-    directly (only sync.py touches the workbook)."""
+    directly (only sync.py touches the workbook).
+
+    Each data KIND (prices, fundamentals, crypto, macro, sentiment) runs as
+    its own tracked step — pass --only <kind> to run just one when debugging
+    a specific source instead of the whole fetch."""
     portfolio_path = "data/sync/portfolio.json"
     if not os.path.exists(portfolio_path):
         sys.exit("data/sync/portfolio.json missing — run 'python run.py sync' first.")
@@ -87,18 +100,46 @@ def cmd_fetch(args):
                 ("TBD", "CASH_SEK", "CASH_USD", "CASH_EUR", "ethereum")]
     crypto = [r["ticker"] for r in rows if r.get("ticker") == "ethereum"]
 
+    only = getattr(args, "only", None)  # cmd_prep's args namespace has no --only
+    if only:
+        # Debug path: run exactly ONE data kind, standalone, tracked on its
+        # own — for when a specific source is broken and you don't want to
+        # re-fetch everything else to test the fix. Does NOT touch
+        # _MarketCache/Dashboard (that needs all kinds together); re-run
+        # `python run.py fetch` without --only afterward to update it.
+        script, *flag = FETCH_MODULES[only]
+        argv = [script]
+        if flag == ["--tickers"]:
+            if not equities:
+                sys.exit("No equity tickers in the Portfolio sheet to fetch.")
+            argv += ["--tickers", ",".join(equities)]
+        elif flag == ["--coins"]:
+            if not crypto:
+                sys.exit("No crypto tickers in the Portfolio sheet to fetch.")
+            argv += ["--coins", ",".join(crypto)]
+        _run_tracked(f"fetch_{only}", argv)
+        print(f"\nRan only '{only}'. Run 'python run.py fetch' (no --only) "
+              f"to update the combined snapshot and _MarketCache/Dashboard.")
+        return
+
+    # Default sweep path: ONE fetch via the orchestrator (which internally
+    # calls the same separated modules/functions) — avoids fetching every
+    # source twice. Tracked as one step; use --only above to isolate one
+    # source when debugging.
     _run_tracked("fetch_market_data",
                  ["scripts/fetch_market_data.py",
                   "--tickers", ",".join(equities),
                   "--crypto", ",".join(crypto)])
 
-    # build _MarketCache records from the latest snapshot
     snap_dir = "data/cache/snapshots"
     latest = sorted(os.listdir(snap_dir))[-1] if os.path.exists(snap_dir) and os.listdir(snap_dir) else None
     if not latest:
         sys.exit("No snapshot produced — fetch_market_data.py may have failed.")
-    with open(os.path.join(snap_dir, latest)) as f:
+    snap_path = os.path.join(snap_dir, latest)
+    with open(snap_path) as f:
         snapshot = json.load(f)
+
+    _apply_manual_overrides(snapshot, snap_path)
 
     records = {}
     for r in rows:
@@ -136,6 +177,44 @@ def cmd_fetch(args):
     with open("data/sync/market_cache.json", "w") as f:
         json.dump(records, f, indent=2)
     _run_tracked("write_market_cache", ["data/sync/sync.py", "write-cache", "--xlsx", args.xlsx])
+
+
+def _apply_manual_overrides(snapshot, snap_path):
+    """Fill genuinely-missing equity fields (fundamentals the automated fetch
+    couldn't get — e.g. no free source for a non-US ticker) from the Manual
+    Data sheet, WITHOUT ever overwriting a value the fetch actually got. Every
+    filled field is tagged in `_manual_overrides` so it's always visible which
+    numbers came from the user, not a live source — never silently blended.
+    Mutates the snapshot file in place so lenses reading "the latest
+    snapshot" see the fill automatically, no instruction changes needed."""
+    manual_path = "data/sync/manual_data.json"
+    if not os.path.exists(manual_path):
+        return
+    with open(manual_path) as f:
+        manual_rows = json.load(f).get("rows", [])
+    if not manual_rows:
+        return
+
+    equities = snapshot.setdefault("equities", {})
+    applied = []
+    for row in manual_rows:
+        ticker, field, value = row.get("ticker"), row.get("field"), row.get("value")
+        if not ticker or not field or value is None:
+            continue
+        rec = equities.setdefault(ticker, {})
+        if rec.get(field) is not None:
+            continue  # a real fetched value already exists — manual data never overrides it
+        rec[field] = value
+        rec.setdefault("_manual_overrides", {})[field] = {
+            "source": row.get("source"), "as_of": row.get("as_of"), "notes": row.get("notes"),
+        }
+        applied.append(f"{ticker}.{field}")
+
+    if applied:
+        with open(snap_path, "w") as f:
+            json.dump(snapshot, f, indent=2)
+        print(f"Applied {len(applied)} manual override(s) from the Manual Data sheet: "
+              f"{', '.join(applied)}")
 
 
 def cmd_coverage(args):
@@ -179,7 +258,10 @@ def main():
     p.add_argument("--xlsx", default="master.xlsx")
     sub = p.add_subparsers(dest="command", required=True)
     sub.add_parser("sync").set_defaults(func=cmd_sync)
-    sub.add_parser("fetch").set_defaults(func=cmd_fetch)
+    fetch_p = sub.add_parser("fetch")
+    fetch_p.add_argument("--only", choices=list(FETCH_MODULES),
+                         help="run just one data kind, standalone, for debugging a specific source")
+    fetch_p.set_defaults(func=cmd_fetch)
     sub.add_parser("coverage").set_defaults(func=cmd_coverage)
     sub.add_parser("prep").set_defaults(func=cmd_prep)
     sub.add_parser("controller").set_defaults(func=cmd_controller)

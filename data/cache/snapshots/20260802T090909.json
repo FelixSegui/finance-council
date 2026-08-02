@@ -1,0 +1,129 @@
+{
+  "fetched_at_utc": "2026-08-02T09:08:57.430432+00:00",
+  "equities": {
+    "SHB-A.ST": {
+      "price": 145.64999389648438,
+      "prev_close": 144.14999389648438,
+      "52w_high": 146.85000610351562,
+      "52w_low": 117.6500015258789,
+      "currency": "SEK",
+      "market_cap": null,
+      "trailing_pe": 11.8,
+      "forward_pe": null,
+      "peg_ratio": null,
+      "dividend_yield": null,
+      "beta": null,
+      "revenue_growth": null,
+      "profit_margins": null,
+      "debt_to_equity": null,
+      "recommendation": null,
+      "sector": null,
+      "industry": null,
+      "country": null,
+      "_source": null,
+      "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>",
+      "_manual_overrides": {
+        "trailing_pe": {
+          "source": "user, Avanza app",
+          "as_of": "2026-08-02",
+          "notes": "P/E not available from free automated sources for Swedish tickers"
+        }
+      }
+    },
+    "INVE-A.ST": {
+      "price": 404.0,
+      "prev_close": 401.79998779296875,
+      "52w_high": 404.0,
+      "52w_low": 280.3999938964844,
+      "currency": "SEK",
+      "market_cap": null,
+      "trailing_pe": null,
+      "forward_pe": null,
+      "peg_ratio": null,
+      "dividend_yield": null,
+      "beta": null,
+      "revenue_growth": null,
+      "profit_margins": null,
+      "debt_to_equity": null,
+      "recommendation": null,
+      "sector": null,
+      "industry": null,
+      "country": null,
+      "_source": null,
+      "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "COIN-XBT.ST": {
+      "error": "yahoo chart unreachable: HTTP Error 404: Not Found"
+    }
+  },
+  "crypto": {
+    "ethereum": {
+      "price_eur": 1615.68,
+      "market_cap": 194977606761,
+      "market_cap_rank": 2,
+      "change_24h_pct": -0.1,
+      "change_7d_pct": -0.7,
+      "change_30d_pct": 8.7,
+      "ath": 4229.76,
+      "ath_change_pct": -61.80203
+    }
+  },
+  "macro": {
+    "fed_funds_rate": {
+      "date": "2026-06-01",
+      "value": "3.63"
+    },
+    "us_10y_yield": {
+      "date": "2026-07-30",
+      "value": "4.68"
+    },
+    "us_2y_yield": {
+      "date": "2026-07-30",
+      "value": "4.23"
+    },
+    "dollar_index": {
+      "date": "2026-07-24",
+      "value": "120.7105"
+    },
+    "sek_per_usd": {
+      "date": "2026-07-24",
+      "value": "9.6998"
+    },
+    "usd_per_eur": {
+      "date": "2026-07-24",
+      "value": "1.1385"
+    },
+    "vix": {
+      "date": "2026-07-30",
+      "value": "17.09"
+    },
+    "us_cpi_yoy": {
+      "date": "2026-06-01",
+      "value": 3.73
+    },
+    "riksbank_policy_rate": {
+      "date": "2026-07-31",
+      "value": 1.75
+    },
+    "ecb_deposit_rate": {
+      "date": "2026-08-02",
+      "value": "2.25"
+    },
+    "se_cpi_yoy": {
+      "period": "2025M12",
+      "value": 0.3
+    },
+    "10y_2y_spread": 0.45,
+    "sek_per_eur": {
+      "date": "2026-07-24",
+      "value": 11.0432,
+      "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)"
+    }
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "value": 27,
+      "classification": "Fear"
+    }
+  }
+}

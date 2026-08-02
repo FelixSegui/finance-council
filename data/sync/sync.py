@@ -50,6 +50,7 @@ SHEET_TO_FILE = {
     "Pending Orders": "pending_orders.json",
     "Settings": "settings.json",
     "Notes": "notes.json",
+    "Manual Data": "manual_data.json",
 }
 
 

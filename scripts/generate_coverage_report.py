@@ -77,42 +77,55 @@ def save_streak_state(state):
 
 
 def classify_holding(h, snapshot_equities, snapshot_crypto):
-    """Return (status, detail, fields_present) for one portfolio.json holding."""
+    """Return (status, detail, fields_present, fields_missing, manual_fields)
+    for one holding. fields_missing is what makes this actionable — the exact
+    field names to go fill in on the Manual Data sheet, not just a status
+    word."""
     ticker = h.get("ticker")
     itype = h.get("instrument_type")
 
     if itype == "cash" or ticker in ("CASH_SEK", "CASH_USD", "CASH_EUR"):
-        return "N/A", "cash — not a market instrument", []
+        return "N/A", "cash — not a market instrument", [], [], []
 
     if ticker == "TBD":
         permanent_reason = h.get("no_ticker_reason")
         if permanent_reason:
-            return "N/A (permanent)", permanent_reason, []
-        return "N/A", "no resolved ticker/ISIN on file yet — cannot be fetched until named", []
+            return "N/A (permanent)", permanent_reason, [], [], []
+        return "N/A", "no resolved ticker/ISIN on file yet — cannot be fetched until named", [], [], []
 
     if itype == "spot_crypto" or ticker == "ethereum":
         rec = snapshot_crypto.get(ticker or "ethereum")
         if rec is None:
-            return "MISSING", "not included in this sweep's --crypto fetch list", []
+            return "MISSING", "not included in this sweep's --crypto fetch list", [], [], []
         if "error" in rec:
-            return "ERROR", rec["error"], []
-        present = [k for k in ("price_eur", "change_24h_pct", "change_7d_pct") if rec.get(k) is not None]
-        return "OK", f"CoinGecko, {len(present)} fields", present
+            return "ERROR", rec["error"], [], [], []
+        wanted = ("price_eur", "change_24h_pct", "change_7d_pct")
+        present = [k for k in wanted if rec.get(k) is not None]
+        missing = [k for k in wanted if rec.get(k) is None]
+        return "OK", f"CoinGecko, {len(present)} fields", present, missing, []
 
     # equity / certificate / fund-with-ticker
     rec = snapshot_equities.get(ticker)
     if rec is None:
-        return "MISSING", "not included in this sweep's --tickers fetch list", []
+        return "MISSING", "not included in this sweep's --tickers fetch list", [], FUNDAMENTAL_FIELDS, []
     if "error" in rec:
-        return "ERROR", rec["error"], []
+        return "ERROR", rec["error"], [], FUNDAMENTAL_FIELDS, []
+    manual = list((rec.get("_manual_overrides") or {}).keys())
     fund_present = [k for k in FUNDAMENTAL_FIELDS if rec.get(k) is not None]
+    fund_missing = [k for k in FUNDAMENTAL_FIELDS if rec.get(k) is None]
     has_price = rec.get("price") is not None
     if not has_price:
-        return "ERROR", "fetched but price field is null", []
+        return "ERROR", "fetched but price field is null", [], fund_missing, manual
+    if fund_present and manual:
+        return "OK (incl. manual)", f"price + {len(fund_present)} fields ({len(manual)} manually supplied)", \
+            fund_present, fund_missing, manual
     if fund_present:
-        return "OK", f"price + {len(fund_present)} fundamentals fields", fund_present
+        return "OK", f"price + {len(fund_present)} fundamentals fields", fund_present, fund_missing, manual
     reason = rec.get("_fundamentals_unavailable_reason")
-    return "OK (price only)", reason or "price fetched; fundamentals fields all null", []
+    detail = reason or "price fetched; fundamentals fields all null"
+    if fund_missing:
+        detail += f" — missing: {', '.join(fund_missing)} (fillable via the Manual Data sheet)"
+    return "OK (price only)", detail, [], fund_missing, manual
 
 
 def build_holdings_table(portfolio, snapshot):
@@ -126,7 +139,7 @@ def build_holdings_table(portfolio, snapshot):
     # portfolio is the synced output of sync.py: {"rows": [...]}, one dict per
     # Portfolio-sheet row, column names from data/sync/schema.py
     for h in portfolio.get("rows", []):
-        status, detail, fields = classify_holding(h, equities, crypto)
+        status, detail, present, missing, manual = classify_holding(h, equities, crypto)
         key = f"{h.get('ticker')}|{h.get('account_id')}"
         if status in ("MISSING", "ERROR"):
             streaks[key] = streaks.get(key, 0) + 1
@@ -139,6 +152,8 @@ def build_holdings_table(portfolio, snapshot):
             "account": h.get("account_id"),
             "status": status,
             "detail": detail,
+            "fields_missing": missing,
+            "fields_manual": manual,
             "consecutive_sweeps_missing": streak if status in ("MISSING", "ERROR") else "",
         })
     save_streak_state(streaks)

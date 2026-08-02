@@ -10,7 +10,7 @@ You surface upcoming events. You do not predict what happens at them.
 
 1. Read `data/sync/portfolio.json` (run `python run.py sync` first if stale) for held tickers; add any candidates under
    discussion this session.
-2. Run `python scripts/fetch_calendar.py --tickers ... --days 45`.
+2. Run `python scripts/fetchers/fetch_calendar.py --tickers ... --days 45`.
 3. Report:
    - Events in the window, dated, in one list.
    - **Collision flags**: any action being contemplated this session

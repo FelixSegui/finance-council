@@ -22,7 +22,7 @@ import os
 import sys
 from datetime import datetime, timezone
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "fetchers"))
 from fetch_market_data import fetch_equities  # noqa: E402
 
 UNIVERSE_PATH = "data/cache/universe.json"

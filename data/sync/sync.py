@@ -11,17 +11,24 @@ Two directions:
           only a human (or Claude, acting on the human's instruction during a
           session) edits Portfolio/Transactions/Watchlist/etc.
 
-A third direction exists for agents that need to RECORD something during a
-session (a new thesis nomination, a resolved note, a pending order) without
-every agent needing its own openpyxl knowledge:
-  append — one JSON row -> appended to a named Zone-1 sheet in master.xlsx.
-           This is the ONLY way anything outside this file writes to the
-           workbook; the openpyxl logic stays here, callable, not duplicated.
+Three more directions exist for agents that need to RECORD or CORRECT
+something during a session without every agent needing its own openpyxl
+knowledge — these are the ONLY way anything outside this file writes to the
+workbook; the openpyxl logic stays here, callable, not duplicated:
+  append — one JSON row -> appended to a named Zone-1 sheet.
+  update — set columns on every row matching --match (correcting a wrong
+           value, resolving a Notes-sheet question) without deleting history.
+  delete — remove every row matching --match (a genuinely wrong row, e.g. a
+           migration-time inference that turned out incorrect — for a
+           RESOLVED QUESTION rather than a mistake, prefer `update` to set
+           status=resolved instead, so the resolution stays visible).
 
 Usage:
   python data/sync/sync.py read                  # xlsx -> JSON
   python data/sync/sync.py write-cache            # fresh snapshot -> _MarketCache
   python data/sync/sync.py append --sheet Watchlist --row '{"ticker": "V", ...}'
+  python data/sync/sync.py update --sheet Notes --match '{"id": "3"}' --row '{"status": "resolved", "resolution": "..."}'
+  python data/sync/sync.py delete --sheet Portfolio --match '{"account_id": "swedbank-fund"}'
   python data/sync/sync.py read --xlsx other.xlsx --out-dir /tmp/x
 """
 import argparse
@@ -206,13 +213,75 @@ def append_row(xlsx_path, sheet_name, row):
           "and any dependent caches (universe/thesis).")
 
 
+def _matching_rows(ws, cols, match):
+    """Yield (row_number, record_dict) for every data row (from row 2) whose
+    columns match every key in `match`."""
+    for row in ws.iter_rows(min_row=2):
+        values = [c.value for c in row]
+        rec = dict(zip(cols, values))
+        if all(rec.get(k) == v for k, v in match.items()):
+            yield row[0].row, rec
+
+
+def update_rows(xlsx_path, sheet_name, match, updates):
+    """Update every row in a Zone-1 sheet whose columns match `match` (dict)
+    by setting the columns in `updates` (dict). append-only was a real gap —
+    Zone-1 sheets sometimes need CORRECTING (a migration-time inference that
+    turned out wrong, a stale note) not just growing, and the only prior
+    alternative was opening master.xlsx directly, which breaks 'only sync.py
+    understands Excel'. Returns the count of rows updated."""
+    if sheet_name not in ZONE1_SHEETS:
+        sys.exit(f"'{sheet_name}' is not a Zone-1 sheet — update only writes "
+                 f"human-owned input sheets. Zone-1 sheets: {ZONE1_SHEETS}")
+    wb = load_workbook(xlsx_path)
+    ws = wb[sheet_name]
+    cols = SHEETS[sheet_name]
+    col_index = {c: i + 1 for i, c in enumerate(cols)}
+    updated = 0
+    for row_num, _rec in list(_matching_rows(ws, cols, match)):
+        for k, v in updates.items():
+            if k in col_index:
+                ws.cell(row=row_num, column=col_index[k], value=v)
+        updated += 1
+    wb.save(xlsx_path)
+    print(f"Updated {updated} row(s) in '{sheet_name}' matching {match} in {xlsx_path}")
+    if updated == 0:
+        print("  WARNING: no rows matched — nothing changed. Check --match against the sheet's actual values.")
+    print("Run 'python data/sync/sync.py read' to flow this into data/sync/*.json.")
+    return updated
+
+
+def delete_rows(xlsx_path, sheet_name, match):
+    """Delete every row in a Zone-1 sheet whose columns match `match`. Use
+    for genuinely wrong rows (a migration-time inference error, a
+    duplicate) — for a RESOLVED QUESTION rather than a mistake, prefer
+    `update` to set status=resolved (Notes-sheet convention) over deleting,
+    so the resolution history stays visible. Returns the count deleted."""
+    if sheet_name not in ZONE1_SHEETS:
+        sys.exit(f"'{sheet_name}' is not a Zone-1 sheet — delete only writes "
+                 f"human-owned input sheets. Zone-1 sheets: {ZONE1_SHEETS}")
+    wb = load_workbook(xlsx_path)
+    ws = wb[sheet_name]
+    cols = SHEETS[sheet_name]
+    to_delete = [row_num for row_num, _rec in _matching_rows(ws, cols, match)]
+    for r in sorted(to_delete, reverse=True):
+        ws.delete_rows(r, 1)
+    wb.save(xlsx_path)
+    print(f"Deleted {len(to_delete)} row(s) from '{sheet_name}' matching {match} in {xlsx_path}")
+    if not to_delete:
+        print("  WARNING: no rows matched — nothing changed.")
+    print("Run 'python data/sync/sync.py read' to flow this into data/sync/*.json.")
+    return len(to_delete)
+
+
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("direction", choices=["read", "write-cache", "append"])
+    p.add_argument("direction", choices=["read", "write-cache", "append", "update", "delete"])
     p.add_argument("--xlsx", default=DEFAULT_XLSX)
     p.add_argument("--out-dir", default=DEFAULT_OUT_DIR)
-    p.add_argument("--sheet", help="(append) target sheet name")
-    p.add_argument("--row", help="(append) JSON object for the new row")
+    p.add_argument("--sheet", help="(append/update/delete) target sheet name")
+    p.add_argument("--row", help="(append) JSON object for the new row; (update) JSON object of columns to set")
+    p.add_argument("--match", help="(update/delete) JSON object of column:value a row must match")
     args = p.parse_args()
 
     if args.direction == "read":
@@ -221,6 +290,14 @@ def main():
         if not args.sheet or not args.row:
             sys.exit("append requires --sheet and --row '<json object>'")
         append_row(args.xlsx, args.sheet, json.loads(args.row))
+    elif args.direction == "update":
+        if not args.sheet or not args.match or not args.row:
+            sys.exit("update requires --sheet, --match '<json object>', and --row '<json object of columns to set>'")
+        update_rows(args.xlsx, args.sheet, json.loads(args.match), json.loads(args.row))
+    elif args.direction == "delete":
+        if not args.sheet or not args.match:
+            sys.exit("delete requires --sheet and --match '<json object>'")
+        delete_rows(args.xlsx, args.sheet, json.loads(args.match))
     else:
         cache_path = os.path.join(args.out_dir, "market_cache.json")
         if not os.path.exists(cache_path):

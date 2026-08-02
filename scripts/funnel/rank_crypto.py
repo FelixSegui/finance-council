@@ -29,7 +29,7 @@ import os
 import sys
 from datetime import datetime, timezone
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "fetchers"))
 from fetch_market_data import fetch_crypto, fetch_crypto_fear_greed  # noqa: E402
 
 # Held by the user (BTC via ISK certificate, ETH self-custody) + major-cap

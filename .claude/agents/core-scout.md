@@ -41,7 +41,7 @@ a hand-typed sample), not a return forecast. Say this once per output.
 1. **Universe.** The screening base is `data/cache/universe.json` — but it has
    TWO owners for two different parts, and this matters: the `sp500` category
    is machine-owned, auto-built from a public constituents CSV (refresh with
-   `python scripts/build_universe.py` if `last_updated` looks stale). Every
+   `python scripts/funnel/build_universe.py` if `last_updated` looks stale). Every
    other category (Nordic, Europe, ETFs, crypto proxies, thesis picks) is
    human-owned — it lives in master.xlsx's **Universe sheet**, and flows into
    `data/cache/universe.json` only via `python run.py sync` (which merges the
@@ -55,7 +55,7 @@ a hand-typed sample), not a return forecast. Say this once per output.
    produces plausible-looking garbage.
 
 2. **Stage 1 — coarse rank.** Run:
-   `python scripts/rank_candidates.py --categories sp500 --top 30`
+   `python scripts/funnel/rank_candidates.py --categories sp500 --top 30`
    (add `--refresh` if the factor cache is older than a week; `--weights v,q,g,m`
    to tilt value/quality/growth/momentum; `--limit N` for a quick partial run).
    This scores every name by cross-sectional z-scores on value (earnings yield),
@@ -75,13 +75,13 @@ a hand-typed sample), not a return forecast. Say this once per output.
      --category ... --tickers ...` (it verifies each against real price data and
      drops anything that doesn't resolve — never hand-edit tickers in unverified).
    - **High-risk (crypto) tier is NOT ranked here.** Crypto has no fundamentals
-     to standardise; use `python scripts/rank_crypto.py` for cycle CONTEXT
+     to standardise; use `python scripts/funnel/rank_crypto.py` for cycle CONTEXT
      (momentum, distance from ATH, Fear & Greed) to inform discretionary
      management — it is explicitly not a buy-ranker.
 
 3. **Stage 2 — hard screen.** Feed the top-ranked tickers into the pass/fail
    screen for absolute thresholds:
-   `python scripts/screen_candidates.py --tickers <top ranked> --max-pe ... --min-revenue-growth ...`
+   `python scripts/funnel/screen_candidates.py --tickers <top ranked> --max-pe ... --min-revenue-growth ...`
    Refuse vague criteria ("good companies") — ask for numbers or propose
    explicit defaults and label them as defaults.
 

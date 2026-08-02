@@ -1,0 +1,40 @@
+{
+  "fetched_at_utc": "2026-08-02T17:19:13.148908+00:00",
+  "issuer_query": "Investor",
+  "date_from": "2026-05-04",
+  "date_to": "2026-08-02",
+  "transactions": [
+    {
+      "publication_date": "2026-07-17 12:16:03",
+      "issuer": "Investor Aktiebolag",
+      "person": "Christian Cederholm",
+      "role": "Verkst\u00e4llande\u00a0direkt\u00f6r\u00a0(VD)",
+      "related_party": "",
+      "transaction_type": "F\u00f6rv\u00e4rv",
+      "is_routine_option_exercise": false,
+      "instrument": "Investor AB ser. A",
+      "isin": "SE0015811955",
+      "transaction_date": "2026-07-17 00:00:00",
+      "volume": "2500,0",
+      "price": "387,3",
+      "currency": "SEK",
+      "venue": "NASDAQ STOCKHOLM AB"
+    },
+    {
+      "publication_date": "2026-06-05 16:47:05",
+      "issuer": "Investor Aktiebolag",
+      "person": "Jessica H\u00e4ggstr\u00f6m",
+      "role": "Annan\u00a0medlem\u00a0i\u00a0bolagets\u00a0administrations-,\u00a0lednings-\u00a0eller\u00a0kontrollorgan",
+      "related_party": "",
+      "transaction_type": "F\u00f6rv\u00e4rv",
+      "is_routine_option_exercise": false,
+      "instrument": "Investor AB ser. A",
+      "isin": "SE0015811955",
+      "transaction_date": "2026-06-05 00:00:00",
+      "volume": "270,0",
+      "price": "377,50",
+      "currency": "SEK",
+      "venue": "NASDAQ STOCKHOLM AB"
+    }
+  ]
+}

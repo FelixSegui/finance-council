@@ -86,7 +86,7 @@ snapshot record as price/fundamentals, so every lens reads it from one
 standardized place. `insiders_se` guesses each Swedish issuer's search name
 from the Portfolio sheet's `name` column (e.g. "Handelsbanken A (stock)" →
 "Handelsbanken") — if that guess misses, run
-`python scripts/fetch_insiders_se.py --issuer "<exact name>" --days 90`
+`python scripts/fetchers/fetch_insiders_se.py --issuer "<exact name>" --days 90`
 directly with the right name.
 
 ## The Dashboard
@@ -99,9 +99,9 @@ Add your own charts/KPIs below the existing rows; it's designed to grow.
 ## Finding candidates
 
 ```
-python scripts/build_universe.py                       # refresh the S&P 500 base (run occasionally, not every sweep)
-python scripts/rank_candidates.py --stack --top 30      # coarse factor rank across the whole universe
-python scripts/screen_candidates.py --tickers ... --max-pe 25 ...   # hard pass/fail on the shortlist
+python scripts/funnel/build_universe.py                       # refresh the S&P 500 base (run occasionally, not every sweep)
+python scripts/funnel/rank_candidates.py --stack --top 30      # coarse factor rank across the whole universe
+python scripts/funnel/screen_candidates.py --tickers ... --max-pe 25 ...   # hard pass/fail on the shortlist
 ```
 Or just invoke the `scout` agent in a session — it drives this whole funnel
 and hands the survivors to `valuation`/`thesis-review`.

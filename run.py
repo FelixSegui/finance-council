@@ -30,6 +30,7 @@ from datetime import datetime, timezone, timedelta
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(REPO_ROOT, "data", "sync"))
 sys.path.insert(0, os.path.join(REPO_ROOT, "scripts"))
+sys.path.insert(0, os.path.join(REPO_ROOT, "scripts", "fetchers"))
 
 CONTROLLER_STATE_PATH = "data/cache/controller_state.json"
 
@@ -74,12 +75,12 @@ def cmd_sync(args):
 
 
 FETCH_MODULES = {
-    "prices": ["scripts/fetch_prices.py", "--tickers"],           # + equities (comma list)
-    "fundamentals": ["scripts/fetch_fundamentals_us.py", "--tickers"],  # + equities
-    "crypto": ["scripts/fetch_crypto_prices.py", "--coins"],      # + crypto (comma list)
-    "macro": ["scripts/fetch_macro.py"],
-    "sentiment": ["scripts/fetch_sentiment.py"],
-    "insiders_us": ["scripts/fetch_insiders_us.py", "--tickers"],  # + equities (non-US tickers skipped internally)
+    "prices": ["scripts/fetchers/fetch_prices.py", "--tickers"],           # + equities (comma list)
+    "fundamentals": ["scripts/fetchers/fetch_fundamentals_us.py", "--tickers"],  # + equities
+    "crypto": ["scripts/fetchers/fetch_crypto_prices.py", "--coins"],      # + crypto (comma list)
+    "macro": ["scripts/fetchers/fetch_macro.py"],
+    "sentiment": ["scripts/fetchers/fetch_sentiment.py"],
+    "insiders_us": ["scripts/fetchers/fetch_insiders_us.py", "--tickers"],  # + equities (non-US tickers skipped internally)
     # "insiders_se" is handled separately in cmd_fetch — it's issuer-name-based
     # (Finansinspektionen has no ticker search), one call per .ST stock holding.
 }
@@ -138,7 +139,7 @@ def _fetch_insiders(rows, snapshot):
 
     us_tickers = [r["ticker"] for r in stock_rows if "." not in r["ticker"]]
     if us_tickers:
-        _run_tracked("fetch_insiders_us", ["scripts/fetch_insiders_us.py", "--tickers", ",".join(us_tickers)])
+        _run_tracked("fetch_insiders_us", ["scripts/fetchers/fetch_insiders_us.py", "--tickers", ",".join(us_tickers)])
         latest = _latest_file("data/cache/insiders_us")
         if latest:
             with open(latest) as f:
@@ -156,7 +157,7 @@ def _fetch_insiders(rows, snapshot):
                 "error": "no usable company name in the Portfolio sheet to search Finansinspektionen with"}
             continue
         _run_tracked(f"fetch_insiders_se[{t}]",
-                     ["scripts/fetch_insiders_se.py", "--issuer", issuer, "--days", "90"])
+                     ["scripts/fetchers/fetch_insiders_se.py", "--issuer", issuer, "--days", "90"])
         latest = _latest_file("data/cache/insiders_se")
         if not latest:
             continue
@@ -211,7 +212,7 @@ def cmd_fetch(args):
                     print(f"  skip {r['ticker']}: no usable company name to search with")
                     continue
                 _run_tracked(f"fetch_insiders_se[{r['ticker']}]",
-                             ["scripts/fetch_insiders_se.py", "--issuer", issuer, "--days", "90"])
+                             ["scripts/fetchers/fetch_insiders_se.py", "--issuer", issuer, "--days", "90"])
             print("\nRan only 'insiders_se'. Run 'python run.py fetch' (no --only) "
                   "to update the combined snapshot and _MarketCache/Dashboard.")
             return
@@ -235,7 +236,7 @@ def cmd_fetch(args):
     # source twice. Tracked as one step; use --only above to isolate one
     # source when debugging.
     _run_tracked("fetch_market_data",
-                 ["scripts/fetch_market_data.py",
+                 ["scripts/fetchers/fetch_market_data.py",
                   "--tickers", ",".join(equities),
                   "--crypto", ",".join(crypto)])
 

@@ -321,6 +321,113 @@
         "--xlsx",
         "master.xlsx"
       ]
+    },
+    {
+      "module": "fetch_insiders_se[SHB-A.ST]",
+      "utc": "2026-08-02T17:19:12.171456+00:00",
+      "duration_sec": 1.45,
+      "success": true,
+      "argv": [
+        "scripts/fetchers/fetch_insiders_se.py",
+        "--issuer",
+        "Handelsbanken",
+        "--days",
+        "90"
+      ]
+    },
+    {
+      "module": "fetch_insiders_se[INVE-A.ST]",
+      "utc": "2026-08-02T17:19:13.159114+00:00",
+      "duration_sec": 0.99,
+      "success": true,
+      "argv": [
+        "scripts/fetchers/fetch_insiders_se.py",
+        "--issuer",
+        "Investor",
+        "--days",
+        "90"
+      ]
+    },
+    {
+      "module": "sync",
+      "utc": "2026-08-02T17:19:59.921804+00:00",
+      "duration_sec": 0.39,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "read",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "fetch_market_data",
+      "utc": "2026-08-02T17:20:13.533224+00:00",
+      "duration_sec": 13.57,
+      "success": true,
+      "argv": [
+        "scripts/fetchers/fetch_market_data.py",
+        "--tickers",
+        "SHB-A.ST,INVE-A.ST,COIN-XBT.ST",
+        "--crypto",
+        "ethereum"
+      ]
+    },
+    {
+      "module": "fetch_insiders_se[SHB-A.ST]",
+      "utc": "2026-08-02T17:20:14.538998+00:00",
+      "duration_sec": 1.0,
+      "success": true,
+      "argv": [
+        "scripts/fetchers/fetch_insiders_se.py",
+        "--issuer",
+        "Handelsbanken",
+        "--days",
+        "90"
+      ]
+    },
+    {
+      "module": "fetch_insiders_se[INVE-A.ST]",
+      "utc": "2026-08-02T17:20:15.569429+00:00",
+      "duration_sec": 1.03,
+      "success": true,
+      "argv": [
+        "scripts/fetchers/fetch_insiders_se.py",
+        "--issuer",
+        "Investor",
+        "--days",
+        "90"
+      ]
+    },
+    {
+      "module": "write_market_cache",
+      "utc": "2026-08-02T17:20:15.790126+00:00",
+      "duration_sec": 0.22,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "write-cache",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "coverage_report",
+      "utc": "2026-08-02T17:20:15.860938+00:00",
+      "duration_sec": 0.03,
+      "success": true,
+      "argv": [
+        "scripts/generate_coverage_report.py"
+      ]
+    },
+    {
+      "module": "coverage_report",
+      "utc": "2026-08-02T17:21:43.276719+00:00",
+      "duration_sec": 0.03,
+      "success": true,
+      "argv": [
+        "scripts/generate_coverage_report.py"
+      ]
     }
   ],
   "recommendations": [

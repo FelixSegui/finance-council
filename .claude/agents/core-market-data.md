@@ -15,7 +15,7 @@ when a step needs to run individually or with non-default flags.
 1. Run `python run.py sync` first if `data/sync/portfolio.json` looks stale
    (or hasn't been synced this session) — this reads the current ticker list
    and crypto holdings from master.xlsx's Portfolio sheet.
-2. Run `python run.py fetch` (wraps `scripts/fetch_market_data.py` with
+2. Run `python run.py fetch` (wraps `scripts/fetchers/fetch_market_data.py` with
    `--tickers` set to every equity/ETF ticker in the portfolio and
    `--crypto` set to CoinGecko ids for every crypto holding). This ALSO
    fetches insider activity for every stock holding — SEC Form 4 counts for

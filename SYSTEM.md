@@ -54,17 +54,21 @@ buy/sell direction — richer than Form 4's count-only feed).
 Each data KIND is its own independently runnable module — not one monolith —
 so a broken source is isolated and debuggable on its own:
 
+All fetchers live in `scripts/fetchers/` — one folder, so a broken source is
+easy to find and target ("if I see something not working properly").
+
 | Module | Data |
 |---|---|
-| `scripts/fetch_prices.py` | equity/ETF prices |
-| `scripts/fetch_fundamentals_us.py` | equity fundamentals (US-listed only — no free source exists for non-US) |
-| `scripts/fetch_crypto_prices.py` | crypto prices |
-| `scripts/fetch_macro.py` | FRED / Riksbank / SCB / ECB |
-| `scripts/fetch_sentiment.py` | crypto Fear & Greed |
-| `scripts/fetch_insiders_us.py` | SEC Form 4 filing counts |
-| `scripts/fetch_insiders_se.py` | Finansinspektionen Insynsregistret (issuer-name search, one call per `.ST` stock holding) |
+| `scripts/fetchers/fetch_prices.py` | equity/ETF prices |
+| `scripts/fetchers/fetch_fundamentals_us.py` | equity fundamentals (US-listed only — no free source exists for non-US) |
+| `scripts/fetchers/fetch_crypto_prices.py` | crypto prices |
+| `scripts/fetchers/fetch_macro.py` | FRED / Riksbank / SCB / ECB |
+| `scripts/fetchers/fetch_sentiment.py` | crypto Fear & Greed |
+| `scripts/fetchers/fetch_insiders_us.py` | SEC Form 4 filing counts |
+| `scripts/fetchers/fetch_insiders_se.py` | Finansinspektionen Insynsregistret (issuer-name search, one call per `.ST` stock holding) |
+| `scripts/fetchers/fetch_calendar.py` | earnings dates + macro event calendar (used by `util-calendar`, not part of the standard snapshot) |
 
-`scripts/fetch_market_data.py` is a thin orchestrator that calls the first
+`scripts/fetchers/fetch_market_data.py` is a thin orchestrator that calls the first
 five and assembles one combined snapshot (what the lenses read).
 `python run.py fetch --only <kind>` runs exactly one module standalone —
 use this when a specific source breaks instead of re-running everything.
@@ -159,7 +163,14 @@ finance-council/
     core-*.md               # orchestrating agents (journal, market-data, scout, council, controller)
     lens-*.md                # read-only analytical lenses (valuation, macro-regime, portfolio, thesis-review)
     util-*.md                 # optional/supplementary (calendar, backtest)
-  scripts/                 # the fetch/compute logic — unchanged in spirit from before the migration
+  scripts/                 # the fetch/compute logic, grouped by role (2026-08-02 reorg)
+    fetchers/                # one file per data KIND — price, fundamentals, crypto, macro,
+                              # sentiment, US/SE insiders, calendar. Target one directly when
+                              # a specific source breaks (`run.py fetch --only <kind>`).
+    funnel/                  # the stock-discovery funnel: build_universe, rank_candidates,
+                              # rank_crypto, screen_candidates (used by core-scout)
+    generate_coverage_report.py, migrate_from_json.py, performance.py,
+    backtest.py, add_manual_tickers.py   # standalone utilities, not part of either group above
   data/
     cache/                   # machine-owned, reproducible, disposable (snapshots, rankings, screens, ...)
     sync/                     # data/sync/sync.py + the JSON files it produces from master.xlsx
@@ -181,7 +192,7 @@ journal → market-data → scout (optional) → valuation → macro-regime
    decisions, and open Notes-sheet items. No analysis before this runs.
 1. Run `python run.py prep` (or let the `market-data` agent do it) — this
    chains `sync` (master.xlsx → `data/sync/*.json`), `fetch`
-   (`scripts/fetch_market_data.py` → a timestamped snapshot in
+   (`scripts/fetchers/fetch_market_data.py` → a timestamped snapshot in
    `data/cache/snapshots/`, plus `_MarketCache` in the workbook), and
    `coverage` (`scripts/generate_coverage_report.py` → a machine-readable
    coverage summary — the standing answer to "what data did this sweep

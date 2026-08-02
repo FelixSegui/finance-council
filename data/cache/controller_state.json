@@ -349,8 +349,9 @@
       "id": 5,
       "date": "2026-07-04",
       "status": "open",
-      "why": "SEC Form 4 filing counts alone are weak signal - a CFO selling for taxes and a cluster buy look identical.",
-      "how": "Parse the Form 4 XML from EDGAR for transaction type/direction; ~1 more fetch per filing. Note: the Swedish Insynsregistret integration explored 2026-07-31 (marknadssok.fi.se, real buy/sell direction, richer than Form 4) could supersede this for Nordic holdings - evaluate together."
+      "why": "SEC Form 4 filing counts alone are weak signal for US names - a CFO selling for taxes and a cluster buy look identical. UPDATE 2026-08-02: the Swedish Insynsregistret integration is now live in production (commit 4bf50f8, run.py _fetch_insiders()) and verified with a real fetch this session - SHB-A.ST/INVE-A.ST snapshots now carry real buy/sell-direction insider_activity_se records (chairman Par Boman's and CEO Christian Cederholm's July 2026 open-market purchases), read by lens-thesis-review.md with explicit SE-vs-US reading rules. This resolves the recommendation for SE-listed holdings - only the original US Form-4-direction-parsing gap remains open.",
+      "how": "SE names: DONE, no further action - Insynsregistret integration shipped and verified live 2026-08-02. US names: still filing-count-only; parse Form 4 XML from EDGAR (data.sec.gov) for transaction type/code (P=purchase, S=sale, A=award/exercise) in fetch_insiders_us.py, ~1 extra fetch per filing. Low priority until a US holding's insider signal is actually load-bearing for a decision (none has been yet, unlike SHB-A.ST/INVE-A.ST this sweep).",
+      "persona": "Analyst"
     },
     {
       "id": 6,
@@ -372,6 +373,17 @@
       "status": "open",
       "why": "COIN-XBT.ST's ticker fails to resolve via Yahoo's chart endpoint under every plausible variant tried - fetch_equities() itself was fixed for SHB-A.ST/INVE-A.ST (see id 9/17 history), but this one specific ticker remains genuinely unresolved, not a code bug.",
       "how": "Verify the live ticker directly on Avanza/Nasdaq Stockholm next session rather than continuing to guess variants - or accept it stays user-reported. Same verification need as id 4's Valour Bitcoin Zero SEK ticker - worth doing together."
+    },
+    {
+      "id": 18,
+      "date": "2026-08-02",
+      "status": "open",
+      "persona": [
+        "Analyst",
+        "User Advocate"
+      ],
+      "why": "generate_coverage_report.py's streak tracker (build_holdings_table(), lines ~144-157) only increments/records consecutive_sweeps_missing for status MISSING/ERROR; any status starting with 'OK' resets the streak to 0 regardless of fields_missing. Verified across 6 coverage-report summaries spanning both the 2026-08-01 and 2026-08-02 sessions (20260801T075137, 20260801T075821, 20260802T090806, 20260802T090910, 20260802T095225, 20260802T100340): INVE-A.ST has been 'OK (price only)' with all 4 fundamentals fields (trailing_pe, profit_margins, revenue_growth, market_cap) missing in every single one, yet consecutive_sweeps_missing is always '' and it never appears in stuck_2plus_sweeps - unlike COIN-XBT.ST's correctly tracked 9-sweep streak. The 2026-08-02 sweep report's Headline Call 1 (SHB-A.ST/INVE-A.ST insider-buying-vs-no-thesis) had to describe INVE-A.ST's fundamentals gap as a fresh '403 CIK fallback failure' with no visibility that it is a persistent, multi-session gap, because the tracker itself hides partial-OK statuses from the streak/stuck-sweep signal.",
+      "how": "In scripts/generate_coverage_report.py's build_holdings_table(), change the streak-increment condition so any row with a non-empty fields_missing list increments/holds its streak (not just full MISSING/ERROR status), e.g. `if missing: streaks[key] = streaks.get(key, 0) + 1 else: streaks[key] = 0`; update the consecutive_sweeps_missing output condition (currently `if status in (\"MISSING\", \"ERROR\") else \"\"`) and the stuck_2plus_sweeps filter to match. Verify against this session's data: INVE-A.ST should show a streak of at least 6 once fixed."
     }
   ]
 }

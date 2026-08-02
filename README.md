@@ -95,9 +95,26 @@ directly with the right name.
 ## The Dashboard
 
 Open `master.xlsx` and look at the **Dashboard** tab — total value, risk-tier
-breakdown vs. target, fee drag, all computed by formula from the Portfolio
-sheet and the (hidden) `_MarketCache` sheet that `run.py fetch` refreshes.
-Add your own charts/KPIs below the existing rows; it's designed to grow.
+breakdown vs. target, fee drag, a **BY TYPE** breakdown (stocks/funds/
+certificates/cash/crypto), and a **PERFORMANCE OVER TIME** chart, all
+computed by formula from the Portfolio sheet and the (hidden) `_MarketCache`
+sheet that `run.py fetch` refreshes. Add your own charts/KPIs below the
+existing rows; it's designed to grow.
+
+Every `run.py fetch` also logs today's total value to the hidden
+`_ValueHistory` sheet (and `data/valuations.csv`) automatically — no manual
+step, that's what feeds the chart. Note: unlisted funds (Avanza Auto 3,
+Avanza Global, etc.) never get a live price, so every Dashboard total values
+them at their cost basis (`cost_basis_total_sek`) instead — keep that column
+current when you know the real current value, or the total will be stale for
+that holding specifically.
+
+The **Portfolio sheet itself is color-coded by instrument_type** (stocks
+blue, funds green, certificates orange, cash gray, crypto purple) via
+conditional formatting — this stays correct automatically even if you add a
+new row anywhere, no re-running anything. If it ever looks unsorted/messy,
+`python data/sync/sync.py sort --sheet Portfolio --by instrument_type`
+groups it back into clean sections.
 
 ## Finding candidates
 

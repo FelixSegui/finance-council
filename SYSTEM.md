@@ -109,6 +109,35 @@ if it were live-fetched. `generate_coverage_report.py` lists the exact
 missing field names per holding (not just a status word) specifically so you
 know what to go find and enter.
 
+## The Dashboard and value tracking (2026-08-02)
+
+The Dashboard sheet has a **BY TYPE** breakdown (stocks/funds/certificates/
+cash/crypto, formula-driven from Portfolio's `instrument_type` column) and a
+**PERFORMANCE OVER TIME** chart, native Excel, plotting the hidden
+`_ValueHistory` sheet. `sync.py`'s `write-cache` direction (what `run.py
+fetch` calls) auto-appends today's total to `_ValueHistory` and
+`data/valuations.csv` every run — no manual step, unlike before.
+
+**TBD (unlisted-fund) rows need special handling everywhere value is
+summed.** They have no `quantity` (no live per-unit price exists to
+multiply), so their `_MarketCache` record carries `market_value_sek` as the
+row's TOTAL (`cost_basis_total_sek`) directly — every other row type uses
+`quantity x market_value_sek`. Every Dashboard formula and
+`_log_value_history()` in `sync.py` account for this explicitly (exclude
+TBD from the quantity-multiply, add `cost_basis_total_sek` for TBD rows via
+SUMIF/SUMIFS). Mixing this up silently zeroes out unlisted funds — a real
+bug caught the same day this feature was built, understating the portfolio
+by ~130k SEK. If you add a new kind of "no live price" holding, replicate
+this pattern rather than assuming quantity x price works universally.
+
+The **Portfolio sheet is color-coded by `instrument_type`** via conditional
+formatting (self-maintaining — a new row is colored correctly regardless of
+where it's added, no script needed). `python data/sync/sync.py sort --sheet
+Portfolio --by instrument_type` groups rows into clean sections when wanted;
+`workbook.py`'s `build_dashboard()` and `ensure_zone2_sheet()` are reusable
+so `scripts/retrofit_workbook_features.py` can safely add these features (or
+repair them) to an already-populated workbook without touching Zone-1 data.
+
 ## Scope (Phase 1 — locked 2026-07-03)
 
 Covered: **equities, ETFs/index funds, crypto**, with **macro (rates, yield

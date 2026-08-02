@@ -11,10 +11,11 @@ Two directions:
           only a human (or Claude, acting on the human's instruction during a
           session) edits Portfolio/Transactions/Watchlist/etc.
 
-Three more directions exist for agents that need to RECORD or CORRECT
-something during a session without every agent needing its own openpyxl
-knowledge — these are the ONLY way anything outside this file writes to the
-workbook; the openpyxl logic stays here, callable, not duplicated:
+Four more directions exist for agents that need to RECORD, CORRECT, or
+REORGANIZE something during a session without every agent needing its own
+openpyxl knowledge — these are the ONLY way anything outside this file
+writes to the workbook; the openpyxl logic stays here, callable, not
+duplicated:
   append — one JSON row -> appended to a named Zone-1 sheet.
   update — set columns on every row matching --match (correcting a wrong
            value, resolving a Notes-sheet question) without deleting history.
@@ -22,16 +23,26 @@ workbook; the openpyxl logic stays here, callable, not duplicated:
            migration-time inference that turned out incorrect — for a
            RESOLVED QUESTION rather than a mistake, prefer `update` to set
            status=resolved instead, so the resolution stays visible).
+  sort   — re-order a sheet's rows by one column's value (e.g. group
+           Portfolio by instrument_type). Pure re-ordering, nothing added
+           or removed; Portfolio's type color-coding is conditional
+           formatting (see workbook.py) so it doesn't need re-applying.
+
+`write-cache` also auto-appends today's computed total portfolio value to
+the hidden _ValueHistory sheet (and data/valuations.csv) every time it
+runs — see sync.py's `_log_value_history()`.
 
 Usage:
   python data/sync/sync.py read                  # xlsx -> JSON
-  python data/sync/sync.py write-cache            # fresh snapshot -> _MarketCache
+  python data/sync/sync.py write-cache            # fresh snapshot -> _MarketCache + _ValueHistory
   python data/sync/sync.py append --sheet Watchlist --row '{"ticker": "V", ...}'
   python data/sync/sync.py update --sheet Notes --match '{"id": "3"}' --row '{"status": "resolved", "resolution": "..."}'
   python data/sync/sync.py delete --sheet Portfolio --match '{"account_id": "swedbank-fund"}'
+  python data/sync/sync.py sort --sheet Portfolio --by instrument_type
   python data/sync/sync.py read --xlsx other.xlsx --out-dir /tmp/x
 """
 import argparse
+import csv
 import json
 import os
 import sys
@@ -172,11 +183,63 @@ def _merge_universe_manual(universe_written):
           f"(categories: {manual_cat_names}; sp500 untouched)")
 
 
+def _log_value_history(wb, portfolio_rows, records):
+    """Append one row to the hidden _ValueHistory sheet (and a mirrored row
+    to data/valuations.csv for scripts/performance.py) with TODAY's total
+    portfolio value. This is the "keeps getting updated automatically" piece
+    — previously valuations.csv only grew when a human/agent remembered to
+    append a row by hand.
+
+    TBD (unlisted-fund) rows are a special case: they have no `quantity`
+    (there's no live per-unit price to multiply it by), so their
+    _MarketCache record carries `market_value_sek` as the row's TOTAL value
+    (= cost_basis_total_sek) directly, not a per-unit price. Every other row
+    type uses quantity x market_value_sek. Mixing these up (i.e. always
+    multiplying by quantity) silently zeroes out every unlisted fund — a
+    real bug caught 2026-08-02 when this function's first version did
+    exactly that and undercounted the portfolio by ~130k SEK."""
+    pf_cols = SHEETS["Portfolio"]
+    ticker_idx = pf_cols.index("ticker")
+    name_idx = pf_cols.index("name")
+    qty_idx = pf_cols.index("quantity")
+    total = 0.0
+    for row in portfolio_rows:
+        t = row[ticker_idx]
+        if t == "TBD":
+            key = f"TBD-{row[name_idx]}"
+            rec = records.get(key) or {}
+            mv = rec.get("market_value_sek")
+            if isinstance(mv, (int, float)):
+                total += mv
+            continue
+        rec = records.get(t) or {}
+        qty, mv = row[qty_idx], rec.get("market_value_sek")
+        if isinstance(qty, (int, float)) and isinstance(mv, (int, float)):
+            total += qty * mv
+
+    vh = wb["_ValueHistory"]
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    r = vh.max_row + 1
+    vh.cell(row=r, column=1, value=today)
+    vh.cell(row=r, column=2, value=round(total, 2))
+    vh.cell(row=r, column=3, value="auto-logged by run.py fetch")
+
+    valuations_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "data", "valuations.csv")
+    is_new = not os.path.exists(valuations_path)
+    with open(valuations_path, "a", newline="") as f:
+        w = csv.writer(f)
+        if is_new:
+            w.writerow(["date", "total_value_sek", "net_contribution_since_last_sek", "note"])
+        w.writerow([today, round(total, 2), 0, "auto-logged by run.py fetch"])
+    return round(total, 2)
+
+
 def write_market_cache(xlsx_path, records):
     """Zone 2: fresh {ticker: {last_price, currency, price_as_of, market_value_sek,
     fetch_status, data_source}} -> the hidden _MarketCache sheet. Overwrites the
     sheet wholesale every call — it is fully disposable, exactly like the JSON
-    cache under data/cache/. Never touches any Zone-1 sheet."""
+    cache under data/cache/. Never touches any Zone-1 sheet (except appending
+    to _ValueHistory, itself Zone 2)."""
     wb = load_workbook(xlsx_path)
     ws = wb["_MarketCache"]
     ws.delete_rows(2, ws.max_row)  # clear all data rows, keep the header
@@ -185,6 +248,12 @@ def write_market_cache(xlsx_path, records):
         for j, col in enumerate(cols, 1):
             val = ticker if col == "ticker" else rec.get(col)
             ws.cell(row=i, column=j, value=val)
+
+    portfolio_rows = [[c.value for c in row] for row in wb["Portfolio"].iter_rows(min_row=2)
+                      if any(c.value not in (None, "") for c in row)]
+    total = _log_value_history(wb, portfolio_rows, records)
+    print(f"Logged total value {total} SEK to _ValueHistory and data/valuations.csv")
+
     dash = wb["Dashboard"]
     dash["B17"] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     wb.save(xlsx_path)
@@ -274,14 +343,42 @@ def delete_rows(xlsx_path, sheet_name, match):
     return len(to_delete)
 
 
+def sort_sheet(xlsx_path, sheet_name, by):
+    """Re-order a Zone-1 sheet's data rows by one column's value (e.g. group
+    Portfolio by instrument_type: stocks together, funds together, etc.).
+    Pure re-ordering — no data changed, no rows added/removed. Formatting
+    (conditional-formatting fills, header style) already targets the whole
+    range so it doesn't need re-applying after a sort. Rows with equal `by`
+    values keep their prior relative order (stable sort)."""
+    if sheet_name not in ZONE1_SHEETS:
+        sys.exit(f"'{sheet_name}' is not a Zone-1 sheet — sort only reorders "
+                 f"human-owned input sheets. Zone-1 sheets: {ZONE1_SHEETS}")
+    wb = load_workbook(xlsx_path)
+    ws = wb[sheet_name]
+    cols = SHEETS[sheet_name]
+    if by not in cols:
+        sys.exit(f"'{by}' is not a column of '{sheet_name}'. Columns: {cols}")
+    by_idx = cols.index(by)
+    rows = [[c.value for c in row] for row in ws.iter_rows(min_row=2)
+            if any(c.value not in (None, "") for c in row)]
+    rows.sort(key=lambda r: (r[by_idx] is None, r[by_idx]))
+    for i, row in enumerate(rows, 2):
+        for j, val in enumerate(row, 1):
+            ws.cell(row=i, column=j, value=val)
+    wb.save(xlsx_path)
+    print(f"Sorted {len(rows)} row(s) in '{sheet_name}' by '{by}' in {xlsx_path}")
+    return len(rows)
+
+
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("direction", choices=["read", "write-cache", "append", "update", "delete"])
+    p.add_argument("direction", choices=["read", "write-cache", "append", "update", "delete", "sort"])
     p.add_argument("--xlsx", default=DEFAULT_XLSX)
     p.add_argument("--out-dir", default=DEFAULT_OUT_DIR)
-    p.add_argument("--sheet", help="(append/update/delete) target sheet name")
+    p.add_argument("--sheet", help="(append/update/delete/sort) target sheet name")
     p.add_argument("--row", help="(append) JSON object for the new row; (update) JSON object of columns to set")
     p.add_argument("--match", help="(update/delete) JSON object of column:value a row must match")
+    p.add_argument("--by", help="(sort) column name to group/sort the sheet's rows by")
     args = p.parse_args()
 
     if args.direction == "read":
@@ -298,6 +395,10 @@ def main():
         if not args.sheet or not args.match:
             sys.exit("delete requires --sheet and --match '<json object>'")
         delete_rows(args.xlsx, args.sheet, json.loads(args.match))
+    elif args.direction == "sort":
+        if not args.sheet or not args.by:
+            sys.exit("sort requires --sheet and --by <column name>")
+        sort_sheet(args.xlsx, args.sheet, args.by)
     else:
         cache_path = os.path.join(args.out_dir, "market_cache.json")
         if not os.path.exists(cache_path):

@@ -56,6 +56,10 @@ SHEETS = {
         "ticker", "last_price", "currency", "price_as_of",
         "market_value_sek", "fetch_status", "data_source",
     ],
+
+    "_ValueHistory": [
+        "date", "total_value_sek", "note",
+    ],
 }
 
 # Zone 1 = human-owned input sheets. Zone 2 = machine-write cache.

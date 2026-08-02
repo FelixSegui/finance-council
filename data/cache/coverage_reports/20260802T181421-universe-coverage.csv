@@ -1,0 +1,25 @@
+ticker,name,bucket,composite,data_risk_score,sector_or_source
+ACGL,Arch Capital Group,full-factor,1.035,23,Financials
+ALL,Allstate,full-factor,0.957,26,Financials
+APH,Amphenol,full-factor,0.81,48,Information Technology
+CF,CF Industries,full-factor,0.851,46,Materials
+EIX,Edison International,full-factor,1.093,27,Utilities
+KLAC,KLA Corporation,full-factor,1.427,76,Information Technology
+LLY,Lilly (Eli),full-factor,1.23,36,Health Care
+MRVL,Marvell Technology,full-factor,0.829,69,Information Technology
+MU,Micron Technology,full-factor,0.822,59,Information Technology
+NVDA,Nvidia,full-factor,0.98,27,Information Technology
+SYF,Synchrony Financial,full-factor,0.908,46,Financials
+V,Visa Inc.,full-factor,1.16,25,Financials
+ASML.AS,ASML Holding,momentum-only,,43,EUR
+DDOG,Datadog,momentum-only,,77,
+ECHO,EchoStar,momentum-only,,86,
+IBE.MC,Iberdrola,momentum-only,,0,EUR
+ITX.MC,,momentum-only,,19,EUR
+MNST,Monster Beverage,momentum-only,,21,
+MRK.DE,,momentum-only,,28,EUR
+NOVN.SW,,momentum-only,,8,CHF
+PNC,PNC Financial Services,momentum-only,,28,
+RWE.DE,,momentum-only,,15,EUR
+SPG,Simon Property Group,momentum-only,,23,
+VTRS,Viatris,momentum-only,,31,

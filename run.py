@@ -354,10 +354,13 @@ def cmd_prep(args):
 
 
 def cmd_controller(args):
-    """Surface the Controller's own metrics summary — module health over the
+    """Surface the system-health metrics summary — module health over the
     last N runs, without any LLM call. The narrative recommendations (the
-    parts that need judgment) are written by the core-controller.md agent
-    during a session; this just reports the raw numbers."""
+    parts that need judgment) are written by core-council.md's standing
+    system-persona debate as part of the sweep report (absorbed from the
+    former standalone core-controller.md agent, 2026-08-02); this just
+    reports the raw numbers. Command name kept as 'controller' for
+    continuity even though the agent it originally served is now merged."""
     state = _load_controller_state()
     runs = state["module_runs"]
     if not runs:

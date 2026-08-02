@@ -1,3 +1,15 @@
+> **ARCHIVED 2026-08-02.** Merged into `.claude/agents/core-council.md` at
+> the user's request ("merge the council with the controller"), so there is
+> one final "overall control" step per sweep instead of two separately-
+> invoked agents with an ambiguous run order (this file's own trigger said
+> "after council has written the report," while `core-council.md` at the
+> time said it reads "controller metrics" — a real ordering bug that showed
+> up in this system's first live sweep, 2026-08-02). Moved out of
+> `.claude/agents/` so it can no longer be discovered/invoked as a live
+> subagent; kept here for history. The standing 5-persona system-review
+> debate below is unchanged in content — it now runs as part of Council's
+> own Job, see core-council.md's "Standing system-persona debate" section.
+
 ---
 name: controller
 description: Use at the END of a session, after journal has reconciled and council has written the sweep report. Evaluates the investment SYSTEM itself — module execution health, data coverage trends, repeated failures, modules that rarely contribute — through a standing 5-persona debate, and maintains recommendations in data/cache/controller_state.json, each tagged with the persona that raised it. Proposes changes; never applies them. Folds its findings into that sweep's single report rather than a separate backlog file.

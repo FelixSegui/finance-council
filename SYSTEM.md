@@ -160,7 +160,8 @@ finance-council/
   run.py                  # deterministic steps: sync, fetch, coverage, controller
   config/settings.py       # tunable constants (AI Council threshold, risk bands, etc.)
   .claude/agents/
-    core-*.md               # orchestrating agents (journal, market-data, scout, council, controller)
+    core-*.md               # orchestrating agents (journal, market-data, scout, council)
+                              # council absorbed controller 2026-08-02 — see archive/
     lens-*.md                # read-only analytical lenses (valuation, macro-regime, portfolio, thesis-review)
     util-*.md                 # optional/supplementary (calendar, backtest)
   scripts/                 # the fetch/compute logic, grouped by role (2026-08-02 reorg)
@@ -180,11 +181,19 @@ finance-council/
 
 ## Flow
 
-The pipeline is unchanged from before the migration:
+As of 2026-08-02, `core-controller` is merged into `core-council` (see
+"Self-improvement" below) — one final "overall control" step instead of two
+separately-invoked agents. This also fixes a real ordering bug from this
+system's first live sweep (2026-08-02): journal's reconciliation needs to
+exist BEFORE Council writes the report (Council's own report format folds
+reconciliation into "Council conclusions"), but the old Flow ran journal's
+reconciliation AFTER council — so the very first sweep's report had nothing
+to fold in even though the format expected it. Journal now runs twice, both
+before Council: once for session-start context, once for reconciliation.
 
 ```
-journal → market-data → scout (optional) → valuation → macro-regime
-        → portfolio → thesis-review → council → sweep report
+journal (context) → market-data → scout (optional) → valuation → macro-regime
+        → portfolio → thesis-review → journal (reconcile) → council → sweep report
 ```
 
 0. **Every session starts with `journal`** — it reads the most recent
@@ -202,19 +211,20 @@ journal → market-data → scout (optional) → valuation → macro-regime
    redundantly. Optional, when relevant: `core-scout` (new candidates),
    `util-calendar` (event collisions), `util-backtest` (risk profile of a
    proposed allocation).
-3. Invoke `core-council` last. It reads all outputs plus the coverage summary
-   and controller metrics, forces disagreements into the open, and writes
-   ONE file: `reports/YYYY-MM-DD-sweep.md`.
-4. **Every sweep ends with `journal`** — it reconciles last sweep's calls
-   against today's data (recorded as a Notes-sheet row) and hands the lines
-   to `council` for that sweep's report. An unlogged sweep is invisible to
-   the next session.
-5. Invoke `core-controller` — it reviews how the system itself performed
-   through its standing 5-persona debate (see "Self-improvement" below) and
-   maintains `data/cache/controller_state.json`'s recommendations. Runs
-   every sweep by default, same as the other steps; skip only if you're
-   deliberately doing a quick check with no intent to log it as a sweep.
-6. You read the report. You decide. Nothing here executes anything.
+3. **Invoke `journal` again, to reconcile** — it checks last sweep's calls
+   against today's data and records a Notes-sheet row (`id` starting
+   `reconciliation-`). This must happen BEFORE step 4; an unlogged sweep is
+   invisible to the next session either way.
+4. Invoke `core-council` last. It reads all lens outputs, the coverage
+   summary, and the reconciliation row from step 3; gathers its own
+   system-health evidence and runs the standing system-persona debate
+   (module runs, coverage trends, `controller_state.json` recommendations —
+   this is the former `core-controller`'s job, now performed directly by
+   Council in the same invocation); forces disagreements into the open; and
+   writes ONE file: `reports/YYYY-MM-DD-sweep.md`, opening with a 3-line
+   Executive briefing (top investment action, top portfolio-construction
+   gap, top system finding).
+5. You read the report. You decide. Nothing here executes anything.
 
 ## Time horizons
 
@@ -248,16 +258,20 @@ as the live record.
 
 ## Self-improvement
 
-`core-controller` owns `data/cache/controller_state.json`'s `recommendations`
-— evidence-backed proposals for changes to the system itself. As of
-2026-08-02 it runs as a standing 5-persona debate every sweep (not a rare
-gate before big proposals): **Analyst** (facts only — what broke, what's
-stale, sourced from `module_runs`/coverage/reconciliation), **Strategist**
-(is effort landing on what SYSTEM.md's priority order says actually moves
-the needle, across sweeps not just this one), **Maverick** (the
-deliberately unconventional, out-of-the-box proposal — new data source, new
-capability, a rethink nobody asked for), **Minimalist** (the counterweight —
-argues removal/simplification over addition, names the maintenance cost of
+**As of 2026-08-02, `core-council` owns this** — the standalone `controller`
+agent is merged in (archived at
+`archive/agents-pre-merge-2026-08-02/core-controller.md`), so there is one
+final "overall control" step per sweep instead of two agents run in an
+ambiguous order. Council maintains `data/cache/controller_state.json`'s
+`recommendations` — evidence-backed proposals for changes to the system
+itself — via a standing 5-persona debate every sweep (not a rare gate
+before big proposals): **Analyst** (facts only — what broke, what's stale,
+sourced from `module_runs`/coverage/reconciliation), **Strategist** (is
+effort landing on what SYSTEM.md's priority order says actually moves the
+needle, across sweeps not just this one), **Maverick** (the deliberately
+unconventional, out-of-the-box proposal — new data source, new capability,
+a rethink nobody asked for), **Minimalist** (the counterweight — argues
+removal/simplification over addition, names the maintenance cost of
 anything proposed), **User Advocate** (checks every idea against actual
 lived friction, not architectural taste), closed out by a **Chairman**
 verdict per item: promote to a recommendation (tagged with which persona
@@ -265,9 +279,18 @@ raised it), fold into an existing one, reject with a reason, or defer.
 
 It proposes, never applies — the user applies by saying "apply recommendation
 #N". Recurring bad calls (visible in reconciliation Notes rows) are a system
-defect to be traced, not bad luck. This replaces both the old standalone
-`IMPROVEMENTS.md` file and the earlier gated 6-voice pre-check — see
-`archive/` for history.
+defect to be traced, not bad luck. This replaces the old standalone
+`IMPROVEMENTS.md` file, the earlier gated 6-voice pre-check, and (as of
+today) the standalone `controller` agent itself — see `archive/` for history.
+
+**Portfolio construction gaps** (a missing sector/asset-class, not a system
+defect) are a separate concern owned by `lens-portfolio`'s coverage-gap
+check and surfaced in the sweep report's Executive briefing — see "Flow"
+above. Don't confuse the two: a missing healthcare position is a portfolio-
+construction question for the Council's investment half; a broken fetcher
+is a system-health question for its self-improvement half. Both now surface
+in the same report, which is the point of the merge, but they're answered
+by different evidence and different rigor.
 
 ## Your portfolio state
 

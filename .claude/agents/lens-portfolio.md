@@ -69,7 +69,23 @@ Nag exactly once per session, not per finding.
       ~2%/yr fee + issuer risk). Show both.
    State actual SEK amounts per action.
 
-7. **Balance scorecard (run every session).** Grade each dimension
+7. **Sector/asset-class coverage gaps (run every session).** Distinct from
+   concentration (step 5/scorecard below, which flags too MUCH of
+   something) — this flags too LITTLE or NOTHING of a category a
+   reasonably diversified portfolio would normally hold some of. Compare
+   the equity sleeve's `sector` field (from the snapshot) against the 11
+   GICS sectors (Energy, Materials, Industrials, Consumer Discretionary,
+   Consumer Staples, Health Care, Financials, Information Technology,
+   Communication Services, Utilities, Real Estate). Any sector at 0% of
+   the equity sleeve is a coverage gap — name it plainly ("zero healthcare
+   exposure across all equity holdings"). This is advisory, not a mandate:
+   at this portfolio size, concentrated conviction can be a legitimate
+   choice — say the gap exists and let the user decide, don't imply it
+   must be fixed. If `sector` is null/missing for a holding (a real,
+   current gap for the non-US equities in this portfolio), say the
+   coverage check is incomplete for that reason, don't silently exclude it.
+
+8. **Balance scorecard (run every session).** Grade each dimension
    OK / WATCH / ACT with a one-line reason and the number behind it.
    Thresholds come from the `data/sync/settings.json` keys listed above;
    dimensions that need per-holding data the Portfolio sheet doesn't have
@@ -77,6 +93,8 @@ Nag exactly once per session, not per finding.
    - Asset allocation vs profile targets (or UNKNOWN if targets null)
    - Equity sector concentration (sector field in snapshot; any sector
      >30% of equity sleeve = WATCH, >45% = ACT)
+   - Sector/asset-class coverage (step 7 above) — any GICS sector at 0% =
+     WATCH (name it), not ACT — this is advisory, never force an action
    - Geography (home bias: Sweden/Nordics vs global, from country field)
    - Currency exposure (SEK vs USD/EUR revenue of actual holdings)
    - Single-position concentration (vs max_single_position_pct)

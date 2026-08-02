@@ -40,17 +40,20 @@ If `master.xlsx` already exists (it does if you cloned this repo), skip both
    macro-regime
    portfolio
    thesis-review
-   council          # writes reports/YYYY-MM-DD-sweep.md
-   journal          # reconcile, log
+   journal          # reconcile against last sweep, BEFORE council
+   council          # writes reports/YYYY-MM-DD-sweep.md, including system health
    ```
    Optional, when relevant: `scout` (find new candidates), `calendar`
-   (event collisions), `backtest` (stress-test a proposed allocation),
-   `controller` (system health check).
+   (event collisions), `backtest` (stress-test a proposed allocation).
+   There's no separate `controller` agent as of 2026-08-02 — `council` now
+   does that job itself as part of the same report (see SYSTEM.md's
+   "Self-improvement" section).
 
 4. **Read `reports/YYYY-MM-DD-sweep.md`.** That's the one file with
-   everything: portfolio summary, new candidates, council's conclusions,
-   open actions/decisions, missing data, and system health. You decide.
-   Nothing here executes anything.
+   everything: an executive briefing (top investment action, top portfolio
+   gap, top system finding), portfolio summary, new candidates, council's
+   conclusions, open actions/decisions, missing data, and system health.
+   You decide. Nothing here executes anything.
 
 ## Filling data gaps by hand
 
@@ -121,8 +124,10 @@ python data/sync/sync.py read     # flow it into data/sync/*.json
 ```
 python run.py controller
 ```
-Module run counts, failure counts, average duration per step — the raw
-numbers behind the `controller` agent's narrative recommendations.
+Module run counts, failure counts, average duration per step — no LLM call,
+just the raw numbers. `council` reads this (plus coverage trends) to run its
+system-health persona debate and update recommendations as part of writing
+the sweep report — there's no separate `controller` agent to invoke.
 
 ## Where things live
 

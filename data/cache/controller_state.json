@@ -225,6 +225,102 @@
       "argv": [
         "scripts/generate_coverage_report.py"
       ]
+    },
+    {
+      "module": "sync",
+      "utc": "2026-08-02T10:02:00.339070+00:00",
+      "duration_sec": 0.28,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "read",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "sync",
+      "utc": "2026-08-02T10:03:21.440520+00:00",
+      "duration_sec": 0.23,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "read",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "fetch_market_data",
+      "utc": "2026-08-02T10:03:38.326793+00:00",
+      "duration_sec": 16.88,
+      "success": true,
+      "argv": [
+        "scripts/fetch_market_data.py",
+        "--tickers",
+        "SHB-A.ST,INVE-A.ST,COIN-XBT.ST",
+        "--crypto",
+        "ethereum"
+      ]
+    },
+    {
+      "module": "fetch_insiders_se[SHB-A.ST]",
+      "utc": "2026-08-02T10:03:39.375255+00:00",
+      "duration_sec": 1.04,
+      "success": true,
+      "argv": [
+        "scripts/fetch_insiders_se.py",
+        "--issuer",
+        "Handelsbanken",
+        "--days",
+        "90"
+      ]
+    },
+    {
+      "module": "fetch_insiders_se[INVE-A.ST]",
+      "utc": "2026-08-02T10:03:40.432344+00:00",
+      "duration_sec": 1.06,
+      "success": true,
+      "argv": [
+        "scripts/fetch_insiders_se.py",
+        "--issuer",
+        "Investor",
+        "--days",
+        "90"
+      ]
+    },
+    {
+      "module": "write_market_cache",
+      "utc": "2026-08-02T10:03:40.637058+00:00",
+      "duration_sec": 0.2,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "write-cache",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "coverage_report",
+      "utc": "2026-08-02T10:03:40.672159+00:00",
+      "duration_sec": 0.03,
+      "success": true,
+      "argv": [
+        "scripts/generate_coverage_report.py"
+      ]
+    },
+    {
+      "module": "sync",
+      "utc": "2026-08-02T10:04:11.547956+00:00",
+      "duration_sec": 0.2,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "read",
+        "--xlsx",
+        "master.xlsx"
+      ]
     }
   ],
   "recommendations": [

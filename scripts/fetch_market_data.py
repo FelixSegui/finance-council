@@ -12,8 +12,19 @@ monolith:
   scripts/fetch_crypto_prices.py     crypto prices (CoinGecko)
   scripts/fetch_macro.py             FRED / Riksbank / SCB / ECB
   scripts/fetch_sentiment.py         crypto Fear & Greed
-  scripts/fetch_insiders_us.py       SEC Form 4 filing counts (--insiders)
-  scripts/fetch_insiders_se.py       Finansinspektionen Insynsregistret (run separately, issuer-based, not part of this snapshot)
+  scripts/fetch_insiders_us.py       SEC Form 4 filing counts
+  scripts/fetch_insiders_se.py       Finansinspektionen Insynsregistret (issuer-name-based)
+
+Insider activity is NOT fetched by this orchestrator — `run.py fetch`'s
+`_fetch_insiders()` calls those two modules directly and merges the result
+into `equities[ticker]["insider_activity_us"/"_se"]` of the SAME snapshot
+file this script writes, keyed per-ticker exactly like price/fundamentals.
+That's the one standardized place every lens reads it from. (An earlier
+version of this script had its own separate `--insiders` flag writing a
+differently-shaped `insider_activity` block — removed, since two schemas
+for the same fact is exactly the duplicated-state problem this project's
+architecture exists to avoid. Use `python run.py fetch --only insiders_us`
+/ `--only insiders_se` to fetch just insider data standalone.)
 
 Writes one timestamped JSON snapshot to data/cache/snapshots/.
 Every downstream lens reads this file — it is the single source of
@@ -22,7 +33,6 @@ as null with an "error" note, never silently omitted or guessed.
 
 Usage:
   python fetch_market_data.py --tickers AAPL,VWCE.DE,SPY --crypto bitcoin,ethereum
-  python fetch_market_data.py --tickers AAPL,MSFT --insiders
 """
 import argparse
 import json
@@ -36,7 +46,6 @@ from fetch_fundamentals_us import fetch_fundamentals  # noqa: E402
 from fetch_crypto_prices import fetch_crypto  # noqa: E402
 from fetch_macro import fetch_macro  # noqa: E402
 from fetch_sentiment import fetch_crypto_fear_greed  # noqa: E402
-from fetch_insiders_us import fetch_insider_activity  # noqa: E402
 
 
 def fetch_equities(tickers):
@@ -73,8 +82,6 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--tickers", default="", help="Comma-separated equity/ETF tickers")
     parser.add_argument("--crypto", default="", help="Comma-separated CoinGecko coin ids")
-    parser.add_argument("--insiders", action="store_true",
-                        help="Also fetch SEC EDGAR Form 4 counts for US tickers")
     args = parser.parse_args()
 
     tickers = [t.strip() for t in args.tickers.split(",") if t.strip()]
@@ -87,8 +94,6 @@ def main():
         "macro": fetch_macro(),
         "sentiment": {"crypto_fear_greed": fetch_crypto_fear_greed()},
     }
-    if args.insiders and tickers:
-        snapshot["insider_activity"] = fetch_insider_activity(tickers)
 
     os.makedirs("data/cache/snapshots", exist_ok=True)
     fname = f"data/cache/snapshots/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.json"

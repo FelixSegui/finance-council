@@ -62,12 +62,34 @@ so a broken source is isolated and debuggable on its own:
 | `scripts/fetch_macro.py` | FRED / Riksbank / SCB / ECB |
 | `scripts/fetch_sentiment.py` | crypto Fear & Greed |
 | `scripts/fetch_insiders_us.py` | SEC Form 4 filing counts |
-| `scripts/fetch_insiders_se.py` | Finansinspektionen Insynsregistret (issuer-based, run separately) |
+| `scripts/fetch_insiders_se.py` | Finansinspektionen Insynsregistret (issuer-name search, one call per `.ST` stock holding) |
 
 `scripts/fetch_market_data.py` is a thin orchestrator that calls the first
 five and assembles one combined snapshot (what the lenses read).
 `python run.py fetch --only <kind>` runs exactly one module standalone —
 use this when a specific source breaks instead of re-running everything.
+
+**Standardized per-ticker records.** Every stock's data — price,
+fundamentals, and now insider activity — lands in the SAME snapshot record
+(`equities[ticker]`), regardless of which module fetched which field, so
+every lens reads one place instead of knowing which side-file to check.
+`run.py fetch`'s default sweep runs `fetch_insiders_us.py` (US holdings) and
+`fetch_insiders_se.py` (`.ST` holdings, issuer name guessed from the
+Portfolio sheet's `name` column) automatically and merges the result into
+`equities[ticker]["insider_activity_us"/"_se"]` — it is standard sweep data,
+not an opt-in extra. `lens-thesis-review.md` is the lens that reads and
+reasons on it (insider buying/selling is thesis-support evidence, not a
+valuation input).
+
+**Currency conversion is now enforced in code, not just convention.** Every
+`_MarketCache` record's `market_value_sek` is computed from this sweep's
+fetched `sek_per_usd`/`sek_per_eur` macro rate — previously it silently
+copied the raw price with no conversion, understating the Dashboard's
+"Total value (SEK)" for every non-SEK holding (and showing `None`, i.e.
+zero, for ethereum and any foreign-currency cash balance). If a rate is
+missing this sweep, the record is tagged `(FX MISSING)` rather than
+guessed as 1:1 — treat that as a real gap in the same sweep report, not a
+silent omission.
 
 ## Manual data — filling what the automated fetch can't find
 

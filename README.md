@@ -72,17 +72,22 @@ python run.py fetch --only fundamentals    # US equity fundamentals
 python run.py fetch --only crypto          # crypto prices
 python run.py fetch --only macro           # FRED / Riksbank / SCB / ECB
 python run.py fetch --only sentiment       # crypto Fear & Greed
+python run.py fetch --only insiders_us     # SEC Form 4 filing counts, US stock holdings
+python run.py fetch --only insiders_se     # Finansinspektionen Insynsregistret, .ST stock holdings
 ```
 `--only` runs just that one module and prints its raw output — it does not
 update the Dashboard (that needs the full combined snapshot). Once the
 source is fixed, re-run `python run.py fetch` without `--only`.
 
-Two more modules run standalone, not part of the orchestrator (issuer/CIK
-scoped rather than ticker-list scoped):
-```
-python scripts/fetch_insiders_us.py --tickers V,AAPL     # SEC Form 4 filing counts
-python scripts/fetch_insiders_se.py --issuer Volvo --days 60   # Finansinspektionen Insynsregistret
-```
+Insider activity (both `insiders_us` and `insiders_se`) is part of every
+default `python run.py fetch` sweep, not an opt-in extra — it's fetched
+automatically for each stock holding and merged into the same per-ticker
+snapshot record as price/fundamentals, so every lens reads it from one
+standardized place. `insiders_se` guesses each Swedish issuer's search name
+from the Portfolio sheet's `name` column (e.g. "Handelsbanken A (stock)" →
+"Handelsbanken") — if that guess misses, run
+`python scripts/fetch_insiders_se.py --issuer "<exact name>" --days 90`
+directly with the right name.
 
 ## The Dashboard
 

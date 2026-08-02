@@ -21,10 +21,11 @@ Or the shorthand for the deterministic prep in one call:
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(REPO_ROOT, "data", "sync"))
@@ -78,7 +79,96 @@ FETCH_MODULES = {
     "crypto": ["scripts/fetch_crypto_prices.py", "--coins"],      # + crypto (comma list)
     "macro": ["scripts/fetch_macro.py"],
     "sentiment": ["scripts/fetch_sentiment.py"],
+    "insiders_us": ["scripts/fetch_insiders_us.py", "--tickers"],  # + equities (non-US tickers skipped internally)
+    # "insiders_se" is handled separately in cmd_fetch — it's issuer-name-based
+    # (Finansinspektionen has no ticker search), one call per .ST stock holding.
 }
+
+
+def _fx_rate(snapshot, currency):
+    """SEK-per-1-unit-of-currency multiplier, sourced from THIS sweep's macro
+    snapshot (fetch_macro.py's sek_per_usd / sek_per_eur, FRED-derived).
+    Returns 1.0 for SEK, None if the currency needs conversion and the rate
+    isn't available — callers must treat None as missing, never assume 1:1
+    (that would silently misstate the SEK total, the exact bug this fixes)."""
+    if not currency or currency.upper() == "SEK":
+        return 1.0
+    key = {"USD": "sek_per_usd", "EUR": "sek_per_eur"}.get(currency.upper())
+    if not key:
+        return None
+    try:
+        return float(snapshot.get("macro", {}).get(key, {}).get("value"))
+    except (TypeError, ValueError):
+        return None
+
+
+def _latest_file(dir_path):
+    if not os.path.exists(dir_path):
+        return None
+    files = sorted(os.listdir(dir_path))
+    return os.path.join(dir_path, files[-1]) if files else None
+
+
+def _guess_se_issuer_name(portfolio_name):
+    """Best-effort company name for Finansinspektionen's free-text issuer
+    search, derived from the Portfolio sheet's human-entered name (e.g.
+    'Handelsbanken A (stock)' -> 'Handelsbanken'). This is a SEARCH TERM, not
+    fetched data — if Finansinspektionen returns zero rows for it, that's
+    surfaced as an empty/error result downstream, never silently read as
+    'confirmed no insider activity'."""
+    if not portfolio_name:
+        return ""
+    n = re.sub(r"\(.*?\)", "", portfolio_name)  # drop "(stock)" etc.
+    n = re.sub(r"\s+[A-Z]$", "", n.strip())      # drop trailing share-class letter " A"/" B"
+    return n.strip()
+
+
+def _fetch_insiders(rows, snapshot):
+    """Insider activity for every STOCK holding (funds/certificates/cash
+    have no board to trade on), fetched as its own tracked step per source —
+    US via SEC Form 4 filing counts, Swedish/Nordic via Finansinspektionen's
+    Insynsregistret — and merged into the SAME per-ticker equities record the
+    snapshot already carries price/fundamentals in. One standardized place
+    every lens reads (`equities[ticker]["insider_activity_us"/"_se"]`),
+    not a side file only one agent knows to check."""
+    equities = snapshot.setdefault("equities", {})
+    stock_rows = [r for r in rows if r.get("instrument_type") == "stock" and r.get("ticker")]
+    if not stock_rows:
+        return
+
+    us_tickers = [r["ticker"] for r in stock_rows if "." not in r["ticker"]]
+    if us_tickers:
+        _run_tracked("fetch_insiders_us", ["scripts/fetch_insiders_us.py", "--tickers", ",".join(us_tickers)])
+        latest = _latest_file("data/cache/insiders_us")
+        if latest:
+            with open(latest) as f:
+                us_result = json.load(f).get("insiders", {})
+            for t, rec in us_result.items():
+                equities.setdefault(t, {})["insider_activity_us"] = rec
+
+    for r in stock_rows:
+        t = r["ticker"]
+        if not t.endswith(".ST"):
+            continue
+        issuer = _guess_se_issuer_name(r.get("name") or "")
+        if not issuer:
+            equities.setdefault(t, {})["insider_activity_se"] = {
+                "error": "no usable company name in the Portfolio sheet to search Finansinspektionen with"}
+            continue
+        _run_tracked(f"fetch_insiders_se[{t}]",
+                     ["scripts/fetch_insiders_se.py", "--issuer", issuer, "--days", "90"])
+        latest = _latest_file("data/cache/insiders_se")
+        if not latest:
+            continue
+        with open(latest) as f:
+            data = json.load(f)
+        transactions = data.get("transactions")
+        equities.setdefault(t, {})["insider_activity_se"] = {
+            "issuer_search_term": issuer,
+            "date_from": data.get("date_from"), "date_to": data.get("date_to"),
+            "transactions": transactions if isinstance(transactions, list) else None,
+            "error": transactions.get("error") if isinstance(transactions, dict) else None,
+        }
 
 
 def cmd_fetch(args):
@@ -87,9 +177,12 @@ def cmd_fetch(args):
     (the synced output) — never portfolio.json directly, and never master.xlsx
     directly (only sync.py touches the workbook).
 
-    Each data KIND (prices, fundamentals, crypto, macro, sentiment) runs as
-    its own tracked step — pass --only <kind> to run just one when debugging
-    a specific source instead of the whole fetch."""
+    Each data KIND (prices, fundamentals, crypto, macro, sentiment, US/SE
+    insider activity) runs as its own tracked step — pass --only <kind> to
+    run just one when debugging a specific source instead of the whole
+    fetch. Insider activity is merged into the same per-ticker equities
+    record as price/fundamentals in the snapshot, not a separate file, so
+    every lens reads it from the same standardized place."""
     portfolio_path = "data/sync/portfolio.json"
     if not os.path.exists(portfolio_path):
         sys.exit("data/sync/portfolio.json missing — run 'python run.py sync' first.")
@@ -107,6 +200,21 @@ def cmd_fetch(args):
         # re-fetch everything else to test the fix. Does NOT touch
         # _MarketCache/Dashboard (that needs all kinds together); re-run
         # `python run.py fetch` without --only afterward to update it.
+        if only == "insiders_se":
+            stock_rows = [r for r in rows if r.get("instrument_type") == "stock"
+                          and (r.get("ticker") or "").endswith(".ST")]
+            if not stock_rows:
+                sys.exit("No Nasdaq Stockholm (.ST) stock holdings in the Portfolio sheet to fetch.")
+            for r in stock_rows:
+                issuer = _guess_se_issuer_name(r.get("name") or "")
+                if not issuer:
+                    print(f"  skip {r['ticker']}: no usable company name to search with")
+                    continue
+                _run_tracked(f"fetch_insiders_se[{r['ticker']}]",
+                             ["scripts/fetch_insiders_se.py", "--issuer", issuer, "--days", "90"])
+            print("\nRan only 'insiders_se'. Run 'python run.py fetch' (no --only) "
+                  "to update the combined snapshot and _MarketCache/Dashboard.")
+            return
         script, *flag = FETCH_MODULES[only]
         argv = [script]
         if flag == ["--tickers"]:
@@ -139,7 +247,14 @@ def cmd_fetch(args):
     with open(snap_path) as f:
         snapshot = json.load(f)
 
-    _apply_manual_overrides(snapshot, snap_path)
+    _fetch_insiders(rows, snapshot)
+    applied = _apply_manual_overrides(snapshot)
+
+    with open(snap_path, "w") as f:
+        json.dump(snapshot, f, indent=2)
+    if applied:
+        print(f"Applied {len(applied)} manual override(s) from the Manual Data sheet: "
+              f"{', '.join(applied)}")
 
     records = {}
     for r in rows:
@@ -147,9 +262,12 @@ def cmd_fetch(args):
         if not t:
             continue
         if t in ("CASH_SEK", "CASH_USD", "CASH_EUR"):
-            records[t] = {"last_price": 1, "currency": t.replace("CASH_", ""),
+            cur = t.replace("CASH_", "")
+            fx = _fx_rate(snapshot, cur)
+            records[t] = {"last_price": 1, "currency": cur,
                           "price_as_of": snapshot.get("fetched_at_utc"),
-                          "market_value_sek": None, "fetch_status": "N/A",
+                          "market_value_sek": fx,
+                          "fetch_status": "N/A" if fx is not None else "N/A (FX MISSING)",
                           "data_source": "cash"}
         elif t == "TBD":
             records[f"TBD-{r.get('name')}"] = {"last_price": None, "currency": r.get("currency"),
@@ -158,9 +276,15 @@ def cmd_fetch(args):
                           "data_source": "unlisted_fund"}
         elif t == "ethereum":
             c = snapshot.get("crypto", {}).get("ethereum", {})
-            records[t] = {"last_price": c.get("price_eur"), "currency": "EUR",
+            price_eur = c.get("price_eur")
+            fx = _fx_rate(snapshot, "EUR")
+            mv = round(price_eur * fx, 4) if (price_eur is not None and fx is not None) else None
+            status = "OK" if c else "MISSING"
+            if c and mv is None:
+                status = "OK (FX MISSING)"
+            records[t] = {"last_price": price_eur, "currency": "EUR",
                           "price_as_of": snapshot.get("fetched_at_utc"),
-                          "market_value_sek": None, "fetch_status": "OK" if c else "MISSING",
+                          "market_value_sek": mv, "fetch_status": status,
                           "data_source": "coingecko"}
         else:
             eq = snapshot.get("equities", {}).get(t, {})
@@ -168,9 +292,13 @@ def cmd_fetch(args):
             has_fund = eq.get("trailing_pe") is not None or eq.get("market_cap") is not None
             status = "OK" if has_fund else ("OK (price only)" if has_price else
                      ("ERROR" if "error" in eq else "MISSING"))
+            fx = _fx_rate(snapshot, eq.get("currency")) if has_price else None
+            mv = round(eq["price"] * fx, 4) if (has_price and fx is not None) else None
+            if has_price and fx is None:
+                status += " (FX MISSING)"
             records[t] = {"last_price": eq.get("price"), "currency": eq.get("currency"),
                           "price_as_of": snapshot.get("fetched_at_utc"),
-                          "market_value_sek": eq.get("price"), "fetch_status": status,
+                          "market_value_sek": mv, "fetch_status": status,
                           "data_source": eq.get("_source", "yfinance")}
 
     os.makedirs("data/sync", exist_ok=True)
@@ -179,21 +307,21 @@ def cmd_fetch(args):
     _run_tracked("write_market_cache", ["data/sync/sync.py", "write-cache", "--xlsx", args.xlsx])
 
 
-def _apply_manual_overrides(snapshot, snap_path):
+def _apply_manual_overrides(snapshot):
     """Fill genuinely-missing equity fields (fundamentals the automated fetch
     couldn't get — e.g. no free source for a non-US ticker) from the Manual
     Data sheet, WITHOUT ever overwriting a value the fetch actually got. Every
     filled field is tagged in `_manual_overrides` so it's always visible which
     numbers came from the user, not a live source — never silently blended.
-    Mutates the snapshot file in place so lenses reading "the latest
-    snapshot" see the fill automatically, no instruction changes needed."""
+    Mutates the snapshot dict in place; the caller persists it. Returns the
+    list of "ticker.field" strings actually filled, for the caller to log."""
     manual_path = "data/sync/manual_data.json"
     if not os.path.exists(manual_path):
-        return
+        return []
     with open(manual_path) as f:
         manual_rows = json.load(f).get("rows", [])
     if not manual_rows:
-        return
+        return []
 
     equities = snapshot.setdefault("equities", {})
     applied = []
@@ -209,12 +337,7 @@ def _apply_manual_overrides(snapshot, snap_path):
             "source": row.get("source"), "as_of": row.get("as_of"), "notes": row.get("notes"),
         }
         applied.append(f"{ticker}.{field}")
-
-    if applied:
-        with open(snap_path, "w") as f:
-            json.dump(snapshot, f, indent=2)
-        print(f"Applied {len(applied)} manual override(s) from the Manual Data sheet: "
-              f"{', '.join(applied)}")
+    return applied
 
 
 def cmd_coverage(args):
@@ -259,7 +382,7 @@ def main():
     sub = p.add_subparsers(dest="command", required=True)
     sub.add_parser("sync").set_defaults(func=cmd_sync)
     fetch_p = sub.add_parser("fetch")
-    fetch_p.add_argument("--only", choices=list(FETCH_MODULES),
+    fetch_p.add_argument("--only", choices=list(FETCH_MODULES) + ["insiders_se"],
                          help="run just one data kind, standalone, for debugging a specific source")
     fetch_p.set_defaults(func=cmd_fetch)
     sub.add_parser("coverage").set_defaults(func=cmd_coverage)

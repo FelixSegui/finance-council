@@ -24,6 +24,10 @@ Run `python run.py sync` first if any of these look stale:
   Investment Thesis sheets) — don't edit it directly, see Nomination below.
 - Latest macro-regime and valuation agent outputs if available in this
   session.
+- Each held stock's `insider_activity_us` / `insider_activity_se` field in
+  the snapshot (fetched automatically as part of the standard sweep, one
+  standardized place alongside price/fundamentals — no separate step
+  needed). See "Insider activity" below for how to read it.
 
 ## Method
 
@@ -40,6 +44,31 @@ For each holding, classify the thesis status:
 - **Played out** — the thesis was correct and has been realized in the
   price; the original reason to hold no longer applies going forward even
   though nothing went wrong.
+
+## Insider activity
+
+Insider trades are evidence for or against a thesis (management action, not
+a valuation input) — fold them into the thesis call, don't report them as a
+separate scorecard.
+
+- **SE holdings** (`insider_activity_se`, Finansinspektionen's
+  Insynsregistret) carry real direction: `transaction_type` is "Förvärv"
+  (buy) or "Avyttring" (sell), with person, role, volume, and price. An
+  open-market buy from a board member or exec (`is_routine_option_exercise:
+  false`) is real conviction evidence — cite the name, role, volume, and
+  price. Flag `is_routine_option_exercise: true` entries as noise (an
+  option exercise, not a market conviction signal) and don't let them
+  inflate an "insiders are buying" claim. If `transactions` is null and
+  `error` is set, say the fetch failed and why — never read that as "no
+  insider activity."
+- **US holdings** (`insider_activity_us`, SEC Form 4) are COUNT ONLY —
+  `form4_filings_90d` and `latest_form4_date`, no buy/sell direction. A
+  high count says "something is happening," never "insiders are bullish."
+  Say so explicitly if you cite the count — don't imply direction the data
+  doesn't have (see `data/cache/controller_state.json` recommendation #5;
+  this is a known, tracked gap, not a data source error).
+- If a stock holding has neither field populated, that's a real gap — name
+  it, don't silently skip the signal.
 
 ## Output format
 

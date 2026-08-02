@@ -153,6 +153,78 @@
         "--xlsx",
         "master.xlsx"
       ]
+    },
+    {
+      "module": "sync",
+      "utc": "2026-08-02T09:51:47.402774+00:00",
+      "duration_sec": 0.33,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "read",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "fetch_market_data",
+      "utc": "2026-08-02T09:52:03.985953+00:00",
+      "duration_sec": 16.54,
+      "success": true,
+      "argv": [
+        "scripts/fetch_market_data.py",
+        "--tickers",
+        "SHB-A.ST,INVE-A.ST,COIN-XBT.ST",
+        "--crypto",
+        "ethereum"
+      ]
+    },
+    {
+      "module": "fetch_insiders_se[SHB-A.ST]",
+      "utc": "2026-08-02T09:52:05.099243+00:00",
+      "duration_sec": 1.11,
+      "success": true,
+      "argv": [
+        "scripts/fetch_insiders_se.py",
+        "--issuer",
+        "Handelsbanken",
+        "--days",
+        "90"
+      ]
+    },
+    {
+      "module": "fetch_insiders_se[INVE-A.ST]",
+      "utc": "2026-08-02T09:52:06.134058+00:00",
+      "duration_sec": 1.03,
+      "success": true,
+      "argv": [
+        "scripts/fetch_insiders_se.py",
+        "--issuer",
+        "Investor",
+        "--days",
+        "90"
+      ]
+    },
+    {
+      "module": "write_market_cache",
+      "utc": "2026-08-02T09:52:06.421311+00:00",
+      "duration_sec": 0.27,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "write-cache",
+        "--xlsx",
+        "master.xlsx"
+      ]
+    },
+    {
+      "module": "coverage_report",
+      "utc": "2026-08-02T09:52:25.395943+00:00",
+      "duration_sec": 0.05,
+      "success": true,
+      "argv": [
+        "scripts/generate_coverage_report.py"
+      ]
     }
   ],
   "recommendations": [

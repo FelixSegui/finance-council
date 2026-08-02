@@ -1,0 +1,20 @@
+{
+  "fetched_at_utc": "2026-08-02T17:28:34.646212+00:00",
+  "insiders": {
+    "V": {
+      "form4_filings_90d": 5,
+      "latest_form4_date": "2026-07-31",
+      "note": "filing count only; direction (buy vs sell) not extracted"
+    },
+    "SYK": {
+      "form4_filings_90d": 15,
+      "latest_form4_date": "2026-06-02",
+      "note": "filing count only; direction (buy vs sell) not extracted"
+    },
+    "ABT": {
+      "form4_filings_90d": 8,
+      "latest_form4_date": "2026-07-01",
+      "note": "filing count only; direction (buy vs sell) not extracted"
+    }
+  }
+}

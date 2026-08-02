@@ -176,9 +176,11 @@ journal → market-data → scout (optional) → valuation → macro-regime
    against today's data (recorded as a Notes-sheet row) and hands the lines
    to `council` for that sweep's report. An unlogged sweep is invisible to
    the next session.
-5. Optionally invoke `core-controller` — it reviews how the system itself
-   performed and maintains `data/cache/controller_state.json`'s
-   recommendations.
+5. Invoke `core-controller` — it reviews how the system itself performed
+   through its standing 5-persona debate (see "Self-improvement" below) and
+   maintains `data/cache/controller_state.json`'s recommendations. Runs
+   every sweep by default, same as the other steps; skip only if you're
+   deliberately doing a quick check with no intent to log it as a sweep.
 6. You read the report. You decide. Nothing here executes anything.
 
 ## Time horizons
@@ -214,11 +216,25 @@ as the live record.
 ## Self-improvement
 
 `core-controller` owns `data/cache/controller_state.json`'s `recommendations`
-— evidence-backed proposals for changes to the system itself. It proposes,
-never applies — the user applies by saying "apply recommendation #N".
-Recurring bad calls (visible in reconciliation Notes rows) are a system
-defect to be traced, not bad luck. This replaces the old standalone
-`IMPROVEMENTS.md` file — see `archive/` for its history.
+— evidence-backed proposals for changes to the system itself. As of
+2026-08-02 it runs as a standing 5-persona debate every sweep (not a rare
+gate before big proposals): **Analyst** (facts only — what broke, what's
+stale, sourced from `module_runs`/coverage/reconciliation), **Strategist**
+(is effort landing on what SYSTEM.md's priority order says actually moves
+the needle, across sweeps not just this one), **Maverick** (the
+deliberately unconventional, out-of-the-box proposal — new data source, new
+capability, a rethink nobody asked for), **Minimalist** (the counterweight —
+argues removal/simplification over addition, names the maintenance cost of
+anything proposed), **User Advocate** (checks every idea against actual
+lived friction, not architectural taste), closed out by a **Chairman**
+verdict per item: promote to a recommendation (tagged with which persona
+raised it), fold into an existing one, reject with a reason, or defer.
+
+It proposes, never applies — the user applies by saying "apply recommendation
+#N". Recurring bad calls (visible in reconciliation Notes rows) are a system
+defect to be traced, not bad luck. This replaces both the old standalone
+`IMPROVEMENTS.md` file and the earlier gated 6-voice pre-check — see
+`archive/` for history.
 
 ## Your portfolio state
 

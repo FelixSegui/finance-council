@@ -109,6 +109,37 @@ if it were live-fetched. `generate_coverage_report.py` lists the exact
 missing field names per holding (not just a status word) specifically so you
 know what to go find and enter.
 
+**Bulk import** (`python scripts/import_excel_stocks_data.py --file
+export.csv`): reads a flat CSV/xlsx with Manual Data's own columns
+(ticker, field, value, currency, as_of, source, notes) and bulk-appends via
+`sync.py`'s `append_rows()` in one file save, instead of one `sync.py
+append` call per field. Built specifically for the Excel Stocks data type
+use case below, but works for any bulk manual-entry source.
+
+**Why Excel's Stocks data type / STOCKHISTORY function never touches
+master.xlsx directly (investigated 2026-08-02):** it's a genuine Microsoft
+365 feature (LSEG Data & Analytics-sourced) that requires a live,
+internet-connected Excel session to refresh — nothing in this headless
+pipeline can trigger or read it directly. Worse: openpyxl (this whole sync
+layer's foundation) has documented, real evidence of silently corrupting
+complex Excel features it doesn't understand — macros, named ranges, rich
+formatting (see github.com/anthropics/claude-code#22044, Jan 2026). Rich/
+Linked Data Types are exactly that kind of feature, and `sync.py` opens and
+re-saves `master.xlsx` on nearly every command — putting Stocks-linked
+cells inside it risks silently breaking their live refresh the next time
+any script touches the file, possibly without any visible error. Nasdaq
+Stockholm coverage in the Stocks data type is also unconfirmed generally
+(regional-exchange limitations are documented), though real for specific
+tickers if you've verified them yourself in your own Excel.
+
+The safe pattern: maintain Stocks-linked cells in a SEPARATE file, entirely
+in real Excel, never opened by this project's scripts. When you want that
+data here, convert live cells to static values (Copy → Paste Special →
+Values Only strips the rich-data-type link, leaving plain numbers/text)
+and export as CSV, then `import_excel_stocks_data.py` bulk-loads it into
+Manual Data — same never-overwrite, always-`_manual_overrides`-tagged
+mechanism as any other manual entry, zero new architecture.
+
 ## The Dashboard and value tracking (2026-08-02)
 
 The Dashboard sheet has a **BY TYPE** breakdown (stocks/funds/certificates/

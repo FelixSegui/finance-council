@@ -563,6 +563,18 @@
       "argv": [
         "scripts/generate_coverage_report.py"
       ]
+    },
+    {
+      "module": "sync",
+      "utc": "2026-08-02T18:54:11.461136+00:00",
+      "duration_sec": 0.18,
+      "success": true,
+      "argv": [
+        "data/sync/sync.py",
+        "read",
+        "--xlsx",
+        "master.xlsx"
+      ]
     }
   ],
   "recommendations": [

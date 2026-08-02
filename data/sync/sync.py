@@ -16,7 +16,8 @@ REORGANIZE something during a session without every agent needing its own
 openpyxl knowledge — these are the ONLY way anything outside this file
 writes to the workbook; the openpyxl logic stays here, callable, not
 duplicated:
-  append — one JSON row -> appended to a named Zone-1 sheet.
+  append — one JSON row (or, with --rows, a JSON array of rows in one
+           file save — for bulk imports) -> appended to a named Zone-1 sheet.
   update — set columns on every row matching --match (correcting a wrong
            value, resolving a Notes-sheet question) without deleting history.
   delete — remove every row matching --match (a genuinely wrong row, e.g. a
@@ -260,13 +261,19 @@ def write_market_cache(xlsx_path, records):
     print(f"Wrote {len(records)} rows to _MarketCache in {xlsx_path}")
 
 
-def append_row(xlsx_path, sheet_name, row):
-    """Append one row (dict, keys matching schema.py's column list for that
-    sheet — unknown keys ignored, missing keys left blank) to a Zone-1 sheet.
-    The only way an agent records new information into master.xlsx; keeps the
-    openpyxl/file-format knowledge in this one module. Caller should follow up
-    with `read` if the appended data needs to flow to the other JSON caches
-    (e.g. a new Watchlist row needs `read` to rebuild the thesis cache)."""
+def append_rows(xlsx_path, sheet_name, rows):
+    """Append MANY rows (list of dicts, keys matching schema.py's column
+    list — unknown keys ignored, missing keys left blank) to a Zone-1 sheet
+    in ONE file open/save cycle. The only way an agent or bulk-import script
+    records new information into master.xlsx; keeps the openpyxl/file-format
+    knowledge in this one module. Caller should follow up with `read` if the
+    appended data needs to flow to the other JSON caches (e.g. a new
+    Watchlist row needs `read` to rebuild the thesis cache).
+
+    Built for bulk imports — e.g. flattened values copied out of Excel's
+    Stocks data type into Manual Data, dozens of ticker/field rows at once —
+    where doing one load/save per row would be needlessly slow and risks a
+    half-written file if interrupted partway."""
     if sheet_name not in ZONE1_SHEETS:
         sys.exit(f"'{sheet_name}' is not a Zone-1 sheet — append only writes "
                  f"human-owned input sheets. Zone-1 sheets: {ZONE1_SHEETS}")
@@ -274,12 +281,20 @@ def append_row(xlsx_path, sheet_name, row):
     ws = wb[sheet_name]
     cols = SHEETS[sheet_name]
     next_row = ws.max_row + 1
-    for i, col in enumerate(cols, 1):
-        ws.cell(row=next_row, column=i, value=row.get(col))
+    for row in rows:
+        for i, col in enumerate(cols, 1):
+            ws.cell(row=next_row, column=i, value=row.get(col))
+        next_row += 1
     wb.save(xlsx_path)
-    print(f"Appended 1 row to '{sheet_name}' (row {next_row}) in {xlsx_path}")
+    print(f"Appended {len(rows)} row(s) to '{sheet_name}' in {xlsx_path}")
     print("Run 'python data/sync/sync.py read' to flow this into data/sync/*.json "
           "and any dependent caches (universe/thesis).")
+
+
+def append_row(xlsx_path, sheet_name, row):
+    """Append exactly one row — thin wrapper over append_rows() for the
+    common single-row case (existing CLI/agent usage unchanged)."""
+    append_rows(xlsx_path, sheet_name, [row])
 
 
 def _matching_rows(ws, cols, match):
@@ -377,6 +392,7 @@ def main():
     p.add_argument("--out-dir", default=DEFAULT_OUT_DIR)
     p.add_argument("--sheet", help="(append/update/delete/sort) target sheet name")
     p.add_argument("--row", help="(append) JSON object for the new row; (update) JSON object of columns to set")
+    p.add_argument("--rows", help="(append) JSON array of row objects — bulk append in one file save")
     p.add_argument("--match", help="(update/delete) JSON object of column:value a row must match")
     p.add_argument("--by", help="(sort) column name to group/sort the sheet's rows by")
     args = p.parse_args()
@@ -384,9 +400,12 @@ def main():
     if args.direction == "read":
         read_workbook(args.xlsx, args.out_dir)
     elif args.direction == "append":
-        if not args.sheet or not args.row:
-            sys.exit("append requires --sheet and --row '<json object>'")
-        append_row(args.xlsx, args.sheet, json.loads(args.row))
+        if not args.sheet or not (args.row or args.rows):
+            sys.exit("append requires --sheet and either --row '<json object>' or --rows '<json array>'")
+        if args.rows:
+            append_rows(args.xlsx, args.sheet, json.loads(args.rows))
+        else:
+            append_row(args.xlsx, args.sheet, json.loads(args.row))
     elif args.direction == "update":
         if not args.sheet or not args.match or not args.row:
             sys.exit("update requires --sheet, --match '<json object>', and --row '<json object of columns to set>'")

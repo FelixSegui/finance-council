@@ -65,6 +65,12 @@ The next `python run.py fetch` fills those fields ONLY where the automated
 fetch came back empty — it never overwrites a real fetched number — and tags
 every filled field so agents cite it as user-supplied, not live data.
 
+Have a lot of fields to add at once (e.g. from Excel's Stocks data type —
+see SYSTEM.md's "Manual data" section for why that never touches
+`master.xlsx` directly)? `python scripts/import_excel_stocks_data.py --file
+export.csv` bulk-loads a flat CSV with the same columns in one shot instead
+of one `sync.py append` per field.
+
 ## Debugging one data source
 
 Each data kind fetches independently, so a broken source doesn't block the

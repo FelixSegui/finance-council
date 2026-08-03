@@ -1,0 +1,664 @@
+{
+  "fetched_at_utc": "2026-08-03T15:06:31.329328+00:00",
+  "equities": {
+    "SAAB-B.ST": {
+      "price": 597.9,
+      "prev_close": 597.9,
+      "52w_high": 748.8,
+      "52w_low": 445.1,
+      "market_cap": 330623025152,
+      "trailing_pe": 46.676807,
+      "forward_pe": 61.688442,
+      "price_to_sales": 3.7491977,
+      "price_to_book": 6.5874624,
+      "peg_ratio": 1.89,
+      "dividend_yield": 0.004,
+      "payout_ratio": 0.1674,
+      "beta": 0.032,
+      "revenue_growth": 0.286,
+      "total_revenue": 88185004032,
+      "free_cashflow": 7511000064,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 79146000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 63751000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 51609000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 42006000000
+        }
+      ],
+      "gross_margins": 0.22017,
+      "operating_margins": 0.10946,
+      "ebitda_margins": 0.12276,
+      "profit_margins": 0.080469996,
+      "return_on_equity": 0.15858,
+      "return_on_assets": 0.04631,
+      "debt_to_equity": 28.581,
+      "recommendation": "hold",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "ABB.ST": {
+      "price": 934.8,
+      "prev_close": 934.8,
+      "52w_high": 1058.5,
+      "52w_low": 619.6,
+      "market_cap": 1712227221504,
+      "trailing_pe": 36.321663,
+      "forward_pe": 35.825428,
+      "price_to_sales": 47.891785,
+      "price_to_book": 107.76256,
+      "peg_ratio": 2.58,
+      "dividend_yield": 0.0119,
+      "payout_ratio": 0.432,
+      "beta": 1.026,
+      "revenue_growth": 0.142,
+      "total_revenue": 35752001536,
+      "free_cashflow": 1570499968,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 33220000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 32850000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 32235000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 29446000000
+        }
+      ],
+      "gross_margins": 0.40247002,
+      "operating_margins": 0.16908,
+      "ebitda_margins": 0.19993,
+      "profit_margins": 0.14086,
+      "return_on_equity": 0.32575,
+      "return_on_assets": 0.08951,
+      "debt_to_equity": 55.751,
+      "recommendation": "none",
+      "sector": "Industrials",
+      "industry": "Electrical Equipment & Parts",
+      "country": "Switzerland",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "ALFA.ST": {
+      "price": 563.6,
+      "prev_close": 563.6,
+      "52w_high": 592.2,
+      "52w_low": 414.7,
+      "market_cap": 234356015104,
+      "trailing_pe": 28.578629,
+      "forward_pe": 25.843208,
+      "price_to_sales": 3.3276916,
+      "price_to_book": 5.1575933,
+      "peg_ratio": 2.89,
+      "dividend_yield": 0.016,
+      "payout_ratio": 0.4541,
+      "beta": 0.782,
+      "revenue_growth": 0.077,
+      "total_revenue": 70426001408,
+      "free_cashflow": 4881999872,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 69674000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 66954000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 63598000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 52135000000
+        }
+      ],
+      "gross_margins": 0.36315,
+      "operating_margins": 0.16167,
+      "ebitda_margins": 0.19572,
+      "profit_margins": 0.11635,
+      "return_on_equity": 0.19059,
+      "return_on_assets": 0.07501,
+      "debt_to_equity": 45.751,
+      "recommendation": "buy",
+      "sector": "Industrials",
+      "industry": "Specialty Industrial Machinery",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "HEXA-B.ST": {
+      "price": 93.62,
+      "prev_close": 93.62,
+      "52w_high": 122.1,
+      "52w_low": 71.57264,
+      "market_cap": 256154058752,
+      "trailing_pe": 11.093426,
+      "forward_pe": 18.045029,
+      "price_to_sales": 46.853733,
+      "price_to_book": 46.019142,
+      "peg_ratio": 1.17,
+      "dividend_yield": 0.0162,
+      "payout_ratio": 0.1777,
+      "beta": 0.884,
+      "revenue_growth": 0.04,
+      "total_revenue": 5467100160,
+      "free_cashflow": 683724992,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 5424600000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 5401100000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 5435200000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 5160500000
+        }
+      ],
+      "gross_margins": 0.65706,
+      "operating_margins": 0.23976,
+      "ebitda_margins": 0.23226,
+      "profit_margins": 0.09961,
+      "return_on_equity": 0.27292,
+      "return_on_assets": 0.04854,
+      "debt_to_equity": 46.892,
+      "recommendation": "hold",
+      "sector": "Technology",
+      "industry": "Scientific & Technical Instruments",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "AZN.ST": {
+      "price": 1627.5,
+      "prev_close": 1627.5,
+      "52w_high": 1925.5,
+      "52w_low": 1365.0,
+      "market_cap": null,
+      "trailing_pe": 23.22884,
+      "forward_pe": null,
+      "price_to_sales": null,
+      "price_to_book": 45.70266,
+      "peg_ratio": 1.46,
+      "dividend_yield": 0.0186,
+      "payout_ratio": 0.4741,
+      "beta": 0.211,
+      "revenue_growth": 0.064,
+      "total_revenue": 61366001664,
+      "free_cashflow": 4905375232,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 58739000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 54073000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 45811000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 44351000000
+        }
+      ],
+      "gross_margins": 0.8169,
+      "operating_margins": 0.23459,
+      "ebitda_margins": 0.32435,
+      "profit_margins": 0.17021999,
+      "return_on_equity": 0.21965,
+      "return_on_assets": 0.080170006,
+      "debt_to_equity": 64.225,
+      "recommendation": "buy",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "country": "United Kingdom",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "INDU-C.ST": {
+      "price": 544.6,
+      "prev_close": 544.6,
+      "52w_high": 555.0,
+      "52w_low": 356.6,
+      "market_cap": 239358492672,
+      "trailing_pe": 3.8084111,
+      "forward_pe": null,
+      "price_to_sales": 3.7815738,
+      "price_to_book": 1.0671504,
+      "peg_ratio": 5.47,
+      "dividend_yield": 0.0161,
+      "payout_ratio": 0.060100004,
+      "beta": 0.942,
+      "revenue_growth": 11.979,
+      "total_revenue": 63296000000,
+      "free_cashflow": 39464251392,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 4566000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 0
+        },
+        {
+          "fiscal_year_end": "2021-12-31",
+          "total_revenue": 8081000000
+        },
+        {
+          "fiscal_year_end": "2020-12-31",
+          "total_revenue": 657000000
+        }
+      ],
+      "gross_margins": 1.0,
+      "operating_margins": 0.99878997,
+      "ebitda_margins": 0.99828005,
+      "profit_margins": 0.99306,
+      "return_on_equity": 0.32275,
+      "return_on_assets": 0.19579001,
+      "debt_to_equity": 2.799,
+      "recommendation": "underperform",
+      "sector": "Financial Services",
+      "industry": "Asset Management",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "LATO-B.ST": {
+      "price": 200.6,
+      "prev_close": 200.6,
+      "52w_high": 256.3,
+      "52w_low": 184.55,
+      "market_cap": 129845542912,
+      "trailing_pe": 29.014286,
+      "forward_pe": null,
+      "price_to_sales": 4.6380033,
+      "price_to_book": 3.032656,
+      "peg_ratio": null,
+      "dividend_yield": 0.0254,
+      "payout_ratio": 0.65620005,
+      "beta": 1.278,
+      "revenue_growth": -0.022,
+      "total_revenue": 27996000256,
+      "free_cashflow": 2542125056,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 28145000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 25886000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 25550000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 22611000000
+        }
+      ],
+      "gross_margins": 0.39751998,
+      "operating_margins": 0.12309,
+      "ebitda_margins": 0.16013001,
+      "profit_margins": 0.16063,
+      "return_on_equity": 0.10306,
+      "return_on_assets": 0.03609,
+      "debt_to_equity": 45.64,
+      "recommendation": "none",
+      "sector": "Industrials",
+      "industry": "Conglomerates",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "LUND-B.ST": {
+      "price": 571.5,
+      "prev_close": 571.5,
+      "52w_high": 593.5,
+      "52w_low": 471.0,
+      "market_cap": 143716007936,
+      "trailing_pe": 10.507706,
+      "forward_pe": null,
+      "price_to_sales": 3.6839867,
+      "price_to_book": 1.0737308,
+      "peg_ratio": 1.16,
+      "dividend_yield": 0.0086,
+      "payout_ratio": 0.0834,
+      "beta": 0.951,
+      "revenue_growth": 0.104,
+      "total_revenue": 39011000320,
+      "free_cashflow": 7670750208,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2013-12-31",
+          "total_revenue": 20076000000
+        },
+        {
+          "fiscal_year_end": "2012-12-31",
+          "total_revenue": 21618000000
+        },
+        {
+          "fiscal_year_end": "2011-12-31",
+          "total_revenue": 22604000000
+        },
+        {
+          "fiscal_year_end": "2010-12-31",
+          "total_revenue": 21171000000
+        }
+      ],
+      "gross_margins": 0.65866,
+      "operating_margins": 0.50394,
+      "ebitda_margins": 0.41926998,
+      "profit_margins": 0.35064,
+      "return_on_equity": 0.0908,
+      "return_on_assets": 0.03897,
+      "debt_to_equity": 14.27,
+      "recommendation": "none",
+      "sector": "Industrials",
+      "industry": "Conglomerates",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "SWED-A.ST": {
+      "price": 381.0,
+      "prev_close": 381.0,
+      "52w_high": 384.6,
+      "52w_low": 259.2,
+      "market_cap": 431731212288,
+      "trailing_pe": 13.930385,
+      "forward_pe": 15.102201,
+      "price_to_sales": 6.240062,
+      "price_to_book": 2.0852103,
+      "peg_ratio": 7.44,
+      "dividend_yield": 0.0537,
+      "payout_ratio": 0.7409,
+      "beta": 0.565,
+      "revenue_growth": 0.058,
+      "total_revenue": 69187002368,
+      "free_cashflow": null,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 68736000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 74104000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 73057000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 53221000000
+        }
+      ],
+      "gross_margins": 0.0,
+      "operating_margins": 0.51436,
+      "ebitda_margins": 0.0,
+      "profit_margins": 0.45124,
+      "return_on_equity": 0.15016,
+      "return_on_assets": 0.0097,
+      "debt_to_equity": null,
+      "recommendation": "hold",
+      "sector": "Financial Services",
+      "industry": "Banks - Regional",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "KINV-B.ST": {
+      "price": 52.52,
+      "prev_close": 52.52,
+      "52w_high": 91.26,
+      "52w_low": 46.78,
+      "market_cap": 15307885568,
+      "trailing_pe": null,
+      "forward_pe": 10.3346,
+      "price_to_sales": -1.8987702,
+      "price_to_book": 0.5167399,
+      "peg_ratio": 4.76,
+      "dividend_yield": null,
+      "payout_ratio": 0.0,
+      "beta": 1.379,
+      "revenue_growth": 1.644,
+      "total_revenue": -8062000128,
+      "free_cashflow": -5292186112,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 0
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 23000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 936000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 0
+        }
+      ],
+      "gross_margins": 0.0,
+      "operating_margins": 0.95497,
+      "ebitda_margins": 0.0,
+      "profit_margins": 0.0,
+      "return_on_equity": -0.21639,
+      "return_on_assets": -0.14423999,
+      "debt_to_equity": 6.937,
+      "recommendation": "buy",
+      "sector": "Financial Services",
+      "industry": "Asset Management",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "ATCO-A.ST": {
+      "price": 201.1,
+      "prev_close": 201.1,
+      "52w_high": 208.3,
+      "52w_low": 143.3,
+      "market_cap": 990847893504,
+      "trailing_pe": 37.129803,
+      "forward_pe": 31.68487,
+      "price_to_sales": 5.8313637,
+      "price_to_book": 9.320789,
+      "peg_ratio": 2.67,
+      "dividend_yield": 0.0149,
+      "payout_ratio": 0.5495,
+      "beta": 1.072,
+      "revenue_growth": 0.091,
+      "total_revenue": 169917005824,
+      "free_cashflow": 25972000768,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 168343000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 176771000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 172664000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 141325000000
+        }
+      ],
+      "gross_margins": 0.42188,
+      "operating_margins": 0.20565,
+      "ebitda_margins": 0.24853,
+      "profit_margins": 0.15665,
+      "return_on_equity": 0.25698,
+      "return_on_assets": 0.10741,
+      "debt_to_equity": 33.668,
+      "recommendation": "buy",
+      "sector": "Industrials",
+      "industry": "Specialty Industrial Machinery",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    },
+    "VOLV-B.ST": {
+      "price": 364.3,
+      "prev_close": 364.3,
+      "52w_high": 371.9,
+      "52w_low": 244.9,
+      "market_cap": 751970549760,
+      "trailing_pe": 20.97561,
+      "forward_pe": 14.851405,
+      "price_to_sales": 1.5947324,
+      "price_to_book": 3.94386,
+      "peg_ratio": 1.47,
+      "dividend_yield": 0.0233,
+      "payout_ratio": 0.48240003,
+      "beta": 0.983,
+      "revenue_growth": 0.027,
+      "total_revenue": 471534010368,
+      "free_cashflow": 24019875840,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 479183000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 526816000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 552764000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 473479000000
+        }
+      ],
+      "gross_margins": 0.24358,
+      "operating_margins": 0.105629995,
+      "ebitda_margins": 0.119119994,
+      "profit_margins": 0.076009996,
+      "return_on_equity": 0.20883,
+      "return_on_assets": 0.04512,
+      "debt_to_equity": 147.349,
+      "recommendation": "buy",
+      "sector": "Industrials",
+      "industry": "Farm & Heavy Construction Machinery",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own cash flow statement (PDF via the pdf skill)."
+    }
+  },
+  "crypto": {},
+  "macro": {
+    "fed_funds_rate": {
+      "date": "2026-06-01",
+      "value": "3.63"
+    },
+    "us_10y_yield": {
+      "date": "2026-07-30",
+      "value": "4.68"
+    },
+    "us_2y_yield": {
+      "date": "2026-07-30",
+      "value": "4.23"
+    },
+    "dollar_index": {
+      "date": "2026-07-24",
+      "value": "120.7105"
+    },
+    "sek_per_usd": {
+      "date": "2026-07-24",
+      "value": "9.6998"
+    },
+    "usd_per_eur": {
+      "date": "2026-07-24",
+      "value": "1.1385"
+    },
+    "vix": {
+      "date": "2026-07-31",
+      "value": "15.99"
+    },
+    "us_cpi_yoy": {
+      "date": "2026-06-01",
+      "value": 3.73
+    },
+    "riksbank_policy_rate": {
+      "date": "2026-08-03",
+      "value": 1.75
+    },
+    "ecb_deposit_rate": {
+      "date": "2026-08-03",
+      "value": "2.25"
+    },
+    "se_cpi_yoy": {
+      "period": "2025M12",
+      "value": 0.3
+    },
+    "10y_2y_spread": 0.45,
+    "sek_per_eur": {
+      "date": "2026-07-24",
+      "value": 11.0432,
+      "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)"
+    }
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "value": 28,
+      "classification": "Fear"
+    }
+  }
+}

@@ -1,0 +1,393 @@
+{
+  "last_updated": "2026-07-29",
+  "base_currency": "SEK",
+  "total_estimate_sek": "~227,674.86 (hb-main sparkonto 9,017 SEK + hb-checking 611 SEK, both counted by user toward the tax reserve, PLUS 1,750 SEK confirmed incoming within days, NOT yet included in this total; avanza-isk RECONCILED 2026-07-29 to 181,225.86 SEK total (Avanza Global 119,999 SEK + Tundra sold for 1,534.86 SEK + 26,399.86 SEK remaining cash + other stale-priced holdings) - see avanza-isk account notes; paypal 14,321.03 SEK converted at stale 2026-07-02 FX rates; swedbank-fund 10,000 still approximate/unitemized; eth-wallet 12,500 approximate). CRYPTO FLAG: identified crypto exposure ETH 12,500 + Avanza ISK BTC certificate 16,503.12 (live 2026-07-22) = ~29,003.12 SEK, above both the 5% glidepath target and the 10% risk-tier cap - user's 2026-07-22 HOLD/SOFT-CAP decision (see COIN-XBT.ST holding) accepts this for now, expecting it to dilute back toward target as other assets (this deployment, future contributions) grow the base. PENDING EXECUTIONS FLAG: Visa (7,500 SEK) and Schneider Electric (5,000 SEK) are user-committed but NOT YET confirmed executed - see `pending_executions` below. This is the fix for the 2026-07-29 logging gap: recommended/committed trades were previously invisible until settled.",
+  "cash": {
+    "amount": 0,
+    "currency": "SEK"
+  },
+  "accounts": [
+    {
+      "account_id": "hb-main",
+      "wrapper": "SPARKONTO",
+      "institution": "Handelsbanken",
+      "approx_value_sek": 9017,
+      "pending_inflow_sek": 1750,
+      "pending_inflow_expected": "within a few days of 2026-07-22 (user-reported)",
+      "notes": "USER DECISION 2026-07-22: user will cover the remaining shortfall from other incoming money rather than a dedicated top-up. Combined available toward the 11,493.28 SEK confirmed HB+SEB tax bill: 9,017 SEK here + 611 SEK at hb-checking + 1,750 SEK pending inflow = 11,378 SEK, a residual gap of only ~115.28 SEK, judged sufficient for now ('enough for now') with further top-up expected from future income before the 2027 deklaration. Not a closed item - revisit sizing once actual deklaration prep begins, but no near-term action needed. Prior history: this account held the Auto 50/Auto 75 Handelsbanken funds, sold 2026-07-12 (total confirmed tax 8,455.86 SEK), repurposed 2026-07-20 as a pure tax-reserve sparkonto after 127,611.83 SEK was transferred to Avanza ISK. See exit_plans.hb-af-exit for the full history."
+    },
+    {
+      "account_id": "hb-checking",
+      "wrapper": "NONE",
+      "institution": "Handelsbanken",
+      "approx_value_sek": 611,
+      "notes": "NEWLY DISCLOSED 2026-07-22 (user-reported): 'normal' Handelsbanken transaction/checking account, distinct from the hb-main sparkonto (tax reserve) and the now-closed AF fund holdings. Ordinary spending/transaction cash, not an investment - not part of any glidepath or risk-tier target. User-designated 2026-07-22 as also counting toward the confirmed 11,493.28 SEK HB+SEB tax reserve alongside hb-main (see hb-main notes). Adds to the open_structural_questions #5 pattern (undisclosed accounts surfacing over time) though this one is small and low-impact."
+    },
+    {
+      "account_id": "avanza-isk",
+      "wrapper": "ISK",
+      "institution": "Avanza",
+      "approx_value_sek": 181225.86,
+      "notes": "Confirmed ISK. RECONCILED 2026-07-29: prior confirmed total 181,254 SEK (2026-07-22) adjusted for the Tundra sale (1,534.86 SEK actual proceeds vs. 1,563 SEK stale estimate, -28.14 SEK) = 181,225.86 SEK. The Avanza Global purchase (119,999 SEK) was funded FROM the existing cash, so it does not change the account total, only the cash/holdings split (see the Avanza Global and cash holdings entries). This total is COMPUTED, not re-confirmed live - flag for the user to verify at next Avanza login, since other flows (fees, price moves on SHB-A.ST/INVE-A.ST/Avanza Auto 3/COIN-XBT.ST) may have shifted it further. Equities fetch has been blocked by an org egress-adjacent issue since 2026-07-20 (see IMPROVEMENTS #9 for the corrected diagnosis: Yahoo's fundamentals endpoint is crumb-blocked, prices are not), so per-ticker holding values for SHB-A.ST/INVE-A.ST/Avanza Auto 3/COIN-XBT.ST remain stale (2026-07-13, except COIN-XBT.ST live 2026-07-22). Historical context (2026-07-13 itemization, now stale): YTD -10.32%, 1y -23.62%, 3y +48.27%, since-inception -33.88%; Sharpe -1.19, standard deviation 22.55%, CAGR -4.52% (securities only, pre-transfer). Tax-free allowance headroom = allowance threshold minus ALL ISK/KF savings capital across institutions - verify current threshold with Skatteverket (comfortably under the previously-cited ~300k SEK threshold, itself unverified this session)."
+    },
+    {
+      "account_id": "swedbank-fund",
+      "wrapper": "AF",
+      "institution": "Swedbank",
+      "approx_value_sek": 10000,
+      "notes": "Confirmed taxable - user paid capital gains tax on a prior sale. Childhood fund, likely low cost basis = high gain percentage but small absolute tax on full disposal. Prime candidate for move-to-ISK math: one-time tax hit vs permanent tax-free compounding. Cost basis still unknown (open question)."
+    },
+    {
+      "account_id": "seb-fund",
+      "wrapper": "AF",
+      "institution": "SEB",
+      "approx_value_sek": 0,
+      "confirmed_realized_gain_sek_2026": 10124.74,
+      "confirmed_tax_owed_sek": 3037.42,
+      "tax_confirmed_date": "2026-07-20",
+      "tax_breakdown_by_fund": [
+        { "fund": "SEB Europafond", "date": "2026-07-08", "cost_basis_sek": 895.51, "sale_proceeds_sek": 1591.83, "kapitalvinst_sek": 696.32 },
+        { "fund": "SEB Nordenfond A (remaining)", "date": "2026-07-08", "cost_basis_sek": 1325.03, "sale_proceeds_sek": 5507.46, "kapitalvinst_sek": 4182.43 },
+        { "fund": "SEB Obligationsfond Flexibel A", "date": "2026-07-08", "cost_basis_sek": 1250.00, "sale_proceeds_sek": 1428.94, "kapitalvinst_sek": 178.94 },
+        { "fund": "SEB Sverigefond", "date": "2026-07-08", "cost_basis_sek": 517.10, "sale_proceeds_sek": 2841.90, "kapitalvinst_sek": 2324.80 },
+        { "fund": "SEB Global Focus C USD (remaining)", "date": "2026-07-09", "cost_basis_sek": 472.50, "sale_proceeds_sek": 2187.99, "kapitalvinst_sek": 1715.49 },
+        { "fund": "SEB Emerging Markets C USD Lux", "date": "2026-07-10", "cost_basis_sek": 250.00, "sale_proceeds_sek": 752.73, "kapitalvinst_sek": 502.73 },
+        { "fund": "SEB Emerging Marketsfond", "date": "2026-07-10", "cost_basis_sek": 2465.84, "sale_proceeds_sek": 2989.87, "kapitalvinst_sek": 524.03 }
+      ],
+      "notes": "FULLY TRANSFERRED to Avanza ISK 2026-07-20 (user-reported, same-session) - full 17,382.43 SEK sent, no separate tax reserve carved out here. Tax liability CONFIRMED 2026-07-20 from user-supplied 2026 tax-year figures (per-fund kapitalvinst, see tax_breakdown_by_fund): total realized gain 10,124.74 SEK across 7 fund lots sold 2026-07-08 to 2026-07-10, tax at 30% = 3,037.42 SEK. This SUPERSEDES and is materially higher than the earlier ~1,200 SEK placeholder (2026-07-07) - open question 4 is now RESOLVED with real numbers, see resolved_structural_questions. Combined with HB's confirmed 8,455.86 SEK tax, total owed is 11,493.28 SEK against the 9,000 SEK reserve at hb-main - a 2,493.28 SEK SHORTFALL, confirmed (not estimated). History: fully sold and settled 2026-07-13, final figure 17,382.43 SEK, all legs landed."
+    },
+    {
+      "account_id": "eth-wallet",
+      "wrapper": "SELF_CUSTODY",
+      "institution": "personal wallet",
+      "approx_value_sek": 12500,
+      "notes": "Direct ETH, no wrapper possible. Swedish tax: 30% on gains via K4, and EVERY disposal is a taxable event - including token swaps, not just SEK sales. Alternative for crypto exposure: certificate inside ISK (no per-trade tax, but ~2%/yr fee + issuer counterparty risk). Agents must never treat a wallet swap as tax-neutral."
+    },
+    {
+      "account_id": "paypal",
+      "wrapper": "PAYPAL_BALANCE",
+      "institution": "PayPal",
+      "approx_value_sek": null,
+      "notes": "DISCLOSED 2026-07-12: PayPal balance, previously unknown to the system - third undisclosed-account surprise (after SEB), open question 5 (full inventory) directly vindicated. Holds 1,177.49 USD + 266.88 EUR, both uninvested cash sitting outside any wrapper - no ISK/AF shelter, no growth, and exposed to PayPal's own conversion spread (typically ~3-4% above mid-market, unconfirmed - do not assume a number, get PayPal's actual fee schedule) if converted through PayPal itself rather than transferred out first. RECURRING INFLOW: user reports ~750-1000 EUR arriving roughly every 2 months, irregular occasions/timing. approx_value_sek intentionally null - do not estimate from stale rates; needs sek_per_usd AND sek_per_eur from a fresh snapshot (sek_per_eur has been a standing fetch-script gap since 2026-07-07)."
+    }
+  ],
+  "holdings": [
+    {
+      "ticker": "CASH_SEK",
+      "name": "Tax-reserve sparkonto (2027 deklaration - confirmed HB + SEB capital-gains tax)",
+      "account_id": "hb-main",
+      "instrument_type": "cash",
+      "exposure_class": "cash",
+      "currency": "SEK",
+      "quantity": 9017,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": "2026-07-20",
+      "thesis": "Not an investment - deliberate tax reserve, not deployable. Combined confirmed tax owed is 11,493.28 SEK (8,455.86 HB + 3,037.42 SEB, both confirmed, see seb-fund.confirmed_tax_owed_sek). Current balance 9,017 SEK (found money +17 SEK, 2026-07-22) leaves a 2,476.28 SEK shortfall; a further 1,750 SEK inflow expected within days would narrow it to 726.28 SEK. Top-up recommended before the 2027 deklaration.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "CASH_SEK",
+      "name": "Handelsbanken normal/checking account",
+      "account_id": "hb-checking",
+      "instrument_type": "cash",
+      "exposure_class": "cash",
+      "currency": "SEK",
+      "quantity": 611,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": "2026-07-22",
+      "thesis": "Not an investment - ordinary transaction/checking cash, newly disclosed 2026-07-22. Not part of any glidepath or risk-tier target.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "SHB-A.ST",
+      "name": "Handelsbanken A (stock)",
+      "account_id": "avanza-isk",
+      "instrument_type": "stock",
+      "exposure_class": "equity",
+      "quantity": 1,
+      "cost_basis_per_unit": 129.25,
+      "market_value_sek": 143,
+      "market_value_as_of": "2026-07-13",
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "TBD - itemized 2026-07-13 from live Avanza snapshot, no stated reason for holding yet. Direktavkastning 5.58%, P/E 11.95. Next report 2026-07-15 (delarsrapport) - unrelated to the pending HB fondkonto exit (that was Handelsbanken funds, a different holding).",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "INVE-A.ST",
+      "name": "Investor A (stock)",
+      "account_id": "avanza-isk",
+      "instrument_type": "stock",
+      "exposure_class": "equity",
+      "quantity": 5,
+      "cost_basis_per_unit": 290.22,
+      "market_value_sek": 1933,
+      "market_value_as_of": "2026-07-13",
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "TBD - itemized 2026-07-13 from live Avanza snapshot, no stated reason for holding yet. Direktavkastning 1.45%, P/E 6.22. Next report 2026-07-16 (delarsrapport).",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "TBD",
+      "no_ticker_reason": "UNLISTED FUND (user-confirmed 2026-07-31) - Avanza Auto 3 exists only on Avanza's own fund platform, not on a public exchange. No ticker/ISIN will ever resolve for it via Yahoo/SEC or any exchange-based fetch. This is PERMANENT, not a data gap awaiting a fix - do not keep re-flagging it as an open item each sweep.",
+      "name": "Avanza Auto 3 (fund)",
+      "account_id": "avanza-isk",
+      "instrument_type": "fund",
+      "exposure_class": "mixed",
+      "quantity": null,
+      "cost_basis_total_sek": 9800.30,
+      "market_value_sek": 16376,
+      "market_value_as_of": "2026-07-13",
+      "annual_fee_pct": 0.39,
+      "date_acquired": null,
+      "thesis": "CONFIRMED from factsheet 2026-07-22: multi-asset fund, ~60% equity exposure (40-70% range) blended with bonds/alternatives, 0.39% total annual fee (0.35% management + ~0.04% transaction), recommended holding period 4 years. Low-cost diversified core holding - fits the 'secure' risk tier well (see investor_profile.json). Up +67.10% since purchase (as of 2026-07-13, stale).",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "TBD",
+      "name": "Tundra Sustainable Frontier Fund A SEK",
+      "account_id": "avanza-isk",
+      "instrument_type": "fund",
+      "exposure_class": "equity",
+      "quantity": 0,
+      "cost_basis_total_sek": 1000,
+      "market_value_sek": 0,
+      "sale_proceeds_sek": 1534.86,
+      "market_value_as_of": "2026-07-29",
+      "annual_fee_pct": 2.6,
+      "date_acquired": null,
+      "thesis": "SOLD 2026-07-29 (user-confirmed EXECUTED, exact trade date not specified - sits within the 2026-07-22 to 2026-07-29 window): sale settled for 1,534.86 SEK proceeds (vs. the 1,563 SEK stale 2026-07-13 estimate used for planning - real settlement came in ~28 SEK lower). Tax-free inside the ISK (only broker fees applied). Reason: 2.6% total annual fee (6.7x Avanza Auto 3's 0.39%) was unjustifiable fee drag - lever #2. Proceeds folded into the avanza-isk cash holding, which then funded part of the Avanza Global purchase (see that holding). Was open question 14, now fully resolved and executed. History: CONFIRMED from factsheet 2026-07-22 as an actively managed frontier/EM equity fund, >=80% frontier/EM, ESG exclusions, recommended holding period 5 years; cost basis 1,000 SEK, so realized gain ~534.86 SEK, tax-free.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "COIN-XBT.ST",
+      "name": "CoinShares XBT Provider Bitcoin Tracker One (certificate)",
+      "account_id": "avanza-isk",
+      "instrument_type": "certificate",
+      "exposure_class": "crypto",
+      "quantity": 6,
+      "cost_basis_per_unit": 2016.67,
+      "market_value_sek": 16503.12,
+      "market_value_as_of": "2026-07-22",
+      "annual_fee_pct": 2.5,
+      "date_acquired": null,
+      "thesis": "SEE ALSO open question 19 (2026-07-31): a candidate fee-drag switch to Valour Bitcoin Zero SEK (0% mgmt fee vs this certificate's 2.5-3.64%) is under evaluation - would preserve full BTC exposure (compatible with the hold decision below), not yet executed, spread/liquidity unverified. HOLD / SOFT-CAP DECISION 2026-07-22 (user-directed, REVERSES the earlier same-day trim): user will NOT sell any bitcoin for now. Total crypto (ETH 12,500 + COIN 16,503.12 = 29,003) stays at ~14.2% of the 203,754 SEK investable base, ABOVE the 10% high-risk-tier cap - user explicitly accepts the cap being breached for now ('if that means raising the crypto/high risk bar, then so be it for now'). Rationale: the active bullish BTC thesis (cycle position, mid-2028 halving) outweighs mechanical cap discipline at this time. SOFT-CAP mechanism instead of a sale: route this deployment and future monthly contributions to the secure/medium tiers so crypto DILUTES back toward 10% over time; revisit an actual trim only if crypto appreciates materially further (e.g. past ~15-16%). No tax event (nothing sold). Certificate-vs-self-custody (open Q13) remains SEPARATE; 'for now' answer is to KEEP the retained BTC in the ISK certificate - tax shelter beats the 2.5% fee at this size/horizon, and the user already holds direct/self-custody crypto via the ETH wallet. --- Original thesis (still held), user's own words: crypto is 'pretty low valued right now,' mid-2028 Bitcoin halving ahead, and there are 'positive buy-in signals now' - this is a cycle-position thesis for BTC exposure generally, not specific to the certificate structure. Separately, user has stated a structural preference for 'real bitcoin instead of certificates' going forward - see open_structural_questions for the certificate-vs-self-custody decision, not yet resolved. Factsheet CONFIRMED 2026-07-22: 2.5% annual management fee, tracks BTC ~1:1 before fees, no capital protection, high volatility/USD currency risk. Early redemption directly with the issuer incurs a 2% exit fee - does NOT apply to an ordinary exchange sale (broker fees apply instead). Live price CONFIRMED 2026-07-22 (user-reported from Avanza): market value 16,503.12 SEK (2,750.52/unit), up 36.39% (+4,403.12 SEK) since purchase (12,100 SEK cost basis for 6 units, consistent with the recorded 2,016.67/unit cost basis). Combined with the ETH wallet (12,500 SEK), total crypto exposure is now ~29,003.12 SEK - above both the 5% glidepath target and the 10% risk-tier cap; sizing decision pending, see open_structural_questions.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "TBD",
+      "no_ticker_reason": "UNLISTED FUND (user-confirmed 2026-07-31) - Avanza Global exists only on Avanza's own fund platform, not on a public exchange. No ticker/ISIN will ever resolve for it via Yahoo/SEC or any exchange-based fetch. This is PERMANENT, not a data gap awaiting a fix - do not keep re-flagging it as an open item each sweep.",
+      "name": "Avanza Global (fund)",
+      "account_id": "avanza-isk",
+      "instrument_type": "fund",
+      "exposure_class": "equity",
+      "quantity": null,
+      "cost_basis_total_sek": 119999,
+      "market_value_sek": 119999,
+      "market_value_as_of": "2026-07-29",
+      "annual_fee_pct": 0.1,
+      "date_acquired": "2026-07-29 (approximate - user reported the purchase 2026-07-29 as having happened 'a couple of days ago'; exact trade date not yet confirmed)",
+      "thesis": "SETTLED 2026-07-29 (user-confirmed EXECUTED - this was previously recommended as the secure-tier deployment core but had NOT been logged as bought; user flagged the logging gap 2026-07-29). Global equity index fund, ~0.1% fee, the secure-tier core per the 60/30/10 risk-tier framework (investor_profile.json). Of this 119,999 SEK, ~59,050 SEK is earmarked 'medium-pending' per open question 16 - intended for gradual tax-free migration into individual quality stocks (Visa, Schneider, and a Swedish pick are the first migrations being evaluated 2026-07-29), NOT a permanent secure-tier allocation. Concentration note (flagged 2026-07-22, still applies): a global index fund alone is ~70% US mega-cap-tech weighted - paired with a distinct diversifier sleeve per the original deployment plan when remaining cash allows. Ticker/ISIN not yet recorded - TBD.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "CASH_SEK",
+      "name": "Avanza ISK available cash",
+      "account_id": "avanza-isk",
+      "instrument_type": "cash",
+      "exposure_class": "cash",
+      "currency": "SEK",
+      "quantity": 26399.86,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": "2026-07-29",
+      "thesis": "Not an investment - uninvested cash. RECONCILED 2026-07-29: prior 144,864 SEK (confirmed 2026-07-22) minus the 119,999 SEK Avanza Global purchase plus the 1,534.86 SEK Tundra sale proceeds = 26,399.86 SEK. This is a COMPUTED figure, not re-confirmed live from Avanza - flagged for the user to verify against the actual current available-cash balance next login (other flows - contributions, fees, price moves on non-cash holdings - may have shifted it since). Still awaiting the remaining deployment decisions: the EM/ex-US diversifier sleeve and the Visa/Schneider/Swedish-stock migrations (see pending_executions and open question 16).",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "TBD",
+      "no_ticker_reason": "LIKELY UNLISTED FUND (inferred 2026-07-31, NOT explicitly confirmed by user - flag if this differs): probably a Swedbank Robur-style fund on Swedbank's own platform, same structural situation as Avanza Auto 3/Avanza Global. Treated as probably-permanent pending user confirmation, not re-flagged as an urgent open item each sweep.",
+      "name": "Swedbank fund",
+      "account_id": "swedbank-fund",
+      "instrument_type": "fund",
+      "exposure_class": "mixed",
+      "quantity": null,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "Legacy childhood savings - no active thesis. Decision needed: keep, or realize small gain and move into ISK.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "CASH_SEK",
+      "name": "SEB fund proceeds - fully transferred to Avanza ISK 2026-07-20",
+      "account_id": "seb-fund",
+      "instrument_type": "cash",
+      "exposure_class": "cash",
+      "currency": "SEK",
+      "quantity": 0,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": "2026-07-12",
+      "thesis": "Not an investment. Full 17,382.43 SEK transferred to Avanza ISK 2026-07-20 (see avanza-isk cash holding). Realized gain still unknown - open question 4 not closed by this transfer, only the practical tax-funding question is (per user, covered by the hb-main reserve).",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "ethereum",
+      "name": "ETH (self-custody wallet)",
+      "account_id": "eth-wallet",
+      "instrument_type": "spot_crypto",
+      "exposure_class": "crypto",
+      "quantity": null,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": 0,
+      "date_acquired": null,
+      "thesis": "TBD",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "CASH_USD",
+      "name": "PayPal USD balance",
+      "account_id": "paypal",
+      "instrument_type": "cash",
+      "exposure_class": "cash",
+      "currency": "USD",
+      "quantity": 1177.49,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "Not an investment - idle payment-platform balance from incoming payments. Sits outside any wrapper, earns nothing, and is exposed to PayPal's conversion spread on any USD->SEK move. Needs a routing decision (see open question 6): sweep to a bank/broker before converting, or convert and deploy alongside other USD-denominated exposure.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "CASH_EUR",
+      "name": "PayPal EUR balance",
+      "account_id": "paypal",
+      "instrument_type": "cash",
+      "exposure_class": "cash",
+      "currency": "EUR",
+      "quantity": 266.88,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "Not an investment - idle payment-platform balance. Recurring EUR inflow (~750-1000 EUR / ~2mo) lands here - same routing decision as the USD balance applies, and matters more given the recurring cadence (repeated conversions compound the FX-spread cost if left unmanaged).",
+      "target_weight_pct": null
+    }
+  ],
+  "targets": {
+    "equity_pct": null,
+    "crypto_pct": null,
+    "fixed_income_pct": null,
+    "cash_pct": null,
+    "notes": "Targets measured on EXPOSURE class. Auto 50 / Auto 75 name-implied splits (~50/50 and ~75/25) can be used provisionally, flagged as name-implied until factsheets confirm."
+  },
+  "exit_plans": {
+    "hb-af-exit": {
+      "created": "2026-07-07",
+      "status": "FULLY EXECUTED 2026-07-20, figures confirmed live 2026-07-22: HB fund sale settled 2026-07-12; HB->ISK cash transfer executed 2026-07-20 (127,611.83 SEK to avanza-isk, tax reserve retained at hb-main sparkonto, now 9,017 SEK after found money). SEB leg also fully settled 2026-07-13 and transferred to Avanza ISK 2026-07-20. Avanza confirmed live 2026-07-22: 181,254 SEK total, 144,864 SEK undeployed cash pending fund/instrument selection under the risk-tier framework - see investor_profile.json.",
+      "actual_execution": {
+        "date": "2026-07-12",
+        "auto_50": { "sale_proceeds_sek": 97659.99, "cost_basis_sek": 78441.28, "gain_sek": 19218.71, "tax_at_30pct_sek": 5765.61 },
+        "auto_75": { "sale_proceeds_sek": 35997.42, "cost_basis_sek": 27029.93, "gain_sek": 8967.49, "tax_at_30pct_sek": 2690.25 },
+        "total_fund_sale_proceeds_sek": 133657.41,
+        "pre_existing_cash_in_account_sek": 2954.42,
+        "total_account_balance_sek": 136611.83,
+        "total_tax_owed_sek": 8455.86,
+        "net_deployable_sek": 128155.97,
+        "vs_estimate_note": "Actual gain (28,186.20) and tax (8,455.86) came in slightly below the 2026-07-07 statement estimate (gain 29,423.03, tax 8,826.91) - real settlement prices were a bit lower than the statement values, as flagged as a possibility at the time. Deployment into Avanza ISK not yet executed - cash sits in hb-main pending transfer."
+      },
+      "account_id": "hb-main",
+      "horizon": "Long",
+      "objective": "Exit the Handelsbanken fondkonto (AF), move net proceeds to Avanza ISK under the ISK allowance, replace 0.66-0.67% fee mixed funds with low-fee (~0.2%) index funds. Addresses priority levers #1 (wrapper) and #2 (fees) simultaneously.",
+      "tax_math": {
+        "method": "Genomsnittsmetoden (average cost) - every partial sale realizes gain proportionally; there is no way to sell cost basis first",
+        "auto_50": { "gain_sek": 20051.70, "tax_at_30pct_sek": 6015.51 },
+        "auto_75": { "gain_sek": 9371.33, "tax_at_30pct_sek": 2811.40 },
+        "total_gain_sek": 29423.03,
+        "total_tax_sek": 8826.91,
+        "net_proceeds_sek": 126067.33,
+        "payment_timing": "No withholding at sale. Bank reports the gain; tax due with the deklaration for the sale year (spring of the following year). Set aside 8,827 SEK."
+      },
+      "why_single_step": "Swedish capital gains tax is a flat 30% with no annual exemption - phasing sales across years does not reduce the total tax, it only defers part of it while continuing to pay 0.66-0.67% fees plus 0.12%/yr fondskatt plus 30% on all further gains in the AF. The embedded 8,827 SEK tax is owed eventually regardless; selling now only accelerates it. The deferral value of that acceleration is smaller than one year of ongoing AF drag under any plausible return assumption (details in reports/2026-07-07-hb-exit-plan.md).",
+      "steps": [
+        "1. Confirm with Handelsbanken there are no exit/redemption fees on either fund (typically none for Swedish funds; the 0.66-0.67% is annual, not exit).",
+        "2. Sell both funds in full in a single order round.",
+        "3. Transfer full proceeds (~134,900 SEK) to Avanza ISK. Post-move ISK total ~171k SEK - under the ISK allowance, so ongoing ISK tax on this capital is zero at current levels (verify current threshold with Skatteverket).",
+        "4. Reinvest inside ISK per the Council's target allocation. Fund selection is priority lever #4 - do not stall the wrapper+fee fix (levers #1-2) waiting on a perfect pick; a broad global index fund at ~0.2% captures the structural win.",
+        "5. Keep 8,827 SEK earmarked (buffer or bankkonto) for the tax bill at next deklaration - do not invest money that is already owed to Skatteverket.",
+        "6. Update this file when trades are actually placed: zero out hb-main, itemize the new ISK holdings, and mark this plan EXECUTED with the actual sale prices (they will differ from the 2026-07-07 statement values)."
+      ],
+      "coordination": [
+        "Loss netting: gains on listed funds sit in the 'aktiefallan' and are offset 100% by same-year losses on listed shares/funds. If any listed holding is at a loss and its exit is planned anyway, realize it in the same calendar year.",
+        "ETH caveat: crypto losses (K4 section D, 'ovriga tillgangar') are only 70% deductible and net differently - do NOT sell ETH at a loss purely to offset these fund gains; the ETH decision stands on its own. ETH cost basis is still unknown (open question).",
+        "Market-timing is explicitly NOT part of this plan - the edge here is structural (wrapper + fees), and time out of market during the transfer should be minimized (days, not weeks)."
+      ],
+      "assumption_flags": [
+        "Statement values are from the user's 2026-07-07 Handelsbanken statement, not a fetched snapshot - actual sale proceeds and tax will differ with market moves.",
+        "ISK allowance threshold and fondskatt parameters must be verified against Skatteverket before execution; the plan's direction does not change if they shift, only the magnitude."
+      ]
+    }
+  },
+  "pending_executions": {
+    "note": "NEW 2026-07-29, added specifically to fix a process gap the user flagged: committed-but-unsettled trades (recommended, valuation-confirmed, and verbally committed to) were invisible in this file until the user separately confirmed execution - which is why the Avanza Global purchase sat unlogged for several days. Entries here are NOT settled holdings and are NOT counted in tier/exposure totals; move an entry into `holdings` (and remove it here) only once the user confirms it actually executed, with the real trade date and price.",
+    "items": [
+      {
+        "ticker": "V",
+        "name": "Visa Inc.",
+        "account_id": "avanza-isk",
+        "committed_amount_sek": 7500,
+        "committed_date": "2026-07-29",
+        "status": "user-committed, execution not yet confirmed",
+        "tier": "medium",
+        "rationale": "Data-confirmed quality anchor from the stacked funnel (rank_candidates.py): ~50% net margins, low realized risk (data_risk_score 25), payments-duopoly moat. CAUTION (root-caused and FIXED 2026-07-29, see IMPROVEMENTS #13): the ranker's PE of 8.7 was WRONG - SEC's share-count feed for Visa hadn't updated since 2010 (Visa moved to per-class reporting the free API can't aggregate), so a 16-year-stale count was silently used as current. Fixed with a staleness guard (fetch_fundamentals.py:_shares) that now correctly returns 'no data' for Visa's share count instead of a wrong number - PE/EPS are null post-fix, not a false 8.7. Real-world PE is in the 30-35 range (premium, not cheap) - buy the quality/moat thesis, not a mispriced 'cheap' signal."
+      },
+      {
+        "ticker": "SU.PA",
+        "name": "Schneider Electric",
+        "account_id": "avanza-isk",
+        "committed_amount_sek": 5000,
+        "committed_date": "2026-07-29",
+        "status": "user-committed, execution not yet confirmed",
+        "tier": "medium",
+        "rationale": "Thesis-driven pick (data/thesis_candidates.json) - electrification, data-center power demand, energy-transition policy tailwinds; sustainability-aligned. Momentum-only on free data (no US-style fundamentals available for European filers), so this is a thesis position sized deliberately small given it isn't fundamentally confirmed."
+      }
+    ]
+  },
+  "open_structural_questions": [
+    "1. Actual equity/bond split inside Auto 50 / Auto 75 (name-implied ~50/50 and ~75/25; confirm from factsheets - matters for exposure math until the exit executes).",
+    "2. ETH cost basis and acquisition dates (needed for any future K4 math).",
+    "3. Swedbank fund: current gain vs cost basis (feeds move-to-ISK calculation).",
+    "5. Any OTHER undisclosed accounts? SEB and PayPal both surfaced only in passing - a one-time full inventory (every bank/broker login) would close this class of surprise, and is now overdue (2 surprise accounts in one week).",
+    "6. PayPal FX routing: what is PayPal's actual conversion fee/spread (do not assume ~3-4%, confirm from PayPal's fee schedule), and what is the cheapest path to get the 1,177.49 USD + 266.88 EUR (plus each ~750-1000 EUR recurring inflow) into SEK or into a wrapper without repeatedly paying it. Council ruling 2026-07-12: convert promptly via lowest-spread path, don't hold either currency waiting on FX levels - see reports/2026-07-07-council-memo.md Amendment 2026-07-12.",
+    "9. No thesis recorded for Handelsbanken A, Investor A - both still TBD. Avanza Auto 3 and COIN-XBT.ST now have context/thesis (see their holdings entries); Tundra's status is tied to open question 14.",
+    "10. hb-main + hb-checking tax reserve (9,017 + 611 + 1,750 pending = 11,378 SEK) has a residual ~115.28 SEK gap against the confirmed 11,493.28 SEK HB+SEB tax owed - user judged this 'enough for now' 2026-07-22, plans to top up further from other income before the 2027 deklaration. Low priority, monitor at deklaration prep, not urgent.",
+    "11. hb-checking (611 SEK, newly disclosed 2026-07-22) and the broader account-inventory question (#5) - is this genuinely the last undisclosed account, or should a one-time full inventory still happen?",
+    "12. avanza-isk's non-cash holdings re-itemization - PARTIALLY RESOLVED 2026-07-31: SHB-A.ST and INVE-A.ST now fetch real, fresh prices again (fetch_equities() fixed, see IMPROVEMENTS #17) - price 146.15 / 406.40 SEK respectively as of 2026-07-31, still no fundamentals (no free source for non-US names). Avanza Auto 3 and the two unlisted funds (Avanza Global, Swedbank fund) will NEVER get exchange-fetched prices - see their no_ticker_reason fields, this is structural not pending. COIN-XBT.ST remains unresolved (ticker doesn't match Yahoo under any tried variant) - see open question 13/19 below, may be moot if the Valour Bitcoin Zero switch happens.",
+    "13. COIN-XBT.ST certificate vs. self-custody 'real bitcoin' - user stated 2026-07-22 a preference to eventually hold direct BTC instead of the certificate. Tax mechanics not simple: selling the certificate inside the ISK is tax-free, but moving proceeds to self-custody BTC permanently exits ISK's tax shelter for that capital and every future disposal becomes a 30% K4 event (same regime as the ETH wallet). Also loses the certificate's 2% issuer-redemption-fee risk (moot if sold via exchange) but gains self-custody key-management risk. Not yet decided - Council recommendation given in the 2026-07-22 chat exchange, pending user confirmation. NOTE 2026-07-31: this is a SEPARATE question from #19 (certificate-vs-certificate fee switch) - resolving #19 does not resolve this one, and vice versa.",
+    "16. MEDIUM-TIER MIGRATION (in progress, phase-in adopted 2026-07-22): the intended ~59,050 SEK medium-tier allocation (30% of the investable base, less the ~2,076 already in SHB-A/INVE-A) is parked inside the Avanza Global holding (settled 2026-07-29, 119,999 SEK) as a 'medium-pending' earmark, to be migrated into individual quality stocks ONE vetted position at a time (tax-free inside ISK). FIRST MIGRATIONS IN FLIGHT 2026-07-29: Visa 7,500 SEK + Schneider Electric 5,000 SEK, both stacked-funnel-vetted (see pending_executions) - together ~12,500 of the ~59,050 target, pending execution confirmation. A Swedish pick (Atlas Copco, ATCO-A.ST, top-ranked on momentum among Nordic large caps) was also identified 2026-07-29 as a candidate but no amount has been committed yet. Roughly one 5-10k position per sweep, holding risk level roughly constant per the medium-tier definition. NOT a fixed-percentage relaxation - the 30% target stands; only the timing is phased.",
+    "19. NEW 2026-07-31 (user-sourced candidate): switch COIN-XBT.ST (CoinShares XBT Provider, 2.5% mgmt fee per 2026-07-22 factsheet - though a third-party aggregator cites 3.64% total expense ratio for the same product, discrepancy NOT yet resolved, re-check the live factsheet) for Valour Bitcoin Zero SEK (ISIN CH0585378661, 0% management fee, confirmed real via web search 2026-07-31 - see chat for sources). Same underlying BTC exposure preserved throughout - NOT a reduction in crypto allocation, fully compatible with the 2026-07-22 hold/soft-cap decision. Tax-free inside ISK either way (ordinary exchange sale + purchase, no capital-gains event). Verified: real product, trades on Nordic MTF (part of NGM), directly purchasable on Avanza (found the exact Avanza product page, id 1164452), physically backed via tier-1 custodians (Copper, Komainu) - comparable structure to CoinShares, though Valour is a newer/smaller issuer. NOT YET VERIFIED (must check before executing): (a) the live bid-ask spread on the Nordic MTF listing - a 'zero management fee' product can still cost money via a wider spread, this is the single biggest unverified variable; (b) minimum brokerage fee mentioned in Swedish sources as 19 SEK for this specific product - confirm on Avanza's actual order ticket; (c) exact Nasdaq/Avanza-internal ticker (have ISIN + Avanza product ID, not a Yahoo-compatible ticker - per this system's own rule, not guessing one). Not yet decided - see chat 2026-07-31 for full analysis. Would need a separate SELL COIN-XBT.ST + BUY Valour Bitcoin Zero SEK pair of trades if approved."
+  ],
+  "resolved_structural_questions": [
+    "RESOLVED 2026-07-07: Handelsbanken wrapper is FONDKONTO (AF), confirmed by user. Was question 1 / the blocking question since 2026-07-03. Consequence: exit plan hb-af-exit.",
+    "RESOLVED 2026-07-07: Handelsbanken fund fees - Auto 50 Criteria 0.66%/yr total cost, Auto 75 Criteria 0.67%/yr total cost (user-confirmed).",
+    "RESOLVED 2026-07-12: HB fund sale EXECUTED - actual proceeds 133,657.41 SEK (gain 28,186.20, tax 8,455.86), plus 2,954.42 SEK pre-existing cash, total 136,611.83 SEK now sitting as cash in hb-main awaiting ISK transfer. See exit_plans.hb-af-exit.actual_execution.",
+    "RESOLVED 2026-07-12: SEB transaction column semantics clarified (Datum, Kontotext, Insattning, Uttag, Saldo) - confirmed sold proceeds 13,558.12 SEK, self-consistent against the running Saldo balance.",
+    "RESOLVED 2026-07-13: SEB fully sold and settled, final figure 17,382.43 SEK (user-confirmed) - close to the original ~18,000 SEK estimate, not the ~46k SEK a column misread had implied.",
+    "RESOLVED 2026-07-13: Avanza ISK holdings fully itemized from a live user snapshot - 2 stocks, 2 funds, 1 crypto certificate, plus 565 SEK cash, exact total 36,120 SEK. Prior 15%-single-position-cap concern (18.7% if it were one holding) is moot - no individual holding breaches the cap.",
+    "RESOLVED 2026-07-20: SEB fund realized gain and tax CONFIRMED from user-supplied 2026 tax-year figures (7 fund lots sold 2026-07-08 to 2026-07-10) - total kapitalvinst 10,124.74 SEK, tax at 30% = 3,037.42 SEK. Materially higher than the earlier ~1,200 SEK placeholder. See seb-fund.confirmed_tax_owed_sek and tax_breakdown_by_fund for the full detail. Consequence: the 9,000 SEK hb-main tax reserve is confirmed short by 2,493.28 SEK against the combined 11,493.28 SEK HB+SEB tax owed - see open question 10.",
+    "RESOLVED 2026-07-22: SEB per-fund cost basis and sale proceeds obtained (not just the gain figures) - see seb-fund.tax_breakdown_by_fund for full detail, useful for K4 filing.",
+    "RESOLVED 2026-07-22: Annual fee percentages confirmed from factsheets for all three previously-unknown holdings - Avanza Auto 3 0.39% (0.35% mgmt + ~0.04% transaction), Tundra Sustainable Frontier 2.6% (2.5% mgmt + ~0.1% transaction), COIN-XBT.ST certificate 2.5% (mgmt only, plus a 2% issuer-redemption exit fee that does not apply to ordinary exchange sales). Fee-drag scorecard row is now gradable. Was open question 8.",
+    "RESOLVED 2026-07-22 (partially): a thesis now exists for COIN-XBT.ST (user's cycle-position view on BTC generally) - the standing trim-default question (former open question 7) is superseded by a broader certificate-vs-self-custody decision, see open question 13.",
+    "RESOLVED 2026-07-22: Risk-tier framework REVISED to 60/30/10 (from 70/20/10) at user's direction - see investor_profile.json risk_tier_framework_proposed.",
+    "RESOLVED 2026-07-22: Open question 14 (Tundra Sustainable Frontier) - user decided to SELL in full (2.6% fee unjustifiable). Tax-free inside ISK. Proceeds recycle to secure tier. See the Tundra holding thesis. Awaiting execution.",
+    "RESOLVED 2026-07-22: Open question 15 (equity/fixed-income split) - user directed near-zero fixed income and explicitly accepts total equity >70% ('the push of equity above 70% is fine'). The 50/40 equity/FI glidepath target is superseded by the tier framework; any ballast should be a very small short-duration/money-market sleeve, not traditional bonds. See investor_profile.json risk_tier_framework_proposed.fixed_income_stance. NOTE: this spawned new open question 16 (how to fill the 30% medium tier).",
+    "RESOLVED 2026-07-22: Medium-tier fill (open Q16) - user chose PHASE-IN (option b): park the intended ~59,050 SEK in the Avanza Global secure core now, migrate into individual stocks one vetted position at a time (tax-free in ISK). 30% target stands; timing phased. Q16 reworded to track the migration.",
+    "RESOLVED 2026-07-22: Crypto cap - user chose HOLD / SOFT-CAP (REVERSED an earlier same-day trim decision): will NOT sell any bitcoin for now, explicitly accepts crypto staying above the 10% cap (~14.2%) in favour of the active BTC thesis. Dilute back toward 10% via contributions/deployment routing rather than a sale; revisit a trim only if crypto appreciates materially further. Certificate-vs-self-custody (open Q13): keep retained BTC in the ISK certificate for now (tax shelter beats the 2.5% fee at this size/horizon). See COIN-XBT.ST holding.",
+    "RESOLVED 2026-07-29: Tundra Sustainable Frontier SALE EXECUTED - 1,534.86 SEK proceeds confirmed by user (vs. 1,563 SEK stale estimate), tax-free in ISK. Quantity now 0. See the Tundra holding.",
+    "RESOLVED 2026-07-29: Avanza Global purchase EXECUTED for 119,999 SEK - user flagged this had NOT been logged despite being mentioned days earlier; portfolio.json now reflects it as a settled holding, and a new `pending_executions` tracker was added so future committed-but-unsettled trades (Visa, Schneider) don't repeat this gap. See the Avanza Global holding and IMPROVEMENTS #14.",
+    "RESOLVED 2026-07-29: avanza-isk cash RECONCILED to 26,399.86 SEK (144,864 prior confirmed cash - 119,999 Avanza Global purchase + 1,534.86 Tundra proceeds) - a computed figure the user should verify at next login."
+  ]
+}

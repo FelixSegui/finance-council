@@ -1,2 +1,23 @@
 .DS_Store
 __pycache__/
+
+# ranker working cache (regenerated, 7-day TTL) and run logs
+data/cache/universe_cache/
+data/cache/rankings/*.log
+
+# fully mechanically regenerated on every sync/build (same reasoning as
+# data/sync/*.json above) — data/cache/universe.json via
+# scripts/build_universe.py + run.py sync's merge step; thesis_candidates.json
+# is rebuilt from the Watchlist/Investment Thesis sheets on every sync
+data/cache/universe.json
+data/cache/thesis_candidates.json
+
+# data/sync/*.json is fully regenerated from master.xlsx by `python run.py sync`
+# — committing it would recreate the duplicated-state problem this project's
+# architecture is built to avoid. Only the sync CODE (schema.py, sync.py,
+# workbook.py) is tracked; run `python run.py sync` after cloning to produce
+# the JSON locally.
+data/sync/*.json
+
+# Excel lock file (created while master.xlsx is open in Excel/LibreOffice)
+~$master.xlsx

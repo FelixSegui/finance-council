@@ -3,7 +3,7 @@
 Per-position movement report — "how are my positions actually behaving?"
 
 Reads data/portfolio.json plus the two most recent snapshots in
-data/snapshots/ and prints one row per holding: current price, move since
+data/cache/snapshots/ and prints one row per holding: current price, move since
 the previous snapshot, move since cost basis, and where the price sits in
 its 52-week range.
 
@@ -24,7 +24,7 @@ import os
 from datetime import datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SNAP_DIR = os.path.join(ROOT, "data", "snapshots")
+SNAP_DIR = os.path.join(ROOT, "data", "cache", "snapshots")
 
 
 def load_json(path):

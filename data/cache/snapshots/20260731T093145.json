@@ -1,0 +1,122 @@
+{
+  "fetched_at_utc": "2026-07-31T09:31:28.488551+00:00",
+  "equities": {
+    "SHB-A.ST": {
+      "price": 146.10000610351562,
+      "prev_close": 144.14999389648438,
+      "52w_high": 146.85000610351562,
+      "52w_low": 117.6500015258789,
+      "market_cap": null,
+      "trailing_pe": null,
+      "forward_pe": null,
+      "peg_ratio": null,
+      "dividend_yield": null,
+      "beta": null,
+      "revenue_growth": null,
+      "profit_margins": null,
+      "debt_to_equity": null,
+      "recommendation": null,
+      "sector": null,
+      "industry": null,
+      "country": null,
+      "currency": "SEK",
+      "_source": "yahoo_chart_v8 (fallback \u2014 quoteSummary/yfinance unavailable)",
+      "_fundamentals_unavailable_reason": "Yahoo's fundamentals endpoint (quoteSummary) is blocked in this environment; no free fundamentals source exists for non-US tickers (SEC EDGAR is US-listed-filer only). Price/momentum are real and fresh; market_cap/PE/margins/etc. are null, not estimated."
+    },
+    "INVE-A.ST": {
+      "price": 406.29998779296875,
+      "prev_close": 401.79998779296875,
+      "52w_high": 406.29998779296875,
+      "52w_low": 280.3999938964844,
+      "market_cap": null,
+      "trailing_pe": null,
+      "forward_pe": null,
+      "peg_ratio": null,
+      "dividend_yield": null,
+      "beta": null,
+      "revenue_growth": null,
+      "profit_margins": null,
+      "debt_to_equity": null,
+      "recommendation": null,
+      "sector": null,
+      "industry": null,
+      "country": null,
+      "currency": "SEK",
+      "_source": "yahoo_chart_v8 (fallback \u2014 quoteSummary/yfinance unavailable)",
+      "_fundamentals_unavailable_reason": "Yahoo's fundamentals endpoint (quoteSummary) is blocked in this environment; no free fundamentals source exists for non-US tickers (SEC EDGAR is US-listed-filer only). Price/momentum are real and fresh; market_cap/PE/margins/etc. are null, not estimated."
+    },
+    "COIN-XBT.ST": {
+      "error": "yahoo chart unreachable: HTTP Error 404: Not Found (fallback path also failed)"
+    }
+  },
+  "crypto": {
+    "ethereum": {
+      "price_eur": 1635.9,
+      "market_cap": 197445800097,
+      "market_cap_rank": 2,
+      "change_24h_pct": -0.6,
+      "change_7d_pct": -0.3,
+      "change_30d_pct": 19.8,
+      "ath": 4229.76,
+      "ath_change_pct": -61.3241
+    }
+  },
+  "macro": {
+    "fed_funds_rate": {
+      "date": "2026-06-01",
+      "value": "3.63"
+    },
+    "us_10y_yield": {
+      "date": "2026-07-29",
+      "value": "4.67"
+    },
+    "us_2y_yield": {
+      "date": "2026-07-29",
+      "value": "4.22"
+    },
+    "dollar_index": {
+      "date": "2026-07-24",
+      "value": "120.7105"
+    },
+    "sek_per_usd": {
+      "date": "2026-07-24",
+      "value": "9.6998"
+    },
+    "usd_per_eur": {
+      "date": "2026-07-24",
+      "value": "1.1385"
+    },
+    "vix": {
+      "date": "2026-07-29",
+      "value": "20.66"
+    },
+    "us_cpi_yoy": {
+      "date": "2026-06-01",
+      "value": 3.73
+    },
+    "riksbank_policy_rate": {
+      "date": "2026-07-31",
+      "value": 1.75
+    },
+    "ecb_deposit_rate": {
+      "date": "2026-07-31",
+      "value": "2.25"
+    },
+    "se_cpi_yoy": {
+      "period": "2025M12",
+      "value": 0.3
+    },
+    "10y_2y_spread": 0.45,
+    "sek_per_eur": {
+      "date": "2026-07-24",
+      "value": 11.0432,
+      "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)"
+    }
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "value": 25,
+      "classification": "Extreme Fear"
+    }
+  }
+}

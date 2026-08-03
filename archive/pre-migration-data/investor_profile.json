@@ -1,0 +1,79 @@
+{
+  "note": "The client profile — what a human advisor would establish before any recommendation. USER-MAINTAINED. Update when life circumstances change, not when markets move.",
+  "last_updated": "2026-07-20",
+  "risk": {
+    "max_drawdown_tolerance_pct": -30,
+    "risk_capacity_notes": "Stated tolerance -30% (~57k SEK at current size). REVISED 2026-07-07: the goal is softer than previously recorded (see horizon) — not a hard deadline. That eases the original glidepath tension (a -30% drawdown in year 6 is less catastrophic if the purchase can slip), but vagueness cuts both ways: an uncommitted goal can also crystallize EARLIER or the money be wanted for something else. Treat the glidepath re-anchor trigger (goal becomes concrete) as the operative control, not the calendar."
+  },
+  "horizon": {
+    "primary_goal": "Property purchase, nature UNCERTAIN (user statement 2026-07-07): 'not completely sure what I am saving for' — most likely an apartment or similar. One live idea: a Mediterranean vacation apartment, rented out when not used, while renting in Sweden (rental income offsetting Swedish rent). Explicitly vague, not set in stone, a potential long-term goal.",
+    "years_until_needed": "3-7 (SOFT — goal not committed; treat as flexible, not a hard deadline)",
+    "planned_monthly_contribution_sek": "1000-3000",
+    "currency_note": "If the Mediterranean option materializes, the future liability is EUR, not SEK — this reverses the standing rationale for tilting the equity sleeve toward SEK/Nordic. Flag for the Council whenever the goal firms up."
+  },
+  "buffer": {
+    "emergency_fund_months": "3-6",
+    "notes": "Standard buffer confirmed 2026-07-04 — the portfolio's risk budget is genuine, not partly an emergency fund."
+  },
+  "constraints": {
+    "exclusions": [],
+    "notes": "None stated yet"
+  },
+  "cash_flow": {
+    "recurring_foreign_currency_inflow": "~750-1000 EUR roughly every 2 months, irregular occasions, landing in PayPal (disclosed 2026-07-12). Not salary - described as money that 'comes in at different occasions'.",
+    "fx_note": "PRIORITY: repeated small FX conversions through PayPal's native conversion are a structural fee-drag risk (PayPal's spread is typically well above mid-market - CONFIRM actual rate, do not assume) that compounds every ~2 months indefinitely. This is a lever #2-class problem (fee drag) even though the sums are small, because it recurs forever. See portfolio.json open_structural_questions 6 for the routing options to evaluate. Do not let 'the amounts are small' excuse ignoring this - it's the recurring nature, not the size of one instance, that makes it structural."
+  },
+  "reference_targets": {
+    "note": "v1-amended, ADOPTED by Council ruling 2026-07-07 (same-day amendment to reports/2026-07-07-council-memo.md) - transcribed here 2026-07-12 after discovering it was decided but never written back to this file, a process gap in its own right. Anchor: today treated as T-5 (midpoint of the 3-7y SOFT range in `horizon`); re-anchor trigger is the goal firming up, not the calendar. Equity reverted to 50% (from an initially proposed 45%) because the goal lost its hard deadline: with `horizon.years_until_needed` now soft, the recoverability constraint that justified 45% no longer binds, and 50% sits at the stated -30% drawdown tolerance with zero slack - not beyond it. The 20% SEK/Nordic currency tilt originally proposed alongside 45% was DROPPED (liability currency now unknown - could be SEK or EUR per `horizon.currency_note` - so currency matching is void in both directions; plain global unhedged equity is the neutral stance). SUPERSEDED 2026-07-27 - see ADOPTED_2026-07-27 below; this note and the glidepath_table are retained for history and for the re-anchor trigger, not as the current operating target.",
+    "WRITTEN_IN_2026-08-03": "The user gave explicit instruction 2026-08-03 to write 85/10/5 into the data files, so data/portfolio.json.targets is now populated (equity 85 / crypto 10 / cash 5 / fixed income 0) instead of null. Until today the target was approved but unrecorded, which meant every sweep measured drift against a number that lived only in memos - a real bookkeeping gap, now closed. The unresolved drawdown caveat below still stands and is NOT settled by writing the target in.",
+    "ADOPTED_2026-07-27": "User approved the Council's proposed target allocation from reports/2026-07-27-council-memo.md: 85% equity / 5% cash-ballast / ~0% traditional fixed income / 10% crypto. This replaces the 50/40/5/5 figures below as the operating exposure-class target (equity_pct/crypto_pct/fixed_income_pct/cash_pct fields updated accordingly). Rationale unchanged from the memo: translates the adopted 60/30/10 risk-tier framework (secure ~55pp of the 85% equity + medium ~30pp of it) into exposure-class terms, given the user's explicit 2026-07-22 direction (equity >70% acceptable, fixed income near-zero) and the soft 3-7y house-deposit horizon. CAVEAT carried forward from the memo, unresolved: no backtest yet confirms 85/10 equity/crypto respects the -30% max drawdown tolerance; the glidepath_table's de-risking schedule should re-engage if/when horizon.primary_goal firms up with a date inside ~3 years.",
+    "glidepath_table": {
+      "now_T5plus": { "equity_pct": 50, "fixed_income_pct": 40, "cash_pct": 5, "crypto_pct": 5 },
+      "T3y": { "equity_pct": 40, "fixed_income_pct": 45, "cash_pct": 10, "crypto_pct": 5 },
+      "T2y": { "equity_pct": 30, "fixed_income_pct": 50, "cash_pct": 17, "crypto_pct": 3 },
+      "T1y": { "equity_pct": 15, "fixed_income_pct": 45, "cash_pct": 40, "crypto_pct": 0 },
+      "deposit_year": { "equity_pct": 10, "fixed_income_pct": "remainder", "cash_pct": 50, "crypto_pct": 0, "note": "equity is a ceiling (<=10%), cash is a floor (>=50%)" }
+    },
+    "equity_pct": 85,
+    "crypto_pct": 10,
+    "fixed_income_pct": 0,
+    "cash_pct": 5,
+    "RECONCILED_2026-07-22": "The risk-tier framework (now 60/30/10, see risk_tier_framework_proposed) is the OPERATING allocation control. The exposure-class glidepath below is retained for reference and re-engages only when the property goal firms up (the re-anchor trigger). Live override: user has set fixed income to near-zero and accepts total equity >70% (see risk_tier_framework_proposed.fixed_income_stance) - so the glidepath_table.now_T5plus 40% fixed_income / 50% equity split is NOT the current operating target. Current operating target is tier-based: 60% secure (broad index funds, primarily global equity + a very small short-duration/cash ballast), 30% medium (individual quality stocks), 10% high-risk (crypto).",
+    "max_single_position_pct": 15,
+    "max_single_institution_pct": 80,
+    "max_annual_fee_drag_pct": 0.4
+  },
+  "risk_tier_framework_proposed": {
+    "status": "REVISED 2026-07-22 to 60/30/10 (from 70/20/10) at user's direction. Nested with, not competing against, the exposure-class glidepath: the glidepath still describes composition inside the tiers, but the user has now overridden its fixed-income weight - see fixed_income_stance below. Rationale (user's words 2026-07-22): 'I am ready to take a little risk, but to keep it diversified and mature. I do not have enough money or salary to make a lot of money only from fixed income yet. And I will earn more later on so I have the possibility to have a little bit more risky portfolio.' The larger medium tier (30% vs 20%) reflects appetite for more individual-stock exposure alongside the secure index core. History: 70/20/10 was ADOPTED 2026-07-20, itself carried forward from the original 2026-07-12 proposal.",
+    "fixed_income_stance": "USER DIRECTION 2026-07-22: fixed income / savings-account allocation should be VERY SMALL (near-zero). User explicitly accepts total portfolio equity pushing above 70% ('The push of equity above 70% is fine. I don't mind.'). This overrides reference_targets.glidepath_table's now_T5plus 40% fixed_income weight. Reason: at current portfolio size (~200-230k SEK) and income level, fixed income cannot build meaningful wealth; user prefers a diversified, 'mature' equity-led portfolio and expects rising income to support higher risk over time. The glidepath's FI ballast re-engages only if/when the property goal firms up (the re-anchor trigger in reference_targets.note), not now. Any de-risking ballast used before then should favour a short-duration/money-market sleeve over traditional bonds, and kept minimal.",
+    "structure": {
+      "secure_non_volatile_pct": 60,
+      "medium_risk_pct": 30,
+      "high_risk_pct": 10
+    },
+    "tier_definitions": {
+      "secure": "The majority tier. Still INVESTED (not cash sitting idle) but in low-risk, growing vehicles - diversified/index-style funds. Grows primarily from monthly contributions; not meant to be traded. User's own words: 'I do not want my money to just sit on a bank account or similar and barely move (except from my monthly injections).' Candidate holdings: the undeployed avanza-isk cash (145,559.26 SEK as of 2026-07-20) once allocated to broad index equity/FI, and Avanza Auto 3 pending confirmation of its actual risk profile (open question 8, factsheet still needed).",
+      "medium": "Individual stocks with a demonstrated good trend and fundamentals - not passive index holdings. 'Considerately placed and moved once in a while if it is detected it can be better off elsewhere without increasing the risk' (user's words) - i.e. occasional rebalancing within this tier is expected, but each move should hold risk level roughly constant, not ratchet it up. Candidate holdings: SHB-A.ST, INVE-A.ST. Tundra Sustainable Frontier's classification is NOT yet confirmed - frontier-market funds typically carry more risk than 'normal stocks with good trend,' flagged for user confirmation rather than assumed. PROCESS DEFINED 2026-07-28: the vetting/rotation process for this tier is now the `swedish-equity-review` skill (.claude/skills/swedish-equity-review/SKILL.md) - a 6-dimension weighted scoring rubric (business quality, financial strength, valuation, insider activity, dividend quality, growth), invoked on demand rather than every weekly sweep. This is the concrete answer to open_structural_question #16 (medium-tier migration), replacing the previously vague 'one vetted position at a time.'",
+      "high_risk_active": "Money the user explicitly states they can afford to lose to a greater extent, managed actively (weekly-ish). Matches CLAUDE.md's existing short-horizon tactical rule (Short <6mo: capped at 10% of portfolio, never High confidence, always flagged tactical) - not a new risk category for this system, the first sweep with real content in it. Candidate holdings: ETH (self-custody) and COIN-XBT.ST (BTC certificate)."
+    },
+    "profit_recycling_rule": "User-stated operating principle, recorded verbatim in substance: gains realized from the medium and high-risk tiers should flow to the greatest extent into the secure tier, not compound within the riskier tiers. User's framing: 'the money I make from this should to the greatest extent go into the more safer tiers... considered as a monetising machine sort of.' This is a standing instruction for future rebalancing/trim decisions (e.g. the pending COIN-XBT.ST trim, open question 7) - proceeds from trims or sales in medium/high-risk should default toward the secure tier unless the user says otherwise for a specific trade. Not yet implemented in any executed trade; applies going forward.",
+    "contribution_routing": {
+      "status": "POLICY SET 2026-07-22 (user starting monthly savings from salary; SEK amount still TBD - user said 1000-3000/mo in horizon.planned_monthly_contribution_sek). Routes the recurring contribution automatically, low-effort.",
+      "default_rule": "100% of each monthly contribution to the SECURE tier (broad global index core, e.g. Avanza Global) by default - matches the user's own stated preference ('100% to secure by default') and does triple duty: (1) builds the low-cost core, (2) dilutes the crypto overweight back toward the 10% cap without any sale (the soft-cap mechanism - see portfolio.json COIN-XBT.ST holding), (3) requires zero per-month decisions (set up as an automatic monthly fund purchase inside the ISK).",
+      "high_risk_tier": "0% of contributions while crypto is above the 10% cap (currently ~14.2%). Contributions are the primary tool diluting crypto back to target; adding to crypto would fight that. Revisit only once crypto is at/under 10%.",
+      "medium_tier": "Not funded by the automatic monthly flow (you cannot dollar-cost-average into 'a good individual stock' without first choosing one). Instead, the medium tier is built by DISCRETIONARY redirection: when the scout->valuation funnel surfaces a vetted name, redirect a lump (from accumulated secure-core value, tax-free inside the ISK, or from a month's contribution) into it. This is the phase-in in open question 16.",
+      "review_trigger": "Re-tune the split once (a) crypto has diluted to <=10%, or (b) the medium tier reaches its ~30% target - at which point contributions can start maintaining the 60/30/10 balance rather than only feeding secure."
+    },
+    "risk_score_tier_routing": {
+      "status": "POLICY SET 2026-07-29. How a vetted candidate's risk maps to a tier. Uses TWO separate inputs, never merged: the objective data_risk_score (0-100, from rank_candidates.py: volatility 40% + max_drawdown 35% + leverage 15% + size 10%) and the subjective risk_tag (low|med|high, from thesis_candidates.json).",
+      "secure": "Broad index FUNDS only - not individual stocks. Risk score is not the gate here; low-fee diversification is. Individual names do not belong in secure regardless of a low risk score.",
+      "medium": "Individual quality stocks with a moderate objective data_risk_score (roughly 30-70) and risk_tag low or med. This is where the vetted funnel picks land. A name with data_risk_score >~75 OR risk_tag high is either downsized or routed to high-risk instead - it does not enter medium at full size.",
+      "high_risk_active": "data_risk_score >~75 or risk_tag high, and crypto. Capped at 10%, actively managed, never High confidence (CLAUDE.md short-horizon rule).",
+      "medium_hold_risk_constant_rule": "Enforces the user's medium-tier definition ('moved once in a while WITHOUT increasing the risk'). A swap within the medium tier must not materially raise the tier's weighted data_risk_score - if a candidate would raise it, either downsize it or pair it with a lower-risk name. This is the operational meaning of 'constant risk'."
+    },
+    "open_items": [
+      "Exact SEK amount of the monthly contribution (user indicated 1000-3000/mo) to confirm once salary lands - the routing POLICY is set (see contribution_routing), only the number is pending.",
+      "Europe/sustainability exposure decision: whether to add a dedicated European index fund and/or an ESG/SRI fund sleeve to the secure tier (the clean, growth-preserving way to get Europe + sustainability), vs. picking individual European stocks (now seedable via universe europe_large_cap, but momentum-only until a European fundamentals source exists). Flagged 2026-07-22."
+    ]
+  }
+}

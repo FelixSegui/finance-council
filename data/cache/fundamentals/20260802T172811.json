@@ -1,0 +1,59 @@
+{
+  "fetched_at_utc": "2026-08-02T17:28:11.466466+00:00",
+  "fundamentals": {
+    "ATCO-A.ST": {
+      "error": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "ATCO-B.ST": {
+      "error": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "VOLV-B.ST": {
+      "error": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "NOVO-B.CO": {
+      "error": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "SU.PA": {
+      "error": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    "V": {
+      "revenue": 40000000000,
+      "revenue_prior": 35926000000,
+      "net_income": 20058000000,
+      "equity": 26437000000,
+      "liabilities": 61718000000,
+      "shares": null,
+      "revenue_growth": 0.11339976618604908,
+      "debt_to_equity": 2.3345311495252865,
+      "roe": 0.7587093845746492,
+      "_source": "sec_edgar_companyfacts",
+      "profit_margins": 0.50145
+    },
+    "SYK": {
+      "revenue": 25116000000,
+      "revenue_prior": 22595000000,
+      "net_income": 3246000000,
+      "equity": 11730000000,
+      "liabilities": 25424000000,
+      "shares": 383573046,
+      "revenue_growth": 0.11157335693737558,
+      "debt_to_equity": 2.1674339300937766,
+      "roe": 0.27672634271099744,
+      "_source": "sec_edgar_companyfacts",
+      "profit_margins": 0.12924032489249881
+    },
+    "ABT": {
+      "revenue": 44328000000,
+      "revenue_prior": 41950000000,
+      "net_income": 6524000000,
+      "equity": 52130000000,
+      "liabilities": null,
+      "shares": 1741812429,
+      "revenue_growth": 0.05668653158522052,
+      "debt_to_equity": null,
+      "roe": 0.12514866679455208,
+      "_source": "sec_edgar_companyfacts",
+      "profit_margins": 0.14717560007218913
+    }
+  }
+}

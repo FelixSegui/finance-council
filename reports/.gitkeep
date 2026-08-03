@@ -1,0 +1,7 @@
+This directory holds ONE reports/YYYY-MM-DD-sweep.md per sweep, written by
+the `council` agent — see SYSTEM.md's "Flow" section. Pre-migration reports
+(dated council memos, SESSION_LOG.md, data-coverage reports) live in
+archive/reports-pre-migration/.
+
+This file exists only so git tracks the empty directory; delete it once the
+first real sweep report lands.

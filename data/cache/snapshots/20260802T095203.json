@@ -1,0 +1,353 @@
+{
+  "fetched_at_utc": "2026-08-02T09:51:47.510979+00:00",
+  "equities": {
+    "SHB-A.ST": {
+      "price": 145.64999389648438,
+      "prev_close": 144.14999389648438,
+      "52w_high": 146.85000610351562,
+      "52w_low": 117.6500015258789,
+      "currency": "SEK",
+      "market_cap": null,
+      "trailing_pe": 11.8,
+      "forward_pe": null,
+      "peg_ratio": null,
+      "dividend_yield": null,
+      "beta": null,
+      "revenue_growth": null,
+      "profit_margins": null,
+      "debt_to_equity": null,
+      "recommendation": null,
+      "sector": null,
+      "industry": null,
+      "country": null,
+      "_source": null,
+      "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>",
+      "insider_activity_se": {
+        "issuer_search_term": "Handelsbanken",
+        "date_from": "2026-05-04",
+        "date_to": "2026-08-02",
+        "transactions": [
+          {
+            "publication_date": "2026-07-21 20:55:40",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "P\u00e4r Boman",
+            "role": "Styrelseordf\u00f6rande",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-21 00:00:00",
+            "volume": "666866,0",
+            "price": "140,4792",
+            "currency": "SEK",
+            "venue": "CBOE EUROPE EQUITIES - EUROPEAN EQUITIES (NL)"
+          },
+          {
+            "publication_date": "2026-07-21 20:55:40",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "P\u00e4r Boman",
+            "role": "Styrelseordf\u00f6rande",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-21 00:00:00",
+            "volume": "188772,0",
+            "price": "140,5494",
+            "currency": "SEK",
+            "venue": "POSIT MTF"
+          },
+          {
+            "publication_date": "2026-07-21 20:55:40",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "P\u00e4r Boman",
+            "role": "Styrelseordf\u00f6rande",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-21 00:00:00",
+            "volume": "210061,0",
+            "price": "140,5558",
+            "currency": "SEK",
+            "venue": "AQUIS EXCHANGE EUROPE"
+          },
+          {
+            "publication_date": "2026-07-21 20:55:40",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "P\u00e4r Boman",
+            "role": "Styrelseordf\u00f6rande",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-21 00:00:00",
+            "volume": "33002,0",
+            "price": "139,1500",
+            "currency": "SEK",
+            "venue": "TURQUOISE EUROPE"
+          },
+          {
+            "publication_date": "2026-07-21 20:55:40",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "P\u00e4r Boman",
+            "role": "Styrelseordf\u00f6rande",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-21 00:00:00",
+            "volume": "1029,0",
+            "price": "140,8702",
+            "currency": "SEK",
+            "venue": "J.P. MORGAN AG - SYSTEMATIC INTERNALISER"
+          },
+          {
+            "publication_date": "2026-07-21 20:55:40",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "P\u00e4r Boman",
+            "role": "Styrelseordf\u00f6rande",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-21 00:00:00",
+            "volume": "270,0",
+            "price": "140,8000",
+            "currency": "SEK",
+            "venue": "NASDAQ STOCKHOLM AB"
+          },
+          {
+            "publication_date": "2026-07-21 20:55:40",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "P\u00e4r Boman",
+            "role": "Styrelseordf\u00f6rande",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-21 00:00:00",
+            "volume": "650000,0",
+            "price": "140,6462",
+            "currency": "SEK",
+            "venue": "Utanf\u00f6r handelsplats"
+          },
+          {
+            "publication_date": "2026-07-21 20:55:40",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "P\u00e4r Boman",
+            "role": "Styrelseordf\u00f6rande",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-21 00:00:00",
+            "volume": "750000,0",
+            "price": "140,5150",
+            "currency": "SEK",
+            "venue": "Utanf\u00f6r handelsplats"
+          },
+          {
+            "publication_date": "2026-07-20 17:59:42",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "Fredrik Lundberg",
+            "role": "Styrelseledamot",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-20 00:00:00",
+            "volume": "1000000,0",
+            "price": "139,1063",
+            "currency": "SEK",
+            "venue": "NASDAQ STOCKHOLM AB"
+          },
+          {
+            "publication_date": "2026-07-20 17:54:16",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "Fredrik Lundberg",
+            "role": "Styrelseledamot",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-16 00:00:00",
+            "volume": "2000000,0",
+            "price": "139,0453",
+            "currency": "SEK",
+            "venue": "NASDAQ STOCKHOLM AB"
+          },
+          {
+            "publication_date": "2026-07-20 17:54:16",
+            "issuer": "Svenska Handelsbanken AB",
+            "person": "Fredrik Lundberg",
+            "role": "Styrelseledamot",
+            "related_party": "Ja",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Svenska Handelsbanken ser. A",
+            "isin": "SE0007100599",
+            "transaction_date": "2026-07-17 00:00:00",
+            "volume": "1000000,0",
+            "price": "139,2095",
+            "currency": "SEK",
+            "venue": "NASDAQ STOCKHOLM AB"
+          }
+        ],
+        "error": null
+      },
+      "_manual_overrides": {
+        "trailing_pe": {
+          "source": "user, Avanza app",
+          "as_of": "2026-08-02",
+          "notes": "P/E not available from free automated sources for Swedish tickers"
+        }
+      }
+    },
+    "INVE-A.ST": {
+      "price": 404.0,
+      "prev_close": 401.79998779296875,
+      "52w_high": 404.0,
+      "52w_low": 280.3999938964844,
+      "currency": "SEK",
+      "market_cap": null,
+      "trailing_pe": null,
+      "forward_pe": null,
+      "peg_ratio": null,
+      "dividend_yield": null,
+      "beta": null,
+      "revenue_growth": null,
+      "profit_margins": null,
+      "debt_to_equity": null,
+      "recommendation": null,
+      "sector": null,
+      "industry": null,
+      "country": null,
+      "_source": null,
+      "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>",
+      "insider_activity_se": {
+        "issuer_search_term": "Investor",
+        "date_from": "2026-05-04",
+        "date_to": "2026-08-02",
+        "transactions": [
+          {
+            "publication_date": "2026-07-17 12:16:03",
+            "issuer": "Investor Aktiebolag",
+            "person": "Christian Cederholm",
+            "role": "Verkst\u00e4llande\u00a0direkt\u00f6r\u00a0(VD)",
+            "related_party": "",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Investor AB ser. A",
+            "isin": "SE0015811955",
+            "transaction_date": "2026-07-17 00:00:00",
+            "volume": "2500,0",
+            "price": "387,3",
+            "currency": "SEK",
+            "venue": "NASDAQ STOCKHOLM AB"
+          },
+          {
+            "publication_date": "2026-06-05 16:47:05",
+            "issuer": "Investor Aktiebolag",
+            "person": "Jessica H\u00e4ggstr\u00f6m",
+            "role": "Annan\u00a0medlem\u00a0i\u00a0bolagets\u00a0administrations-,\u00a0lednings-\u00a0eller\u00a0kontrollorgan",
+            "related_party": "",
+            "transaction_type": "F\u00f6rv\u00e4rv",
+            "is_routine_option_exercise": false,
+            "instrument": "Investor AB ser. A",
+            "isin": "SE0015811955",
+            "transaction_date": "2026-06-05 00:00:00",
+            "volume": "270,0",
+            "price": "377,50",
+            "currency": "SEK",
+            "venue": "NASDAQ STOCKHOLM AB"
+          }
+        ],
+        "error": null
+      }
+    },
+    "COIN-XBT.ST": {
+      "error": "yahoo chart unreachable: HTTP Error 404: Not Found"
+    }
+  },
+  "crypto": {
+    "ethereum": {
+      "price_eur": 1620.75,
+      "market_cap": 195596230991,
+      "market_cap_rank": 2,
+      "change_24h_pct": -0.1,
+      "change_7d_pct": -0.7,
+      "change_30d_pct": 8.7,
+      "ath": 4229.76,
+      "ath_change_pct": -61.68217
+    }
+  },
+  "macro": {
+    "fed_funds_rate": {
+      "date": "2026-06-01",
+      "value": "3.63"
+    },
+    "us_10y_yield": {
+      "date": "2026-07-30",
+      "value": "4.68"
+    },
+    "us_2y_yield": {
+      "date": "2026-07-30",
+      "value": "4.23"
+    },
+    "dollar_index": {
+      "date": "2026-07-24",
+      "value": "120.7105"
+    },
+    "sek_per_usd": {
+      "date": "2026-07-24",
+      "value": "9.6998"
+    },
+    "usd_per_eur": {
+      "date": "2026-07-24",
+      "value": "1.1385"
+    },
+    "vix": {
+      "date": "2026-07-30",
+      "value": "17.09"
+    },
+    "us_cpi_yoy": {
+      "date": "2026-06-01",
+      "value": 3.73
+    },
+    "riksbank_policy_rate": {
+      "date": "2026-07-31",
+      "value": 1.75
+    },
+    "ecb_deposit_rate": {
+      "date": "2026-08-02",
+      "value": "2.25"
+    },
+    "se_cpi_yoy": {
+      "period": "2025M12",
+      "value": 0.3
+    },
+    "10y_2y_spread": 0.45,
+    "sek_per_eur": {
+      "date": "2026-07-24",
+      "value": 11.0432,
+      "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)"
+    }
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "value": 27,
+      "classification": "Fear"
+    }
+  }
+}

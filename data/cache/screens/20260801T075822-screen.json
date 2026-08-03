@@ -1,0 +1,65 @@
+{
+  "screened_at_utc": "2026-08-01T07:58:22.087904+00:00",
+  "filters": [
+    "max_pe max 999.0"
+  ],
+  "universe_size": 2,
+  "passed": {},
+  "missing_data": {
+    "SHB-A.ST": {
+      "missing_fields": [
+        "trailing_pe"
+      ],
+      "data": {
+        "price": 144.14999389648438,
+        "prev_close": 143.1999969482422,
+        "52w_high": 146.85000610351562,
+        "52w_low": 117.6500015258789,
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "currency": "SEK",
+        "_source": "yahoo_chart_v8 (fallback \u2014 quoteSummary/yfinance unavailable)",
+        "_fundamentals_unavailable_reason": "Yahoo's fundamentals endpoint (quoteSummary) is blocked in this environment; no free fundamentals source exists for non-US tickers (SEC EDGAR is US-listed-filer only). Price/momentum are real and fresh; market_cap/PE/margins/etc. are null, not estimated."
+      }
+    },
+    "INVE-A.ST": {
+      "missing_fields": [
+        "trailing_pe"
+      ],
+      "data": {
+        "price": 401.79998779296875,
+        "prev_close": 400.6000061035156,
+        "52w_high": 401.79998779296875,
+        "52w_low": 280.3999938964844,
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "currency": "SEK",
+        "_source": "yahoo_chart_v8 (fallback \u2014 quoteSummary/yfinance unavailable)",
+        "_fundamentals_unavailable_reason": "Yahoo's fundamentals endpoint (quoteSummary) is blocked in this environment; no free fundamentals source exists for non-US tickers (SEC EDGAR is US-listed-filer only). Price/momentum are real and fresh; market_cap/PE/margins/etc. are null, not estimated."
+      }
+    }
+  },
+  "failed": {}
+}

@@ -112,8 +112,8 @@ def main():
         "benchmark": {args.benchmark: metrics(bench_value, bench_returns)},
     }
 
-    os.makedirs("data/backtests", exist_ok=True)
-    fname = f"data/backtests/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.json"
+    os.makedirs("data/cache/backtests", exist_ok=True)
+    fname = f"data/cache/backtests/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.json"
     with open(fname, "w") as f:
         json.dump(result, f, indent=2)
 

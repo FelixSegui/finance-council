@@ -11,7 +11,7 @@ Sources:
   - Sentiment: alternative.me crypto Fear & Greed index
   - Insider activity: SEC EDGAR (US tickers only, --insiders flag)
 
-Writes one timestamped JSON snapshot to data/snapshots/.
+Writes one timestamped JSON snapshot to data/cache/snapshots/.
 Every downstream agent reads this file — it is the single source of
 numerical truth for the session. If a fetch fails, the field is written
 as null with an "error" note, never silently omitted or guessed.
@@ -485,9 +485,9 @@ def main():
 
     import os
     import glob
-    os.makedirs("data/snapshots", exist_ok=True)
+    os.makedirs("data/cache/snapshots", exist_ok=True)
     today_prefix = datetime.now(timezone.utc).strftime("%Y%m%d")
-    existing_today = glob.glob(f"data/snapshots/{today_prefix}T*.json")
+    existing_today = glob.glob(f"data/cache/snapshots/{today_prefix}T*.json")
     if existing_today:
         # Not a hard block - a same-day re-fetch can be legitimate (intraday
         # price move, testing a fix). But macro series (FRED, Riksbank, ECB)
@@ -498,7 +498,7 @@ def main():
               f"today ({', '.join(os.path.basename(f) for f in existing_today)}) "
               f"- macro data won't have changed since the last one today; "
               f"only re-fetch if you specifically need fresher equity/crypto prices.")
-    fname = f"data/snapshots/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.json"
+    fname = f"data/cache/snapshots/{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')}.json"
     with open(fname, "w") as f:
         json.dump(snapshot, f, indent=2)
 

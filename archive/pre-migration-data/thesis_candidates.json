@@ -1,0 +1,68 @@
+{
+  "note": "Thesis-driven NOMINATION store — the top of the stacked funnel. Names here were nominated by JUDGMENT (Claude, thesis-review agent, or the user), not by the data screen. Nomination is not endorsement: every name still flows through the SAME factor rank + hard screen as the rest of the universe (see .claude/agents/scout.md). A name that fails the hard data screen is FLAGGED with its reason and buyable only as a logged override (never a silent pass). `risk_tag` is the SUBJECTIVE risk read; it is kept separate from the objective data_risk_score the ranker computes. STALENESS: theses are dated and rest on Claude's training knowledge (cutoff Jan 2026) unless a number is fetched in-session; treat the qualitative thesis as an analyst view to verify, not fetched fact. Tickers here must also be added to universe.json category `thesis_candidates` via scripts/add_manual_tickers.py (validated).",
+  "last_updated": "2026-07-29",
+  "risk_tag_values": ["low", "med", "high"],
+  "source_values": ["claude", "user", "thesis-review"],
+  "candidates": [
+    {
+      "ticker": "SU.PA",
+      "name": "Schneider Electric",
+      "source": "claude",
+      "date": "2026-07-29",
+      "risk_tag": "med",
+      "thesis": "Electrification + data-center power demand (the 'shovel' of the AI build-out) + energy-efficiency, all policy-funded. Quality compounder with pricing power; genuinely sustainability-aligned (its product IS efficiency, not a bolt-on label). Fits the user's Europe + sustainability + growth preference. Highest-conviction of this set.",
+      "policy_tailwind": "Western grid-buildout and energy-transition spending; data-center power demand.",
+      "rationale_risk": "Cyclical industrial, rarely cheap — entry valuation matters; not a defensive holding."
+    },
+    {
+      "ticker": "ASML.AS",
+      "name": "ASML Holding",
+      "source": "claude",
+      "date": "2026-07-29",
+      "risk_tag": "med",
+      "thesis": "Effective monopoly on EUV lithography — no advanced chip exists without its machines. Wide moat, high margins, secular semiconductor demand.",
+      "policy_tailwind": "US CHIPS Act + EU Chips Act reshoring subsidies drive fab build-out.",
+      "rationale_risk": "Cyclical order book; China export-restriction exposure is a real swing factor."
+    },
+    {
+      "ticker": "IFX.DE",
+      "name": "Infineon Technologies",
+      "source": "claude",
+      "date": "2026-07-29",
+      "risk_tag": "high",
+      "thesis": "European power-semiconductor leader levered to EV and industrial electrification — sustainability-adjacent growth.",
+      "policy_tailwind": "EV adoption + electrification policy.",
+      "rationale_risk": "Tied to the auto cycle; more cyclical/volatile than the others here."
+    },
+    {
+      "ticker": "IBE.MC",
+      "name": "Iberdrola",
+      "source": "claude",
+      "date": "2026-07-29",
+      "risk_tag": "low",
+      "thesis": "Renewables-heavy regulated utility — a real sustainability holding and a steadier ballast within the medium tier.",
+      "policy_tailwind": "Renewable-energy subsidies and grid investment.",
+      "rationale_risk": "Rate-sensitive and capital-intensive; lower growth than the rest — the 'ballast' pick."
+    },
+    {
+      "ticker": "NOVO-B.CO",
+      "name": "Novo Nordisk",
+      "source": "claude",
+      "date": "2026-07-29",
+      "risk_tag": "high",
+      "thesis": "GLP-1 (obesity/diabetes) structural demand; dominant franchise, high margins.",
+      "policy_tailwind": "Drug-pricing politics run AGAINST this one (US pricing pressure) — a headwind, flagged honestly.",
+      "rationale_risk": "HIGH STALENESS RISK: Novo was in real turmoil around the Jan-2026 knowledge cutoff (GLP-1 competition, mixed trial readouts). Verify current fundamentals before trusting this thesis — it is the least reliable name on the list."
+    },
+    {
+      "ticker": "TSM",
+      "name": "Taiwan Semiconductor (US ADR)",
+      "source": "claude",
+      "date": "2026-07-29",
+      "risk_tag": "high",
+      "thesis": "The foundry essentially all advanced chips depend on; scale and process-node lead form a deep moat.",
+      "policy_tailwind": "Reshoring subsidies (CHIPS Act) fund its US fabs.",
+      "rationale_risk": "Taiwan geopolitical risk is the dominant, non-diversifiable tail. Files 20-F not 10-K, so SEC fundamentals won't populate — will rank momentum-only."
+    }
+  ]
+}

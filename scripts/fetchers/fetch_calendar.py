@@ -6,7 +6,7 @@ Fetch upcoming market events relevant to the portfolio:
     which is MANUALLY maintained — this script only filters it to the
     lookahead window. It never invents a date.
 
-Writes data/cache/calendar/YYYYMMDD-events.json and prints a summary.
+Writes data/calendar/YYYYMMDD-events.json and prints a summary.
 
 Usage:
   python fetch_calendar.py --tickers AAPL,EVO.ST --days 45

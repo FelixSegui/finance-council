@@ -1,0 +1,18 @@
+{
+  "fetched_at_utc": "2026-08-02T09:03:18.621795+00:00",
+  "fundamentals": {
+    "AAPL": {
+      "revenue": 416161000000,
+      "revenue_prior": 391035000000,
+      "net_income": 112010000000,
+      "equity": 73733000000,
+      "liabilities": 285508000000,
+      "shares": 14594180000,
+      "revenue_growth": 0.06425511782832749,
+      "debt_to_equity": 3.872187487285205,
+      "roe": 1.5191298333175105,
+      "_source": "sec_edgar_companyfacts",
+      "profit_margins": 0.2691506412181824
+    }
+  }
+}

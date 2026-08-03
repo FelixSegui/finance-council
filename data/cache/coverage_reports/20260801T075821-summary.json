@@ -1,0 +1,194 @@
+{
+  "generated_utc": "2026-08-01T07:58:21.320861+00:00",
+  "snapshot_used": "data/cache/snapshots/20260801T075821.json",
+  "snapshot_fetched_at": "2026-08-01T07:58:06.876265+00:00",
+  "holdings": [
+    {
+      "ticker": "CASH_SEK",
+      "name": "Tax-reserve sparkonto (2027 deklaration - confirmed HB + SEB capital-gains tax)",
+      "account": "hb-main",
+      "status": "N/A",
+      "detail": "cash \u2014 not a market instrument",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "CASH_SEK",
+      "name": "Handelsbanken normal/checking account",
+      "account": "hb-checking",
+      "status": "N/A",
+      "detail": "cash \u2014 not a market instrument",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "SHB-A.ST",
+      "name": "Handelsbanken A (stock)",
+      "account": "avanza-isk",
+      "status": "OK (price only)",
+      "detail": "Yahoo's fundamentals endpoint (quoteSummary) is blocked in this environment; no free fundamentals source exists for non-US tickers (SEC EDGAR is US-listed-filer only). Price/momentum are real and fresh; market_cap/PE/margins/etc. are null, not estimated.",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "INVE-A.ST",
+      "name": "Investor A (stock)",
+      "account": "avanza-isk",
+      "status": "OK (price only)",
+      "detail": "Yahoo's fundamentals endpoint (quoteSummary) is blocked in this environment; no free fundamentals source exists for non-US tickers (SEC EDGAR is US-listed-filer only). Price/momentum are real and fresh; market_cap/PE/margins/etc. are null, not estimated.",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "TBD",
+      "name": "Avanza Auto 3 (fund)",
+      "account": "avanza-isk",
+      "status": "N/A (permanent)",
+      "detail": "UNLISTED FUND (user-confirmed 2026-07-31) - Avanza Auto 3 exists only on Avanza's own fund platform, not on a public exchange. No ticker/ISIN will ever resolve for it via Yahoo/SEC or any exchange-based fetch. This is PERMANENT, not a data gap awaiting a fix - do not keep re-flagging it as an open item each sweep.",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "TBD",
+      "name": "Tundra Sustainable Frontier Fund A SEK",
+      "account": "avanza-isk",
+      "status": "N/A",
+      "detail": "no resolved ticker/ISIN on file yet \u2014 cannot be fetched until named",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "COIN-XBT.ST",
+      "name": "CoinShares XBT Provider Bitcoin Tracker One (certificate)",
+      "account": "avanza-isk",
+      "status": "ERROR",
+      "detail": "yahoo chart unreachable: HTTP Error 404: Not Found (fallback path also failed)",
+      "consecutive_sweeps_missing": 5
+    },
+    {
+      "ticker": "TBD",
+      "name": "Avanza Global (fund)",
+      "account": "avanza-isk",
+      "status": "N/A (permanent)",
+      "detail": "UNLISTED FUND (user-confirmed 2026-07-31) - Avanza Global exists only on Avanza's own fund platform, not on a public exchange. No ticker/ISIN will ever resolve for it via Yahoo/SEC or any exchange-based fetch. This is PERMANENT, not a data gap awaiting a fix - do not keep re-flagging it as an open item each sweep.",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "CASH_SEK",
+      "name": "Avanza ISK available cash",
+      "account": "avanza-isk",
+      "status": "N/A",
+      "detail": "cash \u2014 not a market instrument",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "TBD",
+      "name": "Swedbank fund",
+      "account": "swedbank-fund",
+      "status": "N/A (permanent)",
+      "detail": "LIKELY UNLISTED FUND (inferred 2026-07-31, NOT explicitly confirmed by user - flag if this differs): probably a Swedbank Robur-style fund on Swedbank's own platform, same structural situation as Avanza Auto 3/Avanza Global. Treated as probably-permanent pending user confirmation, not re-flagged as an urgent open item each sweep.",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "CASH_SEK",
+      "name": "SEB fund proceeds - fully transferred to Avanza ISK 2026-07-20",
+      "account": "seb-fund",
+      "status": "N/A",
+      "detail": "cash \u2014 not a market instrument",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "ethereum",
+      "name": "ETH (self-custody wallet)",
+      "account": "eth-wallet",
+      "status": "OK",
+      "detail": "CoinGecko, 3 fields",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "CASH_USD",
+      "name": "PayPal USD balance",
+      "account": "paypal",
+      "status": "N/A",
+      "detail": "cash \u2014 not a market instrument",
+      "consecutive_sweeps_missing": ""
+    },
+    {
+      "ticker": "CASH_EUR",
+      "name": "PayPal EUR balance",
+      "account": "paypal",
+      "status": "N/A",
+      "detail": "cash \u2014 not a market instrument",
+      "consecutive_sweeps_missing": ""
+    }
+  ],
+  "holdings_summary": {
+    "ok": 1,
+    "price_only": 2,
+    "missing_or_error": 1,
+    "na": 10
+  },
+  "stuck_2plus_sweeps": [
+    {
+      "ticker": "COIN-XBT.ST",
+      "name": "CoinShares XBT Provider Bitcoin Tracker One (certificate)",
+      "account": "avanza-isk",
+      "status": "ERROR",
+      "detail": "yahoo chart unreachable: HTTP Error 404: Not Found (fallback path also failed)",
+      "consecutive_sweeps_missing": 5
+    }
+  ],
+  "universe_summary": {
+    "structural": [
+      {
+        "category": "us_mega_cap",
+        "count": 6,
+        "with_free_fundamentals_source": 6
+      },
+      {
+        "category": "us_quality_dividend",
+        "count": 6,
+        "with_free_fundamentals_source": 6
+      },
+      {
+        "category": "semis_and_ai_infra",
+        "count": 4,
+        "with_free_fundamentals_source": 2
+      },
+      {
+        "category": "nordic_large_cap",
+        "count": 10,
+        "with_free_fundamentals_source": 0
+      },
+      {
+        "category": "broad_index_etfs",
+        "count": 5,
+        "with_free_fundamentals_source": 0
+      },
+      {
+        "category": "crypto_usd_proxies",
+        "count": 2,
+        "with_free_fundamentals_source": 0
+      },
+      {
+        "category": "sp500",
+        "count": 503,
+        "with_free_fundamentals_source": 503
+      },
+      {
+        "category": "europe_large_cap",
+        "count": 27,
+        "with_free_fundamentals_source": 0
+      },
+      {
+        "category": "thesis_candidates",
+        "count": 6,
+        "with_free_fundamentals_source": 0
+      }
+    ],
+    "empirical": {
+      "ranking_file": "data/cache/rankings/20260729T150852-ranking.json",
+      "generated_utc": "2026-07-29T15:08:52.153526+00:00",
+      "universe_categories": "sp500,europe_large_cap,thesis_candidates",
+      "coverage": {
+        "ranked": 449,
+        "momentum_only": 61,
+        "partial_data": 0
+      }
+    }
+  }
+}

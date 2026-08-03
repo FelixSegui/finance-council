@@ -22,29 +22,33 @@ a one-line resolution — never delete it silently.
 
 ## P — Portfolio items
 
-### P1 — ETH cost basis and acquisition dates
+### P1 — ETH cost basis
 - **Status:** blocked (on user — needs time to dig it up)
-- **Blocks:** any sale, any tax math, any real return figure for the position.
+- **Quantity is now CLOSED** (0.50185 ETH, confirmed 2026-08-03) and the
+  position reprices from live data. What remains is only the cost basis.
+- **Blocks:** any sale, any tax math, any return figure for the position.
   Swedish K4 requires cost basis; without it a sale can't be reported properly.
-- **Also missing:** the ETH *quantity*. `portfolio.json` carries the wallet at
-  ~12,500 SEK as an account-level estimate with `quantity: null`, so the
-  position's value can't be repriced when ETH moves — it just sits at a stale
-  number. Quantity is easier to get than cost basis (it's visible in the
-  wallet right now) and unlocks live pricing on its own, so send it even if
-  the cost basis takes longer.
 - **Not urgent** unless you intend to sell.
 
-### P2 — Write the adopted target allocation into the data files
-- **Status:** open — needs your explicit go-ahead
-- **What:** you approved 85% equity / 10% crypto / 5% cash / 0% fixed income
-  on 2026-07-27, but `portfolio.json.targets` is still `null`. Every sweep
-  re-derives drift against a target that isn't recorded anywhere except memos.
-- **Why it's still sitting here:** the system is under a standing instruction
-  never to write targets into your files on its own. One "yes, write it" from
-  you closes this permanently.
-- **Caveat, unchanged:** no backtest has confirmed 85/10 respects your stated
-  -30% max drawdown tolerance. Adopting the number and testing it are separate
-  actions — see S5.
+### P2 — Reconcile the Excel-backed branch with `main`
+- **Status:** open — needs your decision, and it is the most consequential
+  item on this list
+- **What happened:** the repository has two parallel development lines that
+  both diverged from the same 2026-07-22 commit and have been running blind
+  to each other for ~12 days. `main` (27 commits) has the
+  swedish-equity-review skill, the Yahoo fundamentals fix, the
+  Finansinspektionen insider fetch and the weekly sweeps. The branch
+  `claude/project-status-briefing-0528tx` (25 commits) has a whole
+  Excel-backed rearchitecture — `master.xlsx`, a sync layer, a dashboard, a
+  5-persona controller, a discovery funnel and coverage reports.
+- **This is the "something keeps getting missed" you noticed.** It is not one
+  lost file. Both lines independently fixed the same things (the phantom
+  Swedbank account, the COIN-XBT hold correction), which is pure duplicated
+  effort, and each is missing real work the other has.
+- **Not actioned unilaterally:** merging 25 commits that restructure the same
+  files a different way is a large, hard-to-reverse decision about what this
+  system *is*. See the three options in the 2026-08-03 discussion; the choice
+  is yours.
 
 ### P3 — PayPal routing (the fee is now known; the route isn't)
 - **Status:** open
@@ -76,19 +80,20 @@ a one-line resolution — never delete it silently.
   cheap, but check the spread/courtage on a thin certificate before assuming
   the fee saving survives the transaction cost.
 
-### P5 — Three positions still have no recorded thesis
-- **Status:** open — worst offender is ETH at 10+ sweeps
-- **SHB-A.ST**, **INVE-A.ST**, **ETH**: no stated reason for holding any of
-  them. This is the system's longest-running gap and it's a governance
-  problem, not a market one — a position with no written claim can't be
-  tested, so it never gets sold for a *reason*, only on mood.
-- **The blocker is genuinely you, not data:** the system can price these and
-  score their fundamentals, but it cannot invent why *you* bought them.
-  One sentence each is enough. "Diversification, hold 3+ years, sell if X"
-  is a complete, testable thesis.
-- **INVE-A.ST has a second, separate blocker:** the metric that actually
-  matters for a holding company is NAV discount/premium, which has never been
-  obtained. Its 4.71x P/E is an accounting artifact and means nothing. See S6.
+### P5 — ETH thesis (the two stocks are now done)
+- **Status:** open for ETH only
+- **SHB-A.ST and INVE-A.ST are CLOSED** (2026-08-03): recorded as "good track
+  record, secure/stable with upside", bought without comparing alternatives
+  because there was spare cash to put to work. That candour matters and is
+  recorded — it makes both **rotation candidates** rather than conviction
+  holdings, which is directly relevant to the P6 medium-tier build.
+- **ETH still has no thesis** after 10+ sweeps. The blocker is genuinely you,
+  not data: the system can price it but cannot invent why you hold it. One
+  sentence is enough — "diversification, hold 3+ years, sell if X" is complete
+  and testable.
+- **INVE-A.ST keeps a separate open blocker:** its thesis is plausible but not
+  properly *testable*, because the metric that matters for a holding company
+  is NAV discount/premium and it has never been obtained. See S6.
 
 ### P6 — Build the medium tier (~26,400 SEK available)
 - **Status:** open — direction set 2026-08-03, selection not made
@@ -181,6 +186,25 @@ a one-line resolution — never delete it silently.
 
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
+
+- **2026-08-03 — Target allocation written into the files**: on your explicit
+  instruction, `portfolio.json.targets` now holds equity 85 / crypto 10 /
+  cash 5 / fixed income 0. Approved 2026-07-27, recorded 2026-08-03. The
+  drawdown caveat (S5) is untouched by this and still open.
+- **2026-08-03 — ETH quantity**: 0.50185 ETH confirmed. The position now
+  reprices from live data instead of a fixed estimate. **This produced a real
+  correction:** it had been carried at ~12,500 SEK and is actually worth
+  ~8,911 SEK — about 29% overstated — so every crypto-weight and total-value
+  figure before today was too high. Cost basis (P1) is still open.
+- **2026-08-03 — Theses for Handelsbanken A and Investor A**: recorded in your
+  words, including that both were bought without comparison shopping. Both are
+  now treated as rotation candidates rather than conviction holdings.
+- **2026-08-03 — Excel `Stocks` data type as a live source**: investigated and
+  ruled out as a *pipeline* source (needs a live Microsoft 365 Excel session
+  to refresh; nothing headless can trigger it, and openpyxl does not preserve
+  linked data types across a save). Confirmed empirically — the workbook
+  currently contains no linked-data parts at all. Still useful as a *manual*
+  gap-filler via the Manual Data sheet.
 
 - **2026-08-03 — Avanza Global TER** (was the most urgent open item):
   confirmed **0.10%/yr**. The largest holding is also the cheapest; fee drag

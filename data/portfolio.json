@@ -112,7 +112,7 @@
       "market_value_as_of": "2026-07-28",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "TBD - still no stated reason for holding (open question 9). swedish-equity-review 2026-07-28 (full real data, see data/company_profiles/SHB-A.ST.json): Score 58/100, Coverage 80% (5/6, only Business Quality missing). REAL TENSION: fundamentals say caution (revenue declined FY2025, PEG ~19.8, analyst 'underperform') but Chairman Par Boman + board member Fredrik Lundberg both bought very heavily (>750M SEK combined) within 48 hours, 2026-07-20/21 - the two signals disagree, not averaged away. Live price 144.25-144.85/share (2026-07-28).",
+      "thesis": "RECORDED 2026-08-03 (user's own words, closes the long-standing gap): bought because Handelsbanken has 'shown good track record' and is a 'secure', 'stable' pick that 'still shows good upside'. PROVENANCE, stated candidly by the user and kept because it matters: 'I actually bought them without considering a lot of other different options, it was rather that I had some money left and just wanted it to be active on the market.' So this is a PARKING decision, not a conviction pick - the user has explicitly NOT compared it against alternatives. Two consequences agents must respect: (1) it is legitimately testable on 'stable with upside' - if stability or the track record breaks, the thesis breaks; (2) because no comparison was ever made, this position is a FAIR ROTATION CANDIDATE when the medium-tier build (OPEN_ITEMS.md P6) surfaces a better-vetted name. Do not treat it as a high-conviction holding the user is attached to. TENSION TO WATCH: the 'stable/good track record' premise is the part current data argues with - revenue declined 3.8% YoY, PEG ~20, analyst consensus 'underperform'. That does not break the thesis yet (a low-beta 5.5% dividend payer is still defensible as 'stable'), but 'good upside' is the limb under most pressure. swedish-equity-review 2026-07-28 (full real data, see data/company_profiles/SHB-A.ST.json): Score 58/100, Coverage 80% (5/6, only Business Quality missing). REAL TENSION: fundamentals say caution (revenue declined FY2025, PEG ~19.8, analyst 'underperform') but Chairman Par Boman + board member Fredrik Lundberg both bought very heavily (>750M SEK combined) within 48 hours, 2026-07-20/21 - the two signals disagree, not averaged away. Live price 144.25-144.85/share (2026-07-28).",
       "target_weight_pct": null
     },
     {
@@ -127,7 +127,7 @@
       "market_value_as_of": "2026-07-28",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "TBD - still no stated reason for holding (open question 9). swedish-equity-review 2026-07-28 (see data/company_profiles/INVE-A.ST.json): NO SCORE reportable (corrected same day) - only 2 of 6 dimensions have real data (Dividend Quality, Insider Activity); Holding Company Valuation requires an actual NAV discount, not obtained (would need Investor's own IR page or a quarterly report PDF), so it's marked Not Available per the NAV fallback hierarchy, not filled in with a P/E stand-in. Insider activity: sustained modest CEO/board buying over 6 months. Live price 397.00-400.80/share (2026-07-28).",
+      "thesis": "RECORDED 2026-08-03 (user's own words, same rationale as SHB-A.ST - both were bought together): 'good track record', 'secure'/'stable' pick that 'still shows good upside', bought 'without considering a lot of other different options... had some money left and just wanted it to be active on the market'. Same two consequences as SHB-A.ST: testable on the stability/upside claim, and a fair rotation candidate rather than a conviction holding, since no comparison was ever made. NOTE - this thesis fits Investor A better than it fits Handelsbanken: a diversified Swedish holding company IS structurally a 'stable with upside' vehicle, and current data does not argue with it (ROE 27.3%, positive FCF, up 39.2% vs cost basis). The honest caveat is unchanged: the metric that would actually test it for a holding company is NAV discount/premium, which has never been obtained (see OPEN_ITEMS.md S6) - the 4.71x P/E is an accounting artifact and must not be read as 'cheap'. So the thesis is plausible but still not properly testable. swedish-equity-review 2026-07-28 (see data/company_profiles/INVE-A.ST.json): NO SCORE reportable (corrected same day) - only 2 of 6 dimensions have real data (Dividend Quality, Insider Activity); Holding Company Valuation requires an actual NAV discount, not obtained (would need Investor's own IR page or a quarterly report PDF), so it's marked Not Available per the NAV fallback hierarchy, not filled in with a P/E stand-in. Insider activity: sustained modest CEO/board buying over 6 months. Live price 397.00-400.80/share (2026-07-28).",
       "target_weight_pct": null
     },
     {
@@ -256,11 +256,15 @@
       "account_id": "eth-wallet",
       "instrument_type": "spot_crypto",
       "exposure_class": "crypto",
-      "quantity": null,
+      "quantity": 0.50185,
+      "quantity_source": "USER-CONFIRMED 2026-08-03: 0.50185 ETH, which the user reported as 931.07 USD at the time. This closes the long-standing quantity gap - the position can now be repriced from fetched data instead of carried at a fixed estimate.",
       "cost_basis_per_unit": null,
+      "market_value_sek": 8911,
+      "market_value_as_of": "2026-08-03",
+      "market_value_source": "COMPUTED 2026-08-03 from user-confirmed quantity 0.50185 x fetched ETH price 1,607.84 EUR (snapshot 20260803T135919.json) x sek_per_eur 11.0432 = ~8,911 SEK. NOTE: the user's own 931.07 USD figure converts to ~9,031 SEK at sek_per_usd 9.6998 - a ~120 SEK difference explained by quote timing and the FX rate being dated 2026-07-24. Either figure is honest; the computed one is used because it traces to fetched data per the system's sourcing rule.",
       "annual_fee_pct": 0,
       "date_acquired": null,
-      "thesis": "TBD",
+      "thesis": "TBD - still no stated reason for holding (OPEN_ITEMS.md P5). IMPORTANT CORRECTION 2026-08-03: this position was carried at ~12,500 SEK as an account-level estimate for months. With the real quantity now known it is worth ~8,911 SEK - roughly 3,600 SEK LESS than assumed, about 29% overstated. Every crypto-weight and total-portfolio figure produced before 2026-08-03 was therefore too high, and the crypto overweight vs the 10% target was smaller than reported. This is exactly the failure mode the system exists to prevent (a stale estimate quietly propagating into allocation math) and should be treated as a real finding, not a rounding adjustment.",
       "target_weight_pct": null
     },
     {
@@ -293,11 +297,12 @@
     }
   ],
   "targets": {
-    "equity_pct": null,
-    "crypto_pct": null,
-    "fixed_income_pct": null,
-    "cash_pct": null,
-    "notes": "Targets measured on EXPOSURE class. Auto 50 / Auto 75 name-implied splits (~50/50 and ~75/25) can be used provisionally, flagged as name-implied until factsheets confirm."
+    "equity_pct": 85,
+    "crypto_pct": 10,
+    "cash_pct": 5,
+    "fixed_income_pct": 0,
+    "adopted": "2026-08-03",
+    "notes": "ADOPTED - written in 2026-08-03 on the user's explicit instruction ('You have my ok to write the 85/10/5 into the files'). Originally approved in chat 2026-07-27 but never recorded, so every sweep since re-derived drift against a target that existed only in memos; that gap is now closed. Targets are measured on EXPOSURE class, not account or product. Fixed income is deliberately 0 per the user's standing direction that fixed income should be near-zero at this portfolio size (see investor_profile.json risk_tier_framework_proposed.fixed_income_stance); the 5% cash line is ballast, not a bond sleeve. OPEN CAVEAT, unresolved and deliberately not hidden by the act of writing this in: no backtest has ever confirmed that 85% equity + 10% crypto respects the user's stated -30% max drawdown tolerance - see OPEN_ITEMS.md S5. Adopting the target and validating it are separate steps, and only the first has happened. The glidepath in investor_profile.json re-engages if the property goal firms up with a date inside ~3 years."
   },
   "exit_plans": {
     "hb-af-exit": {

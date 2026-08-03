@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-07-28",
+  "last_updated": "2026-08-03",
   "base_currency": "SEK",
-  "total_estimate_sek": "~219,141 SEK: hb-main 10,752.76 + hb-checking 611 + avanza-isk ~180,956 (Avanza Global buy 119,999 and Tundra sale 1,535 both EXECUTED and confirmed 2026-07-28; 26,400.30 SEK cash available; account total not yet reconfirmed via a fresh post-execution statement) + paypal 14,321.03 (stale FX) + eth-wallet 12,500 (approx). Crypto exposure ~28,718 SEK sits above the 10% target - held deliberately, not being trimmed, see COIN-XBT.ST holding. Full history and superseded figures: data/portfolio_history_archive.md.",
+  "total_estimate_sek": "~217,700 SEK as of 2026-08-03: hb-main 10,752.76 + hb-checking 611 + avanza-isk ~179,800 (SHB-A.ST and INVE-A.ST repriced from the 2026-08-03 snapshot; COIN-XBT.ST marked down to 15,240 on the user's reported 2,540/unit, from 16,218; 26,400.30 SEK cash still available) + paypal ~14,369 (repriced at sek_per_usd 9.6998 / sek_per_eur 11.0432) + eth-wallet 12,500 (approx, quantity still unknown - see OPEN_ITEMS.md P1). EXCLUDED by design: the Revolut everyday account (operating cash, not capital) and the frozen SEB Osteuropafond (unsellable, 0.25 SEK basis). Crypto exposure ~27,740 SEK remains above the 10% target - held deliberately, not being trimmed. Full history and superseded figures: data/portfolio_history_archive.md.",
   "cash": {
     "amount": 0,
     "currency": "SEK"
@@ -45,9 +45,9 @@
         { "fund": "SEB Global Focus C USD (remaining)", "date": "2026-07-09", "cost_basis_sek": 472.50, "sale_proceeds_sek": 2187.99, "kapitalvinst_sek": 1715.49 },
         { "fund": "SEB Emerging Markets C USD Lux", "date": "2026-07-10", "cost_basis_sek": 250.00, "sale_proceeds_sek": 752.73, "kapitalvinst_sek": 502.73 },
         { "fund": "SEB Emerging Marketsfond", "date": "2026-07-10", "cost_basis_sek": 2465.84, "sale_proceeds_sek": 2989.87, "kapitalvinst_sek": 524.03 },
-        { "fund": "SEB Osteuropafond", "date": null, "cost_basis_sek": 0.25, "sale_proceeds_sek": null, "kapitalvinst_sek": null, "note": "Surfaced 2026-07-27 (user-supplied cost-basis table) - not part of the original 7-fund breakdown above. Cost basis is immaterial (0.25 SEK). Sale date/proceeds unconfirmed - do not assume it was sold with the others. The ~81.71 SEK gap between the 7-fund sale-proceeds sum (17,300.72 SEK) and the confirmed final transferred figure (17,382.43 SEK) may be this fund's sale proceeds, but that is NOT confirmed - flag only, do not treat as fact." }
+        { "fund": "SEB Osteuropafond", "date": null, "cost_basis_sek": 0.25, "sale_proceeds_sek": null, "kapitalvinst_sek": null, "note": "RESOLVED 2026-08-03: NOT SOLD - this fund could not be sold because of the war in Ukraine (user statement 2026-08-03: 'one very small fund left in SEB that I could not sell due to conflict in Ukraine'). Russia/Eastern-Europe funds were widely gated/suspended for redemptions, which explains the previously-unexplained missing sale date. This closes the 2026-07-27 flag. IMPORTANT CORRECTION: the earlier speculation that the ~81.71 SEK gap between the 7-fund proceeds sum (17,300.72) and the transferred total (17,382.43) was this fund's sale proceeds is now WRONG and withdrawn - the fund was never sold, so that gap has some other cause and remains genuinely unexplained (immaterial, ~82 SEK, not worth chasing). See the seb-osteuropa holding entry." }
       ],
-      "notes": "FULLY TRANSFERRED to Avanza ISK 2026-07-20, 17,382.43 SEK. Tax CONFIRMED: gain 10,124.74 SEK, tax 3,037.42 SEK (see tax_breakdown_by_fund). Combined with HB's 8,455.86 SEK tax, total owed 11,493.28 SEK. Full history, incl. the corrected 'swedbank-fund' duplicate-account mixup: data/portfolio_history_archive.md#seb-fund."
+      "notes": "CASH fully transferred to Avanza ISK 2026-07-20, 17,382.43 SEK. Tax CONFIRMED: gain 10,124.74 SEK, tax 3,037.42 SEK (see tax_breakdown_by_fund). Combined with HB's 8,455.86 SEK tax, total owed 11,493.28 SEK. CORRECTION 2026-08-03: this account is NOT fully closed - a residual SEB Osteuropafond position remains, frozen/unsellable because of the war in Ukraine (user statement 2026-08-03). The account was previously recorded as fully exited, which was wrong. Value is immaterial (cost basis 0.25 SEK) and it cannot be acted on, but it means the SEB relationship is still open and the account should not be treated as closed. Full history, incl. the corrected 'swedbank-fund' duplicate-account mixup: data/portfolio_history_archive.md#seb-fund."
     },
     {
       "account_id": "eth-wallet",
@@ -57,11 +57,18 @@
       "notes": "Direct ETH, no wrapper possible. Swedish tax: 30% on gains via K4, and EVERY disposal is a taxable event - including token swaps, not just SEK sales. Alternative for crypto exposure: certificate inside ISK (no per-trade tax, but ~2%/yr fee + issuer counterparty risk). Agents must never treat a wallet swap as tax-neutral."
     },
     {
+      "account_id": "revolut",
+      "wrapper": "NONE",
+      "institution": "Revolut",
+      "approx_value_sek": null,
+      "notes": "DISCLOSED 2026-08-03 as part of the full account inventory (closes former open question 5). Everyday spending/salary account - money in and out constantly, ~1,500 EUR at disclosure but expected to swing widely. approx_value_sek intentionally null and NOT to be estimated or maintained. Excluded from all portfolio math by design - see the matching holding entry for why. This is operating cash, not investable capital."
+    },
+    {
       "account_id": "paypal",
       "wrapper": "PAYPAL_BALANCE",
       "institution": "PayPal",
       "approx_value_sek": null,
-      "notes": "DISCLOSED 2026-07-12: PayPal balance, previously unknown to the system - third undisclosed-account surprise (after SEB), open question 5 (full inventory) directly vindicated. Holds 1,177.49 USD + 266.88 EUR, both uninvested cash sitting outside any wrapper - no ISK/AF shelter, no growth, and exposed to PayPal's own conversion spread (typically ~3-4% above mid-market, unconfirmed - do not assume a number, get PayPal's actual fee schedule) if converted through PayPal itself rather than transferred out first. RECURRING INFLOW: user reports ~750-1000 EUR arriving roughly every 2 months, irregular occasions/timing. approx_value_sek intentionally null - do not estimate from stale rates; needs sek_per_usd AND sek_per_eur from a fresh snapshot (sek_per_eur has been a standing fetch-script gap since 2026-07-07)."
+      "notes": "DISCLOSED 2026-07-12: PayPal balance, previously unknown to the system - third undisclosed-account surprise (after SEB), open question 5 (full inventory) directly vindicated. Holds 1,177.49 USD + 266.88 EUR, both uninvested cash sitting outside any wrapper - no ISK/AF shelter, no growth, and exposed to PayPal's own conversion spread, CONFIRMED 2026-08-03 by the user at 3-4% - use 4% as the planning figure (user's explicit instruction: assume the worst case). On the current 1,177.49 USD + 266.88 EUR that is roughly 575 SEK of pure friction on a single full conversion, and it recurs on every future inflow if nothing changes. RECURRING INFLOW: user reports ~750-1000 EUR arriving roughly every 2 months, irregular occasions/timing. approx_value_sek intentionally null - do not estimate from stale rates; needs sek_per_usd AND sek_per_eur from a fresh snapshot (sek_per_eur has been a standing fetch-script gap since 2026-07-07)."
     }
   ],
   "holdings": [
@@ -161,11 +168,13 @@
       "exposure_class": "crypto",
       "quantity": 6,
       "cost_basis_per_unit": 2016.67,
-      "market_value_sek": 16218,
-      "market_value_as_of": "2026-07-28",
+      "market_value_sek": 15240,
+      "market_value_as_of": "2026-08-03",
+      "market_value_source": "USER-RELAYED 2026-08-03 (not fetched) - user reported latest price 2,540/unit, total value 15,240 SEK. This ticker has no working automated price feed (see price_tracking_note), so this figure is manual ground truth, not snapshot data. Agents may use it but must label it user-relayed, not fetched.",
       "annual_fee_pct": 2.5,
       "date_acquired": null,
-      "thesis": "HOLD DECISION (confirmed 2026-07-27): full 6 units kept, NOT trimmed - corrects an inaccurate 2026-07-22 'TRIM' entry, see resolved_structural_questions and portfolio_history_archive.md#coin-xbt for the process-failure writeup. Crypto weight (ETH + COIN ~28,718 SEK, above the 10% target) is expected to decline via denominator growth as equity contributions land, not via a sale. Certificate-vs-self-custody question (Q13) remains open. Original thesis, user's words: BTC 'pretty low valued right now,' 2028 halving ahead, 'positive buy-in signals now.' Factsheet: 2.5%/yr fee, tracks BTC ~1:1, 2% issuer exit fee (not applicable to ordinary exchange sales). Live price 2026-07-28: 2,702.97/unit (16,218 SEK), +34.03% since purchase.",
+      "price_tracking_note": "NO USABLE TICKER (confirmed by user 2026-08-03). The 'COIN-XBT.ST' symbol 404s on Yahoo and has no chart fallback - it is not a tradeable Yahoo symbol, so automated per-unit pricing is not available and should stop being attempted as if it were a transient outage. AGREED PROXY (user's suggestion, adopted): track spot BITCOIN via CoinGecko (`--crypto bitcoin`) as a directional indicator of this position, NOT as an exact price. Calibration anchor set 2026-08-03: BTC 54,786 EUR x 11.0432 SEK/EUR = ~605,013 SEK/BTC, vs. certificate 2,540 SEK/unit -> ratio ~0.004198 BTC per unit. Track the RATIO over time: if the certificate moves materially against BTC beyond the ~2.5%/yr fee drag, that is tracking error or issuer risk showing up and is worth flagging. Never present a BTC-derived number as this certificate's actual price - the user's own statement is the only real price source.",
+      "thesis": "HOLD DECISION (confirmed 2026-07-27): full 6 units kept, NOT trimmed - corrects an inaccurate 2026-07-22 'TRIM' entry, see portfolio_history_archive.md#coin-xbt for the process-failure writeup. Crypto weight is expected to decline via denominator growth as equity contributions land, not via a sale. Original thesis, user's words: BTC 'pretty low valued right now,' 2028 halving ahead, 'positive buy-in signals now.' Factsheet: 2.5%/yr fee, tracks BTC ~1:1, 2% issuer exit fee (not applicable to ordinary exchange sales). DECISION 2026-08-03 (user): will NOT convert to self-custody real bitcoin - the former open question 13 is closed in favour of keeping crypto inside the ISK wrapper. Instead the user wants to SWITCH TO A CHEAPER CERTIFICATE/ETP to cut the 2.5%/yr fee - that is now an active task, see OPEN_ITEMS.md P4. Price 2026-08-03 (user-relayed): 2,540/unit, 15,240 SEK total, +25.95% vs the 2,016.67 cost basis - down from +34.03% on 2026-07-28 as BTC softened (BTC -3.8% over 7 days per the 2026-08-03 snapshot).",
       "target_weight_pct": null
     },
     {
@@ -178,9 +187,9 @@
       "cost_basis_total_sek": 119999,
       "market_value_sek": 119999,
       "market_value_as_of": "2026-07-28",
-      "annual_fee_pct": null,
+      "annual_fee_pct": 0.10,
       "date_acquired": "2026-07-28",
-      "thesis": "BOUGHT 2026-07-28, CONFIRMED - broad global index fund, core secure-tier holding. Order placed at 120,000 SEK, executed at 119,999 SEK. This purchase overshot the calculated ~90,240 SEK secure-tier gap by ~29,760 SEK - see open question 16. Annual fee (TER) not yet confirmed - get from Avanza's factsheet before grading fee drag.",
+      "thesis": "BOUGHT 2026-07-28, CONFIRMED - broad global index fund, core secure-tier holding. Order placed at 120,000 SEK, executed at 119,999 SEK. This purchase overshot the calculated ~90,240 SEK secure-tier gap by ~29,760 SEK - see OPEN_ITEMS.md P6. FEE CONFIRMED 2026-08-03 (user-supplied): 0.10%/yr - excellent, well inside the 0.4% portfolio fee cap, and the cheapest holding in the portfolio. This resolves the former open question 17, which the 2026-08-03 memo had flagged as the single highest-leverage unknown (it graded fee drag WATCH on an unknown TER covering 54.7% of the portfolio). Outcome: fee drag is NOT a problem on this holding.",
       "target_weight_pct": null
     },
     {
@@ -209,6 +218,36 @@
       "annual_fee_pct": null,
       "date_acquired": "2026-07-12",
       "thesis": "Not an investment. Full 17,382.43 SEK transferred to Avanza ISK 2026-07-20 (see avanza-isk cash holding). Realized gain still unknown - open question 4 not closed by this transfer, only the practical tax-funding question is (per user, covered by the hb-main reserve).",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "TBD",
+      "name": "SEB Osteuropafond (FROZEN - unsellable)",
+      "account_id": "seb-fund",
+      "instrument_type": "fund",
+      "exposure_class": "equity",
+      "currency": "SEK",
+      "quantity": null,
+      "cost_basis_total_sek": 0.25,
+      "market_value_sek": null,
+      "market_value_as_of": null,
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "NOT AN ACTIVE POSITION - disclosed 2026-08-03. Eastern-Europe fund that could not be sold because of the war in Ukraine (redemptions gated/suspended, the standard treatment for Russia-exposed funds). Cost basis 0.25 SEK, so the economic stake is immaterial and this is a bookkeeping item, not an investment decision - there is nothing to analyze and no action available. Do NOT include it in allocation percentages or fee math (value unknown and unrealizable), do NOT propose selling it (that is the whole point - it cannot be sold), and do NOT re-flag it as an open decision each sweep. Revisit only if SEB notifies the user that redemptions have reopened.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "CASH_EUR",
+      "name": "Revolut everyday account (salary in, rent/food out)",
+      "account_id": "revolut",
+      "instrument_type": "cash",
+      "exposure_class": "excluded_operating_cash",
+      "currency": "EUR",
+      "quantity": 1500,
+      "cost_basis_per_unit": null,
+      "annual_fee_pct": null,
+      "date_acquired": "2026-08-03",
+      "thesis": "NOT AN INVESTMENT AND NOT PART OF THE PORTFOLIO - disclosed 2026-08-03. This is the user's day-to-day current account: salary lands here, rent and food are paid from it, so the balance swings a lot and is deliberately NOT kept up to date. ~1,500 EUR at disclosure, treated as indicative only. EXPLICITLY EXCLUDED from allocation percentages, drift math, the risk-tier framework and every scorecard row - including it would make the denominator move for reasons that have nothing to do with investing and would corrupt the drift and performance numbers. It is recorded here only so the account inventory is genuinely complete (this is the answer to the old open question 5, not a new asset to manage). Do not ask the user to keep this figure current.",
       "target_weight_pct": null
     },
     {
@@ -307,18 +346,7 @@
       ]
     }
   },
-  "open_structural_questions": [
-    "2. ETH cost basis and acquisition dates (needed for any future K4 math).",
-    "5. Any OTHER undisclosed accounts? SEB and PayPal both surfaced only in passing - a one-time full inventory (every bank/broker login) would close this class of surprise, and is now overdue (2 surprise accounts in one week).",
-    "6. PayPal FX routing: what is PayPal's actual conversion fee/spread (do not assume ~3-4%, confirm from PayPal's fee schedule), and what is the cheapest path to get the 1,177.49 USD + 266.88 EUR (plus each ~750-1000 EUR recurring inflow) into SEK or into a wrapper without repeatedly paying it. Council ruling 2026-07-12: convert promptly via lowest-spread path, don't hold either currency waiting on FX levels - see reports/2026-07-07-council-memo.md Amendment 2026-07-12.",
-    "9. No thesis recorded for Handelsbanken A, Investor A - both still TBD.",
-    "10. hb-main + hb-checking tax reserve (10,752.76 + 611 = 11,363.76 SEK, confirmed 2026-07-28) has a residual ~129.52 SEK gap against the confirmed 11,493.28 SEK HB+SEB tax owed - user judged this 'enough for now' 2026-07-22, plans to top up further from other income before the 2027 deklaration. Low priority, monitor at deklaration prep, not urgent.",
-    "11. hb-checking (611 SEK, newly disclosed 2026-07-22) and the broader account-inventory question (#5) - is this genuinely the last undisclosed account, or should a one-time full inventory still happen?",
-    "13. COIN-XBT.ST certificate vs. self-custody 'real bitcoin' - user stated 2026-07-22 a preference to eventually hold direct BTC instead of the certificate. Tax mechanics not simple: selling the certificate inside the ISK is tax-free, but moving proceeds to self-custody BTC permanently exits ISK's tax shelter for that capital and every future disposal becomes a 30% K4 event (same regime as the ETH wallet). Also loses the certificate's 2% issuer-redemption-fee risk (moot if sold via exchange) but gains self-custody key-management risk. Not yet decided - Council recommendation given in the 2026-07-22 chat exchange, pending user confirmation.",
-    "16. MEDIUM-TIER MIGRATION (Avanza Global purchase EXECUTED 2026-07-28 at 119,999 SEK, overshot the calculated ~90,240 SEK secure-tier gap by ~29,760 SEK): 26,400.30 SEK now available (confirmed post-execution) for the medium/high-risk split - candidates Swedbank Robur Technology A and Spiltan Aktiefond Investmentbolag for medium tier (~18-20k), high-risk instrument still TBD (~4-7k). NEITHER medium-tier candidate has had scout->valuation vetting yet - no ticker/ISIN on file, and these are Swedish retail funds unlikely to be on yfinance (same pattern as Avanza Auto 3/Tundra). Flag before executing: Spiltan Aktiefond Investmentbolag invests in listed Swedish investment companies and structurally likely holds Investor AB - if so, buying it would double up on the existing direct INVE-A.ST position; Swedbank Robur Technology A is a single-sector active fund, a more concentrated bet than the diversified-holding-company approach. Neither flag is fetched data - both are structural/category-level observations pending factsheet confirmation.",
-    "17. Avanza Global's actual annual fee (TER) is not yet confirmed - needed to grade the fee-drag scorecard row for the largest single holding in the portfolio. Get from Avanza's factsheet.",
-    "18. Ticker confirmation still pending for the expanded Swedish-equity candidate list (Saab, ABB, Alfa Laval, Latour, AstraZeneca, Industrivarden, Swedbank, Kinnevik) before they can be added to data/universe.json - this system does not guess Nordic tickers."
-  ],
+  "open_structural_questions_moved": "MOVED 2026-08-03 to /OPEN_ITEMS.md (repo root), at the user's request to have ONE review surface instead of two. That file now holds both the portfolio questions that used to live here (as P-items) and the system backlog that used to live in IMPROVEMENTS.md (as S-items). Agents: read OPEN_ITEMS.md for open items - do not expect a question list in this file, and do not recreate one here. This field is a pointer, not data.",
   "resolved_structural_questions_note": "Full text of every entry below archived at data/portfolio_history_archive.md - these are one-line pointers, not the complete record.",
   "resolved_structural_questions": [
     "2026-07-07: HB wrapper confirmed FONDKONTO (AF) - was the blocking question. See exit_plans.hb-af-exit.",

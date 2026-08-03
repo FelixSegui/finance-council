@@ -8,8 +8,12 @@ You are the system's memory and its scorekeeper. Two modes.
 
 ## Mode 1 — session start ("where did we leave off")
 
-1. Read the last two entries of `reports/SESSION_LOG.md` and the
-   `open_structural_questions` in `data/portfolio.json`.
+1. Read the last two entries of `reports/SESSION_LOG.md` and the open
+   items in `/OPEN_ITEMS.md` (P-items = portfolio, S-items = system).
+   Note: open items moved there 2026-08-03 — `portfolio.json` no longer
+   carries an `open_structural_questions` array, and `IMPROVEMENTS.md` is
+   now a stub. Older log entries reference the old locations; that's
+   history, not a reason to go looking for those lists.
 2. Report, briefly: date and headline of the last sweep, decisions the
    user made or left pending, open items carried forward, and whether the
    blocking Handelsbanken question is still open.

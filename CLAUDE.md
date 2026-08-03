@@ -66,29 +66,56 @@ it does not estimate from training knowledge, which is stale by definition.
 
 At this portfolio size, the return hierarchy is:
 1. **Account wrapper efficiency** (ISK tax-free allowance vs taxed AF) —
-   structural, certain, largest.
+   structural, certain, largest. **STATUS 2026-08-03: DONE.** All capital
+   sits in the ISK; the Handelsbanken and SEB taxable accounts are exited.
 2. **Fee drag** (bank funds at 1%+ vs index at ~0.2%) — structural,
-   certain, second largest.
-3. **Allocation / drift** — controllable, probabilistic.
+   certain, second largest. **STATUS 2026-08-03: SUBSTANTIALLY DONE.**
+   Avanza Global (the largest holding) is 0.10%, Auto 3 is 0.39%, the 2.6%
+   Tundra fund is sold. One item left: the 2.5% BTC certificate (P4).
+3. **Allocation / drift** — controllable, probabilistic. **Live.**
 4. **Selection** (which stock/fund/coin) — smallest edge, most effort.
+   **Now the main active work**, because 1-2 are finished.
 
-The portfolio agent owns 1-3. Valuation/thesis own 4. Never let a memo
-lead with a stock pick while a wrapper inefficiency or 1.5% fee sits
-unaddressed — that's optimizing the smallest lever first.
+The portfolio agent owns 1-3. Valuation/thesis own 4.
+
+**Phase shift, 2026-08-03.** Levers 1 and 2 were the reason this system
+front-loaded structural work, and they are now closed. The rule "never
+lead with a stock pick while a wrapper inefficiency sits unaddressed"
+still holds — but it is no longer binding, because there is no such
+inefficiency left. Sweeps should now lead with **how the positions are
+behaving** and **what should change**, and mention structure only when
+something actually breaks. Re-flagging settled structural facts every
+week is noise, not diligence.
 
 Currencies: base currency is SEK. Equity data may arrive in USD/EUR;
 convert using the sek_per_usd rate in the macro snapshot before computing
 weights. Crypto certificates trade on Nasdaq Stockholm in SEK — fetch them
 as .ST tickers via yfinance, not via CoinGecko.
 
-## Blocking questions rule
+## Open items — one list, one place
 
-`portfolio.json` contains an `open_structural_questions` list. While
-question 1 (Handelsbanken wrapper) is unresolved, every Council memo must
-open with it — 70% of the portfolio sits in that account, and no
-allocation, rebalancing, or tax conclusion touching it is trustworthy
-until the wrapper is confirmed. Agents may still analyze the other
-accounts fully. Remove questions from the list as they get answered.
+**`/OPEN_ITEMS.md` is the single review surface** (consolidated 2026-08-03
+at the user's request). It replaced two separate lists: the
+`open_structural_questions` array that used to live in `portfolio.json`
+(now **P-items**) and the `IMPROVEMENTS.md` backlog (now **S-items**).
+`IMPROVEMENTS.md` is a stub pointing here.
+
+Rules:
+- Agents read `OPEN_ITEMS.md` for what's outstanding. Do not recreate a
+  question list inside `portfolio.json` — that split is what was fixed.
+- Every Council memo pulls its open actions from this file, and closed
+  items move to the bottom log with a one-line resolution. Never delete
+  an item silently.
+- The `meta` agent proposes S-items; nothing self-applies; the user
+  approves with "apply S3".
+
+**Blocking-question rule (still live, now general):** if an open item makes
+a conclusion untrustworthy, the memo leads with it rather than burying it.
+The original instance — the Handelsbanken wrapper, which gated 70% of the
+portfolio — was resolved 2026-07-07 and the account fully exited, so no
+item currently holds that status. The rule stays because the situation
+will recur; it is not a permanent instruction to open with any particular
+question.
 
 ## Flow
 
@@ -97,6 +124,11 @@ accounts fully. Remove questions from the list as they get answered.
    pending decisions, and open items. No analysis before this runs.
 1. Run `python scripts/fetch_market_data.py` (or let the `market-data`
    subagent do it) → writes timestamped JSON to `/data/snapshots/`.
+   Include `--crypto ethereum,bitcoin`: BTC is the agreed directional
+   proxy for the XBT certificate, which has no working ticker.
+1b. Run `python scripts/position_report.py` → the per-position movement
+   table (price, move since last sweep, move vs cost, 52-week range).
+   This is the user's primary weekly output and leads the memo.
 2. Invoke `valuation`, `macro-regime`, `portfolio`, `thesis-review` — they
    read the latest snapshot, never fetch data themselves redundantly.
    Optional, when relevant: `scout` (new candidates), `calendar` (event
@@ -107,7 +139,7 @@ accounts fully. Remove questions from the list as they get answered.
    against today's data and appends the session entry. An unlogged sweep
    is invisible to the next session.
 5. Optionally invoke `meta` — it reviews how the system itself performed
-   and maintains `IMPROVEMENTS.md`.
+   and maintains the S-items in `/OPEN_ITEMS.md`.
 6. You read the memo. You decide. Nothing here executes anything.
 
 ## Time horizons
@@ -148,9 +180,10 @@ regrow into essays.
 
 ## Self-improvement
 
-The `meta` agent owns `IMPROVEMENTS.md`, a numbered backlog of changes to
-the system itself, each with evidence and a concrete how. It proposes,
-never applies — the user applies by saying "apply improvement #N".
+The `meta` agent owns the **S-items** section of `/OPEN_ITEMS.md`, a
+numbered backlog of changes to the system itself, each with evidence and a
+concrete how. It proposes, never applies — the user applies by saying
+"apply S3". It must not edit P-items (the user's portfolio questions).
 Recurring bad calls in the session log are a system defect to be traced,
 not bad luck.
 

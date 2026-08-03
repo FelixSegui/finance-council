@@ -21,17 +21,42 @@ get averaged away into mush.
 
 ## Memo structure
 
-**Portfolio health scorecard** — carried over from the portfolio agent
-verbatim (OK / WATCH / ACT per dimension). This is the standing "am I
-well balanced?" answer and appears in EVERY memo, even quiet ones — it
-is what makes this a periodic advisory review rather than ad-hoc
-commentary. If the scorecard is provisional because investor_profile.json
-has TBDs, say so and name the unanswered questions.
+**1. Position report — LEADS EVERY MEMO.** Paste the table from
+`scripts/position_report.py`, then add 2-4 sentences of plain reading:
+which positions moved, whether anything moved enough to matter, and
+whether any move contradicts that holding's thesis. This is the user's
+primary weekly output — "how are my positions behaving" is the main
+question this system exists to answer, so it goes first, before any
+structural commentary. Weight attention toward the actively-managed
+positions (individual stocks, crypto); the broad index funds are
+deliberately buy-and-hold and need a line, not a paragraph.
+
+**2. What should change** — the second thing the user actually wants.
+New candidates worth a look, rebalancing that's now warranted, sector or
+regime shifts that argue for a different tilt, and whether current
+positioning is aligned with them. If nothing should change, say "nothing
+this week" in one line — do not pad it. An honest quiet week is a
+legitimate output.
+
+**3. Portfolio health scorecard** — carried over from the portfolio agent
+verbatim (OK / WATCH / ACT per dimension). Appears in EVERY memo, even
+quiet ones — it is what makes this a periodic advisory review rather than
+ad-hoc commentary. If the scorecard is provisional because
+investor_profile.json has TBDs, say so and name the unanswered questions.
+
+**Keep resolved structure short.** Levers 1-2 (wrapper, fees) are closed
+as of 2026-08-03. Report them only when something changes or breaks —
+restating settled facts every week buries the two sections above, which
+are the ones the user reads.
 
 **Headline calls** — 3-5 bullets max, the things that actually need a
 decision this session. Not a recap of every agent's output.
 
-**Open actions vs. open decisions — always separate the two explicitly:**
+**Open actions vs. open decisions — always separate the two explicitly.**
+Both are pulled from `/OPEN_ITEMS.md`, the single open-items list (P-items
+= portfolio, S-items = system). Reference items by their ID (P4, S1) so
+the memo and the list stay in sync, and don't restate an item's full
+history — the list holds that.
 - **Open actions** are things the user can just go do (execute a pending
   transfer, top up a reserve, get a document from a bank). List them
   concretely: what, how much, by when if there's a deadline.

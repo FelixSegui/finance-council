@@ -1,6 +1,6 @@
 {
-  "note": "MANUALLY MAINTAINED. fetch_calendar.py only filters this file — it never invents dates. FOMC dates are from the Fed's published 2026 schedule but still need one-time verification against the source (IMPROVEMENTS #2). Riksbank H2 2026 dates provided by the user on 2026-07-04.",
-  "last_verified": "2026-07-04",
+  "note": "MANUALLY MAINTAINED. fetch_calendar.py only filters this file - it never invents dates. Riksbank and FOMC 2026 schedules USER-VERIFIED 2026-08-03 (user supplied both full calendars directly). The previously-flagged FOMC uncertainty is now closed: the user's list (Sep 15-16, Oct 27-28, Dec 8-9, asterisked meetings carrying a Summary of Economic Projections) matches what was already in this file, so those dates are confirmed rather than corrected.",
+  "last_verified": "2026-08-03",
   "sources": {
     "fomc": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
     "riksbank": "https://www.riksbank.se/en-gb/press-and-published/calendar/",
@@ -8,21 +8,26 @@
     "scb_cpi": "https://www.scb.se/en/finding-statistics/statistics-by-subject-area/prices-and-consumption/"
   },
   "unverified_sources": [
-    "FOMC dates written from model knowledge — one-time verification pending (IMPROVEMENTS #2)",
-    "US/SE CPI release dates missing — fill month by month from BLS/SCB schedules"
+    "US/SE CPI release dates missing - fill month by month from BLS/SCB schedules"
   ],
+  "event_type_note": "Only `type: riksbank` and `type: fomc` entries with a rate decision move markets directly. Minutes, business surveys and stability reports are included for completeness (they can move SEK rates expectations at the margin) but are tagged with a distinct type so the calendar agent can weight them lower - a rate DECISION is a timing collision, a set of MINUTES usually is not.",
   "events": [
-    {"date": "2026-08-20", "name": "Riksbank rate decision + Monetary Policy Report", "type": "riksbank"},
-    {"date": "2026-09-24", "name": "Riksbank rate decision", "type": "riksbank"},
-    {"date": "2026-11-04", "name": "Riksbank rate decision", "type": "riksbank"},
-    {"date": "2026-12-16", "name": "Riksbank rate decision", "type": "riksbank"},
-    {"date": "2026-07-28", "name": "FOMC meeting (day 1)", "type": "fomc"},
-    {"date": "2026-07-29", "name": "FOMC meeting (day 2, statement)", "type": "fomc"},
+    {"date": "2026-08-20", "name": "Riksbank rate decision + Monetary Policy Update + press conference", "type": "riksbank"},
+    {"date": "2026-08-25", "name": "Riksbank monetary policy minutes", "type": "riksbank_minutes"},
+    {"date": "2026-09-16", "name": "Riksbank Business Survey", "type": "riksbank_survey"},
+    {"date": "2026-09-24", "name": "Riksbank rate decision + Monetary Policy Report + press conference", "type": "riksbank"},
+    {"date": "2026-09-30", "name": "Riksbank monetary policy minutes", "type": "riksbank_minutes"},
+    {"date": "2026-11-04", "name": "Riksbank rate decision + Monetary Policy Update + press conference", "type": "riksbank"},
+    {"date": "2026-11-10", "name": "Riksbank monetary policy minutes", "type": "riksbank_minutes"},
+    {"date": "2026-11-30", "name": "Riksbank Financial Stability Report", "type": "riksbank_stability"},
+    {"date": "2026-12-08", "name": "Riksbank Business Survey", "type": "riksbank_survey"},
+    {"date": "2026-12-16", "name": "Riksbank rate decision + Monetary Policy Report + press conference", "type": "riksbank"},
+    {"date": "2026-12-22", "name": "Riksbank monetary policy minutes", "type": "riksbank_minutes"},
     {"date": "2026-09-15", "name": "FOMC meeting (day 1)", "type": "fomc"},
-    {"date": "2026-09-16", "name": "FOMC meeting (day 2, statement + projections)", "type": "fomc"},
+    {"date": "2026-09-16", "name": "FOMC meeting (day 2, statement + Summary of Economic Projections)", "type": "fomc"},
     {"date": "2026-10-27", "name": "FOMC meeting (day 1)", "type": "fomc"},
     {"date": "2026-10-28", "name": "FOMC meeting (day 2, statement)", "type": "fomc"},
     {"date": "2026-12-08", "name": "FOMC meeting (day 1)", "type": "fomc"},
-    {"date": "2026-12-09", "name": "FOMC meeting (day 2, statement + projections)", "type": "fomc"}
+    {"date": "2026-12-09", "name": "FOMC meeting (day 2, statement + Summary of Economic Projections)", "type": "fomc"}
   ]
 }

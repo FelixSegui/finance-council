@@ -30,25 +30,25 @@ a one-line resolution — never delete it silently.
   Swedish K4 requires cost basis; without it a sale can't be reported properly.
 - **Not urgent** unless you intend to sell.
 
-### P2 — Reconcile the Excel-backed branch with `main`
-- **Status:** open — needs your decision, and it is the most consequential
-  item on this list
-- **What happened:** the repository has two parallel development lines that
-  both diverged from the same 2026-07-22 commit and have been running blind
-  to each other for ~12 days. `main` (27 commits) has the
-  swedish-equity-review skill, the Yahoo fundamentals fix, the
-  Finansinspektionen insider fetch and the weekly sweeps. The branch
-  `claude/project-status-briefing-0528tx` (25 commits) has a whole
-  Excel-backed rearchitecture — `master.xlsx`, a sync layer, a dashboard, a
-  5-persona controller, a discovery funnel and coverage reports.
-- **This is the "something keeps getting missed" you noticed.** It is not one
-  lost file. Both lines independently fixed the same things (the phantom
-  Swedbank account, the COIN-XBT hold correction), which is pure duplicated
-  effort, and each is missing real work the other has.
-- **Not actioned unilaterally:** merging 25 commits that restructure the same
-  files a different way is a large, hard-to-reverse decision about what this
-  system *is*. See the three options in the 2026-08-03 discussion; the choice
-  is yours.
+### P2 — Port what's worth keeping from the merged branch
+- **Status:** open — the merge itself is DONE, this is the follow-up
+- The Excel branch is merged into `main` (2026-08-03) and nothing is lost.
+  But its runtime — `run.py`, `data/sync/`, `scripts/fetchers/`,
+  `scripts/funnel/` — is **merged but parked**, not wired into the live flow,
+  because it assumes Excel is the source of truth and the live system no
+  longer works that way.
+- **Three things in there are genuinely worth having**, in priority order:
+  1. The **discovery funnel** (`scripts/funnel/`) — index-sourced universe
+     plus factor ranking. This is real capability for "should I invest in
+     anything new", which is one of your two main goals.
+  2. The **consolidated one-file sweep report** — one `sweep.md` per day
+     instead of a memo plus separate coverage output. Directly serves
+     slimming the system down.
+  3. The **journal-before-council ordering rule** — the branch hit a real
+     bug where council wrote a report with an empty reconciliation section.
+     The live system has the same latent weakness.
+- Full notes in `archive/agents-from-excel-branch/README.md`. Port these
+  deliberately, one at a time — do not bulk-restore.
 
 ### P3 — PayPal routing (the fee is now known; the route isn't)
 - **Status:** open
@@ -187,6 +187,17 @@ a one-line resolution — never delete it silently.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-03 — The two-branch fork**: merged. `main` and
+  `claude/project-status-briefing-0528tx` had diverged since 2026-07-22 with
+  ~25 commits each, invisible to each other. Everything is now on `main`;
+  the JSON files stayed authoritative, the branch's capabilities came across.
+  **Guard added so it cannot recur:** `scripts/check_unmerged_work.py` runs at
+  the end of every sweep and fails loudly on any stranded branch, uncommitted
+  change, or unpushed commit. A branching rule is now written into `CLAUDE.md`.
+- **2026-08-03 — Excel as a maintenance burden**: reversed. `master.xlsx` is
+  now generated from the JSON by `scripts/build_workbook.py` and read back by
+  nothing. You look at it to confirm the totals add up; you never update it.
+  The `Manual Data` sheet survives rebuilds.
 - **2026-08-03 — Target allocation written into the files**: on your explicit
   instruction, `portfolio.json.targets` now holds equity 85 / crypto 10 /
   cash 5 / fixed income 0. Approved 2026-07-27, recorded 2026-08-03. The

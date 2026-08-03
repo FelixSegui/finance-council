@@ -141,6 +141,21 @@ question.
 5. Optionally invoke `meta` — it reviews how the system itself performed
    and maintains the S-items in `/OPEN_ITEMS.md`.
 6. You read the memo. You decide. Nothing here executes anything.
+7. **Every sweep ends with `python scripts/check_unmerged_work.py`** and a
+   push. This is not optional bookkeeping. On 2026-08-03 we found the repo
+   had been forked in two since 07-22, with ~25 commits on each side
+   invisible to the other, duplicating fixes and each missing the other's
+   work — undetected for 12 days. The user does not write the code and
+   cannot be the one to catch this. If the check exits non-zero, resolve it
+   before ending the session.
+
+## Branching rule
+
+Branches for testing before "prod" are fine and encouraged. What is not
+fine is leaving one unmerged and unannounced. Any branch that still holds
+commits `main` doesn't have at the end of a session must be either merged
+or explicitly reported to the user as pending, by name, with what's on it.
+Never let work go quiet on a branch.
 
 ## Time horizons
 

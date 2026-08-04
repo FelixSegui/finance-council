@@ -96,22 +96,27 @@ a one-line resolution — never delete it silently.
   is NAV discount/premium and it has never been obtained. See S6.
 
 ### P6 — Build the medium tier (~26,400 SEK available)
-- **Status:** open — direction set 2026-08-03, selection not made
-- **Your direction:** start by building the medium tier with individual stocks.
-- **The gap:** medium tier is 0.98% of the portfolio against a 30% target —
-  roughly 63,600 SEK short. It's the largest structural gap you have, and the
-  26,400 SEK of idle ISK cash is the natural first tranche.
-- **Deployment is tax-free** — the cash is already inside the ISK, so moving it
-  into holdings costs nothing in tax.
-- **Candidate list is ready** (`data/universe.json`, tickers confirmed
-  2026-08-03): Saab, ABB, Alfa Laval, Latour, AstraZeneca, Industrivärden,
-  Swedbank, Kinnevik, plus Atlas Copco/Volvo already scored.
-- **Two flags carried forward:** Spiltan Aktiefond Investmentbolag structurally
-  overlaps your existing Investor A position; Swedbank Robur Technology A is a
-  concentrated single-sector active fund with higher fees. Neither is
-  disqualifying, both should be conscious choices.
-- **Next step:** run `swedish-equity-review` over the candidate list to narrow
-  it, then decide. That skill exists precisely for this.
+- **Status:** decided — pending execution confirmation and post-purchase review
+- **EXECUTED 2026-08-03/04** (user-reported): bought Volvo B (13sh @ 367.50),
+  Atlas Copco B (27sh @ 181.25), AstraZeneca (4sh @ 1507), Alfa Laval
+  (9sh @ 574.40), ABB (4sh @ 946.96) — 24,656.69 SEK of the 26,400.30 SEK
+  cash, leaving ~1,743.61 SEK (computed, not broker-confirmed, courtage not
+  accounted for). Recorded in `data/portfolio.json` holdings.
+- **Not run through `swedish-equity-review` before buying** — 5 of the 10
+  candidates were picked without a documented comparison, and AstraZeneca,
+  Alfa Laval, and ABB have no `data/company_profiles/` entry at all (Volvo
+  and Atlas Copco A do, from the 2026-07-28 pre-purchase screen — note Atlas
+  Copco's existing profile is for the A share, this purchase is the B share).
+- **Next step:** run `swedish-equity-review` on the 5 new positions
+  retroactively — not to second-guess the trade, but so there's a real
+  baseline (score, coverage, insider activity) to test the thesis against
+  at the next check-in, same as exists for SHB-A.ST/INVE-A.ST/VOLV-B.ST.
+- **Two flags carried forward, still relevant to what remains uninvested:**
+  Spiltan Aktiefond Investmentbolag structurally overlaps your existing
+  Investor A position; Swedbank Robur Technology A is a concentrated
+  single-sector active fund with higher fees. Neither is disqualifying,
+  both should be conscious choices if the remaining ~1,744 SEK (or future
+  contributions) go toward them.
 
 ### P7 — Verify the ISK allowance threshold with Skatteverket
 - **Status:** open — small, but it's an assumption load-bearing in the tax math

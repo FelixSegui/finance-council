@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-08-03",
+  "last_updated": "2026-08-04",
   "base_currency": "SEK",
-  "total_estimate_sek": "~217,700 SEK as of 2026-08-03: hb-main 10,752.76 + hb-checking 611 + avanza-isk ~179,800 (SHB-A.ST and INVE-A.ST repriced from the 2026-08-03 snapshot; COIN-XBT.ST marked down to 15,240 on the user's reported 2,540/unit, from 16,218; 26,400.30 SEK cash still available) + paypal ~14,369 (repriced at sek_per_usd 9.6998 / sek_per_eur 11.0432) + eth-wallet 12,500 (approx, quantity still unknown - see OPEN_ITEMS.md P1). EXCLUDED by design: the Revolut everyday account (operating cash, not capital) and the frozen SEB Osteuropafond (unsellable, 0.25 SEK basis). Crypto exposure ~27,740 SEK remains above the 10% target - held deliberately, not being trimmed. Full history and superseded figures: data/portfolio_history_archive.md.",
+  "total_estimate_sek": "~214,175 SEK as of 2026-08-04: hb-main 10,752.76 + hb-checking 611 + avanza-isk ~179,714 (see avanza-isk account notes for the medium-tier build breakdown; SHB-A.ST/INVE-A.ST/the 5 new stocks repriced from the 2026-08-04 snapshot) + paypal ~14,146 (repriced at sek_per_usd 9.5268 / sek_per_eur 10.9739) + eth-wallet ~8,951 (0.50185 ETH x live price). EXCLUDED by design: the Revolut everyday account (operating cash, not capital) and the frozen SEB Osteuropafond (unsellable, 0.25 SEK basis). Crypto exposure remains above the 10% target - held deliberately, not being trimmed. Medium-tier build (OPEN_ITEMS.md P6) executed 2026-08-03/04 - see below. Full history and superseded figures: data/portfolio_history_archive.md.",
   "cash": {
     "amount": 0,
     "currency": "SEK"
@@ -25,8 +25,8 @@
       "account_id": "avanza-isk",
       "wrapper": "ISK",
       "institution": "Avanza",
-      "approx_value_sek": 180949.35,
-      "notes": "Confirmed ISK. LIVE STATEMENT 2026-07-28 (pre-execution): total 180,949.35 SEK = securities 36,085.05 + cash 144,864.30. Both pending orders EXECUTED same day (user-confirmed): Avanza Global buy at 119,999 SEK (ordered 120,000), Tundra sale at 1,535 SEK. New cash = 144,864.30 - 119,999 + 1,535 = 26,400.30 SEK, genuinely available. Account total not yet reconfirmed post-execution via a fresh full statement - the 180,949.35 figure predates both fills. Tax-free allowance headroom vs. the ~300k SEK threshold (unverified) is comfortable. Full history: data/portfolio_history_archive.md#avanza-isk.",
+      "approx_value_sek": 179714.11,
+      "notes": "Confirmed ISK. LIVE STATEMENT 2026-07-28 (pre-execution): total 180,949.35 SEK = securities 36,085.05 + cash 144,864.30. Both pending orders EXECUTED same day (user-confirmed): Avanza Global buy at 119,999 SEK (ordered 120,000), Tundra sale at 1,535 SEK. MEDIUM-TIER BUILD EXECUTED 2026-08-03/04 (user-reported, 'aktieköp idag och igår' - exact per-name date not specified, courtage/broker fees not stated so not included): Volvo B 13sh @ 367.50, Atlas Copco B 27sh @ 181.25, AstraZeneca 4sh @ 1507, Alfa Laval 9sh @ 574.40, ABB 4sh @ 946.96 - total spent 24,656.69 SEK, drawn from the 26,400.30 SEK available cash. New cash = 26,400.30 - 24,656.69 = 1,743.61 SEK COMPUTED, not broker-confirmed and does not account for any courtage - verify against the actual Avanza statement. Account total (179,714.11) is COMPUTED from current holdings x the 2026-08-04 snapshot, not a fresh full statement. Tax-free allowance headroom vs. the ~300k SEK threshold (unverified) is comfortable. Full history: data/portfolio_history_archive.md#avanza-isk.",
       "pending_orders": []
     },
     {
@@ -108,8 +108,8 @@
       "exposure_class": "equity",
       "quantity": 1,
       "cost_basis_per_unit": 129.25,
-      "market_value_sek": 145,
-      "market_value_as_of": "2026-07-28",
+      "market_value_sek": 146.80,
+      "market_value_as_of": "2026-08-04",
       "annual_fee_pct": null,
       "date_acquired": null,
       "thesis": "RECORDED 2026-08-03 (user's own words, closes the long-standing gap): bought because Handelsbanken has 'shown good track record' and is a 'secure', 'stable' pick that 'still shows good upside'. PROVENANCE, stated candidly by the user and kept because it matters: 'I actually bought them without considering a lot of other different options, it was rather that I had some money left and just wanted it to be active on the market.' So this is a PARKING decision, not a conviction pick - the user has explicitly NOT compared it against alternatives. Two consequences agents must respect: (1) it is legitimately testable on 'stable with upside' - if stability or the track record breaks, the thesis breaks; (2) because no comparison was ever made, this position is a FAIR ROTATION CANDIDATE when the medium-tier build (OPEN_ITEMS.md P6) surfaces a better-vetted name. Do not treat it as a high-conviction holding the user is attached to. TENSION TO WATCH: the 'stable/good track record' premise is the part current data argues with - revenue declined 3.8% YoY, PEG ~20, analyst consensus 'underperform'. That does not break the thesis yet (a low-beta 5.5% dividend payer is still defensible as 'stable'), but 'good upside' is the limb under most pressure. swedish-equity-review 2026-07-28 (full real data, see data/company_profiles/SHB-A.ST.json): Score 58/100, Coverage 80% (5/6, only Business Quality missing). REAL TENSION: fundamentals say caution (revenue declined FY2025, PEG ~19.8, analyst 'underperform') but Chairman Par Boman + board member Fredrik Lundberg both bought very heavily (>750M SEK combined) within 48 hours, 2026-07-20/21 - the two signals disagree, not averaged away. Live price 144.25-144.85/share (2026-07-28).",
@@ -123,11 +123,86 @@
       "exposure_class": "equity",
       "quantity": 5,
       "cost_basis_per_unit": 290.22,
-      "market_value_sek": 2004,
-      "market_value_as_of": "2026-07-28",
+      "market_value_sek": 2047.00,
+      "market_value_as_of": "2026-08-04",
       "annual_fee_pct": null,
       "date_acquired": null,
       "thesis": "RECORDED 2026-08-03 (user's own words, same rationale as SHB-A.ST - both were bought together): 'good track record', 'secure'/'stable' pick that 'still shows good upside', bought 'without considering a lot of other different options... had some money left and just wanted it to be active on the market'. Same two consequences as SHB-A.ST: testable on the stability/upside claim, and a fair rotation candidate rather than a conviction holding, since no comparison was ever made. NOTE - this thesis fits Investor A better than it fits Handelsbanken: a diversified Swedish holding company IS structurally a 'stable with upside' vehicle, and current data does not argue with it (ROE 27.3%, positive FCF, up 39.2% vs cost basis). The honest caveat is unchanged: the metric that would actually test it for a holding company is NAV discount/premium, which has never been obtained (see OPEN_ITEMS.md S6) - the 4.71x P/E is an accounting artifact and must not be read as 'cheap'. So the thesis is plausible but still not properly testable. swedish-equity-review 2026-07-28 (see data/company_profiles/INVE-A.ST.json): NO SCORE reportable (corrected same day) - only 2 of 6 dimensions have real data (Dividend Quality, Insider Activity); Holding Company Valuation requires an actual NAV discount, not obtained (would need Investor's own IR page or a quarterly report PDF), so it's marked Not Available per the NAV fallback hierarchy, not filled in with a P/E stand-in. Insider activity: sustained modest CEO/board buying over 6 months. Live price 397.00-400.80/share (2026-07-28).",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "VOLV-B.ST",
+      "name": "Volvo B",
+      "account_id": "avanza-isk",
+      "instrument_type": "stock",
+      "exposure_class": "equity",
+      "quantity": 13,
+      "cost_basis_per_unit": 367.50,
+      "market_value_sek": 4802.20,
+      "market_value_as_of": "2026-08-04",
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktieköp idag och igår', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build from the user-confirmed candidate list (data/universe.json nordic_swedish_equity_review_candidates + nordic_large_cap). No swedish-equity-review has been run on this specific purchase decision - see data/company_profiles/VOLV-B.ST.json for the 2026-07-28 pre-purchase review (score 60/100, coverage 80%: revenue declining 2 straight fiscal years (-13%) and high leverage (D/E 147), but reasonable valuation (P/E 20.5, forward 14.5) and a very large, very recent single-insider purchase (board member Helena Stjernholm, ~1.3M shares at ~360 SEK, 2026-07-27) - tension not resolved, just bought into.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "ATCO-B.ST",
+      "name": "Atlas Copco B",
+      "account_id": "avanza-isk",
+      "instrument_type": "stock",
+      "exposure_class": "equity",
+      "quantity": 27,
+      "cost_basis_per_unit": 181.25,
+      "market_value_sek": 4781.70,
+      "market_value_as_of": "2026-08-04",
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktieköp idag och igår', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. No swedish-equity-review has been run on this specific purchase decision - see data/company_profiles/ATCO-A.ST.json (note: that profile is for the A share, this holding is the B share - same company, different class, profile not yet duplicated for B).",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "AZN.ST",
+      "name": "AstraZeneca",
+      "account_id": "avanza-isk",
+      "instrument_type": "stock",
+      "exposure_class": "equity",
+      "quantity": 4,
+      "cost_basis_per_unit": 1507.00,
+      "market_value_sek": 5896.00,
+      "market_value_as_of": "2026-08-04",
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktieköp idag och igår', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. Dual-listed (UK primary, Nasdaq Stockholm cross-listing per data/universe.json's category_notes). No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase, unlike VOLV-B.ST/ATCO-A.ST.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "ALFA.ST",
+      "name": "Alfa Laval",
+      "account_id": "avanza-isk",
+      "instrument_type": "stock",
+      "exposure_class": "equity",
+      "quantity": 9,
+      "cost_basis_per_unit": 574.40,
+      "market_value_sek": 5101.20,
+      "market_value_as_of": "2026-08-04",
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktieköp idag och igår', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase.",
+      "target_weight_pct": null
+    },
+    {
+      "ticker": "ABB.ST",
+      "name": "ABB",
+      "account_id": "avanza-isk",
+      "instrument_type": "stock",
+      "exposure_class": "equity",
+      "quantity": 4,
+      "cost_basis_per_unit": 946.96,
+      "market_value_sek": 3765.60,
+      "market_value_as_of": "2026-08-04",
+      "annual_fee_pct": null,
+      "date_acquired": null,
+      "thesis": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktieköp idag och igår', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. Dual-listed (Switzerland primary, Nasdaq Stockholm cross-listing per data/universe.json's category_notes). No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase.",
       "target_weight_pct": null
     },
     {
@@ -199,11 +274,11 @@
       "instrument_type": "cash",
       "exposure_class": "cash",
       "currency": "SEK",
-      "quantity": 26400.30,
+      "quantity": 1743.61,
       "cost_basis_per_unit": null,
       "annual_fee_pct": null,
-      "date_acquired": "2026-07-28",
-      "thesis": "Not an investment - uninvested cash. CONFIRMED 2026-07-28 post-execution: 144,864.30 - 119,999 (Avanza Global buy) + 1,535 (Tundra sale proceeds) = 26,400.30 SEK available. User plan: ~18-20k to medium tier (Swedbank Robur Technology A, Spiltan Aktiefond Investmentbolag, open to others), ~4-7k to high-risk (TBD) - see open question 16, neither candidate scout/valuation-vetted yet.",
+      "date_acquired": "2026-08-04",
+      "thesis": "Not an investment - uninvested cash. UPDATED 2026-08-04: 26,400.30 SEK medium-tier build cash was deployed into 5 new stocks (Volvo B, Atlas Copco B, AstraZeneca, Alfa Laval, ABB - see their holding entries and avanza-isk account notes), total spent 24,656.69 SEK. Remaining 1,743.61 SEK is COMPUTED (26,400.30 - 24,656.69), does not account for courtage/broker fees, and is not yet broker-confirmed.",
       "target_weight_pct": null
     },
     {
@@ -376,6 +451,7 @@
     "2026-07-28: Avanza Global purchase EXECUTED, confirmed 119,999 SEK (ordered 120,000). New holding added.",
     "2026-07-28: Tundra sale EXECUTED, confirmed 1,535 SEK (was estimated ~1,528). Holding zeroed, proceeds in avanza-isk cash.",
     "2026-07-28: Former open question 1 (Auto 50/Auto 75 equity/bond split) closed as MOOT - those funds were fully sold 2026-07-12 and no longer exist in the portfolio.",
-    "2026-07-28: Former open question 12 (re-itemize avanza-isk non-cash holdings) CLOSED - all holdings repriced via the 2026-07-28 live statement plus the Yahoo chart-endpoint fetch fix; equities pricing is no longer stale."
+    "2026-07-28: Former open question 12 (re-itemize avanza-isk non-cash holdings) CLOSED - all holdings repriced via the 2026-07-28 live statement plus the Yahoo chart-endpoint fetch fix; equities pricing is no longer stale.",
+    "2026-08-03/04: Medium-tier build EXECUTED (OPEN_ITEMS.md P6) - Volvo B (13sh @ 367.50), Atlas Copco B (27sh @ 181.25), AstraZeneca (4sh @ 1507), Alfa Laval (9sh @ 574.40), ABB (4sh @ 946.96), 24,656.69 SEK total from the 26,400.30 SEK medium-tier cash. User's own list of 8 candidates (Saab, ABB, Alfa Laval, Latour, AstraZeneca, Industrivarden, Swedbank, Kinnevik) plus Atlas Copco/Volvo - 5 of those 10 were bought; no documented comparison/screen behind the specific selection, and none of the 3 brand-new names (AZN.ST, ALFA.ST, ABB.ST) have a swedish-equity-review or company_profiles entry yet."
   ]
 }

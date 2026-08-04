@@ -10,15 +10,35 @@ rules every agent must follow.
 **`data/portfolio.json` is the source of truth.** Agents maintain it. You
 should rarely need to open it.
 
-**`master.xlsx` is a generated view.** It is rebuilt from the JSON and is
-never read back by anything. Look at it, don't maintain it — you cannot
-break the system by editing it, and any edit is overwritten on the next
-rebuild. The one exception is its `Manual Data` sheet, which survives
-rebuilds so hand-entered figures aren't lost.
+**`master.xlsx` is a generated view.** The `Overview` and `Holdings` sheets
+are rebuilt from the JSON every time and never read back by anything — look,
+don't maintain; any edit there is overwritten on the next rebuild. As of
+2026-08-04, `Overview`'s totals/allocation/drift are **live Excel formulas**
+(`SUMIF`/`SUMPRODUCT`) over the raw facts on `Holdings`, not Python-computed
+static numbers — open it, click a cell, see exactly what it's summing.
+
+Two sheets are the exception and survive every rebuild verbatim:
+- **`Manual Data`** — hand-entered figures, `ticker, field, value, currency,
+  as_of, source, notes`.
+- **`Fundamentals`** — pre-seeded with a row per tradeable holding
+  (ticker + name only). This is where **Excel's own "Stocks" data type**
+  comes in: this pipeline has no live path to it (needs a real, internet-
+  connected Microsoft 365 Excel session — confirmed empirically, see
+  `OPEN_ITEMS.md`'s closed items), but if YOU have it, use it directly in
+  this sheet — convert a ticker cell to the Stocks data type, pull whatever
+  fields you want (P/E, sector, market cap, dividend yield, 52-week range,
+  beta...) into that row, save. `python scripts/import_fundamentals_tab.py`
+  then folds whatever's filled in into `data/company_profiles/<TICKER>.json`
+  — the cache `swedish-equity-review` reads — tagged with source and date.
+  **Limitation, stated plainly:** this is a periodic manual refresh, not a
+  live feed. openpyxl can't read or preserve a live Stocks link, only the
+  last value Excel cached — redo the lookup in your own Excel and save again
+  whenever you want fresher numbers.
 
 This direction is deliberate. An earlier design made the workbook the source
 of truth and had the user keep it current; that puts the maintenance burden
-on the person, which is backwards.
+on the person, which is backwards. The Fundamentals tab doesn't reverse that
+— it's still optional, still just data you feed in when you have it.
 
 ## Running a sweep
 
@@ -43,7 +63,7 @@ documents the full flow and why the order matters.
 | `data/portfolio.json` | Source of truth: accounts, holdings, theses, targets |
 | `data/investor_profile.json` | Risk tolerance, horizon, constraints |
 | `OPEN_ITEMS.md` | **Single list of everything outstanding** (P = portfolio, S = system) |
-| `master.xlsx` | Generated read-only view of holdings and allocation |
+| `master.xlsx` | Generated read-only view (`Overview`/`Holdings`, formula-based) + two sheets that survive rebuilds: `Manual Data`, `Fundamentals` |
 | `reports/SESSION_LOG.md` | Append-only memory across sessions |
 | `data/cache/snapshots/` | Timestamped market data — every number traces here |
 

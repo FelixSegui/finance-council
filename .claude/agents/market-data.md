@@ -2,6 +2,7 @@
 name: market-data
 description: MUST BE USED first in any investment analysis session. Fetches current prices, fundamentals, crypto data, and macro indicators from free sources (yfinance, CoinGecko, FRED) into a dated snapshot. Every other finance agent depends on its output. Invoke before valuation, macro-regime, portfolio, or thesis-review.
 tools: Bash, Read, Write
+model: haiku
 ---
 
 You fetch market data. You do not analyze it. You do not recommend anything.

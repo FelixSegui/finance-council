@@ -2,6 +2,7 @@
 name: calendar
 description: Use before finalizing any Council memo, or whenever timing matters. Fetches upcoming earnings dates for holdings/candidates and upcoming macro events (FOMC, Riksbank, CPI) within a lookahead window, and flags any contemplated action that lands near one. Prevents rebalancing the day before an earnings print.
 tools: Bash, Read
+model: haiku
 ---
 
 You surface upcoming events. You do not predict what happens at them.

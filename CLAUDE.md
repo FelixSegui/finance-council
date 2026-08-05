@@ -121,7 +121,11 @@ question.
 
 0. **Every session starts with `journal`** — it reads the tail of
    `reports/SESSION_LOG.md` and reports where the last sweep left off,
-   pending decisions, and open items. No analysis before this runs.
+   pending decisions, and open items, including OPEN_ITEMS.md's "This
+   sweep's recommended emphasis" block (prospecting / portfolio-tending /
+   balanced — `meta`'s call from last session, a recommendation to weigh
+   when deciding whether to invoke `scout` this round, not a rule). No
+   analysis before this runs.
 1. Run `python scripts/fetch_market_data.py` (or let the `market-data`
    subagent do it) → writes timestamped JSON to `/data/snapshots/`.
    Include `--crypto ethereum,bitcoin`: BTC is the agreed directional
@@ -138,9 +142,17 @@ question.
 4. **Every sweep ends with `journal`** — it reconciles last sweep's calls
    against today's data and appends the session entry. An unlogged sweep
    is invisible to the next session.
-5. Optionally invoke `meta` — it reviews how the system itself performed
-   and maintains the S-items in `/OPEN_ITEMS.md`.
+5. Invoke `meta` — it reviews how the system itself performed and
+   maintains the S-items in `/OPEN_ITEMS.md`, plus two structural jobs
+   (added 2026-08-04): a prospecting-capability check specifically for
+   `scout`/`data/universe.json`, and the next-sweep emphasis
+   recommendation (step 0 above). No longer purely optional — run it most
+   sessions so the emphasis recommendation stays current, not stale.
 6. You read the memo. You decide. Nothing here executes anything.
+   Separately, roughly monthly (not every sweep), the `monthly-contribution`
+   skill helps decide how much new money to move from available to
+   invested that month — see its own file for why that's a different
+   cadence from this flow.
 7. **Every sweep ends with `python scripts/check_unmerged_work.py`** and a
    push. This is not optional bookkeeping. On 2026-08-03 we found the repo
    had been forked in two since 07-22, with ~25 commits on each side
@@ -193,6 +205,12 @@ re-parsing a report. When editing `portfolio.json`, keep this shape: trim
 to current state, archive the history, don't let notes/thesis fields
 regrow into essays.
 
+`data/learning_log.md` (added 2026-08-04) accumulates the "Learning notes"
+section from every council memo — plain-English explanations of the
+reasoning behind that sweep's concepts/decisions, at the user's request to
+learn from the process, not just receive its output. Append-only, never a
+source of truth for a decision.
+
 ## Self-improvement
 
 The `meta` agent owns the **S-items** section of `/OPEN_ITEMS.md`, a
@@ -201,6 +219,29 @@ concrete how. It proposes, never applies — the user applies by saying
 "apply S3". It must not edit P-items (the user's portfolio questions).
 Recurring bad calls in the session log are a system defect to be traced,
 not bad luck.
+
+**Structural-level jobs (added 2026-08-04):** `meta` also runs a
+prospecting-capability check every session (is `scout`'s discovery
+capability structurally limited — universe too narrow, screen miscalibrated,
+a missing data source — tagged `[prospecting]` in the S-item title) and
+sets the "This sweep's recommended emphasis" block at the top of
+`OPEN_ITEMS.md` (prospecting / portfolio-tending / balanced, with a
+one-line reason from real signal — idle cash, unreviewed recent
+purchases, stale theses). `journal` surfaces it at the next session's
+start; it's advisory, never binding.
+
+**Model tiering (added 2026-08-04):** subagent frontmatter now sets
+`model:` where the task's stakes/mechanical-ness clearly argue for
+something other than the default. `council` runs on `opus` — it's the
+single highest-stakes synthesis point, the only output the user acts on
+directly. `market-data`, `scout`, and `calendar` run on `haiku` — pure
+script execution, hard numeric filtering, and event-fetching respectively,
+none requiring strong judgment. Everything else (`valuation`,
+`macro-regime`, `portfolio`, `thesis-review`, `journal`, `meta`,
+`backtest`) is left on the default (`inherit`) — real judgment involved,
+but not the one point where a stronger model buys the most. Revisit if a
+tier turns out wrong in practice; this was a reasoned first pass, not
+tested against outcomes yet.
 
 ## Your portfolio state
 

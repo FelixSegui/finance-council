@@ -20,6 +20,20 @@ a one-line resolution — never delete it silently.
 
 ---
 
+## This sweep's recommended emphasis
+
+**Emphasis:** balanced
+**Set by meta, 2026-08-04 (seeded, not yet a real evidence-based call):**
+mechanism just added — `meta` hasn't run a full session since. P6 (medium-
+tier build) just executed with 3 unreviewed new positions (AstraZeneca,
+Alfa Laval, ABB) and no `swedish-equity-review` behind them, which argues
+for portfolio-tending next; but the ~1,744 SEK residual cash and an
+unresolved P4 (cheaper BTC certificate) also argue for continued
+prospecting. Genuinely mixed — `meta` should make the real call at the end
+of the next full session, not this placeholder.
+
+---
+
 ## P — Portfolio items
 
 ### P1 — ETH cost basis

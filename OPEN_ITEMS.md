@@ -22,15 +22,21 @@ a one-line resolution — never delete it silently.
 
 ## This sweep's recommended emphasis
 
-**Emphasis:** balanced
-**Set by meta, 2026-08-04 (seeded, not yet a real evidence-based call):**
-mechanism just added — `meta` hasn't run a full session since. P6 (medium-
-tier build) just executed with 3 unreviewed new positions (AstraZeneca,
-Alfa Laval, ABB) and no `swedish-equity-review` behind them, which argues
-for portfolio-tending next; but the ~1,744 SEK residual cash and an
-unresolved P4 (cheaper BTC certificate) also argue for continued
-prospecting. Genuinely mixed — `meta` should make the real call at the end
-of the next full session, not this placeholder.
+**Emphasis:** portfolio-tending
+**Set by meta, 2026-08-06:** the signal is one-sided this session. Five
+positions (ATCO-B, AZN, ALFA, ABB, ETH — 29,242 SEK, 15.4% of investable
+capital) have no recorded thesis, ETH alone has run 10+ sweeps at literal
+`thesis: "TBD"`, the retroactive `swedish-equity-review` on the five new
+P6 names still hasn't run, a 1-share AZN.ST buy is queued and conditioned
+on its thesis being written first, and the 2026-08-06 crypto trip-wire
+(12% of investable capital by 2026-09-03) needs a check-in at the next
+sweep either way. No prospecting signal counters this: the ~1,743.61 SEK
+idle ISK cash is already earmarked for the AZN buy (call D), not sitting
+undeployed with no plan, and the Watchlist (32 entries, live for the
+first time this sweep) has nothing screened against it yet — running
+`scout` on it now would add candidates on top of five unreviewed ones
+already owned. Revisit this call once the five theses are written and the
+retroactive reviews land; that is what would flip it back to balanced.
 
 ---
 
@@ -215,6 +221,90 @@ of the next full session, not this placeholder.
   and for ETH (see P1).
 - Not worth a big fix — it improves automatically as the gaps in P1 close.
 
+### S8 — Guard against critical files silently dropping during a branch merge
+- **Status:** open
+- **Why:** `reports/SESSION_LOG.md` — the system's only calibration
+  mechanism per CLAUDE.md — was dropped by the 2026-08-03 merge commit
+  (`445479b`), which explicitly restored `CLAUDE.md`, `data/portfolio.json`
+  and `data/investor_profile.json` but omitted this file from that list. It
+  went undetected across at least two sweep-adjacent sessions (~3 days)
+  until this session's `journal` run reported a read failure instead of
+  quietly reconstructing from other files. `scripts/check_unmerged_work.py`
+  guards against stray/unmerged branches, a different failure mode — it does
+  not check that a defined set of critical files still exist after a merge
+  actually lands.
+- **How:** extend `scripts/check_unmerged_work.py` (or add a small companion
+  check run at the same point, CLAUDE.md flow step 7) with a hardcoded
+  manifest of critical files — `CLAUDE.md`, `data/portfolio.json`,
+  `data/investor_profile.json`, `reports/SESSION_LOG.md`, `OPEN_ITEMS.md` —
+  and verify each exists and is above a trivial size/line-count threshold
+  every time the script runs. Exit non-zero and name the missing or emptied
+  file if any check fails.
+
+### S9 — Excel import script: two new data-quality flags (cross-field plausibility + purchase-without-thesis)
+- **Status:** open
+- **Why:** two real gaps surfaced in this session's import run. (1) The
+  Transactions sheet has a row pairing ticker "ethereum" with a
+  certificate's name/price/quantity (`BUY, ethereum, 1 unit, 2016.67
+  SEK/unit`) — a likely copy-paste artifact next to the real COIN-XBT.ST
+  6th-unit purchase row. The import script only does per-field bounds
+  checks (P/E sanity range, week52 range) and has no cross-field check
+  (does the ticker plausibly match the row's own name/price), so it
+  imported the bad row as-is into `data/transactions.csv`, where it will
+  corrupt any future attempt to derive P1 (the ETH cost basis) from
+  transaction history. (2) Four positions (ATCO-B, AZN, ALFA, ABB) were
+  added to `portfolio.json` 2026-08-03/04 with no thesis, and nothing
+  flagged it until this sweep's full Council run noticed — the same
+  pattern that already happened once before with SHB-A.ST/INVE-A.ST
+  (2026-08-03). This is now a recurring, worsening gap (5 positions,
+  29,242 SEK, 15.4% of investable capital, ETH included) that the import
+  script's existing "flags, never block" mechanism could catch
+  automatically instead of relying on a full sweep to notice it.
+- **How:** in `scripts/import_excel_holdings.py`: (a) in
+  `process_transactions`, add a bounded plausibility check — if a row's
+  `holdings_ticker` matches a known ticker in `data/company_profiles/` or
+  `portfolio.json` holdings, flag if `price_per_unit` is off by a large
+  multiple (e.g. >5x) from that ticker's last known price, or if the row's
+  `name` shares no token with the ticker's recorded name; (b) in
+  `process_core_holdings`, when a holding's `quantity` moves from
+  null/0 to a positive number (a new position) and its `thesis` field is
+  null or `"TBD"`, add a flag naming the ticker. Both reuse the existing
+  `flags` list already surfaced in `latest-summary.json` and read into the
+  council memo (section 12) — no new plumbing needed.
+
+### S10 [prospecting] — Watchlist regression: narrower than the retired universe.json and lost sector diversifiers
+- **Status:** open
+- **Why:** the new Watchlist (`data/cache/watchlist.json`, 32 entries / 7
+  categories, live for the first time this sweep) is smaller than the
+  `data/universe.json` it replaces (~43 tickers) and dropped names that
+  mattered for exactly the gaps this sweep's own scorecard flagged: H&M
+  (`HM-B.ST`, the only non-industrial/non-financial Nordic consumer name
+  in the old universe) is gone entirely; `SEB-A.ST` and `SWED-A.ST` (bank
+  alternatives to the ACT/WATCH-adjacent `SHB-A.ST`) are gone; Saab
+  (`SAAB-B.ST`) is gone. Separately, `broad_index_etfs` swapped EU-UCITS-
+  domiciled funds (`VWCE.DE`, `EUNL.DE`, `IS3N.DE`) for US-domiciled ones
+  (`VOO`, `VTI`, `QQQ`) — US-domiciled ETFs are frequently not legally
+  purchasable by EU retail investors without a PRIIPS KID, which most
+  don't provide, so this category may now be screening candidates the
+  user cannot actually buy on Avanza. This sweep's scorecard rates equity
+  sector concentration **ACT** (industrials 68.99%) and geography
+  **WATCH** (Sweden home bias) — precisely what a broader, more
+  diversified Watchlist would help correct, and the tool got narrower in
+  that exact spot the same week it went live. This is a universe problem,
+  not a screen problem — `scout` wasn't even invoked this session (see the
+  memo), so no screen-calibration evidence exists yet; don't conflate the
+  two.
+- **How:** this is user-curated content (the Watchlist tab, per CLAUDE.md
+  1a), not a script bug — no code change to propose. Concrete action: next
+  time the Excel workbook is edited, consider re-adding a non-industrial/
+  non-financial Nordic name (e.g. H&M or another consumer/healthcare
+  name) for sector diversification, one bank alternative to SHB-A.ST
+  (SEB-A or Swedbank) so the P5/Call-B rotation comparison has something
+  real to compare against, and either swap `broad_index_etfs` back to
+  EU-UCITS-domiciled tickers or confirm with Avanza that the US-domiciled
+  ones are actually purchasable before `scout` screens them as real
+  candidates.
+
 ---
 
 ## Closed
@@ -222,6 +312,24 @@ of the next full session, not this placeholder.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-06 — `reports/SESSION_LOG.md` lost in the 2026-08-03 merge,
+  unnoticed for 3 days**: recreated this session from `OPEN_ITEMS.md`'s
+  closed-item log, `data/portfolio.json`, and surviving dated memo files.
+  Root cause understood (the merge commit's explicit restore list omitted
+  this file). File itself is fixed; the forward-looking guard against a
+  repeat is S8, still open.
+- **2026-08-06 — Excel import pipeline dry-run bugs found and fixed before
+  the first real run**: a ticker-collision bug (multiple holdings sharing
+  ticker "TBD"), a P/E sanity check that only bounded high values and
+  missed an implausibly low one (Atlas Copco read 2.05), and a dedup bug
+  writing literal "None" strings for blank cells were all caught in this
+  session's own dry-run testing and fixed before touching real data.
+  Verified in `scripts/import_excel_holdings.py`: `_match_key()` folds
+  holding name into the key for "TBD" tickers, `EXCEL_PE_SANITY_RANGE`
+  has both a floor and a ceiling, and `key_val()` normalizes `None` and
+  empty-string consistently on both sides of the dedup comparison. A
+  distinct, still-open gap found in the same pipeline (no cross-field
+  ticker/name/price plausibility check) is now S9.
 - **2026-08-03 — The two-branch fork**: merged. `main` and
   `claude/project-status-briefing-0528tx` had diverged since 2026-07-22 with
   ~25 commits each, invisible to each other. Everything is now on `main`;

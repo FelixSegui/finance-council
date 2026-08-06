@@ -25,7 +25,9 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "fetchers"))
 from fetch_market_data import fetch_equities  # noqa: E402
 
-UNIVERSE_PATH = "data/cache/universe.json"
+WATCHLIST_PATH = "data/cache/watchlist.json"  # built from the Excel Watchlist tab, see
+                                               # scripts/import_excel_holdings.py
+LEGACY_UNIVERSE_PATH = "data/cache/universe.json"  # pre-Watchlist-tab fallback, see below
 
 # (cli_name, snapshot_field, direction) — direction "max" means value must
 # be <= threshold to pass, "min" means >=.
@@ -43,7 +45,14 @@ FILTERS = [
 
 
 def load_universe(categories):
-    with open(UNIVERSE_PATH) as f:
+    # data/universe.json is retired in favor of a Watchlist tab in the user's
+    # Excel workbook (import_excel_holdings.py builds WATCHLIST_PATH from it,
+    # with a "categories" dict shaped exactly like the old universe.json so
+    # this function doesn't need to change). Until that tab exists and has
+    # been imported at least once, fall back to the legacy cache so scout
+    # doesn't just break in the interim.
+    path = WATCHLIST_PATH if os.path.exists(WATCHLIST_PATH) else LEGACY_UNIVERSE_PATH
+    with open(path) as f:
         universe = json.load(f)
     cats = universe.get("categories", {})
     if categories == ["all"]:

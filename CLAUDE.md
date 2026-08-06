@@ -130,6 +130,17 @@ question.
    subagent do it) → writes timestamped JSON to `/data/snapshots/`.
    Include `--crypto ethereum,bitcoin`: BTC is the agreed directional
    proxy for the XBT certificate, which has no working ticker.
+1a. **Read the user's Excel workbook (added 2026-08-06)**, if a fresh copy
+   is available: download it via the Google Drive connector, then run
+   `python scripts/import_excel_holdings.py --xlsx <path>`. This is the
+   primary source for Nordic-equity fundamentals (P/E, sector, market cap
+   — via Excel's live "Stocks" data type, which no free headless source can
+   reach) and feeds `data/company_profiles/`, `data/portfolio.json`
+   holdings (quantity/cost-basis deltas, always surfaced not silently
+   applied), `data/transactions.csv`, and `data/cache/watchlist.json`.
+   Strictly read-only — the script never writes back to the workbook. If
+   no fresh copy is available this sweep, skip it; nothing downstream
+   blocks on it, same "no data is fine" rule as everywhere else.
 1b. Run `python scripts/position_report.py` → the per-position movement
    table (price, move since last sweep, move vs cost, 52-week range).
    This is the user's primary weekly output and leads the memo.
@@ -138,16 +149,24 @@ question.
    Optional, when relevant: `scout` (new candidates), `calendar` (event
    collisions), `backtest` (risk profile of a proposed allocation).
 3. Invoke `council` last. It reads all outputs, forces disagreements
-   into the open, and writes one memo to `/reports/`.
+   into the open, runs its Investment Council method (six short voices,
+   Chairman decides the actual portfolio action — standard every sweep as
+   of 2026-08-06, not gated behind a size threshold) on every headline
+   call, and writes one memo to `/reports/`.
 4. **Every sweep ends with `journal`** — it reconciles last sweep's calls
    against today's data and appends the session entry. An unlogged sweep
    is invisible to the next session.
 5. Invoke `meta` — it reviews how the system itself performed and
    maintains the S-items in `/OPEN_ITEMS.md`, plus two structural jobs
    (added 2026-08-04): a prospecting-capability check specifically for
-   `scout`/`data/universe.json`, and the next-sweep emphasis
-   recommendation (step 0 above). No longer purely optional — run it most
-   sessions so the emphasis recommendation stays current, not stale.
+   `scout`/`data/cache/watchlist.json` (built from the Excel Watchlist tab
+   — see 1a above; `data/universe.json` is retired for this purpose as of
+   2026-08-06, and stays only as the fallback until a Watchlist tab
+   exists), and the next-sweep emphasis recommendation (step 0 above). No
+   longer purely optional — run it most sessions so the emphasis
+   recommendation stays current, not stale. It also runs a six-voice
+   system-persona debate (see `meta.md`) on friction evidence before
+   updating S-items.
 6. You read the memo. You decide. Nothing here executes anything.
    Separately, roughly monthly (not every sweep), the `monthly-contribution`
    skill helps decide how much new money to move from available to

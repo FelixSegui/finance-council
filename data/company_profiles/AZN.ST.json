@@ -1,0 +1,43 @@
+{
+  "ticker": "AZN.ST",
+  "name": "ASTRAZENECA PLC",
+  "profile_last_updated": "2026-08-06",
+  "static_profile": {
+    "business_description": null,
+    "sector": "Pharmaceuticals (Excel Stocks data type, 2026-08-05)",
+    "competitive_moat_notes": null,
+    "management_notes": null,
+    "last_reviewed": null
+  },
+  "fundamentals_cache": {
+    "source": "Excel Stocks data type (Drive, read-only)",
+    "as_of_period": null,
+    "extracted_date": "2026-08-05",
+    "next_report_expected": null,
+    "figures": {
+      "ebit_margin_pct": null,
+      "roic_pct": null,
+      "roe_pct": null,
+      "revenue_growth_pct": null,
+      "fcf_sek": null,
+      "net_debt_to_ebitda": null,
+      "payout_ratio_pct": null,
+      "price": 1496.5,
+      "pe_ratio": 22.8928,
+      "market_cap": 181819900000,
+      "week52_high": 1925.5,
+      "week52_low": 640.3,
+      "beta": 0.83,
+      "exchange": "NASDAQ Stockholm",
+      "currency": "SEK",
+      "headquarters": "1 Francis Crick Avenue, Cambridge Biomedical Campus, CAMBRIDGE, CB2 0AA GB",
+      "employees": 96100
+    }
+  },
+  "insider_activity_cache": {
+    "source": null,
+    "as_of_date": null,
+    "notes": null
+  },
+  "review_history": []
+}

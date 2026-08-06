@@ -1,0 +1,41 @@
+{
+  "ticker": "ALFA.ST",
+  "name": "Alfa Laval AB",
+  "profile_last_updated": "2026-08-06",
+  "static_profile": {
+    "business_description": null,
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-05)",
+    "competitive_moat_notes": null,
+    "management_notes": null,
+    "last_reviewed": null
+  },
+  "fundamentals_cache": {
+    "source": "Excel Stocks data type (Drive, read-only)",
+    "as_of_period": null,
+    "extracted_date": "2026-08-05",
+    "next_report_expected": null,
+    "figures": {
+      "ebit_margin_pct": null,
+      "roic_pct": null,
+      "roe_pct": null,
+      "revenue_growth_pct": null,
+      "fcf_sek": null,
+      "net_debt_to_ebitda": null,
+      "payout_ratio_pct": null,
+      "price": 570,
+      "pe_ratio": 28.7588,
+      "market_cap": 236174700000,
+      "beta": 0.9636,
+      "exchange": "NASDAQ Stockholm",
+      "currency": "SEK",
+      "headquarters": "Rudeboksvagen 1, LUND, SKANE, 226 55 SE",
+      "employees": 24832
+    }
+  },
+  "insider_activity_cache": {
+    "source": null,
+    "as_of_date": null,
+    "notes": null
+  },
+  "review_history": []
+}

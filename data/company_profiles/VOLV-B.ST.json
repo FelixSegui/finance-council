@@ -1,42 +1,76 @@
 {
   "ticker": "VOLV-B.ST",
   "name": "Volvo B",
-  "profile_last_updated": "2026-07-28",
-
+  "profile_last_updated": "2026-08-06",
   "static_profile": {
     "business_description": "Swedish manufacturer of trucks, buses, construction equipment, and marine/industrial engines (AB Volvo, distinct from Volvo Cars). Not yet held in this portfolio (universe.json candidate).",
-    "sector": "Industrials / Farm & Heavy Construction Machinery (Yahoo assetProfile, fetched 2026-07-28)",
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-05)",
     "competitive_moat_notes": "Not yet assessed from a real source - NOT scored this review.",
     "management_notes": "Not yet assessed.",
     "last_reviewed": "2026-07-28"
   },
-
   "fundamentals_cache": {
-    "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+    "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": "trailing/most recent fiscal year 2025-12-31",
-    "extracted_date": "2026-07-28",
+    "extracted_date": "2026-08-05",
     "next_report_expected": "check Volvo's own IR calendar - not confirmed this session",
     "figures": {
-      "trailing_pe": 20.52, "forward_pe": 14.53, "price_to_sales": 1.56, "price_to_book": 3.86, "peg_ratio": 1.43,
-      "dividend_yield_pct": 2.39, "payout_ratio_pct": 48.24, "beta": 0.969,
-      "gross_margin_pct": 24.36, "operating_margin_pct": 10.56, "ebitda_margin_pct": 11.91, "profit_margin_pct": 7.60,
-      "roe_pct": 20.88, "roa_pct": 4.51, "debt_to_equity": 147.35,
+      "trailing_pe": 20.52,
+      "forward_pe": 14.53,
+      "price_to_sales": 1.56,
+      "price_to_book": 3.86,
+      "peg_ratio": 1.43,
+      "dividend_yield_pct": 2.39,
+      "payout_ratio_pct": 48.24,
+      "beta": 1.0451,
+      "gross_margin_pct": 24.36,
+      "operating_margin_pct": 10.56,
+      "ebitda_margin_pct": 11.91,
+      "profit_margin_pct": 7.6,
+      "roe_pct": 20.88,
+      "roa_pct": 4.51,
+      "debt_to_equity": 147.35,
       "revenue_history_sek_m": [
-        {"fy": "2022-12-31", "revenue": 473479}, {"fy": "2023-12-31", "revenue": 552764},
-        {"fy": "2024-12-31", "revenue": 526816}, {"fy": "2025-12-31", "revenue": 479183}
+        {
+          "fy": "2022-12-31",
+          "revenue": 473479
+        },
+        {
+          "fy": "2023-12-31",
+          "revenue": 552764
+        },
+        {
+          "fy": "2024-12-31",
+          "revenue": 526816
+        },
+        {
+          "fy": "2025-12-31",
+          "revenue": 479183
+        }
       ],
       "free_cashflow_sek": 24019875840,
-      "analyst_recommendation": "buy"
+      "analyst_recommendation": "buy",
+      "price": 365.8,
+      "pe_ratio": 20.7487,
+      "market_cap": 755295300000,
+      "exchange": "NASDAQ Stockholm",
+      "currency": "SEK",
+      "headquarters": "Gropegardsgatan 2, GOETEBORG, VASTRA GOTALANDS, 417 15 SE",
+      "employees": 89417
     }
   },
-
   "insider_activity_cache": {
     "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), fetched 2026-07-28, data/snapshots/20260728T122437.json. CAUTION: search term 'Volvo' also returned Volvo Car AB (Volvo Cars, a SEPARATE listed company, ~19 SEK/share) - those rows excluded below, only 'Volvo, AB ser. B' (AB Volvo, our actual ticker) counted.",
     "as_of_date": "2026-07-28 (transactions through 2026-07-27)",
     "notes": "Helena Stjernholm, Member of the Board of Directors, made 7 separate Acquisition transactions on 2026-07-27 (yesterday relative to this review) totaling ~1,300,000 shares at ~360 SEK/share - approximately 468M SEK. Single insider, but exceptional size and very recent - worth independent verification given the magnitude, reported here as-is from the register."
   },
-
   "review_history": [
-    { "date": "2026-07-28", "score": 60, "coverage_pct": 80, "dimensions_scored": "5 of 6 (Business Quality not scored)", "action": "Hold/further research. Dimension scores: Financial Strength 5, Valuation 7, Dividend Quality 6, Insider Activity 8, Growth Outlook 4. Tension worth noting: revenue declining 2 straight fiscal years (552.8B FY2023 peak to 479.2B FY2025, -13%) and high leverage (D/E 147), but valuation reasonable (P/E 20.5, forward 14.5) AND a very large, very recent single-insider purchase (~468M SEK, 2026-07-27)." }
+    {
+      "date": "2026-07-28",
+      "score": 60,
+      "coverage_pct": 80,
+      "dimensions_scored": "5 of 6 (Business Quality not scored)",
+      "action": "Hold/further research. Dimension scores: Financial Strength 5, Valuation 7, Dividend Quality 6, Insider Activity 8, Growth Outlook 4. Tension worth noting: revenue declining 2 straight fiscal years (552.8B FY2023 peak to 479.2B FY2025, -13%) and high leverage (D/E 147), but valuation reasonable (P/E 20.5, forward 14.5) AND a very large, very recent single-insider purchase (~468M SEK, 2026-07-27)."
+    }
   ]
 }

@@ -1,44 +1,86 @@
 {
   "ticker": "INVE-A.ST",
   "name": "Investor A",
-  "profile_last_updated": "2026-07-28",
-
+  "profile_last_updated": "2026-08-06",
   "static_profile": {
     "business_description": "Swedish investment company (Wallenberg sphere) - holds stakes in listed companies plus unlisted/patient-capital investments; exact current holdings unconfirmed, verify from Investor's own factsheet. Existing holding in this portfolio (5 shares, avanza-isk). No stated reason for holding on file (open question 9).",
-    "sector": "Financial Services / Asset Management (Yahoo assetProfile, fetched 2026-07-28)",
+    "sector": "Holding Companies (Excel Stocks data type, 2026-08-05)",
     "competitive_moat_notes": "Not yet assessed from a real source - NOT scored this review.",
     "management_notes": "Not yet assessed.",
     "last_reviewed": "2026-07-28"
   },
-
   "fundamentals_cache": {
-    "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+    "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": "trailing/most recent fiscal year 2025-12-31",
-    "extracted_date": "2026-07-28",
+    "extracted_date": "2026-08-05",
     "next_report_expected": "check Investor AB's own IR calendar - not confirmed this session",
     "figures": {
-      "trailing_pe": 4.62, "forward_pe": null, "price_to_sales": 3.70, "price_to_book": 1.12, "peg_ratio": 4.91,
-      "dividend_yield_pct": 1.41, "payout_ratio_pct": 6.36, "beta": 0.778,
-      "gross_margin_pct": 89.44, "operating_margin_pct": 88.70, "ebitda_margin_pct": 82.92, "profit_margin_pct": 80.07,
-      "roe_pct": 27.25, "roa_pct": 15.07, "debt_to_equity": 11.59,
+      "trailing_pe": 4.62,
+      "forward_pe": null,
+      "price_to_sales": 3.7,
+      "price_to_book": 1.12,
+      "peg_ratio": 4.91,
+      "dividend_yield_pct": 1.41,
+      "payout_ratio_pct": 6.36,
+      "beta": 0.9683,
+      "gross_margin_pct": 89.44,
+      "operating_margin_pct": 88.7,
+      "ebitda_margin_pct": 82.92,
+      "profit_margin_pct": 80.07,
+      "roe_pct": 27.25,
+      "roa_pct": 15.07,
+      "debt_to_equity": 11.59,
       "note_on_holding_company_metrics": "CRITICAL CAVEAT: margins and 'revenue' here are a holding-company accounting artifact (investment income/dividends received, not operating sales), not comparable to an operating company like Atlas Copco or Volvo - do not read the 80%+ margins as operational excellence. Likewise P/E (4.62) is a poor substitute for the metric that actually matters for an investment company - NAV discount/premium to its underlying holdings' market value - which Yahoo does not report and was not obtained this session. Score treat with lower confidence than the other three companies for exactly this reason.",
       "revenue_history_sek_m": [
-        {"fy": "2022-12-31", "revenue": 51812}, {"fy": "2023-12-31", "revenue": 71862},
-        {"fy": "2024-12-31", "revenue": 75681}, {"fy": "2025-12-31", "revenue": 64826}
+        {
+          "fy": "2022-12-31",
+          "revenue": 51812
+        },
+        {
+          "fy": "2023-12-31",
+          "revenue": 71862
+        },
+        {
+          "fy": "2024-12-31",
+          "revenue": 75681
+        },
+        {
+          "fy": "2025-12-31",
+          "revenue": 64826
+        }
       ],
       "free_cashflow_sek": 166005374976,
-      "analyst_recommendation": "buy"
+      "analyst_recommendation": "buy",
+      "price": 415.7,
+      "pe_ratio": 6.679,
+      "market_cap": 1288173000000,
+      "week52_high": 747,
+      "week52_low": 165.35,
+      "exchange": "NASDAQ Stockholm",
+      "currency": "SEK",
+      "headquarters": "Arsenalsgatan 8C, STOCKHOLM, STOCKHOLM, 103 32 SE",
+      "employees": 21005
     }
   },
-
   "insider_activity_cache": {
     "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), fetched 2026-07-28, data/snapshots/20260728T122437.json. Search term 'Investor' matched cleanly.",
     "as_of_date": "2026-07-28 (transactions from 2026-02-02 through 2026-07-17)",
     "notes": "Recurring, modest Acquisitions over 6 months by CEO Christian Cederholm (5 separate purchases, 1,250-3,000 shares each) plus smaller buys by 3 other board members (Jessica Haggstrom, Thomas Kidane, Jacob Lund, Yuriy Prilutskiy). Sustained small-scale insider buying, not a single dramatic event - a genuinely different pattern than Volvo/Handelsbanken's large one-off purchases."
   },
-
   "review_history": [
-    { "date": "2026-07-28", "score": 58, "coverage_pct": 45, "dimensions_scored": "3 of 6 (Valuation - flagged low-confidence, Dividend Quality, Insider Activity). SUPERSEDED same day - see next entry.", "action": "Superseded - see 2026-07-28 (corrected) entry below." },
-    { "date": "2026-07-28 (corrected, same day)", "score": null, "coverage_pct": null, "dimensions_scored": "2 of 6 (Dividend Quality, Insider Activity) - BELOW the 3-dimension minimum for a Score.", "action": "NO SCORE reported (correctly, per the skill's own gate) - the prior entry's 'Valuation 6' used P/E as a stand-in, which the skill's holding-company rubric (adopted 2026-07-28) no longer permits: Holding Company Valuation requires an actual NAV discount/premium, applied via the 3-level fallback hierarchy. Level 1 (current discount from a reliable source): not obtained. Level 2 (estimate from the latest quarterly report's disclosed holdings): not obtained - would need Investor's own Q2 2026 report. Level 3: 'NAV discount could not be verified this month. The valuation score is marked as Not Available and excluded.' Business Quality, Financial Strength (structural), and Growth (NAV/portfolio growth, no source) are also unscored, leaving only Dividend Quality (5) and Insider Activity (6) - below the minimum to report any Score at all. To fix: get Investor's current NAV discount/premium from their investor relations page, or provide their latest quarterly report (PDF) for a Level-2 estimate." }
+    {
+      "date": "2026-07-28",
+      "score": 58,
+      "coverage_pct": 45,
+      "dimensions_scored": "3 of 6 (Valuation - flagged low-confidence, Dividend Quality, Insider Activity). SUPERSEDED same day - see next entry.",
+      "action": "Superseded - see 2026-07-28 (corrected) entry below."
+    },
+    {
+      "date": "2026-07-28 (corrected, same day)",
+      "score": null,
+      "coverage_pct": null,
+      "dimensions_scored": "2 of 6 (Dividend Quality, Insider Activity) - BELOW the 3-dimension minimum for a Score.",
+      "action": "NO SCORE reported (correctly, per the skill's own gate) - the prior entry's 'Valuation 6' used P/E as a stand-in, which the skill's holding-company rubric (adopted 2026-07-28) no longer permits: Holding Company Valuation requires an actual NAV discount/premium, applied via the 3-level fallback hierarchy. Level 1 (current discount from a reliable source): not obtained. Level 2 (estimate from the latest quarterly report's disclosed holdings): not obtained - would need Investor's own Q2 2026 report. Level 3: 'NAV discount could not be verified this month. The valuation score is marked as Not Available and excluded.' Business Quality, Financial Strength (structural), and Growth (NAV/portfolio growth, no source) are also unscored, leaving only Dividend Quality (5) and Insider Activity (6) - below the minimum to report any Score at all. To fix: get Investor's current NAV discount/premium from their investor relations page, or provide their latest quarterly report (PDF) for a Level-2 estimate."
+    }
   ]
 }

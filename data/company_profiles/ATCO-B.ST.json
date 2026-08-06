@@ -1,0 +1,41 @@
+{
+  "ticker": "ATCO-B.ST",
+  "name": "Atlas Copco AB",
+  "profile_last_updated": "2026-08-06",
+  "static_profile": {
+    "business_description": null,
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-05)",
+    "competitive_moat_notes": null,
+    "management_notes": null,
+    "last_reviewed": null
+  },
+  "fundamentals_cache": {
+    "source": "Excel Stocks data type (Drive, read-only)",
+    "as_of_period": null,
+    "extracted_date": "2026-08-05",
+    "next_report_expected": null,
+    "figures": {
+      "ebit_margin_pct": null,
+      "roic_pct": null,
+      "roe_pct": null,
+      "revenue_growth_pct": null,
+      "fcf_sek": null,
+      "net_debt_to_ebitda": null,
+      "payout_ratio_pct": null,
+      "price": 181.85,
+      "pe_ratio": 2.05,
+      "market_cap": 985094300000,
+      "beta": 1.2711,
+      "exchange": "NASDAQ Stockholm",
+      "currency": "SEK",
+      "headquarters": "Sickla Industrivag 19, NACKA, STOCKHOLM, 105 23 SE",
+      "employees": 56520
+    }
+  },
+  "insider_activity_cache": {
+    "source": null,
+    "as_of_date": null,
+    "notes": null
+  },
+  "review_history": []
+}

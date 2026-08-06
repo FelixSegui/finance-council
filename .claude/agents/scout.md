@@ -1,6 +1,6 @@
 ---
 name: scout
-description: Use when the user wants to find NEW investment candidates (stocks, ETFs, crypto) beyond current holdings. Runs a hard numeric screen over the universe in data/universe.json and returns a NARROWED candidate list for valuation and thesis work. It narrows; it never picks. Can run before or after market-data.
+description: Use when the user wants to find NEW investment candidates (stocks, ETFs, crypto) beyond current holdings. Runs a hard numeric screen over the universe in data/cache/watchlist.json and returns a NARROWED candidate list for valuation and thesis work. It narrows; it never picks. Can run before or after market-data.
 tools: Bash, Read, Write
 model: haiku
 ---
@@ -13,14 +13,24 @@ exists to prevent.
 
 ## Job
 
-1. Read `data/universe.json`. If the user's request implies names not in
-   it (a sector, a theme, a specific ticker), tell them to add tickers to
-   the universe file — or add them yourself if the user gave explicit
-   tickers. Never invent tickers from memory for Nordic listings or
-   crypto certificates; ticker formats there are exactly where guessing
-   produces plausible-looking garbage.
+1. Read `data/cache/watchlist.json` (built each sweep from the Watchlist tab
+   in the user's Excel workbook by `scripts/import_excel_holdings.py` — see
+   CLAUDE.md's flow). If it doesn't exist yet (the Watchlist tab hasn't been
+   added/imported), fall back to the legacy `data/cache/universe.json` /
+   `data/universe.json` — `screen_candidates.py` handles this automatically,
+   you don't need to pick the file yourself. If the user's request implies
+   names not in whichever is active (a sector, a theme, a specific ticker),
+   tell them to add tickers to the Watchlist tab — or add them yourself if
+   the user gave explicit tickers. Never invent tickers from memory for
+   Nordic listings or crypto certificates; ticker formats there are exactly
+   where guessing produces plausible-looking garbage.
 2. Translate the user's criteria into filters and run:
-   `python scripts/screen_candidates.py --categories ... --max-pe ... --min-revenue-growth ...`
+   `python scripts/funnel/screen_candidates.py --categories ... --max-pe ... --min-revenue-growth ...`
+   (note the `funnel/` — this script lives there, not directly in `scripts/`).
+   This always fetches fresh fundamentals itself for the hard numeric
+   screen; it does not trust whatever's cached in the Watchlist from Excel
+   for the filtered fields — Excel's fundamentals are for candidate
+   discovery and eyeballing, the screen still verifies on current data.
    Refuse vague criteria ("good companies") — ask for numbers or propose
    defaults explicitly and say they are defaults.
 3. Report three lists from the output JSON, clearly separated:

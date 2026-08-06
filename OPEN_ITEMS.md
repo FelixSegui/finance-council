@@ -45,24 +45,31 @@ of the next full session, not this placeholder.
 - **Not urgent** unless you intend to sell.
 
 ### P2 — Port what's worth keeping from the merged branch
-- **Status:** open — the merge itself is DONE, this is the follow-up
+- **Status:** open — two of three ported 2026-08-06, one still open
 - The Excel branch is merged into `main` (2026-08-03) and nothing is lost.
-  But its runtime — `run.py`, `data/sync/`, `scripts/fetchers/`,
-  `scripts/funnel/` — is **merged but parked**, not wired into the live flow,
-  because it assumes Excel is the source of truth and the live system no
-  longer works that way.
-- **Three things in there are genuinely worth having**, in priority order:
-  1. The **discovery funnel** (`scripts/funnel/`) — index-sourced universe
-     plus factor ranking. This is real capability for "should I invest in
-     anything new", which is one of your two main goals.
-  2. The **consolidated one-file sweep report** — one `sweep.md` per day
-     instead of a memo plus separate coverage output. Directly serves
-     slimming the system down.
-  3. The **journal-before-council ordering rule** — the branch hit a real
-     bug where council wrote a report with an empty reconciliation section.
-     The live system has the same latent weakness.
-- Full notes in `archive/agents-from-excel-branch/README.md`. Port these
-  deliberately, one at a time — do not bulk-restore.
+  Its runtime — `run.py`, `data/sync/`, `scripts/fetchers/`,
+  `scripts/funnel/` — stays **merged but parked**, not wired into the live
+  flow, because it assumes Excel is the source of truth and the live system
+  still doesn't work that way (Excel is a read-only *input* as of 2026-08-06,
+  which is different — `portfolio.json` remains authoritative).
+- **Three things were flagged as worth having, in priority order — status now:**
+  1. The **discovery funnel** (`scripts/funnel/build_universe.py`,
+     index-sourced universe + factor ranking) — **still open, not done by
+     the 2026-08-06 Excel-input work.** That work retired `data/universe.json`
+     in favor of a hand-maintained Watchlist tab, which is a narrower thing
+     than automated index-sourced discovery — don't conflate the two.
+  2. The **consolidated one-file sweep report** (one `sweep.md` per day
+     instead of a memo plus separate coverage output) — **still open.**
+  3. The **journal-before-council ordering rule** — **DONE 2026-08-06.**
+     Ported into `council.md`'s Job step 1: Council now stops and asks for
+     `journal` to run first if reconciliation hasn't happened yet.
+  - Also done 2026-08-06, not originally itemized here but from the same
+    archive: the **6-voice Investment Council method** (`core-council.md`'s
+    investment-decision mode) and the **standing system-persona debate**
+    (`core-council.md`'s system-health mode, ported into `meta.md`) — both
+    restored and now run every sweep/session, not gated behind a threshold.
+- Full notes in `archive/agents-from-excel-branch/README.md`. Port the
+  remaining two deliberately, one at a time — do not bulk-restore.
 
 ### P3 — PayPal routing (the fee is now known; the route isn't)
 - **Status:** open
@@ -143,12 +150,16 @@ of the next full session, not this placeholder.
 
 ## S — System items
 
-### S1 — Verified SEK crypto-certificate tickers in `universe.json`
+### S1 — Verified SEK crypto-certificate tickers in the Watchlist
 - **Status:** open — now directly blocking P4
 - Nordic crypto ETP tickers (Virtune, Valour, XBT Provider, Coinshares) change
-  and must be confirmed on Avanza rather than guessed. Until they're in
-  `universe.json`, the cheaper-certificate search can't be screened
-  automatically. This used to be a nice-to-have; P4 makes it load-bearing.
+  and must be confirmed on Avanza rather than guessed. **Updated 2026-08-06:**
+  the destination for these is now the Watchlist tab in the user's Excel
+  workbook, not `data/universe.json` (retired for this purpose — see the
+  2026-08-06 closed-log entry above). Until verified tickers are added there
+  and imported via `scripts/import_excel_holdings.py`, the cheaper-
+  certificate search can't be screened automatically. This used to be a
+  nice-to-have; P4 makes it load-bearing.
 
 ### S2 — Extract Form 4 buy/sell *direction*, not just filing counts
 - **Status:** open
@@ -235,6 +246,21 @@ and `reports/SESSION_LOG.md`.
   linked data types across a save). Confirmed empirically — the workbook
   currently contains no linked-data parts at all. Still useful as a *manual*
   gap-filler via the Manual Data sheet.
+- **2026-08-06 — SUPERSEDES the above, doesn't contradict it.** The
+  "nothing headless can trigger a refresh" conclusion stands — that's still
+  true and unchanged. What changed: whether the CACHED values behind an
+  already-refreshed live cell are reliably *readable* headlessly turned out
+  to be yes, not no. A raw file download via the Google Drive connector
+  (`mcp__Google_Drive__download_file_content`) plus a real
+  `openpyxl(data_only=True)` parse returns clean cached fundamentals (P/E,
+  sector, market cap, etc.) reliably. The earlier "no linked-data parts at
+  all" finding was against a different, plainer workbook — the user's
+  richer `master-5.xlsx` does carry them, and Drive's own web-preview/
+  text-conversion (not the file, not openpyxl) is what had made it look
+  broken in an earlier check this same day. New live path:
+  `scripts/import_excel_holdings.py`, read-only, documented in CLAUDE.md's
+  flow step 1a. `data/universe.json` is retired in favor of a Watchlist tab
+  in the same workbook — see S1.
 
 - **2026-08-03 — Avanza Global TER** (was the most urgent open item):
   confirmed **0.10%/yr**. The largest holding is also the cheapest; fee drag

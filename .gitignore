@@ -12,6 +12,15 @@ data/cache/rankings/*.log
 data/cache/universe.json
 data/cache/thesis_candidates.json
 
+# fully regenerated each sweep from the user's Excel Watchlist tab by
+# scripts/import_excel_holdings.py (added 2026-08-06) — same reasoning as
+# data/cache/universe.json above, which this replaces as scout's input
+data/cache/watchlist.json
+
+# downloaded Excel workbooks used as import_excel_holdings.py's input -
+# these are a copy of the user's own file, not something this repo owns
+data/cache/excel_import/*.xlsx
+
 # data/sync/*.json is fully regenerated from master.xlsx by `python run.py sync`
 # — committing it would recreate the duplicated-state problem this project's
 # architecture is built to avoid. Only the sync CODE (schema.py, sync.py,

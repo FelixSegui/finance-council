@@ -1,0 +1,13 @@
+date,type,holdings_ticker,name,account,quantity,price_per_unit,amount_sek,fee_sek,cash_effect_sek,realized_pnl_sek,source,note
+2026-08-03,OPENING,ABB.ST,ABB,avanza-isk,4,946.96,3787.84,,-3787.84,,cost basis ÷ quantity from Holdings,Opening position — held when the ledger started; backfill the real trade date and fee if you have them
+2026-08-04,OPENING,ALFA.ST,Alfa Laval,avanza-isk,9,574.4000000000001,5169.6,,-5169.6,,cost basis ÷ quantity from Holdings,Opening position — held when the ledger started; backfill the real trade date and fee if you have them
+2026-08-04,OPENING,ATCO-B.ST,Atlas Copco B,avanza-isk,27,181.25,4893.75,,-4893.75,,cost basis ÷ quantity from Holdings,Opening position — held when the ledger started; backfill the real trade date and fee if you have them
+2026-08-04,OPENING,AZN.ST,AstraZeneca,avanza-isk,4,1507,6028,,-6028,,cost basis ÷ quantity from Holdings,Opening position — held when the ledger started; backfill the real trade date and fee if you have them
+,OPENING,INVE-A.ST,Investor A (stock),avanza-isk,5,290.21999999999997,1451.1,,-1451.1,,cost basis ÷ quantity from Holdings,Opening position — held when the ledger started; backfill the real trade date and fee if you have them
+,OPENING,SHB-A.ST,Handelsbanken A (stock),avanza-isk,1,129.25,129.25,,-129.25,,cost basis ÷ quantity from Holdings,Opening position — held when the ledger started; backfill the real trade date and fee if you have them
+2026-08-04,OPENING,VOLV-B.ST,Volvo B,avanza-isk,13,367.5,4777.5,,-4777.5,,cost basis ÷ quantity from Holdings,Opening position — held when the ledger started; backfill the real trade date and fee if you have them
+,OPENING,n/a,Avanza Auto 3 (fund),avanza-isk,n/a,,9800.3,,-9800.3,,cost basis ÷ quantity from Holdings,Opening position — held when the ledger started; backfill the real trade date and fee if you have them
+2026-07-28,OPENING,n/a,Avanza Global (fund),avanza-isk,n/a,,119999,,-119999,,cost basis ÷ quantity from Holdings,Opening position — held when the ledger started; backfill the real trade date and fee if you have them
+,OPENING,TBD,SEB Osteuropafond (FROZEN - unsellable),seb-fund,n/a,,0.25,,-0.25,,cost basis ÷ quantity from Holdings,Opening position — held when the ledger started; backfill the real trade date and fee if you have them
+,OPENING,COIN-XBT.ST,CoinShares XBT Provider Bitcoin Tracker One (certificate),avanza-isk,5,2016.67,10083.35,,-10083.35,,cost basis ÷ quantity from Holdings,Opening position of 5 units held when the ledger started
+,BUY,COIN-XBT.ST,CoinShares XBT Provider Bitcoin Tracker One (certificate),avanza-isk,1,2016.67,2016.67,,-2016.67,,cost basis ÷ quantity from Holdings,6th unit bought later — log the actual date and price paid if it differed from the average

@@ -2,18 +2,23 @@
 Centralized tunable constants for the Finance Council system.
 
 Before this file existed, these values were hardcoded across multiple scripts
-and agent .md files — changing the AI Council's SEK trigger, for example, meant
-finding and editing prose inside council.md. This file is the one place to tune
-system behavior. It is machine-owned config (how the system behaves), not
-financial config (what the user decided about their own money — that lives in
-the Settings sheet of master.xlsx).
+and agent .md files — changing a risk-score band, for example, meant finding
+and editing prose inside a script. This file is the one place to tune system
+behavior. It is machine-owned config (how the system behaves), not financial
+config (what the user decided about their own money — that lives in
+`data/investor_profile.json`).
 
 Import with: from config.settings import ...
 """
 
-# --- AI Council deep-dive mode triggers (council.md / meta.md) ---
-AI_COUNCIL_SEK_THRESHOLD = 20_000
-AI_COUNCIL_PORTFOLIO_PCT_THRESHOLD = 0.10  # whichever of the two is smaller
+# --- import_excel_holdings.py: sanity-check bounds (flag, never block) ---
+EXCEL_STALE_AFTER_DAYS = 10  # an as_of older than this gets flagged, not dropped
+EXCEL_PE_SANITY_RANGE = (3, 80)  # outside this, flag the P/E as suspect (e.g. Atlas Copco's 2.05).
+# Lower bound deliberately not 0: an implausibly LOW P/E on a normally-profitable
+# large cap is exactly the failure mode observed (a wrong/mismatched field), and
+# a pure upper-bound check misses it entirely. 3 is loose enough not to flag a
+# genuine holding company (Investor A's ~6.7x is a legitimate NAV-driven artifact,
+# see portfolio.json's INVE-A.ST thesis) while still catching 2.05.
 
 # --- rank_candidates.py: hybrid risk score weights (must sum to 1.0) ---
 RISK_SCORE_WEIGHTS = {

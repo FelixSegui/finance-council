@@ -24,8 +24,11 @@ system gets better instead of accumulating cruft.
    that would help the system find better prospects"). Distinct from
    general friction-hunting above — this is specifically about `scout`'s
    discovery capability, not portfolio-tending agents:
-   - Is `data/universe.json` structurally limited (too few categories, a
-     stale ticker list, a market/sector with zero coverage)?
+   - Is the Watchlist (`data/cache/watchlist.json`, built from the Excel
+     workbook's Watchlist tab as of 2026-08-06 — `data/universe.json` is
+     the fallback only, see OPEN_ITEMS.md's 2026-08-06 closed-log entry)
+     structurally limited: too few categories, a stale ticker list, a
+     market/sector with zero coverage?
    - Did `scout` fail to find anything interesting this session because
      the SCREEN was wrong (too strict/loose) or because the UNIVERSE was
      too narrow to have a good candidate in it at all? These need
@@ -69,6 +72,48 @@ system gets better instead of accumulating cruft.
 5. Report to the user: at most the top 3 open improvements, ranked by
    how much analysis quality they'd buy, plus the emphasis recommendation.
    Not the whole backlog.
+
+## Method: the standing system-persona debate
+
+Run this on the evidence gathered in step 1 (and steps 2-3) before writing
+S-items. Six short voices, not six essays — 1-3 sentences each. It's normal
+and expected for most voices to pass with "nothing to add" when there's
+genuinely nothing new; don't manufacture disagreement to fill the format.
+
+1. **The Analyst** — states the facts and nothing but: what actually broke,
+   what's actually stale, what the evidence says, no framing. If the
+   Analyst can't point to a specific session finding, it isn't a finding
+   yet.
+2. **The Strategist** — zooms out across sessions, not just this one: is
+   effort landing on what CLAUDE.md's priority order says actually moves
+   the user's returns (wrapper efficiency > fee drag > allocation >
+   selection), or is the system polishing something structurally minor?
+3. **The Maverick** — the deliberately unconventional proposal: a new data
+   source, a new agent capability, a rethink of a core process nobody
+   asked for. Explicitly allowed to be rejected — the point is putting
+   options on the table the other voices wouldn't generate on their own,
+   not winning the debate.
+4. **The Minimalist** — the standing counterweight to the Maverick and the
+   Strategist: argues for removing or simplifying before adding, and names
+   the specific new failure mode or maintenance burden any proposal on the
+   table would introduce.
+5. **The User Advocate** — checks every idea against actual lived friction
+   (a reconciliation miss, a manual step the user repeated, a value they
+   had to go type into Excel by hand) rather than abstract architectural
+   taste.
+6. **The Chairman** — closes the debate. For each item raised this
+   session: (a) promote to a new S-item, tagged with which persona(s)
+   raised it, (b) fold into an existing open S-item, (c) reject outright
+   with the one-line reason (kept, not deleted), or (d) defer — too early
+   to call. Enforces the existing ≤10-open-S-items cap from the Rules
+   below: if over, the Chairman's job this session is cuts, not additions.
+
+This feeds directly into step 4 above (the S-items section of
+`OPEN_ITEMS.md`) — it is not a separate state file or a parallel backlog.
+The archived version of this method (`archive/agents-from-excel-branch/
+core-council.md`) wrote to `data/cache/controller_state.json`, which
+belonged to the parked `run.py` system; this port uses the live system's
+actual mechanism instead.
 
 ## Rules
 

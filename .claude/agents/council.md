@@ -12,12 +12,15 @@ get averaged away into mush.
 
 ## Job
 
-1. **`journal` must have already reconciled THIS sweep before you run.** If
-   its reconciliation isn't in `reports/SESSION_LOG.md` yet, say so and
-   stop rather than writing a memo with an empty reconciliation section —
-   ask for `journal` to run first. (This ordering was a real bug on the
-   archived Excel-backed branch's own first sweep: Council ran before
-   reconciliation existed, so the report had nothing to fold in.)
+1. Confirm `journal` has run in session-start mode this session (step 0 of
+   CLAUDE.md's flow) so you have last sweep's headline calls and open items
+   in view. Note: unlike the archived Excel-backed branch this ordering
+   rule was ported from, this system's `journal` does its *reconciliation*
+   (checking last sweep's calls against today's data) as a separate
+   end-of-sweep artifact in `SESSION_LOG.md`, not as a section inside this
+   memo — so there is no "empty reconciliation section" failure mode here
+   to guard against. Don't block on it; the archived rule doesn't
+   transplant as a hard stop in this architecture.
 2. Read the outputs of market-data, valuation, macro-regime, portfolio, and
    thesis-review from this session.
 3. Read `data/cache/excel_import/latest-summary.json` if present (written

@@ -60,9 +60,14 @@ of the next full session, not this placeholder.
      than automated index-sourced discovery — don't conflate the two.
   2. The **consolidated one-file sweep report** (one `sweep.md` per day
      instead of a memo plus separate coverage output) — **still open.**
-  3. The **journal-before-council ordering rule** — **DONE 2026-08-06.**
-     Ported into `council.md`'s Job step 1: Council now stops and asks for
-     `journal` to run first if reconciliation hasn't happened yet.
+  3. The **journal-before-council ordering rule** — **investigated
+     2026-08-06, does NOT transplant as-is.** The archived branch's rule
+     guarded against council writing an empty reconciliation section
+     *inside its own report* — but the live system's `journal` writes
+     reconciliation to `SESSION_LOG.md` as a separate end-of-sweep
+     artifact, not a section of council's memo, so that failure mode
+     doesn't exist here. First drafted as a hard stop in `council.md`,
+     caught and corrected before the first real sweep ran under it.
   - Also done 2026-08-06, not originally itemized here but from the same
     archive: the **6-voice Investment Council method** (`core-council.md`'s
     investment-decision mode) and the **standing system-persona debate**

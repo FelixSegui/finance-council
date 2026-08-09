@@ -15,21 +15,141 @@
     "extracted_date": "2026-08-05",
     "next_report_expected": null,
     "figures": {
-      "ebit_margin_pct": null,
-      "roic_pct": null,
-      "roe_pct": null,
-      "revenue_growth_pct": null,
-      "fcf_sek": null,
-      "net_debt_to_ebitda": null,
-      "payout_ratio_pct": null,
-      "price": 181.85,
-      "pe_ratio": 2.05,
-      "market_cap": 985094300000,
-      "beta": 1.2711,
-      "exchange": "NASDAQ Stockholm",
-      "currency": "SEK",
-      "headquarters": "Sickla Industrivag 19, NACKA, STOCKHOLM, 105 23 SE",
-      "employees": 56520
+      "ebit_margin_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roic_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roe_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "revenue_growth_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "fcf_sek": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "net_debt_to_ebitda": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "payout_ratio_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price": {
+        "value": 181.85,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "pe_ratio": {
+        "value": 2.05,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "market_cap": {
+        "value": 985094300000,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "beta": {
+        "value": 1.2711,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "exchange": {
+        "value": "NASDAQ Stockholm",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "currency": {
+        "value": "SEK",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "headquarters": {
+        "value": "Sickla Industrivag 19, NACKA, STOCKHOLM, 105 23 SE",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "employees": {
+        "value": 56520,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      }
     }
   },
   "insider_activity_cache": {

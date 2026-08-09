@@ -105,7 +105,12 @@ def main():
         touched_figures = []
         for f in FIGURE_FIELDS:
             if f in filled:
-                figures[f] = filled[f]
+                # Structured per-field shape, see data/company_profiles/_SCHEMA.md
+                # (added 2026-08-09) - source_tier 3 matches import_excel_holdings.py's
+                # convention for the same underlying Excel Stocks data type source.
+                figures[f] = {"value": filled[f], "source": "Excel Stocks data type (user's Microsoft 365 session)",
+                              "source_tier": 3, "as_of": as_of, "age_days": None, "quality_state": "OK",
+                              "calculation_method": "direct from source, not computed"}
                 touched_figures.append(f)
         if touched_figures:
             profile["fundamentals_cache"]["source"] = "Excel Stocks data type (user's Microsoft 365 session)"

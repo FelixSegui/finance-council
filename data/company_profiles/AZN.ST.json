@@ -15,23 +15,159 @@
     "extracted_date": "2026-08-05",
     "next_report_expected": null,
     "figures": {
-      "ebit_margin_pct": null,
-      "roic_pct": null,
-      "roe_pct": null,
-      "revenue_growth_pct": null,
-      "fcf_sek": null,
-      "net_debt_to_ebitda": null,
-      "payout_ratio_pct": null,
-      "price": 1496.5,
-      "pe_ratio": 22.8928,
-      "market_cap": 181819900000,
-      "week52_high": 1925.5,
-      "week52_low": 640.3,
-      "beta": 0.83,
-      "exchange": "NASDAQ Stockholm",
-      "currency": "SEK",
-      "headquarters": "1 Francis Crick Avenue, Cambridge Biomedical Campus, CAMBRIDGE, CB2 0AA GB",
-      "employees": 96100
+      "ebit_margin_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roic_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roe_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "revenue_growth_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "fcf_sek": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "net_debt_to_ebitda": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "payout_ratio_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price": {
+        "value": 1496.5,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "pe_ratio": {
+        "value": 22.8928,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "market_cap": {
+        "value": 181819900000,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "week52_high": {
+        "value": 1925.5,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "week52_low": {
+        "value": 640.3,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "beta": {
+        "value": 0.83,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "exchange": {
+        "value": "NASDAQ Stockholm",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "currency": {
+        "value": "SEK",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "headquarters": {
+        "value": "1 Francis Crick Avenue, Cambridge Biomedical Campus, CAMBRIDGE, CB2 0AA GB",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "employees": {
+        "value": 96100,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      }
     }
   },
   "insider_activity_cache": {

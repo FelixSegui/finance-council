@@ -15,21 +15,141 @@
     "extracted_date": "2026-08-05",
     "next_report_expected": null,
     "figures": {
-      "ebit_margin_pct": null,
-      "roic_pct": null,
-      "roe_pct": null,
-      "revenue_growth_pct": null,
-      "fcf_sek": null,
-      "net_debt_to_ebitda": null,
-      "payout_ratio_pct": null,
-      "price": 570,
-      "pe_ratio": 28.7588,
-      "market_cap": 236174700000,
-      "beta": 0.9636,
-      "exchange": "NASDAQ Stockholm",
-      "currency": "SEK",
-      "headquarters": "Rudeboksvagen 1, LUND, SKANE, 226 55 SE",
-      "employees": 24832
+      "ebit_margin_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roic_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roe_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "revenue_growth_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "fcf_sek": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "net_debt_to_ebitda": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "payout_ratio_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price": {
+        "value": 570,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "pe_ratio": {
+        "value": 28.7588,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "market_cap": {
+        "value": 236174700000,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "beta": {
+        "value": 0.9636,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "exchange": {
+        "value": "NASDAQ Stockholm",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "currency": {
+        "value": "SEK",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "headquarters": {
+        "value": "Rudeboksvagen 1, LUND, SKANE, 226 55 SE",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "employees": {
+        "value": 24832,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      }
     }
   },
   "insider_activity_cache": {

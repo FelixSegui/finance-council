@@ -26,7 +26,7 @@
       "wrapper": "ISK",
       "institution": "Avanza",
       "approx_value_sek": 179714.11,
-      "notes": "Confirmed ISK. LIVE STATEMENT 2026-07-28 (pre-execution): total 180,949.35 SEK = securities 36,085.05 + cash 144,864.30. Both pending orders EXECUTED same day (user-confirmed): Avanza Global buy at 119,999 SEK (ordered 120,000), Tundra sale at 1,535 SEK. MEDIUM-TIER BUILD EXECUTED 2026-08-03/04 (user-reported, 'aktieköp idag och igår' - exact per-name date not specified, courtage/broker fees not stated so not included): Volvo B 13sh @ 367.50, Atlas Copco B 27sh @ 181.25, AstraZeneca 4sh @ 1507, Alfa Laval 9sh @ 574.40, ABB 4sh @ 946.96 - total spent 24,656.69 SEK, drawn from the 26,400.30 SEK available cash. New cash = 26,400.30 - 24,656.69 = 1,743.61 SEK COMPUTED, not broker-confirmed and does not account for any courtage - verify against the actual Avanza statement. Account total (179,714.11) is COMPUTED from current holdings x the 2026-08-04 snapshot, not a fresh full statement. Tax-free allowance headroom vs. the ~300k SEK threshold (unverified) is comfortable. Full history: data/portfolio_history_archive.md#avanza-isk.",
+      "notes": "Confirmed ISK. LIVE STATEMENT 2026-07-28 (pre-execution): total 180,949.35 SEK = securities 36,085.05 + cash 144,864.30. Both pending orders EXECUTED same day (user-confirmed): Avanza Global buy at 119,999 SEK (ordered 120,000), Tundra sale at 1,535 SEK. MEDIUM-TIER BUILD EXECUTED 2026-08-03/04 (user-reported, 'aktiek\u00f6p idag och ig\u00e5r' - exact per-name date not specified, courtage/broker fees not stated so not included): Volvo B 13sh @ 367.50, Atlas Copco B 27sh @ 181.25, AstraZeneca 4sh @ 1507, Alfa Laval 9sh @ 574.40, ABB 4sh @ 946.96 - total spent 24,656.69 SEK, drawn from the 26,400.30 SEK available cash. New cash = 26,400.30 - 24,656.69 = 1,743.61 SEK COMPUTED, not broker-confirmed and does not account for any courtage - verify against the actual Avanza statement. Account total (179,714.11) is COMPUTED from current holdings x the 2026-08-04 snapshot, not a fresh full statement. Tax-free allowance headroom vs. the ~300k SEK threshold (unverified) is comfortable. Full history: data/portfolio_history_archive.md#avanza-isk.",
       "pending_orders": []
     },
     {
@@ -38,14 +38,63 @@
       "confirmed_tax_owed_sek": 3037.42,
       "tax_confirmed_date": "2026-07-20",
       "tax_breakdown_by_fund": [
-        { "fund": "SEB Europafond", "date": "2026-07-08", "cost_basis_sek": 895.51, "sale_proceeds_sek": 1591.83, "kapitalvinst_sek": 696.32 },
-        { "fund": "SEB Nordenfond A (remaining)", "date": "2026-07-08", "cost_basis_sek": 1325.03, "sale_proceeds_sek": 5507.46, "kapitalvinst_sek": 4182.43 },
-        { "fund": "SEB Obligationsfond Flexibel A", "date": "2026-07-08", "cost_basis_sek": 1250.00, "sale_proceeds_sek": 1428.94, "kapitalvinst_sek": 178.94 },
-        { "fund": "SEB Sverigefond", "date": "2026-07-08", "cost_basis_sek": 517.10, "sale_proceeds_sek": 2841.90, "kapitalvinst_sek": 2324.80 },
-        { "fund": "SEB Global Focus C USD (remaining)", "date": "2026-07-09", "cost_basis_sek": 472.50, "sale_proceeds_sek": 2187.99, "kapitalvinst_sek": 1715.49 },
-        { "fund": "SEB Emerging Markets C USD Lux", "date": "2026-07-10", "cost_basis_sek": 250.00, "sale_proceeds_sek": 752.73, "kapitalvinst_sek": 502.73 },
-        { "fund": "SEB Emerging Marketsfond", "date": "2026-07-10", "cost_basis_sek": 2465.84, "sale_proceeds_sek": 2989.87, "kapitalvinst_sek": 524.03 },
-        { "fund": "SEB Osteuropafond", "date": null, "cost_basis_sek": 0.25, "sale_proceeds_sek": null, "kapitalvinst_sek": null, "note": "RESOLVED 2026-08-03: NOT SOLD - this fund could not be sold because of the war in Ukraine (user statement 2026-08-03: 'one very small fund left in SEB that I could not sell due to conflict in Ukraine'). Russia/Eastern-Europe funds were widely gated/suspended for redemptions, which explains the previously-unexplained missing sale date. This closes the 2026-07-27 flag. IMPORTANT CORRECTION: the earlier speculation that the ~81.71 SEK gap between the 7-fund proceeds sum (17,300.72) and the transferred total (17,382.43) was this fund's sale proceeds is now WRONG and withdrawn - the fund was never sold, so that gap has some other cause and remains genuinely unexplained (immaterial, ~82 SEK, not worth chasing). See the seb-osteuropa holding entry." }
+        {
+          "fund": "SEB Europafond",
+          "date": "2026-07-08",
+          "cost_basis_sek": 895.51,
+          "sale_proceeds_sek": 1591.83,
+          "kapitalvinst_sek": 696.32
+        },
+        {
+          "fund": "SEB Nordenfond A (remaining)",
+          "date": "2026-07-08",
+          "cost_basis_sek": 1325.03,
+          "sale_proceeds_sek": 5507.46,
+          "kapitalvinst_sek": 4182.43
+        },
+        {
+          "fund": "SEB Obligationsfond Flexibel A",
+          "date": "2026-07-08",
+          "cost_basis_sek": 1250.0,
+          "sale_proceeds_sek": 1428.94,
+          "kapitalvinst_sek": 178.94
+        },
+        {
+          "fund": "SEB Sverigefond",
+          "date": "2026-07-08",
+          "cost_basis_sek": 517.1,
+          "sale_proceeds_sek": 2841.9,
+          "kapitalvinst_sek": 2324.8
+        },
+        {
+          "fund": "SEB Global Focus C USD (remaining)",
+          "date": "2026-07-09",
+          "cost_basis_sek": 472.5,
+          "sale_proceeds_sek": 2187.99,
+          "kapitalvinst_sek": 1715.49
+        },
+        {
+          "fund": "SEB Emerging Markets C USD Lux",
+          "date": "2026-07-10",
+          "cost_basis_sek": 250.0,
+          "sale_proceeds_sek": 752.73,
+          "kapitalvinst_sek": 502.73
+        },
+        {
+          "fund": "SEB Emerging Marketsfond",
+          "date": "2026-07-10",
+          "cost_basis_sek": 2465.84,
+          "sale_proceeds_sek": 2989.87,
+          "kapitalvinst_sek": 524.03
+        },
+        {
+          "fund": "SEB Osteuropafond",
+          "date": null,
+          "cost_basis_sek": 0.25,
+          "sale_proceeds_sek": null,
+          "kapitalvinst_sek": null,
+          "note": "RESOLVED 2026-08-03: NOT SOLD - this fund could not be sold because of the war in Ukraine (user statement 2026-08-03: 'one very small fund left in SEB that I could not sell due to conflict in Ukraine'). Russia/Eastern-Europe funds were widely gated/suspended for redemptions, which explains the previously-unexplained missing sale date. This closes the 2026-07-27 flag. IMPORTANT CORRECTION: the earlier speculation that the ~81.71 SEK gap between the 7-fund proceeds sum (17,300.72) and the transferred total (17,382.43) was this fund's sale proceeds is now WRONG and withdrawn - the fund was never sold, so that gap has some other cause and remains genuinely unexplained (immaterial, ~82 SEK, not worth chasing). See the seb-osteuropa holding entry."
+        }
       ],
       "notes": "CASH fully transferred to Avanza ISK 2026-07-20, 17,382.43 SEK. Tax CONFIRMED: gain 10,124.74 SEK, tax 3,037.42 SEK (see tax_breakdown_by_fund). Combined with HB's 8,455.86 SEK tax, total owed 11,493.28 SEK. CORRECTION 2026-08-03: this account is NOT fully closed - a residual SEB Osteuropafond position remains, frozen/unsellable because of the war in Ukraine (user statement 2026-08-03). The account was previously recorded as fully exited, which was wrong. Value is immaterial (cost basis 0.25 SEK) and it cannot be acted on, but it means the SEB relationship is still open and the account should not be treated as closed. Full history, incl. the corrected 'swedbank-fund' duplicate-account mixup: data/portfolio_history_archive.md#seb-fund."
     },
@@ -108,12 +157,19 @@
       "exposure_class": "equity",
       "quantity": 1,
       "cost_basis_per_unit": 129.25,
-      "market_value_sek": 146.80,
+      "market_value_sek": 146.8,
       "market_value_as_of": "2026-08-04",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "RECORDED 2026-08-03 (user's own words, closes the long-standing gap): bought because Handelsbanken has 'shown good track record' and is a 'secure', 'stable' pick that 'still shows good upside'. PROVENANCE, stated candidly by the user and kept because it matters: 'I actually bought them without considering a lot of other different options, it was rather that I had some money left and just wanted it to be active on the market.' So this is a PARKING decision, not a conviction pick - the user has explicitly NOT compared it against alternatives. Two consequences agents must respect: (1) it is legitimately testable on 'stable with upside' - if stability or the track record breaks, the thesis breaks; (2) because no comparison was ever made, this position is a FAIR ROTATION CANDIDATE when the medium-tier build (OPEN_ITEMS.md P6) surfaces a better-vetted name. Do not treat it as a high-conviction holding the user is attached to. TENSION TO WATCH: the 'stable/good track record' premise is the part current data argues with - revenue declined 3.8% YoY, PEG ~20, analyst consensus 'underperform'. That does not break the thesis yet (a low-beta 5.5% dividend payer is still defensible as 'stable'), but 'good upside' is the limb under most pressure. swedish-equity-review 2026-07-28 (full real data, see data/company_profiles/SHB-A.ST.json): Score 58/100, Coverage 80% (5/6, only Business Quality missing). REAL TENSION: fundamentals say caution (revenue declined FY2025, PEG ~19.8, analyst 'underperform') but Chairman Par Boman + board member Fredrik Lundberg both bought very heavily (>750M SEK combined) within 48 hours, 2026-07-20/21 - the two signals disagree, not averaged away. Live price 144.25-144.85/share (2026-07-28).",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "RECORDED 2026-08-03 (user's own words, closes the long-standing gap): bought because Handelsbanken has 'shown good track record' and is a 'secure', 'stable' pick that 'still shows good upside'. PROVENANCE, stated candidly by the user and kept because it matters: 'I actually bought them without considering a lot of other different options, it was rather that I had some money left and just wanted it to be active on the market.' So this is a PARKING decision, not a conviction pick - the user has explicitly NOT compared it against alternatives. Two consequences agents must respect: (1) it is legitimately testable on 'stable with upside' - if stability or the track record breaks, the thesis breaks; (2) because no comparison was ever made, this position is a FAIR ROTATION CANDIDATE when the medium-tier build (OPEN_ITEMS.md P6) surfaces a better-vetted name. Do not treat it as a high-conviction holding the user is attached to. TENSION TO WATCH: the 'stable/good track record' premise is the part current data argues with - revenue declined 3.8% YoY, PEG ~20, analyst consensus 'underperform'. That does not break the thesis yet (a low-beta 5.5% dividend payer is still defensible as 'stable'), but 'good upside' is the limb under most pressure. swedish-equity-review 2026-07-28 (full real data, see data/company_profiles/SHB-A.ST.json): Score 58/100, Coverage 80% (5/6, only Business Quality missing). REAL TENSION: fundamentals say caution (revenue declined FY2025, PEG ~19.8, analyst 'underperform') but Chairman Par Boman + board member Fredrik Lundberg both bought very heavily (>750M SEK combined) within 48 hours, 2026-07-20/21 - the two signals disagree, not averaged away. Live price 144.25-144.85/share (2026-07-28).",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "WEAKENING",
+      "why_owned": "Bought without comparing alternatives - user's own stated rationale: 'good track record', 'secure/stable' pick with 'good upside'.",
+      "expected_driver": "Continued stability as a low-beta Nordic bank with a ~5.4% dividend.",
+      "valuation_reason": "Trailing P/E ~12x looked reasonable for a bank at purchase.",
+      "key_risks": "Revenue declining (-3.8% YoY), analyst consensus 'underperform', PEG ~20x; heavy insider buying (Chairman + board member, >750M SEK) contradicts the fundamentals read - unresolved tension, not averaged away.",
+      "break_conditions": "Revenue decline continues another quarter with no fundamentals offset -> treat as a rotation candidate, not a conviction add."
     },
     {
       "ticker": "INVE-A.ST",
@@ -123,12 +179,19 @@
       "exposure_class": "equity",
       "quantity": 5,
       "cost_basis_per_unit": 290.22,
-      "market_value_sek": 2047.00,
+      "market_value_sek": 2047.0,
       "market_value_as_of": "2026-08-04",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "RECORDED 2026-08-03 (user's own words, same rationale as SHB-A.ST - both were bought together): 'good track record', 'secure'/'stable' pick that 'still shows good upside', bought 'without considering a lot of other different options... had some money left and just wanted it to be active on the market'. Same two consequences as SHB-A.ST: testable on the stability/upside claim, and a fair rotation candidate rather than a conviction holding, since no comparison was ever made. NOTE - this thesis fits Investor A better than it fits Handelsbanken: a diversified Swedish holding company IS structurally a 'stable with upside' vehicle, and current data does not argue with it (ROE 27.3%, positive FCF, up 39.2% vs cost basis). The honest caveat is unchanged: the metric that would actually test it for a holding company is NAV discount/premium, which has never been obtained (see OPEN_ITEMS.md S6) - the 4.71x P/E is an accounting artifact and must not be read as 'cheap'. So the thesis is plausible but still not properly testable. swedish-equity-review 2026-07-28 (see data/company_profiles/INVE-A.ST.json): NO SCORE reportable (corrected same day) - only 2 of 6 dimensions have real data (Dividend Quality, Insider Activity); Holding Company Valuation requires an actual NAV discount, not obtained (would need Investor's own IR page or a quarterly report PDF), so it's marked Not Available per the NAV fallback hierarchy, not filled in with a P/E stand-in. Insider activity: sustained modest CEO/board buying over 6 months. Live price 397.00-400.80/share (2026-07-28).",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "RECORDED 2026-08-03 (user's own words, same rationale as SHB-A.ST - both were bought together): 'good track record', 'secure'/'stable' pick that 'still shows good upside', bought 'without considering a lot of other different options... had some money left and just wanted it to be active on the market'. Same two consequences as SHB-A.ST: testable on the stability/upside claim, and a fair rotation candidate rather than a conviction holding, since no comparison was ever made. NOTE - this thesis fits Investor A better than it fits Handelsbanken: a diversified Swedish holding company IS structurally a 'stable with upside' vehicle, and current data does not argue with it (ROE 27.3%, positive FCF, up 39.2% vs cost basis). The honest caveat is unchanged: the metric that would actually test it for a holding company is NAV discount/premium, which has never been obtained (see OPEN_ITEMS.md S6) - the 4.71x P/E is an accounting artifact and must not be read as 'cheap'. So the thesis is plausible but still not properly testable. swedish-equity-review 2026-07-28 (see data/company_profiles/INVE-A.ST.json): NO SCORE reportable (corrected same day) - only 2 of 6 dimensions have real data (Dividend Quality, Insider Activity); Holding Company Valuation requires an actual NAV discount, not obtained (would need Investor's own IR page or a quarterly report PDF), so it's marked Not Available per the NAV fallback hierarchy, not filled in with a P/E stand-in. Insider activity: sustained modest CEO/board buying over 6 months. Live price 397.00-400.80/share (2026-07-28).",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "WEAKENING",
+      "why_owned": "Bought without comparing alternatives - same rationale as SHB-A.ST: 'good track record', 'stable with upside'.",
+      "expected_driver": "Diversified holding-company exposure with steady NAV growth.",
+      "valuation_reason": "P/E ~5-7x is a holding-company accounting artifact, NOT a cheap signal - never properly testable on valuation since NAV discount/premium has never been obtained (OPEN_ITEMS.md S6).",
+      "key_risks": "Price now within 0.5% of its 52-week high - the 'good upside' the user cited has already been captured. No NAV discount data to confirm it's still attractive.",
+      "break_conditions": "No further re-rating expected without a resolved NAV discount/premium figure -> rotation candidate rather than an add."
     },
     {
       "ticker": "VOLV-B.ST",
@@ -137,13 +200,20 @@
       "instrument_type": "stock",
       "exposure_class": "equity",
       "quantity": 13,
-      "cost_basis_per_unit": 367.50,
-      "market_value_sek": 4802.20,
+      "cost_basis_per_unit": 367.5,
+      "market_value_sek": 4802.2,
       "market_value_as_of": "2026-08-04",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktieköp idag och igår', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build from the user-confirmed candidate list (data/universe.json nordic_swedish_equity_review_candidates + nordic_large_cap). No swedish-equity-review has been run on this specific purchase decision - see data/company_profiles/VOLV-B.ST.json for the 2026-07-28 pre-purchase review (score 60/100, coverage 80%: revenue declining 2 straight fiscal years (-13%) and high leverage (D/E 147), but reasonable valuation (P/E 20.5, forward 14.5) and a very large, very recent single-insider purchase (board member Helena Stjernholm, ~1.3M shares at ~360 SEK, 2026-07-27) - tension not resolved, just bought into.",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build from the user-confirmed candidate list (data/universe.json nordic_swedish_equity_review_candidates + nordic_large_cap). No swedish-equity-review has been run on this specific purchase decision - see data/company_profiles/VOLV-B.ST.json for the 2026-07-28 pre-purchase review (score 60/100, coverage 80%: revenue declining 2 straight fiscal years (-13%) and high leverage (D/E 147), but reasonable valuation (P/E 20.5, forward 14.5) and a very large, very recent single-insider purchase (board member Helena Stjernholm, ~1.3M shares at ~360 SEK, 2026-07-27) - tension not resolved, just bought into.",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "TOO_EARLY",
+      "why_owned": "Part of the 2026-08-03 medium-tier build; bought explicitly into an unresolved tension (2yr revenue decline -13%, D/E 147) vs. a large single-insider purchase (board member ~1.3M shares at ~360 SEK).",
+      "expected_driver": "A cyclical/earnings recovery consistent with the insider's large purchase; forward P/E 14.6/PEG 1.49 already prices some of this in.",
+      "valuation_reason": "Forward multiple attractive if the recovery shows up; trailing multiple (20.6x) still reflects the decline.",
+      "key_risks": "Revenue decline continuing, leverage remaining elevated, no recovery materializing.",
+      "break_conditions": "3+ months with no sign of the expected earnings recovery -> re-test; a further leg down in revenue -> weakening."
     },
     {
       "ticker": "ATCO-B.ST",
@@ -153,12 +223,19 @@
       "exposure_class": "equity",
       "quantity": 27,
       "cost_basis_per_unit": 181.25,
-      "market_value_sek": 4781.70,
+      "market_value_sek": 4781.7,
       "market_value_as_of": "2026-08-04",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktieköp idag och igår', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. No swedish-equity-review has been run on this specific purchase decision - see data/company_profiles/ATCO-A.ST.json (note: that profile is for the A share, this holding is the B share - same company, different class, profile not yet duplicated for B).",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. No swedish-equity-review has been run on this specific purchase decision - see data/company_profiles/ATCO-A.ST.json (note: that profile is for the A share, this holding is the B share - same company, different class, profile not yet duplicated for B).",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "UNTESTED",
+      "why_owned": null,
+      "expected_driver": null,
+      "valuation_reason": null,
+      "key_risks": null,
+      "break_conditions": null
     },
     {
       "ticker": "AZN.ST",
@@ -167,14 +244,21 @@
       "instrument_type": "stock",
       "exposure_class": "equity",
       "quantity": 5,
-      "cost_basis_per_unit": 1509.70,
+      "cost_basis_per_unit": 1509.7,
       "cost_basis_note": "Blended via genomsnittsmetoden (average cost, same method as exit_plans.hb-af-exit): 4sh @ 1507.00 (2026-08-03/04) + 1sh @ 1520.50 (2026-08-06, the Council's 2026-08-06 call D executed) = (6028.00 + 1520.50) / 5 = 1509.70. The 1520.50 execution price is the real, user-reported figure - not derived from any market snapshot.",
-      "market_value_sek": 7727.50,
+      "market_value_sek": 7727.5,
       "market_value_as_of": "2026-08-06 (computed: 5sh x 1,545.50 SEK, the last live price from data/cache/snapshots/20260806T130256.json)",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "BOUGHT 2026-08-03/04 (4sh, part of the OPEN_ITEMS.md P6 medium-tier build) + 2026-08-06 (1sh, executing the Council's call D). Dual-listed (UK primary, Nasdaq Stockholm cross-listing per data/universe.json's category_notes). REAL THESIS RECORDED 2026-08-06 (user's own reasoning, closes Council call A for this ticker): historically resilient, defensive quality company - healthcare is lower-beta than high-valuation tech/growth; reasonable dividend history; diversifies the portfolio away from its industrials/technology concentration; expected to hold up better than high-valuation growth assets if those correct. Break conditions: revenue growth or margins deteriorate structurally (thesis rests on defensive resilience, not growth); the dividend is cut (removes the income-resilience leg); or it re-rates to trade at a premium indistinguishable from the growth assets it's meant to diversify against. Horizon: 3-5 years, per the user's own framing.",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "BOUGHT 2026-08-03/04 (4sh, part of the OPEN_ITEMS.md P6 medium-tier build) + 2026-08-06 (1sh, executing the Council's call D). Dual-listed (UK primary, Nasdaq Stockholm cross-listing per data/universe.json's category_notes). REAL THESIS RECORDED 2026-08-06 (user's own reasoning, closes Council call A for this ticker): historically resilient, defensive quality company - healthcare is lower-beta than high-valuation tech/growth; reasonable dividend history; diversifies the portfolio away from its industrials/technology concentration; expected to hold up better than high-valuation growth assets if those correct. Break conditions: revenue growth or margins deteriorate structurally (thesis rests on defensive resilience, not growth); the dividend is cut (removes the income-resilience leg); or it re-rates to trade at a premium indistinguishable from the growth assets it's meant to diversify against. Horizon: 3-5 years, per the user's own framing.",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "INTACT",
+      "why_owned": "Historically resilient, defensive quality company; healthcare is lower-beta than high-valuation tech/growth; reasonable dividend history; diversifies away from the portfolio's industrials/technology concentration.",
+      "expected_driver": "Continued defensive resilience and dividend income over a 3-5 year horizon, especially if high-valuation growth assets correct.",
+      "valuation_reason": "PEG 1.33 (2026-08-06) is attractive for a large-cap pharma; priced ~20% off its 52-week high despite intact margins and 4 straight years of rising revenue.",
+      "key_risks": "Revenue growth or margins deteriorate structurally; the dividend is cut; or it re-rates to trade at a premium indistinguishable from the growth assets it's meant to diversify against.",
+      "break_conditions": "Any of the three key_risks above -> re-test the thesis."
     },
     {
       "ticker": "ALFA.ST",
@@ -183,13 +267,20 @@
       "instrument_type": "stock",
       "exposure_class": "equity",
       "quantity": 9,
-      "cost_basis_per_unit": 574.40,
-      "market_value_sek": 5101.20,
+      "cost_basis_per_unit": 574.4,
+      "market_value_sek": 5101.2,
       "market_value_as_of": "2026-08-04",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktieköp idag och igår', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase.",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase.",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "UNTESTED",
+      "why_owned": null,
+      "expected_driver": null,
+      "valuation_reason": null,
+      "key_risks": null,
+      "break_conditions": null
     },
     {
       "ticker": "ABB.ST",
@@ -199,12 +290,19 @@
       "exposure_class": "equity",
       "quantity": 4,
       "cost_basis_per_unit": 946.96,
-      "market_value_sek": 3765.60,
+      "market_value_sek": 3765.6,
       "market_value_as_of": "2026-08-04",
       "annual_fee_pct": null,
       "date_acquired": null,
-      "thesis": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktieköp idag och igår', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. Dual-listed (Switzerland primary, Nasdaq Stockholm cross-listing per data/universe.json's category_notes). No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase.",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. Dual-listed (Switzerland primary, Nasdaq Stockholm cross-listing per data/universe.json's category_notes). No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase.",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "UNTESTED",
+      "why_owned": null,
+      "expected_driver": null,
+      "valuation_reason": null,
+      "key_risks": null,
+      "break_conditions": null
     },
     {
       "ticker": "TBD",
@@ -213,13 +311,20 @@
       "instrument_type": "fund",
       "exposure_class": "mixed",
       "quantity": null,
-      "cost_basis_total_sek": 9800.30,
+      "cost_basis_total_sek": 9800.3,
       "market_value_sek": 16191,
       "market_value_as_of": "2026-07-24",
       "annual_fee_pct": 0.39,
       "date_acquired": null,
-      "thesis": "CONFIRMED from factsheet 2026-07-22: multi-asset fund, ~60% equity exposure (40-70% range) blended with bonds/alternatives, 0.39% total annual fee (0.35% management + ~0.04% transaction), recommended holding period 4 years. Low-cost diversified core holding - fits the 'secure' risk tier well (see investor_profile.json). Live value 2026-07-28 (user statement, fund NAV dated 2026-07-24): +65.20% since purchase.",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "CONFIRMED from factsheet 2026-07-22: multi-asset fund, ~60% equity exposure (40-70% range) blended with bonds/alternatives, 0.39% total annual fee (0.35% management + ~0.04% transaction), recommended holding period 4 years. Low-cost diversified core holding - fits the 'secure' risk tier well (see investor_profile.json). Live value 2026-07-28 (user statement, fund NAV dated 2026-07-24): +65.20% since purchase.",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "INTACT",
+      "why_owned": "Diversified core multi-asset fund (~60% equity, 40-70% range), fits the 'secure' risk tier.",
+      "expected_driver": "Broad, low-fee diversified growth in line with the fund's stated allocation band.",
+      "valuation_reason": "Not applicable - evaluated on cost (0.39%/yr) and diversification, not P/E.",
+      "key_risks": "Fee (0.39%/yr) is higher than Avanza Global's 0.10%/yr but still under the 0.4% cap.",
+      "break_conditions": "A structurally cheaper equivalent core holding becomes available with the same diversification profile."
     },
     {
       "ticker": "TBD",
@@ -250,8 +355,15 @@
       "annual_fee_pct": 2.5,
       "date_acquired": null,
       "price_tracking_note": "NO USABLE TICKER (confirmed by user 2026-08-03). The 'COIN-XBT.ST' symbol 404s on Yahoo and has no chart fallback - it is not a tradeable Yahoo symbol, so automated per-unit pricing is not available and should stop being attempted as if it were a transient outage. AGREED PROXY (user's suggestion, adopted): track spot BITCOIN via CoinGecko (`--crypto bitcoin`) as a directional indicator of this position, NOT as an exact price. Calibration anchor set 2026-08-03: BTC 54,786 EUR x 11.0432 SEK/EUR = ~605,013 SEK/BTC, vs. certificate 2,540 SEK/unit -> ratio ~0.004198 BTC per unit. Track the RATIO over time: if the certificate moves materially against BTC beyond the ~2.5%/yr fee drag, that is tracking error or issuer risk showing up and is worth flagging. Never present a BTC-derived number as this certificate's actual price - the user's own statement is the only real price source.",
-      "thesis": "HOLD DECISION (confirmed 2026-07-27): full 6 units kept, NOT trimmed - corrects an inaccurate 2026-07-22 'TRIM' entry, see portfolio_history_archive.md#coin-xbt for the process-failure writeup. Crypto weight is expected to decline via denominator growth as equity contributions land, not via a sale. Original thesis, user's words: BTC 'pretty low valued right now,' 2028 halving ahead, 'positive buy-in signals now.' Factsheet: 2.5%/yr fee, tracks BTC ~1:1, 2% issuer exit fee (not applicable to ordinary exchange sales). DECISION 2026-08-03 (user): will NOT convert to self-custody real bitcoin - the former open question 13 is closed in favour of keeping crypto inside the ISK wrapper. Instead the user wants to SWITCH TO A CHEAPER CERTIFICATE/ETP to cut the 2.5%/yr fee - that is now an active task, see OPEN_ITEMS.md P4. Price 2026-08-03 (user-relayed): 2,540/unit, 15,240 SEK total, +25.95% vs the 2,016.67 cost basis - down from +34.03% on 2026-07-28 as BTC softened (BTC -3.8% over 7 days per the 2026-08-03 snapshot).",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "HOLD DECISION (confirmed 2026-07-27): full 6 units kept, NOT trimmed - corrects an inaccurate 2026-07-22 'TRIM' entry, see portfolio_history_archive.md#coin-xbt for the process-failure writeup. Crypto weight is expected to decline via denominator growth as equity contributions land, not via a sale. Original thesis, user's words: BTC 'pretty low valued right now,' 2028 halving ahead, 'positive buy-in signals now.' Factsheet: 2.5%/yr fee, tracks BTC ~1:1, 2% issuer exit fee (not applicable to ordinary exchange sales). DECISION 2026-08-03 (user): will NOT convert to self-custody real bitcoin - the former open question 13 is closed in favour of keeping crypto inside the ISK wrapper. Instead the user wants to SWITCH TO A CHEAPER CERTIFICATE/ETP to cut the 2.5%/yr fee - that is now an active task, see OPEN_ITEMS.md P4. Price 2026-08-03 (user-relayed): 2,540/unit, 15,240 SEK total, +25.95% vs the 2,016.67 cost basis - down from +34.03% on 2026-07-28 as BTC softened (BTC -3.8% over 7 days per the 2026-08-03 snapshot).",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "WEAKENING",
+      "why_owned": "User's original thesis: BTC 'pretty low valued', 2028 halving ahead, 'positive buy-in signals now'.",
+      "expected_driver": "BTC cycle appreciation ahead of the 2028 halving.",
+      "valuation_reason": "BTC still -48.2% off its ATH (2026-08-06) - the 'cheap vs history' leg still holds directionally.",
+      "key_risks": "Position already +26-29% vs cost basis; crypto Fear&Greed at 25 ('Extreme Fear') makes the original 'positive buy-in signal' framing harder to sustain than at purchase; 2.5%/yr fee (P4, pending a cheaper certificate).",
+      "break_conditions": "Still above 12% of investable capital at the 2026-09-03 sweep -> trim (per the 2026-08-06 Council trip-wire), replacing 'let it dilute'."
     },
     {
       "ticker": "TBD",
@@ -263,10 +375,17 @@
       "cost_basis_total_sek": 119999,
       "market_value_sek": 119999,
       "market_value_as_of": "2026-07-28",
-      "annual_fee_pct": 0.10,
+      "annual_fee_pct": 0.1,
       "date_acquired": "2026-07-28",
-      "thesis": "BOUGHT 2026-07-28, CONFIRMED - broad global index fund, core secure-tier holding. Order placed at 120,000 SEK, executed at 119,999 SEK. This purchase overshot the calculated ~90,240 SEK secure-tier gap by ~29,760 SEK - see OPEN_ITEMS.md P6. FEE CONFIRMED 2026-08-03 (user-supplied): 0.10%/yr - excellent, well inside the 0.4% portfolio fee cap, and the cheapest holding in the portfolio. This resolves the former open question 17, which the 2026-08-03 memo had flagged as the single highest-leverage unknown (it graded fee drag WATCH on an unknown TER covering 54.7% of the portfolio). Outcome: fee drag is NOT a problem on this holding.",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "BOUGHT 2026-07-28, CONFIRMED - broad global index fund, core secure-tier holding. Order placed at 120,000 SEK, executed at 119,999 SEK. This purchase overshot the calculated ~90,240 SEK secure-tier gap by ~29,760 SEK - see OPEN_ITEMS.md P6. FEE CONFIRMED 2026-08-03 (user-supplied): 0.10%/yr - excellent, well inside the 0.4% portfolio fee cap, and the cheapest holding in the portfolio. This resolves the former open question 17, which the 2026-08-03 memo had flagged as the single highest-leverage unknown (it graded fee drag WATCH on an unknown TER covering 54.7% of the portfolio). Outcome: fee drag is NOT a problem on this holding.",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "INTACT",
+      "why_owned": "Broad, cheap (0.10%/yr) global index exposure - the structural core-equity holding.",
+      "expected_driver": "Market-return equity growth, broadly diversified.",
+      "valuation_reason": "Not applicable - evaluated on cost and diversification, not P/E. Cheapest holding in the portfolio.",
+      "key_risks": "None specific to this holding beyond broad market risk.",
+      "break_conditions": "None identified - this is the core structural holding, not a tactical position."
     },
     {
       "ticker": "CASH_SEK",
@@ -340,8 +459,15 @@
       "market_value_source": "COMPUTED 2026-08-03 from user-confirmed quantity 0.50185 x fetched ETH price 1,607.84 EUR (snapshot 20260803T135919.json) x sek_per_eur 11.0432 = ~8,911 SEK. NOTE: the user's own 931.07 USD figure converts to ~9,031 SEK at sek_per_usd 9.6998 - a ~120 SEK difference explained by quote timing and the FX rate being dated 2026-07-24. Either figure is honest; the computed one is used because it traces to fetched data per the system's sourcing rule.",
       "annual_fee_pct": 0,
       "date_acquired": null,
-      "thesis": "TBD - still no stated reason for holding (OPEN_ITEMS.md P5). IMPORTANT CORRECTION 2026-08-03: this position was carried at ~12,500 SEK as an account-level estimate for months. With the real quantity now known it is worth ~8,911 SEK - roughly 3,600 SEK LESS than assumed, about 29% overstated. Every crypto-weight and total-portfolio figure produced before 2026-08-03 was therefore too high, and the crypto overweight vs the 10% target was smaller than reported. This is exactly the failure mode the system exists to prevent (a stale estimate quietly propagating into allocation math) and should be treated as a real finding, not a rounding adjustment.",
-      "target_weight_pct": null
+      "target_weight_pct": null,
+      "thesis_narrative": "TBD - still no stated reason for holding (OPEN_ITEMS.md P5). IMPORTANT CORRECTION 2026-08-03: this position was carried at ~12,500 SEK as an account-level estimate for months. With the real quantity now known it is worth ~8,911 SEK - roughly 3,600 SEK LESS than assumed, about 29% overstated. Every crypto-weight and total-portfolio figure produced before 2026-08-03 was therefore too high, and the crypto overweight vs the 10% target was smaller than reported. This is exactly the failure mode the system exists to prevent (a stale estimate quietly propagating into allocation math) and should be treated as a real finding, not a rounding adjustment.",
+      "last_reviewed": "2026-08-06",
+      "thesis_status": "UNTESTED",
+      "why_owned": null,
+      "expected_driver": null,
+      "valuation_reason": null,
+      "key_risks": null,
+      "break_conditions": null
     },
     {
       "ticker": "CASH_USD",
@@ -386,8 +512,18 @@
       "status": "FULLY EXECUTED 2026-07-20, figures confirmed live 2026-07-22: HB fund sale settled 2026-07-12; HB->ISK cash transfer executed 2026-07-20 (127,611.83 SEK to avanza-isk, tax reserve retained at hb-main sparkonto, now 9,017 SEK after found money). SEB leg also fully settled 2026-07-13 and transferred to Avanza ISK 2026-07-20. Avanza confirmed live 2026-07-22: 181,254 SEK total, 144,864 SEK undeployed cash pending fund/instrument selection under the risk-tier framework - see investor_profile.json.",
       "actual_execution": {
         "date": "2026-07-12",
-        "auto_50": { "sale_proceeds_sek": 97659.99, "cost_basis_sek": 78441.28, "gain_sek": 19218.71, "tax_at_30pct_sek": 5765.61 },
-        "auto_75": { "sale_proceeds_sek": 35997.42, "cost_basis_sek": 27029.93, "gain_sek": 8967.49, "tax_at_30pct_sek": 2690.25 },
+        "auto_50": {
+          "sale_proceeds_sek": 97659.99,
+          "cost_basis_sek": 78441.28,
+          "gain_sek": 19218.71,
+          "tax_at_30pct_sek": 5765.61
+        },
+        "auto_75": {
+          "sale_proceeds_sek": 35997.42,
+          "cost_basis_sek": 27029.93,
+          "gain_sek": 8967.49,
+          "tax_at_30pct_sek": 2690.25
+        },
         "total_fund_sale_proceeds_sek": 133657.41,
         "pre_existing_cash_in_account_sek": 2954.42,
         "total_account_balance_sek": 136611.83,
@@ -400,8 +536,14 @@
       "objective": "Exit the Handelsbanken fondkonto (AF), move net proceeds to Avanza ISK under the ISK allowance, replace 0.66-0.67% fee mixed funds with low-fee (~0.2%) index funds. Addresses priority levers #1 (wrapper) and #2 (fees) simultaneously.",
       "tax_math": {
         "method": "Genomsnittsmetoden (average cost) - every partial sale realizes gain proportionally; there is no way to sell cost basis first",
-        "auto_50": { "gain_sek": 20051.70, "tax_at_30pct_sek": 6015.51 },
-        "auto_75": { "gain_sek": 9371.33, "tax_at_30pct_sek": 2811.40 },
+        "auto_50": {
+          "gain_sek": 20051.7,
+          "tax_at_30pct_sek": 6015.51
+        },
+        "auto_75": {
+          "gain_sek": 9371.33,
+          "tax_at_30pct_sek": 2811.4
+        },
         "total_gain_sek": 29423.03,
         "total_tax_sek": 8826.91,
         "net_proceeds_sek": 126067.33,

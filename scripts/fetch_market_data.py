@@ -22,6 +22,7 @@ Usage:
 """
 import argparse
 import json
+import os
 import sys
 import urllib.request
 import urllib.error
@@ -29,6 +30,13 @@ import urllib.parse
 import csv
 import io
 from datetime import datetime, timezone, timedelta
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import derived_metrics  # noqa: E402
+from config.settings import (  # noqa: E402
+    DEFAULT_CORPORATE_TAX_RATE_ASSUMPTION, DEFAULT_CORPORATE_TAX_RATE_FALLBACK,
+)
 
 FRED_SERIES = {
     "fed_funds_rate": "FEDFUNDS",
@@ -158,7 +166,59 @@ def _fetch_fundamentals_direct(ticker):
          "total_revenue": _raw(s.get("totalRevenue"))}
         for s in income_stmts
     ]
-    return {
+
+    # --- Layer A additions (2026-08-09): raw figures confirmed genuinely
+    # present in the financialData module (verified live against ABB.ST/
+    # AZN.ST before writing this) - ebit/interestExpense in
+    # incomeStatementHistory are NOT usable, Yahoo returns 0/None for both
+    # on every ticker checked (a known degradation of that legacy module,
+    # not a bug in this fetcher). Layer B derivations built on top, via the
+    # one shared formula module so nothing computes a ratio two ways.
+    ebitda = _raw(fin.get("ebitda"))
+    total_cash = _raw(fin.get("totalCash"))
+    total_debt = _raw(fin.get("totalDebt"))
+    operating_cashflow = _raw(fin.get("operatingCashflow"))
+    free_cashflow = _raw(fin.get("freeCashflow"))
+    total_revenue = _raw(fin.get("totalRevenue"))
+    operating_margins = _raw(fin.get("operatingMargins"))
+    book_value_per_share = _raw(stats.get("bookValue"))
+    shares_outstanding = _raw(stats.get("sharesOutstanding"))
+    country = profile.get("country")
+
+    capex = derived_metrics.capex_from_ocf_fcf(operating_cashflow, free_cashflow)
+    ebit_estimated = derived_metrics.ebit_from_margin(operating_margins, total_revenue)
+    equity_book = derived_metrics.equity_from_book_value(book_value_per_share, shares_outstanding)
+    invested_capital = derived_metrics.invested_capital(total_debt, equity_book)
+    tax_rate_assumed = (DEFAULT_CORPORATE_TAX_RATE_ASSUMPTION.get(country)
+                        or DEFAULT_CORPORATE_TAX_RATE_FALLBACK)
+    roic_estimated = derived_metrics.roic(ebit_estimated, tax_rate_assumed, invested_capital)
+
+    layer_a_b = {
+        "ebitda": ebitda,
+        "total_cash": total_cash,
+        "total_debt": total_debt,
+        "operating_cashflow": operating_cashflow,
+        "capex": {"value": capex, "quality_state": "ESTIMATED" if capex is not None else "MISSING",
+                  "calculation_method": "operating_cashflow - free_cashflow"},
+        "ebit": {"value": ebit_estimated, "quality_state": "ESTIMATED" if ebit_estimated is not None else "MISSING",
+                 "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line "
+                                        "(incomeStatementHistory) is broken/zero for this source, confirmed "
+                                        "empirically, not fetched"},
+        "interest_expense": {"value": None, "quality_state": "MISSING",
+                             "calculation_method": "not available from Yahoo quoteSummary for any ticker "
+                                                    "checked - needs a filing or PDF extract (source tier 1)"},
+        "equity_book": {"value": equity_book, "quality_state": "OK" if equity_book is not None else "MISSING",
+                        "calculation_method": "book_value_per_share * shares_outstanding"},
+        "invested_capital": {"value": invested_capital,
+                             "quality_state": "OK" if invested_capital is not None else "MISSING",
+                             "calculation_method": "total_debt + equity_book (cash not netted out)"},
+        "roic_pct": {"value": roic_estimated,
+                    "quality_state": "ESTIMATED" if roic_estimated is not None else "MISSING",
+                    "calculation_method": f"ebit*(1-tax_rate)/invested_capital, tax_rate={tax_rate_assumed} "
+                                          f"(assumed statutory rate for {country or 'unknown country'}, "
+                                          f"NOT a real effective rate - no source provides one)"},
+    }
+    out = {
         "price": _raw(summary.get("regularMarketPreviousClose")) or _raw(fin.get("currentPrice")),
         "prev_close": _raw(summary.get("previousClose")),
         "52w_high": _raw(summary.get("fiftyTwoWeekHigh")),
@@ -192,11 +252,15 @@ def _fetch_fundamentals_direct(ticker):
         "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - "
                                 "yfinance's own client fails on this network (curl_cffi TLS fingerprint "
                                 "gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
-        "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow is "
-                "TRAILING ONLY, not a multi-year series - Yahoo's legacy cashflowStatementHistory module "
-                "only exposes netIncome per year, not capex/FCF. For a real FCF trend, use a company's own "
-                "cash flow statement (PDF via the pdf skill).",
+        "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, "
+                "capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current "
+                "figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/"
+                "incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, "
+                "and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - "
+                "for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
     }
+    out.update(layer_a_b)
+    return out
 
 
 def fetch_equities(tickers):

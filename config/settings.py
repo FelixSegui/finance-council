@@ -20,6 +20,20 @@ EXCEL_PE_SANITY_RANGE = (3, 80)  # outside this, flag the P/E as suspect (e.g. A
 # genuine holding company (Investor A's ~6.7x is a legitimate NAV-driven artifact,
 # see portfolio.json's INVE-A.ST thesis) while still catching 2.05.
 
+# --- derived_metrics.py / fetch_market_data.py: ROIC tax-rate assumption ---
+# No source in this pipeline provides a real effective tax rate (Yahoo's
+# incomeStatementHistory tax-line fields are broken/zero for most tickers,
+# confirmed empirically 2026-08). ROIC needs SOME tax rate, so this is an
+# explicit, labeled ASSUMPTION (statutory rate by listing country) used only
+# when no real effective rate is available - any ROIC computed with it must
+# be tagged quality_state "ESTIMATED", never "OK". Prefer a real effective
+# rate over this the moment one exists (e.g. from a filing or PDF extract).
+DEFAULT_CORPORATE_TAX_RATE_ASSUMPTION = {
+    "Sweden": 0.206, "United Kingdom": 0.25, "United States": 0.21,
+    "Switzerland": 0.147, "Germany": 0.298, "Denmark": 0.22, "Norway": 0.22,
+}
+DEFAULT_CORPORATE_TAX_RATE_FALLBACK = 0.25  # used when country isn't in the map above
+
 # --- rank_candidates.py: hybrid risk score weights (must sum to 1.0) ---
 RISK_SCORE_WEIGHTS = {
     "volatility": 0.40,

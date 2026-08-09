@@ -97,12 +97,28 @@ essays:
 5. **The Executor** — constraints back on: the concrete, doable action for
    Monday morning, ignoring the other four voices' hesitations.
 6. **The Chairman** — reads the room across the five and outputs **the
-   decision**: (a) the specific portfolio action — buy/sell/hold/rebalance,
-   which holding or candidate, sized in SEK, or explicitly "no action" —
-   (b) the single biggest risk to monitor, (c) the immediate next step.
-   This decision is what populates Headline calls, Rebalancing actions,
-   and Open decisions below; the five voices appear briefly above it in
-   the memo for transparency, not as the main content.
+   decision**, in this exact structured format (added 2026-08-09):
+   ```
+   ACTION: BUY / ADD / HOLD / REDUCE / SELL / WATCH / NO ACTION
+   POSITION: current weight (% of investable capital, or SEK)
+   TARGET: target weight or range
+   REASON: 1-3 strongest reasons
+   THESIS STATUS: INTACT / WEAKENING / BROKEN / UNTESTED / TOO_EARLY
+   WHAT CHANGED: the specific new evidence this sweep
+   BREAK CONDITION: what would force a different decision
+   CONFIDENCE: Low / Medium / High
+   HORIZON: Short / Medium / Long
+   ```
+   `THESIS STATUS` comes from the holding's structured thesis fields in
+   `portfolio.json` (`thesis_status`, cross-checked against thesis-review's
+   fresh read for this sweep — if they disagree, say so, don't silently
+   pick one) — see `data/portfolio.json`'s per-holding schema and
+   `thesis-review.md`. `BREAK CONDITION` should usually just be the
+   holding's own `break_conditions` field, restated for this decision, not
+   invented fresh each sweep. This decision is what populates Headline
+   calls, Rebalancing actions, and Open decisions below; the five voices
+   appear briefly above it in the memo for transparency, not as the main
+   content.
 
 If a call is genuinely one-sided (all five voices point the same way, no
 real tension), say that plainly and move on — don't manufacture five-way

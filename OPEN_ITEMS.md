@@ -307,6 +307,72 @@ retroactive reviews land; that is what would flip it back to balanced.
 
 ---
 
+## V2 Roadmap — user-authored, not meta-proposed
+
+Full spec: `docs/v2-upgrade-spec.md` (verbatim, received 2026-08-09). This
+is a user roadmap, not evidence-driven S-items — it sits outside the
+≤10-open-S-items cap and `meta` doesn't prune it; it only moves as phases
+actually get built. `journal`/`meta` should surface it at session start
+alongside the S-items, not silently.
+
+- **Phase 1 (foundation) — DONE 2026-08-09.** Structured thesis schema
+  (`why_owned`/`expected_driver`/`valuation_reason`/`key_risks`/
+  `break_conditions`/`thesis_status`/`last_reviewed` on every active
+  holding in `portfolio.json`), Council's structured Chairman action
+  format (ACTION/POSITION/TARGET/REASON/THESIS STATUS/WHAT CHANGED/BREAK
+  CONDITION/CONFIDENCE/HORIZON), per-field data-quality states + a
+  5-tier source hierarchy in `data/company_profiles/`, and new Layer A/B
+  company metrics (`scripts/derived_metrics.py`; `ebitda`/`total_cash`/
+  `total_debt`/`operating_cashflow`/`capex`/`ebit`/`equity_book`/
+  `invested_capital`/`roic_pct` in `scripts/fetch_market_data.py`).
+  Spec sections 4-5, 9 (partial - schema only, Fair Value Gap itself is
+  Phase 2), 18-20, 24-25.
+- **Phase 2 — not started.** Explicit Quality score vs Valuation score as
+  two separate numbers (extends `swedish-equity-review`'s existing
+  Score/Coverage rubric with real data underneath, now available via
+  Phase 1), Fair Value Gap (`valuation_gap_estimate` with methodology/
+  confidence/source/date, `UNKNOWN` when unreliable), PEG reframed as one
+  input among several, never a hard rule. Spec sections 7-9.
+- **Phase 3 — not started.** Wire the already-working
+  `scripts/funnel/rank_candidates.py` (proven at 510-name scale, currently
+  parked on the retired `data/cache/universe.json`) at the live
+  `data/cache/watchlist.json` instead; add quality factors (ROIC/FCF
+  margin/stability) using Phase 1's new metrics; make the funnel's
+  threshold counts (~540→150-250→50-75→...) configurable in
+  `config/settings.py`, not hardcoded; `scout` outputs a compact candidate
+  dataset instead of prose. Spec sections 6, 10, 26, 28.
+- **Phase 4 — not started.** `risk_factor_exposure` risk-bucket
+  classification (Global industrial cycle / Defensive healthcare /
+  Financials / etc.) distinct from sector — directly targets the Volvo +
+  Atlas Copco + Alfa Laval + ABB correlated-industrial-risk problem this
+  system already flagged (69% of the stock sleeve). Portfolio-fit scoring
+  for candidates ("does owning this improve the portfolio," not just "is
+  it individually attractive"). Spec sections 11-12, 23, 33.
+- **Phase 5 — not started.** Macro Regime Engine expansion: new fetchers
+  for BOJ policy rate, USD/JPY, credit spreads, PMI, unemployment/GDP,
+  and a computed real-yield field — confirmed genuinely missing from
+  `scripts/fetchers/fetch_macro.py` (2026-08-09 exploration). Multi-
+  dimension regime classification (Liquidity/Inflation/Growth/Credit/
+  Market risk/Currency-funding), `macro_fit`/`macro_sensitivity` per
+  candidate, dynamic BUY thresholds (regime-dependent, configurable,
+  never auto-selling on a regime shift alone). Spec sections 13-17, 31,
+  34 (crypto-specific macro monitoring).
+- **Phase 6 — not started.** Sell discipline (the 7 legitimate sell
+  triggers + "would I buy it today?" - the latter already added to
+  `thesis-review.md` in Phase 1, the former still open), crisis-window
+  backtesting (`scripts/backtest.py` currently only supports a rolling
+  N-year lookback from today, no fixed `--start`/`--end` - a real 2008
+  test is likely blocked anyway by the current Watchlist's short-history
+  proxies, confirmed 2026-08-09), portfolio risk-narrative section in the
+  Council memo, `meta`'s expanded monitoring scope (data quality/model
+  quality/AI quality/portfolio behavior/system efficiency), and the
+  score-calibration framework (log scores now, correlate against realized
+  returns later - there's no historical score data yet to backtest
+  against, so this phase starts as instrumentation, not a real backtest).
+  Spec sections 21-22, 29-30, 32, 37.
+
+---
+
 ## Closed
 
 Resolutions kept short; full history in `data/portfolio_history_archive.md`

@@ -2,7 +2,6 @@
   "ticker": "ATCO-A.ST",
   "name": "Atlas Copco A",
   "profile_last_updated": "2026-07-28",
-
   "static_profile": {
     "business_description": "Swedish industrial group - compressors, vacuum solutions, industrial tools and assembly systems, and power technique equipment. Not yet held in this portfolio (universe.json candidate).",
     "sector": "Industrials / Specialty Industrial Machinery (Yahoo assetProfile, fetched 2026-07-28)",
@@ -10,33 +9,205 @@
     "management_notes": "Not yet assessed.",
     "last_reviewed": "2026-07-28"
   },
-
   "fundamentals_cache": {
     "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
     "as_of_period": "trailing/most recent fiscal year 2025-12-31",
     "extracted_date": "2026-07-28",
     "next_report_expected": "check Atlas Copco's own IR calendar - not confirmed this session",
     "figures": {
-      "trailing_pe": 35.83, "forward_pe": 30.52, "price_to_sales": 5.62, "price_to_book": 8.98, "peg_ratio": 2.7,
-      "dividend_yield_pct": 1.49, "payout_ratio_pct": 54.95, "beta": 1.072,
-      "gross_margin_pct": 42.19, "operating_margin_pct": 20.57, "ebitda_margin_pct": 24.85, "profit_margin_pct": 15.67,
-      "roe_pct": 25.70, "roa_pct": 10.74, "debt_to_equity": 33.67,
-      "revenue_history_sek_m": [
-        {"fy": "2022-12-31", "revenue": 141325}, {"fy": "2023-12-31", "revenue": 172664},
-        {"fy": "2024-12-31", "revenue": 176771}, {"fy": "2025-12-31", "revenue": 168343}
-      ],
-      "free_cashflow_sek": 25972000768,
-      "analyst_recommendation": "buy"
+      "trailing_pe": {
+        "value": 35.83,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "forward_pe": {
+        "value": 30.52,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price_to_sales": {
+        "value": 5.62,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price_to_book": {
+        "value": 8.98,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "peg_ratio": {
+        "value": 2.7,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "dividend_yield_pct": {
+        "value": 1.49,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "payout_ratio_pct": {
+        "value": 54.95,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "beta": {
+        "value": 1.072,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "gross_margin_pct": {
+        "value": 42.19,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "operating_margin_pct": {
+        "value": 20.57,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "ebitda_margin_pct": {
+        "value": 24.85,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "profit_margin_pct": {
+        "value": 15.67,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roe_pct": {
+        "value": 25.7,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roa_pct": {
+        "value": 10.74,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "debt_to_equity": {
+        "value": 33.67,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "revenue_history_sek_m": {
+        "value": [
+          {
+            "fy": "2022-12-31",
+            "revenue": 141325
+          },
+          {
+            "fy": "2023-12-31",
+            "revenue": 172664
+          },
+          {
+            "fy": "2024-12-31",
+            "revenue": 176771
+          },
+          {
+            "fy": "2025-12-31",
+            "revenue": 168343
+          }
+        ],
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "free_cashflow_sek": {
+        "value": 25972000768,
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "analyst_recommendation": {
+        "value": "buy",
+        "source": "Yahoo quoteSummary, direct crumb fetch, data/snapshots/20260728T115647.json",
+        "source_tier": 2,
+        "as_of": "2026-07-28",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      }
     }
   },
-
   "insider_activity_cache": {
     "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), fetched 2026-07-28, data/snapshots/20260728T122437.json. Search term 'Atlas Copco' matched issuer 'Atlas Copco Aktiebolag' cleanly, no name collisions.",
     "as_of_date": "2026-07-28 (transactions through 2026-07-24)",
     "notes": "10 recent transactions, mostly option exercises (low weight per skill rules) by Henrik Elmin and Sara Hagg Liljedal. One genuine open-market Acquisition: Kenneth Lagerborg, board member, 7,000 shares at 161.57 SEK (~1.13M SEK), 2026-06-09 - modest size, single insider."
   },
-
   "review_history": [
-    { "date": "2026-07-28", "score": 50, "coverage_pct": 80, "dimensions_scored": "5 of 6 (Business Quality not scored)", "action": "Hold/further research. Dimension scores: Financial Strength 7, Valuation 3, Dividend Quality 5, Insider Activity 5, Growth Outlook 5. Real gaps: revenue declined FY2025 vs FY2024 (168.3B vs 176.8B SEK); valuation rich (P/E 35.8, P/B 8.98); insider activity modest, not a strong signal either way." }
+    {
+      "date": "2026-07-28",
+      "score": 50,
+      "coverage_pct": 80,
+      "dimensions_scored": "5 of 6 (Business Quality not scored)",
+      "action": "Hold/further research. Dimension scores: Financial Strength 7, Valuation 3, Dividend Quality 5, Insider Activity 5, Growth Outlook 5. Real gaps: revenue declined FY2025 vs FY2024 (168.3B vs 176.8B SEK); valuation rich (P/E 35.8, P/B 8.98); insider activity modest, not a strong signal either way."
+    }
   ]
 }

@@ -15,51 +15,275 @@
     "extracted_date": "2026-08-05",
     "next_report_expected": "check Investor AB's own IR calendar - not confirmed this session",
     "figures": {
-      "trailing_pe": 4.62,
-      "forward_pe": null,
-      "price_to_sales": 3.7,
-      "price_to_book": 1.12,
-      "peg_ratio": 4.91,
-      "dividend_yield_pct": 1.41,
-      "payout_ratio_pct": 6.36,
-      "beta": 0.9683,
-      "gross_margin_pct": 89.44,
-      "operating_margin_pct": 88.7,
-      "ebitda_margin_pct": 82.92,
-      "profit_margin_pct": 80.07,
-      "roe_pct": 27.25,
-      "roa_pct": 15.07,
-      "debt_to_equity": 11.59,
-      "note_on_holding_company_metrics": "CRITICAL CAVEAT: margins and 'revenue' here are a holding-company accounting artifact (investment income/dividends received, not operating sales), not comparable to an operating company like Atlas Copco or Volvo - do not read the 80%+ margins as operational excellence. Likewise P/E (4.62) is a poor substitute for the metric that actually matters for an investment company - NAV discount/premium to its underlying holdings' market value - which Yahoo does not report and was not obtained this session. Score treat with lower confidence than the other three companies for exactly this reason.",
-      "revenue_history_sek_m": [
-        {
-          "fy": "2022-12-31",
-          "revenue": 51812
-        },
-        {
-          "fy": "2023-12-31",
-          "revenue": 71862
-        },
-        {
-          "fy": "2024-12-31",
-          "revenue": 75681
-        },
-        {
-          "fy": "2025-12-31",
-          "revenue": 64826
-        }
-      ],
-      "free_cashflow_sek": 166005374976,
-      "analyst_recommendation": "buy",
-      "price": 415.7,
-      "pe_ratio": 6.679,
-      "market_cap": 1288173000000,
-      "week52_high": 747,
-      "week52_low": 165.35,
-      "exchange": "NASDAQ Stockholm",
-      "currency": "SEK",
-      "headquarters": "Arsenalsgatan 8C, STOCKHOLM, STOCKHOLM, 103 32 SE",
-      "employees": 21005
+      "trailing_pe": {
+        "value": 4.62,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "forward_pe": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price_to_sales": {
+        "value": 3.7,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price_to_book": {
+        "value": 1.12,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "peg_ratio": {
+        "value": 4.91,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "dividend_yield_pct": {
+        "value": 1.41,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "payout_ratio_pct": {
+        "value": 6.36,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "beta": {
+        "value": 0.9683,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "gross_margin_pct": {
+        "value": 89.44,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "operating_margin_pct": {
+        "value": 88.7,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "ebitda_margin_pct": {
+        "value": 82.92,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "profit_margin_pct": {
+        "value": 80.07,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roe_pct": {
+        "value": 27.25,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roa_pct": {
+        "value": 15.07,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "debt_to_equity": {
+        "value": 11.59,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "note_on_holding_company_metrics": {
+        "value": "CRITICAL CAVEAT: margins and 'revenue' here are a holding-company accounting artifact (investment income/dividends received, not operating sales), not comparable to an operating company like Atlas Copco or Volvo - do not read the 80%+ margins as operational excellence. Likewise P/E (4.62) is a poor substitute for the metric that actually matters for an investment company - NAV discount/premium to its underlying holdings' market value - which Yahoo does not report and was not obtained this session. Score treat with lower confidence than the other three companies for exactly this reason.",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "revenue_history_sek_m": {
+        "value": [
+          {
+            "fy": "2022-12-31",
+            "revenue": 51812
+          },
+          {
+            "fy": "2023-12-31",
+            "revenue": 71862
+          },
+          {
+            "fy": "2024-12-31",
+            "revenue": 75681
+          },
+          {
+            "fy": "2025-12-31",
+            "revenue": 64826
+          }
+        ],
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "free_cashflow_sek": {
+        "value": 166005374976,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "analyst_recommendation": {
+        "value": "buy",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price": {
+        "value": 415.7,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "pe_ratio": {
+        "value": 6.679,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "market_cap": {
+        "value": 1288173000000,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "week52_high": {
+        "value": 747,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "week52_low": {
+        "value": 165.35,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "exchange": {
+        "value": "NASDAQ Stockholm",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "currency": {
+        "value": "SEK",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "headquarters": {
+        "value": "Arsenalsgatan 8C, STOCKHOLM, STOCKHOLM, 103 32 SE",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "employees": {
+        "value": 21005,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      }
     }
   },
   "insider_activity_cache": {

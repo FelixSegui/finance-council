@@ -10,33 +10,71 @@ buying stopped being true, because nothing forced a re-check.
 
 ## Inputs
 
-- `data/portfolio.json` — each holding's `thesis` field is the claim being
-  tested. If a holding has no thesis recorded, flag it: "no recorded
-  reason for holding this — that's a problem independent of performance."
+- `data/portfolio.json` — each holding's structured thesis fields (added
+  2026-08-09): `why_owned`, `expected_driver`, `valuation_reason`,
+  `key_risks`, `break_conditions` are the claims being tested;
+  `thesis_status` is what was stored last time; `thesis_narrative` is the
+  older free-text history, kept for context but not the thing being
+  graded. If a holding has no `why_owned`/`expected_driver` recorded (or
+  they're `null`), that IS the finding — see UNTESTED below, don't try to
+  reverse-engineer a story from price action to fill the gap.
 - Latest `data/snapshots/*.json` for current fundamentals.
 - Latest macro-regime and valuation agent outputs if available in this
   session.
 
 ## Method
 
-For each holding, classify the thesis status:
+For each holding, classify the thesis status — exactly these five values,
+no others:
 
-- **Intact** — the specific condition you cited as your reason to buy is
+- **INTACT** — the specific condition in `why_owned`/`expected_driver` is
   still true, per current data.
-- **Weakening** — direction is still right but the data has moved against
-  it (e.g., "bought for margin expansion," margins are now flat).
-- **Broken** — the stated reason is no longer true. This is not the same
-  as "price is down" — a broken thesis with price still up is a bigger red
+- **WEAKENING** — direction is still right but the data has moved against
+  it (e.g. "bought for margin expansion," margins are now flat) — OR the
+  thesis's upside has already been captured (price at/near the level that
+  would have been the exit target) and nothing new justifies holding for
+  further upside. Both read as WEAKENING; there is no separate "played
+  out" state — a captured-upside case should say so explicitly in the
+  one-line output rather than being silently folded into a generic
+  "weakening."
+- **BROKEN** — the stated reason is no longer true. Not the same as
+  "price is down" — a broken thesis with price still up is a bigger red
   flag than a bruised thesis with price down, because the market hasn't
   caught up yet.
-- **Played out** — the thesis was correct and has been realized in the
-  price; the original reason to hold no longer applies going forward even
-  though nothing went wrong.
+- **UNTESTED** — `why_owned`/`expected_driver` are empty. **This is not
+  the same as OK or INTACT.** A position with no stated claim isn't
+  healthy by default; it's a process gap that gets worse the longer it
+  sits (see `ethereum`'s 10+-sweep history in `OPEN_ITEMS.md` P5 as the
+  standing example of what happens when this gets ignored). Flag it with
+  the same weight as a WEAKENING position, not as a footnote.
+- **TOO_EARLY** — a real thesis exists, but too little time/data has
+  passed since purchase to test it yet (days, not a quarter+). Distinct
+  from UNTESTED: TOO_EARLY means there IS a claim, it just can't be
+  graded yet.
+
+**You have Read-only access — you do not write `thesis_status` back into
+`portfolio.json`.** If your freshly-computed status differs from what's
+currently stored there, say so explicitly ("stored: WEAKENING, this
+sweep's read: BROKEN — recommend Council/the user update the record") so
+the mismatch surfaces rather than silently persisting a stale value.
+
+**"Would I buy it today?"** — for every holding, independent of the
+thesis-status call above, ask this directly (spec: combats anchoring and
+sentimental attachment to what's already owned). Answer with exactly one
+of: **YES / YES BUT SMALLER / HOLD ONLY / NO — VALUATION / NO — THESIS /
+NO — PORTFOLIO FIT / UNKNOWN**. "HOLD ONLY" means: wouldn't initiate today,
+but nothing here justifies selling either — a legitimate, common answer,
+not a dodge.
 
 ## Output format
 
-Per holding: thesis status + the specific data point that drove the call.
-One line each. Do not soften "broken" to "worth monitoring" — say broken.
+Per holding, two lines:
+1. Thesis status + the specific data point that drove the call (+ a note
+   if this sweep's read disagrees with the stored `thesis_status`).
+2. Would-I-buy-it-today answer + the one-line reason.
+
+Do not soften "broken" to "worth monitoring" — say broken. Do not soften
+"UNTESTED" to "seems fine" — say untested.
 
 ## Rule
 

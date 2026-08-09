@@ -140,6 +140,15 @@ def load_profile(ticker, name):
     }, path
 
 
+def _structured(value, quality_state, as_of_str, age_days, source_tier=3,
+                source="Excel Stocks data type (Drive, read-only)", calculation_method="direct from source, not computed"):
+    """Builds one per-field entry in the company_profiles figures shape
+    (see data/company_profiles/_SCHEMA.md, added 2026-08-09)."""
+    return {"value": value, "source": source, "source_tier": source_tier,
+            "as_of": as_of_str, "age_days": age_days, "quality_state": quality_state,
+            "calculation_method": calculation_method}
+
+
 def process_stock_detail(ws, today, flags, dry_run):
     """STOCK DETAIL block -> data/company_profiles/<TICKER>.json. Returns the
     set of tickers actually seen (for the data-gaps check against Holdings)."""
@@ -189,13 +198,19 @@ def process_stock_detail(ws, today, flags, dry_run):
         touched = []
         for excel_col, figure_key in field_map.items():
             v = rec.get(excel_col)
-            if isinstance(v, (int, float)):
-                figures[figure_key] = v
-                touched.append(figure_key)
+            if not isinstance(v, (int, float)):
+                continue
+            state = "OK"
+            if figure_key == "pe_ratio" and not (pe_lo < v < pe_hi):
+                state = "SUSPECT"
+            elif age is not None and age > EXCEL_STALE_AFTER_DAYS:
+                state = "STALE"
+            figures[figure_key] = _structured(v, state, as_of_str, age)
+            touched.append(figure_key)
         for extra_key, excel_col in (("exchange", "exchange"), ("currency", "currency"),
                                       ("headquarters", "headquarters"), ("employees", "employees")):
             if rec.get(excel_col) is not None:
-                figures[extra_key] = rec[excel_col]
+                figures[extra_key] = _structured(rec[excel_col], "OK", as_of_str, age)
 
         if touched:
             profile["fundamentals_cache"]["source"] = "Excel Stocks data type (Drive, read-only)"

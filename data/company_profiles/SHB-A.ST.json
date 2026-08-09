@@ -15,49 +15,257 @@
     "extracted_date": "2026-08-05",
     "next_report_expected": "check Handelsbanken's own IR calendar - not confirmed this session",
     "figures": {
-      "trailing_pe": 12.04,
-      "forward_pe": 12.63,
-      "price_to_sales": 5.13,
-      "price_to_book": 1.55,
-      "peg_ratio": 19.76,
-      "dividend_yield_pct": 5.54,
-      "payout_ratio_pct": 66.83,
-      "beta": 0.5751,
-      "gross_margin_pct": null,
-      "operating_margin_pct": 50.09,
-      "ebitda_margin_pct": null,
-      "profit_margin_pct": 41.73,
-      "roe_pct": 12.75,
-      "roa_pct": 0.63,
-      "debt_to_equity": null,
-      "note_on_bank_metrics": "gross/EBITDA margin and D/E are not meaningful/reported for banks in Yahoo's generic template - a bank's balance sheet isn't structured like an industrial company's. Do not treat the nulls as missing data to chase.",
-      "revenue_history_sek_m": [
-        {
-          "fy": "2022-12-31",
-          "revenue": 50249
-        },
-        {
-          "fy": "2023-12-31",
-          "revenue": 62249
-        },
-        {
-          "fy": "2024-12-31",
-          "revenue": 62345
-        },
-        {
-          "fy": "2025-12-31",
-          "revenue": 56796
-        }
-      ],
-      "free_cashflow_sek": null,
-      "analyst_recommendation": "underperform",
-      "price": 146.75,
-      "pe_ratio": 12.4049,
-      "market_cap": 296312600000,
-      "exchange": "NASDAQ Stockholm",
-      "currency": "SEK",
-      "headquarters": "Kungstradgardsgatan 2, STOCKHOLM, STOCKHOLM, 106 70 SE",
-      "employees": 11667
+      "trailing_pe": {
+        "value": 12.04,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "forward_pe": {
+        "value": 12.63,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price_to_sales": {
+        "value": 5.13,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price_to_book": {
+        "value": 1.55,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "peg_ratio": {
+        "value": 19.76,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "dividend_yield_pct": {
+        "value": 5.54,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "payout_ratio_pct": {
+        "value": 66.83,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "beta": {
+        "value": 0.5751,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "gross_margin_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "operating_margin_pct": {
+        "value": 50.09,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "ebitda_margin_pct": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "profit_margin_pct": {
+        "value": 41.73,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roe_pct": {
+        "value": 12.75,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "roa_pct": {
+        "value": 0.63,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "debt_to_equity": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "note_on_bank_metrics": {
+        "value": "gross/EBITDA margin and D/E are not meaningful/reported for banks in Yahoo's generic template - a bank's balance sheet isn't structured like an industrial company's. Do not treat the nulls as missing data to chase.",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "revenue_history_sek_m": {
+        "value": [
+          {
+            "fy": "2022-12-31",
+            "revenue": 50249
+          },
+          {
+            "fy": "2023-12-31",
+            "revenue": 62249
+          },
+          {
+            "fy": "2024-12-31",
+            "revenue": 62345
+          },
+          {
+            "fy": "2025-12-31",
+            "revenue": 56796
+          }
+        ],
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "free_cashflow_sek": {
+        "value": null,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "MISSING",
+        "calculation_method": "direct from source, not computed"
+      },
+      "analyst_recommendation": {
+        "value": "underperform",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "price": {
+        "value": 146.75,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "pe_ratio": {
+        "value": 12.4049,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "market_cap": {
+        "value": 296312600000,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "exchange": {
+        "value": "NASDAQ Stockholm",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "currency": {
+        "value": "SEK",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "headquarters": {
+        "value": "Kungstradgardsgatan 2, STOCKHOLM, STOCKHOLM, 106 70 SE",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "employees": {
+        "value": 11667,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-05",
+        "age_days": null,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      }
     }
   },
   "insider_activity_cache": {

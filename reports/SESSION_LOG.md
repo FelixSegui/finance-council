@@ -17,6 +17,168 @@ Entry format:
 
 ---
 
+## 2026-08-10 — AZN thesis-and-buy mechanism worked exactly as designed; ATCO-B/ALFA/ABB/ETH still zero one week on, now on a hard deadline; a real ETH-repricing gap found and fixed by hand
+
+- **Snapshot:** data/cache/snapshots/20260810T061323.json (previous:
+  data/cache/snapshots/20260806T130256.json)
+- **Calendar:** data/cache/calendar/20260810-events.json
+- **Memo:** reports/2026-08-10-council-memo.md
+- **Headline calls:**
+  - 1. Hold ATCO-B/ALFA/ABB, no add, run `swedish-equity-review`
+    retroactively, write one sentence each by **2026-09-03** or the name
+    moves to the rotation list, ineligible for adds → confidence **High**
+    → horizon **Medium**
+  - 2. Hold ETH, freeze the quantity (no adds under any condition), first
+    reduction candidate once P1 (cost basis) closes; same 2026-09-03
+    thesis deadline → confidence **High** on the hold mechanics, **Low**
+    on anything about ETH's prospects → horizon **Medium**
+  - 3. Crypto trip-wire not fired (11.28-11.91% depending on denominator,
+    vs a 12% threshold checked 2026-09-03) — no trade, but the denominator
+    is now pinned (deployable capital, tax reserve + checking excluded,
+    205,009 SEK) so the check can't be decided by an accounting choice;
+    the portfolio agent's own same-day proposal to trim today was
+    overridden as a governance violation of the standing rule → confidence
+    **Medium** → horizon **Short** (tactical, explicitly not High
+    confidence per CLAUDE.md)
+  - 4. Deploy the 1,743.61 SEK idle ISK cash into Avanza Global (not the
+    medium tier) — explicitly labeled parking, not a risk-tier judgment,
+    because the cheapest-to-justify medium-tier candidates are the same
+    three names with no thesis in call 1 → confidence **High** → horizon
+    **Long**
+- **User decisions:** none logged yet this session — scheduled/automated
+  sweep, no live user interaction. Calls 1-4 above are Council
+  recommendations (Chairman decisions within the six-voice method)
+  awaiting the user's review, same status as every other sweep's headline
+  calls until acted on.
+- **Reconciliation — 2026-08-06 headline calls vs today's data
+  (`reports/2026-08-06-council-memo.md` vs `reports/2026-08-10-council-memo.md`
+  and `data/cache/snapshots/20260810T061323.json`):**
+  - **Call A (write theses for ATCO-B/AZN/ALFA/ABB/ETH or move to
+    rotation) — PARTIALLY resolved, and the partial resolution is real
+    signal, not noise.** AZN's thesis was written and executed the same
+    day as the call (2026-08-06) — it is now graded **INTACT** by
+    thesis-review, the one clean success story in this backlog. ATCO-B,
+    ALFA, ABB and ETH are unchanged: null thesis fields, one week later,
+    exactly where they were. Today's Council did not just re-ask for
+    prose a third time — it escalated with a hard deadline (2026-09-03),
+    a concrete default (rotation list, ineligible for adds), and a
+    mechanism (retroactive `swedish-equity-review` to produce the
+    evidence a thesis can actually be written against, rather than asking
+    for a blank page). Whether that escalation works is the thing to
+    check at the next sweep.
+  - **Call B (no action SHB-A/INVE-A despite two-lens convergence,
+    survivorship-bias call) — held, aged as a non-event.** Neither name
+    moved materially: both still sit at 98th percentile of their 52-week
+    range, both still grade WEAKENING, both still a NO on "buy today."
+    Nothing this week tested the Chairman's survivorship-bias read one
+    way or the other — it simply didn't come up against new data.
+  - **Call C (hold crypto, trip-wire at 12% checked 2026-09-03) — not yet
+    due, but this sweep surfaced a real problem worth flagging now rather
+    than at the deadline.** Three different denominators produced three
+    different crypto weights (11.28% / 11.4% / 11.91%) for the identical
+    24,410 SEK of crypto — a 0.63pp spread against a threshold set at
+    12.00%, with the most defensible reading (deployable capital) sitting
+    only 0.09pp from firing. Separately, the portfolio agent's own
+    rebalancing step proposed trimming COIN-XBT.ST *today*, three weeks
+    before the rule's own evaluation date — today's Council overrode this
+    as a governance violation (a pre-committed rule being re-litigated on
+    zero new evidence is the exact churn the rule exists to prevent), and
+    pinned the denominator (205,009 SEK, tax reserve + checking excluded)
+    so the actual 09-03 check is arithmetic, not a fresh argument.
+  - **Call D (buy 1sh AZN.ST conditioned on writing its thesis first) —
+    EXECUTED exactly as conditioned, and it aged well.** Thesis written,
+    then 1 share bought 2026-08-06 at 1,520.50 SEK (vs the ~1,546 SEK
+    the memo estimated four days prior — a real, favourable fill). This
+    is the clearest example yet of the conditional-execution mechanism
+    (call A's "no sentence -> rotation list" teeth, mirrored here as "no
+    sentence -> no buy") actually working as designed rather than being
+    theatre.
+- **Other findings this sweep, not tied to a specific prior call:**
+  - **Process/infrastructure, worth recording though it resolved to a
+    false alarm.** Session start found the repo's git HEAD detached, 10
+    commits ahead of the local `main` ref — the same *shape* of problem
+    as the 2026-08-03 two-branch fork. Investigated before touching
+    anything: `origin/main` already had all 10 commits, so this was a
+    local/remote ref mismatch, not stranded work. No commit was made on
+    the detached HEAD. Recorded because CLAUDE.md's branching rule exists
+    precisely to catch this class of problem, and this session it did —
+    caught at inspection, before it could become a real fork.
+  - **`position_report.py` has a real, newly-identified gap: it does not
+    reprice self-custody crypto (ETH) from fresh CoinGecko data.** It
+    silently carried ETH at its 2026-08-03 book value (8,911 SEK) when
+    the correct figure from today's snapshot is ~9,170 SEK (+259 SEK,
+    +2.9%) — the script reprices fetched equities but not user-held spot
+    crypto. Corrected by hand in today's memo, not silently patched in
+    code; flagged as an S-item candidate for `meta` to formalize.
+  - **A second S-item candidate: "% of 52-week range" means two different
+    things across agents, under the same label.** Valuation/thesis-review
+    report price ÷ 52-week high; `position_report.py` reports the true
+    low-to-high percentile. Materially changes the read on at least AZN
+    (79.1% vs true 28th percentile — makes AZN look better, not worse)
+    and ABB (91.1% vs true 79th percentile). Worth standardizing on the
+    percentile measure, since it's the more informative number.
+  - **A structural tension between two ADOPTED targets, not yet
+    resolved.** Exposure-class 85/10/5/0 (`portfolio.json.targets`,
+    written 2026-08-03) and the risk-tier 60/30/10 framework
+    (`investor_profile.json` itself calls this "the OPERATING allocation
+    control") now give opposite instructions for where new money goes —
+    secure tier is over its 60% target at 62.9%, medium tier is 17pp
+    under its 30% target at 13.18%. Today's Council resolved this weeks'
+    case (routed the 1,743.61 SEK to Avanza Global, explicitly labeled
+    parking, not a tier judgment) but logged the underlying contradiction
+    as open decision D2 — it worked cleanly this week only because the
+    medium tier had no vetted candidate; it will not resolve so cleanly
+    next time.
+  - **Calendar: earnings-date fetch failed for all 8 tickers this sweep**
+    (network connection reset, not a ticker-specific problem). Last
+    successful earnings verification is now 7 days stale (2026-08-03).
+    Riksbank and FOMC dates fetched cleanly — a 2026-08-20 Riksbank rate
+    decision lands before the 2026-09-03 crypto trip-wire check, which
+    means an 08-20 SEK move will shift both the crypto SEK value and the
+    trip-wire's own denominator before that check runs.
+  - **Emphasis for next sweep — context for `meta`, not a decision made
+    here.** `OPEN_ITEMS.md`'s current block (set 2026-08-06) reads
+    "portfolio-tending." Nothing this sweep argues for flipping that:
+    the same four names (ATCO-B, ALFA, ABB, ETH) are still untested one
+    week later, now carrying a hard deadline that the next sweep needs to
+    check against, and `scout` was correctly not invoked again this week.
+    If anything the case for portfolio-tending is stronger, not weaker,
+    now that a concrete 2026-09-03 deadline exists to hold the system to.
+  - **Reminder from the 2026-08-06 memo — honored.** `data/valuations.csv`
+    was appended for 2026-08-06 (214,862.98 SEK) before this session
+    started; the reminder did its job.
+- **Open items carried forward:** P1 (ETH cost basis, blocked on user —
+  now also gates call 2's reduction path), P2 (discovery funnel +
+  consolidated sweep report ported from the archived branch — still
+  open), P3 (PayPal routing — 14,146.43 SEK idle, cheapest exit route
+  still undecided, three options on the table, Council recommends a
+  small test transfer via Revolut to price the real cost), P4 (cheaper
+  BTC certificate — blocked on S1), P6 (retroactive
+  `swedish-equity-review` on ATCO-B/ALFA/ABB — still not run, now the
+  system's own recommended next step for a fourth straight sweep), P7
+  (ISK allowance unverified with Skatteverket), S1 (verified Nordic
+  crypto-ETP tickers for the Excel Watchlist tab), S3 (optional Alpha
+  Vantage/FMP key for the earnings calendar — this sweep's total fetch
+  failure is a live argument for it), S4 (Swedish CPI returning a stale
+  period), S5 (backtest of 85/10/5/0 vs. the -30% drawdown tolerance —
+  still never run), S6 (no source found yet for INVE-A's NAV
+  discount/premium). Two new S-item candidates surfaced this sweep, not
+  yet formalized by `meta`: the `position_report.py` ETH-repricing gap,
+  and the two-different-definitions "% of 52-week range" label. Also
+  carried: open decision D2 (exposure-class vs. risk-tier target
+  conflict), flagged as a resolve-properly candidate. Blocking-question
+  rule check: the Handelsbanken wrapper question remains resolved
+  (confirmed 2026-07-07) and does not gate this memo — no item currently
+  holds blocking status.
+
+**Reminder:** the portfolio was valued this sweep (~216,373 SEK total
+across all accounts — Avanza ISK, hb-main, hb-checking, PayPal, ETH
+wallet — per the memo's scorecard, with ETH repriced to 9,170 SEK) —
+append a row to `data/valuations.csv` before closing the session if not
+already done this session.
+
+---
+
 ## 2026-08-06 — Council memo restored after a 3-day gap; missing theses on 5 positions is the real headline, AZN buy queued
 
 - **Snapshot:** data/snapshots/20260806T130256.json (previous:

@@ -23,20 +23,26 @@ a one-line resolution — never delete it silently.
 ## This sweep's recommended emphasis
 
 **Emphasis:** portfolio-tending
-**Set by meta, 2026-08-06:** the signal is one-sided this session. Five
-positions (ATCO-B, AZN, ALFA, ABB, ETH — 29,242 SEK, 15.4% of investable
-capital) have no recorded thesis, ETH alone has run 10+ sweeps at literal
-`thesis: "TBD"`, the retroactive `swedish-equity-review` on the five new
-P6 names still hasn't run, a 1-share AZN.ST buy is queued and conditioned
-on its thesis being written first, and the 2026-08-06 crypto trip-wire
-(12% of investable capital by 2026-09-03) needs a check-in at the next
-sweep either way. No prospecting signal counters this: the ~1,743.61 SEK
-idle ISK cash is already earmarked for the AZN buy (call D), not sitting
-undeployed with no plan, and the Watchlist (32 entries, live for the
-first time this sweep) has nothing screened against it yet — running
-`scout` on it now would add candidates on top of five unreviewed ones
-already owned. Revisit this call once the five theses are written and the
-retroactive reviews land; that is what would flip it back to balanced.
+**Set by meta, 2026-08-10 (unchanged from 2026-08-06, reinforced not
+flipped):** every signal this session still points at unfinished
+portfolio-tending work, and nothing new argues for prospecting. ATCO-B,
+ALFA, ABB and ETH remain at zero thesis a full week after the 2026-08-06
+call, now carrying a hard 2026-09-03 deadline the next sweep must check
+against. PayPal routing (P3/D1) has sat open a full week with three named
+options on the table and no movement — a real, recurring ~4% fee leak
+(lever 2) going unresolved is a stronger claim on attention than finding
+new candidates. A new structural decision surfaced this session and needs
+resolving before it recurs badly (D2: `portfolio.json`'s exposure-class
+target and `investor_profile.json`'s risk-tier framework now give opposite
+instructions for new money — see the memo and S11's neighbor discussion).
+Against all that, there is no prospecting counter-signal: the one pool of
+idle cash (1,743.61 SEK) is already earmarked for Monday's Avanza Global
+buy, not sitting undeployed with no plan, and the Watchlist has not
+changed since 2026-08-06 (no fresh Excel import ran this sweep) — nothing
+new to screen it against even if `scout` were invoked. Revisit at the
+2026-09-03 check-in: if the four theses are written and the retroactive
+`swedish-equity-review` has run by then, that is what flips this back to
+balanced.
 
 ---
 
@@ -83,16 +89,20 @@ retroactive reviews land; that is what would flip it back to balanced.
   remaining two deliberately, one at a time — do not bulk-restore.
 
 ### P3 — PayPal routing (the fee is now known; the route isn't)
-- **Status:** open
+- **Status:** open — one week with no movement, three options on the table
 - **Confirmed 2026-08-03:** PayPal's conversion spread is 3-4%. Planning
   figure is **4%** (your instruction: assume worst case).
 - **What it costs:** ~575 SEK to convert the current 1,177.49 USD + 266.88 EUR
   through PayPal. And it recurs — you receive ~750-1,000 EUR every ~2 months,
   so this is a permanent leak, not a one-off.
-- **Still to decide:** the cheapest path out. Options worth pricing: transfer
-  out in native currency to a multi-currency account (Revolut already exists
-  and does FX far cheaper than PayPal) and convert there, versus converting in
-  PayPal and accepting the 4%.
+- **Still to decide:** the cheapest path out. 2026-08-10 Council's read: the
+  actual blocker is a missing price (Revolut's real FX spread has never been
+  measured), not a missing preference — recommends a small test transfer via
+  Revolut to price it once, then route the rest by whichever option wins.
+  Options remain: (A) convert inside PayPal and accept ~566 SEK now plus the
+  same % forever; (B) transfer out in native currency to Revolut and convert
+  there, unpriced; (C) a small test transfer via B to measure the real cost
+  before committing the rest.
 - **Why it matters more than the amount suggests:** this is a fee-drag problem,
   which is lever #2 in the system's priority order. Recurring forever beats
   large-and-once.
@@ -119,10 +129,13 @@ retroactive reviews land; that is what would flip it back to balanced.
   because there was spare cash to put to work. That candour matters and is
   recorded — it makes both **rotation candidates** rather than conviction
   holdings, which is directly relevant to the P6 medium-tier build.
-- **ETH still has no thesis** after 10+ sweeps. The blocker is genuinely you,
-  not data: the system can price it but cannot invent why you hold it. One
-  sentence is enough — "diversification, hold 3+ years, sell if X" is complete
-  and testable.
+- **ETH still has no thesis** after 11+ sweeps, now on the same 2026-09-03
+  hard deadline as ATCO-B/ALFA/ABB (2026-08-10 Council call). Quantity is
+  frozen — no adds under any condition — until either a thesis is written or
+  P1 (cost basis) closes, whichever comes first. The blocker is genuinely
+  you, not data: the system can price it but cannot invent why you hold it.
+  One sentence is enough — "diversification, hold 3+ years, sell if X" is
+  complete and testable.
 - **INVE-A.ST keeps a separate open blocker:** its thesis is plausible but not
   properly *testable*, because the metric that matters for a holding company
   is NAV discount/premium and it has never been obtained. See S6.
@@ -133,16 +146,20 @@ retroactive reviews land; that is what would flip it back to balanced.
   Atlas Copco B (27sh @ 181.25), AstraZeneca (4sh @ 1507), Alfa Laval
   (9sh @ 574.40), ABB (4sh @ 946.96) — 24,656.69 SEK of the 26,400.30 SEK
   cash, leaving ~1,743.61 SEK (computed, not broker-confirmed, courtage not
-  accounted for). Recorded in `data/portfolio.json` holdings.
+  accounted for — 2026-08-10 Council call: deploy this into Avanza Global,
+  it has lost its earmark since the 2026-08-06 AZN buy executed).
 - **Not run through `swedish-equity-review` before buying** — 5 of the 10
   candidates were picked without a documented comparison, and AstraZeneca,
   Alfa Laval, and ABB have no `data/company_profiles/` entry at all (Volvo
   and Atlas Copco A do, from the 2026-07-28 pre-purchase screen — note Atlas
   Copco's existing profile is for the A share, this purchase is the B share).
-- **Next step:** run `swedish-equity-review` on the 5 new positions
-  retroactively — not to second-guess the trade, but so there's a real
-  baseline (score, coverage, insider activity) to test the thesis against
-  at the next check-in, same as exists for SHB-A.ST/INVE-A.ST/VOLV-B.ST.
+  AstraZeneca's thesis was written and executed 2026-08-06 (Council call D);
+  ATCO-B, ALFA and ABB remain without one, now on the 2026-09-03 deadline.
+- **Next step:** run `swedish-equity-review` on ATCO-B.ST, ALFA.ST and
+  ABB.ST retroactively — not to second-guess the trade, but so there's a
+  real baseline (score, coverage, insider activity) to test the thesis
+  against. Named as the system's own recommended next step for a fourth
+  straight sweep (2026-08-10) and has still never run.
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated
@@ -172,20 +189,33 @@ retroactive reviews land; that is what would flip it back to balanced.
   certificate search can't be screened automatically. This used to be a
   nice-to-have; P4 makes it load-bearing.
 
-### S2 — Extract Form 4 buy/sell *direction*, not just filing counts
-- **Status:** open
-- Filing counts alone are weak signal — a CFO selling to cover taxes and a
-  genuine cluster buy look identical. Requires parsing Form 4 XML from EDGAR.
-- **Note:** this is US-only. Your actual insider signal comes from
-  Finansinspektionen for Swedish names, which already works and already gives
-  direction and amount. Lower value than it looks.
-
-### S3 — Optional Alpha Vantage / FMP key for the earnings calendar
-- **Status:** blocked (on user creating a free API key)
-- Yahoo earnings dates are unreliable for Nordic tickers, and the earnings
-  fetch failed outright on 2026-08-03. A free-tier key would make earnings
-  timing trustworthy. Worth doing only if you care about avoiding trades
-  landing next to earnings prints.
+### S3 — Earnings calendar fetch failing — root cause now diagnosed, not just "blocked on a key"
+- **Status:** open — no longer solely blocked on the user; a free, no-key fix is now identifiable
+- **Updated 2026-08-10, new evidence:** this is the second outright failure
+  of the earnings-date fetch (also failed 2026-08-03), and this session
+  confirmed the mechanism: `scripts/fetch_calendar.py`'s
+  `fetch_earnings_dates()` calls `yf.Ticker(t).calendar` — i.e. it still
+  routes through **yfinance's own client**, which CLAUDE.md already
+  documents as unreliable on this network (its curl_cffi browser-TLS
+  fingerprinting gets connection-reset by Yahoo's anti-bot layer).
+  `scripts/fetch_market_data.py` solved exactly this problem for equity
+  fundamentals by bypassing yfinance's client entirely and talking to
+  Yahoo's quoteSummary API directly via `urllib` + a cookie jar/crumb —
+  documented in CLAUDE.md's yfinance note. `fetch_calendar.py` never got
+  the same fix. Macro events "fetch cleanly" every week for a trivial
+  reason — `load_macro_events()` only filters a local, manually-maintained
+  JSON file and never touches the network — so its reliability says
+  nothing about the earnings path's health.
+- **How:** in `scripts/fetch_calendar.py`, replace `fetch_earnings_dates()`'s
+  `yf.Ticker(t).calendar` call with the same direct-urllib +
+  crumb/cookie-jar pattern already working in
+  `scripts/fetch_market_data.py` (Yahoo's quoteSummary API exposes a
+  `calendarEvents` module with earnings dates via the same endpoint used
+  for fundamentals). This requires no new API key and reuses code that
+  already works reliably on this network. The optional Alpha Vantage/FMP
+  key (original S3 scope) stays open as a secondary/fallback source, not
+  the primary fix — it's still blocked on the user creating a key and is
+  no longer the highest-value next step here.
 
 ### S4 — Swedish CPI is returning a stale period
 - **Status:** open
@@ -211,15 +241,39 @@ retroactive reviews land; that is what would flip it back to balanced.
   Options: parse the quarterly report PDF (the `pdf` skill can do this if you
   supply the report), or read it off Investor's IR page manually.
 
-### S7 — Per-position performance tracking is thin
-- **Status:** open — partially addressed 2026-08-03
-- `scripts/position_report.py` was added 2026-08-03 to show per-position
-  movement each sweep. It works, but it can only show what the data supports:
-  positions with `cost_basis_per_unit` and `date_acquired` filled in get a real
-  return figure, and the rest get "no data". Currently missing for the funds
-  (Auto 3, Avanza Global have totals but no per-unit basis or acquisition date)
-  and for ETH (see P1).
-- Not worth a big fix — it improves automatically as the gaps in P1 close.
+### S7 — Per-position performance tracking: self-custody crypto is never repriced (confirmed bug, not just a gap)
+- **Status:** open — a specific, concrete bug identified 2026-08-10, upgraded from the general 2026-08-03 framing
+- **Why:** `scripts/position_report.py` was added 2026-08-03 to show
+  per-position movement each sweep. The original framing ("thin, improves
+  automatically as P1 closes") undersold what's actually wrong: this
+  session confirmed the script **never reprices self-custody crypto at
+  all**, independent of P1. ETH's holding has `ticker: "ethereum"` and
+  `instrument_type: "spot_crypto"` — because that ticker isn't a key in
+  `cur_snap["equities"]`, `main()` routes it to `manual_row()`, which only
+  reads `market_value_sek` (a stale book value) and never looks at
+  `cur_snap["crypto"]`, even though the crypto section (fetched fresh every
+  sweep, e.g. `ethereum.price_eur`) is sitting right there in the same
+  snapshot file. This carried ETH at its 2026-08-03 book value (8,911 SEK)
+  in the 2026-08-10 report when the correct repriced figure was ~9,170 SEK
+  (+2.9%) — caught and corrected by hand in that sweep's Council memo, not
+  by the script.
+- **How:** in `scripts/position_report.py`, add a branch (parallel to
+  `equity_row`/`manual_row`) for holdings with `instrument_type ==
+  "spot_crypto"`: look up `cur_snap["crypto"].get(ticker)` (ticker is
+  already the CoinGecko id, e.g. `"ethereum"`), pull `price_eur`, and
+  convert via `cur_snap["macro"]["sek_per_eur"]["value"]` — mirroring the
+  existing SEK-conversion pattern already used elsewhere in this codebase
+  for ETH (see `data/portfolio.json`'s eth-wallet holding notes for the
+  exact formula: `quantity * price_eur * sek_per_eur`). Compute
+  `since_prev` the same way using `prev_snap["crypto"]`, matching
+  `equity_row`'s existing pattern. This is a narrow, single-branch fix —
+  there is exactly one self-custody crypto holding today (ETH); don't
+  generalize into a pluggable pricing-source framework for a problem of
+  size one.
+- Separately, still true and unrelated to this bug: funds (Auto 3, Avanza
+  Global) have totals but no per-unit basis or acquisition date, so they
+  correctly show "no data" for return figures — that part genuinely does
+  improve automatically as those gaps close and doesn't need a code change.
 
 ### S8 — Guard against critical files silently dropping during a branch merge
 - **Status:** open
@@ -240,6 +294,12 @@ retroactive reviews land; that is what would flip it back to balanced.
   and verify each exists and is above a trivial size/line-count threshold
   every time the script runs. Exit non-zero and name the missing or emptied
   file if any check fails.
+- **2026-08-10 note:** a *different*-shaped git incident occurred this
+  session (local `main` ref 10 commits behind the actual checked-out HEAD)
+  and resolved cleanly — `origin/main` already had all the commits, nothing
+  was lost, no S8-style guard was even needed to catch it. Confirmed no
+  update to this item's text or status is warranted; recorded here only so
+  it isn't mistaken for new evidence about S8 itself.
 
 ### S9 — Excel import script: two new data-quality flags (cross-field plausibility + purchase-without-thesis)
 - **Status:** open
@@ -273,9 +333,9 @@ retroactive reviews land; that is what would flip it back to balanced.
   council memo (section 12) — no new plumbing needed.
 
 ### S10 [prospecting] — Watchlist regression: narrower than the retired universe.json and lost sector diversifiers
-- **Status:** open
+- **Status:** open — no new evidence this session (no fresh Excel import ran; `scout` correctly not invoked)
 - **Why:** the new Watchlist (`data/cache/watchlist.json`, 32 entries / 7
-  categories, live for the first time this sweep) is smaller than the
+  categories, live for the first time 2026-08-06) is smaller than the
   `data/universe.json` it replaces (~43 tickers) and dropped names that
   mattered for exactly the gaps this sweep's own scorecard flagged: H&M
   (`HM-B.ST`, the only non-industrial/non-financial Nordic consumer name
@@ -286,14 +346,21 @@ retroactive reviews land; that is what would flip it back to balanced.
   (`VOO`, `VTI`, `QQQ`) — US-domiciled ETFs are frequently not legally
   purchasable by EU retail investors without a PRIIPS KID, which most
   don't provide, so this category may now be screening candidates the
-  user cannot actually buy on Avanza. This sweep's scorecard rates equity
-  sector concentration **ACT** (industrials 68.99%) and geography
-  **WATCH** (Sweden home bias) — precisely what a broader, more
-  diversified Watchlist would help correct, and the tool got narrower in
-  that exact spot the same week it went live. This is a universe problem,
-  not a screen problem — `scout` wasn't even invoked this session (see the
-  memo), so no screen-calibration evidence exists yet; don't conflate the
-  two.
+  user cannot actually buy on Avanza. The 2026-08-10 scorecard still rates
+  equity sector concentration **ACT** (industrials 65.49%, down only via
+  price drift not a structural fix) and geography **WATCH** — the same
+  gaps this narrower Watchlist would help correct, and hasn't. This is a
+  universe problem, not a screen problem — `scout` has not been invoked
+  since the Watchlist went live, so still no screen-calibration evidence
+  exists; don't conflate the two.
+- **Confirmed 2026-08-10, not a defect:** `data/cache/watchlist.json` is
+  deliberately gitignored (regenerated fresh each sweep from the Excel
+  Watchlist tab, not persisted) and is genuinely absent between Excel
+  imports — this session found it missing on disk. That's by design, not
+  a new gap: `scout.md`'s own instructions and `screen_candidates.py`
+  already document and implement an automatic fallback to
+  `data/universe.json` when the Watchlist file doesn't exist. Verified in
+  code this session. No action needed here.
 - **How:** this is user-curated content (the Watchlist tab, per CLAUDE.md
   1a), not a script bug — no code change to propose. Concrete action: next
   time the Excel workbook is edited, consider re-adding a non-industrial/
@@ -304,6 +371,36 @@ retroactive reviews land; that is what would flip it back to balanced.
   EU-UCITS-domiciled tickers or confirm with Avanza that the US-domiciled
   ones are actually purchasable before `scout` screens them as real
   candidates.
+
+### S11 — Two different "% of 52-week range" definitions in circulation, same label, different numbers
+- **Status:** open
+- **Why:** `scripts/position_report.py` computes the true percentile within
+  the 52-week low-to-high band (`(price - low) / (high - low)`); the
+  valuation and thesis-review agents compute price ÷ 52-week high and also
+  call the result "% of range." This produced a real, materially different
+  analytical read in the 2026-08-10 sweep: AstraZeneca read as "79.1% of
+  range" (price ÷ high — sounds mid-pack) versus the true **28th
+  percentile** (sounds cheap within its own year) — the second reading
+  measurably strengthens AZN's case, it doesn't just phrase it differently.
+  ABB similarly: "91.1%" (price ÷ high) versus the true **79th percentile**.
+  Both readings appeared side-by-side in the same memo (2026-08-10, section
+  1 and section 5, disagreement #5) and had to be manually reconciled by
+  the Council rather than agreeing by construction. This is exactly the
+  "confident structure built on stale or hallucinated numbers" risk CLAUDE.md
+  names as the system's biggest single risk — except here neither number is
+  wrong, they're just answering different questions under an identical label.
+- **How:** standardize on the true low-to-high percentile — it's the more
+  informative number (distinguishes "near its high because it never fell"
+  from "near its high after round-tripping the whole range") and
+  `position_report.py` already computes it correctly. Concrete steps: (1)
+  in `valuation.md` and `thesis-review.md`, change the instruction to
+  compute `(price - 52w_low) / (52w_high - 52w_low)` instead of `price /
+  52w_high`, using the same field names already present in the snapshot
+  (`52w_low`, `52w_high`); (2) if any agent still wants the price-÷-high
+  ratio for a different purpose, it must use a distinct label (e.g. "% of
+  52-week high") so it's never confused with the percentile again; (3) spot
+  check the next sweep's memo for AZN and ABB to confirm the two numbers
+  now agree.
 
 ---
 
@@ -378,6 +475,14 @@ alongside the S-items, not silently.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-10 — S2 rejected (Form-4 buy/sell direction parsing), cut to
+  hold the ≤10-open-S-items cap.** The item's own text already conceded
+  "lower value than it looks": it's US-only, and the system's actual
+  working insider signal is Finansinspektionen's Insynsregister for
+  Swedish names, which already gives direction and amount today. No
+  session across several sweeps has produced evidence this gap actually
+  blocked a call. Revisit only if a US-name insider signal becomes
+  decision-relevant to a real holding or candidate.
 - **2026-08-06 — `reports/SESSION_LOG.md` lost in the 2026-08-03 merge,
   unnoticed for 3 days**: recreated this session from `OPEN_ITEMS.md`'s
   closed-item log, `data/portfolio.json`, and surviving dated memo files.

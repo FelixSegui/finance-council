@@ -1,0 +1,68 @@
+{
+  "fetched_at_utc": "2026-08-10T06:13:55.408431+00:00",
+  "lookahead_days": 45,
+  "earnings": {
+    "SHB-A.ST": {
+      "error": "Failed to perform, curl: (35) Recv failure: Connection reset by peer. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "INVE-A.ST": {
+      "error": "Failed to perform, curl: (35) Recv failure: Connection reset by peer. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "VOLV-B.ST": {
+      "error": "Failed to perform, curl: (35) Recv failure: Connection reset by peer. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "ATCO-B.ST": {
+      "error": "Failed to perform, curl: (35) Recv failure: Connection reset by peer. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "AZN.ST": {
+      "error": "Failed to perform, curl: (35) Recv failure: Connection reset by peer. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "ALFA.ST": {
+      "error": "Failed to perform, curl: (35) Recv failure: Connection reset by peer. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "ABB.ST": {
+      "error": "Failed to perform, curl: (35) Recv failure: Connection reset by peer. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    },
+    "COIN-XBT.ST": {
+      "error": "Failed to perform, curl: (35) Recv failure: Connection reset by peer. See https://curl.se/libcurl/c/libcurl-errors.html first for more details."
+    }
+  },
+  "macro_events": {
+    "upcoming": [
+      {
+        "date": "2026-08-20",
+        "name": "Riksbank rate decision + Monetary Policy Update + press conference",
+        "type": "riksbank"
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Riksbank monetary policy minutes",
+        "type": "riksbank_minutes"
+      },
+      {
+        "date": "2026-09-15",
+        "name": "FOMC meeting (day 1)",
+        "type": "fomc"
+      },
+      {
+        "date": "2026-09-16",
+        "name": "Riksbank Business Survey",
+        "type": "riksbank_survey"
+      },
+      {
+        "date": "2026-09-16",
+        "name": "FOMC meeting (day 2, statement + Summary of Economic Projections)",
+        "type": "fomc"
+      },
+      {
+        "date": "2026-09-24",
+        "name": "Riksbank rate decision + Monetary Policy Report + press conference",
+        "type": "riksbank"
+      }
+    ],
+    "calendar_last_verified": "2026-08-03",
+    "unverified_sources": [
+      "US/SE CPI release dates missing - fill month by month from BLS/SCB schedules"
+    ]
+  }
+}

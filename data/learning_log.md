@@ -50,3 +50,45 @@ and dated; nothing here is a source of truth for a decision, that's still
   completely different costs to exit.
 
 ---
+
+## 2026-08-10 — `reports/2026-08-10-council-memo.md`
+
+- **A threshold rule is only as solid as its denominator, and this week the
+  denominator moved the answer more than the market did.** The same 24,410 SEK
+  of crypto is 11.28%, 11.4% or 11.91% depending on whether the tax reserve and
+  checking cash sit in the bottom of the fraction — a 0.63pp spread against a
+  trip-wire set at 12.00%. Bitcoin would have to fall meaningfully to change
+  the answer; an accounting choice changes it for free. That is why the
+  denominator got pinned in this memo three weeks *before* the check, rather
+  than on the day: a rule you can satisfy by choosing how to count is not a
+  rule, it is a preference with a number attached. (Direct extension of the
+  2026-08-06 denominator note above — same lesson, now with a live threshold
+  attached to it.)
+- **"The regime favours this sector" and "this is a good time to buy it" are
+  different sentences, and the 52-week percentile is what separates them.**
+  Macro says industrials are what this environment rewards — no yield-curve
+  inversion, VIX at 15, no recession signal. But Atlas Copco sits at the 98th
+  percentile of its own 52-week range at PEG 2.40. The favourable regime is the
+  *reason* it is at the 98th percentile; you are not buying the tailwind, you
+  are buying the price the tailwind already produced. A high 52-week percentile
+  is not a sell signal on its own — it usually reflects real strength — but it
+  does mean the cheap way to express a view has already gone.
+- **Two portfolios can sit in two different regimes at the same time, and this
+  one does.** Equity volatility is calm (VIX 15.15, curve positively sloped,
+  real Fed funds ~-0.10%) while crypto sits in Fear (F&G 30, BTC -47.6% off
+  ATH) with an elevated dollar (119.70) working against it. There is no single
+  "risk-on / risk-off" number for this portfolio, and any framing that produced
+  one would be hiding the more useful fact: the 87% of capital in equities and
+  the 11% in crypto are being driven by different things right now, so they
+  should not be sized off the same view.
+- **UNTESTED is a statement about your records, not about the company — which
+  is exactly why it justified a deadline rather than a sale.** Atlas Copco,
+  Alfa Laval and ABB are strong businesses and nothing in this sweep suggests
+  otherwise. The problem is that a holding with no written `break_conditions`
+  has no exit rule, which means the position can only ever be sold on feel. The
+  right response to a missing thesis is to produce the evidence to write one
+  (the retroactive `swedish-equity-review`), not to sell a good business to
+  resolve a paperwork state — but it does need a date attached, because
+  "eventually" has now failed twice.
+
+---

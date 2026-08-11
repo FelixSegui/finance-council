@@ -40,9 +40,18 @@ identical 24,115.89 SEK of crypto, and one of the three is already
 breached. (D2, a similar conflict from last sweep, was resolved and
 written into the files this session — one governance item closed, two
 more, D1 and D3, still open and both time-boxed to the same date.) Against
-all that, there is no prospecting counter-signal: the only idle cash is
-the ~200 SEK residual expected after Monday's AZN.ST buy, not a real pool
-sitting undeployed with no plan, and the Watchlist has not changed since
+all that, there is no prospecting counter-signal: **correction, 2026-08-11
+post-sweep** — the memo's "ADD 1 share AZN.ST, funded from the 1,743.61 SEK
+idle ISK cash" call was itself resting on a stale figure. The user confirmed
+directly that cash is gone (see `data/portfolio.json`'s avanza-isk cash
+holding, corrected to 0 with the user's statement recorded) — there was no
+~1,744 SEK, let alone a ~200 SEK residual, to fund that add with. The
+recommendation itself was sound on valuation/thesis grounds; the "we have
+cash to deploy" premise wasn't, which is exactly the same failure shape as
+2026-08-10's Avanza Global call one week earlier — worth a look if a third
+instance shows up. With that corrected, there is no idle cash at all right
+now, which if anything argues even less for prospecting: nothing to deploy
+into a new name even if `scout` found one. Watchlist unchanged since
 2026-08-06 (no fresh Excel import ran this sweep either) — nothing new to
 screen even if `scout` were invoked, which it correctly was not. Revisit
 at the 2026-09-03 check-in: if the four theses are written, D1 and D3 are
@@ -113,7 +122,23 @@ is what flips this back to balanced.
   measure the real cost before committing the rest.
 - **Why it matters more than the amount suggests:** this is a fee-drag problem,
   which is lever #2 in the system's priority order. Recurring forever beats
-  large-and-once. It also now has a second-order effect: this balance is
+  large-and-once.
+- **Stripe idea checked 2026-08-11, doesn't appear to work as a route.**
+  You floated routing PayPal → Stripe → SEK on the idea that Stripe's
+  conversion is cheaper than PayPal's. Stripe does support SEK and does
+  have an "instant currency conversion" feature, and individuals can open
+  a Stripe account without a registered business — but that conversion
+  feature works on funds already sitting in a Stripe balance, which comes
+  from Stripe *processing payments as a merchant*, not from an external
+  transfer-in. There's no product for moving an existing PayPal balance
+  into Stripe to convert it. Sources: [Instant currency conversion —
+  Stripe docs](https://docs.stripe.com/instant-currency-conversion),
+  [Can I use Stripe as an individual? — Picter Help
+  Center](https://support.picter.com/en/articles/2488302-can-i-use-stripe-as-an-individual-not-a-company).
+  Treat this path as ruled out unless you find a specific mechanism that
+  contradicts this — the small Revolut test-transfer (already the live
+  plan above, and you already hold a Revolut account) remains the
+  simplest way to actually measure a cheaper route. It also now has a second-order effect: this balance is
   what keeps the crypto trip-wire (D3) from firing on the strictest honest
   reading — see S12.
 

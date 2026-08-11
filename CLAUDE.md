@@ -141,6 +141,13 @@ question.
    Strictly read-only — the script never writes back to the workbook. If
    no fresh copy is available this sweep, skip it; nothing downstream
    blocks on it, same "no data is fine" rule as everywhere else.
+   **Format/data-quality check (added 2026-08-11):** any flags this run
+   raises (missing sheet or block, unmatched TBD ticker, stale value,
+   inverted 52-week range, a held ticker missing from STOCK DETAIL) are
+   also written as a short, ready-to-paste fix prompt to
+   `data/cache/excel_import/claude_excel_prompt.txt`, for the user's
+   Claude-for-Excel extension to act on directly in the workbook. No
+   flags, no file. See `scripts/import_excel_holdings.py`'s docstring.
 1b. Run `python scripts/position_report.py` → the per-position movement
    table (price, move since last sweep, move vs cost, 52-week range).
    This is the user's primary weekly output and leads the memo.

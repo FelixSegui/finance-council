@@ -394,11 +394,11 @@
       "instrument_type": "cash",
       "exposure_class": "cash",
       "currency": "SEK",
-      "quantity": 1743.61,
+      "quantity": 0,
       "cost_basis_per_unit": null,
       "annual_fee_pct": null,
       "date_acquired": "2026-08-04",
-      "thesis": "Not an investment - uninvested cash. UPDATED 2026-08-04: 26,400.30 SEK medium-tier build cash was deployed into 5 new stocks (Volvo B, Atlas Copco B, AstraZeneca, Alfa Laval, ABB - see their holding entries and avanza-isk account notes), total spent 24,656.69 SEK. Remaining 1,743.61 SEK is COMPUTED (26,400.30 - 24,656.69), does not account for courtage/broker fees, and is not yet broker-confirmed.",
+      "thesis": "Not an investment - uninvested cash. UPDATED 2026-08-11 (user statement, supersedes the prior computed figure below): the AZN.ST add and/or other spending used up the remaining cash - the user confirmed directly there is no free ISK cash right now. Set to 0 rather than left at a known-wrong figure; get a broker-confirmed exact balance next time it matters (e.g. before a rebalancing trade) rather than trusting this zero as precise either. Prior note, kept for the arithmetic trail: 26,400.30 SEK medium-tier build cash was deployed into 5 new stocks (Volvo B, Atlas Copco B, AstraZeneca, Alfa Laval, ABB), total spent 24,656.69 SEK, leaving a COMPUTED 1,743.61 SEK (2026-08-04) that never accounted for courtage/broker fees and was never broker-confirmed - the 2026-08-11 Council memo's \"ADD 1 share AZN.ST\" call spent from this figure, which is exactly the kind of premise that turned out not to hold.",
       "target_weight_pct": null
     },
     {

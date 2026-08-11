@@ -28,6 +28,15 @@ week52 range gets reported in the `flags` list on the output - the sweep
 still runs. This mirrors the rest of the system's "no data is fine, never
 invented, never silently substituted" rule.
 
+CLAUDE-FOR-EXCEL FIX PROMPT (added 2026-08-11). When this run raises any
+flags, they're also written as a short, ready-to-paste prompt to
+data/cache/excel_import/claude_excel_prompt.txt - numbered fixes only,
+nothing invented beyond what a flag already says, meant for the user's
+Claude-for-Excel extension to act on directly inside the workbook. No
+flags this run means no file (a stale one from a previous run is removed).
+This script still never writes to the workbook itself - the prompt is
+something the user hands to a *different* tool that can.
+
 WHERE THE ACTUAL EXCEL FILE COMES FROM: this script takes a local path
 (--xlsx). Getting the file itself out of Google Drive happens one level up,
 in the Claude Code session: download via the Google Drive connector
@@ -57,6 +66,7 @@ PORTFOLIO_PATH = os.path.join(ROOT, "data", "portfolio.json")
 TRANSACTIONS_CSV = os.path.join(ROOT, "data", "transactions.csv")
 WATCHLIST_JSON = os.path.join(ROOT, "data", "cache", "watchlist.json")
 IMPORT_SUMMARY_JSON = os.path.join(ROOT, "data", "cache", "excel_import", "latest-summary.json")
+CLAUDE_EXCEL_PROMPT_PATH = os.path.join(ROOT, "data", "cache", "excel_import", "claude_excel_prompt.txt")
 
 STOCK_DETAIL_MARKER = "STOCK DETAIL"
 CORE_HOLDINGS_MARKER = "CORE HOLDINGS"
@@ -397,6 +407,34 @@ def process_watchlist(wb, flags, dry_run):
     return entries
 
 
+def build_claude_excel_prompt(flags, source_xlsx):
+    """Turn this run's `flags` into a short, concrete prompt for the user's
+    Claude-for-Excel extension to act on inside the live workbook. This is
+    a format/data-quality check translated into fix instructions, not a new
+    check of its own - every line here already traces to a flag this run
+    raised. Written only when there's something to fix; no flags means no
+    file, not an empty "everything's fine" prompt."""
+    if not flags:
+        return None
+    lines = [
+        "You're working inside my personal finance workbook "
+        f"({os.path.basename(source_xlsx)}). Please make only the specific "
+        "fixes below - don't change anything else in the sheet, and don't "
+        "touch any linked Stocks data type cells beyond refreshing them "
+        "where asked:",
+        "",
+    ]
+    for i, fl in enumerate(flags, 1):
+        lines.append(f"{i}. {fl}")
+    lines.append("")
+    lines.append(
+        "After making a fix, leave the cell's normal formatting/data type "
+        "in place - this workbook is read by a script that expects the "
+        "existing column layout, so don't restructure a sheet to fix a row."
+    )
+    return "\n".join(lines) + "\n"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--xlsx", required=True)
@@ -460,6 +498,15 @@ def main():
     with open(IMPORT_SUMMARY_JSON, "w") as f:
         json.dump(summary, f, indent=2)
 
+    prompt_text = build_claude_excel_prompt(flags, args.xlsx)
+    if prompt_text and not args.dry_run:
+        with open(CLAUDE_EXCEL_PROMPT_PATH, "w") as f:
+            f.write(prompt_text)
+    elif os.path.exists(CLAUDE_EXCEL_PROMPT_PATH) and not args.dry_run:
+        # No flags this run - remove the stale prompt so an old fix list
+        # doesn't linger after the thing it described got fixed.
+        os.remove(CLAUDE_EXCEL_PROMPT_PATH)
+
     print(f"{'[dry-run] ' if args.dry_run else ''}Fundamentals: "
          f"{len(fundamentals_updated)} ticker(s) processed from Excel.")
     for ticker, fields in fundamentals_updated:
@@ -472,6 +519,8 @@ def main():
     print(f"\nFlags ({len(flags)}):")
     for fl in flags:
         print(f"  - {fl}")
+    if prompt_text and not args.dry_run:
+        print(f"\nClaude-for-Excel fix prompt written to {CLAUDE_EXCEL_PROMPT_PATH}")
     if args.dry_run:
         print("\n--dry-run: nothing written.")
 

@@ -92,3 +92,39 @@ and dated; nothing here is a source of truth for a decision, that's still
   "eventually" has now failed twice.
 
 ---
+
+## 2026-08-11 — `reports/2026-08-11-council-memo.md`
+
+- **A limit that only holds because of money you can't reach isn't holding.**
+  The crypto trip-wire reads 11.79%, 11.94% or 12.66% depending on the
+  denominator — and the only reason the loosest reading clears 12% is that
+  14,079.79 SEK of PayPal balance is counted as investable capital. That money
+  is genuinely yours (so counting it is defensible) but costs ~4% to move (so
+  excluding it is also defensible). The general lesson: when a threshold is
+  close, look at *what is in the bottom of the fraction* and ask whether you
+  could actually spend it. Here, an unresolved fee decision (D1) is quietly
+  underwriting a risk limit (D3) — two items that look unrelated on the list.
+- **Beta is a claim until a red day tests it.** AstraZeneca's thesis says
+  "lower-beta than high-valuation growth" and its measured beta is 0.211,
+  meaning it should move about a fifth as much as the market. Today six of
+  seven stocks fell and AZN rose 1.4%. One day proves nothing statistically,
+  but it is the difference between a thesis you asserted and a thesis you have
+  seen behave — which is exactly what `thesis_status: INTACT` is supposed to
+  mean, and why it carries more weight than the four positions marked UNTESTED.
+- **"Would I buy this today?" catches errors that "is the thesis intact?"
+  misses.** Last sweep routed cash to the index fund because "the medium tier
+  has no vetted candidate." Thesis-review's would-buy-today column said YES to
+  AZN.ST that same sweep — the candidate was sitting in the book. Re-asking a
+  holding as a fresh purchase decision, rather than as a position to maintain,
+  is what surfaced the mistake. This is a reason to read that column as a *buy
+  list*, not just a health check.
+- **Same label, different definition — the S11 problem moved up a level.** The
+  "% of 52-week range" ambiguity got fixed this sweep (valuation now reports the
+  true percentile and thesis-review labels its own metric distinctly). But the
+  identical failure immediately reappeared one level up: two "investable
+  capital" denominators that agree to 0.15pp today and would diverge whenever
+  PayPal moves. The fix is the same both times — pin the *definition* in words,
+  not the number, because the number goes stale and the definition is what you
+  are actually arguing about.
+
+---

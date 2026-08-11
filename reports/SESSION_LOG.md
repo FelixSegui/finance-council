@@ -17,6 +17,178 @@ Entry format:
 
 ---
 
+## 2026-08-11 — Yesterday's AZN-vs-Avanza-Global routing call was wrong on the reasoning, corrected today; ATCO-B/ALFA/ABB/ETH now a full week of zero progress against their deadline; PayPal quietly decides the crypto trip-wire
+
+- **Snapshot:** data/cache/snapshots/20260811T170152.json (previous:
+  data/cache/snapshots/20260810T061323.json)
+- **Memo:** reports/2026-08-11-council-memo.md
+- **No Excel import this sweep** (workbook not fresher than last sweep's
+  close). **No calendar run this sweep** (S3 still unfixed —
+  `fetch_calendar.py` still routes earnings dates through yfinance's own
+  client; no earnings-date check was possible or attempted).
+- **Headline calls:**
+  1. Route the idle ISK cash to AstraZeneca, not Avanza Global — 1 share
+     AZN.ST (~1,543.50 SEK), reversing yesterday's destination for the same
+     cash (not the decision to deploy it) → confidence **Medium** → horizon
+     **Long**
+  2. Crypto trip-wire: no trim, pinned denominator (2026-08-10 pin) stands
+     at 11.79% — but the entire cushion under that reading is the 14,079.79
+     SEK PayPal balance, unmovable without a ~4% cost, and an alternate
+     honest reading (Convention C, Avanza ISK + ETH wallet only) is already
+     **breached** at 12.66% → confidence **Medium** → horizon **Short**
+     (tactical, capped, explicitly not High per CLAUDE.md)
+  3. D2 resolved: route 100% of new contributions to equity while cash sits
+     at/above its 5% target, written into both `portfolio.json.targets` and
+     `investor_profile.json` → confidence **Medium** → horizon **Long**
+  4. D1/P3: stop deliberating PayPal routing, price it — execute a ~100 EUR
+     test transfer via Revolut (option C) to measure the real spread before
+     committing the full 14,079.79 SEK → confidence **High** on "measure
+     before committing," **Low** on which route wins (the unmeasured thing)
+     → horizon **Long**
+  5. Hold ATCO-B.ST / ALFA.ST / ABB.ST / ETH, no add, no trim; run
+     `swedish-equity-review` retroactively on the three equities; 23 days
+     left to the 2026-09-03 thesis deadline → confidence **High** → horizon
+     **Medium**
+- **User decisions:** none logged yet this session — scheduled/automated
+  sweep, no live user interaction. Calls 1-5 above are Council
+  recommendations (Chairman decisions within the six-voice method)
+  awaiting the user's review, same status as every other sweep's headline
+  calls until acted on.
+- **Reconciliation — 2026-08-10 headline calls vs today's data
+  (`reports/2026-08-10-council-memo.md` vs `reports/2026-08-11-council-memo.md`
+  and `data/cache/snapshots/20260811T170152.json`):**
+  - **Call 1 (hold ATCO-B/ALFA/ABB, run `swedish-equity-review`
+    retroactively, write theses by 2026-09-03) — aged badly, plainly.**
+    Today's thesis-review confirms all three are **still fully UNTESTED** —
+    no thesis fields written, `swedish-equity-review` still not run, named
+    as the system's own recommended next step for a fifth straight sweep
+    now (P6). 23 days remain on the deadline, so this is technically still
+    "on track" by the calendar — but a full week passed since the deadline
+    was set and literally nothing moved on it. That is worth saying without
+    softening: a hard deadline with an enforcement mechanism attached
+    (rotation list, ineligible for adds) produced zero visible effort in
+    its first week. Whether it produces action in week two or three is the
+    real test.
+  - **Call 2 (hold ETH, quantity frozen, same 2026-09-03 deadline) —
+    unchanged, as expected.** Still UNTESTED today. Nothing new to report;
+    it moves in lockstep with call 1 by design (same deadline, same
+    rotation-list default).
+  - **Call 3 (crypto trip-wire not fired, 11.28-11.91% vs 12%, denominator
+    pinned at 205,009 SEK) — technically held, but the finding underneath
+    it sharpened into a real problem.** Today's re-check on the identical
+    pinned convention: crypto is **11.79%** — still not fired, so the
+    literal call held. But the portfolio agent's fuller read exposed what
+    is actually holding the line: the pin's entire cushion is the 14,079.79
+    SEK PayPal balance, which the user cannot move without paying roughly
+    4%, and a second, equally defensible reading (investable-only,
+    Convention C: Avanza ISK + ETH wallet) already shows **12.66% —
+    breached**. A trip-wire that only doesn't fire because of money that
+    isn't really spendable is not a trip-wire that's holding, it's one
+    that's borrowed time. Today's Council did not re-litigate the pin
+    early (correctly — that would repeat the governance violation flagged
+    2026-08-10) but did hand the underlying question back as a new,
+    explicitly time-boxed open decision, **D3**, to be settled before
+    2026-09-03 rather than argued fresh on the deadline day.
+  - **Call 4 (deploy the 1,743.61 SEK idle ISK cash into Avanza Global) —
+    WRONG, and wrong on the reasoning, not just superseded by new
+    information.** This is exactly the sentence this system's
+    reconciliation step exists to produce. Yesterday's routing rested on
+    one stated premise — "the alternative use (the medium tier) has no
+    vetted candidate today" — and today's Council checked that premise
+    against the same data available yesterday and it does not survive:
+    AZN.ST already had a written thesis (executed 2026-08-06), is graded
+    **INTACT**, is the **only** individual holding thesis-review answers
+    YES to on "would I buy today," is graded Cheap/Fair by valuation
+    (PEG 1.38, four straight years of rising revenue, ~17% stable margin,
+    32nd percentile of its own 52-week range), and is the one position
+    macro-regime explicitly declines to flag. Four lenses, no dissent —
+    all of which were available on 2026-08-10 and were not consulted
+    before yesterday's routing decision was made. Today's Council's call:
+    **ADD 1 share AZN.ST instead**, with the rider that if the Avanza
+    Global order already executed, leave it — the difference is the
+    destination of 0.86% of capital and does not justify a second trade.
+    A fair sweep gave a wrong reason for what may otherwise have been a
+    defensible action; that gap is the finding, and it is logged as such,
+    not smoothed into "revised."
+- **Other findings this sweep, not tied to a specific prior call:**
+  - **New open decision, D2, resolved.** Two adopted documents
+    (`portfolio.json.targets`'s 5% cash ballast vs. `investor_profile.json`'s
+    "100% to secure tier by default") gave opposite instructions for the
+    next krona. Resolved: route 100% of new contributions to equity while
+    cash sits at or above its 5% target (both documents agree on the
+    marginal krona today even though they disagree on the standing rule);
+    write the resolution into both files so it stops being re-argued.
+    Confidence Medium — the confidence cap is the unverified location of
+    the emergency buffer (scorecard gap 3, still open).
+  - **New open decision, D3, opened.** Which denominator actually governs
+    the 2026-09-03 crypto check — the loosest pinned reading (11.79%, does
+    not fire) or the strictest honest reading (Convention C, 12.66%,
+    already breached) — must be settled before the check date, not on it.
+    See Call 2 above.
+  - **Two live data corrections carried by hand into every figure in
+    today's memo, both previously-known gaps, both still unfixed in code.**
+    (1) `position_report.py` still does not reprice self-custody crypto
+    (S7, confirmed unfixed again) — ETH corrected by hand to 8,875.88 SEK
+    (vs. the stale 8,911 SEK printed). (2) COIN-XBT.ST is still carried on
+    a user-relayed price now 8 days stale (2026-08-03); a BTC-proxy
+    estimate implies a slight decline to ~15,172 SEK, not used in any
+    weight, flagged as needing a fresh Avanza quote before 2026-09-03.
+  - **S11 (two different "% of 52-week range" definitions) spot-checked
+    and confirmed fixed.** Valuation now reports the true percentile and
+    agrees with `position_report.py` by construction (AZN 31.9% vs 32%,
+    ABB 78.0% vs 78%); thesis-review still uses price÷high but now labels
+    it distinctly. The fix holds one sweep later.
+  - **Portfolio health scorecard, largely unchanged in substance.**
+    Industrials concentration still **ACT** (65.1% of the stock sleeve, vs
+    65.5% last sweep — unchanged in substance, drifting only on price).
+    Asset allocation still **WATCH** (equity 78.36% vs 85% target, crypto
+    at the top of its band with no cushion, cash 6.49% vs 5%). Fee drag
+    still **OK** (0.28%, under the 0.4% cap). Three scorecard gaps remain
+    named and unresolved: the 85/10/5/0 target has never been backtested
+    against the stated -30% drawdown tolerance (S5), currency exposure is
+    ungraded for lack of revenue-by-region data, and the emergency
+    buffer's actual location is unverified — the last of which is
+    load-bearing for both D2 and D3 above.
+  - **Emphasis for next sweep — context for `meta`, not decided here.**
+    `OPEN_ITEMS.md`'s current block reads "portfolio-tending," set
+    2026-08-10. Nothing this sweep argues for flipping it: ATCO-B/ALFA/ABB/
+    ETH are still at zero progress one week into a three-week deadline, D1
+    (PayPal) is now two weeks open with no movement, and two new open
+    decisions (D2 resolved, D3 opened) both belong to portfolio governance,
+    not discovery. `scout` was correctly not invoked.
+- **Open items carried forward:** P1 (ETH cost basis, blocked on user, gates
+  any ETH sale/return figure), P2 (discovery funnel + consolidated sweep
+  report ported from the archived branch — still open, two of three
+  ported), P3/D1 (PayPal routing — now two weeks open, Council recommends
+  the ~100 EUR Revolut test transfer, unexecuted), P4/S1 (cheaper BTC
+  certificate — blocked on S1's verified tickers), P5 (ETH thesis — same
+  2026-09-03 deadline as call 1), P6 (retroactive `swedish-equity-review`
+  on ATCO-B/ALFA/ABB — named for a fifth straight sweep, still never run),
+  P7 (ISK allowance unverified with Skatteverket, low priority), S3
+  (earnings calendar fetch still broken, root cause diagnosed, fix
+  specified, not yet applied), S4 (Swedish CPI stale period), S5
+  (85/10/5/0 vs. -30% drawdown tolerance — `backtest` still never run), S6
+  (no source yet for INVE-A's NAV discount/premium), S7 (ETH-repricing bug
+  in `position_report.py`, confirmed unfixed a second sweep running), S8
+  (critical-file-loss guard), S9 (Excel import cross-field plausibility +
+  purchase-without-thesis flags), S10 (Watchlist narrower than the retired
+  universe.json, prospecting-tagged, no new evidence this sweep). D2
+  resolved this sweep (route new contributions to equity). D3 newly opened
+  this sweep (which denominator governs the 2026-09-03 crypto check),
+  must settle before that date. Blocking-question rule check: the
+  Handelsbanken wrapper question remains resolved (confirmed 2026-07-07)
+  and does not gate this memo — no item currently holds blocking status.
+
+**Reminder:** the portfolio was valued this sweep (total ~201,895.91-
+215,975.70 SEK depending on which denominator convention is used, per the
+portfolio agent's read today — see the memo's scorecard section for the
+convention breakdown) — append a row to `data/valuations.csv`
+(`date,total_value_sek,net_contribution_since_last_sek,note`) before
+closing the session if not already done. Performance tracking
+(`scripts/performance.py`) has nothing to compare against without it.
+
+---
+
 ## 2026-08-10 — AZN thesis-and-buy mechanism worked exactly as designed; ATCO-B/ALFA/ABB/ETH still zero one week on, now on a hard deadline; a real ETH-repricing gap found and fixed by hand
 
 - **Snapshot:** data/cache/snapshots/20260810T061323.json (previous:
@@ -340,3 +512,4 @@ through 2026-08-03) is the real contemporaneous record up to that date.
   copy going stale.
 
 ---
+</content>

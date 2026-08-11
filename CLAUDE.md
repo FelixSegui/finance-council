@@ -164,9 +164,13 @@ question.
    2026-08-06, and stays only as the fallback until a Watchlist tab
    exists), and the next-sweep emphasis recommendation (step 0 above). No
    longer purely optional — run it most sessions so the emphasis
-   recommendation stays current, not stale. It also runs a six-voice
-   system-persona debate (see `meta.md`) on friction evidence before
-   updating S-items.
+   recommendation stays current, not stale. Before proposing anything new,
+   it checks whether an existing S-item or V2 Roadmap phase already
+   solves the problem, and separately reviews standing roadmap items on
+   their own merits (valuable soon / can wait / blocked / redundant /
+   obsolete), ending with a short "Recommended next improvement(s)" list
+   (see `meta.md`). It also runs a six-voice system-persona debate (see
+   `meta.md`) on friction evidence before updating S-items.
 6. You read the memo. You decide. Nothing here executes anything.
    Separately, roughly monthly (not every sweep), the `monthly-contribution`
    skill helps decide how much new money to move from available to

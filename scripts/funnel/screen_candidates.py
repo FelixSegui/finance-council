@@ -11,6 +11,17 @@ A candidate with a missing value for a filtered field is never silently
 passed OR failed — it lands in "missing_data" so the scout agent can say
 what it doesn't know.
 
+BUG FIXED 2026-08-12: this used to import fetch_equities from
+scripts/fetchers/fetch_market_data.py (the parked Excel-branch fetcher,
+via a sys.path pointed at scripts/fetchers/), which routes through
+fetch_fundamentals_us.py's SEC-CIK-lookup-based yfinance path - the same
+broken-on-this-network mechanism CLAUDE.md's yfinance note already
+documents for fetch_calendar.py (S3). Every ticker failed with a CIK-
+lookup 403. Fixed to import from the real scripts/fetch_market_data.py
+(direct urllib + crumb/cookie-jar bypass, the one that works) instead -
+same function name, same output field names, confirmed compatible with
+this file's FILTERS list.
+
 Usage:
   python screen_candidates.py --categories us_mega_cap,nordic_large_cap \
       --max-pe 25 --min-revenue-growth 0.05 --max-debt-to-equity 150
@@ -22,12 +33,12 @@ import os
 import sys
 from datetime import datetime, timezone
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "fetchers"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 from fetch_market_data import fetch_equities  # noqa: E402
 
 WATCHLIST_PATH = "data/cache/watchlist.json"  # built from the Excel Watchlist tab, see
                                                # scripts/import_excel_holdings.py
-LEGACY_UNIVERSE_PATH = "data/cache/universe.json"  # pre-Watchlist-tab fallback, see below
+LEGACY_UNIVERSE_PATH = "data/universe.json"  # pre-Watchlist-tab fallback, see below
 
 # (cli_name, snapshot_field, direction) — direction "max" means value must
 # be <= threshold to pass, "min" means >=.

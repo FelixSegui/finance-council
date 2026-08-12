@@ -1,0 +1,10 @@
+You're working inside my personal finance workbook (master-5.xlsx). Please make only the specific fixes below - don't change anything else in the sheet, and don't touch any linked Stocks data type cells beyond refreshing them where asked:
+
+1. ALFA.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
+2. ATCO-B.ST: P/E 2.05 is outside the 3-80 sanity range - treat as suspect, verify in Excel before using it.
+3. ATCO-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
+4. SHB-A.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
+5. VOLV-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
+6. Held but not in Excel's STOCK DETAIL block: COIN-XBT.ST - add these tickers with the Stocks data type for next sweep.
+
+After making a fix, leave the cell's normal formatting/data type in place - this workbook is read by a script that expects the existing column layout, so don't restructure a sheet to fix a row.

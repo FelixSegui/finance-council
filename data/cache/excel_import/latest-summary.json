@@ -1,7 +1,7 @@
 {
-  "generated": "2026-08-06 13:04 UTC",
+  "generated": "2026-08-12 22:38 UTC",
   "dry_run": false,
-  "source_xlsx": "/home/user/finance-council/data/cache/excel_import/master-5-20260806.xlsx",
+  "source_xlsx": "/home/user/finance-council/data/cache/excel_import/master-5.xlsx",
   "fundamentals_updated": [
     {
       "ticker": "ABB.ST",
@@ -73,16 +73,17 @@
       ]
     }
   ],
-  "portfolio_deltas": [],
-  "transactions_appended": 5,
-  "watchlist_entries": 32,
+  "portfolio_deltas": [
+    "CASH_SEK (avanza-isk): quantity 0 -> 1743.61 (from Excel)"
+  ],
+  "transactions_appended": 2,
+  "watchlist_entries": 45,
   "flags": [
     "ALFA.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
     "ATCO-B.ST: P/E 2.05 is outside the 3-80 sanity range - treat as suspect, verify in Excel before using it.",
     "ATCO-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
     "SHB-A.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
     "VOLV-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
-    "Held but not in Excel's STOCK DETAIL block: COIN-XBT.ST - add these tickers with the Stocks data type for next sweep.",
-    "Transactions row (BUY, ethereum, 1 unit, 2016.67 SEK/unit) pairs ticker \"ethereum\" with the name/price/quantity of the COIN-XBT.ST 6th-unit purchase (a near-duplicate of the row immediately above it) - 2016.67 SEK is not a plausible ETH price, this looks like a copy-paste artifact in the Excel Transactions sheet, not a real trade. Imported into transactions.csv as-is (the script does not cross-check ticker against name/price plausibility) but flagged here for the user to verify/correct in Excel before it is treated as fact."
+    "Held but not in Excel's STOCK DETAIL block: COIN-XBT.ST - add these tickers with the Stocks data type for next sweep."
   ]
 }

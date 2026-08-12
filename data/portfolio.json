@@ -228,14 +228,14 @@
       "annual_fee_pct": null,
       "date_acquired": null,
       "target_weight_pct": null,
-      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. No swedish-equity-review has been run on this specific purchase decision - see data/company_profiles/ATCO-A.ST.json (note: that profile is for the A share, this holding is the B share - same company, different class, profile not yet duplicated for B).",
-      "last_reviewed": "2026-08-06",
-      "thesis_status": "UNTESTED",
-      "why_owned": null,
-      "expected_driver": null,
-      "valuation_reason": null,
-      "key_risks": null,
-      "break_conditions": null
+      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. No swedish-equity-review has been run on this specific purchase decision - see data/company_profiles/ATCO-A.ST.json (note: that profile is for the A share, this holding is the B share - same company, different class, profile not yet duplicated for B). THESIS RECORDED 2026-08-12 (user's own words, closes the 2026-09-03 P6/Council deadline for this ticker): see why_owned/key_risks/break_conditions above. Same shape as SHB-A.ST/INVE-A.ST - track record and a preference for Swedish industrials, not a differentiated stock-specific case. thesis_status set to WEAKENING to match: a thin, non-differentiated rationale already sitting at an Expensive valuation read (2026-08-11 sweep) is the same pattern already observed for SHB-A/INVE-A, not a fresh INTACT conviction thesis.",
+      "last_reviewed": "2026-08-12",
+      "thesis_status": "WEAKENING",
+      "why_owned": "Strong long-term track record as an established Swedish industrial company, plus a deliberate preference for backing Swedish industrial champions (user's own words, 2026-08-12: 'strong Swedish industrial companies, and I want to promote Swedish stocks') - not a differentiated, company-specific catalyst. Same track-record-based rationale already recorded for SHB-A.ST/INVE-A.ST.",
+      "expected_driver": "Continued execution as an established, well-run Swedish industrial - no specific catalyst or re-rating case; the expectation is compounding via track record, not a differentiated view on this name over its Nordic-industrial peers.",
+      "valuation_reason": "None stated - the user did not cite valuation as a reason for buying. Not inventing one: this system preserves valuation context rather than forcing a cheap/expensive rationale onto a thesis that was never about price.",
+      "key_risks": "No differentiated, stock-specific thesis - same track-record-based rationale already recorded for SHB-A.ST/INVE-A.ST, makes this a rotation candidate, not a conviction hold. Adds to equity-sector concentration already rated ACT (industrials+financials ~65% of the stock sleeve, 2026-08-11 scorecard). 2026-08-11 valuation read: Expensive (P/E 33.5x, PEG 2.41, no forward P/E available), no growth offsetting the multiple.",
+      "break_conditions": "Re-test if a materially better-positioned Nordic-industrial alternative surfaces via swedish-equity-review or screening (this is a rotation candidate, not a conviction hold), if industrials/financials concentration (ACT-rated) needs correcting, or if fundamentals genuinely deteriorate (declining margins/revenue) - that would remove even the track-record rationale."
     },
     {
       "ticker": "AZN.ST",
@@ -273,14 +273,14 @@
       "annual_fee_pct": null,
       "date_acquired": null,
       "target_weight_pct": null,
-      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase.",
-      "last_reviewed": "2026-08-06",
-      "thesis_status": "UNTESTED",
-      "why_owned": null,
-      "expected_driver": null,
-      "valuation_reason": null,
-      "key_risks": null,
-      "break_conditions": null
+      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase. THESIS RECORDED 2026-08-12 (user's own words, closes the 2026-09-03 P6/Council deadline for this ticker): see why_owned/key_risks/break_conditions above. Same shape as SHB-A.ST/INVE-A.ST - track record and a preference for Swedish industrials, not a differentiated stock-specific case. thesis_status set to WEAKENING to match: a thin, non-differentiated rationale already sitting at an Expensive valuation read (2026-08-11 sweep) is the same pattern already observed for SHB-A/INVE-A, not a fresh INTACT conviction thesis.",
+      "last_reviewed": "2026-08-12",
+      "thesis_status": "WEAKENING",
+      "why_owned": "Strong long-term track record as an established Swedish industrial company, plus a deliberate preference for backing Swedish industrial champions (user's own words, 2026-08-12: 'strong Swedish industrial companies, and I want to promote Swedish stocks') - not a differentiated, company-specific catalyst. Same track-record-based rationale already recorded for SHB-A.ST/INVE-A.ST.",
+      "expected_driver": "Continued execution as an established, well-run Swedish industrial - no specific catalyst or re-rating case; the expectation is compounding via track record, not a differentiated view on this name over its Nordic-industrial peers.",
+      "valuation_reason": "None stated - the user did not cite valuation as a reason for buying. Not inventing one: this system preserves valuation context rather than forcing a cheap/expensive rationale onto a thesis that was never about price.",
+      "key_risks": "No differentiated, stock-specific thesis - same track-record-based rationale already recorded for SHB-A.ST/INVE-A.ST, makes this a rotation candidate, not a conviction hold. Adds to equity-sector concentration already rated ACT (industrials+financials ~65% of the stock sleeve, 2026-08-11 scorecard). 2026-08-11 valuation read: Expensive (P/E 28.5x, forward 25.7x, PEG 2.92) - revenue growth is real but already priced in.",
+      "break_conditions": "Re-test if a materially better-positioned Nordic-industrial alternative surfaces via swedish-equity-review or screening (this is a rotation candidate, not a conviction hold), if industrials/financials concentration (ACT-rated) needs correcting, or if fundamentals genuinely deteriorate (declining margins/revenue) - that would remove even the track-record rationale."
     },
     {
       "ticker": "ABB.ST",
@@ -295,14 +295,14 @@
       "annual_fee_pct": null,
       "date_acquired": null,
       "target_weight_pct": null,
-      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. Dual-listed (Switzerland primary, Nasdaq Stockholm cross-listing per data/universe.json's category_notes). No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase.",
-      "last_reviewed": "2026-08-06",
-      "thesis_status": "UNTESTED",
-      "why_owned": null,
-      "expected_driver": null,
-      "valuation_reason": null,
-      "key_risks": null,
-      "break_conditions": null
+      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build. Dual-listed (Switzerland primary, Nasdaq Stockholm cross-listing per data/universe.json's category_notes). No swedish-equity-review or company_profiles entry exists yet for this ticker - not vetted by that process before purchase. THESIS RECORDED 2026-08-12 (user's own words, closes the 2026-09-03 P6/Council deadline for this ticker): see why_owned/key_risks/break_conditions above. Same shape as SHB-A.ST/INVE-A.ST - track record and a preference for Swedish industrials, not a differentiated stock-specific case. thesis_status set to WEAKENING to match: a thin, non-differentiated rationale already sitting at an Expensive valuation read (2026-08-11 sweep) is the same pattern already observed for SHB-A/INVE-A, not a fresh INTACT conviction thesis.",
+      "last_reviewed": "2026-08-12",
+      "thesis_status": "WEAKENING",
+      "why_owned": "Strong long-term track record as an established Swedish industrial company, plus a deliberate preference for backing Swedish industrial champions (user's own words, 2026-08-12: 'strong Swedish industrial companies, and I want to promote Swedish stocks') - not a differentiated, company-specific catalyst. Same track-record-based rationale already recorded for SHB-A.ST/INVE-A.ST.",
+      "expected_driver": "Continued execution as an established, well-run Swedish/Nordic-listed industrial - no specific catalyst or re-rating case; the expectation is compounding via track record, not a differentiated view on this name over its Nordic-industrial peers.",
+      "valuation_reason": "None stated - the user did not cite valuation as a reason for buying. Not inventing one: this system preserves valuation context rather than forcing a cheap/expensive rationale onto a thesis that was never about price.",
+      "key_risks": "No differentiated, stock-specific thesis - same track-record-based rationale already recorded for SHB-A.ST/INVE-A.ST, makes this a rotation candidate, not a conviction hold. Adds to equity-sector concentration already rated ACT (industrials+financials ~65% of the stock sleeve, 2026-08-11 scorecard). 2026-08-11 valuation read: Expensive, richest multiples in the portfolio (P/E 37.5x, forward P/E 36.7x - essentially flat despite 14.2% revenue growth, a margin-compression flag, PEG 2.7).",
+      "break_conditions": "Re-test if a materially better-positioned Nordic-industrial alternative surfaces via swedish-equity-review or screening (this is a rotation candidate, not a conviction hold), if industrials/financials concentration (ACT-rated) needs correcting, or if fundamentals genuinely deteriorate (declining margins/revenue) - that would remove even the track-record rationale."
     },
     {
       "ticker": "TBD",
@@ -398,7 +398,7 @@
       "cost_basis_per_unit": null,
       "annual_fee_pct": null,
       "date_acquired": "2026-08-04",
-      "thesis": "Not an investment - uninvested cash. UPDATED 2026-08-11 (user statement, supersedes the prior computed figure below): the AZN.ST add and/or other spending used up the remaining cash - the user confirmed directly there is no free ISK cash right now. Set to 0 rather than left at a known-wrong figure; get a broker-confirmed exact balance next time it matters (e.g. before a rebalancing trade) rather than trusting this zero as precise either. Prior note, kept for the arithmetic trail: 26,400.30 SEK medium-tier build cash was deployed into 5 new stocks (Volvo B, Atlas Copco B, AstraZeneca, Alfa Laval, ABB), total spent 24,656.69 SEK, leaving a COMPUTED 1,743.61 SEK (2026-08-04) that never accounted for courtage/broker fees and was never broker-confirmed - the 2026-08-11 Council memo's \"ADD 1 share AZN.ST\" call spent from this figure, which is exactly the kind of premise that turned out not to hold.",
+      "thesis": "Not an investment - uninvested cash. CONFLICT FLAGGED 2026-08-12, not silently resolved: the 2026-08-12 Excel import (fresh workbook, re-pulled after the user fixed a Refresh-All-breaking data-type clash) still carries the old 1,743.61 SEK figure and the import script wrote it back in as a delta. Per this system's own rule (a direct user statement outranks Excel - see council.md), that delta was NOT kept: the user confirmed directly on 2026-08-11 that this cash is gone, so quantity stays at 0. The Excel workbook itself needs updating to reflect current reality - it does not yet know the cash was spent. Prior note, kept for the arithmetic trail: 26,400.30 SEK medium-tier build cash was deployed into 5 new stocks (Volvo B, Atlas Copco B, AstraZeneca, Alfa Laval, ABB), total spent 24,656.69 SEK, leaving a COMPUTED 1,743.61 SEK (2026-08-04) that never accounted for courtage/broker fees and was never broker-confirmed - the 2026-08-11 Council memo's \"ADD 1 share AZN.ST\" call spent from this figure, which is exactly the kind of premise that turned out not to hold.",
       "target_weight_pct": null
     },
     {
@@ -461,13 +461,13 @@
       "date_acquired": null,
       "target_weight_pct": null,
       "thesis_narrative": "TBD - still no stated reason for holding (OPEN_ITEMS.md P5). IMPORTANT CORRECTION 2026-08-03: this position was carried at ~12,500 SEK as an account-level estimate for months. With the real quantity now known it is worth ~8,911 SEK - roughly 3,600 SEK LESS than assumed, about 29% overstated. Every crypto-weight and total-portfolio figure produced before 2026-08-03 was therefore too high, and the crypto overweight vs the 10% target was smaller than reported. This is exactly the failure mode the system exists to prevent (a stale estimate quietly propagating into allocation math) and should be treated as a real finding, not a rounding adjustment.",
-      "last_reviewed": "2026-08-06",
-      "thesis_status": "UNTESTED",
-      "why_owned": null,
-      "expected_driver": null,
-      "valuation_reason": null,
-      "key_risks": null,
-      "break_conditions": null
+      "last_reviewed": "2026-08-12",
+      "thesis_status": "INTACT",
+      "why_owned": "Received as a gift (user's own words, 2026-08-12), not an active purchase decision - but the user holds a genuine, stated long-term conviction: 'I do think that BTC and ETH are the most \"secure\" crypto currencies, and I believe that they have a future, and that on long term, they will be able to grow a lot.'",
+      "expected_driver": "Long-term (3y+) growth of BTC/ETH as the two most established, 'most secure' cryptocurrencies in the user's own view - a blue-chip-crypto conviction play, not a near-term catalyst or price target.",
+      "valuation_reason": "None stated in traditional terms (crypto has no earnings to value against, per this system's valuation method). Cycle-position context from the 2026-08-11 sweep: ETH -61.8% off its all-time high, a deeper drawdown than BTC's -48.9% - consistent with 'still has room to grow' if the long-term thesis holds, but not evidence for it.",
+      "key_risks": "No cost basis on record (P1, still open - blocks any sale/tax math). Crypto Fear&Greed at 29 ('Fear') per the 2026-08-11 sweep - macro-regime's read is this is the one part of the portfolio genuinely on the wrong side of the current regime (strong dollar, risk-off specifically for crypto). Position size already at/near the 10-12% crypto target band (D3, open) - the long-term conviction does not by itself resolve the near-term sizing question.",
+      "break_conditions": "Re-test if BTC/ETH's relative security/dominance thesis breaks (e.g. a structural technical failure, a clearly superior alternative displacing them), or per the system's standing horizon policy if the position is ever treated as a short-horizon trade rather than the stated 3y+ hold."
     },
     {
       "ticker": "CASH_USD",

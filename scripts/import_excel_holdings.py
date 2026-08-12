@@ -70,6 +70,7 @@ CLAUDE_EXCEL_PROMPT_PATH = os.path.join(ROOT, "data", "cache", "excel_import", "
 
 STOCK_DETAIL_MARKER = "STOCK DETAIL"
 CORE_HOLDINGS_MARKER = "CORE HOLDINGS"
+CRYPTO_CERT_DETAIL_MARKER = "CRYPTO & CERTIFICATE DETAIL"
 TRANSACTIONS_COLS = ["date", "type", "holdings_ticker", "name", "account", "quantity",
                      "price_per_unit", "amount_sek", "fee_sek", "cash_effect_sek",
                      "realized_pnl_sek", "source", "note"]
@@ -290,6 +291,74 @@ def process_core_holdings(ws, pf, flags, dry_run):
     return deltas, seen
 
 
+def process_crypto_certificate_detail(ws, pf, flags, dry_run):
+    """CRYPTO & CERTIFICATE DETAIL block (added 2026-08-12) -> market_value_sek
+    for certificate-instrument holdings, e.g. COIN-XBT.ST. Distinct from, and
+    does not touch, CORE HOLDINGS' quantity/cost_basis fields above - this
+    block is pricing only. Added because COIN-XBT.ST has no automated price
+    feed anywhere (confirmed 404 on Yahoo, see its price_tracking_note) and
+    was being carried at a user-relayed, easily-stale figure every sweep even
+    though a live price sits right here via Excel's Stocks/crypto data type -
+    this block was simply never read before. Optional: absence isn't flagged,
+    since not every workbook will have it and the prior manual-relay path
+    still works fine without it."""
+    title_row, header_row = find_section(ws, CRYPTO_CERT_DETAIL_MARKER)
+    if title_row is None:
+        return []
+
+    cols = ["entity / ticker", "name", "account", "quantity", "price_sek", "value_sek",
+            "fee_pct_yr", "as_of"]
+    rows = read_block(ws, header_row, cols)
+    by_ticker = {h.get("ticker"): h for h in pf.get("holdings", [])
+                if h.get("instrument_type") == "certificate"}
+    deltas = []
+    seen = set()
+
+    for rec in rows:
+        ticker = rec.get("entity / ticker")
+        if not ticker or not isinstance(ticker, str) or ticker.startswith("#"):
+            continue  # e.g. '#VALUE!' - an Excel formula-error placeholder, not a real ticker
+        holding = by_ticker.get(ticker)
+        if holding is None:
+            continue  # not a tracked certificate holding - not an error, same as core holdings
+        seen.add(ticker)
+
+        value = rec.get("value_sek")
+        qty = rec.get("quantity")
+        old_value = holding.get("market_value_sek")
+        as_of = rec.get("as_of")
+        as_of_str = as_of.strftime("%Y-%m-%d") if isinstance(as_of, datetime) else None
+
+        if isinstance(qty, (int, float)) and holding.get("quantity") is not None \
+                and qty != holding["quantity"]:
+            flags.append(f"{ticker}: CRYPTO & CERTIFICATE DETAIL quantity ({qty}) doesn't match "
+                         f"portfolio.json ({holding['quantity']}) - not changing quantity from this "
+                         f"block, CORE HOLDINGS stays authoritative for that; verify in Excel.")
+
+        if isinstance(value, (int, float)) and value != old_value:
+            deltas.append(f"{ticker}: market_value_sek {old_value!r} -> {value!r} "
+                          f"(from Excel CRYPTO & CERTIFICATE DETAIL, live data type)")
+            if not dry_run:
+                holding["market_value_sek"] = value
+                holding["market_value_as_of"] = as_of_str or today_str()
+                price_native = rec.get("price_sek")
+                source_note = (
+                    f"Excel CRYPTO & CERTIFICATE DETAIL block (live Stocks/crypto data type), "
+                    f"{as_of_str or 'as-of date not given'} - "
+                    + (f"{price_native:g} SEK/unit x {qty:g} units. " if isinstance(price_native, (int, float)) and isinstance(qty, (int, float)) else "")
+                    + "Still the only price source for this ticker (no automated feed exists), but "
+                    "no longer a manually-typed figure - it's read from the workbook's own live data "
+                    "type each time this import runs."
+                )
+                holding["market_value_source"] = source_note
+
+    return deltas, seen
+
+
+def today_str():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
 def _find_header_row(ws, must_have):
     """Scan for the row whose cells contain every column name in `must_have`
     - the sheet may have a title/description row or two above the real
@@ -317,11 +386,24 @@ def process_transactions(ws, flags):
                 break
 
     def key_val(v):
-        # Normalizes both sides of the dedup comparison the same way: a
-        # blank Excel cell (None) and a blank CSV field (empty string after
-        # DictReader) must produce the SAME key, or every re-run "discovers"
-        # the same rows as new. str(None) == "None" is exactly the trap.
-        return "" if v is None else str(v)
+        # Normalizes both sides of the dedup comparison the same way. Two
+        # traps here, not one: (1) a blank Excel cell (None) and a blank CSV
+        # field (empty string after DictReader) must produce the SAME key,
+        # or every re-run "discovers" the same rows as new - str(None) ==
+        # "None" is that trap. (2) a numeric field written to the CSV as
+        # text ("1520.50") and the same number read fresh from Excel as a
+        # float (1520.5) must ALSO produce the same key - plain str()
+        # doesn't do that (str(1520.5) == "1520.5" != "1520.50"), which is
+        # exactly how the same real-world AZN.ST trade got logged twice
+        # (2026-08-12, one row via manual entry, one via this import) before
+        # this fix: the two price_per_unit strings differed only in a
+        # trailing zero and the key comparison never caught it.
+        if v is None:
+            return ""
+        try:
+            return repr(float(v))
+        except (TypeError, ValueError):
+            return str(v)
 
     existing = set()
     if os.path.exists(TRANSACTIONS_CSV):
@@ -456,6 +538,8 @@ def main():
     with open(PORTFOLIO_PATH) as f:
         pf = json.load(f)
     deltas, core_seen = process_core_holdings(ws_holdings, pf, flags, args.dry_run)
+    crypto_deltas, crypto_seen = process_crypto_certificate_detail(ws_holdings, pf, flags, args.dry_run)
+    deltas = deltas + crypto_deltas
     if deltas and not args.dry_run:
         with open(PORTFOLIO_PATH, "w") as f:
             json.dump(pf, f, indent=2)
@@ -470,15 +554,24 @@ def main():
 
     watchlist_entries = process_watchlist(wb, flags, args.dry_run)
 
-    # Data gaps: a tracked equity/certificate holding with nothing matching
-    # in Excel's STOCK DETAIL block at all - the thing to go log next.
-    tracked_tickers = {h.get("ticker") for h in pf.get("holdings", [])
-                       if h.get("instrument_type") in ("stock", "certificate")
-                       and h.get("ticker") not in (None, "TBD")}
-    missing_from_excel = sorted(tracked_tickers - fundamentals_seen)
-    if missing_from_excel:
-        flags.append(f"Held but not in Excel's STOCK DETAIL block: {', '.join(missing_from_excel)} - "
+    # Data gaps: a tracked stock/certificate holding with nothing matching in
+    # its respective Excel detail block - the thing to go log next. Stocks
+    # and certificates use different blocks (STOCK DETAIL vs. CRYPTO &
+    # CERTIFICATE DETAIL), so check each against its own block, not each
+    # other's - a certificate absent from STOCK DETAIL is correct, not a gap.
+    tracked_stocks = {h.get("ticker") for h in pf.get("holdings", [])
+                      if h.get("instrument_type") == "stock" and h.get("ticker") not in (None, "TBD")}
+    tracked_certs = {h.get("ticker") for h in pf.get("holdings", [])
+                     if h.get("instrument_type") == "certificate" and h.get("ticker") not in (None, "TBD")}
+    missing_stocks = sorted(tracked_stocks - fundamentals_seen)
+    missing_certs = sorted(tracked_certs - crypto_seen)
+    if missing_stocks:
+        flags.append(f"Held but not in Excel's STOCK DETAIL block: {', '.join(missing_stocks)} - "
                      f"add these tickers with the Stocks data type for next sweep.")
+    if missing_certs:
+        flags.append(f"Held but not in Excel's CRYPTO & CERTIFICATE DETAIL block: "
+                     f"{', '.join(missing_certs)} - add these with the Stocks/crypto data type "
+                     f"for next sweep, or this stays on the user-relayed price path.")
 
     # Persist a machine-readable summary - council reads THIS, not console
     # output, per the system's "every claim traces to a file this session"

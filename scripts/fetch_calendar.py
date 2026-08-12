@@ -14,25 +14,37 @@ Usage:
 import argparse
 import json
 import os
+import sys
 from datetime import datetime, timezone, timedelta
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from fetch_market_data import _yahoo_session, _raw  # noqa: E402
 
 MACRO_CALENDAR_PATH = "data/macro_calendar.json"
 
 
 def fetch_earnings_dates(tickers):
-    try:
-        import yfinance as yf
-    except ImportError:
-        return {"error": "yfinance not installed. pip install yfinance"}
+    """Earnings dates via the same direct urllib + crumb/cookie-jar bypass
+    fetch_market_data.py already uses for fundamentals (see CLAUDE.md's
+    yfinance note - yfinance's own client, and anything routing through it
+    like the old yf.Ticker(t).calendar call this replaced, gets connection-
+    reset by Yahoo's anti-bot layer on this network). Requests the
+    calendarEvents module instead of the default fundamentals modules -
+    no new API key, reuses code already proven reliable here (S3)."""
     out = {}
     for t in tickers:
         try:
-            cal = yf.Ticker(t).calendar
-            dates = None
-            if isinstance(cal, dict):
-                dates = cal.get("Earnings Date")
+            r = _yahoo_session.fetch_quote_summary(t, modules="calendarEvents")
+            earnings = (r.get("calendarEvents") or {}).get("earnings") or {}
+            raw_dates = earnings.get("earningsDate") or []
+            dates = [d for d in (_raw(x) for x in raw_dates) if d is not None]
             if dates:
-                out[t] = {"next_earnings": [str(d) for d in dates]}
+                out[t] = {
+                    "next_earnings": [
+                        datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d")
+                        for ts in dates
+                    ]
+                }
             else:
                 out[t] = {"next_earnings": None, "note": "no earnings date returned"}
         except Exception as e:

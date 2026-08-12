@@ -126,11 +126,12 @@ class _YahooCrumbSession:
         except Exception as e:
             self._init_error = str(e)
 
-    def fetch_quote_summary(self, ticker):
+    def fetch_quote_summary(self, ticker, modules=None):
         self._ensure_init()
         if self._init_error:
             raise RuntimeError(f"crumb session init failed: {self._init_error}")
-        modules = "summaryDetail,defaultKeyStatistics,financialData,assetProfile,incomeStatementHistory"
+        if modules is None:
+            modules = "summaryDetail,defaultKeyStatistics,financialData,assetProfile,incomeStatementHistory"
         url = (f"https://query1.finance.yahoo.com/v10/finance/quoteSummary/{ticker}"
                f"?modules={modules}&crumb={self._crumb}")
         req = urllib.request.Request(url, headers=CHART_UA)

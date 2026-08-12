@@ -99,6 +99,51 @@ def equity_row(h, cur_snap, prev_snap):
     }
 
 
+def spot_crypto_row(h, cur_snap, prev_snap):
+    """Row for a self-custody crypto holding (e.g. the ETH wallet) - priced
+    from the snapshot's crypto block, not from a stale book value. Mirrors
+    equity_row's shape/fields so the table renders identically either way."""
+    coin_id = h["ticker"]  # e.g. "ethereum" - a CoinGecko id, not a ticker symbol
+    cur_c = (cur_snap.get("crypto") or {}).get(coin_id)
+    prev_c = ((prev_snap or {}).get("crypto") or {}).get(coin_id) if prev_snap else None
+    sek_per_eur = (cur_snap.get("macro") or {}).get("sek_per_eur", {}).get("value")
+
+    if not cur_c or cur_c.get("price_eur") is None or sek_per_eur is None:
+        return {
+            "name": h.get("name", coin_id),
+            "ticker": coin_id,
+            "price": None,
+            "since_prev": None,
+            "since_cost": None,
+            "range_pos": None,
+            "value": h.get("market_value_sek"),
+            "source": "no crypto price in snapshot",
+            "note": "run market-data with --crypto to include this coin",
+        }
+
+    qty = h.get("quantity")
+    price_sek = cur_c["price_eur"] * sek_per_eur
+    cost = h.get("cost_basis_per_unit")
+
+    prev_price_sek = None
+    if prev_c and prev_c.get("price_eur") is not None:
+        prev_sek_per_eur = (prev_snap.get("macro") or {}).get("sek_per_eur", {}).get("value")
+        if prev_sek_per_eur is not None:
+            prev_price_sek = prev_c["price_eur"] * prev_sek_per_eur
+
+    return {
+        "name": h.get("name", coin_id),
+        "ticker": coin_id,
+        "price": price_sek,
+        "since_prev": pct(price_sek, prev_price_sek),
+        "since_cost": pct(price_sek, cost),
+        "range_pos": None,  # no 52-week high/low tracked for spot crypto in this snapshot
+        "value": price_sek * qty if qty is not None else h.get("market_value_sek"),
+        "source": "fetched (CoinGecko, converted via sek_per_eur)",
+        "note": "",
+    }
+
+
 def manual_row(h):
     """Row for a holding priced by the user or carried at book value."""
     val = h.get("market_value_sek")
@@ -173,7 +218,12 @@ def main():
         has_real_ticker = ticker not in ("TBD", "", None) and "CASH_" not in ticker
         is_fetchable = has_real_ticker and ticker in (cur_snap.get("equities") or {})
 
-        rows.append(equity_row(h, cur_snap, prev_snap) if is_fetchable else manual_row(h))
+        if h.get("instrument_type") == "spot_crypto":
+            rows.append(spot_crypto_row(h, cur_snap, prev_snap))
+        elif is_fetchable:
+            rows.append(equity_row(h, cur_snap, prev_snap))
+        else:
+            rows.append(manual_row(h))
 
     lines = []
     lines.append(f"## Position report — {datetime.utcnow().strftime('%Y-%m-%d')}")

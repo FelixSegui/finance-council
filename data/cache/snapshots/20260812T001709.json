@@ -1,0 +1,568 @@
+{
+  "fetched_at_utc": "2026-08-12T00:16:55.038614+00:00",
+  "equities": {
+    "AMZN": {
+      "price": 278.09,
+      "prev_close": 278.09,
+      "52w_high": 287.2,
+      "52w_low": 196.0,
+      "market_cap": 2936789270528,
+      "trailing_pe": 21.904263,
+      "forward_pe": 26.355833,
+      "price_to_sales": 3.7860835,
+      "price_to_book": 5.322347,
+      "peg_ratio": 1.48,
+      "dividend_yield": null,
+      "payout_ratio": 0.0,
+      "beta": 1.454,
+      "revenue_growth": 0.196,
+      "total_revenue": 775680032768,
+      "free_cashflow": 3219124992,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 716924000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 637959000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 574785000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 513983000000
+        }
+      ],
+      "gross_margins": 0.5077,
+      "operating_margins": 0.13689,
+      "ebitda_margins": 0.21776,
+      "profit_margins": 0.1744,
+      "return_on_equity": 0.30558002,
+      "return_on_assets": 0.06589,
+      "debt_to_equity": 45.617,
+      "recommendation": "strong_buy",
+      "sector": "Consumer Cyclical",
+      "industry": "Internet Retail",
+      "country": "United States",
+      "currency": "USD",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 168911994880,
+      "total_cash": 122988003328,
+      "total_debt": 251635007488,
+      "operating_cashflow": 161402994688,
+      "capex": {
+        "value": 158183869696,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 106182839685.61153,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 551784657089.2319,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 803419664577.2319,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.10440924842905606,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.21 (assumed statutory rate for United States, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "ASSA-B.ST": {
+      "price": 363.4,
+      "prev_close": 363.4,
+      "52w_high": 396.9,
+      "52w_low": 314.2,
+      "market_cap": null,
+      "trailing_pe": 24.508474,
+      "forward_pe": null,
+      "price_to_sales": null,
+      "price_to_book": 3.6112444,
+      "peg_ratio": 1.7,
+      "dividend_yield": 0.0176,
+      "payout_ratio": 0.41689998,
+      "beta": 0.846,
+      "revenue_growth": 0.033,
+      "total_revenue": 151464001536,
+      "free_cashflow": 18395125760,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 152409000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 150162000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 140716000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 120793000000
+        }
+      ],
+      "gross_margins": 0.43144,
+      "operating_margins": 0.16870001,
+      "ebitda_margins": 0.19121,
+      "profit_margins": 0.10823,
+      "return_on_equity": 0.15566,
+      "return_on_assets": 0.07118,
+      "debt_to_equity": 64.103,
+      "recommendation": "buy",
+      "sector": "Industrials",
+      "industry": "Security & Protection Services",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 28960999424,
+      "total_cash": 3868999936,
+      "total_debt": 71387996160,
+      "operating_cashflow": 23968999424,
+      "capex": {
+        "value": 5573873664,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 25551978573.763218,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.206 (assumed statutory rate for Sweden, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "GOOGL": {
+      "price": 357.52,
+      "prev_close": 357.52,
+      "52w_high": 408.61,
+      "52w_low": 196.6,
+      "market_cap": 4204651610112,
+      "trailing_pe": 17.267704,
+      "forward_pe": 23.325964,
+      "price_to_sales": 9.430304,
+      "price_to_book": 6.754951,
+      "peg_ratio": 0.97,
+      "dividend_yield": 0.0025,
+      "payout_ratio": 0.042600002,
+      "beta": 1.237,
+      "revenue_growth": 0.242,
+      "total_revenue": 445865984000,
+      "free_cashflow": 22665000960,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 402836000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 350018000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 307394000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 282836000000
+        }
+      ],
+      "gross_margins": 0.60897,
+      "operating_margins": 0.34033,
+      "ebitda_margins": 0.38838002,
+      "profit_margins": 0.54771,
+      "return_on_equity": 0.48676,
+      "return_on_assets": 0.12958999,
+      "debt_to_equity": 18.859,
+      "recommendation": "strong_buy",
+      "sector": "Communication Services",
+      "industry": "Internet Content & Information",
+      "country": "United States",
+      "currency": "USD",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 173164003328,
+      "total_cash": 242473992192,
+      "total_debt": 120790999040,
+      "operating_cashflow": 185675005952,
+      "capex": {
+        "value": 163010004992,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 151741570334.72,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 298614761087.84,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 419405760127.84,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.28582306673110347,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.21 (assumed statutory rate for United States, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "HEXA-B.ST": {
+      "price": 97.3,
+      "prev_close": 97.3,
+      "52w_high": 122.1,
+      "52w_low": 71.57264,
+      "market_cap": 257059569664,
+      "trailing_pe": 11.171295,
+      "forward_pe": 18.108818,
+      "price_to_sales": 47.019363,
+      "price_to_book": 46.18182,
+      "peg_ratio": 1.22,
+      "dividend_yield": 0.0156,
+      "payout_ratio": 0.1777,
+      "beta": 0.884,
+      "revenue_growth": 0.04,
+      "total_revenue": 5467100160,
+      "free_cashflow": 683724992,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 5424600000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 5401100000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 5435200000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 5160500000
+        }
+      ],
+      "gross_margins": 0.65706,
+      "operating_margins": 0.23976,
+      "ebitda_margins": 0.23226,
+      "profit_margins": 0.09961,
+      "return_on_equity": 0.27292,
+      "return_on_assets": 0.04854,
+      "debt_to_equity": 46.892,
+      "recommendation": "hold",
+      "sector": "Technology",
+      "industry": "Scientific & Technical Instruments",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 1269799936,
+      "total_cash": 2161499904,
+      "total_debt": 2644300032,
+      "operating_cashflow": 1440300032,
+      "capex": {
+        "value": 756575040,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 1310791934.3616,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 5335828285.92,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 7980128317.92,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.1304200577258868,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.206 (assumed statutory rate for Sweden, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "LUND-B.ST": {
+      "price": 577.0,
+      "prev_close": 577.0,
+      "52w_high": 593.5,
+      "52w_low": 471.0,
+      "market_cap": 142104002560,
+      "trailing_pe": 10.387962,
+      "forward_pe": null,
+      "price_to_sales": 3.642665,
+      "price_to_book": 1.0616872,
+      "peg_ratio": 1.16,
+      "dividend_yield": 0.0085,
+      "payout_ratio": 0.0834,
+      "beta": 0.951,
+      "revenue_growth": 0.104,
+      "total_revenue": 39011000320,
+      "free_cashflow": 7670750208,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2013-12-31",
+          "total_revenue": 20076000000
+        },
+        {
+          "fiscal_year_end": "2012-12-31",
+          "total_revenue": 21618000000
+        },
+        {
+          "fiscal_year_end": "2011-12-31",
+          "total_revenue": 22604000000
+        },
+        {
+          "fiscal_year_end": "2010-12-31",
+          "total_revenue": 21171000000
+        }
+      ],
+      "gross_margins": 0.65866,
+      "operating_margins": 0.50394,
+      "ebitda_margins": 0.41926998,
+      "profit_margins": 0.35064,
+      "return_on_equity": 0.0908,
+      "return_on_assets": 0.03897,
+      "debt_to_equity": 14.27,
+      "recommendation": "none",
+      "sector": "Industrials",
+      "industry": "Conglomerates",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 16355999744,
+      "total_cash": 2847000064,
+      "total_debt": 26322999296,
+      "operating_cashflow": 8638999552,
+      "capex": {
+        "value": 968249344,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 19659203501.260803,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 82035464000.0,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 108358463296.0,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.14405342328786322,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.206 (assumed statutory rate for Sweden, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "META": {
+      "price": 594.92,
+      "prev_close": 594.92,
+      "52w_high": 796.25,
+      "52w_low": 520.26,
+      "market_cap": 1526261874688,
+      "trailing_pe": 22.582735,
+      "forward_pe": 17.174145,
+      "price_to_sales": 6.6868873,
+      "price_to_book": 5.843933,
+      "peg_ratio": 0.89,
+      "dividend_yield": 0.0034999999,
+      "payout_ratio": 0.0791,
+      "beta": 1.243,
+      "revenue_growth": 0.28,
+      "total_revenue": 228246994944,
+      "free_cashflow": 21553625088,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 200966000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 164501000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 134902000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 116609000000
+        }
+      ],
+      "gross_margins": 0.81747,
+      "operating_margins": 0.34827,
+      "ebitda_margins": 0.48042,
+      "profit_margins": 0.29834998,
+      "return_on_equity": 0.29848,
+      "return_on_assets": 0.14591,
+      "debt_to_equity": 42.997,
+      "recommendation": "strong_buy",
+      "sector": "Communication Services",
+      "industry": "Internet Content & Information",
+      "country": "United States",
+      "currency": "USD",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 109654999040,
+      "total_cash": 90259996672,
+      "total_debt": 112317997056,
+      "operating_cashflow": 130301001728,
+      "capex": {
+        "value": 108747376640,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 79491580929.14688,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 226069774742.68,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 338387771798.68,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.18558102321554104,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.21 (assumed statutory rate for United States, NOT a real effective rate - no source provides one)"
+      }
+    }
+  },
+  "crypto": {},
+  "macro": {
+    "fed_funds_rate": {
+      "date": "2026-07-01",
+      "value": "3.63"
+    },
+    "us_10y_yield": {
+      "date": "2026-08-10",
+      "value": "4.72"
+    },
+    "us_2y_yield": {
+      "date": "2026-08-10",
+      "value": "4.25"
+    },
+    "dollar_index": {
+      "date": "2026-08-07",
+      "value": "119.0649"
+    },
+    "sek_per_usd": {
+      "date": "2026-08-07",
+      "value": "9.4751"
+    },
+    "usd_per_eur": {
+      "date": "2026-08-07",
+      "value": "1.1559"
+    },
+    "vix": {
+      "date": "2026-08-10",
+      "value": "15.46"
+    },
+    "us_cpi_yoy": {
+      "date": "2026-06-01",
+      "value": 3.73
+    },
+    "riksbank_policy_rate": {
+      "date": "2026-08-11",
+      "value": 1.75
+    },
+    "ecb_deposit_rate": {
+      "date": "2026-08-12",
+      "value": "2.25"
+    },
+    "se_cpi_yoy": {
+      "period": "2025M12",
+      "value": 0.3
+    },
+    "10y_2y_spread": 0.47,
+    "sek_per_eur": {
+      "date": "2026-08-07",
+      "value": 10.9523,
+      "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)"
+    }
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "value": 27,
+      "classification": "Fear"
+    }
+  }
+}

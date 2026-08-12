@@ -1,0 +1,1304 @@
+{
+  "screened_at_utc": "2026-08-12T00:13:04.371604+00:00",
+  "filters": [
+    "max_pe max 25.0",
+    "max_peg max 2.0",
+    "min_revenue_growth min 0.0",
+    "max_debt_to_equity max 150.0"
+  ],
+  "universe_size": 43,
+  "passed": {},
+  "missing_data": {
+    "AAPL": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 304.9100036621094,
+        "prev_close": 308.260009765625,
+        "52w_high": 340.0799865722656,
+        "52w_low": 224.89999389648438,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "ABB.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 962.0,
+        "prev_close": 959.5999755859375,
+        "52w_high": 1055.5,
+        "52w_low": 620.2000122070312,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "ABBV": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 250.08999633789062,
+        "prev_close": 247.97000122070312,
+        "52w_high": 263.29998779296875,
+        "52w_low": 197.3800048828125,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "ALFA.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 570.7999877929688,
+        "prev_close": 569.0,
+        "52w_high": 588.7999877929688,
+        "52w_low": 415.6000061035156,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "AMD": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 474.32000732421875,
+        "prev_close": 469.55999755859375,
+        "52w_high": 580.9099731445312,
+        "52w_low": 151.13999938964844,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "AMZN": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 272.2699890136719,
+        "prev_close": 278.0899963378906,
+        "52w_high": 284.0199890136719,
+        "52w_low": 198.7899932861328,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "ASML": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 1799.3800048828125,
+        "prev_close": 1733.47998046875,
+        "52w_high": 1989.43994140625,
+        "52w_low": 725.8499755859375,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "ASSA-B.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 363.3999938964844,
+        "prev_close": 366.5,
+        "52w_high": 394.6000061035156,
+        "52w_low": 318.6000061035156,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "ATCO-A.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 210.6999969482422,
+        "prev_close": 209.60000610351562,
+        "52w_high": 210.6999969482422,
+        "52w_low": 145.0,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "AVGO": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 416.0799865722656,
+        "prev_close": 422.3999938964844,
+        "52w_high": 481.57000732421875,
+        "52w_low": 289.6000061035156,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "AZN.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 1543.5,
+        "prev_close": 1518.5,
+        "52w_high": 1903.0,
+        "52w_low": 1392.0,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "BTC-USD": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 63485.51171875,
+        "prev_close": 63910.5859375,
+        "52w_high": 124752.53125,
+        "52w_low": 58558.859375,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "ERIC-B.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 95.62000274658203,
+        "prev_close": 96.69999694824219,
+        "52w_high": 127.3499984741211,
+        "52w_low": 72.72000122070312,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "ETH-USD": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 1879.469970703125,
+        "prev_close": 1871.2786865234375,
+        "52w_high": 4831.3486328125,
+        "52w_low": 1564.816650390625,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "EUNL.DE": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 128.7550048828125,
+        "prev_close": 128.64999389648438,
+        "52w_high": 128.7550048828125,
+        "52w_low": 103.63500213623047,
+        "currency": "EUR",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "EVO.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 741.7999877929688,
+        "prev_close": 735.7999877929688,
+        "52w_high": 885.4000244140625,
+        "52w_low": 515.7999877929688,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "GOOGL": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 343.79998779296875,
+        "prev_close": 357.5199890136719,
+        "52w_high": 402.6199951171875,
+        "52w_low": 199.32000732421875,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "HD": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 354.4800109863281,
+        "prev_close": 350.7799987792969,
+        "52w_high": 423.4200134277344,
+        "52w_low": 297.510009765625,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "HEXA-B.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 97.30000305175781,
+        "prev_close": 97.62000274658203,
+        "52w_high": 120.8499984741211,
+        "52w_low": 72.65545654296875,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "HM-B.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 179.5500030517578,
+        "prev_close": 178.89999389648438,
+        "52w_high": 194.25,
+        "52w_low": 137.5,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "INDU-C.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 546.4000244140625,
+        "prev_close": 551.7999877929688,
+        "52w_high": 562.2000122070312,
+        "52w_low": 365.3999938964844,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "INVE-B.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 422.70001220703125,
+        "prev_close": 423.70001220703125,
+        "52w_high": 424.04998779296875,
+        "52w_low": 281.04998779296875,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "IS3N.DE": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 46.428001403808594,
+        "prev_close": 46.55400085449219,
+        "52w_high": 50.68600082397461,
+        "52w_low": 34.737998962402344,
+        "currency": "EUR",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "JNJ": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 259.79998779296875,
+        "prev_close": 261.80999755859375,
+        "52w_high": 267.239990234375,
+        "52w_low": 172.77999877929688,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "KINV-B.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 56.5,
+        "prev_close": 56.41999816894531,
+        "52w_high": 90.08000183105469,
+        "52w_low": 47.619998931884766,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "KO": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 86.4800033569336,
+        "prev_close": 86.87000274658203,
+        "52w_high": 89.08000183105469,
+        "52w_low": 65.66999816894531,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "LATO-B.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 195.35000610351562,
+        "prev_close": 202.3000030517578,
+        "52w_high": 251.39999389648438,
+        "52w_low": 187.10000610351562,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "LUND-B.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 577.0,
+        "prev_close": 583.5,
+        "52w_high": 593.0,
+        "52w_low": 471.79998779296875,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "META": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 599.1199951171875,
+        "prev_close": 594.9199829101562,
+        "52w_high": 790.0,
+        "52w_low": 525.719970703125,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "MSFT": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 503.80999755859375,
+        "prev_close": 506.05999755859375,
+        "52w_high": 542.0700073242188,
+        "52w_low": 352.8299865722656,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "NOVO-B.CO": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 306.1499938964844,
+        "prev_close": 305.1000061035156,
+        "52w_high": 401.3500061035156,
+        "52w_low": 228.5,
+        "currency": "DKK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "NVDA": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 217.5,
+        "prev_close": 217.5500030517578,
+        "52w_high": 235.74000549316406,
+        "52w_low": 165.1699981689453,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "PEP": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 138.41000366210938,
+        "prev_close": 137.72999572753906,
+        "52w_high": 170.49000549316406,
+        "52w_low": 134.9499969482422,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "PG": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 145.2100067138672,
+        "prev_close": 146.44000244140625,
+        "52w_high": 167.1999969482422,
+        "52w_low": 138.0399932861328,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "QQQ": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 718.4500122070312,
+        "prev_close": 720.8699951171875,
+        "52w_high": 746.1599731445312,
+        "52w_low": 558.280029296875,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "SAAB-B.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 639.2999877929688,
+        "prev_close": 633.4000244140625,
+        "52w_high": 729.7999877929688,
+        "52w_low": 453.25,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "SAND.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 367.1000061035156,
+        "prev_close": 365.29998779296875,
+        "52w_high": 411.79998779296875,
+        "52w_low": 235.0,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "SEB-A.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 222.10000610351562,
+        "prev_close": 224.1999969482422,
+        "52w_high": 227.10000610351562,
+        "52w_low": 170.4499969482422,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "SPY": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 770.5599975585938,
+        "prev_close": 773.030029296875,
+        "52w_high": 773.260009765625,
+        "52w_low": 631.969970703125,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "SWED-A.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 378.8999938964844,
+        "prev_close": 384.3999938964844,
+        "52w_high": 388.3999938964844,
+        "52w_low": 265.0,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "TSM": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 422.05999755859375,
+        "prev_close": 418.4700012207031,
+        "52w_high": 477.57000732421875,
+        "52w_low": 227.3300018310547,
+        "currency": "USD",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "VOLV-B.ST": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 354.6000061035156,
+        "prev_close": 355.6000061035156,
+        "52w_high": 371.5,
+        "52w_low": 247.39999389648438,
+        "currency": "SEK",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    },
+    "VWCE.DE": {
+      "missing_fields": [
+        "trailing_pe",
+        "peg_ratio",
+        "revenue_growth",
+        "debt_to_equity"
+      ],
+      "data": {
+        "price": 168.47999572753906,
+        "prev_close": 168.3800048828125,
+        "52w_high": 168.47999572753906,
+        "52w_low": 134.39999389648438,
+        "currency": "EUR",
+        "market_cap": null,
+        "trailing_pe": null,
+        "forward_pe": null,
+        "peg_ratio": null,
+        "dividend_yield": null,
+        "beta": null,
+        "revenue_growth": null,
+        "profit_margins": null,
+        "debt_to_equity": null,
+        "recommendation": null,
+        "sector": null,
+        "industry": null,
+        "country": null,
+        "_source": null,
+        "_fundamentals_unavailable_reason": "CIK lookup failed (and not in the cached S&P 500 metadata): <urlopen error Tunnel connection failed: 403 Forbidden>"
+      }
+    }
+  },
+  "failed": {}
+}

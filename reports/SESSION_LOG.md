@@ -17,6 +17,171 @@ Entry format:
 
 ---
 
+## 2026-08-12 — Crypto trip-wire finally tested on real data and breached; industrials theses closed the standing thesis gap but revealed non-differentiated WEAKENING grades; S7 and S3 closed for good; the funding-premise-wrong-before-execution failure shape confirmed as a recurring pattern
+
+- **Snapshot:** data/cache/snapshots/20260812T225321.json (previous:
+  data/cache/snapshots/20260812T001709.json — a same-day earlier
+  6-ticker candidate-test file, not a real prior sweep, so real holdings
+  read "no data" on Δ vs prev this round; the two positions that did move
+  — COIN-XBT.ST and ETH — moved because they were newly repriced, not
+  because of a genuine week-over-week comparison gap)
+- **Memo:** reports/2026-08-12-council-memo.md
+- A fresh Excel import ran this sweep
+  (data/cache/excel_import/latest-summary.json, generated 2026-08-12
+  22:52 UTC) — fundamentals refreshed for 7 tickers, Watchlist grew to
+  **45** entries (from 32 on 2026-08-06, now larger than the retired
+  `universe.json`), and for the first time the CRYPTO & CERTIFICATE
+  DETAIL block delivered a genuinely live COIN-XBT.ST price.
+- No `calendar` run this sweep, but **S3's fix was applied and verified
+  working today** — the earnings-date fetch is genuinely available for
+  the first time since 2026-08-03.
+- **Headline calls:**
+  1. Trim COIN-XBT.ST by exactly 1 unit (2,581.34 SEK), route full
+     proceeds to Avanza Global inside the ISK → confidence **High** →
+     horizon **Long**
+  2. Adopt Convention B (investable-only, Avanza ISK + ETH wallet,
+     188,918.15 SEK) as the standing denominator for the crypto
+     trip-wire, closing D3 → confidence **Medium** → horizon **Long**
+  3. Price the PayPal route — execute a 50-100 EUR Revolut test transfer
+     before next sweep, third consecutive sweep of the identical
+     unexecuted recommendation → confidence **High** on "measure before
+     committing," **Low** on which route wins → horizon **Long**
+  4. Hold ATCO-B.ST/ALFA.ST/ABB.ST/VOLV-B.ST — no adds, no trims; direct
+     the next contribution away from Nordic industrials; run
+     `swedish-equity-review` before next sweep, sixth consecutive sweep
+     of the identical unexecuted recommendation → confidence **High** →
+     horizon **Medium**
+- **User decisions:** none logged yet this session — automated/scheduled
+  sweep, no live user interaction. Calls 1-4 above are Council
+  recommendations (Chairman decisions within the six-voice method)
+  awaiting the user's review, same status as every other sweep's
+  headline calls until acted on.
+- **Reconciliation — 2026-08-11 headline calls vs today's data
+  (`reports/2026-08-11-council-memo.md` vs `reports/2026-08-12-council-memo.md`
+  and `data/cache/snapshots/20260812T225321.json`):**
+  - **Call 1 (ADD 1 share AZN.ST, funded from the ~1,743.61 SEK idle ISK
+    cash) — never executed, correctly abandoned; the premise, not the
+    call, was wrong, and it was caught before it could become a mistake.**
+    The user confirmed directly, post-sweep on 2026-08-11, that the idle
+    cash never existed — already spent — so `portfolio.json`'s Avanza ISK
+    cash holding correctly carries 0 today and no AZN.ST add happened.
+    Worth stating plainly, not softening: this is the **second sweep
+    running** where a headline call's *funding premise* — not its
+    valuation logic — turned out to be false before execution. 2026-08-10's
+    "route idle cash to Avanza Global" rested on a "no vetted candidate"
+    premise that 2026-08-11's own Council found false on the same data
+    available the day before; 2026-08-11's "route idle cash to AZN.ST"
+    rested on cash that turned out not to exist at all. Both were caught
+    before real money moved — the reconciliation mechanism is doing its
+    job — but two instances in three sweeps is a shape, not a coincidence.
+    The weak link in this system right now is its read of "what capital
+    is actually available," not its stock selection, which has been
+    consistently sound across both incidents.
+  - **Crypto trip-wire (2026-08-11: not fired on the pinned denominator,
+    11.79%, but a second reading — Convention C, built on an 8-day-stale
+    user-relayed price plus a BTC-proxy estimate — already showed 12.66%,
+    breached) — the estimate finally got tested against real data today,
+    and the answer changed meaningfully.** This is not a new problem
+    appearing; it is D3 resolving against fact instead of an estimate,
+    exactly as flagged as a live risk in the 2026-08-11 entry. Today's
+    Excel import delivered a genuinely live COIN-XBT.ST price
+    (2,581.34 SEK/unit via the new CRYPTO & CERTIFICATE DETAIL block) for
+    the first time this position has ever had. Under that real number the
+    trip-wire is breached on 2 of 3 denominator conventions, and today's
+    Council orders a 1-unit trim (Call 1 above), sized to clear the
+    trip-wire and hold at/above the 10% target on all three conventions
+    simultaneously.
+  - **ATCO-B/ALFA/ABB/ETH theses (the standing "zero progress" item,
+    named the system's own most-repeated unexecuted recommendation for
+    3+ consecutive sweeps) — closed today, on the thesis half.** The user
+    wrote theses in their own words for all four names, and thesis-review
+    re-tested them fresh the same day — closing the standing gap ahead of
+    the 2026-09-03 deadline. That is real progress and should be recorded
+    as such. But a thesis existing is not the same as a healthy position:
+    the three industrials' theses are explicitly non-differentiated
+    (track record and "backing Swedish industry" — no valuation claim),
+    and thesis-review graded all three **WEAKENING** the same day the
+    theses were written. A thesis existing now doesn't mean the position
+    is healthy — just that P6's blocking condition is met. The retroactive
+    `swedish-equity-review` (the other half of P6) still has not run —
+    now the sixth consecutive sweep of that specific unexecuted
+    recommendation.
+  - **S7 (position_report.py never repriced self-custody crypto) and S3
+    (earnings calendar fetch failing) — both applied and verified working
+    today, not just "applied."** `position_report.py` now reprices ETH
+    live (8,945.96 SEK this sweep) instead of carrying the stale 2026-08-03
+    book value the portfolio agent had been correcting by hand for two
+    prior sweeps running. `fetch_calendar.py` now returns real earnings
+    dates via the same direct-urllib/crumb pattern that already worked
+    for equity fundamentals. Both close out confirmed, multi-sweep system
+    defects — this is bug-fix closure, not new capability.
+  - **D2 (route new contributions to equity while cash sits at/above its
+    5% target) — holds, unrevisited, no new evidence either way this
+    sweep.**
+  - **2026-08-11 Call 4/D1 (PayPal test transfer via Revolut) — aged as
+    expected: still unexecuted, now a third consecutive sweep of the
+    identical recommendation**, repriced today as headline Call 3 with a
+    new framing — it is the single open item whose annual cost
+    (~1,970-2,630 SEK/yr) exceeds the entire portfolio's current total
+    fee drag (570.34 SEK/yr).
+- **Other findings this sweep, not tied to a specific prior call:**
+  - **New open decision D4 opened.** Does `profit_recycling_rule` apply
+    to gross trim proceeds or only the realized gain? Council recommends
+    whole proceeds to the secure tier (option 1) and Call 1 assumes it;
+    the choice belongs to the user, same ambiguity class as D3/S12.
+  - **One Excel gap the auto-generated flags did not catch, and it is the
+    most consequential one on file.** The workbook still carries the
+    stale 1,743.61 SEK Avanza ISK cash figure — the same figure that
+    produced the wrong 2026-08-11 AZN.ST call — which the user already
+    confirmed is gone. It's correctly rejected in `portfolio.json` (cash
+    stays 0, the user's direct statement outranks the workbook) but the
+    workbook itself still needs manual correction before next sweep. The
+    conflict surfaced as a portfolio-delta rejection rather than a
+    `flags` entry, so it never reached the paste-ready Excel fix prompt —
+    handed to `meta` as evidence worth acting on.
+  - **Scorecard shifts.** Crypto trip-wire moved to WATCH/ACT (today's
+    headline finding). Equity sector concentration stays ACT (industrials
+    65.2% of the 28,294 SEK stock sleeve). Asset allocation stays WATCH
+    (equity 73.7% vs 85% target). Fee drag stays OK (0.27%, under the
+    0.4% cap). Three scorecard gaps remain open and unresolved: S5
+    (85/10/5/0 target never backtested against the -30% drawdown
+    tolerance), the currency-exposure gap (no revenue-by-currency data),
+    and the emergency buffer's actual location (unverified, load-bearing
+    for Convention B/D3).
+  - **Positive note for `meta`, worth recording plainly.** The Watchlist
+    has grown from 32 entries (2026-08-06) to 45 — now larger than the
+    ~43-ticker `universe.json` it replaced. Direct evidence against S10's
+    core complaint, though whether the *specific* gaps S10 named (a
+    Nordic consumer name, a bank alternative to SHB-A.ST, EU-UCITS ETFs)
+    were actually filled is still an open question for `scout`/`meta`.
+- **Open items carried forward:** P1 (ETH cost basis, blocked on user),
+  P2 (discovery funnel + consolidated sweep report ported from the
+  archived branch — still open), P3/D1 (PayPal routing, now three sweeps
+  unexecuted), P4/S1 (cheaper BTC certificate — blocked on verified
+  tickers), P6 (retroactive `swedish-equity-review` on ATCO-B/ALFA/ABB —
+  sixth consecutive sweep unexecuted; thesis half now closed), P7 (ISK
+  allowance unverified with Skatteverket, low priority), S4 (Swedish CPI
+  stale period), S5 (85/10/5/0 vs -30% drawdown tolerance — `backtest`
+  still never run), S6 (no NAV discount/premium source for Investor A),
+  S8 (critical-file-loss guard), S9 (Excel cross-field plausibility +
+  purchase-without-thesis flags), S10 (Watchlist prospecting gaps —
+  positive movement this sweep, grown to 45 entries), S12 (canonical
+  denominator definitions — Call 2 today proposes closing D3 by adopting
+  Convention B, pending user approval). D3 (crypto trip-wire denominator)
+  and D4 (profit-recycling gross-vs-gain, new this sweep) both open, both
+  the user's call. Blocking-question rule check: the Handelsbanken
+  wrapper question remains resolved (confirmed 2026-07-07) and does not
+  gate this memo — no item currently holds blocking status.
+
+**Reminder:** the portfolio was valued this sweep with fresh data across
+the board (position report + Excel import both current as of
+2026-08-12) — append a row to `data/valuations.csv`
+(`date,total_value_sek,net_contribution_since_last_sek,note`) before
+closing the session if not already done. Performance tracking
+(`scripts/performance.py`) has nothing to compare against without it.
+
+---
+
 ## 2026-08-11 — Yesterday's AZN-vs-Avanza-Global routing call was wrong on the reasoning, corrected today; ATCO-B/ALFA/ABB/ETH now a full week of zero progress against their deadline; PayPal quietly decides the crypto trip-wire
 
 - **Snapshot:** data/cache/snapshots/20260811T170152.json (previous:

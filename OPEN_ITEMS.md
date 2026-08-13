@@ -23,40 +23,29 @@ a one-line resolution — never delete it silently.
 ## This sweep's recommended emphasis
 
 **Emphasis:** portfolio-tending
-**Set by meta, 2026-08-11 (unchanged for a third consecutive sweep):**
-every signal this session still points at unfinished portfolio-tending
-work, and nothing new argues for prospecting. ATCO-B, ALFA, ABB and ETH are
-now two weeks into the 2026-09-03 thesis deadline with zero visible
-progress in week one (confirmed again by this sweep's reconciliation) —
-`swedish-equity-review` has been named the system's own recommended next
-step for five straight sweeps and still hasn't run. P3/D1 (PayPal routing)
-has now sat two weeks with a specific recommended action (a ~100 EUR
-Revolut test transfer) and no execution — a real, recurring ~4% fee leak
-(lever 2) going unmeasured is a stronger claim on attention than finding
-new candidates. A new structural decision surfaced this session and must
-be resolved before 2026-09-03: D3, which denominator governs the crypto
-trip-wire — three conventions give 11.79% / 11.94% / 12.66% for the
-identical 24,115.89 SEK of crypto, and one of the three is already
-breached. (D2, a similar conflict from last sweep, was resolved and
-written into the files this session — one governance item closed, two
-more, D1 and D3, still open and both time-boxed to the same date.) Against
-all that, there is no prospecting counter-signal: **correction, 2026-08-11
-post-sweep** — the memo's "ADD 1 share AZN.ST, funded from the 1,743.61 SEK
-idle ISK cash" call was itself resting on a stale figure. The user confirmed
-directly that cash is gone (see `data/portfolio.json`'s avanza-isk cash
-holding, corrected to 0 with the user's statement recorded) — there was no
-~1,744 SEK, let alone a ~200 SEK residual, to fund that add with. The
-recommendation itself was sound on valuation/thesis grounds; the "we have
-cash to deploy" premise wasn't, which is exactly the same failure shape as
-2026-08-10's Avanza Global call one week earlier — worth a look if a third
-instance shows up. With that corrected, there is no idle cash at all right
-now, which if anything argues even less for prospecting: nothing to deploy
-into a new name even if `scout` found one. Watchlist unchanged since
-2026-08-06 (no fresh Excel import ran this sweep either) — nothing new to
-screen even if `scout` were invoked, which it correctly was not. Revisit
-at the 2026-09-03 check-in: if the four theses are written, D1 and D3 are
-settled, and the retroactive `swedish-equity-review` has finally run, that
-is what flips this back to balanced.
+**Set by meta, 2026-08-12 (unchanged for a fourth consecutive sweep):**
+no signal this session argues for prospecting, and several argue for more
+portfolio-tending. `swedish-equity-review` on ATCO-B.ST/ALFA.ST/ABB.ST —
+named the system's own recommended next step for six straight sweeps now —
+still hasn't run, even though the theses that were blocking it (P6) were
+finally written this session; the review is now the only piece of P6 left
+open. PayPal routing (P3/D1) is a third consecutive sweep of the identical
+unexecuted recommendation, and it's the single open item whose annual cost
+(~1,970-2,630 SEK/yr) exceeds the entire portfolio's current fee drag —
+lever 2, not a discovery question. Two governance items also need the
+user's actual decision before 2026-09-03: D3 (crypto trip-wire denominator
+— Council recommends Convention B, not yet confirmed) and the newly
+opened D4 (does the profit-recycling rule apply to gross trim proceeds or
+the realized gain only — Council recommends option 1, not yet confirmed).
+Against all that, there remains no idle capital to deploy into a new name
+even if `scout` found one — this sweep's own headline call (trim
+COIN-XBT.ST) generates ~2,581 SEK and redeploys it inside the same call,
+not into an undeployed pool. The Watchlist itself is in good shape (grown
+to 45 entries, filled the specific gaps flagged in the old S10 — see the
+Closed log) so there's no live prospecting-side complaint either; it's
+simply not the constraint right now. Revisit at 2026-09-03: once
+`swedish-equity-review` has actually run, PayPal is routed, and D3/D4 are
+settled, that combination is what flips this back to balanced.
 
 ---
 
@@ -221,39 +210,20 @@ is what flips this back to balanced.
   and must be confirmed on Avanza rather than guessed. **Updated 2026-08-06:**
   the destination for these is now the Watchlist tab in the user's Excel
   workbook, not `data/universe.json` (retired for this purpose — see the
-  2026-08-06 closed-log entry above). Until verified tickers are added there
-  and imported via `scripts/import_excel_holdings.py`, the cheaper-
+  2026-08-06 closed-item log entry above). Until verified tickers are added
+  there and imported via `scripts/import_excel_holdings.py`, the cheaper-
   certificate search can't be screened automatically. This used to be a
   nice-to-have; P4 makes it load-bearing.
-
-### S3 — Earnings calendar fetch failing — root cause now diagnosed, not just "blocked on a key"
-- **Status:** open — not touched this sweep (calendar agent wasn't invoked, no new evidence)
-- **Updated 2026-08-10, evidence still standing:** this is the second outright
-  failure of the earnings-date fetch (also failed 2026-08-03), and 2026-08-10
-  confirmed the mechanism: `scripts/fetch_calendar.py`'s
-  `fetch_earnings_dates()` calls `yf.Ticker(t).calendar` — i.e. it still
-  routes through **yfinance's own client**, which CLAUDE.md already
-  documents as unreliable on this network (its curl_cffi browser-TLS
-  fingerprinting gets connection-reset by Yahoo's anti-bot layer).
-  `scripts/fetch_market_data.py` solved exactly this problem for equity
-  fundamentals by bypassing yfinance's client entirely and talking to
-  Yahoo's quoteSummary API directly via `urllib` + a cookie jar/crumb —
-  documented in CLAUDE.md's yfinance note. `fetch_calendar.py` never got
-  the same fix. **New evidence this session (2026-08-11) of the cost of
-  leaving it unfixed:** this sweep's headline call (buy 1 share AZN.ST) was
-  explicitly flagged as "not checked against an AstraZeneca reporting
-  date" — the gap isn't hypothetical, it directly touched a real trade
-  recommendation this week.
-- **How:** in `scripts/fetch_calendar.py`, replace `fetch_earnings_dates()`'s
-  `yf.Ticker(t).calendar` call with the same direct-urllib +
-  crumb/cookie-jar pattern already working in
-  `scripts/fetch_market_data.py` (Yahoo's quoteSummary API exposes a
-  `calendarEvents` module with earnings dates via the same endpoint used
-  for fundamentals). This requires no new API key and reuses code that
-  already works reliably on this network. The optional Alpha Vantage/FMP
-  key (original S3 scope) stays open as a secondary/fallback source, not
-  the primary fix — it's still blocked on the user creating a key and is
-  no longer the highest-value next step here.
+- **Confirmed 2026-08-12, still a distinct problem:** the Watchlist's new
+  `crypto_usd_proxies` category (added 2026-08-12) added `BTC`/`ETH`
+  tickers, but these resolve to Grayscale mini-trust products (US-listed
+  ETF-style wrappers), not Nordic-listed BTC/ETH certificates purchasable
+  on Avanza inside the ISK. That's a different instrument in a different
+  market — it does not close S1, and the two should stay cleanly separated:
+  the 2026-08-12 CRYPTO & CERTIFICATE DETAIL Excel capability (see S7 in
+  the Closed log) solved *pricing* for the certificate already held; S1 is
+  about *discovering and verifying tickers for a replacement* certificate —
+  still genuinely open, still the load-bearing blocker for P4.
 
 ### S4 — Swedish CPI is returning a stale period
 - **Status:** open
@@ -262,7 +232,14 @@ is what flips this back to balanced.
   honest (it carries its own period label) but it's old. Fix is to switch the
   SCB PxWeb table (try KPIF) in `fetch_se_cpi_yoy()`.
 - **Why it matters:** the macro lens used this to call SEK cash's real yield
-  positive. That conclusion rests on a stale input.
+  positive. That conclusion rests on a stale input. **2026-08-12 note:** this
+  session's Council named the same gap as a live reason for caution on a
+  much larger stake than a cash-yield footnote — macro cannot confidently
+  regime-grade Swedish industrials (65.2% of the individual-stock sleeve)
+  while the underlying Swedish inflation input is 8 months stale, and that
+  was one of two explicit reasons Call 4 stayed HOLD rather than considering
+  a regime-driven rotation. Worth prioritizing now that it touches a
+  majority-SEK sleeve, not just a footnote.
 
 ### S5 — Backtest the 85/10/5/0 target against the -30% drawdown tolerance
 - **Status:** open — the `backtest` agent exists and has never been run
@@ -277,6 +254,7 @@ is what flips this back to balanced.
   in every scorecard while remaining the one lever-3 (allocation) question
   nothing has ever actually tested. See step 5 review in this session's
   `meta` report for why this is judged "worth implementing soon."
+- **2026-08-12 note:** unchanged, same scorecard gap named again this sweep.
 
 ### S6 — No source for holding-company NAV discount/premium
 - **Status:** open — blocks half of P5
@@ -284,41 +262,6 @@ is what flips this back to balanced.
   discount/premium, and no free automated source for it has been found.
   Options: parse the quarterly report PDF (the `pdf` skill can do this if you
   supply the report), or read it off Investor's IR page manually.
-
-### S7 — Per-position performance tracking: self-custody crypto is never repriced (confirmed bug, not just a gap)
-- **Status:** open — confirmed unfixed for a third consecutive sweep (2026-08-10, 2026-08-11)
-- **Why:** `scripts/position_report.py` was added 2026-08-03 to show
-  per-position movement each sweep. The original framing ("thin, improves
-  automatically as P1 closes") undersold what's actually wrong: this
-  session confirmed (again) that the script **never reprices self-custody
-  crypto at all**, independent of P1. ETH's holding has `ticker: "ethereum"`
-  and `instrument_type: "spot_crypto"` — because that ticker isn't a key in
-  `cur_snap["equities"]`, `main()` routes it to `manual_row()`, which only
-  reads `market_value_sek` (a stale book value) and never looks at
-  `cur_snap["crypto"]`, even though the crypto section (fetched fresh every
-  sweep, e.g. `ethereum.price_eur`) is sitting right there in the same
-  snapshot file. This carried ETH at its 2026-08-03 book value (8,911 SEK)
-  in both the 2026-08-10 and 2026-08-11 reports; the portfolio agent has now
-  computed the correct figure by hand two sweeps running (8,875.88 SEK
-  2026-08-11) using exactly the formula this S-item already specifies. The
-  fix has been fully specified for two sweeps and still hasn't been applied.
-- **How:** in `scripts/position_report.py`, add a branch (parallel to
-  `equity_row`/`manual_row`) for holdings with `instrument_type ==
-  "spot_crypto"`: look up `cur_snap["crypto"].get(ticker)` (ticker is
-  already the CoinGecko id, e.g. `"ethereum"`), pull `price_eur`, and
-  convert via `cur_snap["macro"]["sek_per_eur"]["value"]` — mirroring the
-  existing SEK-conversion pattern already used elsewhere in this codebase
-  for ETH (see `data/portfolio.json`'s eth-wallet holding notes for the
-  exact formula: `quantity * price_eur * sek_per_eur`). Compute
-  `since_prev` the same way using `prev_snap["crypto"]`, matching
-  `equity_row`'s existing pattern. This is a narrow, single-branch fix —
-  there is exactly one self-custody crypto holding today (ETH); don't
-  generalize into a pluggable pricing-source framework for a problem of
-  size one.
-- Separately, still true and unrelated to this bug: funds (Auto 3, Avanza
-  Global) have totals but no per-unit basis or acquisition date, so they
-  correctly show "no data" for return figures — that part genuinely does
-  improve automatically as those gaps close and doesn't need a code change.
 
 ### S8 — Guard against critical files silently dropping during a branch merge
 - **Status:** open
@@ -347,26 +290,40 @@ is what flips this back to balanced.
   it isn't mistaken for new evidence about S8 itself.
 - **2026-08-11 note:** no incident this session; judged "useful, can wait"
   in this sweep's roadmap review — see the `meta` report.
+- **2026-08-12 note:** no incident this session; same judgment holds.
 
-### S9 — Excel import script: two new data-quality flags (cross-field plausibility + purchase-without-thesis)
-- **Status:** open — no new evidence this session (no Excel import ran)
-- **Why:** two real gaps surfaced in the 2026-08-06 import run. (1) The
-  Transactions sheet has a row pairing ticker "ethereum" with a
-  certificate's name/price/quantity (`BUY, ethereum, 1 unit, 2016.67
-  SEK/unit`) — a likely copy-paste artifact next to the real COIN-XBT.ST
-  6th-unit purchase row. The import script only does per-field bounds
-  checks (P/E sanity range, week52 range) and has no cross-field check
-  (does the ticker plausibly match the row's own name/price), so it
-  imported the bad row as-is into `data/transactions.csv`, where it will
-  corrupt any future attempt to derive P1 (the ETH cost basis) from
-  transaction history. (2) Four positions (ATCO-B, AZN, ALFA, ABB) were
-  added to `portfolio.json` 2026-08-03/04 with no thesis, and nothing
-  flagged it until a full Council run noticed — the same pattern that
-  already happened once before with SHB-A.ST/INVE-A.ST (2026-08-03). This
-  gap is still live: ATCO-B, ALFA and ABB remain thesis-free five sweeps
-  later (P6), which is exactly the pattern (b) below would catch
-  automatically at write-time instead of relying on a full sweep to notice
-  it after the fact.
+### S9 — Excel import script: three data-quality flags (cross-field plausibility + purchase-without-thesis + Excel-vs-confirmed-override conflicts)
+- **Status:** open — new evidence this session (a real instance of gap (c)
+  was caught by hand, not by the script)
+- **Why (a)/(b), from 2026-08-06:** the Transactions sheet has a row pairing
+  ticker "ethereum" with a certificate's name/price/quantity (`BUY,
+  ethereum, 1 unit, 2016.67 SEK/unit`) — a likely copy-paste artifact next
+  to the real COIN-XBT.ST 6th-unit purchase row. The import script only does
+  per-field bounds checks (P/E sanity range, week52 range) and has no
+  cross-field check (does the ticker plausibly match the row's own
+  name/price), so it imported the bad row as-is into
+  `data/transactions.csv`. Separately, four positions (ATCO-B, AZN, ALFA,
+  ABB) were added to `portfolio.json` 2026-08-03/04 with no thesis, and
+  nothing flagged it until a full Council run noticed — the same pattern
+  that already happened once before with SHB-A.ST/INVE-A.ST (2026-08-03).
+  (This second gap closed in substance 2026-08-12 when the user wrote
+  theses for ATCO-B/ALFA/ABB/ETH — see P6/P5 — but the mechanism that
+  should have caught the gap automatically at write-time still doesn't
+  exist and will recur on the next unvetted purchase.)
+- **Why (c), new 2026-08-12:** the workbook still carried the stale 1,743.61
+  SEK Avanza ISK cash figure this sweep, and the import script applied it as
+  a `portfolio_deltas` entry — the same class of write as any other Excel
+  update. The only reason it didn't land in `data/portfolio.json` is that a
+  human/agent noticed the conflict against the user's direct 2026-08-11
+  statement (cash = 0) and rejected it by hand before committing. The
+  script itself has **no mechanism to catch or flag this** — verified in
+  `process_core_holdings`/`process_crypto_certificate_detail`, which apply
+  every numeric delta unconditionally unless dry-run. Worse, because the
+  conflict never became a `flags` entry, it never reached
+  `data/cache/excel_import/claude_excel_prompt.txt` — the one Excel item
+  with an actual track record of producing a wrong recommendation (it
+  funded the incorrect 2026-08-11 "ADD 1 share AZN.ST" call) is invisible
+  to the tool meant to help the user fix exactly this kind of Excel error.
 - **How:** in `scripts/import_excel_holdings.py`: (a) in
   `process_transactions`, add a bounded plausibility check — if a row's
   `holdings_ticker` matches a known ticker in `data/company_profiles/` or
@@ -375,89 +332,70 @@ is what flips this back to balanced.
   `name` shares no token with the ticker's recorded name; (b) in
   `process_core_holdings`, when a holding's `quantity` moves from
   null/0 to a positive number (a new position) and its `thesis` field is
-  null or `"TBD"`, add a flag naming the ticker. Both reuse the existing
-  `flags` list already surfaced in `latest-summary.json` and read into the
-  council memo (section 12) — no new plumbing needed.
+  null or `"TBD"`, add a flag naming the ticker; (c) in
+  `process_core_holdings` and `process_crypto_certificate_detail`, before
+  applying a numeric delta, check whether the target holding's own notes
+  contain a direct-user-confirmation marker (a simple substring check for
+  the literal word "CONFIRMED", already used throughout `portfolio.json`'s
+  prose, is enough — no new schema needed) whose stated value conflicts
+  with the incoming Excel figure; if so, add the conflict to `flags`
+  (which reaches the prompt file) instead of silently overwriting it —
+  same direction as this system's existing "a direct user statement
+  outranks Excel" rule, just enforced in code instead of relying on a human
+  noticing every time. All three reuse the existing `flags` list already
+  surfaced in `latest-summary.json` and read into the council memo —
+  no new plumbing needed.
 
-### S10 [prospecting] — Watchlist regression: narrower than the retired universe.json and lost sector diversifiers
-- **Status:** open — no new evidence this session (no fresh Excel import ran; `scout` correctly not invoked, second sweep running)
-- **Why:** the new Watchlist (`data/cache/watchlist.json`, 32 entries / 7
-  categories, live for the first time 2026-08-06) is smaller than the
-  `data/universe.json` it replaces (~43 tickers) and dropped names that
-  mattered for exactly the gaps this sweep's own scorecard flagged: H&M
-  (`HM-B.ST`, the only non-industrial/non-financial Nordic consumer name
-  in the old universe) is gone entirely; `SEB-A.ST` and `SWED-A.ST` (bank
-  alternatives to the ACT/WATCH-adjacent `SHB-A.ST`) are gone; Saab
-  (`SAAB-B.ST`) is gone. Separately, `broad_index_etfs` swapped EU-UCITS-
-  domiciled funds (`VWCE.DE`, `EUNL.DE`, `IS3N.DE`) for US-domiciled ones
-  (`VOO`, `VTI`, `QQQ`) — US-domiciled ETFs are frequently not legally
-  purchasable by EU retail investors without a PRIIPS KID, which most
-  don't provide, so this category may now be screening candidates the
-  user cannot actually buy on Avanza. The 2026-08-11 scorecard still rates
-  equity sector concentration **ACT** (industrials 65.1% of the stock
-  sleeve, essentially unchanged) and geography **WATCH** — the same gaps
-  this narrower Watchlist would help correct, and hasn't. This is a
-  universe problem, not a screen problem — `scout` has not been invoked
-  since the Watchlist went live, so still no screen-calibration evidence
-  exists; don't conflate the two.
-- **Confirmed 2026-08-10, not a defect:** `data/cache/watchlist.json` is
-  deliberately gitignored (regenerated fresh each sweep from the Excel
-  Watchlist tab, not persisted) and is genuinely absent between Excel
-  imports — this session found it missing on disk. That's by design, not
-  a new gap: `scout.md`'s own instructions and `screen_candidates.py`
-  already document and implement an automatic fallback to
-  `data/universe.json` when the Watchlist file doesn't exist. Verified in
-  code this session. No action needed here.
-- **How:** this is user-curated content (the Watchlist tab, per CLAUDE.md
-  1a), not a script bug — no code change to propose. Concrete action: next
-  time the Excel workbook is edited, consider re-adding a non-industrial/
-  non-financial Nordic name (e.g. H&M or another consumer/healthcare
-  name) for sector diversification, one bank alternative to SHB-A.ST
-  (SEB-A or Swedbank) so the P5/Call-B rotation comparison has something
-  real to compare against, and either swap `broad_index_etfs` back to
-  EU-UCITS-domiciled tickers or confirm with Avanza that the US-domiciled
-  ones are actually purchasable before `scout` screens them as real
-  candidates.
-
-### S12 — Canonical definitions for ambiguous shared terms: the "% of range" failure S11 fixed has recurred one level up, in denominators
-- **Status:** open
+### S12 — Canonical definitions for ambiguous shared terms: recurred a third time, now spans two conventions
+- **Status:** open — D3 (the original trigger) proposed-resolved this
+  sweep pending user confirmation; D4 (new) is the third instance of the
+  same failure class and folds into this item rather than opening separately
 - **Why:** the 2026-08-11 sweep's crypto trip-wire check (D3) produced
   **three different "investable capital" denominators for the identical
   24,115.89 SEK of crypto**: the 2026-08-10 pinned definition (204,611.94
   SEK -> 11.79%, does not fire), the portfolio agent's proposed standing
   "Convention A" (201,895.91 SEK -> 11.94%, does not fire), and a third
   reading, "Convention C" (190,532.15 SEK -> 12.66%, **already breached**).
-  The portfolio agent's own Convention A was presented as matching the
-  pinned figure "by magnitude" (within 0.15pp today) but actually
-  contradicts it "by definition" — it includes the tax reserve and
-  excludes PayPal, which is exactly backwards from what the pin does. This
-  is the identical failure class S11 already fixed one level down: two
+  This is the identical failure class S11 already fixed one level down: two
   agents computing "% of 52-week range" two different ways under one
-  label. S11's fix was confirmed working this same sweep (valuation and
-  thesis-review now both report the true percentile and agree with
-  `position_report.py` by construction) — but the same ambiguity pattern
-  immediately reappeared at the denominator level, which is exactly what
-  this session's Council memo names in its own Learning notes: "pin the
-  definition in words, not the number, because the number goes stale and
-  the definition is what you are actually arguing about." A pattern that
-  recurs immediately after being fixed once is worth solving at the root,
-  not patched instance-by-instance forever.
-- **How:** keep this narrow — one dictionary entry solving the live
-  conflict, not a new schema or framework. Add a small `definitions`
-  object to `portfolio.json` (or, if `portfolio.json` should stay lean per
-  CLAUDE.md's token-hygiene note, a new `data/cache/definitions.json`)
-  naming each standing convention in words, e.g.:
-  `"investable_capital_pinned_2026-08-10": {"includes": ["avanza_isk",
-  "eth_wallet", "hb_checking"], "excludes": ["tax_reserve"], "paypal":
-  "included", "value_sek": 204611.94, "pinned_date": "2026-08-10"}`.
-  Any agent computing a threshold against "investable capital" (the crypto
-  trip-wire today, potentially others later) cites the named convention
-  instead of recomputing its own reading each sweep. Resolve D3 (which
-  convention governs the 2026-09-03 check) as part of writing the first
-  entry — that decision is the user's, per the options already laid out in
-  the 2026-08-11 memo's Open decisions section, not `meta`'s to make.
-  Extend this pattern to other ambiguous terms only if a third instance of
-  the same failure class shows up — don't pre-build for hypothetical ones.
+  label. S11's fix was confirmed working the same sweep — but the same
+  ambiguity pattern immediately reappeared at the denominator level, which
+  is exactly what the 2026-08-11 Council memo names in its own Learning
+  notes: "pin the definition in words, not the number, because the number
+  goes stale and the definition is what you are actually arguing about."
+- **2026-08-12 update:** Council's Call 2 proposed resolving D3 by adopting
+  Convention B (investable-only: Avanza ISK + ETH wallet, 188,918.15 SEK)
+  and pinning it in words in `data/cache/definitions.json` — not yet
+  written, pending the user's actual confirmation (the Chairman's
+  recommendation is not the same as the user deciding). **A third instance
+  of the identical failure class surfaced the same sweep, D4:** does
+  `investor_profile.json`'s `profit_recycling_rule` ("money I make from
+  this should... go into the safer tiers") apply to the *gross proceeds*
+  of a trim, or only the *realized gain*? Selling 1 unit of COIN-XBT.ST at
+  2,581.34 SEK against a 2,016.67 SEK cost basis realizes a 564.67 SEK
+  gain — the rest is return of capital — and the rule reads either way.
+  This recurs on every future trim, not just this one. Per this item's own
+  original text ("extend this pattern... only if a third instance of the
+  same failure class shows up"), that bar is now met — D4 is folded into
+  this item rather than becoming a new S-item.
+- **How:** keep this narrow — a small `definitions` dictionary, not a new
+  schema or framework. Add a `definitions` object to `portfolio.json` (or,
+  if `portfolio.json` should stay lean per CLAUDE.md's token-hygiene note,
+  a new `data/cache/definitions.json`) naming each standing convention in
+  words, e.g.:
+  `"investable_capital_convention_2026-08-12": {"includes": ["avanza_isk",
+  "eth_wallet"], "excludes": ["tax_reserve", "paypal", "hb_checking"],
+  "value_sek": 188918.15, "pinned_date": "2026-08-12"}` for D3 (once the
+  user confirms Convention B — Council's recommendation, not yet the
+  user's decision), and a second entry,
+  `"profit_recycling_proceeds_convention": {"applies_to": "gross_proceeds"
+  | "realized_gain_only", "pinned_date": "..."}`, for D4 (Council
+  recommends "gross proceeds" — option 1 in the 2026-08-12 memo — again
+  pending the user's actual choice). Any agent computing either threshold
+  cites the named convention instead of recomputing its own reading each
+  sweep. Extend this pattern to a fourth ambiguous term only if a genuinely
+  new instance of the same failure class shows up — the dictionary should
+  grow one entry at a time, evidence-driven, not pre-built.
 
 ---
 
@@ -494,14 +432,19 @@ alongside the S-items, not silently.
   margin/stability) using Phase 1's new metrics; make the funnel's
   threshold counts (~540→150-250→50-75→...) configurable in
   `config/settings.py`, not hardcoded; `scout` outputs a compact candidate
-  dataset instead of prose. Spec sections 6, 10, 26, 28.
+  dataset instead of prose. Spec sections 6, 10, 26, 28. **2026-08-12 note
+  for whoever picks this up:** the Watchlist is now a healthier input than
+  when this phase was written (45 entries, 12 categories, sector gaps
+  filled — see the S10 closed-log entry) — worth a fresh look at whether
+  wiring the funnel to it is now more tractable than it was 2026-08-09.
 - **Phase 4 — not started.** `risk_factor_exposure` risk-bucket
   classification (Global industrial cycle / Defensive healthcare /
   Financials / etc.) distinct from sector — directly targets the Volvo +
   Atlas Copco + Alfa Laval + ABB correlated-industrial-risk problem this
-  system already flagged (69% of the stock sleeve). Portfolio-fit scoring
-  for candidates ("does owning this improve the portfolio," not just "is
-  it individually attractive"). Spec sections 11-12, 23, 33.
+  system already flagged (65.2% of the stock sleeve, still ACT-rated as of
+  2026-08-12). Portfolio-fit scoring for candidates ("does owning this
+  improve the portfolio," not just "is it individually attractive"). Spec
+  sections 11-12, 23, 33.
 - **Phase 5 — not started.** Macro Regime Engine expansion: new fetchers
   for BOJ policy rate, USD/JPY, credit spreads, PMI, unemployment/GDP,
   and a computed real-yield field — confirmed genuinely missing from
@@ -532,6 +475,70 @@ alongside the S-items, not silently.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-12 — S3 fixed and confirmed (earnings calendar fetch failing).**
+  `scripts/fetch_calendar.py`'s `fetch_earnings_dates()` now calls
+  `_yahoo_session.fetch_quote_summary(t, modules="calendarEvents")` — the
+  same direct-urllib + crumb/cookie-jar bypass `fetch_market_data.py`
+  already uses for fundamentals — instead of `yf.Ticker(t).calendar`, which
+  routed through yfinance's own client and got connection-reset by Yahoo's
+  anti-bot layer on this network. Confirmed in code this session and
+  confirmed live against real tickers (AZN.ST/VOLV-B.ST/AMZN, per
+  2026-08-12's `SESSION_LOG.md` entry) — the earnings-date fetch is
+  genuinely available for the first time since 2026-08-03.
+- **2026-08-12 — S7 fixed and confirmed (self-custody crypto never
+  repriced in `position_report.py`).** `scripts/position_report.py` now has
+  a dedicated `spot_crypto_row()`, wired into `main()` via a check for
+  `instrument_type == "spot_crypto"` — pulls `cur_snap["crypto"]`, converts
+  via `sek_per_eur`, matches `equity_row`'s shape. Confirmed in code and
+  confirmed live this sweep: ETH reprices to 8,945.96 SEK in the position
+  report instead of carrying the stale 2026-08-03 book value the portfolio
+  agent had been correcting by hand for two prior sweeps.
+- **2026-08-12 — S10 resolved, not just improved.** All three specific
+  gaps the item named are directly fixed in the Watchlist as of the
+  2026-08-12 Excel import: `HM B` (category `nordic_consumer_retail`),
+  `SEB A` + `SWED A` (category `nordic_financials`), and `SAAB B` (category
+  `nordic_aerospace_defense`) are all present, each with a note explaining
+  what gap it fills. The `broad_index_etfs` category's US-domiciled entries
+  (VOO, QQQ, IWDA) are no longer the only option — a new
+  `eu_ucits_etf_alternatives` category (CSPX, EQQQ, VWCE) sits alongside
+  them, each row's note explicitly cross-referencing which US-domiciled
+  ticker it substitutes for if that one isn't purchasable on Avanza.
+  Watchlist entry count also grew from 32 (2026-08-06) to 45, above the
+  ~43-ticker `universe.json` it replaced. Verified directly in
+  `data/cache/watchlist.json` this session, not just from the import
+  summary's entry count. This is a user-curated-content fix (the Watchlist
+  tab), not a code change, and the user made it before `meta` even proposed
+  it — recorded here as resolved evidence, not as a `meta`-driven fix.
+- **2026-08-12 — Transaction-dedup bug found and fixed the same session,
+  never carried forward as an open item.**
+  `scripts/import_excel_holdings.py`'s `key_val()` compared numeric fields
+  as raw strings, so `"1520.50"` and `"1520.5"` were treated as different
+  values — the same real AZN.ST trade got logged twice (once via manual
+  entry, once via Excel import) because the two `price_per_unit` strings
+  differed only in a trailing zero. Fixed at the root: `key_val()` now
+  normalizes numerics via `float()` comparison before falling back to a
+  plain string compare, with the incident documented directly in the
+  function's own comment. Confirmed in code this session.
+- **2026-08-12 — Capital-availability premise check (deferred 2026-08-11
+  as "one occurrence isn't a pattern") — now resolved and confirmed
+  working.** Not via a new S-item: a "Capital-availability premise check"
+  paragraph is now written directly into `council.md`'s Investment Council
+  method, explicitly citing both the 2026-08-10 (Avanza Global routing) and
+  2026-08-11 (AZN.ST funded from cash that didn't exist) incidents as the
+  evidence for it. This session's Call 1 (trim COIN-XBT.ST) used it
+  correctly: rather than assuming idle cash was available, it explicitly
+  verified `portfolio.json`'s ISK cash figure against this sweep's own data
+  (confirmed 0) before finalizing a call that generates and redeploys
+  capital — see the memo's "Capital-availability check" line. Two
+  occurrences (2026-08-10→11, 2026-08-11→12) were both caught before
+  execution by `journal`'s reconciliation; the standing guardrail now
+  closes the gap going forward instead of relying on reconciliation to
+  catch it after the fact each time. No further S-item needed unless the
+  guardrail itself is bypassed in a future sweep.
+- **2026-08-12 — D4 (profit-recycling gross-vs-realized-gain ambiguity)
+  folded into S12, not opened as a separate item.** Same "ambiguous shared
+  definition" failure class S12 exists to solve, and S12's own original
+  text anticipated extending to exactly this kind of third instance.
 - **2026-08-11 — S11 fixed and confirmed (two "% of 52-week range"
   definitions).** Valuation and thesis-review now both compute the true
   low-to-high percentile and agree with `position_report.py` by
@@ -552,7 +559,10 @@ and `reports/SESSION_LOG.md`.
   `meta` is deliberately not proposing a standing "would-buy-today
   pre-flight checklist" on a single instance. Revisit if a second,
   independent instance of a headline call resting on an unchecked-but-
-  checkable premise turns up in a future sweep.
+  checkable premise turns up in a future sweep. **Superseded 2026-08-12:**
+  a second instance did turn up (2026-08-11's own AZN.ST call, funded from
+  cash that turned out not to exist) — see the 2026-08-12 entry above for
+  the resolution.
 - **2026-08-10 — S2 rejected (Form-4 buy/sell direction parsing), cut to
   hold the ≤10-open-S-items cap.** The item's own text already conceded
   "lower value than it looks": it's US-only, and the system's actual

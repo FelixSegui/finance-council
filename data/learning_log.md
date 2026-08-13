@@ -128,3 +128,47 @@ and dated; nothing here is a source of truth for a decision, that's still
   are actually arguing about.
 
 ---
+
+## 2026-08-12 — `reports/2026-08-12-council-memo.md`
+
+- **Choosing a trim size is a different question from choosing a trim
+  direction, and the second one is where the leverage is.** Four independent
+  lines pointed at trimming crypto this sweep, but the agent-recommended
+  3,000-5,500 SEK band would have overshot: at two units the position drops to
+  8.99% of capital on the broadest denominator, a full point *below* the 10%
+  target. You would have cleared a trip-wire by creating an underweight —
+  fixing one deviation with another. The right move was to find the size that
+  satisfies every competing measurement at once (one unit: 10.19% / 11.57% /
+  10.76% across the three conventions). When a rule and a target pull in
+  opposite directions, solve for the overlap rather than picking a side.
+- **Sell the wrapper, not the idea.** The strongest argument against trimming
+  was genuinely good: BTC is 49% off its high with sentiment at Fear, and
+  selling drawn-down assets into fear is the classic retail mistake. What
+  dissolves that objection is noticing the position has two separable
+  properties — exposure to bitcoin, and a 2.5%/yr certificate fee. Bitcoin
+  exposure is held through the expensive vehicle *and* ethereum through a
+  zero-fee wallet. Trimming the expensive one preserves the conviction and
+  removes 64.53 SEK/yr of guaranteed drag. A guaranteed cost beats an uncertain
+  gain when you can separate them.
+- **Where money came from determines where it should go — the provenance
+  rule.** Last sweep routed spare ISK cash to AstraZeneca; this sweep routes
+  crypto trim proceeds to Avanza Global instead. That looks like a reversal and
+  is not. `investor_profile.json`'s `profit_recycling_rule` says gains from the
+  high-risk tier default into the secure tier — "a monetising machine." Last
+  sweep's money was leftover build cash, which the rule does not cover; this
+  sweep's is a high-risk-tier realization, which it does. Rules that key on the
+  *source* of capital rather than its amount are what stop a portfolio from
+  silently ratcheting up risk with every profitable trade.
+- **A thesis with no valuation leg cannot be broken by valuation — and that is
+  a weakness, not a defence.** ATCO-B, ALFA and ABB are all "Expensive" on PEG
+  (2.41 / 2.92 / 2.70), and the recorded thesis explicitly makes no price claim
+  ("strong track record… want to promote Swedish stocks"). Those two statements
+  do not contradict each other; they never touch. The consequence is that these
+  three holdings are structurally *harder to falsify* than AstraZeneca, whose
+  thesis names testable break conditions (margins deteriorate, dividend cut,
+  re-rates to a growth premium). An unfalsifiable thesis is comfortable to hold
+  and impossible to be wrong about, which is exactly why the binding constraint
+  on those names had to come from somewhere else — portfolio concentration,
+  which is a fact rather than an opinion.
+
+---

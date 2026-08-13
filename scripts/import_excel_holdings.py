@@ -460,6 +460,7 @@ def process_watchlist(wb, flags, dry_run):
     col_idx = {w: headers.index(w) for w in WATCHLIST_COLS if w in headers}
 
     entries = []
+    unfetchable = []
     for row_cells in ws.iter_rows(min_row=header_row + 1, max_row=ws.max_row):
         rec = {col: (row_cells[i].value if i < len(row_cells) else None) for col, i in col_idx.items()}
         if not rec.get("ticker"):
@@ -467,15 +468,39 @@ def process_watchlist(wb, flags, dry_run):
         if isinstance(rec.get("as_of"), datetime):
             rec["as_of"] = rec["as_of"].strftime("%Y-%m-%d")
         entries.append(rec)
+        # A ticker with a space is Excel's raw entity display name (e.g.
+        # "SEB A"), not a fetchable Yahoo symbol (e.g. "SEB-A.ST") - this
+        # isn't a guess, it 100%-reliably breaks the fetch URL (confirmed
+        # 2026-08-12: 12 of 45 Watchlist entries were in this shape).
+        # Flagged, never auto-corrected - scout.md's own rule is not to
+        # invent Nordic exchange suffixes from memory, since a wrong guess
+        # (there are several possible exchanges - .ST/.CO/.OL/.HE) is worse
+        # than an honest gap. The user or their Claude-for-Excel session,
+        # which can look the real symbol up, fixes this at the source.
+        if " " in rec["ticker"]:
+            unfetchable.append(rec["ticker"])
+
+    if unfetchable:
+        flags.append(
+            f"Watchlist tickers with a space in them ({', '.join(unfetchable)}) are Excel's raw "
+            f"entity name, not a fetchable ticker symbol - these will fail every screen/valuation "
+            f"fetch until corrected. Replace each with its real exchange-suffixed symbol (e.g. "
+            f"'SEB A' -> 'SEB-A.ST', 'HM B' -> 'HM-B.ST') - verify the exchange per name, don't "
+            f"assume .ST for all of them (e.g. Novo Nordisk is Copenhagen-listed, '.CO', not '.ST')."
+        )
 
     # "categories" groups tickers by the Watchlist's category column, in the
     # same {category: [tickers]} shape data/universe.json used - this is
     # what scripts/funnel/screen_candidates.py actually reads for a screen.
     # "entries" carries the full per-ticker record (including Excel's own
     # fundamentals and any per-row notes) for anything that wants more than
-    # just the ticker list.
+    # just the ticker list. Tickers with a space are excluded from
+    # categories (not screenable as-is, see the flag above) but kept in
+    # entries so the raw data isn't lost.
     categories = {}
     for rec in entries:
+        if " " in rec["ticker"]:
+            continue
         cat = rec.get("category") or "uncategorized"
         categories.setdefault(cat, []).append(rec["ticker"])
 

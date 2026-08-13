@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-12 22:52 UTC",
+  "generated": "2026-08-13 18:54 UTC",
   "dry_run": false,
   "source_xlsx": "/home/user/finance-council/data/cache/excel_import/master-5.xlsx",
   "fundamentals_updated": [
@@ -73,7 +73,9 @@
       ]
     }
   ],
-  "portfolio_deltas": [],
+  "portfolio_deltas": [
+    "CASH_SEK (avanza-isk): quantity 0 -> 1743.61 (from Excel)"
+  ],
   "transactions_appended": 0,
   "watchlist_entries": 45,
   "flags": [
@@ -81,6 +83,7 @@
     "ATCO-B.ST: P/E 2.05 is outside the 3-80 sanity range - treat as suspect, verify in Excel before using it.",
     "ATCO-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
     "SHB-A.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
-    "VOLV-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking."
+    "VOLV-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
+    "Watchlist tickers with a space in them (NOVO B, ERIC B, ASSA B, INVE B, INDU C, LATO B, KINV B, HEXA B, SEB A, SWED A, HM B, SAAB B) are Excel's raw entity name, not a fetchable ticker symbol - these will fail every screen/valuation fetch until corrected. Replace each with its real exchange-suffixed symbol (e.g. 'SEB A' -> 'SEB-A.ST', 'HM B' -> 'HM-B.ST') - verify the exchange per name, don't assume .ST for all of them (e.g. Novo Nordisk is Copenhagen-listed, '.CO', not '.ST')."
   ]
 }

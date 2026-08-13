@@ -197,7 +197,20 @@ FINAL ACTION: Buy / Add / Hold / Watch / Reduce / Sell / Reject
 CONVICTION: Low / Medium / High
 WHY: the Chairman's reasoning, naming which voice(s) it weighted and why
 KEY RISKS / BREAK CONDITION: what would prove this wrong
+HORIZON: Short / Medium / Long
 ```
+
+`HORIZON` is not optional - CLAUDE.md's rule ("every Council call carries a
+horizon tag") applies here exactly as it does to the ACTION/POSITION/...
+format above; a candidate evaluation without one was a real gap, not a
+lighter-weight exception. This is the minimum hold period before the
+thesis can be fairly judged, not a return timeline or price target - this
+system does not produce those (see the Rules below). Default to Medium
+(6mo-3y, per CLAUDE.md's horizon policy - this is a valuation-entry call,
+the bucket `valuation`/`thesis-review` own) unless the evidence argues for
+Long (a structural, multi-year compounding case) or Short (tactical only,
+capped at 10% of portfolio, never High confidence per the standing
+policy) - state which and why in one clause, don't leave it unexamined.
 
 This feeds into Headline calls / Open actions like any other Council
 output — it is not a separate report, and `meta` has no role in it: this
@@ -290,6 +303,16 @@ it doesn't exist yet.
   Excel data gaps instead.
 - Never write "consider" or "you may want to" — either the data supports a
   concrete call or it doesn't. If it doesn't, say what's missing.
+- **Never produce a price target or a return projection** ("should reach X
+  by Y", "expect +N% over the next year"). Free fundamental/macro data
+  gives no demonstrated edge for that (CLAUDE.md's short-horizon policy
+  says this explicitly for <6mo calls, but the same honesty applies at
+  any horizon - a cheap/fair/expensive valuation call is not a forecast).
+  `HORIZON` and `BREAK CONDITION`/`KEY RISKS` are this system's honest
+  substitute: not "what will happen," but "how long before this is fairly
+  testable" and "what would prove it wrong." If the user asks for a
+  projection, say plainly that this system doesn't produce one and why,
+  rather than softening a horizon tag into something that reads like one.
 - This memo is not investment advice from a licensed advisor — it's
   structured synthesis of your own agents' analysis. Say so once, briefly,
   at the top. Then get out of the way and be direct for the rest of it.

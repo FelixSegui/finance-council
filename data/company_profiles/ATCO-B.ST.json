@@ -1,10 +1,10 @@
 {
   "ticker": "ATCO-B.ST",
   "name": "Atlas Copco AB",
-  "profile_last_updated": "2026-08-13",
+  "profile_last_updated": "2026-08-17",
   "static_profile": {
     "business_description": null,
-    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-12)",
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-17)",
     "competitive_moat_notes": null,
     "management_notes": null,
     "last_reviewed": null
@@ -12,7 +12,7 @@
   "fundamentals_cache": {
     "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": null,
-    "extracted_date": "2026-08-12",
+    "extracted_date": "2026-08-17",
     "next_report_expected": null,
     "figures": {
       "ebit_margin_pct": {
@@ -79,11 +79,11 @@
         "calculation_method": "direct from source, not computed"
       },
       "price": {
-        "value": 182.4,
+        "value": 182,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -91,26 +91,26 @@
         "value": 2.05,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "SUSPECT",
         "calculation_method": "direct from source, not computed"
       },
       "market_cap": {
-        "value": 996001900000,
+        "value": 982471600000,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "beta": {
-        "value": 1.2727,
+        "value": 1.2713,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -127,8 +127,8 @@
         "value": "SEK",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },

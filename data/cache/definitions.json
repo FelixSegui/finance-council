@@ -1,0 +1,14 @@
+{
+  "_purpose": "Pinned canonical definitions for ambiguous shared terms (OPEN_ITEMS.md S12). Any agent computing a threshold that depends on one of these terms cites the entry here instead of recomputing its own reading each sweep. Grows one entry at a time, evidence-driven.",
+  "investable_capital_convention": {
+    "decided_by": "user",
+    "decided_date": "2026-08-17",
+    "resolves": "OPEN_ITEMS.md D3 / S12",
+    "choice": "full_portfolio",
+    "definition": "The crypto trip-wire (and any other 'percent of investable capital' figure) is measured against the FULL portfolio value across all accounts - not the investable-only subset (Avanza ISK + ETH wallet). Includes the hb-main tax reserve and PayPal balances in the denominator; excludes only the deliberately-excluded Revolut operating cash and the frozen SEB Osteuropafond (per portfolio.json's existing exclusion rules).",
+    "value_sek_at_decision": 214218.98,
+    "as_of_snapshot": "2026-08-17 council memo (reports/2026-08-17-council-memo.md)",
+    "rejected_alternative": "Convention B (investable-only: Avanza ISK + ETH wallet, 188,775.43 SEK at decision) - this was Council's 2026-08-12/17 recommendation but the user explicitly chose the full-portfolio reading instead (2026-08-17: 'It should be option 2 - on Full portfolio (214,218.98 SEK)').",
+    "note": "Under this convention the 12% crypto trip-wire did NOT fire on the 2026-08-17 sweep's own numbers (11.43% vs Convention B's 12.97%). Recompute the trip-wire check under this convention going forward, not Convention B."
+  }
+}

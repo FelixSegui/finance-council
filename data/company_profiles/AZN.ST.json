@@ -1,10 +1,10 @@
 {
   "ticker": "AZN.ST",
   "name": "ASTRAZENECA PLC",
-  "profile_last_updated": "2026-08-13",
+  "profile_last_updated": "2026-08-17",
   "static_profile": {
     "business_description": null,
-    "sector": "Pharmaceuticals (Excel Stocks data type, 2026-08-12)",
+    "sector": "Pharmaceuticals (Excel Stocks data type, 2026-08-17)",
     "competitive_moat_notes": null,
     "management_notes": null,
     "last_reviewed": null
@@ -12,7 +12,7 @@
   "fundamentals_cache": {
     "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": null,
-    "extracted_date": "2026-08-12",
+    "extracted_date": "2026-08-17",
     "next_report_expected": null,
     "figures": {
       "ebit_margin_pct": {
@@ -79,29 +79,29 @@
         "calculation_method": "direct from source, not computed"
       },
       "price": {
-        "value": 1507.5,
+        "value": 1502,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "pe_ratio": {
-        "value": 23.061,
+        "value": 22.9769,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "market_cap": {
-        "value": 183689500000,
+        "value": 177748400000,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -109,8 +109,8 @@
         "value": 1925.5,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -118,17 +118,17 @@
         "value": 640.3,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "beta": {
-        "value": 0.8309,
+        "value": 0.8448,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -145,8 +145,8 @@
         "value": "SEK",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },

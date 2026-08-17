@@ -99,7 +99,18 @@ combination is what flips this back to balanced.
   remaining two deliberately, one at a time — do not bulk-restore.
 
 ### P3 — PayPal routing (the fee is now known; the route isn't)
-- **Status:** open — two weeks with no movement, three options on the table
+- **Status:** decided — pending execution. **2026-08-17 (user):** "No I am not
+  going to do that, we are counting with the 4% conversion rate." The user
+  declined the Revolut 50 EUR test-transfer (Option C) — no measurement will
+  happen. This selects **Option A** outright rather than waiting for the
+  2026-09-03 dated fallback: convert the full PayPal balance (1,177.49 USD +
+  266.88 EUR) inside PayPal at the confirmed worst-case 4% spread (~563 SEK
+  cost on the balance at disclosure, recurring on the ~750-1,000 EUR/~2mo
+  inflow going forward — accept this as the standing planning figure, not a
+  one-off), then route the converted SEK into the ISK. **Next step:** the
+  user executes the PayPal conversion + ISK transfer; once done, zero out the
+  paypal holdings in `portfolio.json` and close this item.
+- **Superseded text below kept for history, not the live plan:**
 - **Confirmed 2026-08-03:** PayPal's conversion spread is 3-4%. Planning
   figure is **4%** (your instruction: assume worst case).
 - **What it costs:** ~563 SEK to convert the current 1,177.49 USD + 266.88 EUR
@@ -137,13 +148,27 @@ combination is what flips this back to balanced.
   simplest way to actually measure a cheaper route. It also now has a second-order effect: this balance is
   what keeps the crypto trip-wire (D3) from firing on the strictest honest
   reading — see S12.
-- **2026-08-17: fourth consecutive sweep unexecuted.** Council attached a
-  dated fallback: if the 50 EUR Revolut test transfer hasn't happened by
-  2026-09-03, execute Option A instead (convert inside PayPal, ~563 SEK
-  cost, route to ISK) rather than deliberate a fifth sweep.
+- **2026-08-17: fourth consecutive sweep unexecuted, then decided the same
+  day** — see the status line above. The dated fallback (execute Option A by
+  2026-09-03 if no Revolut test) is now moot: the user chose Option A
+  directly rather than waiting for the deadline.
 
 ### P4 — Replace the Bitcoin certificate with a cheaper one
-- **Status:** decided — pending research
+- **Status:** decided — pending research. **2026-08-17: the situation changed
+  from "trim and find something cheaper" to "already sold, what now."** The
+  user reports having sold the full 6-unit COIN-XBT.ST position at 2,561
+  SEK/unit (not the 1-unit trim the same-day Council memo had recommended) —
+  see `data/portfolio.json`'s COIN-XBT.ST `sale_record`. Live question: rebuy
+  the crypto exposure via **BITWISE TRND BITCN TRSR STRGY ETF (ARCX:BITC)** —
+  US-listed, fully BTC-backed per the user's own research, 0.15%/yr — instead
+  of a Nordic ISK certificate? That would cut the fee from 2.5%/yr to
+  0.15%/yr (a ~330 SEK/yr saving on the ~15,366 SEK proceeds) if Avanza
+  allows holding it inside the ISK (US-listed securities are generally
+  purchasable inside a Swedish ISK — needs confirming on the actual Avanza
+  platform, not assumed). Routed through this sweep's valuation/scout/council
+  Candidate Evaluation rather than answered here directly, since it is a
+  specific buy decision, not just a fee comparison. 15,366 SEK proceeds sit
+  as uninvested `avanza-isk` cash pending the answer.
 - **Decided 2026-08-03:** you will NOT move to self-custody real bitcoin. You
   want to stay inside the ISK wrapper and cut the fee instead. (This closes
   the old certificate-vs-self-custody question, and it's the right call on
@@ -204,13 +229,6 @@ combination is what flips this back to balanced.
   single-sector active fund with higher fees. Neither is disqualifying,
   both should be conscious choices if the remaining ~1,744 SEK (or future
   contributions) go toward them.
-
-### P7 — Verify the ISK allowance threshold with Skatteverket
-- **Status:** open — small, but it's an assumption load-bearing in the tax math
-- All ISK headroom math assumes a ~300,000 SEK threshold and a 30% K4 rate.
-  Both are assumptions the system has never verified, and ISK rules changed
-  recently. Current ISK total is ~181,000 SEK, so there's comfortable headroom
-  under the assumed figure — this is confirmation, not a live problem.
 
 ---
 
@@ -380,9 +398,17 @@ combination is what flips this back to balanced.
   no new plumbing needed.
 
 ### S12 — Canonical definitions for ambiguous shared terms: recurred a third time, now spans two conventions
-- **Status:** open — D3 (the original trigger) proposed-resolved 2026-08-12
-  pending user confirmation, and is now decision-relevant rather than
-  cosmetic; D4 folds into this item rather than opening separately
+- **Status:** open for the D4 sub-question only. **D3 CLOSED 2026-08-17** —
+  see the Closed log entry above. The user picked the full-portfolio
+  convention (Council's non-recommended option), now pinned in
+  `data/cache/definitions.json`. All future trip-wire/allocation-percentage
+  checks should cite that file's `investable_capital_convention` entry
+  instead of recomputing Convention A/B/C. D4 (gross-proceeds vs.
+  realized-gain-only for profit recycling) remains formally unconfirmed but
+  is now practically overtaken — see P4: the COIN-XBT.ST position was sold
+  in full, not trimmed, so the recycling question is moot for this specific
+  trade; revisit only if it becomes decision-relevant on a future partial
+  trim.
 - **Why:** the 2026-08-11 sweep's crypto trip-wire check (D3) produced
   **three different "investable capital" denominators for the identical
   24,115.89 SEK of crypto**: the 2026-08-10 pinned definition (204,611.94
@@ -608,6 +634,22 @@ alongside the S-items, not silently.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-17 — P7 closed: ISK allowance threshold confirmed by the user
+  at 300,000 SEK.** The system had been assuming ~300k unverified; the user
+  confirmed the figure directly (no Skatteverket lookup needed). Current ISK
+  total (~194k SEK as of this sweep) has comfortable headroom under it — see
+  `data/portfolio.json`'s `avanza-isk` account notes.
+- **2026-08-17 — D3 (crypto trip-wire denominator, S12) decided by the user:
+  full-portfolio convention, not Council's recommended investable-only
+  reading.** User's words: "It should be option 2 - on Full portfolio
+  (214,218.98 SEK)." Pinned in `data/cache/definitions.json`
+  (`investable_capital_convention`). Consequence: under this convention the
+  12% crypto trip-wire did NOT fire on the 2026-08-17 numbers (11.43% vs.
+  Convention B's 12.97%) — recompute future trip-wire checks against the
+  full-portfolio denominator, not Convention B. S12 itself stays open only
+  for the still-unconfirmed D4 sub-question (gross-proceeds vs.
+  realized-gain-only for profit recycling), which is now overtaken anyway by
+  the COIN-XBT.ST full sale — see P4.
 - **2026-08-17 — Watchlist 12-ticker malformed-format issue confirmed
   still open, addendum to the 2026-08-12 S10 closure (not a reopening).**
   S10's closure was correct on its own terms — the four named entries (HM

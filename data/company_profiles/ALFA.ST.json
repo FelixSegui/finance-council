@@ -1,10 +1,10 @@
 {
   "ticker": "ALFA.ST",
   "name": "Alfa Laval AB",
-  "profile_last_updated": "2026-08-13",
+  "profile_last_updated": "2026-08-17",
   "static_profile": {
     "business_description": null,
-    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-12)",
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-17)",
     "competitive_moat_notes": null,
     "management_notes": null,
     "last_reviewed": null
@@ -12,7 +12,7 @@
   "fundamentals_cache": {
     "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": null,
-    "extracted_date": "2026-08-12",
+    "extracted_date": "2026-08-17",
     "next_report_expected": null,
     "figures": {
       "ebit_margin_pct": {
@@ -79,38 +79,38 @@
         "calculation_method": "direct from source, not computed"
       },
       "price": {
-        "value": 565.2,
+        "value": 559.8,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "pe_ratio": {
-        "value": 28.5166,
+        "value": 28.2442,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "market_cap": {
-        "value": 233198700000,
+        "value": 230305400000,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "beta": {
-        "value": 0.9619,
+        "value": 0.9621,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -127,8 +127,8 @@
         "value": "SEK",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },

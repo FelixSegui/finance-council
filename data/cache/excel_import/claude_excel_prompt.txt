@@ -5,6 +5,5 @@ You're working inside my personal finance workbook (master-5.xlsx). Please make 
 3. ATCO-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
 4. SHB-A.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
 5. VOLV-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
-6. Watchlist tickers with a space in them (NOVO B, ERIC B, ASSA B, INVE B, INDU C, LATO B, KINV B, HEXA B, SEB A, SWED A, HM B, SAAB B) are Excel's raw entity name, not a fetchable ticker symbol - these will fail every screen/valuation fetch until corrected. Replace each with its real exchange-suffixed symbol (e.g. 'SEB A' -> 'SEB-A.ST', 'HM B' -> 'HM-B.ST') - verify the exchange per name, don't assume .ST for all of them (e.g. Novo Nordisk is Copenhagen-listed, '.CO', not '.ST').
 
 After making a fix, leave the cell's normal formatting/data type in place - this workbook is read by a script that expects the existing column layout, so don't restructure a sheet to fix a row.

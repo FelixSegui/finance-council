@@ -3,177 +3,417 @@
   "name": "Abb Ltd",
   "profile_last_updated": "2026-08-17",
   "static_profile": {
-    "business_description": null,
-    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-17)",
-    "competitive_moat_notes": null,
+    "business_description": "ABB Ltd \u2014 Swiss-domiciled, USD-reporting global electrification and automation group (electrification, motion, process automation, robotics/discrete automation), primary listing SIX Swiss Exchange, cross-listed on Nasdaq Stockholm (the ABB.ST line this portfolio holds). Not sourced from a fetched figure - general public-record description, no numeric claims embedded.",
+    "sector": "Industrials",
+    "competitive_moat_notes": "Global leadership in electrification/automation, direct exposure to grid-modernization and industrial-automation tailwinds; larger and more diversified than Atlas Copco/Alfa Laval but reports in USD, not SEK - see currency_note in fundamentals_cache. Durable observation, not tied to a specific fetch date.",
     "management_notes": null,
-    "last_reviewed": null
+    "last_reviewed": "2026-08-17"
   },
   "fundamentals_cache": {
-    "source": "Excel Stocks data type (Drive, read-only)",
-    "as_of_period": null,
+    "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json - supersedes the prior Excel-cache-only figures (all previously MISSING)",
+    "as_of_period": "ttm / most recent Yahoo quoteSummary pull",
     "extracted_date": "2026-08-17",
     "next_report_expected": null,
     "figures": {
-      "ebit_margin_pct": {
-        "value": null,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
-        "quality_state": "MISSING",
-        "calculation_method": "direct from source, not computed"
-      },
-      "roic_pct": {
-        "value": null,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
-        "quality_state": "MISSING",
-        "calculation_method": "direct from source, not computed"
-      },
-      "roe_pct": {
-        "value": null,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
-        "quality_state": "MISSING",
-        "calculation_method": "direct from source, not computed"
-      },
-      "revenue_growth_pct": {
-        "value": null,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
-        "quality_state": "MISSING",
-        "calculation_method": "direct from source, not computed"
-      },
-      "fcf_sek": {
-        "value": null,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
-        "quality_state": "MISSING",
-        "calculation_method": "direct from source, not computed"
-      },
-      "net_debt_to_ebitda": {
-        "value": null,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
-        "quality_state": "MISSING",
-        "calculation_method": "direct from source, not computed"
-      },
-      "payout_ratio_pct": {
-        "value": null,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
-        "quality_state": "MISSING",
-        "calculation_method": "direct from source, not computed"
-      },
       "price": {
-        "value": 979.2,
-        "source": "Excel Stocks data type (Drive, read-only)",
+        "value": 971.6,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
         "source_tier": 3,
         "as_of": "2026-08-17",
         "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
-      },
-      "pe_ratio": {
-        "value": 35.9603,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 0,
-        "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
-      },
-      "market_cap": {
-        "value": 150920700000,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 0,
-        "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
+        "calculation_method": "direct from source"
       },
       "week52_high": {
         "value": 1058.5,
-        "source": "Excel Stocks data type (Drive, read-only)",
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
         "source_tier": 3,
         "as_of": "2026-08-17",
         "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
+        "calculation_method": "direct from source"
       },
       "week52_low": {
-        "value": 145.5,
-        "source": "Excel Stocks data type (Drive, read-only)",
+        "value": 619.6,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
         "source_tier": 3,
         "as_of": "2026-08-17",
         "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
+        "calculation_method": "direct from source"
+      },
+      "market_cap": {
+        "value": 1774494810112,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "trailing_pe": {
+        "value": 37.580643,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "forward_pe": {
+        "value": 37.13852,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "peg_ratio": {
+        "value": 2.71,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "price_to_sales": {
+        "value": 49.63344,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "SUSPECT",
+        "calculation_method": "direct from source, but implausible (49.3x) for an industrial - see currency_note; do not use raw"
+      },
+      "price_to_book": {
+        "value": 111.712326,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "SUSPECT",
+        "calculation_method": "direct from source, but implausible (110.9x) for an industrial - see currency_note; do not use raw"
+      },
+      "dividend_yield_pct": {
+        "value": 1.14,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, converted to %"
+      },
+      "payout_ratio_pct": {
+        "value": 43.2,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, converted to %"
       },
       "beta": {
-        "value": 1.1451,
-        "source": "Excel Stocks data type (Drive, read-only)",
+        "value": 1.011,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
         "source_tier": 3,
         "as_of": "2026-08-17",
         "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
+        "calculation_method": "direct from source"
       },
-      "exchange": {
-        "value": "NASDAQ Stockholm",
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
-        "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
-      },
-      "currency": {
-        "value": "SEK",
-        "source": "Excel Stocks data type (Drive, read-only)",
+      "revenue_growth_pct": {
+        "value": 14.2,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
         "source_tier": 3,
         "as_of": "2026-08-17",
         "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
+        "calculation_method": "direct from source (ttm YoY), converted to %"
       },
-      "headquarters": {
-        "value": "Affolternstrasse 44, ZUERICH, ZUERICH, 8050 CH",
-        "source": "Excel Stocks data type (Drive, read-only)",
+      "revenue_history_last_n_fiscal_years": {
+        "value": [
+          {
+            "fiscal_year_end": "2025-12-31",
+            "total_revenue": 33220000000
+          },
+          {
+            "fiscal_year_end": "2024-12-31",
+            "total_revenue": 32850000000
+          },
+          {
+            "fiscal_year_end": "2023-12-31",
+            "total_revenue": 32235000000
+          },
+          {
+            "fiscal_year_end": "2022-12-31",
+            "total_revenue": 29446000000
+          }
+        ],
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
         "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
+        "calculation_method": "direct from source (fiscal-year totals)"
       },
-      "employees": {
-        "value": 112700,
-        "source": "Excel Stocks data type (Drive, read-only)",
+      "gross_margin_pct": {
+        "value": 40.247,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
         "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
+        "calculation_method": "direct from source"
+      },
+      "operating_margin_pct": {
+        "value": 16.908,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "ebitda_margin_pct": {
+        "value": 19.993,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "profit_margin_pct": {
+        "value": 14.086,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "roe_pct": {
+        "value": 32.575,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "roa_pct": {
+        "value": 8.951,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "debt_to_equity": {
+        "value": 55.751,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "ebitda": {
+        "value": 7148000256,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "total_cash": {
+        "value": 5856999936,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "total_debt": {
+        "value": 9146000384,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "operating_cashflow": {
+        "value": 5904999936,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "fcf_sek": {
+        "value": 1570499968,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source (trailing, single-figure, not a multi-year series)"
+      },
+      "fcf_margin_pct": {
+        "value": 4.393,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "computed: free_cashflow/total_revenue"
+      },
+      "capex": {
+        "value": 4334499968,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 6044948419.706881,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary - needs a filing/PDF extract"
+      },
+      "equity_book": {
+        "value": 15884503444.8,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 25030503828.8,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 20.6,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.147 (assumed statutory rate for Switzerland, NOT a real effective rate - no source provides one)"
+      },
+      "net_debt_to_ebitda": {
+        "value": 0.46,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "computed: (total_debt-total_cash)/ebitda"
+      },
+      "interest_coverage": {
+        "value": null,
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "MISSING",
+        "calculation_method": "blocked - interest_expense has no source"
+      },
+      "sector": {
+        "value": "Industrials",
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "industry": {
+        "value": "Electrical Equipment & Parts",
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source"
+      },
+      "country_of_listing_fundamentals": {
+        "value": "Switzerland",
+        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source - NOTE: country of the reporting entity behind the fetched fundamentals, see currency_note"
+      },
+      "price_to_sales_fx_corrected_est": {
+        "value": 5.24,
+        "source": "computed",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "market_cap (SEK) / sek_per_usd (9.4751, macro snapshot as_of 2026-08-07) / total_revenue - correcting for a likely USD/SEK unit mismatch (see currency_note)"
+      },
+      "price_to_book_fx_corrected_est": {
+        "value": 11.79,
+        "source": "computed",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "market_cap (SEK) / sek_per_usd (9.4751) / equity_book - correcting for a likely USD/SEK unit mismatch (see currency_note)"
+      },
+      "currency_note": {
+        "value": "DATA QUALITY FINDING: Yahoo's fetched price_to_sales (49.3x) and price_to_book (110.9x) for ABB.ST are implausible for an industrial with 40% gross margin and 33% ROE. market_cap/price appear correctly denominated in SEK (the Nasdaq Stockholm cross-listing quote), but total_revenue/equity_book/ebitda/cash/debt/FCF appear to still be ABB's USD-reported primary-listing figures, undivided by the ~9.475 SEK/USD rate - the same currency-mismatch pattern this system has already caught once (Investor AB's margin artifact, CLAUDE.md). FX-corrected estimates (price_to_sales_fx_corrected_est ~5.2x, price_to_book_fx_corrected_est ~11.7x) are far more plausible and are what this review actually used for the Valuation score. Margin/ROE/ROA/debt-to-equity fields are unaffected (same-currency ratios, numerator and denominator share whatever base currency the filing uses) and were used as-is.",
+        "source": "analysis note",
+        "source_tier": null,
+        "as_of": "2026-08-17",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "n/a"
       }
     }
   },
   "insider_activity_cache": {
-    "source": null,
-    "as_of_date": null,
-    "notes": null
+    "source": "Finansinspektionen Insynsregister via marknadssok.fi.se (scripts/fetch_market_data.py --fi-issuers), snapshot 20260817T111301.json",
+    "as_of_date": "2026-08-17",
+    "notes": "10 transactions returned, searched as 'ABB', filtered to exact issuer match (ABB Ltd) - no collision with unrelated issuers. RECENT AND NOTABLE: senior executive Peter Terwiesch made THREE separate open-market Disposals within 2 weeks of this review (18,799 sh @ 76.76 CHF on 07/31, 10,000 sh @ 77.30 CHF on 08/01, 20,000 sh @ 83.46 CHF on 08/14 - ~48,800 shares / ~CHF 3.85M combined), plus board member David Meline disposed 2,456 sh @ 82.12 CHF on 08/07. Not labeled as option-exercise pairs (unlike ATCO's pattern) - genuine sales. Separately, 2026-05-06 shows 6 board members each acquiring shares at an identical price (78.42 CHF) - a same-day, same-price cluster consistent with a routine annual board-compensation grant, weighted low per the skill's scheduled-transaction guidance, not a discretionary buy signal. Net read: the standout signal is recent, sizeable, repeated executive selling, the most bearish insider pattern of the three names."
   },
-  "review_history": []
+  "review_history": [
+    {
+      "date": "2026-08-17",
+      "composite_score": 51,
+      "dimensions_scored": 6,
+      "action": "REDUCE/ROTATION CANDIDATE - richest & most currency-ambiguous valuation, thinnest FCF conversion, recent exec insider selling cluster"
+    }
+  ]
 }

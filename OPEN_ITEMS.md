@@ -201,28 +201,47 @@ combination is what flips this back to balanced.
   is NAV discount/premium and it has never been obtained. See S6.
 
 ### P6 — Build the medium tier (~26,400 SEK available)
-- **Status:** decided — pending execution confirmation and post-purchase review
+- **Status:** retroactive review DONE 2026-08-17 — decision on rotation is now
+  a real, numbers-backed call rather than an overdue homework item.
 - **EXECUTED 2026-08-03/04** (user-reported): bought Volvo B (13sh @ 367.50),
   Atlas Copco B (27sh @ 181.25), AstraZeneca (4sh @ 1507), Alfa Laval
   (9sh @ 574.40), ABB (4sh @ 946.96) — 24,656.69 SEK of the 26,400.30 SEK
-  cash. The remaining ~1,743.61 SEK (computed, not broker-confirmed) is
-  recommended this sweep for a 6th AZN.ST share (2026-08-11 Council call,
-  reversing 2026-08-10's routing to Avanza Global — see Closed log).
-- **Not run through `swedish-equity-review` before buying** — 5 of the 10
-  candidates were picked without a documented comparison, and AstraZeneca,
-  Alfa Laval, and ABB have no `data/company_profiles/` entry at all (Volvo
-  and Atlas Copco A do, from the 2026-07-28 pre-purchase screen — note Atlas
-  Copco's existing profile is for the A share, this purchase is the B share).
-  AstraZeneca's thesis was written and executed 2026-08-06 (Council call D);
-  ATCO-B, ALFA and ABB remain without one, now on the 2026-09-03 deadline.
-- **Next step:** run `swedish-equity-review` on ATCO-B.ST, ALFA.ST and
-  ABB.ST retroactively — not to second-guess the trade, but so there's a
-  real baseline (score, coverage, insider activity) to test the thesis
-  against. Named as the system's own recommended next step for a **seventh
-  straight sweep** (2026-08-17) and has still never run — now the single
-  most-repeated unexecuted recommendation in the system, escalated
-  2026-08-17 to a hard 2026-09-03 default: if not run by then, these three
-  become rotation candidates ineligible for adds.
+  cash.
+- **`swedish-equity-review` RUN 2026-08-17** on the three names that had
+  never been through it (ATCO-B.ST, ALFA.ST, ABB.ST — AstraZeneca already had
+  a thesis via Council call D 2026-08-06). Fresh data both halves: Yahoo
+  quoteSummary fundamentals + Finansinspektionen insider transactions, same
+  session. All three scored 6/6 dimensions (100% coverage):
+  - **ALFA.ST — 63/100, best of the three.** Consistent 4-year revenue
+    growth (no down year), 10/10 real open-market insider buys since 2023
+    with zero disposals (strongest insider signal of the three). Still
+    expensive (P/E 28.1x, PEG 2.86 — actually the worst growth-adjusted
+    value of the three despite the lower headline multiple).
+  - **ATCO-B.ST — 62/100.** Excellent underlying business (42% gross
+    margin, ROE 25.7%, ROIC ~40% est., low leverage) but FY2025 revenue
+    declined -4.8% before a ttm recovery (+9.1%), priced at 98.5% of its
+    52-week range (P/E 33.2x, PEG 2.38), and only a thin/dated single-insider
+    buy signal.
+  - **ABB.ST — 51/100, the clear rotation candidate.** Richest valuation of
+    the three (P/E 37.3x, forward P/E essentially flat at 36.9x despite
+    14.2% ttm revenue growth — a margin-compression flag), thinnest FCF
+    conversion (~4.4% margin), a raw-data currency-mismatch finding (Yahoo's
+    P/S 49.3x / P/B 110.9x are USD/SEK-unit artifacts — FX-corrected to
+    ~5.2x / ~11.7x, see `data/company_profiles/ABB.ST.json`), and a recent
+    (last 2-3 weeks) insider-selling cluster: senior executive Peter
+    Terwiesch made three separate disposals (~48,800 shares / ~CHF 3.85M,
+    07/31-08/14) plus a board-member disposal.
+  - None breach the 15% single-position cap or even reach the "normal" 3-8%
+    band — each is ~1.8-2.4% of the portfolio, so this is a quality/rotation
+    call, not a sizing one. **Recommendation:** do not add to any of the
+    three at current valuations (all PEG > 2); hold ATCO-B.ST and ALFA.ST
+    (thesis intact on fundamentals, just expensive); treat ABB.ST as the
+    active rotation candidate if/when better-vetted capital needs a home —
+    the weakest score, richest and most data-flagged valuation, and the only
+    one with a live insider-selling signal.
+  - Full scored detail, sourcing, and quality-state flags for every figure:
+    `data/company_profiles/ATCO-B.ST.json`, `ALFA.ST.json`, `ABB.ST.json`
+    (`review_history`, dated 2026-08-17).
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated

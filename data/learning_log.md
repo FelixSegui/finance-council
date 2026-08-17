@@ -279,3 +279,47 @@ and dated; nothing here is a source of truth for a decision, that's still
   directly.
 
 ---
+
+## 2026-08-17 (memo 3, Stock Selection Council test run) — `reports/2026-08-17-council-memo-3-stock-selection-test.md`
+
+- **When forward P/E sits *above* trailing P/E, the market is telling you it
+  expects earnings to fall.** This showed up four separate times across one
+  76-name universe and is one of the cheapest sanity checks available. Tele2
+  looks like a 6.37%-yield defensive holding until you see trailing 11.4 against
+  forward 25.0 — consensus expects earnings to roughly halve, which is *why* the
+  yield is high. The same signature appears at Avanza Bank (22.4 → 30.8), Lifco
+  (37.3 → 39.6) and, in its flat form, ABB (37.6 → 37.1 *while revenue grew
+  14.2%*, which is the margin-compression version of the same message). The
+  reverse is equally informative: Nvidia at 34.5 → 17.6 and TotalEnergies at
+  11.1 → 9.2 are consensus saying earnings are rising fast.
+- **P/E and PEG can point opposite ways on the same stock, and that conflict is
+  the analysis, not a problem to resolve.** Novo Nordisk trades at a P/E of 11.2
+  — cheap — and a PEG of 3.11 — expensive. Both are correct: P/E asks "what am I
+  paying per krona of *current* earnings," PEG asks "per krona of *growth*." A
+  company with strong current earnings and stalled growth reads cheap on one and
+  expensive on the other. The whole investment question then collapses to which
+  number describes the future, and the honest answer here was "one more quarter
+  of revenue will tell you" — which is why a candidate four of seven analyst
+  lenses picked still resolved to WATCH rather than BUY.
+- **Buying an index fund's largest holdings individually concentrates your
+  portfolio — it does not diversify it.** Avanza Global is 54.84% of this
+  portfolio, and Meta, Alphabet, Nvidia, Microsoft, Apple and six others are
+  already inside it. Adding one individually takes on single-company risk (that
+  one firm's lawsuit, product miss, executive departure) in exchange for zero new
+  economic exposure. That single structural fact removed eleven of the thirty-two
+  names that passed the numeric screen — more than any valuation judgment did. It
+  is also why the honest response to liking a mega-cap is usually to buy more of
+  the index fund, not the stock.
+- **A screening threshold that is right on average is wrong for specific business
+  models, and knowing which is a real skill.** The screen used debt/equity above
+  150 as a fail. That is sensible for a manufacturer and meaningless for a bank,
+  whose entire business *is* leverage — which is why SEB and Swedbank got labelled
+  "missing data" rather than properly screened. Likewise profit margin for an
+  investment company (Kinnevik failed at 0.0%), and a 40x P/E cap for a defence
+  contractor whose order book runs years ahead of reported earnings (Saab). The
+  right response is not to abandon the threshold — it catches real problems most
+  of the time — but to be able to say *why* it does not apply to a specific name,
+  and to accept that "I can argue the screen is wrong here but I still cannot
+  underwrite the company without the data" is a legitimate place to stop.
+
+---

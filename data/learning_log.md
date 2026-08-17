@@ -172,3 +172,54 @@ and dated; nothing here is a source of truth for a decision, that's still
   which is a fact rather than an opinion.
 
 ---
+
+## 2026-08-17 — `reports/2026-08-17-council-memo.md`
+
+- **Five positions all near their highs at once is one fact, not five — and that
+  distinction changes what you do about it.** Read name-by-name, "Atlas Copco is
+  at 98% of its range" is unremarkable; strong companies spend a lot of time near
+  their highs. Read together, five holdings chosen for the *same* stated reason
+  ("strong track record", "Swedish industrial champion") all arriving at 92-99% of
+  their highs in the same week is a single bet that has already largely played
+  out, placed five times. The technical name for what makes them move together is
+  correlation — Volvo, Atlas Copco, Alfa Laval and ABB all sell equipment into the
+  same global capex cycle, so they are far less independent than four tickers
+  suggest. This is exactly why the memo's constraint on them is *concentration* (a
+  measurable fact: 65.29% of the stock sleeve) rather than *valuation* (an
+  opinion), and why the answer was "no more" rather than "sell."
+- **Beta is the number that put AstraZeneca on the right side of the regime while
+  ABB sits on the wrong one.** Beta measures how much a stock has historically
+  moved relative to the market: 1.0 means it moves with it, above 1.0 means it
+  amplifies it, below means it dampens it. AZN's beta is 0.211 — roughly a fifth
+  of market movement — against ABB at 1.011 and Atlas Copco at 1.071. With VIX at
+  14.63 (calm, arguably complacent), macro-regime's read is that cheap volatility
+  is exactly when defensive ballast is worth owning, because you are being asked
+  to pay very little for protection nobody currently wants. That single number,
+  not a view on drug pipelines, is why the defensive name is the one macro
+  declined to flag.
+- **A drawdown estimate built by summing worst cases is wrong in a known
+  direction, and saying so is more useful than reporting the number.** This
+  sweep's -42.3% figure assumes every asset has its worst year simultaneously —
+  that is, perfect correlation. Real portfolios do not behave that way, and this
+  one especially: 63.57% of it is a single globally diversified index fund whose
+  internal holdings partly offset each other. So the true number is almost
+  certainly better than -42.3%. But "the estimate is pessimistic" and "the target
+  is fine" are different statements, and the gap between them is what a real
+  backtest (S5) exists to close. The correct response to a biased estimate is to
+  run the unbiased test, not to average the bias away or to act on the biased
+  number — which is why Call 3 was a governance stop rather than an allocation
+  change.
+- **A backup data source that fails at the same time as the primary was never
+  really a backup.** COIN-XBT.ST has no working ticker — a known permanent fact —
+  so this system adopted spot bitcoin from CoinGecko as a directional proxy
+  precisely so that gap would not be a single point of failure. This week both
+  failed at once (ticker 404, CoinGecko rate-limited on three attempts), leaving
+  the trip-wire resting on a four-day-old spreadsheet cell. The right response was
+  not to estimate the price from training knowledge or from ETH's move — it was to
+  record "no data," then ask a different question: *how far off would the stale
+  price have to be for the decision to change?* The answer (~13.5% to make the
+  trim unnecessary, ~26.7% to make it harmful) turned an unanswerable question
+  into a decidable one. When you cannot get the number, test how much the number
+  matters.
+
+---

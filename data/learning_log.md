@@ -217,9 +217,65 @@ and dated; nothing here is a source of truth for a decision, that's still
   the trip-wire resting on a four-day-old spreadsheet cell. The right response was
   not to estimate the price from training knowledge or from ETH's move — it was to
   record "no data," then ask a different question: *how far off would the stale
-  price have to be for the decision to change?* The answer (~13.5% to make the
-  trim unnecessary, ~26.7% to make it harmful) turned an unanswerable question
-  into a decidable one. When you cannot get the number, test how much the number
-  matters.
+  price have to be for the decision to change?* The answer (~13.5% to make the trim
+  unnecessary, ~26.7% to make it harmful) turned an unanswerable question into a
+  decidable one. When you cannot get the number, test how much the number matters.
+
+---
+
+## 2026-08-17 (memo 2, live session) — `reports/2026-08-17-council-memo-2.md`
+
+- **"Fully BTC-backed" is a claim about a fund's *structure*, and structure is the
+  one thing a price feed can never tell you.** Three different products can carry
+  bitcoin in the name and behave completely differently: a **physically-backed ETP**
+  holds actual BTC in custody and tracks spot almost exactly; a **futures/strategy
+  fund** holds derivatives and can bleed value through roll costs or trend-following
+  whipsaw even when spot goes sideways; and a **treasury-company fund** holds shares
+  in businesses that own bitcoin, which adds equity risk, management decisions and
+  leverage on top. BITC's name — "TRND BITCN TRSR STRGY" — reads as the second or
+  third kind, not the first. The reason this mattered more than the fee arithmetic:
+  the whole trade was justified by saving 2.35 percentage points a year, which is
+  only a saving if you end up owning the same asset. **Optimizing the small number
+  while unknowingly changing the big one is the most common way a "cost-cutting"
+  trade destroys value.**
+- **Why you can buy Apple at Avanza but generally can't buy a US-listed ETF.**
+  Under EU rules (MiFID II / PRIIPs, in force since 2018), a fund sold to EU retail
+  investors must publish a short standardised **KID** — Key Information Document —
+  in a local language. US-domiciled ETFs publish a US prospectus instead and mostly
+  haven't bothered producing KIDs, so European brokers block them for retail
+  clients. Individual *shares* aren't caught by the rule, which is why the
+  restriction feels arbitrary until you know the mechanism. The practical takeaway
+  for your ISK: when a US ticker looks attractive, check whether it is a **company**
+  or a **fund** first — it changes whether the question is even askable.
+- **A backtest's window is part of its answer, and a suspiciously good CAGR is the
+  tell.** This sweep's real backtest says the 85/10/5/0 target's worst drawdown was
+  -19.95% — comfortably inside the -30% tolerance, and the opposite of the crude
+  estimate it replaced. But it also reports a **15.0% annual return** over 7.2
+  years, roughly double a realistic long-run global equity return. That is not good
+  news about the allocation; it is information about the period, which began in
+  2019 and excludes 2008 entirely. One more detail worth internalising: the target's
+  **max drawdown equalled its worst rolling 12 months**, meaning the entire fall
+  happened inside a single year. A slow -20% and a fast -20% are the same number and
+  very different experiences — the fast one is what makes people sell. This is why
+  the scorecard row moved to "OK (provisional)" rather than "validated."
+- **Rebalancing back to a target is not the same thing as timing the market, and
+  the distinction decides whether macro gets a vote.** Macro-regime flagged a real
+  headwind for crypto — strong dollar, US policy rate well above the ECB's,
+  sentiment at "Fear." It then drew the line itself: that warning applies to *sizing
+  up* on a "good entry" read, and is *irrelevant* to restoring an allocation you
+  already decided to hold. Restoring crypto from 4.13% to its written 10% is
+  mechanical compliance with a target you adopted; deciding that now is a great
+  moment to own more bitcoin would be a forecast, which this system doesn't make.
+  Same trade, two different justifications, and only one of them is defensible on
+  free data.
+- **When two of your own written rules collide, the collision is the finding.**
+  Your `profit_recycling_rule` says gains from the risky tier flow to the safe tier.
+  Your target says hold 10% crypto. Applied to a *partial* trim those never touch —
+  but applied to the *full* sale executed today, the recycling rule would
+  mechanically prevent you from ever holding 10% crypto again. Nobody decided that;
+  it would just happen. The general lesson is that rules written for one situation
+  quietly acquire consequences in another, and the moment to notice is when a rule
+  starts producing an outcome you would not have chosen if someone asked you
+  directly.
 
 ---

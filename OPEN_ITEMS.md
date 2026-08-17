@@ -14,7 +14,7 @@ Two sections, one list:
 Each item says what it's blocking, so you can tell at a glance whether it
 actually matters or is just paperwork. Every Council memo pulls its open
 actions from this file. When an item closes, move it to the bottom log with
-a one-line resolution — never delete it silently.
+a one-line resolution — never delete an item silently.
 
 **Status values:** `open` · `blocked (on what)` · `decided — pending execution` · `closed`
 
@@ -23,29 +23,36 @@ a one-line resolution — never delete it silently.
 ## This sweep's recommended emphasis
 
 **Emphasis:** portfolio-tending
-**Set by meta, 2026-08-12 (unchanged for a fourth consecutive sweep):**
-no signal this session argues for prospecting, and several argue for more
-portfolio-tending. `swedish-equity-review` on ATCO-B.ST/ALFA.ST/ABB.ST —
-named the system's own recommended next step for six straight sweeps now —
-still hasn't run, even though the theses that were blocking it (P6) were
-finally written this session; the review is now the only piece of P6 left
-open. PayPal routing (P3/D1) is a third consecutive sweep of the identical
-unexecuted recommendation, and it's the single open item whose annual cost
-(~1,970-2,630 SEK/yr) exceeds the entire portfolio's current fee drag —
-lever 2, not a discovery question. Two governance items also need the
-user's actual decision before 2026-09-03: D3 (crypto trip-wire denominator
-— Council recommends Convention B, not yet confirmed) and the newly
-opened D4 (does the profit-recycling rule apply to gross trim proceeds or
-the realized gain only — Council recommends option 1, not yet confirmed).
-Against all that, there remains no idle capital to deploy into a new name
-even if `scout` found one — this sweep's own headline call (trim
-COIN-XBT.ST) generates ~2,581 SEK and redeploys it inside the same call,
-not into an undeployed pool. The Watchlist itself is in good shape (grown
-to 45 entries, filled the specific gaps flagged in the old S10 — see the
-Closed log) so there's no live prospecting-side complaint either; it's
-simply not the constraint right now. Revisit at 2026-09-03: once
-`swedish-equity-review` has actually run, PayPal is routed, and D3/D4 are
-settled, that combination is what flips this back to balanced.
+**Set by meta, 2026-08-17 (unchanged for a fifth consecutive sweep,
+escalating):** No signal argues for prospecting this sweep — ISK cash is
+confirmed 0 SEK again, and even this sweep's own headline call (trim
+COIN-XBT.ST) generates and redeploys capital inside the same call rather
+than adding to an idle pool. Every portfolio-tending signal from last
+sweep is not just present but has hardened: `swedish-equity-review` on
+ATCO-B.ST/ALFA.ST/ABB.ST is now unexecuted for a **seventh** consecutive
+sweep (a hard 2026-09-03 default now attaches a real consequence —
+rotation-candidate status, not just another ask); PayPal routing (P3/D1)
+is a **fourth** consecutive sweep of identical unexecuted advice, now also
+carrying a 2026-09-03 dated fallback; and this sweep's own headline trim,
+dated for execution "today" by the 2026-08-12 sweep, was itself found
+unexecuted and had to be re-issued at lower confidence. New and
+higher-priority than anything named last sweep: the portfolio lens
+produced this system's first-ever (illustrative, not a real backtest)
+drawdown estimate against the user's stated -30% tolerance, and **both**
+the current mix (~-42.3%) and the adopted 85/10/5/0 target (~-45.75%)
+breach it — which makes running `backtest` against S5 the single
+highest-value unexecuted item in the system right now, not a footnote.
+Two governance items (D3, D4) still await the user's actual confirmation,
+both on the same 2026-09-03 deadline, and D3 is now decision-relevant
+rather than cosmetic (the two denominator conventions disagree on whether
+the crypto trip-wire fires: 12.97% vs 11.43% on the identical figure).
+None of this is a prospecting gap — the Watchlist itself is unchanged and
+adequate (still 45 entries; the 12 malformed-ticker entries flagged
+2026-08-11/12 remain a pending Excel-side fix, not a coverage gap, per
+this session's `meta` check). Revisit at 2026-09-03: once
+`swedish-equity-review` has actually run, PayPal is routed, D3/D4 are
+settled, and `backtest` has actually run against the -30% tolerance, that
+combination is what flips this back to balanced.
 
 ---
 
@@ -130,6 +137,10 @@ settled, that combination is what flips this back to balanced.
   simplest way to actually measure a cheaper route. It also now has a second-order effect: this balance is
   what keeps the crypto trip-wire (D3) from firing on the strictest honest
   reading — see S12.
+- **2026-08-17: fourth consecutive sweep unexecuted.** Council attached a
+  dated fallback: if the 50 EUR Revolut test transfer hasn't happened by
+  2026-09-03, execute Option A instead (convert inside PayPal, ~563 SEK
+  cost, route to ISK) rather than deliberate a fifth sweep.
 
 ### P4 — Replace the Bitcoin certificate with a cheaper one
 - **Status:** decided — pending research
@@ -182,10 +193,11 @@ settled, that combination is what flips this back to balanced.
 - **Next step:** run `swedish-equity-review` on ATCO-B.ST, ALFA.ST and
   ABB.ST retroactively — not to second-guess the trade, but so there's a
   real baseline (score, coverage, insider activity) to test the thesis
-  against. Named as the system's own recommended next step for a **fifth
-  straight sweep** (2026-08-11) and has still never run. This is now the
-  single most-repeated unexecuted recommendation in the system — see the
-  emphasis block above and this session's `meta` debate.
+  against. Named as the system's own recommended next step for a **seventh
+  straight sweep** (2026-08-17) and has still never run — now the single
+  most-repeated unexecuted recommendation in the system, escalated
+  2026-08-17 to a hard 2026-09-03 default: if not run by then, these three
+  become rotation candidates ineligible for adds.
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated
@@ -255,6 +267,17 @@ settled, that combination is what flips this back to balanced.
   nothing has ever actually tested. See step 5 review in this session's
   `meta` report for why this is judged "worth implementing soon."
 - **2026-08-12 note:** unchanged, same scorecard gap named again this sweep.
+- **2026-08-17 note — this session materially raises this item's priority,
+  not just repeats the gap.** The portfolio lens produced the system's
+  first-ever drawdown estimate against the target (explicitly labeled
+  illustrative, not a real backtest): current mix ≈-42.3%, the adopted
+  85/10/5/0 target ≈-45.75% — both breach the stated -30% tolerance. Two
+  alternative targets were checked and also rejected (a 50/5/5/40 option
+  reverts to a glidepath the user already overrode; an 82/6/12/0 option
+  still breaches at ≈-41.4%). `SESSION_LOG.md`'s own 2026-08-17 entry names
+  this "the highest-value unexecuted item in the system." Judged in this
+  session's roadmap review as **particularly valuable, worth implementing
+  soon** — see this session's `meta` report.
 
 ### S6 — No source for holding-company NAV discount/premium
 - **Status:** open — blocks half of P5
@@ -347,9 +370,9 @@ settled, that combination is what flips this back to balanced.
   no new plumbing needed.
 
 ### S12 — Canonical definitions for ambiguous shared terms: recurred a third time, now spans two conventions
-- **Status:** open — D3 (the original trigger) proposed-resolved this
-  sweep pending user confirmation; D4 (new) is the third instance of the
-  same failure class and folds into this item rather than opening separately
+- **Status:** open — D3 (the original trigger) proposed-resolved 2026-08-12
+  pending user confirmation, and is now decision-relevant rather than
+  cosmetic; D4 folds into this item rather than opening separately
 - **Why:** the 2026-08-11 sweep's crypto trip-wire check (D3) produced
   **three different "investable capital" denominators for the identical
   24,115.89 SEK of crypto**: the 2026-08-10 pinned definition (204,611.94
@@ -378,6 +401,17 @@ settled, that combination is what flips this back to balanced.
   original text ("extend this pattern... only if a third instance of the
   same failure class shows up"), that bar is now met — D4 is folded into
   this item rather than becoming a new S-item.
+- **2026-08-17 note — D3 is now decision-relevant, not cosmetic; the two
+  conventions disagree on the actual outcome.** On the identical 24,492.89
+  SEK of crypto exposure this sweep, Convention B (investable-only, still
+  unconfirmed by the user) reads 12.97% and fires the 12% trip-wire; the
+  full-portfolio reading reads 11.43% and does not fire. Every prior sweep
+  the two conventions differed only by margin; this is the first time they
+  disagree on the fired/not-fired outcome itself. Council sized this
+  sweep's trim (1 unit) to be correct under both readings rather than wait
+  for D3 to resolve — a workaround, not a substitute for the user's actual
+  confirmation, which both D3 and D4 still need before the 2026-09-03
+  deadline.
 - **How:** keep this narrow — a small `definitions` dictionary, not a new
   schema or framework. Add a `definitions` object to `portfolio.json` (or,
   if `portfolio.json` should stay lean per CLAUDE.md's token-hygiene note,
@@ -396,6 +430,55 @@ settled, that combination is what flips this back to balanced.
   sweep. Extend this pattern to a fourth ambiguous term only if a genuinely
   new instance of the same failure class shows up — the dictionary should
   grow one entry at a time, evidence-driven, not pre-built.
+
+### S13 — CoinGecko crypto fetch has no retry/backoff; a single 429 kills the entire crypto price path
+- **Status:** open
+- **Why:** confirmed in code — `fetch_crypto()` in
+  `scripts/fetch_market_data.py` makes exactly one HTTP request per call;
+  any exception (including a transient HTTP 429) is caught and returned as
+  `{"error": str(e)}` immediately, with no retry. This session, three
+  separate attempts to fetch bitcoin — the agreed directional proxy for the
+  permanently-dead COIN-XBT.ST ticker (404, known since 2026-08-03) — all
+  returned HTTP 429. The only reason any recovery was attempted at all was
+  three manual retries with `sleep` reconstructed ad hoc at the
+  orchestration layer, which is not reusable and won't run automatically
+  next time. This left the sweep's only executable trade recommendation
+  (the COIN-XBT.ST trim) resting on a 4-day-old Excel price with zero live
+  corroboration on either of its two price paths (own ticker 404, backup
+  proxy 429×3) at once — flagged directly in this session's
+  `SESSION_LOG.md` entry: "a backup that fails with the primary was never
+  really a backup."
+- **How:** in `scripts/fetch_market_data.py`'s `fetch_crypto()`, wrap the
+  single request in a small retry loop (2-3 attempts) with short
+  exponential backoff (e.g. 2s, then 5s) specifically on
+  `urllib.error.HTTPError` with `e.code == 429`, before falling back to the
+  existing `{"error": ...}` shape unchanged. Keep the "no data is fine,
+  never estimate" contract intact — this only makes the one existing fetch
+  call more resilient to a transient rate limit; it does not add a new
+  data source (see this session's `meta` debate for why a second live
+  provider was considered and rejected).
+
+### S14 — journal only "reminds" the user to append valuations.csv instead of appending it itself — confirmed to have actually dropped a row
+- **Status:** open
+- **Why:** `journal.md` Mode 2 step 3 currently says to "remind the user"
+  to append a row to `data/valuations.csv`, even though `journal` already
+  has Write tool access and could append it directly. This session's own
+  2026-08-17 `valuations.csv` row documents, in its own note field, that
+  no row exists for 2026-08-12 "even though a council memo ran that day" —
+  a confirmed, permanent gap in the performance-tracking series
+  (append-only, cannot be backfilled). This is the mechanism the CSV
+  itself effectively names as the cause: a manual reminder that depends on
+  the user acting on it, not an automated write.
+- **How:** in `journal.md`'s Mode 2, change step 3 from reminding the user
+  to `journal` computing `total_value_sek` itself (sum `portfolio.json`
+  holdings' market values against the snapshot used that sweep, same
+  full-portfolio convention `position_report.py`/`portfolio` already use)
+  and appending the row directly via Write, with an auto-generated `note`
+  field in the same style as existing rows (comparability caveats,
+  data-completeness flags). Keep a fallback: if `journal` can't confidently
+  compute the total that sweep, it still reminds the user instead of
+  guessing — same "no data is fine, don't estimate" rule that governs
+  everything else in this system.
 
 ---
 
@@ -437,6 +520,11 @@ alongside the S-items, not silently.
   when this phase was written (45 entries, 12 categories, sector gaps
   filled — see the S10 closed-log entry) — worth a fresh look at whether
   wiring the funnel to it is now more tractable than it was 2026-08-09.
+  **2026-08-17 caveat:** 12 of those 45 entries still carry a malformed
+  ticker (space instead of exchange suffix) as of the 2026-08-13 import —
+  see the 2026-08-17 addendum in the Closed log under S10. Whoever wires
+  Phase 3 to the Watchlist should confirm those are fixed first, or the
+  funnel will silently drop ~27% of entries on the first fetch.
 - **Phase 4 — not started.** `risk_factor_exposure` risk-bucket
   classification (Global industrial cycle / Defensive healthcare /
   Financials / etc.) distinct from sector — directly targets the Volvo +
@@ -466,7 +554,10 @@ alongside the S-items, not silently.
   score-calibration framework (log scores now, correlate against realized
   returns later - there's no historical score data yet to backtest
   against, so this phase starts as instrumentation, not a real backtest).
-  Spec sections 21-22, 29-30, 32, 37.
+  Spec sections 21-22, 29-30, 32, 37. **2026-08-17 note:** the ordinary
+  rolling-lookback form of `backtest` (no crisis-window fixed dates
+  needed) is already sufficient to run S5 against the -30% tolerance —
+  don't block S5 on this phase.
 
 ---
 
@@ -475,6 +566,47 @@ alongside the S-items, not silently.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-17 — Watchlist 12-ticker malformed-format issue confirmed
+  still open, addendum to the 2026-08-12 S10 closure (not a reopening).**
+  S10's closure was correct on its own terms — the four named entries (HM
+  B, SEB A, SWED A, SAAB B) are genuinely present in the Watchlist for
+  category coverage. Separately, the most recent Excel import (2026-08-13,
+  `data/cache/excel_import/latest-summary.json`) confirms all 12
+  space-instead-of-suffix tickers flagged 2026-08-11/12 — including these
+  same four — are still unfetchable; the existing `claude_excel_prompt.txt`
+  mechanism (CLAUDE.md flow step 1a) already surfaces the exact fix to the
+  user each import. No new S-item: this is a pending user-side Excel edit
+  already correctly flagged by the system, not a code gap.
+- **2026-08-17 — proposal (Maverick, this session's debate): add a second
+  live crypto price source as a tertiary fallback to CoinGecko —
+  rejected.** Confirmed real evidence this session (CoinGecko 429×3) but
+  the Minimalist's counter won: retry-with-backoff on the existing single
+  source (S13) addresses the actual failure mode (transient rate-limiting)
+  more cheaply than a second live provider, which would double the
+  plausibility-check surface for a feed that is already secondary
+  (directional proxy only) on a position about to shrink via its own trim.
+  Revisit only if 429s recur even after S13's retry logic ships.
+- **2026-08-17 — proposal: visually distinguish previously-dated-but-
+  unexecuted Council calls in the memo format — deferred, not opened.**
+  Real pattern this session (now two instances: the COIN-XBT.ST trim dated
+  "execute Monday" and not executed; PayPal's 4th consecutive sweep of
+  identical advice) but Council's own escalation mechanism (dated deadline
+  + hard default, already used for ATCO-B/ALFA/ABB since 2026-08-12 and
+  now for PayPal) appears to be handling this adequately without a format
+  change. Revisit if a 2026-09-03 deadline itself passes with no user
+  action, which would suggest the escalation mechanism alone isn't
+  sufficient.
+- **2026-08-17 — the scheduled task's stored prompt text contradicting
+  CLAUDE.md (twice this session) — not opened as an S-item, flagged
+  directly to the user instead.** Real, recurring friction (a stale
+  `--crypto ethereum`-only fetch flag, and a false "memo MUST open with the
+  Handelsbanken wrapper" premise resolved 2026-07-07) but the fix lives
+  entirely outside this repo — in whatever external tool stores the
+  scheduled task's prompt — and `meta` has no file in this repo to propose
+  a concrete "how" against. Both instances were correctly caught and
+  overridden by following CLAUDE.md this session, so there is no
+  data-integrity harm yet, but the pattern will keep recurring on every
+  future firing until the user edits the stored prompt directly.
 - **2026-08-12 — S3 fixed and confirmed (earnings calendar fetch failing).**
   `scripts/fetch_calendar.py`'s `fetch_earnings_dates()` now calls
   `_yahoo_session.fetch_quote_summary(t, modules="calendarEvents")` — the
@@ -509,6 +641,9 @@ and `reports/SESSION_LOG.md`.
   summary's entry count. This is a user-curated-content fix (the Watchlist
   tab), not a code change, and the user made it before `meta` even proposed
   it — recorded here as resolved evidence, not as a `meta`-driven fix.
+  **See the 2026-08-17 addendum above: category coverage is genuinely
+  fixed, but 12 of the 45 entries (including these same four) still carry
+  an unfetchable ticker format as of the most recent import.**
 - **2026-08-12 — Transaction-dedup bug found and fixed the same session,
   never carried forward as an open item.**
   `scripts/import_excel_holdings.py`'s `key_val()` compared numeric fields

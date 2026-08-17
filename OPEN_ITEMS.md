@@ -314,6 +314,16 @@ combination is what flips this back to balanced.
 - **2026-08-11 note:** no incident this session; judged "useful, can wait"
   in this sweep's roadmap review — see the `meta` report.
 - **2026-08-12 note:** no incident this session; same judgment holds.
+- **2026-08-17 note — a related but distinct incident occurred this
+  session, tracked separately as S15, not folded in here.** The `journal`
+  subagent itself overwrote `reports/SESSION_LOG.md` (full-file rewrite
+  instead of prepend), not a git merge dropping the file — a different
+  root cause (agent write behavior, not merge hygiene) even though it hits
+  the same file. S8's manifest-check design (file exists, above a trivial
+  size threshold) is a weak backstop for this specific failure shape (a
+  single fresh entry could still clear a "trivial" threshold) — worth
+  revisiting whether S8's "how" should also assert line-count
+  monotonically increases, not just non-triviality, once S15 is scoped.
 
 ### S9 — Excel import script: three data-quality flags (cross-field plausibility + purchase-without-thesis + Excel-vs-confirmed-override conflicts)
 - **Status:** open — new evidence this session (a real instance of gap (c)
@@ -479,6 +489,38 @@ combination is what flips this back to balanced.
   compute the total that sweep, it still reminds the user instead of
   guessing — same "no data is fine, don't estimate" rule that governs
   everything else in this system.
+
+### S15 — journal overwrote SESSION_LOG.md instead of appending (first observed failure of the system's only calibration mechanism)
+- **Status:** open
+- **Why:** this session, the `journal` subagent's end-of-sweep write to
+  `reports/SESSION_LOG.md` did not append/prepend correctly — it replaced
+  the entire ~660-line append-only history (2026-08-06 through 2026-08-12)
+  with only the new 2026-08-17 entry. Caught immediately via a git diff
+  (656 deletions on a file CLAUDE.md defines as append-only, "the system's
+  memory across sessions") and fixed by hand: full history restored from
+  the prior commit, the new entry re-inserted above it in the documented
+  format, committed as `1a2bef3` ("Fix: journal agent overwrote
+  SESSION_LOG.md instead of prepending"). No data was permanently lost —
+  git history had the prior version — but the failure was **silent**: the
+  subagent's own summary reported success, with no self-detected error,
+  on the one file CLAUDE.md calls "the system's only calibration
+  mechanism." This is a first-time-observed failure mode, distinct from
+  S8 (which guards against a *git merge* dropping a file entirely) — here
+  the file existed and was written to, just with the wrong operation (full
+  rewrite instead of insert-above).
+- **How:** two changes, both small, in `journal.md`'s Mode 2 step 2: (1)
+  make the instruction explicit that this is a targeted insert — read the
+  current file, prepend the new entry above the existing content (keeping
+  the format-block header and all prior entries verbatim), and write the
+  concatenated result back — not phrased loosely enough ("write a new
+  entry to the file") to be read as a full rewrite; (2) add a post-write
+  self-check: after writing, re-read the file and confirm (a) line count
+  increased versus the pre-write read, and (b) the previous top entry's
+  date/headline still appears somewhere in the new content; if either
+  check fails, report the failure explicitly instead of a silent success
+  summary. This closes the "silent" half of the failure specifically — the
+  wrong write already happened once with the agent reporting success
+  regardless.
 
 ---
 

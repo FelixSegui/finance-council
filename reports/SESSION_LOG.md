@@ -17,6 +17,85 @@ Entry format:
 
 ---
 
+## 2026-08-17 — swedish-equity-review finally run on ATCO-B.ST/ALFA.ST/ABB.ST (7-sweep-overdue P6 item, closed before the 2026-09-03 deadline); ABB.ST comes out clearly weakest, with a real currency-data-mismatch finding and a live insider-selling cluster
+
+**On-demand skill run, not the weekly Council sweep** — user explicitly
+asked for `swedish-equity-review` on the three never-reviewed P6 names
+before this session's larger sweep, "on fresh data." Ran as one combined
+pass (batching was fine for 3 tickers — each got independently fetched,
+independently scored dimensions, no shared/copied numbers) rather than
+split invocations.
+
+- **Snapshot:** data/cache/snapshots/20260817T111301.json (fresh same-day
+  fetch — superseded 20260817T061032.json/20260817T111226.json, the
+  earlier ones this session, once `beautifulsoup4` was installed to fix
+  the FI insider fetch, which had been silently erroring with `No module
+  named 'bs4'` on the first attempt). Both halves fetched clean this run:
+  full Yahoo quoteSummary fundamentals (price, P/E, PEG, margins, ROE/ROA,
+  ROIC-estimated, debt/equity, 4-year revenue history, trailing FCF) AND
+  real Finansinspektionen insider transactions (`--fi-issuers "Atlas
+  Copco,Alfa Laval,ABB"`), all exact issuer-name matches, no collision
+  noise.
+- **Memo:** none (skill output only — feeds this session's Council memo,
+  not a standalone report file).
+- **Scores (6/6 dimensions, 100% coverage on all three):**
+  - **ALFA.ST 63/100** — best of the three. Consistent 4-year revenue
+    growth (no down year, ttm +7.7%), 10/10 real open-market insider buys
+    since 2023 with zero disposals across 7 distinct insiders (strongest
+    insider signal of the three). Still expensive: P/E 28.1x, PEG 2.86 —
+    worst growth-adjusted value of the three despite the lowest headline
+    multiple.
+  - **ATCO-B.ST 62/100** — excellent business (42% gross margin, ROE
+    25.7%, ROIC ~40% est., D/E 33.7) but FY2025 revenue declined -4.8%
+    before a ttm recovery (+9.1%), priced at 98.5% of its 52-week range
+    (P/E 33.2x, PEG 2.38), thin/dated single-insider buy signal only.
+  - **ABB.ST 51/100** — clear rotation candidate. Richest valuation (P/E
+    37.3x, forward P/E essentially flat at 36.9x despite 14.2% ttm revenue
+    growth — margin-compression flag), thinnest FCF conversion (~4.4%
+    margin), a raw-data currency-mismatch finding (Yahoo's P/S 49.3x / P/B
+    110.9x are USD/SEK-unit artifacts, same pattern as the Investor AB
+    margin artifact CLAUDE.md already documents — FX-corrected to ~5.2x /
+    ~11.7x using the day's sek_per_usd), and a live insider-selling
+    cluster: senior executive Peter Terwiesch made three separate
+    disposals (~48,800 shares / ~CHF 3.85M, 2026-07-31 to 2026-08-14) plus
+    a board-member disposal, all within 2-3 weeks of this review.
+- **Headline calls:**
+  1. Do not add to any of the three at current valuations (all PEG > 2) →
+     confidence **High** → horizon **Long**.
+  2. Hold ATCO-B.ST and ALFA.ST — thesis intact on fundamentals, just
+     expensive, no break condition triggered → confidence **Medium** →
+     horizon **Long**.
+  3. Treat ABB.ST as the active P6 rotation candidate if/when
+     better-vetted capital needs a home — weakest score, richest and only
+     currency-flagged valuation, only name with a live insider-selling
+     signal → confidence **Medium** → horizon **Long**.
+- **User decisions:** none logged yet — this review's findings are input
+  to this session's Council memo, not an executed trade.
+- **Reconciliation:** this closes the single most-repeated unexecuted
+  recommendation in the system (named in 7 consecutive prior sweeps,
+  2026-08-06 through 2026-08-17, against a 2026-09-03 hard deadline) —
+  closed 17 days ahead of that deadline. Position sizing check: all three
+  are ~1.8-2.4% of the portfolio, nowhere near the 15% cap or even the
+  "normal" 3-8% band, so this was purely a quality/rotation call, not a
+  sizing one.
+- **State written:** `data/company_profiles/ATCO-B.ST.json`,
+  `ALFA.ST.json`, `ABB.ST.json` — `review_history` populated (was empty on
+  all three), `fundamentals_cache.figures` upgraded from Excel-only
+  (all-MISSING) to full fetched figures, `insider_activity_cache`
+  populated. `data/portfolio.json` — the three holdings' thesis fields
+  updated with the scored findings (pointers to the profile files, not
+  duplicated research), `thesis_status` left at WEAKENING (fundamentals
+  aren't broken, but none of the three have a differentiated case at
+  current price). `OPEN_ITEMS.md` P6 entry updated to reflect the review
+  as done.
+- **Open items carried forward:** everything else in `OPEN_ITEMS.md`
+  unchanged by this run — P1-P5, P7 (already closed this session before
+  this skill ran), S-items untouched. This skill does not touch the
+  crypto sleeve, fund selection, or macro positioning — those stay with
+  `portfolio`/`macro-regime`/`valuation` in the weekly sweep.
+
+---
+
 ## 2026-08-17 — The COIN-XBT.ST trim decided for "today" wasn't executed and got re-issued at lower confidence; BTC un-priceable on both its paths at once (429×3); five WEAKENING names now cluster at 92-99% of their highs; first-ever drawdown estimate says the adopted target breaches the stated tolerance
 
 - **Snapshot:** data/cache/snapshots/20260817T061032.json (previous:

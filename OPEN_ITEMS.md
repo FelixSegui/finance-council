@@ -167,8 +167,22 @@ combination is what flips this back to balanced.
   purchasable inside a Swedish ISK — needs confirming on the actual Avanza
   platform, not assumed). Routed through this sweep's valuation/scout/council
   Candidate Evaluation rather than answered here directly, since it is a
-  specific buy decision, not just a fee comparison. 15,366 SEK proceeds sit
-  as uninvested `avanza-isk` cash pending the answer.
+  specific buy decision, not just a fee comparison.
+- **RESOLVED 2026-08-17 (Council Candidate Evaluation, second memo of the
+  day, `reports/2026-08-17-council-memo-2.md`): REJECT BITC, High
+  conviction.** The ticker's full name ("TRND BITCN TRSR STRGY") reads as a
+  bitcoin-*treasury-strategy* product (equities of BTC-treasury companies,
+  or a derivatives overlay) rather than a confirmed spot-BTC tracker — the
+  entire ~330 SEK/yr fee-saving case depends on like-for-like exposure that
+  is unverified from any fetched data. Second, likely-faster disqualifier
+  flagged but not load-bearing: US-listed ETFs are generally unavailable to
+  EU retail investors under MiFID II/PRIIPs (unlike individual US stocks),
+  untested directly with Avanza. **P4 stays open** — find a verified,
+  physically-backed BTC ETP/certificate (see S1). Council's Call 2: deploy
+  the traceable 15,366 SEK sale proceeds as 2,513 SEK to Avanza Global now
+  and 12,853 SEK earmarked in cash for a verified BTC ETP, with a hard
+  **2026-09-03** auto-convert-to-Avanza-Global default if nothing verified
+  by then — do not let it sit idle indefinitely.
 - **Decided 2026-08-03:** you will NOT move to self-custody real bitcoin. You
   want to stay inside the ISK wrapper and cut the fee instead. (This closes
   the old certificate-vs-self-custody question, and it's the right call on
@@ -417,17 +431,28 @@ combination is what flips this back to balanced.
   no new plumbing needed.
 
 ### S12 — Canonical definitions for ambiguous shared terms: recurred a third time, now spans two conventions
-- **Status:** open for the D4 sub-question only. **D3 CLOSED 2026-08-17** —
-  see the Closed log entry above. The user picked the full-portfolio
-  convention (Council's non-recommended option), now pinned in
+- **Status:** open for the D4 sub-question, which the 2026-08-17 second
+  memo REOPENED rather than closed. **D3 CLOSED 2026-08-17** — see the
+  Closed log entry above. The user picked the full-portfolio convention
+  (Council's non-recommended option), now pinned in
   `data/cache/definitions.json`. All future trip-wire/allocation-percentage
   checks should cite that file's `investable_capital_convention` entry
-  instead of recomputing Convention A/B/C. D4 (gross-proceeds vs.
-  realized-gain-only for profit recycling) remains formally unconfirmed but
-  is now practically overtaken — see P4: the COIN-XBT.ST position was sold
-  in full, not trimmed, so the recycling question is moot for this specific
-  trade; revisit only if it becomes decision-relevant on a future partial
-  trim.
+  instead of recomputing Convention A/B/C.
+- **D4 correction, 2026-08-17: an earlier note in this file (same day) said
+  the full COIN-XBT.ST sale made D4 "practically overtaken" - that was
+  wrong, and Council's second memo caught it.** Applied to a full sale
+  rather than a partial trim, the two readings of `profit_recycling_rule`
+  now differ by their largest margin ever (gross proceeds 15,366 SEK vs.
+  realized gain 3,265.98 SEK) - and the gross-proceeds reading, taken
+  literally, would mechanically prevent crypto from ever returning to the
+  adopted 10% target after any full sale, which is an allocation decision
+  being made by a bookkeeping rule rather than by the user. Three options
+  on the table (see the memo's Open Decisions section for full trade-offs):
+  (1) target governs sizing, recycling rule governs only the surplus above
+  target - Council's recommendation, assumed by this sweep's Call 2; (2)
+  gross proceeds, all 15,366 SEK to the secure tier (Avanza Global); (3)
+  realized gain only, 3,265.98 SEK to Avanza Global, 12,100 SEK free. Needs
+  the user's actual confirmation, same as D3 did.
 - **Why:** the 2026-08-11 sweep's crypto trip-wire check (D3) produced
   **three different "investable capital" denominators for the identical
   24,115.89 SEK of crypto**: the 2026-08-10 pinned definition (204,611.94
@@ -665,10 +690,12 @@ and `reports/SESSION_LOG.md`.
   (`investable_capital_convention`). Consequence: under this convention the
   12% crypto trip-wire did NOT fire on the 2026-08-17 numbers (11.43% vs.
   Convention B's 12.97%) — recompute future trip-wire checks against the
-  full-portfolio denominator, not Convention B. S12 itself stays open only
-  for the still-unconfirmed D4 sub-question (gross-proceeds vs.
-  realized-gain-only for profit recycling), which is now overtaken anyway by
-  the COIN-XBT.ST full sale — see P4.
+  full-portfolio denominator, not Convention B. S12 itself stays open for
+  the D4 sub-question (gross-proceeds vs. realized-gain-only for profit
+  recycling) — this was first thought moot given the COIN-XBT.ST full sale,
+  but the same day's second Council memo caught that the opposite is true
+  (a full sale makes the two readings' gap the largest it has ever been) and
+  REOPENED D4 rather than closing it — see the S12 entry above and P4.
 - **2026-08-17 — Watchlist 12-ticker malformed-format issue confirmed
   still open, addendum to the 2026-08-12 S10 closure (not a reopening).**
   S10's closure was correct on its own terms — the four named entries (HM

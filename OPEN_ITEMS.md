@@ -22,37 +22,31 @@ a one-line resolution — never delete an item silently.
 
 ## This sweep's recommended emphasis
 
-**Emphasis:** portfolio-tending
-**Set by meta, 2026-08-17 (unchanged for a fifth consecutive sweep,
-escalating):** No signal argues for prospecting this sweep — ISK cash is
-confirmed 0 SEK again, and even this sweep's own headline call (trim
-COIN-XBT.ST) generates and redeploys capital inside the same call rather
-than adding to an idle pool. Every portfolio-tending signal from last
-sweep is not just present but has hardened: `swedish-equity-review` on
-ATCO-B.ST/ALFA.ST/ABB.ST is now unexecuted for a **seventh** consecutive
-sweep (a hard 2026-09-03 default now attaches a real consequence —
-rotation-candidate status, not just another ask); PayPal routing (P3/D1)
-is a **fourth** consecutive sweep of identical unexecuted advice, now also
-carrying a 2026-09-03 dated fallback; and this sweep's own headline trim,
-dated for execution "today" by the 2026-08-12 sweep, was itself found
-unexecuted and had to be re-issued at lower confidence. New and
-higher-priority than anything named last sweep: the portfolio lens
-produced this system's first-ever (illustrative, not a real backtest)
-drawdown estimate against the user's stated -30% tolerance, and **both**
-the current mix (~-42.3%) and the adopted 85/10/5/0 target (~-45.75%)
-breach it — which makes running `backtest` against S5 the single
-highest-value unexecuted item in the system right now, not a footnote.
-Two governance items (D3, D4) still await the user's actual confirmation,
-both on the same 2026-09-03 deadline, and D3 is now decision-relevant
-rather than cosmetic (the two denominator conventions disagree on whether
-the crypto trip-wire fires: 12.97% vs 11.43% on the identical figure).
-None of this is a prospecting gap — the Watchlist itself is unchanged and
-adequate (still 45 entries; the 12 malformed-ticker entries flagged
-2026-08-11/12 remain a pending Excel-side fix, not a coverage gap, per
-this session's `meta` check). Revisit at 2026-09-03: once
-`swedish-equity-review` has actually run, PayPal is routed, D3/D4 are
-settled, and `backtest` has actually run against the -30% tolerance, that
-combination is what flips this back to balanced.
+**Emphasis:** balanced
+**Set by meta, 2026-08-17 (second entry same day — ends a five-sweep
+portfolio-tending escalation):** The live session that produced
+`reports/2026-08-17-council-memo-2.md` cleared almost everything that had
+been driving portfolio-tending's escalation in a row: `swedish-equity-review`
+finally ran on ATCO-B.ST/ALFA.ST/ABB.ST (P6 closed), PayPal routing is
+decided (P3), the ISK allowance is confirmed at 300,000 SEK (P7 closed),
+and S5's real backtest ran for the first time and cleared the -30%
+tolerance on both the current mix and the adopted target. What's left open
+doesn't lean cleanly either way: D4 (profit-recycling convention) and P1
+(ETH cost basis) need only the user's own input, not more system analysis;
+P4/S1 (find one verified, physically-backed Nordic BTC ETP before the
+2026-09-03 default) is a live discovery task with a real deadline; and
+`scout`'s five new candidates this session (MSCI, SNPS, ARM, SCCO, STL)
+need adding to the Watchlist and screening next sweep against the
+ACT-rated industrials concentration. No idle cash sits without a plan —
+the 15,366 SEK freed by the full COIN-XBT.ST sale is already split
+between an equity buy and a dated crypto earmark, so the "idle deployable
+cash → lean prospecting" trigger doesn't fire either. A live discovery
+task (S1, the new scout candidates) sitting alongside a shrunk-but-real
+portfolio-tending residue (D4, ABB's second insider-pull watch, PayPal
+execution) is the rubric's own definition of balanced, not a coin flip.
+Revisit toward portfolio-tending if S1 resolves and the new candidates get
+screened cleanly (then it's about watching ABB/AZN play out); revisit
+toward prospecting if a new structural watchlist/universe gap turns up.
 
 ---
 
@@ -64,6 +58,11 @@ combination is what flips this back to balanced.
   position reprices from live data. What remains is only the cost basis.
 - **Blocks:** any sale, any tax math, any return figure for the position.
   Swedish K4 requires cost basis; without it a sale can't be reported properly.
+  **2026-08-17 note:** it now also blocks more than tax math — Council this
+  session rejected "add more self-custody ETH" as a fallback crypto vehicle
+  specifically because P1 being open means adding units makes an
+  already-unsolvable tax problem permanently worse. See the Closed log for
+  why this stayed a same-sweep correction rather than a new S-item.
 - **Not urgent** unless you intend to sell.
 
 ### P2 — Port what's worth keeping from the merged branch
@@ -182,7 +181,11 @@ combination is what flips this back to balanced.
   the traceable 15,366 SEK sale proceeds as 2,513 SEK to Avanza Global now
   and 12,853 SEK earmarked in cash for a verified BTC ETP, with a hard
   **2026-09-03** auto-convert-to-Avanza-Global default if nothing verified
-  by then — do not let it sit idle indefinitely.
+  by then — do not let it sit idle indefinitely. Council also explicitly
+  rejected the portfolio agent's own named fallback ("more self-custody ETH
+  if BITC fails") as the worst of the three options — P1 being open makes
+  adding ETH units permanently harder to tax-account for, not a neutral
+  substitute for cash.
 - **Decided 2026-08-03:** you will NOT move to self-custody real bitcoin. You
   want to stay inside the ISK wrapper and cut the fee instead. (This closes
   the old certificate-vs-self-custody question, and it's the right call on
@@ -203,13 +206,16 @@ combination is what flips this back to balanced.
   because there was spare cash to put to work. That candour matters and is
   recorded — it makes both **rotation candidates** rather than conviction
   holdings, which is directly relevant to the P6 medium-tier build.
-- **ETH still has no thesis** after 12+ sweeps, on the same 2026-09-03
-  hard deadline as ATCO-B/ALFA/ABB (2026-08-10 Council call). Quantity is
-  frozen — no adds under any condition — until either a thesis is written or
-  P1 (cost basis) closes, whichever comes first. The blocker is genuinely
-  you, not data: the system can price it but cannot invent why you hold it.
-  One sentence is enough — "diversification, hold 3+ years, sell if X" is
-  complete and testable.
+- **CORRECTED 2026-08-17: ETH does have a recorded thesis, this line was
+  stale.** `data/portfolio.json` has carried a full structured ETH thesis
+  since 2026-08-12 (in the user's own words — long-term conviction that
+  BTC/ETH are the "most secure" cryptocurrencies, 3y+ horizon), status
+  INTACT. This session's Council memo caught the disagreement between this
+  file and `portfolio.json` and treated `portfolio.json` as authoritative.
+  **The no-adds freeze stays in place regardless** — it was never actually
+  gated on the missing-thesis leg alone, and survives on the P1 (cost
+  basis) limb: no adds until P1 closes, so a sale/tax event can be reported
+  properly.
 - **INVE-A.ST keeps a separate open blocker:** its thesis is plausible but not
   properly *testable*, because the metric that matters for a holding company
   is NAV discount/premium and it has never been obtained. See S6.
@@ -256,6 +262,15 @@ combination is what flips this back to balanced.
   - Full scored detail, sourcing, and quality-state flags for every figure:
     `data/company_profiles/ATCO-B.ST.json`, `ALFA.ST.json`, `ABB.ST.json`
     (`review_history`, dated 2026-08-17).
+- **2026-08-17, same-day live session — the review's finding became
+  operational without yet triggering a trade.** Council's Call 4: hold all
+  three, no adds/trims, with ABB explicitly first in line if/when capital
+  needs a home from any source other than new money. ABB's own
+  `break_conditions` (written the same morning from the FI data) require the
+  insider-selling pattern to continue into a *second* FI pull before firing
+  as an active reduce signal — this was the first pull, so the Chairman
+  declined to override a condition written from real data on its first
+  observation. Watch for the next FI pull before 2026-09-03.
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated
@@ -287,6 +302,11 @@ combination is what flips this back to balanced.
   the Closed log) solved *pricing* for the certificate already held; S1 is
   about *discovering and verifying tickers for a replacement* certificate —
   still genuinely open, still the load-bearing blocker for P4.
+- **2026-08-17 note:** the crypto-proceeds candidate offered this session
+  (BITC, US-listed, ARCX) was rejected by Council specifically because it
+  is not a verified Nordic/EU physically-backed BTC vehicle — the exact
+  gap this item names. 12,853 SEK is earmarked and waiting on this, with a
+  hard 2026-09-03 default to Avanza Global if nothing verified by then.
 
 ### S4 — Swedish CPI is returning a stale period
 - **Status:** open
@@ -303,32 +323,15 @@ combination is what flips this back to balanced.
   was one of two explicit reasons Call 4 stayed HOLD rather than considering
   a regime-driven rotation. Worth prioritizing now that it touches a
   majority-SEK sleeve, not just a footnote.
-
-### S5 — Backtest the 85/10/5/0 target against the -30% drawdown tolerance
-- **Status:** open — the `backtest` agent exists and has never been run
-- Your stated tolerance is -30%. The adopted target has never been tested
-  against it. An 85% equity + 10% crypto portfolio plausibly draws down
-  more than 30% in a bad year, which would mean the target and the tolerance
-  contradict each other — and you'd find out at the worst possible time.
-- Pairs with P2: ideally test before formally writing the target in.
-- **2026-08-11 note:** this session's scorecard again lists "drawdown-tolerance
-  fit" as UNKNOWN and flags it as one of three named provisional gaps in the
-  memo — no new evidence beyond that, but it's the gap that keeps recurring
-  in every scorecard while remaining the one lever-3 (allocation) question
-  nothing has ever actually tested. See step 5 review in this session's
-  `meta` report for why this is judged "worth implementing soon."
-- **2026-08-12 note:** unchanged, same scorecard gap named again this sweep.
-- **2026-08-17 note — this session materially raises this item's priority,
-  not just repeats the gap.** The portfolio lens produced the system's
-  first-ever drawdown estimate against the target (explicitly labeled
-  illustrative, not a real backtest): current mix ≈-42.3%, the adopted
-  85/10/5/0 target ≈-45.75% — both breach the stated -30% tolerance. Two
-  alternative targets were checked and also rejected (a 50/5/5/40 option
-  reverts to a glidepath the user already overrode; an 82/6/12/0 option
-  still breaches at ≈-41.4%). `SESSION_LOG.md`'s own 2026-08-17 entry names
-  this "the highest-value unexecuted item in the system." Judged in this
-  session's roadmap review as **particularly valuable, worth implementing
-  soon** — see this session's `meta` report.
+- **2026-08-17 note:** the same gap capped confidence again this sweep — the
+  P6 review's ABB.ST rotation-candidate call (Call 4) named it explicitly:
+  "capped by S4: Swedish CPI is 8 months stale, so macro cannot
+  regime-grade Swedish industrials." Third sweep this has been cited as
+  directly limiting confidence on a live call touching the majority-SEK
+  stock sleeve (65.5% of it as of this session), not just a footnote.
+  Judged in this session's roadmap review as continuing to earn "worth
+  implementing soon" — it is a small, well-scoped fetcher fix blocking a
+  real, recurring confidence cap.
 
 ### S6 — No source for holding-company NAV discount/premium
 - **Status:** open — blocks half of P5
@@ -377,8 +380,8 @@ combination is what flips this back to balanced.
   monotonically increases, not just non-triviality, once S15 is scoped.
 
 ### S9 — Excel import script: three data-quality flags (cross-field plausibility + purchase-without-thesis + Excel-vs-confirmed-override conflicts)
-- **Status:** open — new evidence this session (a real instance of gap (c)
-  was caught by hand, not by the script)
+- **Status:** open — new evidence this session, a *second* confirmed
+  instance of gap (c) in the space of one week
 - **Why (a)/(b), from 2026-08-06:** the Transactions sheet has a row pairing
   ticker "ethereum" with a certificate's name/price/quantity (`BUY,
   ethereum, 1 unit, 2016.67 SEK/unit`) — a likely copy-paste artifact next
@@ -408,6 +411,21 @@ combination is what flips this back to balanced.
   with an actual track record of producing a wrong recommendation (it
   funded the incorrect 2026-08-11 "ADD 1 share AZN.ST" call) is invisible
   to the tool meant to help the user fix exactly this kind of Excel error.
+- **Why (c), continued — 2026-08-17, a second confirmed instance in the
+  same live session that closed several other items.** The 11:11 UTC Excel
+  import wrote a further `CASH_SEK (avanza-isk): quantity 15366 -> 20366
+  (from Excel)` delta. Only 15,366 SEK traces cleanly to the day's
+  confirmed COIN-XBT.ST sale — the extra 5,000 SEK has no documented
+  source, and, exactly as in the 2026-08-12 instance, never became a
+  `flags` entry (confirmed directly against
+  `data/cache/excel_import/latest-summary.json`, which lists four
+  unrelated data-quality flags but not this delta). This time Council's own
+  cross-examination caught it and explicitly sized every call against the
+  traceable 15,366 rather than the Excel-carried 20,366 — so no wrong
+  recommendation resulted — but it is the second time in three sweeps this
+  exact gap has produced an unflagged, user-unconfirmed cash figure a memo
+  had to work around by hand. Raises this from "worth doing" to "worth
+  doing soon."
 - **How:** in `scripts/import_excel_holdings.py`: (a) in
   `process_transactions`, add a bounded plausibility check — if a row's
   `holdings_ticker` matches a known ticker in `data/company_profiles/` or
@@ -492,6 +510,22 @@ combination is what flips this back to balanced.
   for D3 to resolve — a workaround, not a substitute for the user's actual
   confirmation, which both D3 and D4 still need before the 2026-09-03
   deadline.
+- **2026-08-17 note — a new, narrower instance surfaced the same day D3
+  closed.** The real `backtest` run (S5, now closed) used the
+  investable-only base (188,839 SEK) while D3, pinned hours earlier the
+  same session, is the full-portfolio convention (218,826 SEK). Defensible
+  on its own terms (a backtest can't simulate a tax reserve or a PayPal
+  balance sitting outside the market), but `data/cache/definitions.json`'s
+  current wording says the pinned convention governs "any other 'percent
+  of investable capital' figure," which reads broader than intended and
+  would wrongly pull the backtest's risk-simulation base under the same
+  law as allocation percentages. Council flagged this directly for `meta`
+  rather than editing its own file. **Small addition to this item's `How`:**
+  add a one-line clarification to `definitions.json` distinguishing the
+  existing `investable_capital_convention` (governs allocation/trip-wire
+  percentages) from a separate, narrower `risk_simulation_base` used only
+  by `backtest` — don't force one convention to silently cover both
+  purposes.
 - **How:** keep this narrow — a small `definitions` dictionary, not a new
   schema or framework. Add a `definitions` object to `portfolio.json` (or,
   if `portfolio.json` should stay lean per CLAUDE.md's token-hygiene note,
@@ -516,18 +550,16 @@ combination is what flips this back to balanced.
 - **Why:** confirmed in code — `fetch_crypto()` in
   `scripts/fetch_market_data.py` makes exactly one HTTP request per call;
   any exception (including a transient HTTP 429) is caught and returned as
-  `{"error": str(e)}` immediately, with no retry. This session, three
-  separate attempts to fetch bitcoin — the agreed directional proxy for the
-  permanently-dead COIN-XBT.ST ticker (404, known since 2026-08-03) — all
-  returned HTTP 429. The only reason any recovery was attempted at all was
-  three manual retries with `sleep` reconstructed ad hoc at the
-  orchestration layer, which is not reusable and won't run automatically
-  next time. This left the sweep's only executable trade recommendation
-  (the COIN-XBT.ST trim) resting on a 4-day-old Excel price with zero live
-  corroboration on either of its two price paths (own ticker 404, backup
-  proxy 429×3) at once — flagged directly in this session's
-  `SESSION_LOG.md` entry: "a backup that fails with the primary was never
-  really a backup."
+  `{"error": str(e)}` immediately, with no retry. In the 2026-08-17 morning
+  sweep, three separate attempts to fetch bitcoin — the agreed directional
+  proxy for the permanently-dead COIN-XBT.ST ticker (404, known since
+  2026-08-03) — all returned HTTP 429. The only reason any recovery was
+  attempted at all was three manual retries with `sleep` reconstructed ad
+  hoc at the orchestration layer, which is not reusable and won't run
+  automatically next time. **2026-08-17 (later, same day) note:** no
+  incident in the live session that followed — both BTC and ETH fetched
+  cleanly on the fresh snapshot. Still open; the earlier same-day incident
+  is evidence enough, no new evidence needed to keep this live.
 - **How:** in `scripts/fetch_market_data.py`'s `fetch_crypto()`, wrap the
   single request in a small retry loop (2-3 attempts) with short
   exponential backoff (e.g. 2s, then 5s) specifically on
@@ -535,20 +567,25 @@ combination is what flips this back to balanced.
   existing `{"error": ...}` shape unchanged. Keep the "no data is fine,
   never estimate" contract intact — this only makes the one existing fetch
   call more resilient to a transient rate limit; it does not add a new
-  data source (see this session's `meta` debate for why a second live
+  data source (see the 2026-08-12 `meta` debate for why a second live
   provider was considered and rejected).
 
 ### S14 — journal only "reminds" the user to append valuations.csv instead of appending it itself — confirmed to have actually dropped a row
-- **Status:** open
+- **Status:** open — this session confirms the underlying instruction still
+  needs the code-level fix, not just a one-off correct execution
 - **Why:** `journal.md` Mode 2 step 3 currently says to "remind the user"
   to append a row to `data/valuations.csv`, even though `journal` already
-  has Write tool access and could append it directly. This session's own
-  2026-08-17 `valuations.csv` row documents, in its own note field, that
-  no row exists for 2026-08-12 "even though a council memo ran that day" —
-  a confirmed, permanent gap in the performance-tracking series
-  (append-only, cannot be backfilled). This is the mechanism the CSV
-  itself effectively names as the cause: a manual reminder that depends on
-  the user acting on it, not an automated write.
+  has Write tool access and could append it directly. The 2026-08-12 gap
+  documents, in its own note field, that no row exists for that date "even
+  though a council memo ran that day" — a confirmed, permanent gap in the
+  performance-tracking series (append-only, cannot be backfilled). **2026-08-17
+  note:** this session's `journal` run did append the row directly (see the
+  2026-08-17 `18826` row's note, "computed directly rather than only
+  reminded, per S14") — a correct outcome, but `journal.md` itself was not
+  edited; Mode 2 step 3 still reads "remind the user." This was a one-off
+  correct execution by the agent, not a structural fix, so the gap can
+  still recur on the next sweep that doesn't happen to follow the same ad
+  hoc pattern. Item stays open until the instruction file itself changes.
 - **How:** in `journal.md`'s Mode 2, change step 3 from reminding the user
   to `journal` computing `total_value_sek` itself (sum `portfolio.json`
   holdings' market values against the snapshot used that sweep, same
@@ -561,7 +598,8 @@ combination is what flips this back to balanced.
   everything else in this system.
 
 ### S15 — journal overwrote SESSION_LOG.md instead of appending (first observed failure of the system's only calibration mechanism)
-- **Status:** open
+- **Status:** open — same "correct this time by hand, instruction file
+  unchanged" pattern as S14
 - **Why:** this session, the `journal` subagent's end-of-sweep write to
   `reports/SESSION_LOG.md` did not append/prepend correctly — it replaced
   the entire ~660-line append-only history (2026-08-06 through 2026-08-12)
@@ -577,7 +615,13 @@ combination is what flips this back to balanced.
   mechanism." This is a first-time-observed failure mode, distinct from
   S8 (which guards against a *git merge* dropping a file entirely) — here
   the file existed and was written to, just with the wrong operation (full
-  rewrite instead of insert-above).
+  rewrite instead of insert-above). **2026-08-17 (live session) note:**
+  the same day's later prepend (the "second memo" entry) was done
+  correctly and self-checked, per the live session's own note — but again
+  by ad hoc care in that turn, not because `journal.md`'s instructions
+  were actually edited to require the check. `journal.md` still lacks the
+  explicit insert-not-rewrite phrasing and the post-write self-check
+  described below.
 - **How:** two changes, both small, in `journal.md`'s Mode 2 step 2: (1)
   make the instruction explicit that this is a targeted insert — read the
   current file, prepend the new entry above the existing content (keeping
@@ -591,6 +635,32 @@ combination is what flips this back to balanced.
   summary. This closes the "silent" half of the failure specifically — the
   wrong write already happened once with the agent reporting success
   regardless.
+
+### S16 — No dependency manifest — a missing Python package silently broke a live fetch this session
+- **Status:** open — new evidence, first confirmed instance
+- **Why:** this session's `swedish-equity-review` run on
+  ATCO-B.ST/ALFA.ST/ABB.ST hit `No module named 'bs4'` on its first
+  attempt at the Finansinspektionen insider-transaction fetch —
+  `beautifulsoup4` was not installed in the environment, and nothing in
+  the repo would have caught that before the run started. Confirmed: there
+  is no `requirements.txt`, `pyproject.toml`, or `setup.py` at the repo
+  root. Fixed by hand mid-session (installed, then the run repeated
+  cleanly, per `SESSION_LOG.md`'s 2026-08-17 P6-review entry), but the
+  failure surfaced mid-script rather than being caught up front — the same
+  class of "fail clearly before doing partial work" problem this system
+  already guards against for fetched data (`{"error": ...}` shapes, never
+  silently estimating) but not yet for its own runtime environment.
+- **How:** add a `requirements.txt` at the repo root enumerating the actual
+  third-party imports used across `scripts/` and the skills/agents that
+  shell out to them (at minimum `beautifulsoup4`, `openpyxl`; audit the
+  rest via a quick grep for third-party `import`/`from` statements and
+  cross off stdlib modules) with loose version pins. Optionally, pair it
+  with a small startup check (a few lines in `fetch_market_data.py` or a
+  standalone `scripts/check_env.py`) that attempts to import each required
+  third-party module and reports which are missing in one clear line
+  before any fetch begins, instead of failing partway through a specific
+  skill's specific data source. Small, first confirmed instance — keep the
+  fix proportionate.
 
 ---
 
@@ -627,24 +697,20 @@ alongside the S-items, not silently.
   margin/stability) using Phase 1's new metrics; make the funnel's
   threshold counts (~540→150-250→50-75→...) configurable in
   `config/settings.py`, not hardcoded; `scout` outputs a compact candidate
-  dataset instead of prose. Spec sections 6, 10, 26, 28. **2026-08-12 note
-  for whoever picks this up:** the Watchlist is now a healthier input than
-  when this phase was written (45 entries, 12 categories, sector gaps
-  filled — see the S10 closed-log entry) — worth a fresh look at whether
-  wiring the funnel to it is now more tractable than it was 2026-08-09.
-  **2026-08-17 caveat:** 12 of those 45 entries still carry a malformed
-  ticker (space instead of exchange suffix) as of the 2026-08-13 import —
-  see the 2026-08-17 addendum in the Closed log under S10. Whoever wires
-  Phase 3 to the Watchlist should confirm those are fixed first, or the
-  funnel will silently drop ~27% of entries on the first fetch.
+  dataset instead of prose. Spec sections 6, 10, 26, 28. **2026-08-17
+  update:** the Watchlist is now a materially healthier input than when
+  this phase was written — 67 entries (up from 32 on 2026-08-06, 45 on
+  2026-08-12), 19 categories, and the format issue that used to cap it
+  (12 malformed tickers) is now confirmed fixed — see the Closed log. This
+  phase is more tractable than at any prior check.
 - **Phase 4 — not started.** `risk_factor_exposure` risk-bucket
   classification (Global industrial cycle / Defensive healthcare /
   Financials / etc.) distinct from sector — directly targets the Volvo +
   Atlas Copco + Alfa Laval + ABB correlated-industrial-risk problem this
-  system already flagged (65.2% of the stock sleeve, still ACT-rated as of
-  2026-08-12). Portfolio-fit scoring for candidates ("does owning this
-  improve the portfolio," not just "is it individually attractive"). Spec
-  sections 11-12, 23, 33.
+  system already flagged (65.5% of the individual-stock sleeve as of
+  2026-08-17, still ACT-rated). Portfolio-fit scoring for candidates ("does
+  owning this improve the portfolio," not just "is it individually
+  attractive"). Spec sections 11-12, 23, 33.
 - **Phase 5 — not started.** Macro Regime Engine expansion: new fetchers
   for BOJ policy rate, USD/JPY, credit spreads, PMI, unemployment/GDP,
   and a computed real-yield field — confirmed genuinely missing from
@@ -668,8 +734,11 @@ alongside the S-items, not silently.
   against, so this phase starts as instrumentation, not a real backtest).
   Spec sections 21-22, 29-30, 32, 37. **2026-08-17 note:** the ordinary
   rolling-lookback form of `backtest` (no crisis-window fixed dates
-  needed) is already sufficient to run S5 against the -30% tolerance —
-  don't block S5 on this phase.
+  needed) was sufficient to run S5 against the -30% tolerance, and S5 is
+  now closed on that basis — a crisis-window (2008) test remains open
+  here as a genuinely different, harder question ("what does the worst
+  historical case do to this book," not "does a representative recent
+  window clear the bound").
 
 ---
 
@@ -678,6 +747,66 @@ alongside the S-items, not silently.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-17 — S5 resolved: the `backtest` agent ran for real (its first
+  execution ever) and both the current mix and the adopted 85/10/5/0
+  target clear the -30% drawdown tolerance.** Over an 86-month window
+  (2019-06 to 2026-08, `data/cache/backtests/20260817T111722.json`,
+  `111730.json`, `111736.json`): current mix max drawdown -14.6%, adopted
+  target -19.95% — the opposite of the same-day morning memo's
+  illustrative (explicitly non-backtest) -42.3%/-45.75% estimate.
+  **Read this as "clears one real test," not "validated":** the window
+  excludes 2008 entirely, produced a 15.0% CAGR (roughly double a
+  realistic long-run global-equity return — itself a sign of an unusually
+  generous period), models no fees/taxes/FX, and the target's max
+  drawdown equals its worst rolling 12 months — the whole fall happened
+  inside a single year, the hardest kind to sit through behaviourally.
+  Council's own memo (`reports/2026-08-17-council-memo-2.md`, Call 5)
+  says this explicitly and moved the scorecard's drawdown row to "OK
+  (provisional)," not "validated." A genuine crisis-window test (fixed
+  `--start`/`--end` covering 2008) stays open under V2 Roadmap Phase 6,
+  not reopened as a new S-item.
+- **2026-08-17 — real code bug found and fixed: `scripts/backtest.py` had
+  never actually worked in this environment.** Its yfinance client failed
+  the same way CLAUDE.md already documents for `fetch_market_data.py` —
+  curl_cffi's browser-TLS-fingerprint impersonation gets connection-reset
+  by Yahoo's anti-bot layer on this network. Fixed with the same pattern
+  already used elsewhere: direct `urllib` calls to Yahoo's v8 chart
+  endpoint via a cookie jar, bypassing yfinance's own client entirely.
+  Confirmed in code and validated against the script's own known-good
+  example before the new S5 result was trusted (per this session's
+  `SESSION_LOG.md` entry). This is what made S5 possible to actually run,
+  not just propose — recorded as its own resolved defect since it's a
+  distinct, previously-undiscovered bug, not simply "S5 got done."
+- **2026-08-17 — Watchlist 12-ticker malformed-format issue CONFIRMED
+  FIXED, closing the same-day addendum above.** A fresh Excel import this
+  session (11:11 UTC, `data/cache/excel_import/latest-summary.json`,
+  watchlist grown from 45 to 67 entries) shows all 12 previously-malformed
+  tickers now carry proper exchange suffixes — verified directly in
+  `data/cache/watchlist.json` (`SEB-A.ST`, `SWED-A.ST`, `HM-B.ST`,
+  `SAAB-B.ST`, `NOVO-B.CO` and the rest all present, correctly suffixed,
+  under `nordic_financials`/`nordic_consumer_retail`/
+  `nordic_aerospace_defense`/`nordic_large_cap`). User-side Excel fix,
+  same as the original S10 closure — `meta` didn't drive it. One caveat:
+  the same day's Council memo's own "Excel data gaps" section still
+  describes the 12 tickers as "still unfetchable," which is stale by the
+  time of the 11:11 import — a minor memo-authoring inconsistency (that
+  Council run had no shell access and likely didn't re-read the freshest
+  import summary for that specific section) rather than a data-pipeline
+  defect. Not worth a new S-item; noted here for the record.
+- **2026-08-17 — proposal: a standing guardrail checking whether a
+  portfolio-agent rebalancing recommendation conflicts with an open
+  blocking P-item (e.g. recommending an ETH add while P1/cost-basis is
+  open) — deferred, not opened.** Real and correctly caught this session:
+  the portfolio agent listed "more self-custody ETH" as an equivalent
+  fallback to "stays in cash" if BITC turned out unbuyable; Council
+  rejected it because P1 (ETH cost basis) being open means every future
+  ETH disposal is an uncomputable 30% K4 event, and adding units makes a
+  solvable record-keeping gap permanently harder. Same precedent this
+  file already applies elsewhere (see the 2026-08-11 capital-availability
+  entry below): one occurrence, caught the same sweep by Council's own
+  adversarial method before it reached the user, isn't yet a pattern.
+  Revisit if a second, independent instance of a portfolio-agent
+  recommendation conflicting with an open blocking item turns up.
 - **2026-08-17 — P7 closed: ISK allowance threshold confirmed by the user
   at 300,000 SEK.** The system had been assuming ~300k unverified; the user
   confirmed the figure directly (no Skatteverket lookup needed). Current ISK
@@ -707,6 +836,8 @@ and `reports/SESSION_LOG.md`.
   mechanism (CLAUDE.md flow step 1a) already surfaces the exact fix to the
   user each import. No new S-item: this is a pending user-side Excel edit
   already correctly flagged by the system, not a code gap.
+  **Superseded same day, see the new 2026-08-17 entry above — the 12
+  tickers are now confirmed fixed.**
 - **2026-08-17 — proposal (Maverick, this session's debate): add a second
   live crypto price source as a tertiary fallback to CoinGecko —
   rejected.** Confirmed real evidence this session (CoinGecko 429×3) but
@@ -772,8 +903,8 @@ and `reports/SESSION_LOG.md`.
   tab), not a code change, and the user made it before `meta` even proposed
   it — recorded here as resolved evidence, not as a `meta`-driven fix.
   **See the 2026-08-17 addendum above: category coverage is genuinely
-  fixed, but 12 of the 45 entries (including these same four) still carry
-  an unfetchable ticker format as of the most recent import.**
+  fixed, and as of the second 2026-08-17 addendum, the ticker-format issue
+  is now also fixed.**
 - **2026-08-12 — Transaction-dedup bug found and fixed the same session,
   never carried forward as an open item.**
   `scripts/import_excel_holdings.py`'s `key_val()` compared numeric fields
@@ -868,7 +999,7 @@ and `reports/SESSION_LOG.md`.
 - **2026-08-03 — Target allocation written into the files**: on your explicit
   instruction, `portfolio.json.targets` now holds equity 85 / crypto 10 /
   cash 5 / fixed income 0. Approved 2026-07-27, recorded 2026-08-03. The
-  drawdown caveat (S5) is untouched by this and still open.
+  drawdown caveat (was S5, now closed 2026-08-17) is untouched by this.
 - **2026-08-03 — ETH quantity**: 0.50185 ETH confirmed. The position now
   reprices from live data instead of a fixed estimate. **This produced a real
   correction:** it had been carried at ~12,500 SEK and is actually worth

@@ -17,6 +17,178 @@ Entry format:
 
 ---
 
+## 2026-08-18 — First production sweep under the redesigned six-persona Stock Selection Council; AZN.ST BUY re-affirmed unanimously for a second consecutive sweep, still unexecuted; D4 escalates from bookkeeping to gating 11,183/~7,917/0 SEK of spendable cash
+
+**Automated/scheduled sweep, not a live session** — no user interaction
+logged this session; every call below is a Council recommendation awaiting
+the user's review, same status as every prior sweep's headline calls until
+acted on.
+
+- **Snapshot:** data/cache/snapshots/20260818T113223.json (previous:
+  data/cache/snapshots/20260817T111313.json). Fresh screen digest this
+  sweep: `data/cache/screens/20260818T113405-digest.csv` (67 watchlist rows
+  across Passed/Missing-data/Failed). **No Excel import ran this sweep** —
+  `data/cache/excel_import/latest-summary.json` is still yesterday's
+  11:11 UTC import; its five flags are unchanged.
+- **Memo:** reports/2026-08-18-council-memo.md
+- **Method note, load-bearing for this memo's own #2 call:** this is the
+  first real production sweep under `council.md` as revised 2026-08-17
+  (six independent analyst personas over the full 76-name candidate
+  universe, diversification moved out to a single Chairman-stage
+  `portfolio` consult rather than a seventh voice). One live consequence,
+  named directly in the memo: yesterday's TEST run
+  (`reports/2026-08-17-council-memo-3-stock-selection-test.md`) killed
+  eleven candidates (GOOGL, META, MSFT, NVDA and others) purely on Avanza
+  Global overlap, under a rule the user has since explicitly reversed
+  ("overlap with a broad index fund you already hold is no longer a reason
+  to de-prioritise a name"). Under today's corrected rule those names are
+  back in contention and GOOGL is this memo's #2 opportunity — a
+  deliberate, instructed methodology change, not an inconsistency between
+  the two memos.
+- **Headline calls (confidence/horizon per the memo's own table):**
+  1. **Buy 3 shares AZN.ST (~4,467 SEK) from the idle ISK cash, after the
+     Riksbank decision on 2026-08-20** → confidence **High** → horizon
+     **Medium**. Zero dissent across all six independent lenses — uncommon
+     enough that the memo states it explicitly. Re-affirms yesterday's
+     identical, unexecuted call; the price moved +0.6% since, not away
+     from the thesis (revenue +6.4% across four consecutive rising fiscal
+     years, operating margin 23.5%, PEG 1.34, 22.1st percentile of range,
+     below cost basis, lowest beta in the book at 0.211).
+  2. **GOOGL (Alphabet) — new candidate, best opportunity this sweep by
+     evidence quality, but with no confirmed funding after call 1** →
+     confidence **Medium** → horizon **Long**. Fundamental/Quality (8) and
+     Valuation (7) rank it first on filed numbers (54.8% margin, 48.7%
+     ROE, 28.6% ROIC, net cash, PEG 0.94); Macro/Regime explicitly
+     downgrades it — not on the business, but on paying DXY-118.90 dollars
+     with kronor — which is why it is #2 and not #1. Route the already-
+     decided PayPal conversion (P3) or the next monthly contribution to it.
+  3. **Deploy the 11,183 SEK ISK cash after 2026-08-20, not before** →
+     confidence **Medium** → horizon **Short (tactical, ≤10% rule,
+     policy-capped below High)**. Riksbank decision is 2 trading days out;
+     the wait applies only to the FX-sensitive GOOGL leg, not to the
+     SEK-quoted AZN.ST leg (Governance A explicitly splits the two rather
+     than deferring both).
+  4. **D4 needs the user's answer, and it is no longer bookkeeping** →
+     confidence **High** (that it needs deciding) → horizon **Long**.
+     It now directly gates how much of the 11,183 SEK ISK cash is
+     spendable: 11,183 under reading 1 (target governs sizing — Council's
+     standing recommendation, since crypto is currently *under* target at
+     8.34%), ~7,917 under reading 3 (realized gain only), 0 under reading
+     2 (gross proceeds, which would also retroactively brand the user's
+     own Valour purchase non-compliant).
+  - Other calls of note, not in the top-4 headline list but load-bearing:
+    **SELL SHB-A.ST** (fold into next order round, not a special trip —
+    one share, 148.40 SEK, PEG 20.4, revenue -3.8%, third consecutive
+    sweep flagged); **ABB.ST HOLD-WATCH, not SELL** (3 of 6 voices would
+    sell on valuation/beta/cash-conversion grounds, but the holding's own
+    break condition requires the insider-selling cluster to continue into
+    a *second* FI pull, which was **not run this sweep** — P6 action item,
+    due before 2026-09-03); **NOVO-B.CO HOLD-WATCH**, a second consecutive
+    sweep un-sizeable for lack of a SEK/DKK rate (new Excel request F);
+    **TTE NO ACTION**, resolving a direct system-internal contradiction
+    (this sweep's digest: +27.8% revenue growth; last sweep's full-JSON
+    multi-year series: four consecutive declining years) rather than
+    picking a side.
+- **User decisions:** none — automated/scheduled sweep, no live user
+  interaction this session.
+- **Reconciliation — the previous entry's five calls
+  (`reports/2026-08-17-council-memo-2.md`) vs. today's snapshot and
+  today's Council/portfolio-agent output:**
+  - **Call 1 (Reject BITC) — stands, not re-tested this sweep, no
+    contradicting evidence.** Not re-litigated; the crypto-proceeds
+    question moved on (see call 2 below) and BITC was not reconsidered.
+  - **Call 2 (Deploy the then-15,366 SEK ISK cash: 2,513 SEK to Avanza
+    Global now, 12,853 SEK earmarked for crypto with a 2026-09-03 hard
+    default) — DID NOT EXECUTE, and the earmark clock is still running.**
+    Avanza Global's book value is flat (+0.0%) in today's position
+    report — no new units were bought. Today's ISK cash reads 11,183 SEK,
+    not 0; of that, only ~6,183 SEK traces cleanly (15,366 SEK sale
+    proceeds minus the 9,183 SEK Valour purchase that did happen
+    separately), and the remaining 5,000 SEK is still the same
+    Excel-delta discrepancy flagged last sweep as an unflagged S9(c)
+    instance — unresolved, not new. The 2026-09-03 crypto-vehicle default
+    date is unchanged and now 16 days out.
+  - **Call 3 (Buy 3 shares AZN.ST from the external 5,000 SEK) — DID NOT
+    EXECUTE. Say this plainly: this is now a two-sweep-running unexecuted
+    highest-conviction call, and it is the same shape as this system's
+    other repeated-unexecuted-advice items (P3/PayPal routing, and
+    `swedish-equity-review` before it finally closed 2026-08-17).**
+    `portfolio.json` confirms AZN.ST is still at quantity 5, no new lot.
+    Unlike those two prior instances, though, today's re-issue is not a
+    stale restatement — six new, independently-argued personas re-derived
+    the identical call from scratch on fresh data and landed at zero
+    dissent, which is the strongest version of "the call didn't age
+    badly, it just didn't get acted on" this log has recorded. Worth
+    naming to `meta` as a pattern worth a mechanism (a dated
+    execute-or-explain checkpoint, similar to what closed the
+    industrials-thesis and PayPal gaps), not just a repeated observation.
+  - **Call 4 (Hold ATCO-B.ST/ALFA.ST/ABB.ST, ABB first in line if capital
+    needs a home) — aged fine, unchanged in substance.** Since calls 2 and
+    3 did not execute, no capital was in fact redeployed to ABB, which is
+    consistent rather than contradictory. ABB's own break condition (a
+    second FI insider pull confirming the selling cluster continued) was
+    **not tested this sweep** — the P6 action item to run it before
+    2026-09-03 is still open, now with less runway than last sweep.
+    Today's Council reached the same HOLD-WATCH conclusion independently,
+    citing the same untested condition.
+  - **Call 5 (Keep the adopted 85/10/5/0 target, S5 answered) — stands, no
+    fresh backtest ran this sweep.** The scorecard carries the 2026-08-17
+    result forward as "OK (provisional)," explicitly not re-tested — too
+    early to say anything new either way.
+- **Other findings this sweep, not tied to a specific prior call:**
+  - **Two new scorecard rows, both a genuine first look, not a repeat.**
+    Market-cap tier comes back **100% large-cap, zero mid/small-cap** in
+    the individual-stock sleeve — a new concentration axis on top of the
+    already-known 65.48% industrials / 59.32% Sweden. Sustainability/ESG
+    reads **UNKNOWN** — no data source exists for it yet. Neither was a
+    reason to pick or reject any name this sweep; both are named for the
+    next contribution decision.
+  - **A system-internal data contradiction on TTE, caught rather than
+    smoothed over.** This sweep's digest reports revenue +27.8%; last
+    sweep's full-JSON multi-year series for the same company showed four
+    consecutive declining fiscal years. The Council resolved this to NO
+    ACTION specifically because the fact the pick turns on is in dispute
+    within this system's own data, not because of any external signal —
+    flagged for a direct data pull next sweep, not a judgement call.
+  - **A second internal disagreement, lower-stakes but same shape:**
+    `valuation`'s prose described VOLV-B.ST as a "3rd straight year of
+    revenue decline on trailing" while the fetched four-year series shows
+    two consecutive declines and trailing growth that has flipped to
+    +2.7%. The fetched series was treated as primary; the lens's summary
+    text is flagged as drift.
+  - **Riksbank rate decision lands 2026-08-20, two trading days away** —
+    named as a timing consideration for the GOOGL leg specifically, not
+    the AZN.ST leg, per the Governance A split above.
+- **Open items carried forward:** D4 (**elevated priority** — no longer
+  bookkeeping, now directly gates 11,183/~7,917/0 SEK of spendable ISK
+  cash, still unconfirmed by the user); the unexplained 5,000 SEK ISK-cash
+  Excel delta (another S9(c) instance, unresolved); P1 (ETH cost basis,
+  blocked on user); P3 (PayPal routing, decided — Option A — pending
+  execution); P6 (run the next FI insider pull on ABB.ST before
+  2026-09-03); S1 (Valour Bitcoin Zero certificate's real Avanza ticker,
+  blocks automated repricing of a 9,183 SEK position); S4 (Swedish CPI
+  stale at 2025M12 — **third consecutive sweep** this specific gap has
+  capped a live regime-grading call, now on 59.32% of the portfolio's
+  geography and 65.48% of the stock sleeve); S6 (no NAV discount/premium
+  source for Investor A); the emergency-buffer location and
+  `horizon.primary_goal` currency questions in `investor_profile.json`
+  (both named again, unresolved); currency exposure UNKNOWN (new
+  scorecard row, no revenue-by-currency data for any holding); new Excel
+  requests E-H (currency column; an FX-rates block including SEK/DKK,
+  the most-repeated single request across two sweeps; 52-week range on
+  the Watchlist tab; Investor A/Latour NAV per share). Blocking-question
+  rule check: no open item currently holds blocking status; the memo
+  correctly did not open with one.
+
+**Reminder:** the portfolio was valued this sweep at **~219,031 SEK**
+(full-portfolio convention, per `data/cache/definitions.json`, reconciling
+exactly between the memo's position-report table and the portfolio agent's
+independently-computed total) — the `data/valuations.csv` row has been
+appended directly by this `journal` run per S14, not just reminded. See
+that file for the row and its note.
+
+---
+
 ## 2026-08-17 — Live session, second memo of the day, supersedes the morning sweep on 4 of 5 calls: user sold the FULL 6-unit COIN-XBT.ST position (not the recommended 1-unit trim); BITC rejected; the first-ever real backtest reverses the morning's illustrative drawdown breach; AZN.ST's cost-basis dip becomes the buy call; D4 wrongly called moot mid-session then correctly reopened
 
 **This is a live user session, not the automated scheduled sweep** —
@@ -1180,3 +1352,4 @@ through 2026-08-03) is the real contemporaneous record up to that date.
 
 ---
 </content>
+</invoke>

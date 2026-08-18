@@ -323,3 +323,47 @@ and dated; nothing here is a source of truth for a decision, that's still
   underwrite the company without the data" is a legitimate place to stop.
 
 ---
+
+## 2026-08-18 — `reports/2026-08-18-council-memo.md`
+
+- **A forward P/E above the trailing P/E is the market telling you it expects
+  earnings to fall — and it showed up four separate times this sweep, in
+  opposite directions.** Trailing P/E divides today's price by the last twelve
+  months of actual earnings; forward P/E divides it by next year's estimate. When
+  forward is *higher*, the denominator is expected to shrink. Hexagon looks like
+  the cheapest name in the whole screen at 10.85x until you see forward 17.68x —
+  the trailing earnings contain something that is not repeating. Novo Nordisk at
+  11.06 → 13.25 means buying it is a bet against the analysts' estimate, not just
+  against sentiment, which is a materially harder bet. Epiroc shows the same
+  signature (28.97 → 37.96). The reverse is equally informative: Meta at 21.41 →
+  16.31 and Nvidia at 34.46 → 17.53 are consensus saying earnings are climbing
+  fast. It costs nothing to check and it reorders a screen.
+- **Inside an ISK, selling is almost free — which changes the bar for "hold."** In
+  a taxable account, selling a winner triggers 30% on the gain, so "hold unless
+  the case is overwhelming" is rational: the tax is a real cost of changing your
+  mind. Inside an ISK there is no capital-gains event at all, only courtage
+  (single-digit SEK on a position this size). So when this memo holds ABB.ST, the
+  reason must be an actual argument about ABB — the untested break condition —
+  and *not* the reflex that trading is expensive. Knowing which of your reasons
+  are real and which are habits imported from a different tax wrapper is worth
+  more than any single stock call.
+- **Half of "ETH rose 0.7%" was the krona, not ethereum.** In euros ETH moved
+  +0.09%. The SEK figure is larger because sek_per_eur went from 10.9523 to
+  11.016 — the krona weakened about 0.58%, so the same euro-denominated asset is
+  worth more kronor. Every foreign-currency holding you own carries this second
+  engine, and it works both ways: it is exactly why the Macro voice objected to
+  buying Alphabet with kronor at DXY 118.90. You would be taking a currency bet
+  you were not paid to take, on top of an equity bet you were.
+- **A screening threshold is a prior, not a verdict — but "I can argue the screen
+  is wrong and still cannot underwrite this" is a legitimate stopping point.**
+  Novo Nordisk failed `scout` on PEG 3.11 alone, a growth-adjusted measure that
+  penalised one stalled year against four years of compounding — a fair criticism
+  of the threshold. Nvidia failed on a trailing-P/E cap that mechanically rejects
+  any company whose earnings are growing faster than its multiple. Both critiques
+  are sound. Neither produced a BUY, because arguing a rule does not apply is only
+  the first half; the second half is having the data to underwrite the company
+  instead, and for Novo (no SEK/DKK rate, no pipeline data) that half is missing.
+  Distinguishing "the screen is wrong here" from "therefore buy it" is most of the
+  discipline.
+
+---

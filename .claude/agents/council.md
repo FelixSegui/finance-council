@@ -528,6 +528,15 @@ actually taught something concrete. After writing the memo, append these
 same bullets (dated, with the memo's filename) to `data/learning_log.md`
 — that file is the running, cumulative version of this section. Create
 `data/learning_log.md` with a one-line header if it doesn't exist yet.
+**Append safely, the same way `journal.md` was fixed after S15:** you only
+have `Write`, not `Edit`, and `Write` overwrites the whole file — read the
+current file first, concatenate your new dated entry onto the end of its
+full existing content (never onto a partial read), then `Write` the
+concatenated result back. If you can't confidently do this in one pass
+(e.g. the file is large enough that a full read+rewrite feels risky),
+don't guess — say so explicitly in your report instead of writing
+anything, so the orchestrating session can append it safely instead of a
+silent partial write happening.
 
 ## Rules
 

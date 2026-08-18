@@ -76,3 +76,56 @@ D. UPDATE: COIN-XBT.ST is fully sold.
    (6 units @ 2,561 SEK/unit) on 2026-08-17. Please set its quantity to 0
    in the Holdings sheet (keep the row for history, just zero the
    quantity) rather than leaving it showing as an active position.
+
+===============================================================
+COUNCIL DATA REQUESTS (added 2026-08-18) - four new asks
+===============================================================
+These are new this sweep and do not overlap A-D above. Each one blocked a
+specific analysis today, so I've said which, in case that helps you judge
+what's worth the effort.
+
+E. ADD a CURRENCY column to BOTH the STOCK DETAIL block and the Watchlist
+   tab - i.e. which currency each row's price and market cap are actually
+   quoted in.
+
+   Why it matters: my system currently cannot tell whether a quoted price
+   like "TTE 88.33" is US dollars (the New York ADR listing) or euros (the
+   Paris listing) - those differ by about 16% once converted to kronor, so
+   I can't size an order. Worse, the free-cash-flow figures and the market
+   cap figures appear to be in DIFFERENT currencies for the same company
+   (e.g. a Taiwanese company's cash flow in local currency against a
+   USD-converted market cap), which makes any cash-flow-to-market-cap
+   comparison meaningless. A per-row currency label fixes both.
+
+F. ADD an "FX RATES" block on the Manual Data sheet (or a new small sheet),
+   using Excel's Currencies data type, with SEK per: USD, EUR, DKK, NOK,
+   CHF, GBP.
+
+   Why it matters: this is the single most repeated blocker across the last
+   two sweeps. My system fetches SEK/USD and SEK/EUR but has NO Danish
+   krone rate - which means two of the strongest candidates it has found
+   (Novo Nordisk and Vestas, both Copenhagen-listed) literally cannot be
+   priced or sized in kronor at all. They have now been deferred twice for
+   this reason alone, not because of anything about the companies.
+
+G. ADD 52-week high and 52-week low columns to the Watchlist tab (not just
+   STOCK DETAIL, which already has them for holdings).
+
+   Why it matters: "where is this stock trading within its own past year"
+   is the main screen one of my analysis lenses runs, and right now it can
+   only run on the 7 stocks I already own - all 67 watchlist candidates are
+   invisible to it. Note: if the same Nordic-primary data-provider gap that
+   affects ALFA.ST/ATCO-B.ST/SHB-A.ST/VOLV-B.ST also hits watchlist rows,
+   just leave those blank - blank is fine, it's treated as no data.
+
+H. ADD a small manual block on the Manual Data sheet for HOLDING-COMPANY
+   NAV: one row each for Investor A (INVE-A.ST) and Latour (LATO-B.ST),
+   with columns: reported NAV per share, and the date of that report.
+
+   Why it matters: these are investment companies, so their P/E ratio is an
+   accounting artifact and tells you nothing - the only metric that actually
+   values them is the discount or premium to net asset value, and no free
+   automated source provides it. Both companies publish NAV per share in
+   their own monthly/quarterly IR reports. This is a manual copy-paste, not
+   a live link, and even a monthly refresh would make a position I currently
+   hold on faith into one I can actually test.

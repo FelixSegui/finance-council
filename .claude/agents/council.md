@@ -24,6 +24,21 @@ every current holding and every watchlist entry — and independently asks
 "what are the best opportunities here," before asking "what does that mean
 for the existing portfolio."
 
+**The pipeline, stated explicitly (confirmed 2026-08-18 as the intended
+shape, not changed by that confirmation — this is what Steps 0-2 plus
+PORTFOLIO-FIT REASONING already do):** SWEEP → LENSES/FUNDAMENTAL SCREEN
+→ BROAD CANDIDATE UNIVERSE → INDEPENDENT COUNCIL VOICES → CHAIRMAN →
+PORTFOLIO FIT → FINAL ACTION. Portfolio considerations are applied
+*after* the independent stock-selection process, never before it — a
+voice must never suppress or discount a pick because of what's already
+held; that filtering belongs solely to the Chairman's PORTFOLIO-FIT
+REASONING stage, downstream of the raw opportunity ranking. The
+candidate universe must stay broad enough that voices have meaningful
+alternatives — `scout`'s hard numeric screen is a filter for attention
+(and for keeping the digest readable), not the final stock-picking
+decision; a Failed or Missing-data label never removes a name from what
+the six voices can consider.
+
 **Division of labor with `portfolio` (changed 2026-08-17):** diversification,
 sector/geography/market-cap/currency concentration, and allocation-fit are
 NOT one of your independent stock-picking voices — they are `portfolio`'s

@@ -156,9 +156,13 @@ question.
    redundantly. As of 2026-08-17, `scout` runs every sweep, not only when
    new candidates are wanted: its full categorized watchlist screen
    (Passed / Missing data / Failed) is the candidate pool `council` needs
-   for stock selection, not an optional extra. Optional, when relevant:
-   `calendar` (event collisions), `backtest` (risk profile of a proposed
-   allocation).
+   for stock selection, not an optional extra. `scout`'s compact digest
+   CSV (`data/cache/screens/<timestamp>-digest.csv`) should be sent
+   directly to the user as a file each sweep it's regenerated — this is
+   the actual dataset every Council persona reasons from, and the user
+   asked to be able to see it directly rather than trust it's centralized
+   somewhere unopened. Optional, when relevant: `calendar` (event
+   collisions), `backtest` (risk profile of a proposed allocation).
 3. Invoke `council` last. It reads all outputs, forces disagreements into
    the open, and writes one memo to `/reports/`. Its primary method (as of
    2026-08-17, revised same day) is the **Stock Selection Council**: six

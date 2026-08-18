@@ -186,6 +186,21 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   if BITC fails") as the worst of the three options — P1 being open makes
   adding ETH units permanently harder to tax-account for, not a neutral
   substitute for cash.
+- **RESOLVED IN SUBSTANCE 2026-08-17 (later same day): the user found and
+  bought a replacement directly.** 150 units of a **Valour Bitcoin Zero
+  SEK certificate** (ISIN CH0585378661) at 61.22 SEK/unit = 9,183 SEK,
+  drawn from the same ISK cash pool Council's Call 2 had earmarked for
+  exactly this. Not yet in Excel — see `data/portfolio.json`'s new holding
+  entry. **Two things still need verifying before this fully closes P4**,
+  same bar BITC failed to clear: (1) the actual management fee (the "Zero"
+  branding suggests low/zero but this is unconfirmed from any fetched
+  source — verify on Avanza or via the ISIN); (2) genuine physical BTC
+  backing, not a strategy/derivatives wrapper (the same category error
+  nearly made with BITC). **Status: open only for verification, not for
+  finding a candidate** — the search itself is done. S1 (verified Nordic
+  crypto-certificate tickers) also gets a working ticker for this ISIN
+  once found, same blocker either way. Remaining ISK cash after this
+  purchase: 11,183 SEK (see `portfolio.json`'s avanza-isk cash note).
 - **Decided 2026-08-03:** you will NOT move to self-custody real bitcoin. You
   want to stay inside the ISK wrapper and cut the fee instead. (This closes
   the old certificate-vs-self-custody question, and it's the right call on
@@ -283,7 +298,14 @@ toward prospecting if a new structural watchlist/universe gap turns up.
 ## S — System items
 
 ### S1 — Verified SEK crypto-certificate tickers in the Watchlist
-- **Status:** open — now directly blocking P4
+- **Status:** open — now directly blocking P4's verification, not P4's
+  search. **2026-08-17 update:** P4's search itself is done — the user
+  bought a Valour Bitcoin Zero SEK certificate (ISIN CH0585378661)
+  directly. This item's remaining job for that specific instrument: find
+  its real Avanza ticker (do not guess from the product name — verify),
+  add it to the Watchlist tab with the ISIN, and let the same fee/backing
+  verification P4 needs flow from a proper import rather than manual
+  entry.
 - Nordic crypto ETP tickers (Virtune, Valour, XBT Provider, Coinshares) change
   and must be confirmed on Avanza rather than guessed. **Updated 2026-08-06:**
   the destination for these is now the Watchlist tab in the user's Excel

@@ -17,6 +17,500 @@ Entry format:
 
 ---
 
+## 2026-08-18 — First production sweep under the redesigned six-persona Stock Selection Council; AZN.ST BUY re-affirmed unanimously for a second consecutive sweep, still unexecuted; D4 escalates from bookkeeping to gating 11,183/~7,917/0 SEK of spendable cash
+
+**Automated/scheduled sweep, not a live session** — no user interaction
+logged this session; every call below is a Council recommendation awaiting
+the user's review, same status as every prior sweep's headline calls until
+acted on.
+
+- **Snapshot:** data/cache/snapshots/20260818T113223.json (previous:
+  data/cache/snapshots/20260817T111313.json). Fresh screen digest this
+  sweep: `data/cache/screens/20260818T113405-digest.csv` (67 watchlist rows
+  across Passed/Missing-data/Failed). **No Excel import ran this sweep** —
+  `data/cache/excel_import/latest-summary.json` is still yesterday's
+  11:11 UTC import; its five flags are unchanged.
+- **Memo:** reports/2026-08-18-council-memo.md
+- **Method note, load-bearing for this memo's own #2 call:** this is the
+  first real production sweep under `council.md` as revised 2026-08-17
+  (six independent analyst personas over the full 76-name candidate
+  universe, diversification moved out to a single Chairman-stage
+  `portfolio` consult rather than a seventh voice). One live consequence,
+  named directly in the memo: yesterday's TEST run
+  (`reports/2026-08-17-council-memo-3-stock-selection-test.md`) killed
+  eleven candidates (GOOGL, META, MSFT, NVDA and others) purely on Avanza
+  Global overlap, under a rule the user has since explicitly reversed
+  ("overlap with a broad index fund you already hold is no longer a reason
+  to de-prioritise a name"). Under today's corrected rule those names are
+  back in contention and GOOGL is this memo's #2 opportunity — a
+  deliberate, instructed methodology change, not an inconsistency between
+  the two memos.
+- **Headline calls (confidence/horizon per the memo's own table):**
+  1. **Buy 3 shares AZN.ST (~4,467 SEK) from the idle ISK cash, after the
+     Riksbank decision on 2026-08-20** → confidence **High** → horizon
+     **Medium**. Zero dissent across all six independent lenses — uncommon
+     enough that the memo states it explicitly. Re-affirms yesterday's
+     identical, unexecuted call; the price moved +0.6% since, not away
+     from the thesis (revenue +6.4% across four consecutive rising fiscal
+     years, operating margin 23.5%, PEG 1.34, 22.1st percentile of range,
+     below cost basis, lowest beta in the book at 0.211).
+  2. **GOOGL (Alphabet) — new candidate, best opportunity this sweep by
+     evidence quality, but with no confirmed funding after call 1** →
+     confidence **Medium** → horizon **Long**. Fundamental/Quality (8) and
+     Valuation (7) rank it first on filed numbers (54.8% margin, 48.7%
+     ROE, 28.6% ROIC, net cash, PEG 0.94); Macro/Regime explicitly
+     downgrades it — not on the business, but on paying DXY-118.90 dollars
+     with kronor — which is why it is #2 and not #1. Route the already-
+     decided PayPal conversion (P3) or the next monthly contribution to it.
+  3. **Deploy the 11,183 SEK ISK cash after 2026-08-20, not before** →
+     confidence **Medium** → horizon **Short (tactical, ≤10% rule,
+     policy-capped below High)**. Riksbank decision is 2 trading days out;
+     the wait applies only to the FX-sensitive GOOGL leg, not to the
+     SEK-quoted AZN.ST leg (Governance A explicitly splits the two rather
+     than deferring both).
+  4. **D4 needs the user's answer, and it is no longer bookkeeping** →
+     confidence **High** (that it needs deciding) → horizon **Long**.
+     It now directly gates how much of the 11,183 SEK ISK cash is
+     spendable: 11,183 under reading 1 (target governs sizing — Council's
+     standing recommendation, since crypto is currently *under* target at
+     8.34%), ~7,917 under reading 3 (realized gain only), 0 under reading
+     2 (gross proceeds, which would also retroactively brand the user's
+     own Valour purchase non-compliant).
+  - Other calls of note, not in the top-4 headline list but load-bearing:
+    **SELL SHB-A.ST** (fold into next order round, not a special trip —
+    one share, 148.40 SEK, PEG 20.4, revenue -3.8%, third consecutive
+    sweep flagged); **ABB.ST HOLD-WATCH, not SELL** (3 of 6 voices would
+    sell on valuation/beta/cash-conversion grounds, but the holding's own
+    break condition requires the insider-selling cluster to continue into
+    a *second* FI pull, which was **not run this sweep** — P6 action item,
+    due before 2026-09-03); **NOVO-B.CO HOLD-WATCH**, a second consecutive
+    sweep un-sizeable for lack of a SEK/DKK rate (new Excel request F);
+    **TTE NO ACTION**, resolving a direct system-internal contradiction
+    (this sweep's digest: +27.8% revenue growth; last sweep's full-JSON
+    multi-year series: four consecutive declining years) rather than
+    picking a side.
+- **User decisions:** none — automated/scheduled sweep, no live user
+  interaction this session.
+- **Reconciliation — the previous entry's five calls
+  (`reports/2026-08-17-council-memo-2.md`) vs. today's snapshot and
+  today's Council/portfolio-agent output:**
+  - **Call 1 (Reject BITC) — stands, not re-tested this sweep, no
+    contradicting evidence.** Not re-litigated; the crypto-proceeds
+    question moved on (see call 2 below) and BITC was not reconsidered.
+  - **Call 2 (Deploy the then-15,366 SEK ISK cash: 2,513 SEK to Avanza
+    Global now, 12,853 SEK earmarked for crypto with a 2026-09-03 hard
+    default) — DID NOT EXECUTE, and the earmark clock is still running.**
+    Avanza Global's book value is flat (+0.0%) in today's position
+    report — no new units were bought. Today's ISK cash reads 11,183 SEK,
+    not 0; of that, only ~6,183 SEK traces cleanly (15,366 SEK sale
+    proceeds minus the 9,183 SEK Valour purchase that did happen
+    separately), and the remaining 5,000 SEK is still the same
+    Excel-delta discrepancy flagged last sweep as an unflagged S9(c)
+    instance — unresolved, not new. The 2026-09-03 crypto-vehicle default
+    date is unchanged and now 16 days out.
+  - **Call 3 (Buy 3 shares AZN.ST from the external 5,000 SEK) — DID NOT
+    EXECUTE. Say this plainly: this is now a two-sweep-running unexecuted
+    highest-conviction call, and it is the same shape as this system's
+    other repeated-unexecuted-advice items (P3/PayPal routing, and
+    `swedish-equity-review` before it finally closed 2026-08-17).**
+    `portfolio.json` confirms AZN.ST is still at quantity 5, no new lot.
+    Unlike those two prior instances, though, today's re-issue is not a
+    stale restatement — six new, independently-argued personas re-derived
+    the identical call from scratch on fresh data and landed at zero
+    dissent, which is the strongest version of "the call didn't age
+    badly, it just didn't get acted on" this log has recorded. Worth
+    naming to `meta` as a pattern worth a mechanism (a dated
+    execute-or-explain checkpoint, similar to what closed the
+    industrials-thesis and PayPal gaps), not just a repeated observation.
+  - **Call 4 (Hold ATCO-B.ST/ALFA.ST/ABB.ST, ABB first in line if capital
+    needs a home) — aged fine, unchanged in substance.** Since calls 2 and
+    3 did not execute, no capital was in fact redeployed to ABB, which is
+    consistent rather than contradictory. ABB's own break condition (a
+    second FI insider pull confirming the selling cluster continued) was
+    **not tested this sweep** — the P6 action item to run it before
+    2026-09-03 is still open, now with less runway than last sweep.
+    Today's Council reached the same HOLD-WATCH conclusion independently,
+    citing the same untested condition.
+  - **Call 5 (Keep the adopted 85/10/5/0 target, S5 answered) — stands, no
+    fresh backtest ran this sweep.** The scorecard carries the 2026-08-17
+    result forward as "OK (provisional)," explicitly not re-tested — too
+    early to say anything new either way.
+- **Other findings this sweep, not tied to a specific prior call:**
+  - **Two new scorecard rows, both a genuine first look, not a repeat.**
+    Market-cap tier comes back **100% large-cap, zero mid/small-cap** in
+    the individual-stock sleeve — a new concentration axis on top of the
+    already-known 65.48% industrials / 59.32% Sweden. Sustainability/ESG
+    reads **UNKNOWN** — no data source exists for it yet. Neither was a
+    reason to pick or reject any name this sweep; both are named for the
+    next contribution decision.
+  - **A system-internal data contradiction on TTE, caught rather than
+    smoothed over.** This sweep's digest reports revenue +27.8%; last
+    sweep's full-JSON multi-year series for the same company showed four
+    consecutive declining fiscal years. The Council resolved this to NO
+    ACTION specifically because the fact the pick turns on is in dispute
+    within this system's own data, not because of any external signal —
+    flagged for a direct data pull next sweep, not a judgement call.
+  - **A second internal disagreement, lower-stakes but same shape:**
+    `valuation`'s prose described VOLV-B.ST as a "3rd straight year of
+    revenue decline on trailing" while the fetched four-year series shows
+    two consecutive declines and trailing growth that has flipped to
+    +2.7%. The fetched series was treated as primary; the lens's summary
+    text is flagged as drift.
+  - **Riksbank rate decision lands 2026-08-20, two trading days away** —
+    named as a timing consideration for the GOOGL leg specifically, not
+    the AZN.ST leg, per the Governance A split above.
+- **Open items carried forward:** D4 (**elevated priority** — no longer
+  bookkeeping, now directly gates 11,183/~7,917/0 SEK of spendable ISK
+  cash, still unconfirmed by the user); the unexplained 5,000 SEK ISK-cash
+  Excel delta (another S9(c) instance, unresolved); P1 (ETH cost basis,
+  blocked on user); P3 (PayPal routing, decided — Option A — pending
+  execution); P6 (run the next FI insider pull on ABB.ST before
+  2026-09-03); S1 (Valour Bitcoin Zero certificate's real Avanza ticker,
+  blocks automated repricing of a 9,183 SEK position); S4 (Swedish CPI
+  stale at 2025M12 — **third consecutive sweep** this specific gap has
+  capped a live regime-grading call, now on 59.32% of the portfolio's
+  geography and 65.48% of the stock sleeve); S6 (no NAV discount/premium
+  source for Investor A); the emergency-buffer location and
+  `horizon.primary_goal` currency questions in `investor_profile.json`
+  (both named again, unresolved); currency exposure UNKNOWN (new
+  scorecard row, no revenue-by-currency data for any holding); new Excel
+  requests E-H (currency column; an FX-rates block including SEK/DKK,
+  the most-repeated single request across two sweeps; 52-week range on
+  the Watchlist tab; Investor A/Latour NAV per share). Blocking-question
+  rule check: no open item currently holds blocking status; the memo
+  correctly did not open with one.
+
+**Reminder:** the portfolio was valued this sweep at **~219,031 SEK**
+(full-portfolio convention, per `data/cache/definitions.json`, reconciling
+exactly between the memo's position-report table and the portfolio agent's
+independently-computed total) — the `data/valuations.csv` row has been
+appended directly by this `journal` run per S14, not just reminded. See
+that file for the row and its note.
+
+---
+
+## 2026-08-17 — Live session, second memo of the day, supersedes the morning sweep on 4 of 5 calls: user sold the FULL 6-unit COIN-XBT.ST position (not the recommended 1-unit trim); BITC rejected; the first-ever real backtest reverses the morning's illustrative drawdown breach; AZN.ST's cost-basis dip becomes the buy call; D4 wrongly called moot mid-session then correctly reopened
+
+**This is a live user session, not the automated scheduled sweep** —
+`reports/2026-08-17-council-memo-2.md` explicitly supersedes
+`reports/2026-08-17-council-memo.md` (already logged in this file's
+immediately preceding entry below, plus the `swedish-equity-review` skill
+run before that, also today). Three entries dated 2026-08-17 in this log
+is correct, not a duplication error — three genuinely distinct pieces of
+work happened today.
+
+- **Snapshot:** data/cache/snapshots/20260817T111313.json (previous:
+  data/cache/snapshots/20260817T061032.json, this morning's automated
+  sweep). Fresh Excel import this session
+  (data/cache/excel_import/latest-summary.json, generated 11:11 UTC): the
+  Watchlist grew from 45 to 67 entries (user added many new tickers), and
+  all 12 previously-malformed tickers (space instead of exchange suffix,
+  flagged 2026-08-11/12/17) are now fixed — a real, user-side close of a
+  standing data-quality gap. New flag this run: an unexplained +5,000 SEK
+  delta in the Avanza ISK cash figure (20,366 vs. the 15,366 SEK that
+  traces cleanly to today's sale), applied as a `portfolio_deltas` entry
+  but never surfaced to `flags` — the second confirmed instance of S9(c).
+- **Memo:** reports/2026-08-17-council-memo-2.md
+- **Headline calls (Confidence/Horizon per the memo's own table):**
+  1. **Reject BITC** (Bitwise TRND BITCN TRSR STRGY ETF, ARCX) as the
+     crypto-proceeds redeployment vehicle → confidence **High** → horizon
+     **Medium**. Full 5-voice-plus-Chairman Candidate Evaluation: the
+     ticker's own name reads as a bitcoin-treasury-strategy product, not a
+     confirmed spot-BTC tracker, and the entire ~330 SEK/yr fee-saving case
+     depends on like-for-like exposure that no fetched data confirms;
+     MiFID II/PRIIPs likely blocks US-domiciled ETFs for EU retail anyway
+     (checkable in 60 seconds, not load-bearing for the call). Also
+     explicitly rejected the portfolio agent's own fallback ("more
+     self-custody ETH if BITC fails") as the worst of the three options —
+     P1 (ETH cost basis) is still open, so adding units makes an
+     already-unsolvable tax problem worse.
+  2. **Deploy the 15,366 SEK of traceable ISK cash**: 2,513 SEK to Avanza
+     Global now, 12,853 SEK earmarked to restore crypto to its 10% target
+     once a verified physically-backed BTC ETP exists, with a hard
+     2026-09-03 auto-convert-to-Avanza-Global default if none is found →
+     confidence **High** on deploying / **Medium** on the split (rests on
+     the Chairman's own D4 reading, not yet the user's) → horizon **Long**.
+  3. **Buy 3 shares AZN.ST (~4,440 SEK) with the user's separately-available
+     external 5,000 SEK**, remainder to Avanza Global → confidence **High**
+     → horizon **Medium**. AZN.ST fell intraday from ~32nd to the 20.5th
+     percentile of its 52-week range and below its 1,509.70 cost basis on
+     unchanged fundamentals (revenue +6.4%, 4th consecutive rising year,
+     PEG 1.34) — the only holding with zero dissent across all four lenses
+     this sweep, and the only available purchase that improves two
+     ACT-rated scorecard dimensions (equity underweight, industrials
+     concentration) at once.
+  4. **Hold ATCO-B.ST/ALFA.ST/ABB.ST — no adds, no trims — with ABB
+     explicitly first in line if/when capital needs a home from any source
+     other than new money** → confidence **High** → horizon **Medium**.
+     The P6 review's own ranking (ALFA 63 > ATCO-B 62 > ABB 51) and ABB's
+     live insider-selling cluster make it the clear rotation candidate, but
+     ABB's own `break_conditions` (written hours earlier, same session)
+     require the insider pattern to continue into a *second* FI data pull
+     before firing — this is the first, so the Chairman declined to
+     override a condition written from real data on its first observation.
+  5. **Keep the adopted 85/10/5/0 target — S5 answered, not re-opened** →
+     confidence **Medium** → horizon **Long**. The real `backtest` agent
+     ran for the first time ever this session (86 months): current mix
+     max drawdown **-14.6%**, adopted target **-19.95%**, both clear the
+     -30% stated tolerance — the opposite of the morning memo's
+     illustrative (explicitly-labeled non-backtest) -42.3%/-45.75%
+     estimate. Confidence capped at Medium, not upgraded to High: one
+     7.2-year window starting 2019-06 (excludes 2008 entirely), a 15.0%
+     CAGR that flags the period as unusually generous, no fees/tax/FX
+     modeled, and the target's max drawdown equals its worst rolling 12
+     months (the whole fall happened inside a single year — a fast shock,
+     behaviorally the hardest kind to sit through).
+- **User decisions:**
+  - **P3 (PayPal routing) — DECIDED, Option A.** User declined the Revolut
+    test transfer outright ("we are counting with the 4% conversion
+    rate"), selecting Option A directly rather than waiting for the
+    2026-09-03 dated fallback: convert the full PayPal balance
+    (1,177.49 USD + 266.88 EUR, 14,079.79 SEK) inside PayPal at the
+    confirmed worst-case 4% spread (~563 SEK cost, recurring
+    ~1,970-2,630 SEK/yr going forward), then route to the ISK. Decided,
+    not yet executed.
+  - **P7 (ISK allowance threshold) — CLOSED.** User confirmed 300,000 SEK
+    directly, no Skatteverket lookup needed. Current ISK total (~184,353
+    SEK this sweep) has comfortable headroom.
+  - **D3 (crypto trip-wire denominator) — DECIDED, and it was the
+    non-recommended option.** User: "It should be option 2 - on Full
+    portfolio." Council had recommended Convention B (investable-only);
+    the user picked the full-portfolio reading instead, pinned in
+    `data/cache/definitions.json`. Consequence that matters: under this
+    convention the 12% crypto trip-wire did NOT fire on today's pre-sale
+    numbers (11.43% vs. Convention B's 12.97% — the two conventions
+    disagreed on the fired/not-fired outcome itself for the first time).
+  - **D4 (profit-recycling: gross proceeds vs. realized gain only) —
+    REOPENED, and the reopening itself required a correction mid-session.**
+    User reported having sold the **full 6-unit COIN-XBT.ST position** at
+    2,561 SEK/unit — not the 1-unit trim the same-day morning memo had
+    recommended — and asked whether to redeploy into BITC. An earlier
+    same-day `OPEN_ITEMS.md` edit incorrectly declared D4 "practically
+    overtaken" by the full sale; this session's Council caught that the
+    opposite is true (a full sale makes the gap between the two readings —
+    15,366 SEK gross vs. 3,265.98 SEK realized gain — the largest it has
+    ever been, and the gross-proceeds reading, taken literally, would
+    mechanically prevent crypto from ever returning to the adopted 10%
+    target after any full sale). Corrected in `OPEN_ITEMS.md` before this
+    entry was written. Still unconfirmed by the user; Council's own
+    recommendation (target governs sizing, recycling rule governs only the
+    surplus above target) is assumed by Call 2 above but is a position
+    taken, not a resolution.
+  - Calls 1-5 above are otherwise Council recommendations (Chairman
+    decisions within the six-voice method), same status as every prior
+    sweep's headline calls until the user acts on them — only the four
+    items above (P3, P7, D3, and the report of the executed sale that
+    reopened D4) are things the user actually decided or reported doing
+    this session.
+- **Reconciliation — the morning memo's calls (`reports/2026-08-17-council-memo.md`,
+  this file's immediately preceding entry) vs. this session's live data,
+  reproduced from the memo's own section 2a:**
+  - **Morning Call 1 (trim COIN-XBT.ST by exactly 1 unit) —
+    SUPERSEDED, and not by a small margin.** The user sold all 6 units,
+    not 1. This over-delivered on the fee half of the problem (annual
+    drag cut 68%, from ~567 to 183.14 SEK/yr — P4's fee problem is now
+    fully gone) and overshot the sizing half (crypto flipped from 11.43%
+    *over* the 12% trip-wire read to **4.13%, 5.9pp under the 10% target**
+    — the position went from marginally overweight to meaningfully
+    underweight in one action). Worth stating plainly for calibration: the
+    system's sizing was correct for the recommended action; the user chose
+    a different, larger action, which is exactly the kind of gap this
+    log exists to record honestly.
+  - **Morning Call 2 (hold the five WEAKENING names, run
+    `swedish-equity-review` by 2026-09-03) — EXECUTED the same day, and
+    the review's own conclusion (ABB weakest, 51/100, live insider-selling
+    cluster) is now load-bearing in this session's Call 4.** This closes
+    the single most-repeated unexecuted recommendation in the system's
+    history — seven consecutive sweeps, 2026-08-06 through 2026-08-17 —
+    seventeen days ahead of its own hard deadline.
+  - **Morning Call 3 (adopt neither proposed allocation target, run S5's
+    real backtest first) — RESOLVED, and the underlying number reversed
+    completely.** The real `backtest` agent ran for the first time in this
+    system's history, and a real code bug was fixed to make it possible:
+    `scripts/backtest.py`'s yfinance client failed on this network with
+    the same curl_cffi TLS-fingerprint issue `fetch_market_data.py` had
+    already solved — fixed with the identical urllib-direct-to-Yahoo
+    pattern, validated against the script's own known-good example before
+    trusting the new result. Outcome: current mix -14.6% max drawdown,
+    adopted 85/10/5/0 target -19.95%, **both clear the -30% tolerance** —
+    the opposite conclusion of the morning's illustrative (explicitly
+    non-backtest) -42.3%/-45.75% estimate. The morning call to "not adopt
+    either target until tested" aged exactly right; the number it was
+    worried about did not survive contact with a real test.
+  - **Morning Call 4 (PayPal: stop deliberating, dated fallback to Option A
+    by 2026-09-03) — SUPERSEDED same day, and faster than the fallback
+    mechanism itself anticipated.** The user declined the Revolut
+    measurement outright rather than letting the deadline pass — see P3
+    above. Fourth consecutive sweep of unexecuted advice, then decided the
+    same day it was re-issued.
+  - **D3 recommendation (adopt Convention B) — SUPERSEDED by the user's own
+    contrary choice** — see D3 above. Worth flagging for calibration: this
+    is the first time this session's set of governance recommendations was
+    overridden by the user rather than simply unexecuted or reversed by
+    new data.
+  - **Net: four of the morning memo's five calls were overtaken within
+    hours of being issued.** This session's memo names this directly as a
+    finding for `meta`, not a criticism of the automated sweep (it
+    refreshed the data this session ran on): "the scheduled pre-session
+    sweep's decisions have a short shelf life against a live session, and
+    should be read as a data refresh plus a provisional agenda, not as
+    standing calls." Worth `meta` weighing whether this changes how much
+    synthesis effort the automated morning sweep should spend on
+    calls likely to be overtaken same-day when a live session follows.
+- **Other findings this session, not tied to a specific prior call:**
+  - **A real disagreement caught between the portfolio agent and the
+    Council, worth recording as the clearest agent error this sweep.** The
+    portfolio agent's rebalancing table listed "more self-custody ETH" as
+    an equivalent fallback to "stays in cash" if BITC turned out unbuyable.
+    The Council rejected this outright — P1 (ETH cost basis) being open
+    means every future ETH disposal, including token swaps, is an
+    uncomputable 30% K4 event, and adding units makes a solvable
+    record-keeping gap permanently harder. Resolution: cash, not ETH,
+    pending a verified vehicle.
+  - **A second, independent disagreement: `OPEN_ITEMS.md` (P5) says ETH has
+    "no thesis after 12+ sweeps"; `portfolio.json` carries a full
+    structured thesis dated 2026-08-12 in the user's own words, status
+    INTACT.** `portfolio.json` is authoritative; P5's text is stale and
+    flagged for correction (the practical no-adds freeze is unaffected —
+    it survives on the P1 cost-basis limb regardless).
+  - **A base-convention mismatch the same day D3 was supposedly settled.**
+    The real backtest ran on the investable-only base (188,839 SEK), while
+    D3 pinned the full-portfolio convention (218,826 SEK) hours earlier —
+    defensible (you cannot backtest a tax reserve or a PayPal balance) but
+    `definitions.json`'s current wording reads broader than intended.
+    Flagged for `meta`, not a Council-file fix.
+  - **Timing collision checked and cleared.** Riksbank rate decision +
+    Monetary Policy Update lands 2026-08-20, three days out. The one
+    exposed recommendation (the crypto earmark) is blocked on finding a
+    vehicle (S1) regardless, so it lands after the decision by
+    construction, not by deliberate timing.
+  - **`scout` ran this session** (portfolio-tending emphasis notwithstanding,
+    since the user directly asked for buy ideas for the external 5,000
+    SEK) — five discretionary names surfaced for the Watchlist (MSCI,
+    SNPS, ARM as gap-fillers against the 65.5% industrials concentration;
+    SCCO, STL flagged as worsening it), none screened, none a buy
+    recommendation.
+- **Open items carried forward:** P1 (ETH cost basis, still blocked on
+  user, now also the reason "more ETH" is off the table as a crypto
+  fallback); P2 (2 of 3 ported from the archived branch, discovery funnel
+  + consolidated sweep report still open); P3 (decided — Option A — but
+  not yet executed); P4 (BITC rejected; still needs a verified,
+  physically-backed BTC ETP — S1 — before the 12,853 SEK earmark can be
+  spent, hard 2026-09-03 default to Avanza Global otherwise); P5 (ETH
+  thesis open on cost basis only — stale "no thesis" text flagged for
+  correction); P6 (review done — hold all three, ABB first in line to
+  reduce, not yet triggered); S1 (open, now directly blocking both P4's
+  earmark and BITC's would-be replacement); S4 (Swedish CPI still 8+
+  months stale); S5 (**resolved this session** — real backtest run,
+  clears the -30% tolerance — `meta`'s call whether to formally close);
+  S6 (no NAV discount/premium source for Investor A); S8 (critical-file
+  guard, no incident this session); S9 (**new evidence** — a second
+  confirmed instance of gap (c), the unflagged +5,000 SEK Excel cash
+  delta); S12 (**D3 CLOSED** this session via the user's own choice;
+  **D4 REOPENED**, now carrying its largest-ever gap between readings —
+  15,366 SEK vs. 3,265.98 SEK); S13 (CoinGecko retry/backoff, no incident
+  this session — BTC/ETH both fetched cleanly); S14 (this entry complies
+  — see the valuations.csv row appended below, computed directly rather
+  than only reminded); S15 (this entry's own prepend was self-checked
+  after writing — see below). Blocking-question rule check: no open item
+  holds blocking status; the memo correctly led with the position report
+  and what changed, not a blocking question, per CLAUDE.md's 2026-08-03
+  phase shift.
+
+**Reminder / action taken directly (S14):** the portfolio was valued this
+session at **218,826 SEK** (full-portfolio convention, per
+`data/cache/definitions.json`, matching both the Council memo's closing
+line and the portfolio agent's independently-computed figure) — the
+`data/valuations.csv` row for this has been appended directly by this
+`journal` run rather than only reminded, per S14. See that file for the
+row and its note (the +5,000 SEK ISK-cash discrepancy is called out there
+as unverified, not assumed either way).
+
+---
+
+## 2026-08-17 — swedish-equity-review finally run on ATCO-B.ST/ALFA.ST/ABB.ST (7-sweep-overdue P6 item, closed before the 2026-09-03 deadline); ABB.ST comes out clearly weakest, with a real currency-data-mismatch finding and a live insider-selling cluster
+
+**On-demand skill run, not the weekly Council sweep** — user explicitly
+asked for `swedish-equity-review` on the three never-reviewed P6 names
+before this session's larger sweep, "on fresh data." Ran as one combined
+pass (batching was fine for 3 tickers — each got independently fetched,
+independently scored dimensions, no shared/copied numbers) rather than
+split invocations.
+
+- **Snapshot:** data/cache/snapshots/20260817T111301.json (fresh same-day
+  fetch — superseded 20260817T061032.json/20260817T111226.json, the
+  earlier ones this session, once `beautifulsoup4` was installed to fix
+  the FI insider fetch, which had been silently erroring with `No module
+  named 'bs4'` on the first attempt). Both halves fetched clean this run:
+  full Yahoo quoteSummary fundamentals (price, P/E, PEG, margins, ROE/ROA,
+  ROIC-estimated, debt/equity, 4-year revenue history, trailing FCF) AND
+  real Finansinspektionen insider transactions (`--fi-issuers "Atlas
+  Copco,Alfa Laval,ABB"`), all exact issuer-name matches, no collision
+  noise.
+- **Memo:** none (skill output only — feeds this session's Council memo,
+  not a standalone report file).
+- **Scores (6/6 dimensions, 100% coverage on all three):**
+  - **ALFA.ST 63/100** — best of the three. Consistent 4-year revenue
+    growth (no down year, ttm +7.7%), 10/10 real open-market insider buys
+    since 2023 with zero disposals across 7 distinct insiders (strongest
+    insider signal of the three). Still expensive: P/E 28.1x, PEG 2.86 —
+    worst growth-adjusted value of the three despite the lowest headline
+    multiple.
+  - **ATCO-B.ST 62/100** — excellent business (42% gross margin, ROE
+    25.7%, ROIC ~40% est., D/E 33.7) but FY2025 revenue declined -4.8%
+    before a ttm recovery (+9.1%), priced at 98.5% of its 52-week range
+    (P/E 33.2x, PEG 2.38), thin/dated single-insider buy signal only.
+  - **ABB.ST 51/100** — clear rotation candidate. Richest valuation (P/E
+    37.3x, forward P/E essentially flat at 36.9x despite 14.2% ttm revenue
+    growth — margin-compression flag), thinnest FCF conversion (~4.4%
+    margin), a raw-data currency-mismatch finding (Yahoo's P/S 49.3x / P/B
+    110.9x are USD/SEK-unit artifacts, same pattern as the Investor AB
+    margin artifact CLAUDE.md already documents — FX-corrected to ~5.2x /
+    ~11.7x using the day's sek_per_usd), and a live insider-selling
+    cluster: senior executive Peter Terwiesch made three separate
+    disposals (~48,800 shares / ~CHF 3.85M, 2026-07-31 to 2026-08-14) plus
+    a board-member disposal, all within 2-3 weeks of this review.
+- **Headline calls:**
+  1. Do not add to any of the three at current valuations (all PEG > 2) →
+     confidence **High** → horizon **Long**.
+  2. Hold ATCO-B.ST and ALFA.ST — thesis intact on fundamentals, just
+     expensive, no break condition triggered → confidence **Medium** →
+     horizon **Long**.
+  3. Treat ABB.ST as the active P6 rotation candidate if/when
+     better-vetted capital needs a home — weakest score, richest and only
+     currency-flagged valuation, only name with a live insider-selling
+     signal → confidence **Medium** → horizon **Long**.
+- **User decisions:** none logged yet — this review's findings are input
+  to this session's Council memo, not an executed trade. **Update from the
+  same session's later live-memo entry above: the findings did become
+  operational (Call 4, ABB "first in line") without yet triggering a
+  trade — ABB's own break condition requires the insider pattern to
+  continue into a second FI pull before that fires.**
+- **Reconciliation:** this closes the single most-repeated unexecuted
+  recommendation in the system (named in 7 consecutive prior sweeps,
+  2026-08-06 through 2026-08-17, against a 2026-09-03 hard deadline) —
+  closed 17 days ahead of that deadline. Position sizing check: all three
+  are ~1.8-2.4% of the portfolio, nowhere near the 15% cap or even the
+  "normal" 3-8% band, so this was purely a quality/rotation check, not a
+  sizing one.
+- **State written:** `data/company_profiles/ATCO-B.ST.json`,
+  `ALFA.ST.json`, `ABB.ST.json` — `review_history` populated (was empty on
+  all three), `fundamentals_cache.figures` upgraded from Excel-only
+  (all-MISSING) to full fetched figures, `insider_activity_cache`
+  populated. `data/portfolio.json` — the three holdings' thesis fields
+  updated with the scored findings (pointers to the profile files, not
+  duplicated research), `thesis_status` left at WEAKENING (fundamentals
+  aren't broken, but none of the three have a differentiated case at
+  current price). `OPEN_ITEMS.md` P6 entry updated to reflect the review
+  as done.
+- **Open items carried forward:** everything else in `OPEN_ITEMS.md`
+  unchanged by this run — P1-P5, P7 (already closed this session before
+  this skill ran), S-items untouched. This skill does not touch the
+  crypto sleeve, fund selection, or macro positioning — those stay with
+  `portfolio`/`macro-regime`/`valuation` in the weekly sweep.
+
+---
+
 ## 2026-08-17 — The COIN-XBT.ST trim decided for "today" wasn't executed and got re-issued at lower confidence; BTC un-priceable on both its paths at once (429×3); five WEAKENING names now cluster at 92-99% of their highs; first-ever drawdown estimate says the adopted target breaches the stated tolerance
 
 - **Snapshot:** data/cache/snapshots/20260817T061032.json (previous:
@@ -858,3 +1352,4 @@ through 2026-08-03) is the real contemporaneous record up to that date.
 
 ---
 </content>
+</invoke>

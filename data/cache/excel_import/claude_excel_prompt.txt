@@ -5,6 +5,127 @@ You're working inside my personal finance workbook (master-5.xlsx). Please make 
 3. ATCO-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
 4. SHB-A.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
 5. VOLV-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
-6. Watchlist tickers with a space in them (NOVO B, ERIC B, ASSA B, INVE B, INDU C, LATO B, KINV B, HEXA B, SEB A, SWED A, HM B, SAAB B) are Excel's raw entity name, not a fetchable ticker symbol - these will fail every screen/valuation fetch until corrected. Replace each with its real exchange-suffixed symbol (e.g. 'SEB A' -> 'SEB-A.ST', 'HM B' -> 'HM-B.ST') - verify the exchange per name, don't assume .ST for all of them (e.g. Novo Nordisk is Copenhagen-listed, '.CO', not '.ST').
 
 After making a fix, leave the cell's normal formatting/data type in place - this workbook is read by a script that expects the existing column layout, so don't restructure a sheet to fix a row.
+
+===============================================================
+COUNCIL DATA REQUESTS (added 2026-08-17) - larger, one-time asks
+===============================================================
+These are bigger than the numbered fixes above, so please treat them as a
+separate pass. Nothing here is urgent for one sweep, but each one directly
+improves how well my investment analysis system can use this workbook.
+
+A. INVESTIGATE: does the Stocks data type actually offer more fields than
+   we're currently using?
+
+   Right now the STOCK DETAIL block only pulls: price, P/E ratio, market
+   cap, sector, 52-week high/low, beta, exchange, currency, headquarters,
+   employees. That's true even for stocks I've held and tracked for
+   weeks (AstraZeneca, ABB, Atlas Copco, etc.) - every deeper field
+   (return on equity, return on invested capital, gross/operating/profit
+   margin, debt-to-equity, revenue growth, free cash flow, forward P/E,
+   PEG ratio, payout ratio) comes back completely empty for every ticker,
+   every time, which suggests these fields may not be part of what the
+   Stocks data type exposes at all - but I want that confirmed, not
+   assumed.
+
+   Please check: click into a linked Stocks cell (e.g. the ABB.ST price
+   cell), open the data type card / "Insert Data" field picker, and list
+   every field actually available there. If ANY of the following are
+   offered, please add columns for them to the STOCK DETAIL block, using
+   the same live-linked approach as the existing columns: return on
+   equity, return on invested capital / return on capital, gross margin,
+   operating margin, profit margin, debt-to-equity (or total debt / total
+   equity separately), revenue growth (or trailing-twelve-month revenue
+   for at least 2 years so I can compute growth), free cash flow (or
+   operating cash flow and capital expenditures separately), forward P/E,
+   PEG ratio, dividend payout ratio.
+
+   If none of those are available through this data type, please say so
+   plainly rather than approximating or leaving the columns silently
+   blank - that confirms this workbook is a price/identity feed, not a
+   fundamentals source, which is useful to know either way.
+
+B. EXTEND: add the same STOCK DETAIL-style fields to the Watchlist tab,
+   for every ticker already listed there (not just stocks I currently
+   own).
+
+   Today the Watchlist tab only carries ticker, name, category, and a
+   price - my system currently has to fetch fundamentals for all ~67
+   watchlist names from a different source every time it wants to screen
+   them, which is slower and more expensive than reading a value you've
+   already resolved once in Excel. Please add price, P/E ratio, market
+   cap, sector, 52-week high/low, and beta (the columns that already work
+   reliably in STOCK DETAIL) as live-linked columns on the Watchlist tab
+   itself, for every ticker currently listed. If part A above finds
+   additional fields work too, add those here as well.
+
+C. ADD: a new holding, not yet in the workbook.
+
+   I bought 150 units of a "Valour Bitcoin Zero SEK" certificate (ISIN
+   CH0585378661) at 61.22 SEK/unit on 2026-08-17 - 0% ongoing fee,
+   genuinely BTC-backed. Please add it to the Holdings sheet's core
+   holdings block and, if you can resolve a working ticker/symbol for
+   this ISIN via the Stocks data type, add a STOCK DETAIL row for it too
+   so it gets live pricing going forward. If you can't resolve a ticker
+   for it, tell me plainly rather than guessing one.
+
+D. UPDATE: COIN-XBT.ST is fully sold.
+
+   I sold my entire CoinShares XBT Provider Bitcoin Tracker One position
+   (6 units @ 2,561 SEK/unit) on 2026-08-17. Please set its quantity to 0
+   in the Holdings sheet (keep the row for history, just zero the
+   quantity) rather than leaving it showing as an active position.
+
+===============================================================
+COUNCIL DATA REQUESTS (added 2026-08-18) - four new asks
+===============================================================
+These are new this sweep and do not overlap A-D above. Each one blocked a
+specific analysis today, so I've said which, in case that helps you judge
+what's worth the effort.
+
+E. ADD a CURRENCY column to BOTH the STOCK DETAIL block and the Watchlist
+   tab - i.e. which currency each row's price and market cap are actually
+   quoted in.
+
+   Why it matters: my system currently cannot tell whether a quoted price
+   like "TTE 88.33" is US dollars (the New York ADR listing) or euros (the
+   Paris listing) - those differ by about 16% once converted to kronor, so
+   I can't size an order. Worse, the free-cash-flow figures and the market
+   cap figures appear to be in DIFFERENT currencies for the same company
+   (e.g. a Taiwanese company's cash flow in local currency against a
+   USD-converted market cap), which makes any cash-flow-to-market-cap
+   comparison meaningless. A per-row currency label fixes both.
+
+F. ADD an "FX RATES" block on the Manual Data sheet (or a new small sheet),
+   using Excel's Currencies data type, with SEK per: USD, EUR, DKK, NOK,
+   CHF, GBP.
+
+   Why it matters: this is the single most repeated blocker across the last
+   two sweeps. My system fetches SEK/USD and SEK/EUR but has NO Danish
+   krone rate - which means two of the strongest candidates it has found
+   (Novo Nordisk and Vestas, both Copenhagen-listed) literally cannot be
+   priced or sized in kronor at all. They have now been deferred twice for
+   this reason alone, not because of anything about the companies.
+
+G. ADD 52-week high and 52-week low columns to the Watchlist tab (not just
+   STOCK DETAIL, which already has them for holdings).
+
+   Why it matters: "where is this stock trading within its own past year"
+   is the main screen one of my analysis lenses runs, and right now it can
+   only run on the 7 stocks I already own - all 67 watchlist candidates are
+   invisible to it. Note: if the same Nordic-primary data-provider gap that
+   affects ALFA.ST/ATCO-B.ST/SHB-A.ST/VOLV-B.ST also hits watchlist rows,
+   just leave those blank - blank is fine, it's treated as no data.
+
+H. ADD a small manual block on the Manual Data sheet for HOLDING-COMPANY
+   NAV: one row each for Investor A (INVE-A.ST) and Latour (LATO-B.ST),
+   with columns: reported NAV per share, and the date of that report.
+
+   Why it matters: these are investment companies, so their P/E ratio is an
+   accounting artifact and tells you nothing - the only metric that actually
+   values them is the discount or premium to net asset value, and no free
+   automated source provides it. Both companies publish NAV per share in
+   their own monthly/quarterly IR reports. This is a manual copy-paste, not
+   a live link, and even a monthly refresh would make a position I currently
+   hold on faith into one I can actually test.

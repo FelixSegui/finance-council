@@ -1,0 +1,49 @@
+{
+  "run_at_utc": "2026-08-17T11:17:30.531776+00:00",
+  "allocation": {
+    "VWCE.DE": 0.85,
+    "BTC-USD": 0.1,
+    "BIL": 0.05
+  },
+  "period": {
+    "start": "2019-06-01",
+    "end": "2026-08-01"
+  },
+  "tickers_missing_data": [],
+  "caveats": [
+    "Past performance is not predictive. Use for risk tolerance, not return expectation.",
+    "FX drift between currency legs not modeled \u2014 each leg in native currency.",
+    "No fees, taxes, or spreads modeled. ISK schablonskatt and fund fees reduce these numbers.",
+    "Only 7.2 years of overlapping data \u2014 short histories (esp. crypto) overweight recent regimes.",
+    "Data fetched via direct Yahoo v8 chart endpoint (urllib), not yfinance's client \u2014 see the module docstring; same underlying Yahoo data, different transport."
+  ],
+  "portfolio": {
+    "months": 86,
+    "cagr_pct": 15.53,
+    "annual_vol_pct": 13.85,
+    "max_drawdown_pct": -19.95,
+    "worst_rolling_12m_pct": -19.95,
+    "sharpe_rf0": 1.12
+  },
+  "benchmark": {
+    "VWCE.DE": {
+      "months": 86,
+      "cagr_pct": 12.76,
+      "annual_vol_pct": 13.43,
+      "max_drawdown_pct": -19.14,
+      "worst_rolling_12m_pct": -13.47,
+      "sharpe_rf0": 0.97
+    }
+  },
+  "run_notes": {
+    "label": "TARGET_85_10_5_0 (adopted 2026-08-03 target, VWCE.DE/BTC-USD/BIL proxies)",
+    "basis_note": "Weights derived from data/portfolio.json holdings as of 2026-08-17 (post the full 6-unit COIN-XBT.ST sale), on the 'investable capital' denominator (Convention B: Avanza ISK + ETH self-custody wallet, 188,839 SEK) rather than the full-portfolio denominator (~214,219 SEK, adopted 2026-08-17 for the crypto trip-wire specifically via D3/S12) \u2014 chosen here because the tax-reserve, checking, and PayPal cash sitting outside Avanza/ETH are explicitly 'not an investment' per their own portfolio.json notes and are not part of any equity/crypto/cash target.",
+    "proxy_mapping": {
+      "VWCE.DE": "Vanguard FTSE All-World UCITS ETF \u2014 proxy for Avanza Global (TBD ticker, 0.10%/yr global index fund) and the equity-like ~60% slice of Avanza Auto 3 (TBD ticker, multi-asset fund). Also the backtest benchmark.",
+      "BIL": "SPDR Bloomberg 1-3 Month T-Bill ETF \u2014 proxy for the Avanza ISK cash balance and the ~40% bond/alternatives slice of Avanza Auto 3. No SEK money-market ticker available via Yahoo; BIL approximates near-zero-vol cash ballast, not a currency-matched instrument.",
+      "ETH-USD": "Spot ETH/USD \u2014 direct proxy for the self-custody ETH wallet holding (0.50185 ETH). Used only in the CURRENT MIX run, since COIN-XBT.ST (the BTC-tracking certificate) was fully sold 2026-08-17.",
+      "BTC-USD": "Spot BTC/USD \u2014 proxy for the 'crypto' sleeve in the TARGET allocations (85/10/5/0 and 82/6/12/0), per CLAUDE.md's standing 'BTC is the agreed directional proxy for crypto exposure' convention. Not what is currently held (ETH is), so treat the target-allocation drawdown as indicative of a BTC-heavy crypto sleeve, not ETH.",
+      "SHB-A.ST, INVE-A.ST, VOLV-B.ST, ATCO-B.ST, AZN.ST, ALFA.ST, ABB.ST": "Actual held tickers, no proxy needed \u2014 fetched directly."
+    }
+  }
+}

@@ -151,15 +151,44 @@ question.
 1b. Run `python scripts/position_report.py` → the per-position movement
    table (price, move since last sweep, move vs cost, 52-week range).
    This is the user's primary weekly output and leads the memo.
-2. Invoke `valuation`, `macro-regime`, `portfolio`, `thesis-review` — they
-   read the latest snapshot, never fetch data themselves redundantly.
-   Optional, when relevant: `scout` (new candidates), `calendar` (event
+2. Invoke `valuation`, `macro-regime`, `portfolio`, `thesis-review`,
+   `scout` — they read the latest snapshot, never fetch data themselves
+   redundantly. As of 2026-08-17, `scout` runs every sweep, not only when
+   new candidates are wanted: its full categorized watchlist screen
+   (Passed / Missing data / Failed) is the candidate pool `council` needs
+   for stock selection, not an optional extra. `scout`'s compact digest
+   CSV (`data/cache/screens/<timestamp>-digest.csv`) should be sent
+   directly to the user as a file each sweep it's regenerated — this is
+   the actual dataset every Council persona reasons from, and the user
+   asked to be able to see it directly rather than trust it's centralized
+   somewhere unopened. Optional, when relevant: `calendar` (event
    collisions), `backtest` (risk profile of a proposed allocation).
-3. Invoke `council` last. It reads all outputs, forces disagreements
-   into the open, runs its Investment Council method (six short voices,
-   Chairman decides the actual portfolio action — standard every sweep as
-   of 2026-08-06, not gated behind a size threshold) on every headline
-   call, and writes one memo to `/reports/`.
+3. Invoke `council` last. It reads all outputs, forces disagreements into
+   the open, and writes one memo to `/reports/`. Its primary method (as of
+   2026-08-17, revised same day) is the **Stock Selection Council**: six
+   independent analyst personas (Fundamental/Quality, Valuation,
+   Growth/Opportunity, Defensive/Risk, Contrarian/Risk Taker, Macro/
+   Regime) each rank BUY candidates and flag SELLs across the FULL
+   candidate universe — every current holding plus every watchlist entry,
+   not just names already flagged — before a Chairman weighs the quality
+   of their arguments (not vote counts) into a Top 5 Opportunities list,
+   each with a portfolio-fit-adjusted BUY/HOLD-WATCH/SELL/NO ACTION call.
+   Diversification/allocation-fit is deliberately not one of the six
+   voices — it is `portfolio`'s expanded job (industry/country/market-cap/
+   sustainability, across holdings and candidates alike), consulted once
+   by the Chairman rather than re-derived per-voice; a first live test
+   found running it as a seventh equal voice produced redundant,
+   double-counted output. A separate, lighter Portfolio Governance method
+   (five short voices, unchanged from the prior design) handles non-stock
+   decisions — wrapper, fee-routing, cash-allocation mechanics. `scout`'s
+   screen also now writes a compact digest CSV alongside its full JSON
+   (same-day fix) — council reads the digest for its main pass, the full
+   JSON only for a field the digest doesn't carry, after the first live
+   test found the full JSON alone was consuming most of a run's token
+   budget on reading rather than reasoning. See `council.md` for the full
+   method; this reflects the priority-order shift below (levers 1-2
+   closed, lever 4 — selection — is now the main work, and the Council
+   method now matches that emphasis structurally, not just in prose).
 4. **Every sweep ends with `journal`** — it reconciles last sweep's calls
    against today's data and appends the session entry. An unlogged sweep
    is invisible to the next session.
@@ -288,7 +317,16 @@ in the memo until filled.
 
 ## Council rule
 
-The Council subagent's only job is adversarial synthesis. If two agents
-agree, that's not interesting — the memo should foreground *where they
-disagree* and force an explicit confidence call. A memo with no tension in
-it means the Council didn't do its job; re-run it.
+The Council subagent's job is adversarial synthesis over the *entire*
+candidate universe, not just an audit of current holdings. If two
+agents/personas agree, that's not interesting — the memo should foreground
+*where they disagree* and force an explicit confidence call. A memo with
+no tension in it means the Council didn't do its job; re-run it. Since
+2026-08-17 the Council's main method is stock selection first (find the
+best opportunities across holdings + watchlist via six independent
+analyst lenses), portfolio fit second (filter those opportunities through
+`portfolio`'s diversification/capital/tax read, revised same day to be a
+single consolidated authority rather than a seventh council voice) — see
+`council.md`. The two stages must stay visibly separate in the memo: a
+high-conviction opportunity that resolves to WATCH for portfolio-fit
+reasons is a correct output, not a contradiction to paper over.

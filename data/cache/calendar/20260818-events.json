@@ -1,5 +1,5 @@
 {
-  "fetched_at_utc": "2026-08-17T11:20:22.153945+00:00",
+  "fetched_at_utc": "2026-08-18T11:36:53.782617+00:00",
   "lookahead_days": 45,
   "earnings": {
     "SHB-A.ST": {
@@ -36,8 +36,80 @@
         "2026-10-20"
       ]
     },
-    "BITC": {
-      "error": "HTTP Error 404: Not Found"
+    "AMZN": {
+      "next_earnings": [
+        "2026-10-29"
+      ]
+    },
+    "ASSA-B.ST": {
+      "next_earnings": [
+        "2026-10-27"
+      ]
+    },
+    "EPI-B.ST": {
+      "next_earnings": [
+        "2026-10-28"
+      ]
+    },
+    "EQNR": {
+      "next_earnings": [
+        "2026-10-28"
+      ]
+    },
+    "ERIC-B.ST": {
+      "next_earnings": [
+        "2026-10-15"
+      ]
+    },
+    "GETI-B.ST": {
+      "next_earnings": [
+        "2026-10-21"
+      ]
+    },
+    "GOOGL": {
+      "next_earnings": [
+        "2026-10-28"
+      ]
+    },
+    "HEXA-B.ST": {
+      "next_earnings": [
+        "2026-10-23"
+      ]
+    },
+    "META": {
+      "next_earnings": [
+        "2026-10-28"
+      ]
+    },
+    "MSFT": {
+      "next_earnings": [
+        "2026-10-28"
+      ]
+    },
+    "SAP": {
+      "next_earnings": [
+        "2026-10-21"
+      ]
+    },
+    "SECU-B.ST": {
+      "next_earnings": [
+        "2026-10-23"
+      ]
+    },
+    "TTE": {
+      "next_earnings": [
+        "2026-10-29"
+      ]
+    },
+    "UNH": {
+      "next_earnings": [
+        "2026-10-27"
+      ]
+    },
+    "VWS.CO": {
+      "next_earnings": [
+        "2026-11-11"
+      ]
     }
   },
   "macro_events": {

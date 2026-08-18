@@ -217,9 +217,153 @@ and dated; nothing here is a source of truth for a decision, that's still
   the trip-wire resting on a four-day-old spreadsheet cell. The right response was
   not to estimate the price from training knowledge or from ETH's move — it was to
   record "no data," then ask a different question: *how far off would the stale
-  price have to be for the decision to change?* The answer (~13.5% to make the
-  trim unnecessary, ~26.7% to make it harmful) turned an unanswerable question
-  into a decidable one. When you cannot get the number, test how much the number
-  matters.
+  price have to be for the decision to change?* The answer (~13.5% to make the trim
+  unnecessary, ~26.7% to make it harmful) turned an unanswerable question into a
+  decidable one. When you cannot get the number, test how much the number matters.
+
+---
+
+## 2026-08-17 (memo 2, live session) — `reports/2026-08-17-council-memo-2.md`
+
+- **"Fully BTC-backed" is a claim about a fund's *structure*, and structure is the
+  one thing a price feed can never tell you.** Three different products can carry
+  bitcoin in the name and behave completely differently: a **physically-backed ETP**
+  holds actual BTC in custody and tracks spot almost exactly; a **futures/strategy
+  fund** holds derivatives and can bleed value through roll costs or trend-following
+  whipsaw even when spot goes sideways; and a **treasury-company fund** holds shares
+  in businesses that own bitcoin, which adds equity risk, management decisions and
+  leverage on top. BITC's name — "TRND BITCN TRSR STRGY" — reads as the second or
+  third kind, not the first. The reason this mattered more than the fee arithmetic:
+  the whole trade was justified by saving 2.35 percentage points a year, which is
+  only a saving if you end up owning the same asset. **Optimizing the small number
+  while unknowingly changing the big one is the most common way a "cost-cutting"
+  trade destroys value.**
+- **Why you can buy Apple at Avanza but generally can't buy a US-listed ETF.**
+  Under EU rules (MiFID II / PRIIPs, in force since 2018), a fund sold to EU retail
+  investors must publish a short standardised **KID** — Key Information Document —
+  in a local language. US-domiciled ETFs publish a US prospectus instead and mostly
+  haven't bothered producing KIDs, so European brokers block them for retail
+  clients. Individual *shares* aren't caught by the rule, which is why the
+  restriction feels arbitrary until you know the mechanism. The practical takeaway
+  for your ISK: when a US ticker looks attractive, check whether it is a **company**
+  or a **fund** first — it changes whether the question is even askable.
+- **A backtest's window is part of its answer, and a suspiciously good CAGR is the
+  tell.** This sweep's real backtest says the 85/10/5/0 target's worst drawdown was
+  -19.95% — comfortably inside the -30% tolerance, and the opposite of the crude
+  estimate it replaced. But it also reports a **15.0% annual return** over 7.2
+  years, roughly double a realistic long-run global equity return. That is not good
+  news about the allocation; it is information about the period, which began in
+  2019 and excludes 2008 entirely. One more detail worth internalising: the target's
+  **max drawdown equalled its worst rolling 12 months**, meaning the entire fall
+  happened inside a single year. A slow -20% and a fast -20% are the same number and
+  very different experiences — the fast one is what makes people sell. This is why
+  the scorecard row moved to "OK (provisional)" rather than "validated."
+- **Rebalancing back to a target is not the same thing as timing the market, and
+  the distinction decides whether macro gets a vote.** Macro-regime flagged a real
+  headwind for crypto — strong dollar, US policy rate well above the ECB's,
+  sentiment at "Fear." It then drew the line itself: that warning applies to *sizing
+  up* on a "good entry" read, and is *irrelevant* to restoring an allocation you
+  already decided to hold. Restoring crypto from 4.13% to its written 10% is
+  mechanical compliance with a target you adopted; deciding that now is a great
+  moment to own more bitcoin would be a forecast, which this system doesn't make.
+  Same trade, two different justifications, and only one of them is defensible on
+  free data.
+- **When two of your own written rules collide, the collision is the finding.**
+  Your `profit_recycling_rule` says gains from the risky tier flow to the safe tier.
+  Your target says hold 10% crypto. Applied to a *partial* trim those never touch —
+  but applied to the *full* sale executed today, the recycling rule would
+  mechanically prevent you from ever holding 10% crypto again. Nobody decided that;
+  it would just happen. The general lesson is that rules written for one situation
+  quietly acquire consequences in another, and the moment to notice is when a rule
+  starts producing an outcome you would not have chosen if someone asked you
+  directly.
+
+---
+
+## 2026-08-17 (memo 3, Stock Selection Council test run) — `reports/2026-08-17-council-memo-3-stock-selection-test.md`
+
+- **When forward P/E sits *above* trailing P/E, the market is telling you it
+  expects earnings to fall.** This showed up four separate times across one
+  76-name universe and is one of the cheapest sanity checks available. Tele2
+  looks like a 6.37%-yield defensive holding until you see trailing 11.4 against
+  forward 25.0 — consensus expects earnings to roughly halve, which is *why* the
+  yield is high. The same signature appears at Avanza Bank (22.4 → 30.8), Lifco
+  (37.3 → 39.6) and, in its flat form, ABB (37.6 → 37.1 *while revenue grew
+  14.2%*, which is the margin-compression version of the same message). The
+  reverse is equally informative: Nvidia at 34.5 → 17.6 and TotalEnergies at
+  11.1 → 9.2 are consensus saying earnings are rising fast.
+- **P/E and PEG can point opposite ways on the same stock, and that conflict is
+  the analysis, not a problem to resolve.** Novo Nordisk trades at a P/E of 11.2
+  — cheap — and a PEG of 3.11 — expensive. Both are correct: P/E asks "what am I
+  paying per krona of *current* earnings," PEG asks "per krona of *growth*." A
+  company with strong current earnings and stalled growth reads cheap on one and
+  expensive on the other. The whole investment question then collapses to which
+  number describes the future, and the honest answer here was "one more quarter
+  of revenue will tell you" — which is why a candidate four of seven analyst
+  lenses picked still resolved to WATCH rather than BUY.
+- **Buying an index fund's largest holdings individually concentrates your
+  portfolio — it does not diversify it.** Avanza Global is 54.84% of this
+  portfolio, and Meta, Alphabet, Nvidia, Microsoft, Apple and six others are
+  already inside it. Adding one individually takes on single-company risk (that
+  one firm's lawsuit, product miss, executive departure) in exchange for zero new
+  economic exposure. That single structural fact removed eleven of the thirty-two
+  names that passed the numeric screen — more than any valuation judgment did. It
+  is also why the honest response to liking a mega-cap is usually to buy more of
+  the index fund, not the stock.
+- **A screening threshold that is right on average is wrong for specific business
+  models, and knowing which is a real skill.** The screen used debt/equity above
+  150 as a fail. That is sensible for a manufacturer and meaningless for a bank,
+  whose entire business *is* leverage — which is why SEB and Swedbank got labelled
+  "missing data" rather than properly screened. Likewise profit margin for an
+  investment company (Kinnevik failed at 0.0%), and a 40x P/E cap for a defence
+  contractor whose order book runs years ahead of reported earnings (Saab). The
+  right response is not to abandon the threshold — it catches real problems most
+  of the time — but to be able to say *why* it does not apply to a specific name,
+  and to accept that "I can argue the screen is wrong here but I still cannot
+  underwrite the company without the data" is a legitimate place to stop.
+
+---
+
+## 2026-08-18 — `reports/2026-08-18-council-memo.md`
+
+- **A forward P/E above the trailing P/E is the market telling you it expects
+  earnings to fall — and it showed up four separate times this sweep, in
+  opposite directions.** Trailing P/E divides today's price by the last twelve
+  months of actual earnings; forward P/E divides it by next year's estimate. When
+  forward is *higher*, the denominator is expected to shrink. Hexagon looks like
+  the cheapest name in the whole screen at 10.85x until you see forward 17.68x —
+  the trailing earnings contain something that is not repeating. Novo Nordisk at
+  11.06 → 13.25 means buying it is a bet against the analysts' estimate, not just
+  against sentiment, which is a materially harder bet. Epiroc shows the same
+  signature (28.97 → 37.96). The reverse is equally informative: Meta at 21.41 →
+  16.31 and Nvidia at 34.46 → 17.53 are consensus saying earnings are climbing
+  fast. It costs nothing to check and it reorders a screen.
+- **Inside an ISK, selling is almost free — which changes the bar for "hold."** In
+  a taxable account, selling a winner triggers 30% on the gain, so "hold unless
+  the case is overwhelming" is rational: the tax is a real cost of changing your
+  mind. Inside an ISK there is no capital-gains event at all, only courtage
+  (single-digit SEK on a position this size). So when this memo holds ABB.ST, the
+  reason must be an actual argument about ABB — the untested break condition —
+  and *not* the reflex that trading is expensive. Knowing which of your reasons
+  are real and which are habits imported from a different tax wrapper is worth
+  more than any single stock call.
+- **Half of "ETH rose 0.7%" was the krona, not ethereum.** In euros ETH moved
+  +0.09%. The SEK figure is larger because sek_per_eur went from 10.9523 to
+  11.016 — the krona weakened about 0.58%, so the same euro-denominated asset is
+  worth more kronor. Every foreign-currency holding you own carries this second
+  engine, and it works both ways: it is exactly why the Macro voice objected to
+  buying Alphabet with kronor at DXY 118.90. You would be taking a currency bet
+  you were not paid to take, on top of an equity bet you were.
+- **A screening threshold is a prior, not a verdict — but "I can argue the screen
+  is wrong and still cannot underwrite this" is a legitimate stopping point.**
+  Novo Nordisk failed `scout` on PEG 3.11 alone, a growth-adjusted measure that
+  penalised one stalled year against four years of compounding — a fair criticism
+  of the threshold. Nvidia failed on a trailing-P/E cap that mechanically rejects
+  any company whose earnings are growing faster than its multiple. Both critiques
+  are sound. Neither produced a BUY, because arguing a rule does not apply is only
+  the first half; the second half is having the data to underwrite the company
+  instead, and for Novo (no SEK/DKK rate, no pipeline data) that half is missing.
+  Distinguishing "the screen is wrong here" from "therefore buy it" is most of the
+  discipline.
 
 ---

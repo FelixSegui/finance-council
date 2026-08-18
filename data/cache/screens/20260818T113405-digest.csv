@@ -1,0 +1,68 @@
+ticker,status,sector,price,pe,fwd_pe,peg,margin_pct,roe_pct,roic_pct,de_ratio,net_debt_to_ebitda,rev_growth_pct,fcf_b,div_yield_pct,mcap_b,beta,note
+AAPL,FAIL,Technology,305.93,35.08496,32.14128,2.47,27.6,148.8,62.7,78.445,0.13,16.4,107.72,0.35,4459.8,1.086,trailing_pe=35.08496 > 30.0; peg_ratio=2.47 > 2.0
+ABBV,FAIL,Healthcare,249.46,70.915016,15.374627,0.41,9.8,,31.4,,2.09,10.2,16.87,2.76,442.4,0.28,trailing_pe=70.915016 > 30.0
+ACDVF.PA,MISSING,,,,,,,,,,,,,,,,HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found
+ADDT-B.ST,FAIL,Industrials,338.0,40.87273,43.010204,4.1,9.6,26.9,17.5,74.526,1.42,5.7,2.59,1.07,91.0,1.133,trailing_pe=40.87273 > 30.0; peg_ratio=4.1 > 2.0
+AIR,FAIL,Industrials,145.25,31.627573,23.50306,2.4,5.7,12.9,8.0,59.397,2.7,23.0,-0.05,,6.2,1.125,trailing_pe=31.627573 > 30.0; peg_ratio=2.4 > 2.0
+AMD,FAIL,Technology,514.39,131.42857,32.7139,1.1,15.6,10.2,7.9,6.361,-0.92,50.1,8.84,,826.0,2.489,trailing_pe=131.42857 > 30.0
+AMZN,PASS,Consumer Cyclical,262.65,21.141586,25.118088,1.4,17.4,30.6,10.4,45.617,0.76,19.6,3.22,,2818.6,1.454,
+ASM.AS,FAIL,Technology,903.0,39.605686,28.357227,1.78,31.9,26.8,18.0,1.585,-0.96,20.0,0.24,0.36,42.3,1.523,trailing_pe=39.605686 > 30.0
+ASML,FAIL,Technology,1844.08,64.09531,31.64069,2.22,30.1,53.9,402.6,9.092,-0.41,21.3,8.44,0.48,723.3,1.365,trailing_pe=64.09531 > 30.0; peg_ratio=2.22 > 2.0
+ASSA-B.ST,PASS,Industrials,351.9,23.527815,,1.67,10.8,15.6,,64.103,2.33,3.3,18.4,1.82,,0.846,
+AVGO,FAIL,Technology,392.99,65.405,20.093021,0.44,38.8,37.3,19.1,74.018,1.08,47.9,27.21,0.66,1867.0,1.473,trailing_pe=65.405 > 30.0
+AZA.ST,MISSING,Financial Services,401.7,22.260044,30.63748,,53.0,39.1,38.6,4.35,,25.4,,3.17,63.0,0.637,missing: peg_ratio
+BITC,MISSING,,35.485,,,,,,,,,,,,,,"missing: trailing_pe,peg_ratio,revenue_growth,profit_margins,debt_to_equity"
+BRK.B,MISSING,,,,,,,,,,,,,,,,"missing: trailing_pe,peg_ratio,revenue_growth,profit_margins,debt_to_equity"
+BTC,MISSING,,27.81,,,,,,,,,,,,,,"missing: trailing_pe,peg_ratio,revenue_growth,profit_margins,debt_to_equity"
+CSPX,MISSING,,,,,,,,,,,,,,,,"missing: trailing_pe,peg_ratio,revenue_growth,profit_margins,debt_to_equity"
+DSV.CO,FAIL,Industrials,1414.0,46.41434,16.538677,0.93,2.4,6.3,8.4,75.828,3.34,23.7,14.19,0.5,333.8,0.962,trailing_pe=46.41434 > 30.0
+EPI-B.ST,PASS,Industrials,211.4,28.974009,37.95699,1.9,14.2,21.2,29.7,42.095,0.81,10.4,5.66,1.8,256.3,1.221,
+EQNR,PASS,Energy,40.77,11.333333,11.416404,1.02,8.0,21.3,59.9,75.162,0.21,37.4,29.4,3.73,99.3,-0.73,
+EQQQ,MISSING,,44.075,,,,,,,,,,,,,,"missing: trailing_pe,peg_ratio,revenue_growth,profit_margins,debt_to_equity"
+ERIC-B.ST,PASS,Technology,97.14,13.119241,,1.93,10.8,26.1,16.8,37.682,-0.41,-6.1,30.71,3.09,317.0,0.504,
+ESQF,MISSING,,1e-06,,,,,,,,,,,,,,"missing: trailing_pe,peg_ratio,revenue_growth,profit_margins,debt_to_equity"
+ETH,MISSING,,17.93,,,,,,,,,,,,,,"missing: trailing_pe,peg_ratio,revenue_growth,profit_margins,debt_to_equity"
+EVO,FAIL,Healthcare,1.96,,-10.31579,1.42,-27.5,-26.1,-25.2,71.497,-0.14,-16.2,-0.08,,0.7,1.264,revenue_growth=-0.162 < -0.1; profit_margins=-0.27471 < -0.2
+GETI-B.ST,PASS,Healthcare,239.7,24.455748,21.974405,1.68,7.8,8.9,11.0,35.81,1.54,1.7,2.85,1.98,65.5,0.825,
+GOOGL,PASS,Communication Services,345.9,17.269075,23.32806,0.94,54.8,48.7,28.6,18.859,-0.7,24.2,22.67,0.26,4207.1,1.237,
+HEXA-B.ST,PASS,Technology,94.74,10.8469515,17.684803,1.18,10.0,27.3,13.0,46.892,0.38,4.0,0.68,1.6,251.0,0.884,
+HM-B.ST,FAIL,Consumer Cyclical,172.7,23.153446,20.118643,2.92,5.6,34.7,18.1,226.362,2.42,-3.3,22.31,4.11,284.2,1.009,peg_ratio=2.92 > 2.0; debt_to_equity=226.362 > 200.0
+INDU-C.ST,FAIL,Financial Services,518.8,3.5500271,,5.47,99.3,32.3,41.4,2.799,0.04,1197.9,39.46,1.69,223.1,0.942,peg_ratio=5.47 > 2.0
+INVE-B.ST,FAIL,Financial Services,410.75,4.7887487,,5.08,80.1,27.3,,11.589,0.39,117.0,166.01,1.36,,0.781,peg_ratio=5.08 > 2.0
+IWDA,MISSING,,,,,,,,,,,,,,,,HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found
+JNJ,FAIL,Healthcare,260.35,30.226957,21.317896,4.56,21.5,25.7,16.8,57.709,0.81,6.6,16.89,2.04,632.3,0.231,trailing_pe=30.226957 > 30.0; peg_ratio=4.56 > 2.0
+KINV-B.ST,FAIL,Financial Services,56.9,,10.825094,4.76,0.0,-21.6,-22.1,6.937,,164.4,-5.29,,16.0,1.386,peg_ratio=4.76 > 2.0
+KO,FAIL,Consumer Defensive,87.71,26.277946,24.665522,4.23,28.6,42.1,17.2,115.519,1.64,6.7,5.22,2.44,374.2,0.342,peg_ratio=4.23 > 2.0
+LATO-B.ST,MISSING,Industrials,189.5,26.911552,,,16.1,10.3,4.6,45.64,3.75,-2.2,2.54,2.69,120.6,1.288,missing: peg_ratio
+LIFCO-B.ST,FAIL,Industrials,315.0,37.142857,39.42356,,13.2,20.2,14.6,57.938,1.48,10.8,4.17,0.85,142.9,1.165,trailing_pe=37.142857 > 30.0
+LLY,FAIL,Healthcare,1180.16,39.676727,24.997961,1.48,33.5,102.3,38.4,162.071,1.1,47.7,11.07,0.58,1055.1,0.506,trailing_pe=39.676727 > 30.0
+MC,MISSING,Financial Services,68.41,23.250874,17.037956,,14.5,41.5,28.8,40.955,,12.0,,3.9,4.9,1.841,missing: peg_ratio
+META,PASS,Communication Services,589.85,21.414,16.309875,0.88,29.8,29.8,18.6,42.997,0.2,28.0,21.55,0.37,1449.5,1.243,
+MSFT,PASS,Technology,495.4,26.730663,20.376884,1.61,40.3,34.0,20.7,29.118,0.27,17.7,16.55,0.76,3566.9,1.099,
+NDA-FI.ST,MISSING,,,,,,,,,,,,,,,,HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found
+NESN,MISSING,,,,,,,,,,,,,,,,HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found
+NIBE-B.ST,FAIL,Industrials,38.09,32.193275,22.668638,1.79,5.9,7.8,5.8,71.987,3.26,-0.2,2.88,0.92,77.2,0.914,trailing_pe=32.193275 > 30.0
+NOVN,MISSING,,,,,,,,,,,,,,,,HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found
+NOVO-B.CO,FAIL,Healthcare,292.4,11.060549,13.254568,3.11,35.3,59.8,35.6,63.327,0.55,2.1,37.67,4.0,1284.4,0.349,peg_ratio=3.11 > 2.0
+NVDA,FAIL,Technology,225.16,34.457886,17.532349,0.62,63.0,114.3,63.1,6.555,-0.24,85.2,46.34,0.44,5450.0,2.215,trailing_pe=34.457886 > 30.0
+PEP,FAIL,Consumer Defensive,140.79,18.45661,15.396884,1.52,10.8,51.5,17.1,238.949,2.25,6.4,7.83,4.28,188.8,0.361,debt_to_equity=238.949 > 200.0
+PG,FAIL,Consumer Defensive,144.55,21.586725,19.339966,4.14,18.4,30.3,17.2,64.49,1.01,1.5,13.28,3.04,332.7,0.377,peg_ratio=4.14 > 2.0
+QQQ,FAIL,,731.07,31.2094,,,,,,,,,,,,,trailing_pe=31.2094 > 30.0
+RHM.DE,FAIL,Industrials,1214.0,46.605366,22.732649,0.6,6.3,25.7,14.6,51.63,1.18,68.8,0.64,0.95,56.8,0.44,trailing_pe=46.605366 > 30.0
+SAAB-B.ST,FAIL,Industrials,691.8,52.374428,69.16583,2.16,8.0,15.9,12.0,28.581,0.15,28.6,7.51,0.35,370.7,0.032,trailing_pe=52.374428 > 30.0; peg_ratio=2.16 > 2.0
+SAND,MISSING,,,,,,,,,,,,,,,,HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found
+SAP,PASS,Technology,207.97,26.887451,21.650429,1.8,20.4,18.3,54.4,21.966,-0.14,9.4,9.09,1.41,239.9,0.757,
+SEB-A.ST,FAIL,Financial Services,221.0,14.053537,13.964535,2.32,41.8,14.1,2.3,,,2.3,,3.85,429.4,0.434,peg_ratio=2.32 > 2.0
+SECU-B.ST,PASS,Industrials,146.2,14.984616,11.650719,1.33,3.7,14.2,10.7,97.402,2.62,-1.9,7.35,3.63,83.6,0.73,
+SIE,MISSING,,,,,,,,,,,,,,,,"missing: trailing_pe,peg_ratio,revenue_growth,profit_margins,debt_to_equity"
+SU.PA,FAIL,Industrials,308.75,35.447586,24.936178,1.85,11.3,18.6,12.7,84.124,1.91,9.8,5.37,1.36,169.2,1.15,trailing_pe=35.447586 > 30.0
+SWED-A.ST,FAIL,Financial Services,379.5,13.707866,14.866352,7.43,45.1,15.0,2.1,,,5.8,,5.39,425.0,0.565,peg_ratio=7.43 > 2.0
+TEL2-B.ST,FAIL,Communication Services,164.7,11.487232,25.181541,4.31,33.6,47.6,9.8,135.225,2.25,1.9,7.56,6.38,115.9,0.323,peg_ratio=4.31 > 2.0
+TMO,FAIL,Healthcare,588.29,31.546877,21.283472,1.92,15.0,13.5,7.2,80.575,3.28,10.5,6.24,0.32,216.5,0.847,trailing_pe=31.546877 > 30.0
+TSM,FAIL,Technology,426.35,32.477016,19.786266,1.03,49.9,40.0,183.8,16.504,-0.77,36.0,730.83,1.01,2235.2,1.258,trailing_pe=32.477016 > 30.0
+TTE,PASS,Energy,88.33,11.051121,9.191438,0.72,9.1,14.5,9.9,48.045,0.79,27.8,13.53,4.78,196.5,0.062,
+UNH,PASS,Healthcare,401.73,25.4418,17.633762,1.24,3.1,14.2,14.4,69.211,1.57,0.4,24.27,2.35,355.1,0.632,
+V,FAIL,Financial Services,364.15,30.591646,23.95013,1.65,50.8,61.2,41.5,67.821,0.32,14.4,20.4,0.75,670.0,0.759,trailing_pe=30.591646 > 30.0
+VOO,MISSING,,713.61,,,,,,,,,,,,,,"missing: trailing_pe,peg_ratio,revenue_growth,profit_margins,debt_to_equity"
+VWCE,MISSING,,,,,,,,,,,,,,,,HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found
+VWS.CO,PASS,Industrials,205.1,24.829683,16.954937,0.85,5.4,30.9,4.5,89.155,-0.04,26.1,0.52,0.36,200.3,0.966,

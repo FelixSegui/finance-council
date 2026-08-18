@@ -96,12 +96,92 @@ def apply_filters(data, active_filters):
             elif direction == "min" and value < threshold:
                 fail_reasons.append(f"{field}={value} < {threshold}")
         if fail_reasons:
-            failed[ticker] = {"reasons": fail_reasons}
+            failed[ticker] = {"reasons": fail_reasons, "data": fields}
         elif missing_fields:
             missing[ticker] = {"missing_fields": missing_fields, "data": fields}
         else:
             passed[ticker] = fields
     return passed, failed, missing
+
+
+DIGEST_COLUMNS = [
+    "ticker", "status", "sector", "price", "pe", "fwd_pe", "peg",
+    "margin_pct", "roe_pct", "roic_pct", "de_ratio", "net_debt_to_ebitda",
+    "rev_growth_pct", "fcf_b", "div_yield_pct", "mcap_b", "beta", "note",
+]
+
+
+def write_compact_digest(passed, failed, missing, fname):
+    """One row per ticker, key fields only, no nested source/quality_state
+    wrappers. This exists because the full JSON this script also writes
+    (~60k+ tokens across a ~70-ticker universe, per the 2026-08-17
+    Stock-Selection-Council test run) is what a reading agent burns most of
+    its budget on before it does any actual reasoning - this file is the
+    cheap-to-read version council.md's Stock Selection Council should read
+    first, falling back to the full JSON only for a specific ticker that
+    needs a field this digest doesn't carry (e.g. the multi-year revenue
+    history, or a field's source/quality_state)."""
+    import csv
+    rows = []
+
+    def _val(x):
+        """Unwrap the Layer-B derived-metric shape ({"value":...,
+        "quality_state":...}) used for roic_pct/ebit/capex/etc - see
+        derived_metrics.py - down to a plain number, or None."""
+        if isinstance(x, dict):
+            return x.get("value")
+        return x
+
+    def row(ticker, fields, status, note=""):
+        pe = fields.get("trailing_pe")
+        mcap = fields.get("market_cap")
+        margin = fields.get("profit_margins")
+        roe = fields.get("return_on_equity")
+        roic = _val(fields.get("roic_pct"))
+        rev_g = fields.get("revenue_growth")
+        div_y = fields.get("dividend_yield")
+        fcf = fields.get("free_cashflow")
+        total_debt, total_cash, ebitda = (fields.get("total_debt"), fields.get("total_cash"),
+                                           fields.get("ebitda"))
+        net_debt_to_ebitda = None
+        if all(isinstance(x, (int, float)) for x in (total_debt, total_cash, ebitda)) and ebitda:
+            net_debt_to_ebitda = round((total_debt - total_cash) / ebitda, 2)
+        rows.append({
+            "ticker": ticker,
+            "status": status,
+            "sector": fields.get("sector") or "",
+            "price": fields.get("price"),
+            "pe": pe,
+            "fwd_pe": fields.get("forward_pe"),
+            "peg": fields.get("peg_ratio"),
+            "margin_pct": round(margin * 100, 1) if isinstance(margin, (int, float)) else None,
+            "roe_pct": round(roe * 100, 1) if isinstance(roe, (int, float)) else None,
+            "roic_pct": round(roic * 100, 1) if isinstance(roic, (int, float)) else None,
+            "de_ratio": fields.get("debt_to_equity"),
+            "net_debt_to_ebitda": net_debt_to_ebitda,
+            "rev_growth_pct": round(rev_g * 100, 1) if isinstance(rev_g, (int, float)) else None,
+            "fcf_b": round(fcf / 1e9, 2) if isinstance(fcf, (int, float)) else None,
+            "div_yield_pct": round(div_y * 100, 2) if isinstance(div_y, (int, float)) else None,
+            "mcap_b": round(mcap / 1e9, 1) if isinstance(mcap, (int, float)) else None,
+            "beta": fields.get("beta"),
+            "note": note,
+        })
+
+    for ticker, fields in passed.items():
+        row(ticker, fields, "PASS")
+    for ticker, info in failed.items():
+        row(ticker, info.get("data", {}), "FAIL", "; ".join(info.get("reasons", []))[:120])
+    for ticker, info in missing.items():
+        fields = info.get("data", {})
+        note = info.get("reason") or ("missing: " + ",".join(info.get("missing_fields", [])))
+        row(ticker, fields, "MISSING", note[:120])
+
+    with open(fname, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=DIGEST_COLUMNS)
+        writer.writeheader()
+        for r in sorted(rows, key=lambda r: r["ticker"]):
+            writer.writerow(r)
+    return fname
 
 
 def main():
@@ -148,7 +228,12 @@ def main():
     with open(fname, "w") as f:
         json.dump(result, f, indent=2)
 
+    digest_fname = fname.replace("-screen.json", "-digest.csv")
+    write_compact_digest(passed, failed, missing, digest_fname)
+
     print(f"Wrote {fname}")
+    print(f"Wrote {digest_fname} (compact - read this first; fall back to the "
+          f"full JSON only for a ticker needing a field the digest doesn't carry)")
     print(f"Passed: {sorted(passed)}")
     print(f"Missing data (not failed, not passed): {sorted(missing)}")
     print(f"Failed: {len(failed)} tickers")

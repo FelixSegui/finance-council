@@ -1,10 +1,10 @@
 {
   "ticker": "VOLV-B.ST",
   "name": "Volvo B",
-  "profile_last_updated": "2026-08-13",
+  "profile_last_updated": "2026-08-17",
   "static_profile": {
     "business_description": "Swedish manufacturer of trucks, buses, construction equipment, and marine/industrial engines (AB Volvo, distinct from Volvo Cars). Not yet held in this portfolio (universe.json candidate).",
-    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-12)",
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-17)",
     "competitive_moat_notes": "Not yet assessed from a real source - NOT scored this review.",
     "management_notes": "Not yet assessed.",
     "last_reviewed": "2026-07-28"
@@ -12,7 +12,7 @@
   "fundamentals_cache": {
     "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": "trailing/most recent fiscal year 2025-12-31",
-    "extracted_date": "2026-08-12",
+    "extracted_date": "2026-08-17",
     "next_report_expected": "check Volvo's own IR calendar - not confirmed this session",
     "figures": {
       "trailing_pe": {
@@ -79,11 +79,11 @@
         "calculation_method": "direct from source, not computed"
       },
       "beta": {
-        "value": 1.0396,
+        "value": 1.0405,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -195,29 +195,29 @@
         "calculation_method": "direct from source, not computed"
       },
       "price": {
-        "value": 343.2,
+        "value": 341.5,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "pe_ratio": {
-        "value": 19.4668,
+        "value": 19.3704,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "market_cap": {
-        "value": 711884500000,
+        "value": 691780400000,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -234,8 +234,8 @@
         "value": "SEK",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-12",
-        "age_days": 1,
+        "as_of": "2026-08-17",
+        "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },

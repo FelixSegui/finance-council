@@ -712,38 +712,178 @@ alongside the S-items, not silently.
   here as a genuinely different, harder question ("what does the worst
   historical case do to this book," not "does a representative recent
   window clear the bound").
-- **Phase 7 (proposed 2026-08-17, not started) — true per-persona
-  isolation for the Stock Selection Council.** Currently `council`'s six
-  analyst personas are role-played sequentially by one subagent
-  invocation, sharing one context window — real independence (Step 1
-  says "draft all six in isolation") is enforced by instruction, not by
-  the architecture. The alternative: the orchestrating session spawns six
-  separate `Agent` tool calls (a shared, parameterized "council-analyst"
-  agent definition, one persona name passed per call) in parallel, each
-  reading only its own relevant data slice, genuinely unable to see any
-  other persona's output — then a seventh `Agent` call ("council-chairman")
-  reads all six results plus the raw data and writes the memo. This also
-  opens the door to what the user asked for directly: each persona could
-  target a *different* part of the Excel workbook / a different subset of
-  fetched data if that turns out to matter, and each becomes individually
-  promptable/tunable without touching the others.
-  **Deliberately not implemented same-day as this proposal** — the
-  tradeoff is real, not just execution risk: true isolation likely
-  *increases* total token cost (each of 7 invocations loads its own copy
-  of the shared context - snapshot, digest, portfolio state - instead of
-  one subagent reading it once), which cuts against the same session's
-  token-cost fix (the digest CSV, Step 0 triage). It buys independence
-  and per-persona control, not cheapness. Worth building once the
-  digest-based version has run a few real sweeps and the marginal value
-  of stricter isolation (vs. the current instruction-enforced version) is
-  actually evidenced, not assumed. Revisit if a sweep produces visible
-  evidence of one persona's write anchoring another's (the failure mode
-  this would fix) — **2026-08-18 note: the first real production sweep
-  under the digest-based version ran this session and produced genuine,
-  substantive disagreement across the six voices (see the memo's "Where
-  the agents disagreed" section) with no visible sign of one persona's
-  conclusions anchoring another's** — one data point against urgency, not
-  proof the failure mode can't occur, but no evidence yet that it has.
+- **Phase 7 — Council architecture, five items, user-prioritized
+  2026-08-18 (superseding the rough 2026-08-17 draft below with a
+  precise spec).** The user's explicit priority order, kept verbatim as
+  the sequencing for 7a-7d: (1) voice/Chairman isolation, (2) data
+  quality and missing metrics — **already tracked, not a new item, see
+  below**, (3) Copycat/Smart Money voice, (4) formal disagreement
+  tracking, (5) historical tracking of recommendations/conviction. Build
+  in this order; don't jump to 7b-7d before 7a lands, since 7b is
+  specified as an isolated voice from the start (build it inside 7a's
+  architecture, not bolted into the current single-agent `council.md`
+  and rebuilt later).
+
+  - **Phase 7a (priority 1) — Voice and Chairman isolation.** Today,
+    `council`'s six analyst personas are role-played sequentially by one
+    subagent invocation sharing one context window and, in practice, my
+    own hand-written prompts have fed each analyst-lens agent (valuation,
+    macro-regime, etc.) a summary of *other* agents' findings and prior
+    sweeps' conclusions for context — real independence is enforced by
+    instruction ("draft all X in isolation"), not by the architecture or
+    the data-access boundary. The target design, precisely:
+    - Each voice is a **separate agent invocation** (the orchestrating
+      session spawns them, e.g. seven parallel `Agent` tool calls to
+      dedicated agent definitions — `council-fundamentalist.md`,
+      `council-valuation.md`, `council-growth.md`, `council-defensive.md`,
+      `council-contrarian.md`, `council-copycat.md` once 7b lands,
+      `council-macro.md`), each with its own tools/frontmatter so
+      per-voice access grants are real restrictions, not just prompt
+      instructions.
+    - Every voice receives the **same core inputs**: the raw
+      financial/candidate data (scout's digest + full screen JSON, the
+      latest snapshot), and the portfolio data where relevant
+      (`portfolio.json`, `investor_profile.json`) for context on existing
+      holdings (needed to flag SELLs and avoid recommending something
+      already massively held) — but explicitly NOT for portfolio-fit
+      judgment, which stays downstream at the Chairman stage per 7's
+      item 4 (see below).
+    - A voice gets **explicitly named additional access** only if its
+      role requires it — e.g. Copycat/Smart Money (7b) needs
+      insider/institutional data beyond what's fetched today, so it
+      would be the one voice granted `WebSearch`/`WebFetch` in its own
+      agent definition, not a blanket grant to all seven.
+    - Voices must **not** see: other voices' recommendations or
+      reasoning, prior Council memos or `data/learning_log.md` (to avoid
+      anchoring on last sweep's conclusions before forming this sweep's
+      independent view), or the Chairman's analysis. Each voice's prompt
+      is built from primary data files only — no "here's what happened
+      last sweep" narration, which is how every voice prompt in this
+      system has been written so far and would need to change.
+    - The **Chairman** (`council-chairman.md`) is a separate final
+      invocation, receiving only the seven voices' completed outputs
+      (ideally each voice writes its structured output to a dated file —
+      see 7d, this doubles as the historical record) plus the raw data
+      and portfolio/OPEN_ITEMS context it's always had. It evaluates
+      argument quality, not vote count — unchanged from today's design.
+    - **Tradeoffs, unchanged from the 2026-08-17 draft, still real:**
+      true isolation likely *increases* total token cost (each
+      invocation loads its own copy of shared context instead of one
+      subagent reading it once) and roughly doubles the number of agent
+      invocations per sweep (7 voices + 1 Chairman vs. today's 1). It
+      buys independence and per-voice tunability, not cheapness — accept
+      that cost deliberately, don't discover it as a surprise.
+    - **Status: roadmapped, not built**, per the explicit instruction to
+      preserve the current architecture and not add complexity without
+      evidenced need. The 2026-08-18 production sweep (first real run of
+      the digest-based six-voice design) produced genuine, substantive
+      disagreement with no visible sign of one voice's conclusions
+      anchoring another's — one data point against urgency, not proof
+      the failure mode can't occur. Build when the user says so
+      explicitly, given the real cost tradeoff above.
+
+  - **Phase 7 priority 2 — data quality and missing metrics: not a new
+    item, already tracked.** Phases 2 (Fair Value Gap/Quality-vs-
+    Valuation split), 3 (funnel wiring, quality factors), 4 (risk-bucket
+    classification), and 5 (Macro Regime Engine expansion) below all
+    cover this ground, plus the live S-items (S17: digest currency field,
+    S18: unscreened discretionary candidates, and the Excel
+    `COUNCIL DATA REQUESTS` items E-H: FX rates including DKK, per-row
+    currency, watchlist 52-week ranges, holding-company NAV). The user's
+    priority order asks that this ground get real attention before 7b-7d
+    are built, not that a new phase be authored for it.
+
+  - **Phase 7b (priority 3) — Copycat / Smart Money Analyst, a new
+    Council voice.** Primary question: *what are informed insiders and
+    sophisticated investors actually doing?* Focus: insider buying/
+    selling (size, frequency, multiple insiders acting the same
+    direction, CEO/CFO/board transactions vs. routine compensation —
+    this system already fetches SEC Form 4 counts (US, `--insiders`) and
+    Finansinspektionen Insynsregister direction-known trades (Sweden,
+    `--fi-issuers`), a real head start), institutional ownership changes,
+    major shareholder/activist positions, accumulation/distribution
+    patterns. Assess the *quality and context* of a signal rather than
+    treating every insider transaction as bullish/bearish by default (a
+    CFO selling to cover a tax bill is not the same signal as a
+    CEO buying on the open market — this system's insider-analysis
+    findings this session, e.g. ABB.ST's insider-selling cluster and
+    ALFA.ST's 10-for-10 open-market buys, already model this
+    distinction; Copycat generalizes it into its own dedicated lens).
+    Should also surface emerging meta-trends visible through insider/
+    institutional positioning before they're an obvious consensus
+    narrative. Same Council requirements as every other voice: >=3 BUY
+    picks when the data supports it, SELL flags, conviction 1-10,
+    concise reasoning, risks, missing-data notes. Institutional-ownership
+    and activist-position data is **not currently fetched by any script
+    in this system** — this voice is the one that would need an explicit
+    `WebSearch`/`WebFetch` grant (see 7a) or a new fetcher, not silent
+    reliance on training knowledge. **Status: roadmapped, build as the
+    eighth isolated voice once 7a's architecture exists**, not bolted
+    into the current single-agent `council.md`.
+
+  - **Phase 7c (priority 4) — formal Disagreement Register in the
+    Chairman's output.** For each candidate under real discussion (not
+    just the Top 5), the Chairman states explicitly: degree of
+    consensus/disagreement, strongest argument FOR, strongest argument
+    AGAINST, the key disagreement between voices (named, not
+    paraphrased into agreement), missing/conflicting data, and what
+    information or event would change the call. This does not replace
+    today's "Where the agents disagreed" memo section — it formalizes it
+    into a per-candidate structured block rather than prose, and makes
+    explicit what's already a stated rule (`council.md`: "don't average
+    away disagreement" — see the Rules section) into a checked format
+    the Chairman must fill in, not just a norm it's expected to follow.
+    Consequence, already true in principle, worth restating because the
+    user asked for it explicitly: a candidate can resolve to NO ACTION
+    even with several voices favorably disposed, if the opposing
+    argument or a real data gap makes the thesis impossible to
+    underwrite — see 2026-08-18's ABB.ST call (held despite 3/6 voices
+    favoring sell) and NOVO-B.CO (held despite standalone appeal, on a
+    missing SEK/DKK rate) for two live examples of exactly this pattern
+    already happening informally. **Status: roadmapped** — this one is
+    lower-risk to build inside the *current* single-agent `council.md`
+    if the user wants it sooner than 7a/7b, since it's a Chairman-output
+    format addition, not an isolation-dependent change.
+
+  - **Phase 7d (priority 5) — historical tracking of voice
+    recommendations and conviction.** Log each voice's picks
+    (ticker/action/conviction/date) somewhere queryable over time — the
+    natural implementation is each voice writing its structured output
+    to `data/cache/council_voices/<timestamp>-<voice>.json` once 7a
+    exists (this doubles as the Chairman's input file and the historical
+    record in one write, no separate logging step). Without 7a, a
+    lighter version is still possible: extract the Top 5 + conviction
+    scores from each dated Council memo into a running CSV/JSON, though
+    that only captures the Chairman's synthesis, not each voice's raw
+    call — a real loss of signal for score-calibration work (this is
+    also Phase 6's "log scores now, correlate against realized returns
+    later" instrumentation goal — the two phases would share one data
+    store, not duplicate it). **Status: roadmapped, sequenced last** —
+    depends on 7a for full value, has a degraded but real fallback
+    without it.
+
+  - **Item 4 of the user's 2026-08-18 request — keep portfolio analysis
+    distinct from stock selection — is already satisfied, not a new
+    build.** The user's exact pipeline: SWEEP → LENSES/FUNDAMENTAL SCREEN
+    → BROAD CANDIDATE UNIVERSE → INDEPENDENT COUNCIL VOICES → CHAIRMAN →
+    PORTFOLIO FIT → FINAL ACTION. This is precisely what the 2026-08-17
+    redesign built: `council.md`'s Steps 0-2 find the best opportunities
+    across the full universe (every holding + every watchlist entry, all
+    three scout statuses) on standalone merit; `portfolio`'s
+    diversification breakdown is consulted once, by the Chairman, in the
+    dedicated `PORTFOLIO-FIT REASONING` field — *after* the opportunity
+    is ranked, not before. Confirmed working as designed in the
+    2026-08-18 production sweep: NOVO-B.CO ranked highest on standalone
+    merit and still resolved to HOLD-WATCH for a portfolio/data reason
+    (no SEK/DKK rate to size it), not a contradiction but the two-stage
+    split doing its job. No action needed here beyond keeping it this
+    way when 7a is eventually built — isolate the voices, but don't let
+    portfolio-fit creep back into their scope.
+
+  **Original 2026-08-17 draft, archived verbatim:**
+  `data/portfolio_history_archive.md#v2-roadmap-phase-7-original-2026-08-17-draft-superseded-2026-08-18-by-the-users-detailed-5-item-spec-archived-verbatim`
+  — same seven-parallel-plus-Chairman shape, same token-cost tradeoff,
+  not duplicated here now that 7a supersedes it with a precise spec.
 
 ---
 

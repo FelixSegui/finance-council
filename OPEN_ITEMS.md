@@ -98,126 +98,32 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   remaining two deliberately, one at a time — do not bulk-restore.
 
 ### P3 — PayPal routing (the fee is now known; the route isn't)
-- **Status:** decided — pending execution. **2026-08-17 (user):** "No I am not
-  going to do that, we are counting with the 4% conversion rate." The user
-  declined the Revolut 50 EUR test-transfer (Option C) — no measurement will
-  happen. This selects **Option A** outright rather than waiting for the
-  2026-09-03 dated fallback: convert the full PayPal balance (1,177.49 USD +
-  266.88 EUR) inside PayPal at the confirmed worst-case 4% spread (~563 SEK
-  cost on the balance at disclosure, recurring on the ~750-1,000 EUR/~2mo
-  inflow going forward — accept this as the standing planning figure, not a
-  one-off), then route the converted SEK into the ISK. **Next step:** the
-  user executes the PayPal conversion + ISK transfer; once done, zero out the
-  paypal holdings in `portfolio.json` and close this item.
-- **Superseded text below kept for history, not the live plan:**
-- **Confirmed 2026-08-03:** PayPal's conversion spread is 3-4%. Planning
-  figure is **4%** (your instruction: assume worst case).
-- **What it costs:** ~563 SEK to convert the current 1,177.49 USD + 266.88 EUR
-  through PayPal (14,079.79 SEK total). And it recurs — you receive
-  ~750-1,000 EUR every ~2 months, so this is a permanent leak
-  (~1,970-2,630 SEK/yr), not a one-off.
-- **Still to decide:** the cheapest path out. 2026-08-11 Council's read: the
-  actual blocker is a missing price (Revolut's real FX spread has never been
-  measured), not a missing preference — recommends a small test transfer via
-  Revolut to price it once, then route the rest by whichever option wins.
-  This exact recommendation was also made 2026-08-10 and not executed —
-  worth naming plainly as the second straight sweep of repeating advice with
-  no action. Options remain: (A) convert inside PayPal and accept ~563 SEK
-  now plus the same % forever; (B) transfer out in native currency to
-  Revolut and convert there, unpriced; (C) a small test transfer via B to
-  measure the real cost before committing the rest.
-- **Why it matters more than the amount suggests:** this is a fee-drag problem,
-  which is lever #2 in the system's priority order. Recurring forever beats
-  large-and-once.
-- **Stripe idea checked 2026-08-11, doesn't appear to work as a route.**
-  You floated routing PayPal → Stripe → SEK on the idea that Stripe's
-  conversion is cheaper than PayPal's. Stripe does support SEK and does
-  have an "instant currency conversion" feature, and individuals can open
-  a Stripe account without a registered business — but that conversion
-  feature works on funds already sitting in a Stripe balance, which comes
-  from Stripe *processing payments as a merchant*, not from an external
-  transfer-in. There's no product for moving an existing PayPal balance
-  into Stripe to convert it. Sources: [Instant currency conversion —
-  Stripe docs](https://docs.stripe.com/instant-currency-conversion),
-  [Can I use Stripe as an individual? — Picter Help
-  Center](https://support.picter.com/en/articles/2488302-can-i-use-stripe-as-an-individual-not-a-company).
-  Treat this path as ruled out unless you find a specific mechanism that
-  contradicts this — the small Revolut test-transfer (already the live
-  plan above, and you already hold a Revolut account) remains the
-  simplest way to actually measure a cheaper route. It also now has a second-order effect: this balance is
-  what keeps the crypto trip-wire (D3) from firing on the strictest honest
-  reading — see S12.
-- **2026-08-17: fourth consecutive sweep unexecuted, then decided the same
-  day** — see the status line above. The dated fallback (execute Option A by
-  2026-09-03 if no Revolut test) is now moot: the user chose Option A
-  directly rather than waiting for the deadline.
+- **Status:** decided — pending execution. **2026-08-17 (user):** "No I am
+  not going to do that, we are counting with the 4% conversion rate." User
+  declined the Revolut test-transfer option — selects **Option A**
+  directly: convert the full PayPal balance (1,177.49 USD + 266.88 EUR)
+  inside PayPal at the confirmed worst-case 4% spread (~563 SEK on the
+  balance at disclosure, recurring on the ~750-1,000 EUR/~2mo inflow
+  going forward), then route the converted SEK into the ISK.
+- **Next step:** user executes the PayPal conversion + ISK transfer; once
+  done, zero out the paypal holdings in `portfolio.json` and close this
+  item.
+- **Why it matters more than the amount suggests:** fee-drag problem
+  (lever #2), and it recurs every ~2 months indefinitely, not a one-off.
+- Full deliberation history (the Stripe-routing dead end, the
+  multi-sweep repeated-advice pattern, the Revolut-balance/D3 cross-link):
+  `reports/SESSION_LOG.md`'s 2026-08-10 through 2026-08-17 entries.
 
 ### P4 — Replace the Bitcoin certificate with a cheaper one
-- **Status: CLOSED 2026-08-17.** User confirmed directly: the Valour
-  Bitcoin Zero certificate is 0%/yr fee and genuinely BTC-backed. Both
-  verification questions below are answered by direct user statement,
-  which outranks an inferred/unverified reading the same way it outranks
-  Excel. What's left is a pricing convenience (a tradeable ticker, S1),
-  not an open decision. History below kept for the record.
-- **2026-08-17: the situation changed
-  from "trim and find something cheaper" to "already sold, what now."** The
-  user reports having sold the full 6-unit COIN-XBT.ST position at 2,561
-  SEK/unit (not the 1-unit trim the same-day Council memo had recommended) —
-  see `data/portfolio.json`'s COIN-XBT.ST `sale_record`. Live question: rebuy
-  the crypto exposure via **BITWISE TRND BITCN TRSR STRGY ETF (ARCX:BITC)** —
-  US-listed, fully BTC-backed per the user's own research, 0.15%/yr — instead
-  of a Nordic ISK certificate? That would cut the fee from 2.5%/yr to
-  0.15%/yr (a ~330 SEK/yr saving on the ~15,366 SEK proceeds) if Avanza
-  allows holding it inside the ISK (US-listed securities are generally
-  purchasable inside a Swedish ISK — needs confirming on the actual Avanza
-  platform, not assumed). Routed through this sweep's valuation/scout/council
-  Candidate Evaluation rather than answered here directly, since it is a
-  specific buy decision, not just a fee comparison.
-- **RESOLVED 2026-08-17 (Council Candidate Evaluation, second memo of the
-  day, `reports/2026-08-17-council-memo-2.md`): REJECT BITC, High
-  conviction.** The ticker's full name ("TRND BITCN TRSR STRGY") reads as a
-  bitcoin-*treasury-strategy* product (equities of BTC-treasury companies,
-  or a derivatives overlay) rather than a confirmed spot-BTC tracker — the
-  entire ~330 SEK/yr fee-saving case depends on like-for-like exposure that
-  is unverified from any fetched data. Second, likely-faster disqualifier
-  flagged but not load-bearing: US-listed ETFs are generally unavailable to
-  EU retail investors under MiFID II/PRIIPs (unlike individual US stocks),
-  untested directly with Avanza. **P4 stays open** — find a verified,
-  physically-backed BTC ETP/certificate (see S1). Council's Call 2: deploy
-  the traceable 15,366 SEK sale proceeds as 2,513 SEK to Avanza Global now
-  and 12,853 SEK earmarked in cash for a verified BTC ETP, with a hard
-  **2026-09-03** auto-convert-to-Avanza-Global default if nothing verified
-  by then — do not let it sit idle indefinitely. Council also explicitly
-  rejected the portfolio agent's own named fallback ("more self-custody ETH
-  if BITC fails") as the worst of the three options — P1 being open makes
-  adding ETH units permanently harder to tax-account for, not a neutral
-  substitute for cash.
-- **RESOLVED IN SUBSTANCE 2026-08-17 (later same day): the user found and
-  bought a replacement directly.** 150 units of a **Valour Bitcoin Zero
-  SEK certificate** (ISIN CH0585378661) at 61.22 SEK/unit = 9,183 SEK,
-  drawn from the same ISK cash pool Council's Call 2 had earmarked for
-  exactly this. Not yet in Excel — see `data/portfolio.json`'s new holding
-  entry.
-- **FULLY CLOSED 2026-08-17 (final, same day): user confirmed directly —
-  0%/yr fee, genuinely BTC-backed.** Both open verification questions
-  answered by direct statement; this is a real structural win, not a
-  provisional one (2.5%/yr → 0%/yr on the crypto sleeve's certificate
-  fee). Only remaining loose end is a tradeable ticker for live pricing
-  (S1) — a pricing convenience, not a reason to reopen this item.
-  Remaining ISK cash after this purchase: 11,183 SEK (see
-  `portfolio.json`'s avanza-isk cash note).
-- **Decided 2026-08-03:** you will NOT move to self-custody real bitcoin. You
-  want to stay inside the ISK wrapper and cut the fee instead. (This closes
-  the old certificate-vs-self-custody question, and it's the right call on
-  tax mechanics alone — leaving the ISK would turn every future disposal into
-  a 30% K4 event.)
-- **The target:** COIN-XBT.ST costs **2.5%/yr** on ~15,240 SEK ≈ 380 SEK/yr.
-  Cheaper Nordic BTC ETPs exist; a switch to ~1% would save roughly 230 SEK/yr.
-- **What's needed:** verified tickers and current fees for the alternatives on
-  Avanza. Tickers must not be guessed — see S1, which is the same problem.
-- **Watch out:** selling inside the ISK is tax-free, so the switch itself is
-  cheap, but check the spread/courtage on a thin certificate before assuming
-  the fee saving survives the transaction cost.
+- **Status: CLOSED 2026-08-17.** COIN-XBT.ST (2.5%/yr) sold in full and
+  replaced with a Valour Bitcoin Zero SEK certificate (ISIN
+  CH0585378661), user-confirmed 0%/yr fee and genuinely BTC-backed — see
+  `data/portfolio.json`'s Valour holding entry. A candidate replacement
+  (BITC, a US-listed ETF) was evaluated and rejected first — see
+  `reports/2026-08-17-council-memo-2.md`. Only remaining loose end: a
+  tradeable ticker for live pricing of the Valour certificate (S1) — a
+  pricing convenience, not a reason to reopen this item. Full
+  deliberation history: `data/portfolio_history_archive.md#p4-deliberation-history-full-text-archived-2026-08-17-item-is-closed`.
 
 ### P5 — ETH thesis (the two stocks are now done)
 - **Status:** open for ETH only
@@ -475,102 +381,35 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   surfaced in `latest-summary.json` and read into the council memo —
   no new plumbing needed.
 
-### S12 — Canonical definitions for ambiguous shared terms: recurred a third time, now spans two conventions
-- **Status:** open for the D4 sub-question, which the 2026-08-17 second
-  memo REOPENED rather than closed. **D3 CLOSED 2026-08-17** — see the
-  Closed log entry above. The user picked the full-portfolio convention
-  (Council's non-recommended option), now pinned in
-  `data/cache/definitions.json`. All future trip-wire/allocation-percentage
-  checks should cite that file's `investable_capital_convention` entry
-  instead of recomputing Convention A/B/C.
-- **D4 correction, 2026-08-17: an earlier note in this file (same day) said
-  the full COIN-XBT.ST sale made D4 "practically overtaken" - that was
-  wrong, and Council's second memo caught it.** Applied to a full sale
-  rather than a partial trim, the two readings of `profit_recycling_rule`
-  now differ by their largest margin ever (gross proceeds 15,366 SEK vs.
-  realized gain 3,265.98 SEK) - and the gross-proceeds reading, taken
-  literally, would mechanically prevent crypto from ever returning to the
-  adopted 10% target after any full sale, which is an allocation decision
-  being made by a bookkeeping rule rather than by the user. Three options
-  on the table (see the memo's Open Decisions section for full trade-offs):
-  (1) target governs sizing, recycling rule governs only the surplus above
-  target - Council's recommendation, assumed by this sweep's Call 2; (2)
-  gross proceeds, all 15,366 SEK to the secure tier (Avanza Global); (3)
-  realized gain only, 3,265.98 SEK to Avanza Global, 12,100 SEK free. Needs
-  the user's actual confirmation, same as D3 did.
-- **Why:** the 2026-08-11 sweep's crypto trip-wire check (D3) produced
-  **three different "investable capital" denominators for the identical
-  24,115.89 SEK of crypto**: the 2026-08-10 pinned definition (204,611.94
-  SEK -> 11.79%, does not fire), the portfolio agent's proposed standing
-  "Convention A" (201,895.91 SEK -> 11.94%, does not fire), and a third
-  reading, "Convention C" (190,532.15 SEK -> 12.66%, **already breached**).
-  This is the identical failure class S11 already fixed one level down: two
-  agents computing "% of 52-week range" two different ways under one
-  label. S11's fix was confirmed working the same sweep — but the same
-  ambiguity pattern immediately reappeared at the denominator level, which
-  is exactly what the 2026-08-11 Council memo names in its own Learning
-  notes: "pin the definition in words, not the number, because the number
-  goes stale and the definition is what you are actually arguing about."
-- **2026-08-12 update:** Council's Call 2 proposed resolving D3 by adopting
-  Convention B (investable-only: Avanza ISK + ETH wallet, 188,918.15 SEK)
-  and pinning it in words in `data/cache/definitions.json` — not yet
-  written, pending the user's actual confirmation (the Chairman's
-  recommendation is not the same as the user deciding). **A third instance
-  of the identical failure class surfaced the same sweep, D4:** does
-  `investor_profile.json`'s `profit_recycling_rule` ("money I make from
-  this should... go into the safer tiers") apply to the *gross proceeds*
-  of a trim, or only the *realized gain*? Selling 1 unit of COIN-XBT.ST at
-  2,581.34 SEK against a 2,016.67 SEK cost basis realizes a 564.67 SEK
-  gain — the rest is return of capital — and the rule reads either way.
-  This recurs on every future trim, not just this one. Per this item's own
-  original text ("extend this pattern... only if a third instance of the
-  same failure class shows up"), that bar is now met — D4 is folded into
-  this item rather than becoming a new S-item.
-- **2026-08-17 note — D3 is now decision-relevant, not cosmetic; the two
-  conventions disagree on the actual outcome.** On the identical 24,492.89
-  SEK of crypto exposure this sweep, Convention B (investable-only, still
-  unconfirmed by the user) reads 12.97% and fires the 12% trip-wire; the
-  full-portfolio reading reads 11.43% and does not fire. Every prior sweep
-  the two conventions differed only by margin; this is the first time they
-  disagree on the fired/not-fired outcome itself. Council sized this
-  sweep's trim (1 unit) to be correct under both readings rather than wait
-  for D3 to resolve — a workaround, not a substitute for the user's actual
-  confirmation, which both D3 and D4 still need before the 2026-09-03
-  deadline.
-- **2026-08-17 note — a new, narrower instance surfaced the same day D3
-  closed.** The real `backtest` run (S5, now closed) used the
-  investable-only base (188,839 SEK) while D3, pinned hours earlier the
-  same session, is the full-portfolio convention (218,826 SEK). Defensible
-  on its own terms (a backtest can't simulate a tax reserve or a PayPal
-  balance sitting outside the market), but `data/cache/definitions.json`'s
-  current wording says the pinned convention governs "any other 'percent
-  of investable capital' figure," which reads broader than intended and
-  would wrongly pull the backtest's risk-simulation base under the same
-  law as allocation percentages. Council flagged this directly for `meta`
-  rather than editing its own file. **Small addition to this item's `How`:**
-  add a one-line clarification to `definitions.json` distinguishing the
-  existing `investable_capital_convention` (governs allocation/trip-wire
-  percentages) from a separate, narrower `risk_simulation_base` used only
-  by `backtest` — don't force one convention to silently cover both
-  purposes.
-- **How:** keep this narrow — a small `definitions` dictionary, not a new
-  schema or framework. Add a `definitions` object to `portfolio.json` (or,
-  if `portfolio.json` should stay lean per CLAUDE.md's token-hygiene note,
-  a new `data/cache/definitions.json`) naming each standing convention in
-  words, e.g.:
-  `"investable_capital_convention_2026-08-12": {"includes": ["avanza_isk",
-  "eth_wallet"], "excludes": ["tax_reserve", "paypal", "hb_checking"],
-  "value_sek": 188918.15, "pinned_date": "2026-08-12"}` for D3 (once the
-  user confirms Convention B — Council's recommendation, not yet the
-  user's decision), and a second entry,
-  `"profit_recycling_proceeds_convention": {"applies_to": "gross_proceeds"
-  | "realized_gain_only", "pinned_date": "..."}`, for D4 (Council
-  recommends "gross proceeds" — option 1 in the 2026-08-12 memo — again
-  pending the user's actual choice). Any agent computing either threshold
-  cites the named convention instead of recomputing its own reading each
-  sweep. Extend this pattern to a fourth ambiguous term only if a genuinely
-  new instance of the same failure class shows up — the dictionary should
-  grow one entry at a time, evidence-driven, not pre-built.
+### S12 — Canonical definitions for ambiguous shared terms
+- **Status:** open for D4 only. **D3 CLOSED 2026-08-17** — user picked the
+  full-portfolio convention, pinned in `data/cache/definitions.json`
+  (`investable_capital_convention`). Every future trip-wire/allocation
+  check should cite that entry, not recompute its own reading.
+- **D4 (open) — does `profit_recycling_rule` apply to gross proceeds or
+  only the realized gain?** Real on a full sale: the two readings now
+  differ by their largest margin ever (15,366 SEK gross vs. 3,265.98 SEK
+  gain), and the gross-proceeds reading, taken literally, would
+  mechanically block crypto from ever returning to the 10% target after a
+  full sale — an allocation decision made by a bookkeeping rule, not the
+  user. Three options (see `reports/2026-08-17-council-memo-2.md`'s Open
+  Decisions for full trade-offs): (1) target governs sizing, recycling
+  rule governs only the surplus above target — Council's recommendation,
+  assumed by that sweep's Call 2; (2) gross proceeds, all 15,366 SEK to
+  the secure tier; (3) realized gain only, 3,265.98 SEK to Avanza Global,
+  12,100 SEK free. Needs the user's actual confirmation, same as D3 got.
+- **Known small gap, not yet fixed:** `definitions.json`'s current wording
+  for `investable_capital_convention` reads broader than intended — it
+  would also govern `backtest`'s risk-simulation base, which used the
+  investable-only figure (188,839 SEK) the same day D3 pinned the
+  full-portfolio figure (218,826 SEK) for allocation math. Defensible as
+  two genuinely different purposes (a backtest can't simulate a tax
+  reserve sitting outside the market), but should get a second, narrower
+  `risk_simulation_base` entry rather than share one label. `meta`'s to
+  pick up, not Council's file to self-edit.
+- Full deliberation history (the three prior competing denominator
+  readings, the 2026-08-11/12 timeline):
+  `data/portfolio_history_archive.md#s12-full-deliberation-history-archived-2026-08-17-d3-closed-d4-still-open-but-consolidated`.
 
 ### S13 — CoinGecko crypto fetch has no retry/backoff; a single 429 kills the entire crypto price path
 - **Status:** open

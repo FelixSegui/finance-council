@@ -41,15 +41,27 @@ council's shortlist for it.
    - **Missing data** — failed nothing, but a filtered field was null.
      Name the missing field. These are "unknown", not "bad".
    - **Failed** — with the specific numeric reason.
-4. Hand off **all three lists** — not just Passed — to `council`. Council's
-   Stock Selection Council method evaluates the full pool: a Failed or
-   Missing-data label is one input among several for its seven analyst
-   personas, never an automatic exclusion (a temporarily-high-P/E cyclical
-   or a thin-data small-cap can still be argued for explicitly). Also
-   recommend the Passed list go to `valuation` (and `market-data` with
-   `--insiders` for US names) for deeper per-name analysis in this or the
-   next session — that remains useful triage even though it no longer
-   gates what Council is allowed to consider.
+   The script also writes a compact digest CSV alongside the full JSON
+   (`<same-timestamp>-digest.csv` next to `<same-timestamp>-screen.json`,
+   both in `data/cache/screens/`) — one row per ticker (all three lists),
+   key fields only (price/PE/forward PE/PEG/margin/ROE/D-E/revenue
+   growth/dividend yield/market cap/beta/sector/status/note), no nested
+   source/quality_state metadata. This exists because the full JSON is
+   large (~60k+ tokens across a ~70-ticker universe) and a reading agent
+   was burning most of its budget just reading the file, not reasoning
+   over it (confirmed in the 2026-08-17 Stock-Selection-Council test run).
+4. Hand off **the digest CSV** as the primary output to `council` — point
+   it at the file, don't paste the whole thing into your own response.
+   Council's Stock Selection Council method reads the digest for its main
+   pass and falls back to the full JSON only for a specific ticker needing
+   a field the digest doesn't carry (e.g. multi-year revenue history, a
+   field's source/quality_state). All three statuses (Passed/Missing/
+   Failed) are in the digest — a Failed or Missing-data label is one input
+   among several for the seven analyst personas, never an automatic
+   exclusion (a temporarily-high-P/E cyclical or a thin-data small-cap can
+   still be argued for explicitly). Also recommend the Passed list go to
+   `valuation` (and `market-data` with `--insiders` for US names) for
+   deeper per-name analysis in this or the next session.
 
 ## Rules
 

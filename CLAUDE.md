@@ -161,21 +161,30 @@ question.
    allocation).
 3. Invoke `council` last. It reads all outputs, forces disagreements into
    the open, and writes one memo to `/reports/`. Its primary method (as of
-   2026-08-17) is the **Stock Selection Council**: seven independent
-   analyst personas (Fundamental/Quality, Valuation, Growth/Opportunity,
-   Defensive/Risk, Contrarian/Risk Taker, Portfolio/Diversification
-   Strategist, Macro/Regime) each rank BUY candidates and flag SELLs
-   across the FULL candidate universe — every current holding plus every
-   watchlist entry, not just names already flagged — before a Chairman
-   weighs the quality of their arguments (not vote counts) into a Top 5
-   Opportunities list, each with a portfolio-fit-adjusted BUY/HOLD-WATCH/
-   SELL/NO ACTION call. A separate, lighter Portfolio Governance method
+   2026-08-17, revised same day) is the **Stock Selection Council**: six
+   independent analyst personas (Fundamental/Quality, Valuation,
+   Growth/Opportunity, Defensive/Risk, Contrarian/Risk Taker, Macro/
+   Regime) each rank BUY candidates and flag SELLs across the FULL
+   candidate universe — every current holding plus every watchlist entry,
+   not just names already flagged — before a Chairman weighs the quality
+   of their arguments (not vote counts) into a Top 5 Opportunities list,
+   each with a portfolio-fit-adjusted BUY/HOLD-WATCH/SELL/NO ACTION call.
+   Diversification/allocation-fit is deliberately not one of the six
+   voices — it is `portfolio`'s expanded job (industry/country/market-cap/
+   sustainability, across holdings and candidates alike), consulted once
+   by the Chairman rather than re-derived per-voice; a first live test
+   found running it as a seventh equal voice produced redundant,
+   double-counted output. A separate, lighter Portfolio Governance method
    (five short voices, unchanged from the prior design) handles non-stock
-   decisions — wrapper, fee-routing, cash-allocation mechanics. See
-   `council.md` for the full method; this reflects the priority-order
-   shift below (levers 1-2 closed, lever 4 — selection — is now the main
-   work, and the Council method now matches that emphasis structurally,
-   not just in prose).
+   decisions — wrapper, fee-routing, cash-allocation mechanics. `scout`'s
+   screen also now writes a compact digest CSV alongside its full JSON
+   (same-day fix) — council reads the digest for its main pass, the full
+   JSON only for a field the digest doesn't carry, after the first live
+   test found the full JSON alone was consuming most of a run's token
+   budget on reading rather than reasoning. See `council.md` for the full
+   method; this reflects the priority-order shift below (levers 1-2
+   closed, lever 4 — selection — is now the main work, and the Council
+   method now matches that emphasis structurally, not just in prose).
 4. **Every sweep ends with `journal`** — it reconciles last sweep's calls
    against today's data and appends the session entry. An unlogged sweep
    is invisible to the next session.
@@ -310,9 +319,10 @@ agents/personas agree, that's not interesting — the memo should foreground
 *where they disagree* and force an explicit confidence call. A memo with
 no tension in it means the Council didn't do its job; re-run it. Since
 2026-08-17 the Council's main method is stock selection first (find the
-best opportunities across holdings + watchlist via seven independent
+best opportunities across holdings + watchlist via six independent
 analyst lenses), portfolio fit second (filter those opportunities through
-the existing portfolio's concentration/capital/tax constraints) — see
+`portfolio`'s diversification/capital/tax read, revised same day to be a
+single consolidated authority rather than a seventh council voice) — see
 `council.md`. The two stages must stay visibly separate in the memo: a
 high-conviction opportunity that resolves to WATCH for portfolio-fit
 reasons is a correct output, not a contradiction to paper over.

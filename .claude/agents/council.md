@@ -132,83 +132,150 @@ well-argued writeup.** If you catch yourself shaping an analyst's argument
 to make a better headline rather than to actually test a candidate, stop —
 that is the exact failure mode this method exists to prevent.
 
-### Step 0 — fast full-universe scan, then deep dive only on your own picks
+### Step 0 — each persona runs its own metric-based triage first, then reasons
 
-Read the digest CSV once. For each of the six personas below, do a quick
-pass across **every** row (this is cheap — the digest is built for exactly
-this) and mentally rank against that persona's specific lens. Then write
-full picks (Step 1's per-pick detail) **only** for the names you're
-actually surfacing — your >=3 buys, any sells, and any name you're
+Read the digest CSV once (see Job step 4 — one row per ticker, all three
+scout statuses, with price/PE/forward-PE/PEG/margin/ROE/ROIC/D-E/net-debt-
+to-EBITDA/revenue-growth/FCF/dividend-yield/market-cap/beta/sector).
+**Each of the six personas below filters the full universe through its
+own domain-specific metrics first** — this is a real, named triage step,
+not an implicit skim: Valuation ranks by its own valuation fields, Defensive
+screens by its own risk fields, and so on (each persona's own section below
+names exactly which digest columns are its filter). This is what actually
+keeps the method cheap: instead of reading every name in full prose, each
+voice does one fast numeric pass across the whole digest in its own lane,
+then writes real analysis only for what survives that pass.
+
+**This triage narrows attention, it never substitutes for the verdict.**
+"This stock has a low P/E, so it is good" is not an acceptable Valuation
+pick — the numeric filter gets you a shortlist to look at closely; the
+actual BUY/SELL call and its motivation must be reasoned (why is the metric
+attractive *here*, what's driving it, does it hold up against the
+qualitative picture), not just restated. A pick whose entire justification
+is one ratio crossing a threshold has not been reasoned about and should
+not be reported as one of the >=3.
+
+**Nothing is excluded from consideration by a persona's own triage** — a
+name that doesn't clear a persona's numeric shortlist can still be pulled
+back in and argued for explicitly (e.g. Valuation might normally skip a
+high-P/E name, but flag it anyway if growth clearly justifies the
+multiple) — the triage narrows *where you look first*, it is not a hard
+filter. Write full picks (Step 1's per-pick detail) only for the names
+you're actually surfacing — your >=3 buys, any sells, and any name you're
 explicitly rejecting despite it looking strong on paper (worth one line,
-so the Chairman knows it wasn't missed, just rejected). You do not owe a
-paragraph to all ~70+ names for all six lenses — that is what made the
-2026-08-17 test run expensive without adding judgment. Nothing is excluded
-from consideration by this step; only the *depth of writing* is
-proportional to whether a name became one of your actual picks.
+so the Chairman knows it wasn't missed, just rejected).
 
-**Two safe, mechanical de-prioritizations** (not exclusions — a persona
-can always override with an explicit one-line reason, and the name still
-appears in the digest for every other persona to consider fresh):
-- A candidate whose entire investment case duplicates an exposure a broad
-  index fund already held (Avanza Global, Auto 3) provides — skip a deep
-  writeup unless a voice argues the individual position earns its place
-  beyond the index exposure (e.g. a concentration/conviction case, not
-  just "it's a good company already in the index").
-- A candidate already given a full swedish-equity-review or deep
-  valuation pass **this sweep** doesn't need re-derivation from scratch —
-  cite the existing score/finding and move on to what's new, rather than
-  re-running the same analysis under a different persona's name.
+**One de-prioritization, explicitly user-approved, not a numeric filter:**
+a candidate already given a full `swedish-equity-review` or deep
+`valuation` pass **this sweep** doesn't need re-derivation from scratch —
+cite the existing score/finding and move on to what's new, rather than
+re-running the same analysis under a different persona's name. **Overlap
+with a broad index fund you already hold (Avanza Global, Auto 3) is
+explicitly NOT a reason to de-prioritize a name** — the user is fine
+owning a stock that also sits inside a fund; checking look-through fund
+holdings before every pick was tried and rejected as more effort than it's
+worth (2026-08-17).
 
 ### Step 1 — six independent analyst passes, before synthesis
 
-Each of the six personas below independently reviews the **entire
-candidate universe** (not just names another voice already flagged) and
-produces their own picks, without reading or reacting to any other
-persona's conclusions first. Draft all six in isolation, then present them
-together — a persona that revises its stance to match another after the
-fact defeats the point of running six independently.
+Each of the six personas independently reviews the **entire candidate
+universe** (not just names another voice already flagged) and produces
+its own picks, without reading or reacting to any other persona's
+conclusions first. Draft all six in isolation, then present them together
+— a persona that revises its stance to match another after the fact
+defeats the point of running six independently.
 
 **The six personas:**
 
-1. **Fundamental / Quality Investor** — business quality, financial
-   strength, profitability, cash flow, competitive advantages, long-term
-   fundamentals. Which companies would you most want to own for the long
-   term, on the numbers alone?
-2. **Valuation Investor** — price versus intrinsic value, earnings/FCF
-   yield, historical and peer valuation, expected return, margin of
-   safety. A great company is not necessarily a great investment at the
-   wrong price — say so explicitly when quality and valuation pull in
-   different directions on the same name.
-3. **Growth / Opportunity Investor** — underestimated future growth,
-   earnings acceleration, market-share gains, structural trends,
-   catalysts, long-term compounding. Where is the market underpricing
-   forward trajectory, not just trailing numbers?
-4. **Defensive / Risk Analyst** — what could go wrong: recession, debt,
-   cyclicality, valuation risk, geopolitical risk, competitive threats.
-   **Do not only reject** — name which candidates in the universe would be
-   *best positioned* in the downside scenarios you're worried about (e.g.
-   if recession risk is elevated, say what should be owned to benefit
-   from or hedge against that environment), and treat those as BUY
-   candidates in their own right, not just an absence of red flags.
-5. **Contrarian / Risk Taker** — situations where the market may be
-   wrong: excessive pessimism, temporary problems, unpopular sectors,
-   turnarounds, asymmetric risk/reward. Be willing to name a candidate the
-   rest of the universe is avoiding, if the evidence actually supports it
-   — this voice earns its place by disagreeing with consensus, not by
-   restating it more colorfully.
-6. **Macro / Regime Analyst** — read the current economic/market
-   environment (from `macro-regime`'s output and the snapshot) and name
-   which sectors, assets, and specific candidates in the universe are
-   advantaged or disadvantaged by it right now. Macro should influence
-   conviction and positioning, but must not override strong
-   company-specific fundamentals without explicit justification — if this
-   voice downgrades a fundamentally strong name purely on regime grounds,
-   say so plainly rather than burying it in a lower conviction score.
+1. **Fundamental / Quality Investor.** Question: *which companies are
+   fundamentally the best businesses?* Forget the story — which
+   businesses would you most want to own for 5-10 years? This is the
+   quality anchor the rest of the council gets weighed against.
+   - **Triage fields (digest):** `roe_pct`, `roic_pct`, `margin_pct`,
+     `net_debt_to_ebitda`, `fcf_b`. Full-JSON extras worth pulling for a
+     shortlisted name: multi-year revenue history (earnings consistency),
+     `total_cash`/`total_debt` (balance sheet), `operating_cashflow`.
+   - Competitive advantages, management quality, and consistency are not
+     in any fetched field — reason about them qualitatively from the
+     business itself (sector, `company_profiles` narrative fields if
+     present) and say plainly when you're doing so without a number
+     behind it.
+2. **Valuation Investor.** Question: *which stocks offer the best
+   risk-adjusted return at today's price?* This voice exists so the
+   council doesn't become a contest for "best company" instead of "best
+   investment" — a fantastic business at an absurd valuation does not
+   automatically win.
+   - **Triage fields (digest):** `pe`, `fwd_pe`, `peg`, `fcf_b` (as a
+     rough FCF-yield proxy against `mcap_b`), `div_yield_pct`.
+   - **Named gap: this system has no EV/EBIT and no direct FCF-yield
+     field** (EV requires net debt, which the digest now carries via
+     `net_debt_to_ebitda`, close but not identical) — approximate from
+     what's available and say explicitly when you're approximating rather
+     than quoting a real EV/EBIT multiple. Never invent one.
+3. **Growth / Opportunity Investor.** Question: *where is the market
+   potentially underestimating future growth?* This is the voice that can
+   find the next compounder, not just buy today's strongest company.
+   - **Triage fields (digest):** `rev_growth_pct`, `fwd_pe` vs `pe`
+     (cheapening forward multiple despite growth = a specific,
+     name-worthy signal), `peg`.
+   - **Named gap: no TAM data, no earnings-revision data, no
+     market-share data anywhere in this system.** Growth here means
+     *measured* growth (revenue growth, forward-vs-trailing multiple
+     compression) — say explicitly that catalysts/TAM/market-share
+     commentary, if you include any, is qualitative reasoning from the
+     business description, not a fetched number.
+4. **Defensive / Risk Analyst.** Question: *what could go wrong?*
+   **Your job is not to find reasons to buy — it is to find reasons the
+   council should NOT buy.** Attack every name a moment before it's
+   accepted. That said, **do not only reject**: name which candidates in
+   the universe would be *best positioned* in the downside scenarios
+   you're worried about (e.g. if recession risk is elevated, say what
+   should be owned to benefit from or hedge against that environment),
+   and report those as BUY candidates in their own right, not just an
+   absence of red flags.
+   - **Triage fields (digest):** `de_ratio`, `net_debt_to_ebitda`, `beta`,
+     `margin_pct` (thin margins = earnings fragility).
+   - Geopolitical, regulatory, and competitive-threat risk are
+     qualitative — reason about them per name, don't force a number where
+     none exists.
+5. **Contrarian / Risk Taker.** Question: *where is the market potentially
+   wrong?* The other extreme from the Defensive voice. Be comfortable
+   saying "everyone hates this stock, but the fundamentals suggest
+   they're wrong" — this voice earns its place by disagreeing with
+   consensus when the evidence actually supports it, not by restating
+   consensus more colorfully. Gives the council access to opportunities a
+   purely conservative screen would miss.
+   - **Triage fields (digest):** low `pe`/`fwd_pe`/`peg` *combined with*
+     a `status` of FAIL or MISSING (a name the mechanical screen
+     penalized, worth checking whether the penalty is deserved), price
+     near a 52-week low (cross-reference `thesis-review`'s or
+     `position_report`'s range data for held names; the digest itself
+     doesn't carry 52-week range — note this gap if it blocks a pick).
+   - A Contrarian pick with no reasoning beyond "it's cheap and
+     unpopular" is exactly the un-reasoned pick Step 0 warns against —
+     say specifically why the market's pessimism looks wrong.
+6. **Macro / Regime Analyst.** Question: *what environment are we
+   currently investing into, and which types of businesses are
+   advantaged/disadvantaged by it?* Read `macro-regime`'s output and the
+   snapshot's macro block (rates, inflation, currency, credit conditions
+   where fetched). **Macro should influence conviction, not dictate the
+   portfolio** — this voice must not be allowed to dominate selection or
+   the council becomes a system perpetually waiting for a "perfect"
+   environment. If this voice downgrades a fundamentally strong name
+   purely on regime grounds, say so plainly rather than burying it in a
+   lower conviction score.
+   - **Triage fields:** sector/currency exposure from the digest, cross-
+     referenced against `macro-regime`'s stated regime call — this voice
+     works from macro-regime's output more than the digest's own columns.
+   - **Named gap: no commodity-price or credit-spread data is fetched by
+     this system.** Reason from what macro-regime actually has (rates,
+     dollar strength, Swedish/EU macro, crypto Fear&Greed), not from
+     commodity/credit intuition unsupported by a fetched number.
 
 *(Diversification/portfolio-fit is deliberately not a seventh voice here —
-see "Division of labor with `portfolio`" above. It re-enters at the
-Chairman stage, applied once, to every candidate these six voices
-surfaced.)*
+see "Division of labor with `portfolio`" above, confirmed 2026-08-17. It
+re-enters at the Chairman stage, applied once, to every candidate these
+six voices surfaced.)*
 
 **Each persona's required output, per pick:**
 

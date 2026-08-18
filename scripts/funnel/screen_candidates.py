@@ -106,8 +106,8 @@ def apply_filters(data, active_filters):
 
 DIGEST_COLUMNS = [
     "ticker", "status", "sector", "price", "pe", "fwd_pe", "peg",
-    "margin_pct", "roe_pct", "de_ratio", "rev_growth_pct", "div_yield_pct",
-    "mcap_b", "beta", "note",
+    "margin_pct", "roe_pct", "roic_pct", "de_ratio", "net_debt_to_ebitda",
+    "rev_growth_pct", "fcf_b", "div_yield_pct", "mcap_b", "beta", "note",
 ]
 
 
@@ -124,13 +124,28 @@ def write_compact_digest(passed, failed, missing, fname):
     import csv
     rows = []
 
+    def _val(x):
+        """Unwrap the Layer-B derived-metric shape ({"value":...,
+        "quality_state":...}) used for roic_pct/ebit/capex/etc - see
+        derived_metrics.py - down to a plain number, or None."""
+        if isinstance(x, dict):
+            return x.get("value")
+        return x
+
     def row(ticker, fields, status, note=""):
         pe = fields.get("trailing_pe")
         mcap = fields.get("market_cap")
         margin = fields.get("profit_margins")
         roe = fields.get("return_on_equity")
+        roic = _val(fields.get("roic_pct"))
         rev_g = fields.get("revenue_growth")
         div_y = fields.get("dividend_yield")
+        fcf = fields.get("free_cashflow")
+        total_debt, total_cash, ebitda = (fields.get("total_debt"), fields.get("total_cash"),
+                                           fields.get("ebitda"))
+        net_debt_to_ebitda = None
+        if all(isinstance(x, (int, float)) for x in (total_debt, total_cash, ebitda)) and ebitda:
+            net_debt_to_ebitda = round((total_debt - total_cash) / ebitda, 2)
         rows.append({
             "ticker": ticker,
             "status": status,
@@ -141,8 +156,11 @@ def write_compact_digest(passed, failed, missing, fname):
             "peg": fields.get("peg_ratio"),
             "margin_pct": round(margin * 100, 1) if isinstance(margin, (int, float)) else None,
             "roe_pct": round(roe * 100, 1) if isinstance(roe, (int, float)) else None,
+            "roic_pct": round(roic * 100, 1) if isinstance(roic, (int, float)) else None,
             "de_ratio": fields.get("debt_to_equity"),
+            "net_debt_to_ebitda": net_debt_to_ebitda,
             "rev_growth_pct": round(rev_g * 100, 1) if isinstance(rev_g, (int, float)) else None,
+            "fcf_b": round(fcf / 1e9, 2) if isinstance(fcf, (int, float)) else None,
             "div_yield_pct": round(div_y * 100, 2) if isinstance(div_y, (int, float)) else None,
             "mcap_b": round(mcap / 1e9, 1) if isinstance(mcap, (int, float)) else None,
             "beta": fields.get("beta"),

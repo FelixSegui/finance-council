@@ -153,7 +153,13 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   directly rather than waiting for the deadline.
 
 ### P4 — Replace the Bitcoin certificate with a cheaper one
-- **Status:** decided — pending research. **2026-08-17: the situation changed
+- **Status: CLOSED 2026-08-17.** User confirmed directly: the Valour
+  Bitcoin Zero certificate is 0%/yr fee and genuinely BTC-backed. Both
+  verification questions below are answered by direct user statement,
+  which outranks an inferred/unverified reading the same way it outranks
+  Excel. What's left is a pricing convenience (a tradeable ticker, S1),
+  not an open decision. History below kept for the record.
+- **2026-08-17: the situation changed
   from "trim and find something cheaper" to "already sold, what now."** The
   user reports having sold the full 6-unit COIN-XBT.ST position at 2,561
   SEK/unit (not the 1-unit trim the same-day Council memo had recommended) —
@@ -191,16 +197,15 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   SEK certificate** (ISIN CH0585378661) at 61.22 SEK/unit = 9,183 SEK,
   drawn from the same ISK cash pool Council's Call 2 had earmarked for
   exactly this. Not yet in Excel — see `data/portfolio.json`'s new holding
-  entry. **Two things still need verifying before this fully closes P4**,
-  same bar BITC failed to clear: (1) the actual management fee (the "Zero"
-  branding suggests low/zero but this is unconfirmed from any fetched
-  source — verify on Avanza or via the ISIN); (2) genuine physical BTC
-  backing, not a strategy/derivatives wrapper (the same category error
-  nearly made with BITC). **Status: open only for verification, not for
-  finding a candidate** — the search itself is done. S1 (verified Nordic
-  crypto-certificate tickers) also gets a working ticker for this ISIN
-  once found, same blocker either way. Remaining ISK cash after this
-  purchase: 11,183 SEK (see `portfolio.json`'s avanza-isk cash note).
+  entry.
+- **FULLY CLOSED 2026-08-17 (final, same day): user confirmed directly —
+  0%/yr fee, genuinely BTC-backed.** Both open verification questions
+  answered by direct statement; this is a real structural win, not a
+  provisional one (2.5%/yr → 0%/yr on the crypto sleeve's certificate
+  fee). Only remaining loose end is a tradeable ticker for live pricing
+  (S1) — a pricing convenience, not a reason to reopen this item.
+  Remaining ISK cash after this purchase: 11,183 SEK (see
+  `portfolio.json`'s avanza-isk cash note).
 - **Decided 2026-08-03:** you will NOT move to self-custody real bitcoin. You
   want to stay inside the ISK wrapper and cut the fee instead. (This closes
   the old certificate-vs-self-custody question, and it's the right call on

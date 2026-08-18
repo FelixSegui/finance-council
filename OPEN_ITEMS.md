@@ -22,31 +22,34 @@ a one-line resolution — never delete an item silently.
 
 ## This sweep's recommended emphasis
 
-**Emphasis:** balanced
-**Set by meta, 2026-08-17 (second entry same day — ends a five-sweep
-portfolio-tending escalation):** The live session that produced
-`reports/2026-08-17-council-memo-2.md` cleared almost everything that had
-been driving portfolio-tending's escalation in a row: `swedish-equity-review`
-finally ran on ATCO-B.ST/ALFA.ST/ABB.ST (P6 closed), PayPal routing is
-decided (P3), the ISK allowance is confirmed at 300,000 SEK (P7 closed),
-and S5's real backtest ran for the first time and cleared the -30%
-tolerance on both the current mix and the adopted target. What's left open
-doesn't lean cleanly either way: D4 (profit-recycling convention) and P1
-(ETH cost basis) need only the user's own input, not more system analysis;
-P4/S1 (find one verified, physically-backed Nordic BTC ETP before the
-2026-09-03 default) is a live discovery task with a real deadline; and
-`scout`'s five new candidates this session (MSCI, SNPS, ARM, SCCO, STL)
-need adding to the Watchlist and screening next sweep against the
-ACT-rated industrials concentration. No idle cash sits without a plan —
-the 15,366 SEK freed by the full COIN-XBT.ST sale is already split
-between an equity buy and a dated crypto earmark, so the "idle deployable
-cash → lean prospecting" trigger doesn't fire either. A live discovery
-task (S1, the new scout candidates) sitting alongside a shrunk-but-real
-portfolio-tending residue (D4, ABB's second insider-pull watch, PayPal
-execution) is the rubric's own definition of balanced, not a coin flip.
-Revisit toward portfolio-tending if S1 resolves and the new candidates get
-screened cleanly (then it's about watching ABB/AZN play out); revisit
-toward prospecting if a new structural watchlist/universe gap turns up.
+**Emphasis:** portfolio-tending
+**Set by meta, 2026-08-18 (supersedes the 2026-08-17 "balanced" call):**
+Neither of the two conditions the prior sweep named for revisiting fired
+cleanly — `scout`'s five 2026-08-17 candidates (MSCI, SNPS, ARM, SCCO, STL)
+are still not added to the Watchlist or screened (confirmed directly
+against `data/cache/watchlist.json`, see S18), which on its own would have
+kept this balanced. But a cluster of portfolio-tending signal accumulated
+independently and now outweighs it: **AZN.ST's BUY has been the Council's
+top or near-top call for two consecutive sweeps (2026-08-17, 2026-08-18) at
+High/zero-dissent conviction and has still not executed** — the same shape
+as the PayPal and pre-closure swedish-equity-review patterns already in
+this system's history; **D4 has escalated from a bookkeeping question to
+directly gating 11,183 / ~7,917 / 0 SEK of real spendable ISK cash**
+depending on which reading the user picks, unconfirmed for a third
+consecutive sweep; **P3 (PayPal routing) is decided but still not
+executed**, recurring cost every ~2 months it stays that way; and **P6's
+ABB.ST break condition needs a second Finansinspektionen insider pull that
+has now gone untested for a second consecutive sweep**, with the
+2026-09-03 default date getting closer. This sweep's two new scorecard
+rows (100% large-cap concentration, ESG-UNKNOWN) are real but the memo
+itself is explicit they are "not worth fixing with a rushed... purchase" —
+named for the next contribution, not a reason to prospect this sweep. Per
+the rubric: an unresolved decision (D4) open several sessions and gating
+real capital, plus a recent high-conviction recommendation with no
+post-recommendation follow-through (AZN.ST, and P3), is portfolio-tending's
+own definition, not a coin flip. Revisit toward balanced/prospecting once
+D4 is answered and either AZN.ST executes or the user explicitly declines
+it — an explicit "no" closes the open loop just as well as a "yes."
 
 ---
 
@@ -110,6 +113,9 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   item.
 - **Why it matters more than the amount suggests:** fee-drag problem
   (lever #2), and it recurs every ~2 months indefinitely, not a one-off.
+- **2026-08-18 note:** still not executed; the Council's GOOGL candidate
+  (#2 opportunity this sweep) is explicitly proposed to be funded from this
+  conversion once it happens — see the 2026-08-18 memo.
 - Full deliberation history (the Stripe-routing dead end, the
   multi-sweep repeated-advice pattern, the Revolut-balance/D3 cross-link):
   `reports/SESSION_LOG.md`'s 2026-08-10 through 2026-08-17 entries.
@@ -145,6 +151,11 @@ toward prospecting if a new structural watchlist/universe gap turns up.
 - **INVE-A.ST keeps a separate open blocker:** its thesis is plausible but not
   properly *testable*, because the metric that matters for a holding company
   is NAV discount/premium and it has never been obtained. See S6.
+- **2026-08-18 note:** Council's Contrarian voice this sweep independently
+  flagged INVE-A.ST as SELL-worthy on exactly this gap ("the opposite of a
+  contrarian holding — it is a crowded one I cannot measure"), resolved to
+  HOLD only because the missing metric, not confidence, is the reason. Adds
+  weight to S6 without changing P5's own status.
 
 ### P6 — Build the medium tier (~26,400 SEK available)
 - **Status:** retroactive review DONE 2026-08-17 — decision on rotation is now
@@ -197,6 +208,12 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   as an active reduce signal — this was the first pull, so the Chairman
   declined to override a condition written from real data on its first
   observation. Watch for the next FI pull before 2026-09-03.
+- **2026-08-18 note — the second FI pull still has not run, second
+  consecutive sweep.** Council resolved ABB.ST to HOLD-WATCH again on the
+  same untested-condition grounds, three of six voices would SELL on
+  valuation/beta/cash-conversion grounds independent of the insider signal.
+  This is now the concrete action item most directly ahead of the
+  2026-09-03 date.
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated
@@ -240,6 +257,10 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   is not a verified Nordic/EU physically-backed BTC vehicle — the exact
   gap this item names. 12,853 SEK is earmarked and waiting on this, with a
   hard 2026-09-03 default to Avanza Global if nothing verified by then.
+- **2026-08-18 note:** no progress this sweep — still `no price feed (S1)`
+  in the position report, still blocking automated repricing/drift-checking
+  of a 9,183 SEK (4.2% of portfolio) position. No new evidence, status
+  unchanged.
 
 ### S4 — Swedish CPI is returning a stale period
 - **Status:** open
@@ -265,6 +286,13 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   Judged in this session's roadmap review as continuing to earn "worth
   implementing soon" — it is a small, well-scoped fetcher fix blocking a
   real, recurring confidence cap.
+- **2026-08-18 note — fourth consecutive sweep.** The Macro/Regime voice
+  named it again, verbatim, as the single thing "that most caps me," now
+  against 59.32% of the portfolio's geography and 65.48% of the stock
+  sleeve. Four consecutive sweeps citing the same unfixed gap as a live
+  confidence cap is the strongest standing case in this backlog for
+  "particularly valuable, worth implementing soon" — small, well-scoped,
+  real recurring cost.
 
 ### S6 — No source for holding-company NAV discount/premium
 - **Status:** open — blocks half of P5
@@ -272,45 +300,13 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   discount/premium, and no free automated source for it has been found.
   Options: parse the quarterly report PDF (the `pdf` skill can do this if you
   supply the report), or read it off Investor's IR page manually.
-
-### S8 — Guard against critical files silently dropping during a branch merge
-- **Status:** open
-- **Why:** `reports/SESSION_LOG.md` — the system's only calibration
-  mechanism per CLAUDE.md — was dropped by the 2026-08-03 merge commit
-  (`445479b`), which explicitly restored `CLAUDE.md`, `data/portfolio.json`
-  and `data/investor_profile.json` but omitted this file from that list. It
-  went undetected across at least two sweep-adjacent sessions (~3 days)
-  until this session's `journal` run reported a read failure instead of
-  quietly reconstructing from other files. `scripts/check_unmerged_work.py`
-  guards against stray/unmerged branches, a different failure mode — it does
-  not check that a defined set of critical files still exist after a merge
-  actually lands.
-- **How:** extend `scripts/check_unmerged_work.py` (or add a small companion
-  check run at the same point, CLAUDE.md flow step 7) with a hardcoded
-  manifest of critical files — `CLAUDE.md`, `data/portfolio.json`,
-  `data/investor_profile.json`, `reports/SESSION_LOG.md`, `OPEN_ITEMS.md` —
-  and verify each exists and is above a trivial size/line-count threshold
-  every time the script runs. Exit non-zero and name the missing or emptied
-  file if any check fails.
-- **2026-08-10 note:** a *different*-shaped git incident occurred this
-  session (local `main` ref 10 commits behind the actual checked-out HEAD)
-  and resolved cleanly — `origin/main` already had all the commits, nothing
-  was lost, no S8-style guard was even needed to catch it. Confirmed no
-  update to this item's text or status is warranted; recorded here only so
-  it isn't mistaken for new evidence about S8 itself.
-- **2026-08-11 note:** no incident this session; judged "useful, can wait"
-  in this sweep's roadmap review — see the `meta` report.
-- **2026-08-12 note:** no incident this session; same judgment holds.
-- **2026-08-17 note — a related but distinct incident occurred this
-  session, tracked separately as S15, not folded in here.** The `journal`
-  subagent itself overwrote `reports/SESSION_LOG.md` (full-file rewrite
-  instead of prepend), not a git merge dropping the file — a different
-  root cause (agent write behavior, not merge hygiene) even though it hits
-  the same file. S8's manifest-check design (file exists, above a trivial
-  size threshold) is a weak backstop for this specific failure shape (a
-  single fresh entry could still clear a "trivial" threshold) — worth
-  revisiting whether S8's "how" should also assert line-count
-  monotonically increases, not just non-triviality, once S15 is scoped.
+- **2026-08-18 note:** Council's Excel-improvement prompt now carries a
+  concrete, one-time ask for exactly this (request H, 2026-08-18 block in
+  `claude_excel_prompt.txt` — NAV per share for Investor A and Latour, from
+  the monthly IR report, into the Manual Data sheet). This is S6's own
+  Option 1, now phrased as a ready-to-paste user ask rather than just a
+  standing item here. Status otherwise unchanged — still open, still
+  blocking a testable INVE-A.ST thesis.
 
 ### S9 — Excel import script: three data-quality flags (cross-field plausibility + purchase-without-thesis + Excel-vs-confirmed-override conflicts)
 - **Status:** open — new evidence this session, a *second* confirmed
@@ -359,6 +355,22 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   exact gap has produced an unflagged, user-unconfirmed cash figure a memo
   had to work around by hand. Raises this from "worth doing" to "worth
   doing soon."
+- **2026-08-18 note — the 5,000 SEK delta is unresolved and carried, not
+  new (no Excel import ran this sweep to produce fresh evidence either
+  way); but a distinct, independent confirmation of gap (a)'s general
+  failure shape turned up in a different fetch path.** This sweep's memo
+  flags that watchlist ticker `MC` (intended as LVMH) resolved to a
+  completely different entity — roughly 4.9bn market cap, Financial
+  Services sector — via `fetch_market_data.py`'s equity fetch, not the
+  Excel import path. Same class of silent wrong-entity resolution gap
+  (a)'s cross-field plausibility check (does the ticker's returned
+  name/sector match what's on record) was designed to catch, just
+  triggered outside Excel. The fix location for this specific ticker is
+  the Watchlist tab itself (add the correct exchange suffix, likely
+  `MC.PA`), not the import script — but it confirms the general pattern
+  (an unverified/ambiguous ticker silently returning the wrong company's
+  data) recurs across more than one code path, strengthening the case for
+  (a)'s cross-field check as a standing guard, not a one-off.
 - **How:** in `scripts/import_excel_holdings.py`: (a) in
   `process_transactions`, add a bounded plausibility check — if a row's
   `holdings_ticker` matches a known ticker in `data/company_profiles/` or
@@ -398,6 +410,19 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   assumed by that sweep's Call 2; (2) gross proceeds, all 15,366 SEK to
   the secure tier; (3) realized gain only, 3,265.98 SEK to Avanza Global,
   12,100 SEK free. Needs the user's actual confirmation, same as D3 got.
+- **2026-08-18 note — D4 is no longer a bookkeeping question; it now
+  directly gates how much of a real cash balance is spendable.** This
+  sweep's Council: 11,183 SEK of ISK cash reads as fully free under
+  reading 1 (target governs sizing — crypto is currently *under* target
+  at 8.34%, so nothing is owed to the secure tier), ~7,917 SEK under
+  reading 3 (realized gain only), or 0 SEK under reading 2 (gross
+  proceeds — which would also retroactively brand the user's own Valour
+  purchase non-compliant). Every call this sweep was sized to survive
+  only readings 1 and 3, which is a workaround, not a resolution. Third
+  consecutive sweep this decision has sat open (first raised 2026-08-12,
+  reopened 2026-08-17, escalated 2026-08-18) — one sentence from the user
+  closes it. This is the strongest single piece of evidence behind this
+  sweep's portfolio-tending emphasis call above.
 - **Known small gap, not yet fixed:** `definitions.json`'s current wording
   for `investable_capital_convention` reads broader than intended — it
   would also govern `backtest`'s risk-simulation base, which used the
@@ -422,10 +447,12 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   2026-08-03) — all returned HTTP 429. The only reason any recovery was
   attempted at all was three manual retries with `sleep` reconstructed ad
   hoc at the orchestration layer, which is not reusable and won't run
-  automatically next time. **2026-08-17 (later, same day) note:** no
-  incident in the live session that followed — both BTC and ETH fetched
-  cleanly on the fresh snapshot. Still open; the earlier same-day incident
-  is evidence enough, no new evidence needed to keep this live.
+  automatically next time.
+- **2026-08-18 note:** no incident this sweep — both BTC and ETH fetched
+  cleanly. Still open on the strength of the earlier confirmed incident;
+  judged "useful, can wait" in this sweep's roadmap review, not urgent —
+  small, cheap, real, but low-stakes (a secondary directional-proxy input,
+  not the basis of a live buy/sell call).
 - **How:** in `scripts/fetch_market_data.py`'s `fetch_crypto()`, wrap the
   single request in a small retry loop (2-3 attempts) with short
   exponential backoff (e.g. 2s, then 5s) specifically on
@@ -436,74 +463,68 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   data source (see the 2026-08-12 `meta` debate for why a second live
   provider was considered and rejected).
 
-### S14 — journal only "reminds" the user to append valuations.csv instead of appending it itself — confirmed to have actually dropped a row
-- **Status:** open — this session confirms the underlying instruction still
-  needs the code-level fix, not just a one-off correct execution
-- **Why:** `journal.md` Mode 2 step 3 currently says to "remind the user"
+### S15 — journal.md's instruction text lags behind its own already-correct behavior (SESSION_LOG.md prepend-safety AND data/valuations.csv append)
+- **Status:** open — three consecutive sweeps of evidence now (this item
+  absorbed S14 this session, see the Closed log entry — same defect shape,
+  two different fields `journal` owns, one instruction file)
+- **Why (SESSION_LOG.md half, originally S15):** this session's [2026-08-17]
+  `journal` subagent end-of-sweep write to `reports/SESSION_LOG.md` did not
+  append/prepend correctly — it replaced the entire ~660-line append-only
+  history with only the new entry. Caught immediately via a git diff and
+  fixed by hand: full history restored, the new entry re-inserted above it
+  in the documented format, committed as `1a2bef3`. No data was
+  permanently lost (git history had the prior version), but the failure
+  was **silent** — the subagent's own summary reported success, with no
+  self-detected error, on the one file CLAUDE.md calls "the system's only
+  calibration mechanism." The same day's later prepend (a second memo the
+  same day) was done correctly and self-checked — but by ad hoc care in
+  that turn, not because `journal.md`'s instructions were actually edited
+  to require it.
+- **Why (valuations.csv half, originally S14):** `journal.md` Mode 2
+  (previously step 3, now folded into this item) says to "remind the user"
   to append a row to `data/valuations.csv`, even though `journal` already
   has Write tool access and could append it directly. The 2026-08-12 gap
   documents, in its own note field, that no row exists for that date "even
   though a council memo ran that day" — a confirmed, permanent gap in the
-  performance-tracking series (append-only, cannot be backfilled). **2026-08-17
-  note:** this session's `journal` run did append the row directly (see the
-  2026-08-17 `18826` row's note, "computed directly rather than only
-  reminded, per S14") — a correct outcome, but `journal.md` itself was not
-  edited; Mode 2 step 3 still reads "remind the user." This was a one-off
-  correct execution by the agent, not a structural fix, so the gap can
-  still recur on the next sweep that doesn't happen to follow the same ad
-  hoc pattern. Item stays open until the instruction file itself changes.
-- **How:** in `journal.md`'s Mode 2, change step 3 from reminding the user
+  performance-tracking series (append-only, cannot be backfilled).
+- **2026-08-17 and 2026-08-18 note — both halves have now been executed
+  correctly, ad hoc, without the instruction file changing, three sweeps
+  running for the SESSION_LOG.md half and two for the valuations.csv
+  half.** The 2026-08-17 live session's `journal` run appended the
+  valuations.csv row directly instead of only reminding (per that
+  session's own note, "computed directly rather than only reminded, per
+  S14"), and this sweep's (2026-08-18) `SESSION_LOG.md` entry reads clean
+  as a correct prepend, and the same sweep's `journal` run again appended
+  the valuations.csv row directly ("the `data/valuations.csv` row has been
+  appended directly by this `journal` run per S14, not just reminded").
+  This is now the clearest pattern in the backlog of "the agent already
+  knows the right behavior and keeps re-deriving it correctly by hand, but
+  the instruction file itself was never actually edited to require it" —
+  three correct manual executions in a row is stronger, not weaker,
+  evidence that the fix should land in the instruction text before a
+  fourth sweep happens to skip the ad hoc care.
+- **How (two edits, same file, same PR):** (1) in `journal.md`'s Mode 2,
+  make the SESSION_LOG.md-write instruction explicit that it is a targeted
+  insert — read the current file, prepend the new entry above the existing
+  content (keeping the format-block header and all prior entries verbatim),
+  write the concatenated result back — not phrased loosely enough ("write a
+  new entry to the file") to be read as a full rewrite; add a post-write
+  self-check: after writing, re-read the file and confirm (a) line count
+  increased versus the pre-write read, and (b) the previous top entry's
+  date/headline still appears somewhere in the new content; report the
+  failure explicitly if either check fails, instead of a silent success
+  summary. (2) change Mode 2's valuations.csv step from reminding the user
   to `journal` computing `total_value_sek` itself (sum `portfolio.json`
   holdings' market values against the snapshot used that sweep, same
   full-portfolio convention `position_report.py`/`portfolio` already use)
   and appending the row directly via Write, with an auto-generated `note`
-  field in the same style as existing rows (comparability caveats,
-  data-completeness flags). Keep a fallback: if `journal` can't confidently
-  compute the total that sweep, it still reminds the user instead of
-  guessing — same "no data is fine, don't estimate" rule that governs
-  everything else in this system.
-
-### S15 — journal overwrote SESSION_LOG.md instead of appending (first observed failure of the system's only calibration mechanism)
-- **Status:** open — same "correct this time by hand, instruction file
-  unchanged" pattern as S14
-- **Why:** this session, the `journal` subagent's end-of-sweep write to
-  `reports/SESSION_LOG.md` did not append/prepend correctly — it replaced
-  the entire ~660-line append-only history (2026-08-06 through 2026-08-12)
-  with only the new 2026-08-17 entry. Caught immediately via a git diff
-  (656 deletions on a file CLAUDE.md defines as append-only, "the system's
-  memory across sessions") and fixed by hand: full history restored from
-  the prior commit, the new entry re-inserted above it in the documented
-  format, committed as `1a2bef3` ("Fix: journal agent overwrote
-  SESSION_LOG.md instead of prepending"). No data was permanently lost —
-  git history had the prior version — but the failure was **silent**: the
-  subagent's own summary reported success, with no self-detected error,
-  on the one file CLAUDE.md calls "the system's only calibration
-  mechanism." This is a first-time-observed failure mode, distinct from
-  S8 (which guards against a *git merge* dropping a file entirely) — here
-  the file existed and was written to, just with the wrong operation (full
-  rewrite instead of insert-above). **2026-08-17 (live session) note:**
-  the same day's later prepend (the "second memo" entry) was done
-  correctly and self-checked, per the live session's own note — but again
-  by ad hoc care in that turn, not because `journal.md`'s instructions
-  were actually edited to require the check. `journal.md` still lacks the
-  explicit insert-not-rewrite phrasing and the post-write self-check
-  described below.
-- **How:** two changes, both small, in `journal.md`'s Mode 2 step 2: (1)
-  make the instruction explicit that this is a targeted insert — read the
-  current file, prepend the new entry above the existing content (keeping
-  the format-block header and all prior entries verbatim), and write the
-  concatenated result back — not phrased loosely enough ("write a new
-  entry to the file") to be read as a full rewrite; (2) add a post-write
-  self-check: after writing, re-read the file and confirm (a) line count
-  increased versus the pre-write read, and (b) the previous top entry's
-  date/headline still appears somewhere in the new content; if either
-  check fails, report the failure explicitly instead of a silent success
-  summary. This closes the "silent" half of the failure specifically — the
-  wrong write already happened once with the agent reporting success
-  regardless.
+  field in the same style as existing rows; keep a fallback — if `journal`
+  can't confidently compute the total that sweep, it still reminds the
+  user instead of guessing, same "no data is fine, don't estimate" rule
+  that governs everything else in this system.
 
 ### S16 — No dependency manifest — a missing Python package silently broke a live fetch this session
-- **Status:** open — new evidence, first confirmed instance
+- **Status:** open — no new evidence this session, status unchanged
 - **Why:** this session's `swedish-equity-review` run on
   ATCO-B.ST/ALFA.ST/ABB.ST hit `No module named 'bs4'` on its first
   attempt at the Finansinspektionen insider-transaction fetch —
@@ -527,6 +548,79 @@ toward prospecting if a new structural watchlist/universe gap turns up.
   before any fetch begins, instead of failing partway through a specific
   skill's specific data source. Small, first confirmed instance — keep the
   fix proportionate.
+
+### S17 — scout's digest CSV drops an already-fetched `currency` field, making `fcf_b`/`mcap_b` silently non-comparable across tickers
+- **Status:** open — new evidence this session, root cause confirmed in code
+- **Why:** this session's Council memo names, as its first Step-0 finding,
+  that the digest's `fcf_b` (free cash flow, billions) and `mcap_b` (market
+  cap, billions) are not on a consistent currency basis for the same
+  ticker set — Ericsson's ratio (30.71/317 ≈ 9.7%) is plausible,
+  Alphabet's (22.67/4,207 ≈ 0.5%) and TSMC's (730.83/2,235 ≈ 33%) are not,
+  because market caps read USD-converted while cash-flow figures stay in
+  the reporting currency. This made the Valuation voice's FCF-yield proxy
+  (the system's stand-in for a missing EV/EBIT field) "unusable this
+  sweep except where currency is confirmed identical" — directly degrading
+  one of the six analyst lenses on every non-SEK candidate. **Confirmed in
+  code, not just in the memo's own observation:**
+  `scripts/fetch_market_data.py`'s `_fetch_fundamentals_direct()` already
+  fetches and returns a `currency` field per ticker (`summary.get(
+  "currency")`, the same currency `market_cap` and `free_cashflow` are
+  quoted in) — but `scripts/funnel/screen_candidates.py`'s `DIGEST_COLUMNS`
+  list (and its `row()` helper) never includes it, so the field is
+  silently dropped between the full JSON and the digest CSV `council`
+  actually reads. This is not a missing-data problem needing a new fetcher
+  or a slower, user-dependent Excel round-trip (Excel request E, 2026-08-18,
+  asks for the same thing via the workbook) — the data already exists in
+  this sweep's own snapshot and just isn't being carried through.
+- **How:** in `scripts/funnel/screen_candidates.py`, add `"currency"` to
+  `DIGEST_COLUMNS` and to the `row()` dict (`fields.get("currency")`, no
+  transformation needed). This alone lets `council`'s Valuation voice see
+  which tickers share a currency before treating an `fcf_b`/`mcap_b` ratio
+  as comparable, instead of inferring it from the numbers looking
+  implausible after the fact. Not required for this fix, but a reasonable
+  follow-on: have the digest-writer null the ratio's *comparability* (not
+  the field itself) when two tickers under discussion don't share a
+  `currency` value — the exposed field alone is enough for the personas'
+  own reasoning (council.md's existing "say explicitly when you're
+  approximating" rule) to self-correct without it.
+
+### S18 — [prospecting] scout's own discretionary candidate suggestions have no channel into the Excel Watchlist-addition request, and stay unscreened indefinitely
+- **Status:** open — new evidence this session, confirmed directly against
+  the live Watchlist and the Excel prompt file
+- **Why:** on 2026-08-17, `scout` (acting on a direct user request for buy
+  ideas) surfaced five discretionary tickers not derived from a numeric
+  screen — MSCI, SNPS, ARM as gap-fillers against the 65.5% industrials
+  concentration, SCCO and STL flagged as worsening it. None were added to
+  the Watchlist, and the 2026-08-17 emphasis note explicitly named
+  "screen them next sweep" as the plan. **Confirmed this session
+  (2026-08-18): none of the five appear anywhere in
+  `data/cache/watchlist.json`'s categories** (checked directly against the
+  file), **and none appear in
+  `data/cache/excel_import/claude_excel_prompt.txt`'s COUNCIL DATA
+  REQUESTS blocks** (checked directly — neither the 2026-08-17 A-D block
+  nor the 2026-08-18 E-H block names them) — the one channel this system
+  already uses to turn a system-side finding into a user-actionable Excel
+  edit (see request C, 2026-08-17, which successfully asked for a new
+  Holdings row for the Valour certificate) was never used for these five
+  tickers. This is a mechanism gap, not user procrastination: unlike an
+  executable trade (AZN.ST, entirely the user's own broker action), getting
+  a new ticker into the Watchlist requires the *system* to write the
+  request somewhere the user will actually see it, and `council.md`'s
+  Consolidated Excel-improvement prompt section currently only gathers
+  per-pick "Excel data request" lines about missing *fields* on
+  already-listed tickers — never `scout`'s own suggestions for tickers to
+  *add*.
+- **How:** in `.claude/agents/council.md`'s "Consolidated Excel-improvement
+  prompt" section, add one instruction: if `scout`'s output this sweep
+  names discretionary candidate tickers not already present in the
+  Watchlist (distinct from the digest's own Passed/Missing/Failed lists,
+  which are already-listed tickers), include a short "ADD TO WATCHLIST"
+  block in `claude_excel_prompt.txt` naming each ticker, a suggested
+  category, and the one-line reason `scout` gave for it — same imperative,
+  ready-to-paste style already used for requests A-D. This wires up what
+  `scout.md`'s own Job step 4 already half-anticipates ("tell them to add
+  tickers to the Watchlist tab — or add them yourself if the user gave
+  explicit tickers") to the one channel already proven to reach the user.
 
 ---
 
@@ -568,15 +662,24 @@ alongside the S-items, not silently.
   this phase was written — 67 entries (up from 32 on 2026-08-06, 45 on
   2026-08-12), 19 categories, and the format issue that used to cap it
   (12 malformed tickers) is now confirmed fixed — see the Closed log. This
-  phase is more tractable than at any prior check.
+  phase is more tractable than at any prior check. **2026-08-18 note:**
+  `scout` now genuinely does output a compact candidate dataset (the
+  digest CSV, shipped 2026-08-17) — the last clause of this phase's spec
+  line is effectively already true in substance, even though it landed as
+  part of the Stock Selection Council redesign rather than as a
+  dedicated Phase 3 build. The funnel-wiring and quality-factor portions
+  remain not started.
 - **Phase 4 — not started.** `risk_factor_exposure` risk-bucket
   classification (Global industrial cycle / Defensive healthcare /
   Financials / etc.) distinct from sector — directly targets the Volvo +
   Atlas Copco + Alfa Laval + ABB correlated-industrial-risk problem this
-  system already flagged (65.5% of the individual-stock sleeve as of
-  2026-08-17, still ACT-rated). Portfolio-fit scoring for candidates ("does
+  system already flagged (65.48% of the individual-stock sleeve as of
+  2026-08-18, still ACT-rated). Portfolio-fit scoring for candidates ("does
   owning this improve the portfolio," not just "is it individually
-  attractive"). Spec sections 11-12, 23, 33.
+  attractive") is now substantially live via `portfolio`'s expanded scope
+  and the Chairman's PORTFOLIO-FIT REASONING stage (2026-08-17 redesign) —
+  the risk-bucket classification itself is the part still not started.
+  Spec sections 11-12, 23, 33.
 - **Phase 5 — not started.** Macro Regime Engine expansion: new fetchers
   for BOJ policy rate, USD/JPY, credit spreads, PMI, unemployment/GDP,
   and a computed real-yield field — confirmed genuinely missing from
@@ -585,7 +688,11 @@ alongside the S-items, not silently.
   Market risk/Currency-funding), `macro_fit`/`macro_sensitivity` per
   candidate, dynamic BUY thresholds (regime-dependent, configurable,
   never auto-selling on a regime shift alone). Spec sections 13-17, 31,
-  34 (crypto-specific macro monitoring).
+  34 (crypto-specific macro monitoring). **2026-08-18 note:** the
+  no-commodity-price/no-credit-spread gap was named again this sweep, by
+  the Macro/Regime voice itself, as the specific limit on its TTE/energy
+  reasoning — live, current evidence this phase still matters, not
+  historical only.
 - **Phase 6 — not started.** Sell discipline (the 7 legitimate sell
   triggers + "would I buy it today?" - the latter already added to
   `thesis-review.md` in Phase 1, the former still open), crisis-window
@@ -631,7 +738,12 @@ alongside the S-items, not silently.
   of stricter isolation (vs. the current instruction-enforced version) is
   actually evidenced, not assumed. Revisit if a sweep produces visible
   evidence of one persona's write anchoring another's (the failure mode
-  this would fix) — none confirmed yet as of the 2026-08-17 test run.
+  this would fix) — **2026-08-18 note: the first real production sweep
+  under the digest-based version ran this session and produced genuine,
+  substantive disagreement across the six voices (see the memo's "Where
+  the agents disagreed" section) with no visible sign of one persona's
+  conclusions anchoring another's** — one data point against urgency, not
+  proof the failure mode can't occur, but no evidence yet that it has.
 
 ---
 
@@ -640,6 +752,96 @@ alongside the S-items, not silently.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-18 — S8 closed under cap pressure (10-item limit reached this
+  session, two new evidence-backed items added), not because the
+  underlying risk resolved.** Zero incidents of S8's specific failure mode
+  (a git merge silently dropping a critical file) since the original
+  2026-08-03 event, across roughly 15 sessions of routine
+  `check_unmerged_work.py` runs finding nothing — the closest thing to
+  evidence this specific risk has receded, though absence of an incident
+  is weaker evidence than a landed fix. S15 (expanded this session, see
+  below) already implements the more precise half of what S8's own
+  2026-08-17 note proposed generalizing toward — a post-write
+  line-count/content self-check — for the one file that has actually
+  broken (`SESSION_LOG.md`, via a different root cause: agent overwrite
+  behavior, not a git merge). S8's remaining distinct scope — a manifest
+  check across all five named critical files, specifically at the
+  git-merge boundary — is not implemented anywhere and is not covered by
+  S15. **If a git-merge-boundary file-loss incident recurs, reopen this as
+  a fresh item rather than assuming it's covered** — this closure is a
+  documented backlog trade-off under the cap, not a claim the original
+  risk is gone. Full original text preserved in this file's git history.
+- **2026-08-18 — S14 closed, merged into S15.** Same defect shape as S15
+  (journal.md's Mode 2 instruction text lags behind behavior the agent has
+  already executed correctly, ad hoc, multiple sweeps running) applied to
+  a different field journal.md owns (`data/valuations.csv`'s append,
+  vs. S15's `SESSION_LOG.md` prepend-safety). Both fixes land in the same
+  file in the same edit, so one `apply S15` now closes both gaps in a
+  single pass rather than two separate approvals for the same instruction
+  file. See S15 above for the merged Why/How.
+- **2026-08-18 — considered and rejected: a new mechanism to prompt/remind
+  the user to execute an unexecuted headline call between sweeps.**
+  AZN.ST's BUY has now been the Council's top or near-top call for two
+  consecutive sweeps (2026-08-17, 2026-08-18) at High/zero-dissent
+  conviction, unexecuted both times — the same shape as the PayPal routing
+  pattern (4+ sweeps) and the pre-closure `swedish-equity-review` pattern
+  (7 sweeps) already in this system's history. Rejected for the same
+  reason the equivalent 2026-08-17 proposal was deferred: CLAUDE.md is
+  explicit that this system "produces analysis and flags; it never
+  executes trades" and has no channel to reach the user outside a sweep —
+  the mechanism already in place (re-deriving the call fresh from new data
+  each sweep, with escalating language in the memo and in `journal`'s
+  reconciliation — this session's SESSION_LOG entry calls it "the
+  strongest version of 'the call didn't age badly, it just didn't get
+  acted on' this log has recorded") is doing its job: the call is not
+  stale, it is awaiting the human-in-the-loop action this system is
+  deliberately designed to require, not a system failure to communicate.
+  Distinguish from the dated-deadline-plus-hard-default mechanism used for
+  PayPal/ABB, which exists because those specific cases had a genuine
+  cost-of-waiting or a data-quality trigger to hang a date on — AZN.ST has
+  no such trigger, and forcing one would manufacture urgency the data
+  doesn't support. Revisit only if a third consecutive sweep produces the
+  identical unexecuted call with literally no user engagement at all,
+  which would suggest the flagging isn't reaching the user, not that it
+  isn't loud enough.
+- **2026-08-18 — considered and rejected: giving `council` the `Edit` tool
+  instead of just `Read`/`Write`, to simplify its append to
+  `data/learning_log.md`.** `council.md` already carries the exact
+  safe-append workaround this needs (read the full file, concatenate,
+  write back; if that feels unsafe in one pass, say so explicitly and let
+  the orchestrating session apply it by hand instead of risking a silent
+  partial write) — added after S15's `SESSION_LOG.md` incident, and used
+  correctly this session (this sweep's learning-log append was staged for
+  the orchestrating session to apply, per the memo's own report, not
+  written incorrectly). This is the safeguard working as designed, not a
+  defect surfacing: the one failure mode it exists to prevent (a silent,
+  incorrect partial overwrite) did not happen. Adding `Edit` would remove
+  one manual step but also widens the tool surface of the single
+  highest-stakes agent in this system for a convenience gain, not a
+  correctness one. Revisit only if the read-then-write pattern itself
+  produces an incorrect append (not just an extra manual staging step) in
+  a future sweep.
+- **2026-08-18 — two data-consistency findings this session, judged not
+  yet a pattern worth a new S-item; watching for a second confirmed
+  instance of each, not opening on one.** (1) `valuation`'s prose
+  described VOLV-B.ST as a "3rd straight year of revenue decline on
+  trailing" against the same snapshot's own four-year series showing two
+  consecutive declines and a trailing flip to +2.7% growth — a one-off
+  phrasing drift, caught and correctly overridden by Council's own
+  cross-examination (the fetched series was treated as primary), first
+  occurrence of this specific lens-summary-vs-fetched-data mismatch.
+  (2) A sharper version on TTE: this sweep's digest reports +27.8%
+  revenue growth while last sweep's full-JSON multi-year series showed
+  four consecutive declining years for the same ticker — a genuine
+  system-internal data contradiction (not just prose drift), correctly
+  resolved to NO ACTION rather than picking a side, with a concrete
+  one-pull re-test named for next sweep. Neither opened as an S-item: (1)
+  is a single phrasing slip with no code defect identified; (2) doesn't
+  yet have a diagnosed root cause (a ticker-resolution error, like this
+  same sweep's confirmed `MC`≠LVMH mismatch — see S9 — is one plausible
+  explanation, but unconfirmed for TTE specifically) — writing a "How"
+  before next sweep's re-pull would be guessing. Revisit if either
+  recurs, or once TTE's re-pull reveals a specific, fixable root cause.
 - **2026-08-17 — S5 resolved: the `backtest` agent ran for real (its first
   execution ever) and both the current mix and the adopted 85/10/5/0
   target clear the -30% drawdown tolerance.** Over an 86-month window
@@ -823,7 +1025,10 @@ and `reports/SESSION_LOG.md`.
   execution by `journal`'s reconciliation; the standing guardrail now
   closes the gap going forward instead of relying on reconciliation to
   catch it after the fact each time. No further S-item needed unless the
-  guardrail itself is bypassed in a future sweep.
+  guardrail itself is bypassed in a future sweep. **2026-08-18 note:** used
+  again this sweep, correctly — confirmed the 11,183 SEK ISK cash figure
+  and its D4-dependent spendable subset directly against this sweep's own
+  portfolio-agent output before sizing any call.
 - **2026-08-12 — D4 (profit-recycling gross-vs-realized-gain ambiguity)
   folded into S12, not opened as a separate item.** Same "ambiguous shared
   definition" failure class S12 exists to solve, and S12's own original
@@ -865,7 +1070,9 @@ and `reports/SESSION_LOG.md`.
   closed-item log, `data/portfolio.json`, and surviving dated memo files.
   Root cause understood (the merge commit's explicit restore list omitted
   this file). File itself is fixed; the forward-looking guard against a
-  repeat is S8, still open.
+  repeat is S8, closed 2026-08-18 (see above — folded into S15's stronger
+  evidence base under cap pressure, not because the underlying risk is
+  gone).
 - **2026-08-06 — Excel import pipeline dry-run bugs found and fixed before
   the first real run**: a ticker-collision bug (multiple holdings sharing
   ticker "TBD"), a P/E sanity check that only bounded high values and

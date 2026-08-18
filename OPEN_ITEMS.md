@@ -761,6 +761,33 @@ alongside the S-items, not silently.
   here as a genuinely different, harder question ("what does the worst
   historical case do to this book," not "does a representative recent
   window clear the bound").
+- **Phase 7 (proposed 2026-08-17, not started) — true per-persona
+  isolation for the Stock Selection Council.** Currently `council`'s six
+  analyst personas are role-played sequentially by one subagent
+  invocation, sharing one context window — real independence (Step 1
+  says "draft all six in isolation") is enforced by instruction, not by
+  the architecture. The alternative: the orchestrating session spawns six
+  separate `Agent` tool calls (a shared, parameterized "council-analyst"
+  agent definition, one persona name passed per call) in parallel, each
+  reading only its own relevant data slice, genuinely unable to see any
+  other persona's output — then a seventh `Agent` call ("council-chairman")
+  reads all six results plus the raw data and writes the memo. This also
+  opens the door to what the user asked for directly: each persona could
+  target a *different* part of the Excel workbook / a different subset of
+  fetched data if that turns out to matter, and each becomes individually
+  promptable/tunable without touching the others.
+  **Deliberately not implemented same-day as this proposal** — the
+  tradeoff is real, not just execution risk: true isolation likely
+  *increases* total token cost (each of 7 invocations loads its own copy
+  of the shared context - snapshot, digest, portfolio state - instead of
+  one subagent reading it once), which cuts against the same session's
+  token-cost fix (the digest CSV, Step 0 triage). It buys independence
+  and per-persona control, not cheapness. Worth building once the
+  digest-based version has run a few real sweeps and the marginal value
+  of stricter isolation (vs. the current instruction-enforced version) is
+  actually evidenced, not assumed. Revisit if a sweep produces visible
+  evidence of one persona's write anchoring another's (the failure mode
+  this would fix) — none confirmed yet as of the 2026-08-17 test run.
 
 ---
 

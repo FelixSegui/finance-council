@@ -17,6 +17,19 @@ Entry format:
 
 ---
 
+## 2026-08-22 — Off-cycle session: fresh Excel workbook imported (no code changes needed, corrected ISK cash 11,183 -> 20,366 SEK, surfacing a 3rd instance of S9's Excel-cash-delta gap); gold added to scope as a narrow named exception; Portfolio Governance Council approves a small first gold tranche, not the size originally asked about
+- **Snapshot:** data/cache/snapshots/20260822T102034.json (GC=F, SGOL + macro)
+- **Memo:** no memo — off-cycle governance decision, not a full sweep; see PR #5 (Excel import) and this entry for the record
+- **Headline calls:**
+  - Excel re-import (master-5.xlsx, restructured but same importer, no code changes) → n/a (data refresh) → n/a
+  - Gold: BUY first tranche ~7,500 SEK via an Avanza ISK physically-backed gold ETC (ticker/ISIN to be verified by the user, never guessed) → Medium confidence → Long horizon (permanent allocation line, not a crash-timing trade)
+  - Rejected: buying via Revolut (synthetic tracker, unsecured claim on the issuer, outside the ISK) and the full 25,000 SEK top-of-range size the user asked about
+- **User decisions:** none executed yet this session — user asked "does this make sense" and got Council's verdict; buying, wrapper choice, and instrument selection are still theirs to do
+- **Reconciliation:**
+  - The "corrected" 20,366 SEK ISK cash figure does NOT fully reconcile: no BUY transaction exists in data/transactions.csv for the Valour Bitcoin Zero purchase, and the 9,183 SEK gap vs. the previously-computed 11,183 SEK equals that purchase exactly. Likely reading: 11,183 SEK is closer to true free cash. See P8 (new).
+  - Council's own adversarial check caught a wrong premise in the request as framed to it: gold is NOT near 52-week highs (it's ~54% of range, ~18% below the high) — corrected before the verdict was built on it.
+- **Open items carried forward:** OPEN_ITEMS.md P1-P8 (P7, P8 new this session), S1-S18 (S9 has a 3rd confirmed instance added), D4/S12 still open and now also gates gold tranche-2 sizing. AZN.ST BUY and P3 (PayPal routing) both still unexecuted, unchanged from 2026-08-18.
+
 ## 2026-08-18 — First production sweep under the redesigned six-persona Stock Selection Council; AZN.ST BUY re-affirmed unanimously for a second consecutive sweep, still unexecuted; D4 escalates from bookkeeping to gating 11,183/~7,917/0 SEK of spendable cash
 
 **Automated/scheduled sweep, not a live session** — no user interaction

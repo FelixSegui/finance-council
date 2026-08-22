@@ -221,6 +221,53 @@ it — an explicit "no" closes the open loop just as well as a "yes."
   both should be conscious choices if the remaining ~1,744 SEK (or future
   contributions) go toward them.
 
+### P7 — Gold: new exposure class, no target line or tier home yet
+- **Status:** decided — pending execution (Council Portfolio Governance
+  call, 2026-08-22, off-cycle): BUY, first tranche only, ~7,500 SEK, via
+  an Avanza ISK-held physically-backed gold ETC (verify backing/TER/ISIN
+  before ordering — do not guess the ticker, same rule as Nordic equity
+  tickers). Long-run target 5% of total portfolio (~11,400 SEK), hard
+  ceiling 7.5%, reached via P3's PayPal conversion or a future
+  contribution, not by selling anything. Explicitly rejected: buying via
+  Revolut (synthetic tracker, no ISIN, sits outside the ISK, and — the
+  stronger reason — is an unsecured claim on the issuing fintech, which
+  defeats the point of a systemic-stress hedge) and the full 25,000 SEK
+  top-of-range size (larger than the entire existing crypto sleeve, not
+  fundable on the more conservative reading of P8 below).
+- **Structural gap this surfaced:** `portfolio.json.targets` has no
+  `gold_pct` field (only equity/crypto/cash/fixed_income, already summing
+  to 100), and gold doesn't fit any of `investor_profile.json`'s three
+  60/30/10 tiers (not "secure" — a 1.66x twelve-month high/low range is
+  risk-asset volatility, not ballast; not "medium" — no fundamentals to
+  evaluate; not "high-risk active" — meant to be held, not traded).
+  Recommended carve: equity 85 -> 80, new gold line at 5. Needs a
+  conscious edit, not an inferred one — until then, drift/scorecard math
+  that includes gold is being measured against a target that doesn't
+  exist.
+- **Blocks:** executing tranche 2, and any future drift/rebalance check
+  that should include gold.
+- Full reasoning: Council's five-voice governance verdict, 2026-08-22
+  (not yet written to `/reports` — off-cycle decision, log via `journal`
+  at the next sweep).
+
+### P8 — ISK cash reconciliation gap (20,366 vs 11,183 SEK)
+- **Status:** open — blocks sizing the P7 gold tranche and anything else
+  drawing on ISK cash until resolved.
+- The 2026-08-22 Excel import corrected Avanza ISK cash from a computed
+  11,183 SEK to a broker-sourced 20,366 SEK. `data/transactions.csv` has
+  **no BUY row at all** for the 150-unit Valour Bitcoin Zero certificate
+  purchase (only the COIN-XBT.ST SELL and the 5,000 SEK deposit appear on
+  2026-08-17) — and the gap between the two cash figures (9,183 SEK)
+  equals the Valour purchase amount exactly. Most likely reading: 20,366
+  SEK is the *pre-purchase* balance, and real free cash is closer to
+  11,183 SEK — but this is not confirmed from the data on hand.
+  **Action: check the actual on-screen Avanza ISK cash balance and log
+  the missing Valour BUY transaction.** Ten seconds on Avanza's side,
+  closes a gap that has already affected two decisions (D4 sizing, P7
+  gold tranche sizing).
+- **Blocks:** any BUY sized off "available ISK cash" until the real
+  number is confirmed — including P7's tranche 2.
+
 ---
 
 ## S — System items
@@ -392,6 +439,16 @@ it — an explicit "no" closes the open loop just as well as a "yes."
   noticing every time. All three reuse the existing `flags` list already
   surfaced in `latest-summary.json` and read into the council memo —
   no new plumbing needed.
+- **Why (c), continued — 2026-08-22, a third confirmed instance.** The
+  10:20 UTC Excel import wrote `CASH_SEK (avanza-isk): quantity 11183 ->
+  20366 (from Excel)`. The gap (9,183 SEK) equals the un-logged Valour
+  Bitcoin Zero certificate purchase exactly — `data/transactions.csv` has
+  no BUY row for that purchase at all — and again this never became a
+  `flags` entry. Same root cause as the two prior instances, third
+  occurrence in six weeks: this is no longer an edge case, it's the
+  script's most reliable failure mode. See P8 for the user-facing action
+  (verify the real Avanza balance); this entry is the systemic fix still
+  not built.
 
 ### S12 — Canonical definitions for ambiguous shared terms
 - **Status:** open for D4 only. **D3 CLOSED 2026-08-17** — user picked the

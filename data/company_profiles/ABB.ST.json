@@ -1,55 +1,55 @@
 {
   "ticker": "ABB.ST",
   "name": "Abb Ltd",
-  "profile_last_updated": "2026-08-17",
+  "profile_last_updated": "2026-08-22",
   "static_profile": {
     "business_description": "ABB Ltd \u2014 Swiss-domiciled, USD-reporting global electrification and automation group (electrification, motion, process automation, robotics/discrete automation), primary listing SIX Swiss Exchange, cross-listed on Nasdaq Stockholm (the ABB.ST line this portfolio holds). Not sourced from a fetched figure - general public-record description, no numeric claims embedded.",
-    "sector": "Industrials",
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-17)",
     "competitive_moat_notes": "Global leadership in electrification/automation, direct exposure to grid-modernization and industrial-automation tailwinds; larger and more diversified than Atlas Copco/Alfa Laval but reports in USD, not SEK - see currency_note in fundamentals_cache. Durable observation, not tied to a specific fetch date.",
     "management_notes": null,
     "last_reviewed": "2026-08-17"
   },
   "fundamentals_cache": {
-    "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json - supersedes the prior Excel-cache-only figures (all previously MISSING)",
+    "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": "ttm / most recent Yahoo quoteSummary pull",
     "extracted_date": "2026-08-17",
     "next_report_expected": null,
     "figures": {
       "price": {
-        "value": 971.6,
-        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "value": 979.2,
+        "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
-        "calculation_method": "direct from source"
+        "calculation_method": "direct from source, not computed"
       },
       "week52_high": {
         "value": 1058.5,
-        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
-        "calculation_method": "direct from source"
+        "calculation_method": "direct from source, not computed"
       },
       "week52_low": {
-        "value": 619.6,
-        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "value": 145.5,
+        "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
-        "calculation_method": "direct from source"
+        "calculation_method": "direct from source, not computed"
       },
       "market_cap": {
-        "value": 1774494810112,
-        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "value": 150920700000,
+        "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
-        "calculation_method": "direct from source"
+        "calculation_method": "direct from source, not computed"
       },
       "trailing_pe": {
         "value": 37.580643,
@@ -115,13 +115,13 @@
         "calculation_method": "direct from source, converted to %"
       },
       "beta": {
-        "value": 1.011,
-        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "value": 1.1451,
+        "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
-        "calculation_method": "direct from source"
+        "calculation_method": "direct from source, not computed"
       },
       "revenue_growth_pct": {
         "value": 14.2,
@@ -400,6 +400,24 @@
         "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "n/a"
+      },
+      "pe_ratio": {
+        "value": 35.9603,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 5,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "currency": {
+        "value": "SEK",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 5,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
       }
     }
   },

@@ -1,28 +1,28 @@
 {
   "ticker": "ALFA.ST",
   "name": "Alfa Laval AB",
-  "profile_last_updated": "2026-08-17",
+  "profile_last_updated": "2026-08-22",
   "static_profile": {
     "business_description": "Alfa Laval AB \u2014 Swedish industrial group, global leader in heat transfer, separation (centrifuges), and fluid handling equipment, serving marine, energy, food/water, and process industries. Diversified end-market exposure vs. Atlas Copco's more compressor/tools-concentrated profile. Not sourced from a fetched figure - general public-record description, no numeric claims embedded.",
-    "sector": "Industrials",
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-17)",
     "competitive_moat_notes": "Strong engineering/switching-cost moat in heat-transfer and separation equipment; diversified across marine, energy, food & water end markets versus more concentrated industrial peers. Durable observation, not tied to a specific fetch date.",
     "management_notes": null,
     "last_reviewed": "2026-08-17"
   },
   "fundamentals_cache": {
-    "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json - supersedes the prior Excel-cache-only figures (all previously MISSING)",
+    "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": "ttm / most recent Yahoo quoteSummary pull",
     "extracted_date": "2026-08-17",
     "next_report_expected": null,
     "figures": {
       "price": {
-        "value": 557.2,
-        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "value": 559.8,
+        "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
-        "calculation_method": "direct from source"
+        "calculation_method": "direct from source, not computed"
       },
       "week52_high": {
         "value": 592.2,
@@ -43,13 +43,13 @@
         "calculation_method": "direct from source"
       },
       "market_cap": {
-        "value": 231710720000,
-        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "value": 230305400000,
+        "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
-        "calculation_method": "direct from source"
+        "calculation_method": "direct from source, not computed"
       },
       "trailing_pe": {
         "value": 28.256046,
@@ -115,13 +115,13 @@
         "calculation_method": "direct from source, converted to %"
       },
       "beta": {
-        "value": 0.782,
-        "source": "Yahoo quoteSummary via direct crumb fetch (scripts/fetch_market_data.py), snapshot 20260817T111301.json",
+        "value": 0.9621,
+        "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
-        "calculation_method": "direct from source"
+        "calculation_method": "direct from source, not computed"
       },
       "revenue_growth_pct": {
         "value": 7.7,
@@ -382,6 +382,24 @@
         "age_days": 0,
         "quality_state": "OK",
         "calculation_method": "n/a"
+      },
+      "pe_ratio": {
+        "value": 28.2442,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 5,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "currency": {
+        "value": "SEK",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-17",
+        "age_days": 5,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
       }
     }
   },

@@ -1,7 +1,7 @@
 {
-  "generated": "2026-08-17 11:11 UTC",
+  "generated": "2026-08-22 10:09 UTC",
   "dry_run": false,
-  "source_xlsx": "/tmp/claude-0/-home-user-finance-council/d7201f56-aa42-508c-af7f-6913bf9e9e71/scratchpad/master-5.xlsx",
+  "source_xlsx": "/tmp/claude-0/-home-user-finance-council/f68d8848-c0ff-584e-b761-7df925cdfdf2/scratchpad/master-5.xlsx",
   "fundamentals_updated": [
     {
       "ticker": "ABB.ST",
@@ -74,9 +74,9 @@
     }
   ],
   "portfolio_deltas": [
-    "CASH_SEK (avanza-isk): quantity 15366 -> 20366 (from Excel)"
+    "CASH_SEK (avanza-isk): quantity 11183 -> 20366 (from Excel)"
   ],
-  "transactions_appended": 4,
+  "transactions_appended": 0,
   "watchlist_entries": 67,
   "flags": [
     "ALFA.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",

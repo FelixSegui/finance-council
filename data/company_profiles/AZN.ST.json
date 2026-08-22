@@ -1,7 +1,7 @@
 {
   "ticker": "AZN.ST",
   "name": "ASTRAZENECA PLC",
-  "profile_last_updated": "2026-08-17",
+  "profile_last_updated": "2026-08-22",
   "static_profile": {
     "business_description": null,
     "sector": "Pharmaceuticals (Excel Stocks data type, 2026-08-17)",
@@ -83,7 +83,7 @@
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -92,7 +92,7 @@
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -101,7 +101,7 @@
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -110,7 +110,7 @@
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -119,7 +119,7 @@
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -128,7 +128,7 @@
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -146,7 +146,7 @@
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
         "as_of": "2026-08-17",
-        "age_days": 0,
+        "age_days": 5,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },

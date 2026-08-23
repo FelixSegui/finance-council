@@ -1,7 +1,7 @@
 {
   "ticker": "AZN.ST",
   "name": "ASTRAZENECA PLC",
-  "profile_last_updated": "2026-08-22",
+  "profile_last_updated": "2026-08-23",
   "static_profile": {
     "business_description": null,
     "sector": "Pharmaceuticals (Excel Stocks data type, 2026-08-17)",
@@ -88,13 +88,13 @@
         "calculation_method": "direct from source, not computed"
       },
       "pe_ratio": {
-        "value": 22.9769,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "value": 25.49,
+        "source": "Avanza broker terminal (user-provided screenshot, real-time)",
+        "source_tier": 2,
+        "as_of": "2026-08-23",
+        "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
+        "calculation_method": "direct from source, not computed - corrects prior Excel-sourced value 22.9769 (OK): was 22.98 in Excel - broker-terminal screenshot shows 25.49 (~10% higher); Yahoo has no trailing_pe for this ticker to cross-check against, so the broker figure is taken as the more authoritative real-time read."
       },
       "market_cap": {
         "value": 177748400000,

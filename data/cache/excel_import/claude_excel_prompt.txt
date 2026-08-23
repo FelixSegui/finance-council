@@ -1,7 +1,7 @@
 You're working inside my personal finance workbook (master-5.xlsx). Please make only the specific fixes below - don't change anything else in the sheet, and don't touch any linked Stocks data type cells beyond refreshing them where asked:
 
 1. ALFA.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
-2. ATCO-B.ST: P/E 2.05 is outside the 3-80 sanity range - treat as suspect, verify in Excel before using it.
+2. ATCO-B.ST: P/E cell shows 2.05, outside the 3-80 sanity range - confirmed wrong 2026-08-23 against a real Avanza broker screenshot (32.63) and Yahoo's independent trailing P/E (33.35), which agree with each other. company_profiles has been corrected to 32.63 in the interim, but the Excel cell itself still shows 2.05 - refresh/re-link the Stocks data type for this cell so future imports don't need a manual override.
 3. ATCO-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
 4. SHB-A.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
 5. VOLV-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.

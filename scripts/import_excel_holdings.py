@@ -275,18 +275,33 @@ def process_core_holdings(ws, pf, flags, dry_run):
                              f"portfolio.json - not updated, check the name matches exactly.")
             continue  # a ticker Excel knows about that isn't a tracked holding here - not an error
 
+        confirmed_conflict = "CONFIRMED" in ((holding.get("thesis") or "") + (holding.get("thesis_narrative") or ""))
+
         qty, cost = rec.get("quantity"), rec.get("cost_basis_sek")
         old_qty = holding.get("quantity")
         if isinstance(qty, (int, float)) and qty != old_qty:
-            deltas.append(f"{ticker} ({account}): quantity {old_qty!r} -> {qty!r} (from Excel)")
-            if not dry_run:
-                holding["quantity"] = qty
+            if confirmed_conflict:
+                flags.append(f"{ticker} ({account}): Excel wants to change quantity {old_qty!r} -> "
+                             f"{qty!r}, but this holding's thesis/notes contain a user-CONFIRMED "
+                             f"figure - verify which is right before trusting Excel over the "
+                             f"recorded confirmation. Not applied automatically.")
+            else:
+                deltas.append(f"{ticker} ({account}): quantity {old_qty!r} -> {qty!r} (from Excel)")
+                if not dry_run:
+                    holding["quantity"] = qty
         if isinstance(cost, (int, float)) and cost != holding.get("cost_basis_total_sek") \
                 and holding.get("cost_basis_per_unit") is None:
-            deltas.append(f"{ticker} ({account}): cost_basis_total_sek "
-                          f"{holding.get('cost_basis_total_sek')!r} -> {cost!r} (from Excel)")
-            if not dry_run:
-                holding["cost_basis_total_sek"] = cost
+            if confirmed_conflict:
+                flags.append(f"{ticker} ({account}): Excel wants to change cost_basis_total_sek "
+                             f"{holding.get('cost_basis_total_sek')!r} -> {cost!r}, but this "
+                             f"holding's thesis/notes contain a user-CONFIRMED figure - verify "
+                             f"before trusting Excel over the recorded confirmation. Not applied "
+                             f"automatically.")
+            else:
+                deltas.append(f"{ticker} ({account}): cost_basis_total_sek "
+                              f"{holding.get('cost_basis_total_sek')!r} -> {cost!r} (from Excel)")
+                if not dry_run:
+                    holding["cost_basis_total_sek"] = cost
 
     return deltas, seen
 
@@ -335,7 +350,13 @@ def process_crypto_certificate_detail(ws, pf, flags, dry_run):
                          f"portfolio.json ({holding['quantity']}) - not changing quantity from this "
                          f"block, CORE HOLDINGS stays authoritative for that; verify in Excel.")
 
-        if isinstance(value, (int, float)) and value != old_value:
+        if isinstance(value, (int, float)) and value != old_value and \
+                "CONFIRMED" in ((holding.get("thesis") or "") + (holding.get("thesis_narrative") or "")):
+            flags.append(f"{ticker}: Excel wants to change market_value_sek {old_value!r} -> "
+                         f"{value!r}, but this holding's thesis/notes contain a user-CONFIRMED "
+                         f"figure - verify before trusting Excel over the recorded confirmation. "
+                         f"Not applied automatically.")
+        elif isinstance(value, (int, float)) and value != old_value:
             deltas.append(f"{ticker}: market_value_sek {old_value!r} -> {value!r} "
                           f"(from Excel CRYPTO & CERTIFICATE DETAIL, live data type)")
             if not dry_run:

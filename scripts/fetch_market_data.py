@@ -416,10 +416,25 @@ def fetch_ecb_deposit_rate():
 
 
 def fetch_se_cpi_yoy():
-    """Swedish CPI YoY from SCB PxWeb (13 months of the KPI total index)."""
-    url = "https://api.scb.se/OV0104/v1/doris/en/ssd/START/PR/PR0101/PR0101A/KPItotM"
+    """Swedish CPI YoY from SCB PxWeb, KPI2020M (2020=100) table, reading
+    SCB's own precomputed annual-change content code (00000804) directly.
+
+    FIXED 2026-08-23 (was S4): the previous table, KPItotM (1980=100), was
+    silently discontinued by SCB after 2025M12 - confirmed via this table
+    node's own metadata, which labels it "(no update after 2025M12)" and
+    points to KPI2020M as the live replacement (through 2026M07 as of this
+    fix, updated 2026-08-13). The old code's "top 13, compute ratio myself"
+    approach also had a second latent bug: KPI2020M's default ContentsCode
+    (00000808, "fixed index numbers") is blank ("..") for most historical
+    months - only the Shadow Index (00000807) has full history, and
+    neither needs to be manually diffed since content code 00000804 is
+    SCB's own already-computed annual % change."""
+    url = "https://api.scb.se/OV0104/v1/doris/en/ssd/START/PR/PR0101/PR0101A/KPI2020M"
     query = {
-        "query": [{"code": "Tid", "selection": {"filter": "top", "values": ["13"]}}],
+        "query": [
+            {"code": "ContentsCode", "selection": {"filter": "item", "values": ["00000804"]}},
+            {"code": "Tid", "selection": {"filter": "top", "values": ["1"]}},
+        ],
         "response": {"format": "json"},
     }
     try:
@@ -430,11 +445,9 @@ def fetch_se_cpi_yoy():
         with urllib.request.urlopen(req, timeout=15) as resp:
             data = json.loads(resp.read().decode("utf-8-sig"))
         pts = data.get("data", [])
-        if len(pts) < 13:
-            return {"error": "insufficient history returned"}
-        first = float(pts[0]["values"][0])
-        last = float(pts[-1]["values"][0])
-        return {"period": pts[-1]["key"][0], "value": round((last / first - 1) * 100, 2)}
+        if not pts:
+            return {"error": "no data returned"}
+        return {"period": pts[-1]["key"][0], "value": float(pts[-1]["values"][0])}
     except Exception as e:
         return {"error": str(e)}
 

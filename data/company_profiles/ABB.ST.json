@@ -422,9 +422,9 @@
     }
   },
   "insider_activity_cache": {
-    "source": "Finansinspektionen Insynsregister via marknadssok.fi.se (scripts/fetch_market_data.py --fi-issuers), snapshot 20260817T111301.json",
-    "as_of_date": "2026-08-17",
-    "notes": "10 transactions returned, searched as 'ABB', filtered to exact issuer match (ABB Ltd) - no collision with unrelated issuers. RECENT AND NOTABLE: senior executive Peter Terwiesch made THREE separate open-market Disposals within 2 weeks of this review (18,799 sh @ 76.76 CHF on 07/31, 10,000 sh @ 77.30 CHF on 08/01, 20,000 sh @ 83.46 CHF on 08/14 - ~48,800 shares / ~CHF 3.85M combined), plus board member David Meline disposed 2,456 sh @ 82.12 CHF on 08/07. Not labeled as option-exercise pairs (unlike ATCO's pattern) - genuine sales. Separately, 2026-05-06 shows 6 board members each acquiring shares at an identical price (78.42 CHF) - a same-day, same-price cluster consistent with a routine annual board-compensation grant, weighted low per the skill's scheduled-transaction guidance, not a discretionary buy signal. Net read: the standout signal is recent, sizeable, repeated executive selling, the most bearish insider pattern of the three names."
+    "source": "Finansinspektionen Insynsregister via marknadssok.fi.se (scripts/fetchers/fetch_insiders_se.py), data/cache/insiders_se/20260823T150423-ABB.json",
+    "as_of_date": "2026-08-23",
+    "notes": "SECOND PULL (P6's break condition test) - 4 transactions, 2026-06-24 to 2026-08-23. Same Peter Terwiesch disposal cluster already known from the 2026-08-17 pull (20,000 sh @ 83.46 CHF 08/13, 10,000 sh @ 77.30 CHF 07/30, 18,799 sh @ 76.76 CHF 07/29 - 48,799 sh combined, matching the prior pull's ~48,800 sh almost exactly) plus David Meline's 2,456 sh @ 82.12 CHF 08/05 disposal, also already known. NO NEW disposals in the 10 days since the most recent transaction (08/13) through today (08/23). Break condition ('the insider-selling pattern continues into a second FI pull') is NOT met - the cluster has not grown since the first pull, it has gone quiet. This does not erase the original cluster (still the most bearish insider signal of the three P6 names) but does not independently escalate ABB to an active SELL/reduce trigger either. Resolves the standing 2026-09-03 default date: no second pull is needed before then, this is it."
   },
   "review_history": [
     {

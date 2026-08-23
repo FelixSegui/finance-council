@@ -118,7 +118,8 @@ as .ST tickers via yfinance, not via CoinGecko.
 at the user's request). It replaced two separate lists: the
 `open_structural_questions` array that used to live in `portfolio.json`
 (now **P-items**) and the `IMPROVEMENTS.md` backlog (now **S-items**).
-`IMPROVEMENTS.md` is a stub pointing here.
+`IMPROVEMENTS.md` itself was deleted 2026-08-23 (it had been a stub
+pointing here since 2026-08-03; nothing of substance was lost).
 
 Rules:
 - Agents read `OPEN_ITEMS.md` for what's outstanding. Do not recreate a

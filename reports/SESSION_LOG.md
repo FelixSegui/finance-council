@@ -17,6 +17,23 @@ Entry format:
 
 ---
 
+## 2026-08-23 — Off-cycle backlog cleanup: real Avanza data (screenshots + transaction export) reconciled 5 data errors, gold ETC fact sheet reviewed and cleared, S4/S9(c) code fixes shipped, P6's second FI pull run, IMPROVEMENTS.md/P2 redundancy removed
+- **Snapshot:** none fetched this session (no new market-data pull needed — reconciliation used user-provided real broker data, not a fresh price snapshot)
+- **Memo:** no memo — backlog-reduction session, not a sweep
+- **Headline calls:** none (no new BUY/SELL recommendation) — this was data hygiene + backlog closure
+- **User decisions:** none required yet — P7 (gold) is ready to execute whenever the user places the order; everything else this session was either closed outright or already-decided cleanup
+- **Reconciliation — real data corrected 5 things the system had wrong:**
+  1. ISK cash: 20,366 SEK (wrong, pre-Valour-purchase balance) -> 11,288 SEK (real, broker-confirmed via user screenshot). Closed P8, closed S12/D4.
+  2. Missing transactions: the Valour Bitcoin Zero BUY (2026-08-18, 150 units) and a 5,000 SEK deposit (2026-08-22) were never logged at all — added retroactively from the user's real Avanza transaktioner export. This was S9(c)'s exact root cause.
+  3. COIN-XBT.ST SELL row's fee/cash-effect/realized-PnL were estimated (fee "unknown") — corrected to the real broker figures (38.42 SEK fee, 3,227.58 SEK realized gain, was 3,265.98 uncorrected).
+  4. Three company_profiles P/E figures were wrong: ATCO-B.ST 2.05 (the exact figure this session's Excel import flagged as suspect) -> 32.63; AZN.ST 22.98 -> 25.49; INVE-A.ST 6.56 -> 4.76 — all corrected against a real Avanza broker-terminal screenshot, cross-checked against Yahoo's independent trailing P/E where available.
+  5. Valour Bitcoin Zero's carried value (9,183 SEK, cost-only) -> 11,031 SEK (real market value, broker-confirmed, since-purchase +19.82%).
+- **Gold (P7):** the user's own Xetra-Gold (DE000A0S9GB0) fact sheet reviewed in full — physically backed with a real delivery right, near-zero ongoing cost (0.01%/yr over 5 years per its own PRIIPs disclosure), regulated Frankfurt listing. Cleared as OK to buy; only the user's actual order is outstanding.
+- **Code fixes shipped:** S4 (Swedish CPI fetcher was silently reading a table SCB discontinued after 2025M12 — switched to the live replacement table, verified returns 2026M07 data); S9(c) (import_excel_holdings.py now flags rather than silently overwrites a quantity/cost-basis/market-value delta that conflicts with a user-CONFIRMED figure in a holding's thesis text — the exact gap that let the cash-figure error above happen a third time).
+- **P6:** ABB.ST's second Finansinspektionen insider pull run (marknadssok.fi.se, previously believed blocked, confirmed reachable) — no new disposals since the already-known cluster; break condition not triggered, 2026-09-03 default date closed out.
+- **Cleanup:** `IMPROVEMENTS.md` deleted (pure stub since 2026-08-03); P2 closed (its one remaining item duplicated V2 Roadmap Phase 3 word-for-word — tracking it twice was the actual redundancy).
+- **Open items carried forward:** P1 (ETH cost basis, blocked on user), P3 (PayPal routing, decided, unexecuted), P4 (closed), P5/S6 (INVE-A NAV, needs external data), P6 (ABB rotation candidate, no longer time-pressured), P7 (gold, ready to execute). S-items: S1, S6, S9(a)/(b), S13, S15, S16, S17, S18 unchanged.
+
 ## 2026-08-22 — Off-cycle session: fresh Excel workbook imported (no code changes needed, corrected ISK cash 11,183 -> 20,366 SEK, surfacing a 3rd instance of S9's Excel-cash-delta gap); gold added to scope as a narrow named exception; Portfolio Governance Council approves a small first gold tranche, not the size originally asked about
 - **Snapshot:** data/cache/snapshots/20260822T102034.json (GC=F, SGOL + macro)
 - **Memo:** no memo — off-cycle governance decision, not a full sweep; see PR #5 (Excel import) and this entry for the record

@@ -1,10 +1,10 @@
 {
   "ticker": "ABB.ST",
   "name": "Abb Ltd",
-  "profile_last_updated": "2026-08-22",
+  "profile_last_updated": "2026-08-23",
   "static_profile": {
     "business_description": "ABB Ltd \u2014 Swiss-domiciled, USD-reporting global electrification and automation group (electrification, motion, process automation, robotics/discrete automation), primary listing SIX Swiss Exchange, cross-listed on Nasdaq Stockholm (the ABB.ST line this portfolio holds). Not sourced from a fetched figure - general public-record description, no numeric claims embedded.",
-    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-17)",
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-21)",
     "competitive_moat_notes": "Global leadership in electrification/automation, direct exposure to grid-modernization and industrial-automation tailwinds; larger and more diversified than Atlas Copco/Alfa Laval but reports in USD, not SEK - see currency_note in fundamentals_cache. Durable observation, not tied to a specific fetch date.",
     "management_notes": null,
     "last_reviewed": "2026-08-17"
@@ -12,15 +12,15 @@
   "fundamentals_cache": {
     "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": "ttm / most recent Yahoo quoteSummary pull",
-    "extracted_date": "2026-08-17",
+    "extracted_date": "2026-08-21",
     "next_report_expected": null,
     "figures": {
       "price": {
-        "value": 979.2,
+        "value": 946.2,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -28,8 +28,8 @@
         "value": 1058.5,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -37,17 +37,17 @@
         "value": 145.5,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "market_cap": {
-        "value": 150920700000,
+        "value": 146363200000,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -115,11 +115,11 @@
         "calculation_method": "direct from source, converted to %"
       },
       "beta": {
-        "value": 1.1451,
+        "value": 1.144,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -402,11 +402,11 @@
         "calculation_method": "n/a"
       },
       "pe_ratio": {
-        "value": 35.9603,
+        "value": 34.66,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -414,8 +414,35 @@
         "value": "SEK",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "exchange": {
+        "value": "NASDAQ Stockholm",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-21",
+        "age_days": 2,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "headquarters": {
+        "value": "Affolternstrasse 44, ZUERICH, ZUERICH, 8050 CH",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-21",
+        "age_days": 2,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "employees": {
+        "value": 112700,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       }

@@ -4,7 +4,7 @@
   "profile_last_updated": "2026-08-23",
   "static_profile": {
     "business_description": null,
-    "sector": "Pharmaceuticals (Excel Stocks data type, 2026-08-17)",
+    "sector": "Pharmaceuticals (Excel Stocks data type, 2026-08-21)",
     "competitive_moat_notes": null,
     "management_notes": null,
     "last_reviewed": null
@@ -12,7 +12,7 @@
   "fundamentals_cache": {
     "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": null,
-    "extracted_date": "2026-08-17",
+    "extracted_date": "2026-08-21",
     "next_report_expected": null,
     "figures": {
       "ebit_margin_pct": {
@@ -79,11 +79,11 @@
         "calculation_method": "direct from source, not computed"
       },
       "price": {
-        "value": 1502,
+        "value": 1572.892872,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 1,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -94,59 +94,59 @@
         "as_of": "2026-08-23",
         "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed - corrects prior Excel-sourced value 22.9769 (OK): was 22.98 in Excel - broker-terminal screenshot shows 25.49 (~10% higher); Yahoo has no trailing_pe for this ticker to cross-check against, so the broker figure is taken as the more authoritative real-time read."
+        "calculation_method": "direct from source, not computed - corrects Excel-sourced value 24.4027: 22.98 in Excel - broker-terminal screenshot shows 25.49 (~10% higher); Yahoo has no trailing_pe for this ticker to cross-check against, so the broker figure is taken as the more authoritative real-time read. RE-CORRECTED 2026-08-23 after master-6.xlsx's still-unrefreshed Excel cell silently overwrote this fix once already."
       },
       "market_cap": {
-        "value": 177748400000,
+        "value": 189789600000,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 1,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "week52_high": {
-        "value": 1925.5,
+        "value": 212.71,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 1,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "week52_low": {
-        "value": 640.3,
+        "value": 146.0999,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 1,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "beta": {
-        "value": 0.8448,
+        "value": 0.8298,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 1,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "exchange": {
-        "value": "NASDAQ Stockholm",
+        "value": "New York Stock Exchange",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
+        "as_of": "2026-08-21",
+        "age_days": 1,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "currency": {
-        "value": "SEK",
+        "value": "USD",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 1,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -154,8 +154,8 @@
         "value": "1 Francis Crick Avenue, Cambridge Biomedical Campus, CAMBRIDGE, CB2 0AA GB",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
+        "as_of": "2026-08-21",
+        "age_days": 1,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -163,8 +163,8 @@
         "value": 96100,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
+        "as_of": "2026-08-21",
+        "age_days": 1,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       }

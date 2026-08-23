@@ -211,6 +211,23 @@ def process_stock_detail(ws, today, flags, dry_run):
             v = rec.get(excel_col)
             if not isinstance(v, (int, float)):
                 continue
+            # A figure already corrected from a higher-trust source (lower
+            # source_tier, e.g. a broker-terminal screenshot, tier 2) should
+            # not get silently clobbered back by this same Excel cell on
+            # the next import - confirmed 2026-08-23: ATCO-B.ST's pe_ratio
+            # was hand-corrected from Excel's own bad 2.05 to a real 32.63,
+            # then this exact overwrite path put 2.05 straight back the
+            # very next import, with no flag, because Excel hadn't actually
+            # been fixed at the source yet.
+            existing = figures.get(figure_key)
+            if isinstance(existing, dict) and isinstance(existing.get("source_tier"), (int, float)) \
+                    and existing["source_tier"] < 3 and existing.get("value") != v:
+                flags.append(f"{ticker}: Excel's {figure_key} ({v:g}) would overwrite a "
+                             f"higher-trust correction already on file ({existing.get('value')!r}, "
+                             f"source: {existing.get('source')}) - not applied. Fix the Excel cell "
+                             f"itself (refresh/re-link the Stocks data type) if Excel's number is "
+                             f"actually right now.")
+                continue
             state = "OK"
             if figure_key == "pe_ratio" and not (pe_lo < v < pe_hi):
                 state = "SUSPECT"
@@ -350,13 +367,20 @@ def process_crypto_certificate_detail(ws, pf, flags, dry_run):
                          f"portfolio.json ({holding['quantity']}) - not changing quantity from this "
                          f"block, CORE HOLDINGS stays authoritative for that; verify in Excel.")
 
-        if isinstance(value, (int, float)) and value != old_value and \
+        # round-trip float noise (e.g. 11031 vs 11031.000000000002) isn't a
+        # real delta - compare to the cent, not exactly, so a CONFIRMED
+        # holding doesn't get a same-value flag every single sweep.
+        value_changed = (isinstance(value, (int, float)) and isinstance(old_value, (int, float))
+                          and round(value, 2) != round(old_value, 2)) or \
+                         (isinstance(value, (int, float)) and not isinstance(old_value, (int, float)))
+
+        if value_changed and \
                 "CONFIRMED" in ((holding.get("thesis") or "") + (holding.get("thesis_narrative") or "")):
             flags.append(f"{ticker}: Excel wants to change market_value_sek {old_value!r} -> "
                          f"{value!r}, but this holding's thesis/notes contain a user-CONFIRMED "
                          f"figure - verify before trusting Excel over the recorded confirmation. "
                          f"Not applied automatically.")
-        elif isinstance(value, (int, float)) and value != old_value:
+        elif value_changed:
             deltas.append(f"{ticker}: market_value_sek {old_value!r} -> {value!r} "
                           f"(from Excel CRYPTO & CERTIFICATE DETAIL, live data type)")
             if not dry_run:
@@ -467,18 +491,38 @@ def append_transactions(new_rows, dry_run):
 
 
 def process_watchlist(wb, flags, dry_run):
-    if "Watchlist" not in wb.sheetnames:
-        flags.append("No 'Watchlist' sheet in this workbook yet - data/universe.json stays in use "
-                     "until it's added. See the Watchlist spec (ticker, name, category, price_sek, "
-                     "pe_ratio, market_cap, sector, beta, as_of, notes).")
+    """Reads the candidate universe from whichever sheet the workbook has:
+    'Universe' (master-6+, single Stocks-data-type sheet holding BOTH held
+    positions and watchlist candidates, distinguished by a `status` column)
+    takes priority; falls back to the older standalone 'Watchlist' sheet
+    (master-5) if Universe isn't present. Output shape is identical either
+    way - scout/screen_candidates.py don't need to know which source ran."""
+    source_label = None
+    if "Universe" in wb.sheetnames:
+        ws = wb["Universe"]
+        header_row = _find_header_row(ws, {"ticker", "status"})
+        if header_row is None:
+            flags.append("Universe sheet found but has no 'ticker'/'status' columns - not imported.")
+            return None
+        source_label = "Universe tab, master-6+.xlsx (Drive, read-only)"
+        status_col = "status"
+    elif "Watchlist" in wb.sheetnames:
+        ws = wb["Watchlist"]
+        header_row = _find_header_row(ws, {"ticker"})
+        if header_row is None:
+            flags.append("Watchlist sheet found but has no 'ticker' column - not imported.")
+            return None
+        source_label = "Watchlist tab, master-5.xlsx (Drive, read-only)"
+        status_col = None
+    else:
+        flags.append("No 'Universe' or 'Watchlist' sheet in this workbook yet - data/universe.json "
+                     "stays in use until one is added. See the Watchlist spec (ticker, name, "
+                     "category, price_sek, pe_ratio, market_cap, sector, beta, as_of, notes).")
         return None
-    ws = wb["Watchlist"]
-    header_row = _find_header_row(ws, {"ticker"})
-    if header_row is None:
-        flags.append("Watchlist sheet found but has no 'ticker' column - not imported.")
-        return None
+
     headers = [_norm(c.value) for c in ws[header_row]]
     col_idx = {w: headers.index(w) for w in WATCHLIST_COLS if w in headers}
+    status_idx = headers.index(status_col) if status_col and status_col in headers else None
 
     entries = []
     unfetchable = []
@@ -486,6 +530,10 @@ def process_watchlist(wb, flags, dry_run):
         rec = {col: (row_cells[i].value if i < len(row_cells) else None) for col, i in col_idx.items()}
         if not rec.get("ticker"):
             continue
+        if status_idx is not None:
+            status = row_cells[status_idx].value if status_idx < len(row_cells) else None
+            if status != "WATCH":
+                continue  # HELD (tracked via portfolio.json already) or a bad/error row
         if isinstance(rec.get("as_of"), datetime):
             rec["as_of"] = rec["as_of"].strftime("%Y-%m-%d")
         entries.append(rec)
@@ -528,7 +576,7 @@ def process_watchlist(wb, flags, dry_run):
     if not dry_run:
         os.makedirs(os.path.dirname(WATCHLIST_JSON), exist_ok=True)
         with open(WATCHLIST_JSON, "w") as f:
-            json.dump({"source": "Watchlist tab, master-5.xlsx (Drive, read-only)",
+            json.dump({"source": source_label,
                       "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
                       "categories": categories,
                       "entries": entries}, f, indent=2)
@@ -605,10 +653,16 @@ def main():
     # and certificates use different blocks (STOCK DETAIL vs. CRYPTO &
     # CERTIFICATE DETAIL), so check each against its own block, not each
     # other's - a certificate absent from STOCK DETAIL is correct, not a gap.
+    # quantity == 0 means fully exited - correctly absent from the workbook's
+    # detail blocks, not a gap (confirmed 2026-08-23: COIN-XBT.ST, sold in
+    # full and dropped from master-6.xlsx entirely, was still being flagged
+    # here as "held but missing" every run).
     tracked_stocks = {h.get("ticker") for h in pf.get("holdings", [])
-                      if h.get("instrument_type") == "stock" and h.get("ticker") not in (None, "TBD")}
+                      if h.get("instrument_type") == "stock" and h.get("ticker") not in (None, "TBD")
+                      and h.get("quantity") != 0}
     tracked_certs = {h.get("ticker") for h in pf.get("holdings", [])
-                     if h.get("instrument_type") == "certificate" and h.get("ticker") not in (None, "TBD")}
+                     if h.get("instrument_type") == "certificate" and h.get("ticker") not in (None, "TBD")
+                     and h.get("quantity") != 0}
     missing_stocks = sorted(tracked_stocks - fundamentals_seen)
     missing_certs = sorted(tracked_certs - crypto_seen)
     if missing_stocks:

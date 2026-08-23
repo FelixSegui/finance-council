@@ -26,7 +26,7 @@
       "wrapper": "ISK",
       "institution": "Avanza",
       "approx_value_sek": 179714.11,
-      "notes": "Confirmed ISK. LIVE STATEMENT 2026-07-28 (pre-execution): total 180,949.35 SEK = securities 36,085.05 + cash 144,864.30. Both pending orders EXECUTED same day (user-confirmed): Avanza Global buy at 119,999 SEK (ordered 120,000), Tundra sale at 1,535 SEK. MEDIUM-TIER BUILD EXECUTED 2026-08-03/04 (user-reported, 'aktieköp idag och igår' - exact per-name date not specified, courtage/broker fees not stated so not included): Volvo B 13sh @ 367.50, Atlas Copco B 27sh @ 181.25, AstraZeneca 4sh @ 1507, Alfa Laval 9sh @ 574.40, ABB 4sh @ 946.96 - total spent 24,656.69 SEK, drawn from the 26,400.30 SEK available cash. New cash = 26,400.30 - 24,656.69 = 1,743.61 SEK COMPUTED, not broker-confirmed and does not account for any courtage - verify against the actual Avanza statement. Account total (179,714.11) is COMPUTED from current holdings x the 2026-08-04 snapshot, not a fresh full statement. Tax-free allowance headroom vs. the 300,000 SEK threshold (CONFIRMED by the user 2026-08-17, closes OPEN_ITEMS.md P7) is comfortable. Full history: data/portfolio_history_archive.md#avanza-isk.",
+      "notes": "Confirmed ISK. LIVE STATEMENT 2026-07-28 (pre-execution): total 180,949.35 SEK = securities 36,085.05 + cash 144,864.30. Both pending orders EXECUTED same day (user-confirmed): Avanza Global buy at 119,999 SEK (ordered 120,000), Tundra sale at 1,535 SEK. MEDIUM-TIER BUILD EXECUTED 2026-08-03/04 (user-reported, 'aktiek\u00f6p idag och ig\u00e5r' - exact per-name date not specified, courtage/broker fees not stated so not included): Volvo B 13sh @ 367.50, Atlas Copco B 27sh @ 181.25, AstraZeneca 4sh @ 1507, Alfa Laval 9sh @ 574.40, ABB 4sh @ 946.96 - total spent 24,656.69 SEK, drawn from the 26,400.30 SEK available cash. New cash = 26,400.30 - 24,656.69 = 1,743.61 SEK COMPUTED, not broker-confirmed and does not account for any courtage - verify against the actual Avanza statement. Account total (179,714.11) is COMPUTED from current holdings x the 2026-08-04 snapshot, not a fresh full statement. Tax-free allowance headroom vs. the 300,000 SEK threshold (CONFIRMED by the user 2026-08-17, closes OPEN_ITEMS.md P7) is comfortable. Full history: data/portfolio_history_archive.md#avanza-isk.",
       "pending_orders": []
     },
     {
@@ -206,7 +206,7 @@
       "annual_fee_pct": null,
       "date_acquired": null,
       "target_weight_pct": null,
-      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktieköp idag och igår', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build from the user-confirmed candidate list (data/universe.json nordic_swedish_equity_review_candidates + nordic_large_cap). No swedish-equity-review has been run on this specific purchase decision - see data/company_profiles/VOLV-B.ST.json for the 2026-07-28 pre-purchase review (score 60/100, coverage 80%: revenue declining 2 straight fiscal years (-13%) and high leverage (D/E 147), but reasonable valuation (P/E 20.5, forward 14.5) and a very large, very recent single-insider purchase (board member Helena Stjernholm, ~1.3M shares at ~360 SEK, 2026-07-27) - tension not resolved, just bought into.",
+      "thesis_narrative": "BOUGHT 2026-08-03 or 2026-08-04 (user: 'aktiek\u00f6p idag och ig\u00e5r', exact date not specified), part of the OPEN_ITEMS.md P6 medium-tier build from the user-confirmed candidate list (data/universe.json nordic_swedish_equity_review_candidates + nordic_large_cap). No swedish-equity-review has been run on this specific purchase decision - see data/company_profiles/VOLV-B.ST.json for the 2026-07-28 pre-purchase review (score 60/100, coverage 80%: revenue declining 2 straight fiscal years (-13%) and high leverage (D/E 147), but reasonable valuation (P/E 20.5, forward 14.5) and a very large, very recent single-insider purchase (board member Helena Stjernholm, ~1.3M shares at ~360 SEK, 2026-07-27) - tension not resolved, just bought into.",
       "last_reviewed": "2026-08-06",
       "thesis_status": "TOO_EARLY",
       "why_owned": "Part of the 2026-08-03 medium-tier build; bought explicitly into an unresolved tension (2yr revenue decline -13%, D/E 147) vs. a large single-insider purchase (board member ~1.3M shares at ~360 SEK).",
@@ -389,7 +389,7 @@
       "instrument_type": "cash",
       "exposure_class": "cash",
       "currency": "SEK",
-      "quantity": 11183,
+      "quantity": 20366,
       "cost_basis_per_unit": null,
       "annual_fee_pct": null,
       "date_acquired": "2026-08-17",

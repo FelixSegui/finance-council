@@ -53,6 +53,26 @@ alts) or too thin to trust (options IV/skew). Do not let any agent generate
 options or alts recommendations from scraped/free data — that is false
 confidence, not analysis. If asked, agents should say so and stop.
 
+**Narrow exception, added 2026-08-22: gold.** At the user's explicit
+direction (crash-hedge diversifier against equity/bond/sovereign-debt
+stress), gold is in scope as a single named commodity — not a general
+opening of the "alternatives" ban above, which still holds for everything
+else (no other commodity, no bonds, no options). What makes gold
+different from the rest of the alts ban is that real free data exists and
+is already fetchable through the exact same pipeline as equities:
+`scripts/fetch_market_data.py --tickers` accepts `GC=F` (COMEX gold
+futures, USD/troy oz spot proxy) and any listed physical-gold ETF/ETC
+ticker (e.g. `SGOL`) via Yahoo's quoteSummary, same as any other equity
+ticker — confirmed working 2026-08-22. `valuation` and `macro-regime` may
+reason about gold using this fetched data like any other holding/
+candidate. What's still NOT solved: which specific ISK-eligible gold ETC
+the user actually buys is a real-instrument/ticker choice (e.g. a
+Stockholm- or Xetra-listed physical-backed ETC) that must be verified by
+the user or looked up explicitly, never guessed the way Nordic exchange
+suffixes are never guessed elsewhere in this system — `GC=F`/`SGOL` are
+directional price proxies for sizing/valuation discussion only, not
+purchase-ready tickers.
+
 ## Why this exists (read before extending)
 
 The single biggest risk in an LLM-based investment system is **confident

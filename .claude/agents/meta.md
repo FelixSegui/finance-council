@@ -92,8 +92,8 @@ system gets better instead of accumulating cruft.
    folded into step 6's Closed-log update with a one-line reason, same as
    a rejected proposal.
 6. Update the **S-items** section of `/OPEN_ITEMS.md` (the single
-   open-items list since 2026-08-03 — `IMPROVEMENTS.md` is now a stub,
-   do not write there):
+   open-items list since 2026-08-03 — `IMPROVEMENTS.md` was deleted
+   2026-08-23, do not recreate it):
    - Add new entries as `S<n>`, with **Why** (evidence from this session,
      not speculation) and **How** (concrete enough that "apply S<n>"
      needs no further design).

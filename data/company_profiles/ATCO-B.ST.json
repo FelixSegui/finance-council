@@ -1,7 +1,7 @@
 {
   "ticker": "ATCO-B.ST",
   "name": "Atlas Copco AB",
-  "profile_last_updated": "2026-08-22",
+  "profile_last_updated": "2026-08-23",
   "static_profile": {
     "business_description": "Atlas Copco AB \u2014 Swedish industrial group, global market leader in compressors, vacuum solutions, and industrial air/gas equipment, plus power tools and assembly systems (via the Industrial Technique division). Large recurring aftermarket/service revenue tail alongside equipment sales. Not sourced from a fetched figure - general public-record description, kept for context only, no numeric claims embedded.",
     "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-17)",
@@ -384,13 +384,13 @@
         "calculation_method": "n/a"
       },
       "pe_ratio": {
-        "value": 2.05,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
-        "quality_state": "SUSPECT",
-        "calculation_method": "direct from source, not computed"
+        "value": 32.63,
+        "source": "Avanza broker terminal (user-provided screenshot, real-time)",
+        "source_tier": 2,
+        "as_of": "2026-08-23",
+        "age_days": 0,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed - corrects prior Excel-sourced value 2.05 (SUSPECT): was 2.05 in Excel (flagged SUSPECT, outside the 3-80 sanity range) - confirmed wrong against both a real Avanza broker-terminal screenshot (32.63) and Yahoo's independent trailing_pe (33.35), which agree closely with each other and disagree with the Excel figure. Excel's number was the anomaly, not the other two sources."
       },
       "currency": {
         "value": "SEK",

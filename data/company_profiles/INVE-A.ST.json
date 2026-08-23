@@ -1,7 +1,7 @@
 {
   "ticker": "INVE-A.ST",
   "name": "Investor A",
-  "profile_last_updated": "2026-08-22",
+  "profile_last_updated": "2026-08-23",
   "static_profile": {
     "business_description": "Swedish investment company (Wallenberg sphere) - holds stakes in listed companies plus unlisted/patient-capital investments; exact current holdings unconfirmed, verify from Investor's own factsheet. Existing holding in this portfolio (5 shares, avanza-isk). No stated reason for holding on file (open question 9).",
     "sector": "Holding Companies (Excel Stocks data type, 2026-08-17)",
@@ -213,13 +213,13 @@
         "calculation_method": "direct from source, not computed"
       },
       "pe_ratio": {
-        "value": 6.5553,
-        "source": "Excel Stocks data type (Drive, read-only)",
-        "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "value": 4.76,
+        "source": "Avanza broker terminal (user-provided screenshot, real-time)",
+        "source_tier": 2,
+        "as_of": "2026-08-23",
+        "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed"
+        "calculation_method": "direct from source, not computed - corrects prior Excel-sourced value 6.5553 (OK): was 6.56 in Excel (~38% high) - broker-terminal screenshot (4.76) and Yahoo's independent trailing_pe (4.62) agree closely with each other and disagree with the Excel figure. Excel's number was the anomaly."
       },
       "market_cap": {
         "value": 1258881000000,

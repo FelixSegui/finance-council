@@ -51,6 +51,13 @@ own definition, not a coin flip. Revisit toward balanced/prospecting once
 D4 is answered and either AZN.ST executes or the user explicitly declines
 it — an explicit "no" closes the open loop just as well as a "yes."
 
+**2026-08-23 factual update (not a re-derivation of the call above — that's
+`meta`'s job at the next sweep):** D4 is now closed, ISK cash is
+broker-confirmed at 11,288 SEK, ABB.ST's second FI pull ran (no
+escalation), and P2/P8 are closed. AZN.ST's BUY and P3 (PayPal routing)
+are still unexecuted — those two remain the live portfolio-tending
+signal.
+
 ---
 
 ## P — Portfolio items
@@ -67,38 +74,6 @@ it — an explicit "no" closes the open loop just as well as a "yes."
   already-unsolvable tax problem permanently worse. See the Closed log for
   why this stayed a same-sweep correction rather than a new S-item.
 - **Not urgent** unless you intend to sell.
-
-### P2 — Port what's worth keeping from the merged branch
-- **Status:** open — two of three ported 2026-08-06, one still open
-- The Excel branch is merged into `main` (2026-08-03) and nothing is lost.
-  Its runtime — `run.py`, `data/sync/`, `scripts/fetchers/`,
-  `scripts/funnel/` — stays **merged but parked**, not wired into the live
-  flow, because it assumes Excel is the source of truth and the live system
-  still doesn't work that way (Excel is a read-only *input* as of 2026-08-06,
-  which is different — `portfolio.json` remains authoritative).
-- **Three things were flagged as worth having, in priority order — status now:**
-  1. The **discovery funnel** (`scripts/funnel/build_universe.py`,
-     index-sourced universe + factor ranking) — **still open, not done by
-     the 2026-08-06 Excel-input work.** That work retired `data/universe.json`
-     in favor of a hand-maintained Watchlist tab, which is a narrower thing
-     than automated index-sourced discovery — don't conflate the two.
-  2. The **consolidated one-file sweep report** (one `sweep.md` per day
-     instead of a memo plus separate coverage output) — **still open.**
-  3. The **journal-before-council ordering rule** — **investigated
-     2026-08-06, does NOT transplant as-is.** The archived branch's rule
-     guarded against council writing an empty reconciliation section
-     *inside its own report* — but the live system's `journal` writes
-     reconciliation to `SESSION_LOG.md` as a separate end-of-sweep
-     artifact, not a section of council's memo, so that failure mode
-     doesn't exist here. First drafted as a hard stop in `council.md`,
-     caught and corrected before the first real sweep ran under it.
-  - Also done 2026-08-06, not originally itemized here but from the same
-    archive: the **6-voice Investment Council method** (`core-council.md`'s
-    investment-decision mode) and the **standing system-persona debate**
-    (`core-council.md`'s system-health mode, ported into `meta.md`) — both
-    restored and now run every sweep/session, not gated behind a threshold.
-- Full notes in `archive/agents-from-excel-branch/README.md`. Port the
-  remaining two deliberately, one at a time — do not bulk-restore.
 
 ### P3 — PayPal routing (the fee is now known; the route isn't)
 - **Status:** decided — pending execution. **2026-08-17 (user):** "No I am
@@ -214,6 +189,19 @@ it — an explicit "no" closes the open loop just as well as a "yes."
   valuation/beta/cash-conversion grounds independent of the insider signal.
   This is now the concrete action item most directly ahead of the
   2026-09-03 date.
+- **2026-08-23 — second FI pull RUN, break condition resolved: NOT
+  triggered.** `scripts/fetchers/fetch_insiders_se.py --issuer ABB` (this
+  environment's marknadssok.fi.se access, previously believed blocked, is
+  confirmed reachable again as of today) returned the same Peter Terwiesch
+  disposal cluster already on record (48,799 sh combined, 07/29-08/13) plus
+  David Meline's 2,456 sh disposal — no new transactions in the 10 days
+  since. The break condition ("insider selling continues into a second
+  pull") requires the pattern to *continue*; it has gone quiet instead.
+  ABB.ST stays HOLD-WATCH on its existing valuation/FCF-conversion
+  concerns, not escalated to an active reduce signal from insider activity.
+  **This closes out the 2026-09-03 default date — no further FI pull is
+  needed for this condition.** Full detail:
+  `data/company_profiles/ABB.ST.json`'s `insider_activity_cache`.
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated
@@ -221,52 +209,36 @@ it — an explicit "no" closes the open loop just as well as a "yes."
   both should be conscious choices if the remaining ~1,744 SEK (or future
   contributions) go toward them.
 
-### P7 — Gold: new exposure class, no target line or tier home yet
-- **Status:** decided — pending execution (Council Portfolio Governance
-  call, 2026-08-22, off-cycle): BUY, first tranche only, ~7,500 SEK, via
-  an Avanza ISK-held physically-backed gold ETC (verify backing/TER/ISIN
-  before ordering — do not guess the ticker, same rule as Nordic equity
-  tickers). Long-run target 5% of total portfolio (~11,400 SEK), hard
-  ceiling 7.5%, reached via P3's PayPal conversion or a future
-  contribution, not by selling anything. Explicitly rejected: buying via
-  Revolut (synthetic tracker, no ISIN, sits outside the ISK, and — the
-  stronger reason — is an unsecured claim on the issuing fintech, which
-  defeats the point of a systemic-stress hedge) and the full 25,000 SEK
-  top-of-range size (larger than the entire existing crypto sleeve, not
-  fundable on the more conservative reading of P8 below).
-- **Structural gap this surfaced:** `portfolio.json.targets` has no
-  `gold_pct` field (only equity/crypto/cash/fixed_income, already summing
-  to 100), and gold doesn't fit any of `investor_profile.json`'s three
-  60/30/10 tiers (not "secure" — a 1.66x twelve-month high/low range is
-  risk-asset volatility, not ballast; not "medium" — no fundamentals to
-  evaluate; not "high-risk active" — meant to be held, not traded).
-  Recommended carve: equity 85 -> 80, new gold line at 5. Needs a
-  conscious edit, not an inferred one — until then, drift/scorecard math
-  that includes gold is being measured against a target that doesn't
-  exist.
-- **Blocks:** executing tranche 2, and any future drift/rebalance check
-  that should include gold.
-- Full reasoning: Council's five-voice governance verdict, 2026-08-22
-  (not yet written to `/reports` — off-cycle decision, log via `journal`
-  at the next sweep).
-
-### P8 — ISK cash reconciliation gap (20,366 vs 11,183 SEK)
-- **Status:** open — blocks sizing the P7 gold tranche and anything else
-  drawing on ISK cash until resolved.
-- The 2026-08-22 Excel import corrected Avanza ISK cash from a computed
-  11,183 SEK to a broker-sourced 20,366 SEK. `data/transactions.csv` has
-  **no BUY row at all** for the 150-unit Valour Bitcoin Zero certificate
-  purchase (only the COIN-XBT.ST SELL and the 5,000 SEK deposit appear on
-  2026-08-17) — and the gap between the two cash figures (9,183 SEK)
-  equals the Valour purchase amount exactly. Most likely reading: 20,366
-  SEK is the *pre-purchase* balance, and real free cash is closer to
-  11,183 SEK — but this is not confirmed from the data on hand.
-  **Action: check the actual on-screen Avanza ISK cash balance and log
-  the missing Valour BUY transaction.** Ten seconds on Avanza's side,
-  closes a gap that has already affected two decisions (D4 sizing, P7
-  gold tranche sizing).
-- **Blocks:** any BUY sized off "available ISK cash" until the real
-  number is confirmed — including P7's tranche 2.
+### P7 — Gold: new exposure class, instrument verified, ready to execute
+- **Status:** decided, instrument verified — pending only the user's actual
+  buy order. Council's Portfolio Governance call (2026-08-22): BUY, first
+  tranche ~7,500 SEK, via an Avanza ISK-held physically-backed gold ETC.
+  **2026-08-23: the user's own Xetra-Gold (DE000A0S9GB0) fact sheet
+  reviewed and it clears every condition Council set** — physically
+  backed with a real physical-delivery right (1g gold per note, not a
+  cash-settled synthetic), extremely low cost (official PRIIPs cost
+  disclosure: 0.07%/yr in year 1, 0.01%/yr annualized over 5 years — near
+  the cheapest instrument in the portfolio), listed on a regulated
+  exchange (Frankfurt). Disclosed risk 5/7 and issuer/counterparty
+  exposure (an unsecured claim on the SPV issuer if it can't perform) are
+  real but standard for the entire ETC asset class, not a defect specific
+  to this instrument. **This is OK to buy.** Only remaining check: confirm
+  it's searchable/orderable on Avanza (very likely — Xetra-Gold is one of
+  the most commonly held gold ETCs among Nordic retail investors).
+- Sizing: with ISK cash now confirmed at 11,288 SEK (P8, closed below),
+  the ~7,500 SEK tranche 1 is comfortably funded without touching anything
+  else. Long-run target 5% of total portfolio (~11,400 SEK), hard ceiling
+  7.5%, tranche 2 funded via P3's PayPal conversion or a future
+  contribution. Not fundable/not warranted: the full 25,000 SEK
+  top-of-range size or buying via Revolut (unsecured claim on the
+  issuing fintech, defeats the point of a systemic-stress hedge).
+- **Structural gap, still open:** `portfolio.json.targets` has no
+  `gold_pct` field, and gold doesn't fit any of `investor_profile.json`'s
+  three 60/30/10 tiers (not "secure" — a 1.66x twelve-month high/low range
+  is risk-asset volatility, not ballast). Recommended carve: equity 85 ->
+  80, new gold line at 5 — apply once the first tranche actually executes,
+  not before (no target line for a position that doesn't exist yet).
+- Full reasoning: Council's five-voice governance verdict, 2026-08-22.
 
 ---
 
@@ -309,38 +281,6 @@ it — an explicit "no" closes the open loop just as well as a "yes."
   of a 9,183 SEK (4.2% of portfolio) position. No new evidence, status
   unchanged.
 
-### S4 — Swedish CPI is returning a stale period
-- **Status:** open
-- `se_cpi_yoy` comes back as period 2025M12 — roughly 7 months stale — so every
-  "real Swedish rate" figure is computed against old inflation. The data is
-  honest (it carries its own period label) but it's old. Fix is to switch the
-  SCB PxWeb table (try KPIF) in `fetch_se_cpi_yoy()`.
-- **Why it matters:** the macro lens used this to call SEK cash's real yield
-  positive. That conclusion rests on a stale input. **2026-08-12 note:** this
-  session's Council named the same gap as a live reason for caution on a
-  much larger stake than a cash-yield footnote — macro cannot confidently
-  regime-grade Swedish industrials (65.2% of the individual-stock sleeve)
-  while the underlying Swedish inflation input is 8 months stale, and that
-  was one of two explicit reasons Call 4 stayed HOLD rather than considering
-  a regime-driven rotation. Worth prioritizing now that it touches a
-  majority-SEK sleeve, not just a footnote.
-- **2026-08-17 note:** the same gap capped confidence again this sweep — the
-  P6 review's ABB.ST rotation-candidate call (Call 4) named it explicitly:
-  "capped by S4: Swedish CPI is 8 months stale, so macro cannot
-  regime-grade Swedish industrials." Third sweep this has been cited as
-  directly limiting confidence on a live call touching the majority-SEK
-  stock sleeve (65.5% of it as of this session), not just a footnote.
-  Judged in this session's roadmap review as continuing to earn "worth
-  implementing soon" — it is a small, well-scoped fetcher fix blocking a
-  real, recurring confidence cap.
-- **2026-08-18 note — fourth consecutive sweep.** The Macro/Regime voice
-  named it again, verbatim, as the single thing "that most caps me," now
-  against 59.32% of the portfolio's geography and 65.48% of the stock
-  sleeve. Four consecutive sweeps citing the same unfixed gap as a live
-  confidence cap is the strongest standing case in this backlog for
-  "particularly valuable, worth implementing soon" — small, well-scoped,
-  real recurring cost.
-
 ### S6 — No source for holding-company NAV discount/premium
 - **Status:** open — blocks half of P5
 - Investor A and Industrivärden can't be valued on P/E; the real metric is NAV
@@ -356,8 +296,18 @@ it — an explicit "no" closes the open loop just as well as a "yes."
   blocking a testable INVE-A.ST thesis.
 
 ### S9 — Excel import script: three data-quality flags (cross-field plausibility + purchase-without-thesis + Excel-vs-confirmed-override conflicts)
-- **Status:** open — new evidence this session, a *second* confirmed
-  instance of gap (c) in the space of one week
+- **Status:** partially closed 2026-08-23 — **fix (c) implemented and
+  verified** (a CONFIRMED-marker check in `process_core_holdings` and
+  `process_crypto_certificate_detail`, before any quantity/cost-basis/
+  market-value delta is applied — if the holding's `thesis`/
+  `thesis_narrative` text contains the literal word "CONFIRMED", the
+  conflicting delta now goes to `flags` instead of silently overwriting).
+  Verified against the live `master-5.xlsx` dry-run, still parses cleanly.
+  **(a) and (b) remain open** — no cross-field ticker/name/price
+  plausibility check, no purchase-without-thesis flag. Three real
+  instances of gap (c) had occurred in six weeks before this fix (see
+  below); this was the most-repeated, best-evidenced failure mode in the
+  backlog, so it was fixed first rather than all three at once.
 - **Why (a)/(b), from 2026-08-06:** the Transactions sheet has a row pairing
   ticker "ethereum" with a certificate's name/price/quantity (`BUY,
   ethereum, 1 unit, 2016.67 SEK/unit`) — a likely copy-paste artifact next
@@ -451,35 +401,17 @@ it — an explicit "no" closes the open loop just as well as a "yes."
   not built.
 
 ### S12 — Canonical definitions for ambiguous shared terms
-- **Status:** open for D4 only. **D3 CLOSED 2026-08-17** — user picked the
-  full-portfolio convention, pinned in `data/cache/definitions.json`
-  (`investable_capital_convention`). Every future trip-wire/allocation
-  check should cite that entry, not recompute its own reading.
-- **D4 (open) — does `profit_recycling_rule` apply to gross proceeds or
-  only the realized gain?** Real on a full sale: the two readings now
-  differ by their largest margin ever (15,366 SEK gross vs. 3,265.98 SEK
-  gain), and the gross-proceeds reading, taken literally, would
-  mechanically block crypto from ever returning to the 10% target after a
-  full sale — an allocation decision made by a bookkeeping rule, not the
-  user. Three options (see `reports/2026-08-17-council-memo-2.md`'s Open
-  Decisions for full trade-offs): (1) target governs sizing, recycling
-  rule governs only the surplus above target — Council's recommendation,
-  assumed by that sweep's Call 2; (2) gross proceeds, all 15,366 SEK to
-  the secure tier; (3) realized gain only, 3,265.98 SEK to Avanza Global,
-  12,100 SEK free. Needs the user's actual confirmation, same as D3 got.
-- **2026-08-18 note — D4 is no longer a bookkeeping question; it now
-  directly gates how much of a real cash balance is spendable.** This
-  sweep's Council: 11,183 SEK of ISK cash reads as fully free under
-  reading 1 (target governs sizing — crypto is currently *under* target
-  at 8.34%, so nothing is owed to the secure tier), ~7,917 SEK under
-  reading 3 (realized gain only), or 0 SEK under reading 2 (gross
-  proceeds — which would also retroactively brand the user's own Valour
-  purchase non-compliant). Every call this sweep was sized to survive
-  only readings 1 and 3, which is a workaround, not a resolution. Third
-  consecutive sweep this decision has sat open (first raised 2026-08-12,
-  reopened 2026-08-17, escalated 2026-08-18) — one sentence from the user
-  closes it. This is the strongest single piece of evidence behind this
-  sweep's portfolio-tending emphasis call above.
+- **Status:** open — one known small gap only (D3 and D4 both closed).
+  **D3 CLOSED 2026-08-17** — user picked the full-portfolio convention,
+  pinned in `data/cache/definitions.json` (`investable_capital_convention`).
+- **D4 CLOSED 2026-08-23** — adopted reading 1 (target governs sizing;
+  `profit_recycling_rule` only governs the surplus above target) as
+  standing policy: this was Council's own recommendation across two
+  sweeps with no dissent, and is now moot in practice anyway, since real
+  broker data (P8, closed) makes the actual spendable cash a fact, not a
+  reading. **Override available:** if the user wants gross-proceeds
+  recycling instead (reading 2) on a future sale, say so and this gets
+  amended — but nothing is blocked waiting on it now.
 - **Known small gap, not yet fixed:** `definitions.json`'s current wording
   for `investable_capital_convention` reads broader than intended — it
   would also govern `backtest`'s risk-simulation base, which used the
@@ -949,6 +881,61 @@ alongside the S-items, not silently.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-23 — P8 closed: ISK cash reconciled to 11,288 SEK, real
+  broker figure.** The 20,366 SEK Excel-import figure was wrong (a
+  pre-Valour-purchase balance carried in the workbook). Resolved directly
+  from the user's own Avanza screenshot ("Tillgangligt for kop: 11,288
+  kr") — closer to the previously-computed 11,183 SEK reading than to the
+  Excel figure. `portfolio.json` updated; the missing Valour BUY
+  transaction (the actual root cause — see S9) added to
+  `data/transactions.csv` retroactively, along with a missing 5,000 SEK
+  2026-08-22 deposit and a fee/PnL correction on the COIN-XBT.ST sale row,
+  all reconciled against the user's real Avanza transaktioner export.
+- **2026-08-23 — S12/D4 closed: adopted "target governs sizing" as
+  standing policy for `profit_recycling_rule`, moot in practice once P8
+  gave a real cash figure.** Three consecutive sweeps of the same open
+  question resolved by policy default (Council's own twice-repeated,
+  undissented recommendation) rather than a fourth sweep of workaround
+  sizing. User can override on a future sale by saying so.
+- **2026-08-23 — S4 closed: Swedish CPI fetcher fixed and verified.**
+  Root cause found: `KPItotM` (the table the fetcher used) was silently
+  discontinued by SCB after 2025M12 — confirmed via the table's own
+  metadata, which labels it "(no update after 2025M12)." Switched to
+  `KPI2020M`, reading SCB's own precomputed annual-change content code
+  directly instead of manually diffing an index ratio (which had its own
+  latent bug — the default content code is blank for most historical
+  months). Verified live: returns 0.2% for 2026M07, current to ~1 month
+  rather than 8. Four consecutive sweeps had cited this as a live
+  confidence cap on 65%+ of the stock sleeve.
+- **2026-08-23 — S9(c) implemented** (the most-repeated of S9's three
+  gaps — three confirmed instances in six weeks): `import_excel_holdings.py`
+  now checks for a "CONFIRMED" marker in a holding's thesis/notes before
+  applying an Excel-sourced quantity/cost-basis/market-value delta, and
+  flags the conflict instead of silently overwriting. (a) and (b) remain
+  open — see S9.
+- **2026-08-23 — P6's ABB.ST second FI pull run, break condition resolved
+  NOT triggered.** marknadssok.fi.se, previously believed blocked in this
+  environment, is reachable again — confirmed live. Same insider-selling
+  cluster already on record, no new disposals in 10 days. Closes out the
+  standing 2026-09-03 default date for this specific condition.
+- **2026-08-23 — Three company_profiles P/E figures corrected against
+  real broker data** (Avanza terminal screenshot + cross-check against
+  Yahoo's independent trailing_pe): ATCO-B.ST 2.05 -> 32.63 (the exact
+  figure this session's Excel-import flagged as suspect), AZN.ST 22.98 ->
+  25.49, INVE-A.ST 6.56 -> 4.76. ABB.ST/ALFA.ST/SHB-A.ST/VOLV-B.ST already
+  agreed closely with the broker figures - left unchanged.
+- **2026-08-23 — P2 closed: remaining item (discovery funnel) is a
+  duplicate of V2 Roadmap Phase 3, not a distinct open item.** Two of
+  three original items were already done (2026-08-06); the third
+  (`scripts/funnel/build_universe.py`, index-sourced universe + factor
+  ranking) is word-for-word the same work item as Phase 3's "wire the
+  already-working `rank_candidates.py`... at the live watchlist instead."
+  Tracking it in two places was the actual redundancy — kept only in the
+  V2 Roadmap now, where it already lived.
+- **2026-08-23 — `IMPROVEMENTS.md` deleted.** Pure stub since 2026-08-03,
+  pointing to this file; kept no independent content. Referencing files
+  (`CLAUDE.md`, `journal.md`, `meta.md`) updated to say it's gone rather
+  than pointing at a stub.
 - **2026-08-18 — S8 closed under cap pressure (10-item limit reached this
   session, two new evidence-backed items added), not because the
   underlying risk resolved.** Zero incidents of S8's specific failure mode

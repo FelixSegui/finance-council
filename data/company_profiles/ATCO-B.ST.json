@@ -4,7 +4,7 @@
   "profile_last_updated": "2026-08-23",
   "static_profile": {
     "business_description": "Atlas Copco AB \u2014 Swedish industrial group, global market leader in compressors, vacuum solutions, and industrial air/gas equipment, plus power tools and assembly systems (via the Industrial Technique division). Large recurring aftermarket/service revenue tail alongside equipment sales. Not sourced from a fetched figure - general public-record description, kept for context only, no numeric claims embedded.",
-    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-17)",
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-21)",
     "competitive_moat_notes": "Global #1/#2 positions in compressor and vacuum-solutions categories, high-margin recurring service/aftermarket revenue, decades-long track record. Durable observation, not tied to a specific fetch date.",
     "management_notes": null,
     "last_reviewed": "2026-08-17"
@@ -12,15 +12,15 @@
   "fundamentals_cache": {
     "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": "ttm / most recent Yahoo quoteSummary pull",
-    "extracted_date": "2026-08-17",
+    "extracted_date": "2026-08-21",
     "next_report_expected": null,
     "figures": {
       "price": {
-        "value": 182,
+        "value": 178.05,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -43,11 +43,11 @@
         "calculation_method": "direct from source"
       },
       "market_cap": {
-        "value": 982471600000,
+        "value": 965209900000,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -115,11 +115,11 @@
         "calculation_method": "direct from source, converted to %"
       },
       "beta": {
-        "value": 1.2713,
+        "value": 1.2703,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -390,14 +390,41 @@
         "as_of": "2026-08-23",
         "age_days": 0,
         "quality_state": "OK",
-        "calculation_method": "direct from source, not computed - corrects prior Excel-sourced value 2.05 (SUSPECT): was 2.05 in Excel (flagged SUSPECT, outside the 3-80 sanity range) - confirmed wrong against both a real Avanza broker-terminal screenshot (32.63) and Yahoo's independent trailing_pe (33.35), which agree closely with each other and disagree with the Excel figure. Excel's number was the anomaly, not the other two sources."
+        "calculation_method": "direct from source, not computed - corrects Excel-sourced value 2.05: 2.05 in Excel (flagged SUSPECT, outside the 3-80 sanity range) - confirmed wrong against both a real Avanza broker-terminal screenshot (32.63) and Yahoo's independent trailing_pe (33.35), which agree closely with each other and disagree with the Excel figure. Excel's number was the anomaly, not the other two sources. RE-CORRECTED 2026-08-23 after master-6.xlsx's still-unrefreshed Excel cell silently overwrote this fix once already (before the source_tier protection below existed)."
       },
       "currency": {
         "value": "SEK",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "exchange": {
+        "value": "NASDAQ Stockholm",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-21",
+        "age_days": 2,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "headquarters": {
+        "value": "Sickla Industrivag 19, NACKA, STOCKHOLM, 105 23 SE",
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-21",
+        "age_days": 2,
+        "quality_state": "OK",
+        "calculation_method": "direct from source, not computed"
+      },
+      "employees": {
+        "value": 56520,
+        "source": "Excel Stocks data type (Drive, read-only)",
+        "source_tier": 3,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       }

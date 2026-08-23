@@ -1,7 +1,7 @@
 {
-  "generated": "2026-08-22 10:09 UTC",
-  "dry_run": false,
-  "source_xlsx": "/tmp/claude-0/-home-user-finance-council/f68d8848-c0ff-584e-b761-7df925cdfdf2/scratchpad/master-5.xlsx",
+  "generated": "2026-08-23 23:11 UTC",
+  "dry_run": true,
+  "source_xlsx": "/tmp/claude-0/-home-user-finance-council/f68d8848-c0ff-584e-b761-7df925cdfdf2/scratchpad/master-6.xlsx",
   "fundamentals_updated": [
     {
       "ticker": "ABB.ST",
@@ -28,7 +28,6 @@
       "fields": [
         "beta",
         "market_cap",
-        "pe_ratio",
         "price"
       ]
     },
@@ -37,7 +36,6 @@
       "fields": [
         "beta",
         "market_cap",
-        "pe_ratio",
         "price",
         "week52_high",
         "week52_low"
@@ -48,7 +46,6 @@
       "fields": [
         "beta",
         "market_cap",
-        "pe_ratio",
         "price",
         "week52_high",
         "week52_low"
@@ -73,16 +70,20 @@
       ]
     }
   ],
-  "portfolio_deltas": [
-    "CASH_SEK (avanza-isk): quantity 11183 -> 20366 (from Excel)"
-  ],
-  "transactions_appended": 0,
+  "portfolio_deltas": [],
+  "transactions_appended": 1,
   "watchlist_entries": 67,
   "flags": [
     "ALFA.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
     "ATCO-B.ST: P/E 2.05 is outside the 3-80 sanity range - treat as suspect, verify in Excel before using it.",
     "ATCO-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
+    "ATCO-B.ST: Excel's pe_ratio (2.05) would overwrite a higher-trust correction already on file (32.63, source: Avanza broker terminal (user-provided screenshot, real-time)) - not applied. Fix the Excel cell itself (refresh/re-link the Stocks data type) if Excel's number is actually right now.",
+    "AZN.ST: Excel's pe_ratio (24.4027) would overwrite a higher-trust correction already on file (25.49, source: Avanza broker terminal (user-provided screenshot, real-time)) - not applied. Fix the Excel cell itself (refresh/re-link the Stocks data type) if Excel's number is actually right now.",
+    "INVE-A.ST: Excel's pe_ratio (6.51) would overwrite a higher-trust correction already on file (4.76, source: Avanza broker terminal (user-provided screenshot, real-time)) - not applied. Fix the Excel cell itself (refresh/re-link the Stocks data type) if Excel's number is actually right now.",
     "SHB-A.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
-    "VOLV-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking."
+    "VOLV-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.",
+    "AZN.ST (avanza-isk): Excel wants to change quantity 5 -> 6, but this holding's thesis/notes contain a user-CONFIRMED figure - verify which is right before trusting Excel over the recorded confirmation. Not applied automatically.",
+    "CASH_SEK (avanza-isk): Excel wants to change quantity 11288 -> 20366, but this holding's thesis/notes contain a user-CONFIRMED figure - verify which is right before trusting Excel over the recorded confirmation. Not applied automatically.",
+    "Watchlist tickers with a space in them (NOVO B, ERIC B, ASSA B, INVE B, INDU C, LATO B, KINV B, HEXA B, SEB A, SWED A, HM B, SAAB B, EPI B, NIBE B, TEL2 B, SECU B, LIFCO B, ADDT B, GETI B) are Excel's raw entity name, not a fetchable ticker symbol - these will fail every screen/valuation fetch until corrected. Replace each with its real exchange-suffixed symbol (e.g. 'SEB A' -> 'SEB-A.ST', 'HM B' -> 'HM-B.ST') - verify the exchange per name, don't assume .ST for all of them (e.g. Novo Nordisk is Copenhagen-listed, '.CO', not '.ST')."
   ]
 }

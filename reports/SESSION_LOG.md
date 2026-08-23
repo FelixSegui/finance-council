@@ -17,6 +17,20 @@ Entry format:
 
 ---
 
+## 2026-08-23 (second entry, same day) — master-6.xlsx migration: Universe-tab watchlist parser built, two real bugs fixed (false "missing" flag on a closed position, fundamentals silently reverting to a known-bad Excel value), AZN.ST's phantom 6th share and a possible duplicate deposit surfaced as user questions (P9/P10)
+- **Snapshot:** none new (fundamentals came from the user's master-6.xlsx, not a fresh fetch)
+- **Memo:** no memo — off-cycle follow-up, not a full sweep
+- **Headline calls:** none — data/code hygiene only, no new BUY/SELL
+- **User decisions:** none required yet — P9 (fix the AZN phantom row in Excel) and P10 (confirm one deposit or two) are open questions for the user
+- **Reconciliation:**
+  - The user uploaded a rebuilt master-6.xlsx (Watchlist tab merged into a new "Universe" tab). The importer didn't know how to read it - built the parser, watchlist.json regenerated cleanly (67 entries, same set as before, no capability lost).
+  - Found: the workbook's own README already documents a known AZN.ST ledger bug (phantom OPENING row inflating 5 real shares to 6) - protected via yesterday's CONFIRMED-marker mechanism, which worked exactly as designed (flagged, not silently applied). Logged as P9 for the user to fix at the source.
+  - Found: a probable duplicate 5,000 SEK deposit (2026-08-17 vs the real-export-confirmed 2026-08-22) - not merged/deleted, logged as P10 pending the user's confirmation.
+  - Found: yesterday's ATCO-B.ST/AZN.ST/INVE-A.ST P/E corrections got silently overwritten back to Excel's still-unrefreshed bad values by this same import, because that protection only covered portfolio.json deltas, not company_profiles fundamentals. Fixed (same source_tier-based protection extended to the fundamentals path) and re-corrected.
+  - Found and fixed: a real ticker for the Valour Bitcoin Zero certificate (BTC0E.AS, Euronext Amsterdam) - portfolio.json updated - but Yahoo's own price for it doesn't reconcile with the real value (~7x off, and a suspiciously flat 52-week range), so it's NOT wired up as a trusted feed yet. S1 stays open.
+  - Removed one duplicate transaction row this session's own import introduced (the Valour BUY, already correctly logged with the real broker date/ticker under yesterday's reconciliation).
+- **Open items carried forward:** P1, P3, P5/S6, P6, P7 (user deferred - no Swedish gold ticker found in Excel), P9 (new), P10 (new). S1 (still open, ticker found but untrusted), S9(a)/(b), S13, S15-S18 unchanged.
+
 ## 2026-08-23 — Off-cycle backlog cleanup: real Avanza data (screenshots + transaction export) reconciled 5 data errors, gold ETC fact sheet reviewed and cleared, S4/S9(c) code fixes shipped, P6's second FI pull run, IMPROVEMENTS.md/P2 redundancy removed
 - **Snapshot:** none fetched this session (no new market-data pull needed — reconciliation used user-provided real broker data, not a fresh price snapshot)
 - **Memo:** no memo — backlog-reduction session, not a sweep

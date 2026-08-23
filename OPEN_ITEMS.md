@@ -239,6 +239,42 @@ signal.
   80, new gold line at 5 — apply once the first tranche actually executes,
   not before (no target line for a position that doesn't exist yet).
 - Full reasoning: Council's five-voice governance verdict, 2026-08-22.
+- **2026-08-23 user update: skipping for now.** User checked Excel for a
+  Swedish-listed gold ticker and found none. Xetra-Gold (DE000A0S9GB0,
+  Frankfurt) is still the reviewed/cleared instrument if this gets
+  revisited — nothing about the verdict above changed, this is a "not
+  right now" from the user, not a rejection of the instrument.
+
+### P9 — AZN.ST: Excel ledger shows 6 shares, real Avanza shows 5
+- **Status:** open — blocks nothing today (portfolio.json correctly holds
+  5, protected from the wrong Excel figure by a CONFIRMED marker added
+  2026-08-23), but will keep re-flagging every sweep until fixed at the
+  source.
+- The user's own master-6.xlsx workbook README already names this exact
+  bug: "AZN NOTE: Holdings follows the ledger, so AZN shows 6 sh / 9,069
+  SEK cost (5 OPENING + 1 BUY 2026-08-06). If Avanza says 5 sh, correct
+  the AZN Transactions rows." Confirmed against the real Avanza
+  transaktioner export: 4 units @ 1,507 SEK (2026-08-04) + 1 unit @
+  1,520.50 SEK (2026-08-06) = 5 total, matching portfolio.json exactly.
+  The Excel Transactions tab has a phantom extra OPENING row.
+- **Action: delete the phantom AZN OPENING row in the Excel Transactions
+  tab** (per the workbook's own README instructions) — Holdings will
+  follow automatically once the ledger is right.
+
+### P10 — Possible duplicate 5,000 SEK deposit (2026-08-17 vs 2026-08-22)
+- **Status:** open — not applied/resolved, needs the user's confirmation
+  before either row is touched.
+- `data/transactions.csv` carries TWO 5,000 SEK deposit rows: one dated
+  2026-08-17 (pre-existing, source "User-confirmed deposit", no matching
+  entry anywhere in the real Avanza transaktioner export), and one dated
+  2026-08-22 (added 2026-08-23 from that real export, which shows exactly
+  one Handelsbanken deposit of 5,000 SEK in the trailing year, dated
+  2026-08-22). Master-6.xlsx's own Transactions tab also only shows the
+  2026-08-17 version. Likely reading: these are the same real-world
+  deposit, mis-dated once. Not merged/deleted without asking, since it's
+  real money either way.
+- **Action: confirm — was there one 5,000 SEK deposit or two?** If one,
+  say which date is right so the wrong row can be removed.
 
 ---
 
@@ -280,6 +316,19 @@ signal.
   in the position report, still blocking automated repricing/drift-checking
   of a 9,183 SEK (4.2% of portfolio) position. No new evidence, status
   unchanged.
+- **2026-08-23 — a real ticker found, but NOT yet trusted as a live feed.**
+  master-6.xlsx's Universe tab resolved this instrument via Excel's Stocks
+  data type to `BTC0E.AS` (Euronext Amsterdam), consistent across its CORE
+  HOLDINGS and CRYPTO & CERTIFICATE DETAIL blocks - `data/portfolio.json`'s
+  ticker field updated accordingly. `scripts/fetch_market_data.py` confirms
+  Yahoo recognizes this ticker. **Red flag, not yet resolved: Yahoo's own
+  price (47.292 EUR, roughly 523 SEK at current FX) doesn't reconcile with
+  the real known value (~73.54 SEK/unit per Avanza) - about 7x off - and
+  its 52-week high/low are identical, suggesting thin/stale Yahoo data.**
+  Do not wire this up as an automated feed until someone verifies on
+  Avanza whether BTC0E.AS is genuinely the right listing and why the
+  price disagrees this much. Position stays on the Excel-CRYPTO-DETAIL/
+  user-relayed price path until then.
 
 ### S6 — No source for holding-company NAV discount/premium
 - **Status:** open — blocks half of P5
@@ -881,6 +930,23 @@ alongside the S-items, not silently.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-23 (second pass, same day) — import_excel_holdings.py updated
+  for master-6.xlsx's restructured workbook.** The user replaced master-5
+  with a rebuilt master-6.xlsx (dropped the standalone Watchlist tab,
+  merged everything - held positions and watchlist candidates alike -
+  into one "Universe" tab distinguished by a `status` column). Added a
+  Universe-tab reader (falls back to the old Watchlist tab if a workbook
+  doesn't have Universe) - watchlist.json regenerated cleanly, 67
+  candidates, no capability lost. Also fixed two real bugs surfaced by
+  the new workbook: (1) a closed position with quantity 0 (COIN-XBT.ST)
+  was being flagged every run as "held but missing from Excel" - it's
+  correctly absent, not a gap; (2) a broker-verified fundamentals
+  correction (ATCO-B.ST's P/E) got silently overwritten back to Excel's
+  known-bad value on the very next import, since only the portfolio-delta
+  path had the 2026-08-23-morning CONFIRMED-marker protection, not the
+  fundamentals path - added the same protection there (a value already
+  sourced from a lower/better source_tier than Excel's now gets flagged,
+  not clobbered).
 - **2026-08-23 — P8 closed: ISK cash reconciled to 11,288 SEK, real
   broker figure.** The 20,366 SEK Excel-import figure was wrong (a
   pre-Valour-purchase balance carried in the workbook). Resolved directly

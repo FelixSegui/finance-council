@@ -1,9 +1,13 @@
-You're working inside my personal finance workbook (master-5.xlsx). Please make only the specific fixes below - don't change anything else in the sheet, and don't touch any linked Stocks data type cells beyond refreshing them where asked:
+You're working inside my personal finance workbook (master-6.xlsx). Please make only the specific fixes below - don't change anything else in the sheet, and don't touch any linked Stocks data type cells beyond refreshing them where asked:
 
 1. ALFA.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
-2. ATCO-B.ST: P/E cell shows 2.05, outside the 3-80 sanity range - confirmed wrong 2026-08-23 against a real Avanza broker screenshot (32.63) and Yahoo's independent trailing P/E (33.35), which agree with each other. company_profiles has been corrected to 32.63 in the interim, but the Excel cell itself still shows 2.05 - refresh/re-link the Stocks data type for this cell so future imports don't need a manual override.
+2. ATCO-B.ST: P/E 2.05 is outside the 3-80 sanity range - treat as suspect, verify in Excel before using it.
 3. ATCO-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
 4. SHB-A.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
 5. VOLV-B.ST: no 52-week range in Excel (confirmed data-provider gap for some Nordic-primary tickers, not a formula bug) - treated as no data, not blocking.
+6. AZN.ST (avanza-isk): Excel wants to change quantity 5 -> 6, but this holding's thesis/notes contain a user-CONFIRMED figure - verify which is right before trusting Excel over the recorded confirmation. Not applied automatically.
+7. CASH_SEK (avanza-isk): Excel wants to change quantity 11288 -> 20366, but this holding's thesis/notes contain a user-CONFIRMED figure - verify which is right before trusting Excel over the recorded confirmation. Not applied automatically.
+8. BTC0E.AS: Excel wants to change market_value_sek 11031 -> 11031.000000000002, but this holding's thesis/notes contain a user-CONFIRMED figure - verify before trusting Excel over the recorded confirmation. Not applied automatically.
+9. Watchlist tickers with a space in them (NOVO B, ERIC B, ASSA B, INVE B, INDU C, LATO B, KINV B, HEXA B, SEB A, SWED A, HM B, SAAB B, EPI B, NIBE B, TEL2 B, SECU B, LIFCO B, ADDT B, GETI B) are Excel's raw entity name, not a fetchable ticker symbol - these will fail every screen/valuation fetch until corrected. Replace each with its real exchange-suffixed symbol (e.g. 'SEB A' -> 'SEB-A.ST', 'HM B' -> 'HM-B.ST') - verify the exchange per name, don't assume .ST for all of them (e.g. Novo Nordisk is Copenhagen-listed, '.CO', not '.ST').
 
 After making a fix, leave the cell's normal formatting/data type in place - this workbook is read by a script that expects the existing column layout, so don't restructure a sheet to fix a row.

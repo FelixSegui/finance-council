@@ -1,10 +1,10 @@
 {
   "ticker": "VOLV-B.ST",
   "name": "Volvo B",
-  "profile_last_updated": "2026-08-22",
+  "profile_last_updated": "2026-08-23",
   "static_profile": {
     "business_description": "Swedish manufacturer of trucks, buses, construction equipment, and marine/industrial engines (AB Volvo, distinct from Volvo Cars). Not yet held in this portfolio (universe.json candidate).",
-    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-17)",
+    "sector": "Machinery, Equipment & Components (Excel Stocks data type, 2026-08-21)",
     "competitive_moat_notes": "Not yet assessed from a real source - NOT scored this review.",
     "management_notes": "Not yet assessed.",
     "last_reviewed": "2026-07-28"
@@ -12,7 +12,7 @@
   "fundamentals_cache": {
     "source": "Excel Stocks data type (Drive, read-only)",
     "as_of_period": "trailing/most recent fiscal year 2025-12-31",
-    "extracted_date": "2026-08-17",
+    "extracted_date": "2026-08-21",
     "next_report_expected": "check Volvo's own IR calendar - not confirmed this session",
     "figures": {
       "trailing_pe": {
@@ -79,11 +79,11 @@
         "calculation_method": "direct from source, not computed"
       },
       "beta": {
-        "value": 1.0405,
+        "value": 1.0452,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -195,29 +195,29 @@
         "calculation_method": "direct from source, not computed"
       },
       "price": {
-        "value": 341.5,
+        "value": 342.8,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "pe_ratio": {
-        "value": 19.3704,
+        "value": 19.29,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
       "market_cap": {
-        "value": 691780400000,
+        "value": 697067400000,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -225,8 +225,8 @@
         "value": "NASDAQ Stockholm",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -234,8 +234,8 @@
         "value": "SEK",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-17",
-        "age_days": 5,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -243,8 +243,8 @@
         "value": "Gropegardsgatan 2, GOETEBORG, VASTRA GOTALANDS, 417 15 SE",
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       },
@@ -252,8 +252,8 @@
         "value": 89417,
         "source": "Excel Stocks data type (Drive, read-only)",
         "source_tier": 3,
-        "as_of": "2026-08-05",
-        "age_days": null,
+        "as_of": "2026-08-21",
+        "age_days": 2,
         "quality_state": "OK",
         "calculation_method": "direct from source, not computed"
       }

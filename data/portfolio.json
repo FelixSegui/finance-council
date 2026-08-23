@@ -251,7 +251,7 @@
       "annual_fee_pct": null,
       "date_acquired": null,
       "target_weight_pct": null,
-      "thesis_narrative": "Bought 2026-08-03/04 + 2026-08-06, defensive-quality thesis recorded 2026-08-06 in the user's own words - see why_owned/key_risks/break_conditions for the current structured thesis. Full text: data/portfolio_history_archive.md#thesis-narrative-full-text-archived-2026-08-17.",
+      "thesis_narrative": "Bought 2026-08-03/04 + 2026-08-06, defensive-quality thesis recorded 2026-08-06 in the user's own words - see why_owned/key_risks/break_conditions for the current structured thesis. Full text: data/portfolio_history_archive.md#thesis-narrative-full-text-archived-2026-08-17. QUANTITY CONFIRMED 2026-08-23 at 5 shares against the user's real Avanza transaktioner export (4 units @ 1,507 SEK 2026-08-04 + 1 unit @ 1,520.50 SEK 2026-08-06 = 5 total, 7,548.50 SEK). The Excel workbook's own ledger carries a phantom extra OPENING row that inflates this to 6 shares / 9,069 SEK cost - the workbook's own README flags this exact discrepancy ('If Avanza says 5 sh, correct the AZN Transactions rows'). Fix the Excel Transactions tab, don't trust its current AZN quantity over this confirmation.",
       "last_reviewed": "2026-08-06",
       "thesis_status": "INTACT",
       "why_owned": "Historically resilient, defensive quality company; healthcare is lower-beta than high-valuation tech/growth; reasonable dividend history; diversifies away from the portfolio's industrials/technology concentration.",
@@ -397,7 +397,7 @@
       "target_weight_pct": null
     },
     {
-      "ticker": "TBD",
+      "ticker": "BTC0E.AS",
       "name": "Valour Bitcoin Zero SEK (certificate, ISIN CH0585378661)",
       "account_id": "avanza-isk",
       "instrument_type": "certificate",
@@ -409,7 +409,7 @@
       "market_value_source": "BROKER-CONFIRMED 2026-08-23 via user-provided Avanza screenshot: 150 units, last price 73.54 SEK/unit (Avanza's own 'Senast' column, dated 'Uppdaterad: 21 aug'), value 11,031 SEK, since-purchase +1,825 SEK (+19.82%). Cost basis per unit (61.37 SEK, fee-inclusive) also confirmed against the user's real Avanza transaktioner export (150 units @ 61.22 SEK/unit + 22.96 SEK courtage = 9,205.96 SEK / 150 = 61.37/unit). Still no automated price feed (S1 remains open) - this is a manual broker-screen confirmation, not a live fetch.",
       "annual_fee_pct": 0,
       "date_acquired": "2026-08-17",
-      "price_tracking_note": "TICKER UNKNOWN - user gave the ISIN (CH0585378661) and product name (Valour Bitcoin Zero SEK) but not a tradeable ticker symbol. Do NOT guess a Nasdaq Stockholm ticker from the product name (same standing rule that applied to COIN-XBT.ST and the Watchlist's malformed entries) - verify on Avanza directly or via the ISIN before any agent treats a guessed symbol as real. Until then, use BTC spot (CoinGecko) as the same kind of directional-only proxy COIN-XBT.ST used, not an exact price.",
+      "price_tracking_note": "TICKER FOUND 2026-08-23: BTC0E.AS (Euronext Amsterdam listing), resolved via the user's Excel Stocks data type in master-6.xlsx and consistent across its CORE HOLDINGS and CRYPTO & CERTIFICATE DETAIL blocks. scripts/fetch_market_data.py confirms Yahoo recognizes this ticker (EUR-denominated). CAUTION, NOT YET TRUSTED AS A LIVE FEED: Yahoo's own price for BTC0E.AS (47.292 EUR, approx 523 SEK at current FX) does not reconcile with the real known value (~73.54 SEK/unit per Avanza) - roughly 7x off - and its 52-week high/low are identical (47.735/47.735), which itself suggests thin/stale data on Yahoo's side, not necessarily a wrong entity match. Do not wire this up as an automated price source until someone verifies on Avanza directly whether BTC0E.AS is really the same instrument and why the price differs this much. Until verified, this stays on the user-relayed/ Excel-CRYPTO-DETAIL price path, same as before.",
       "target_weight_pct": null,
       "thesis_narrative": "BOUGHT 2026-08-17 (user's own choice, found independently after this session's Council rejected BITC as a replacement for the sold COIN-XBT.ST certificate - see OPEN_ITEMS.md P4). CONFIRMED BY USER 2026-08-17: 0% ongoing management fee and genuinely physically BTC-backed - both of the checks that were pending are now closed by direct user statement (same evidentiary weight as any other user-confirmed figure in this file - a direct statement outranks an inferred/unverified one). This fully resolves P4 in substance: replaces the 2.5%/yr COIN-XBT.ST certificate with a 0%/yr, genuinely-backed BTC exposure inside the same ISK wrapper. Only remaining loose end is a tradeable ticker for live pricing (S1), which is a pricing convenience, not a verification gap.",
       "last_reviewed": "2026-08-17",

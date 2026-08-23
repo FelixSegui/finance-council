@@ -1,0 +1,53 @@
+{
+  "fetched_at_utc": "2026-08-23T18:28:31.975949+00:00",
+  "lookahead_days": 10,
+  "earnings": {
+    "ABB.ST": {
+      "next_earnings": [
+        "2026-10-20"
+      ]
+    },
+    "ALFA.ST": {
+      "next_earnings": [
+        "2026-10-27"
+      ]
+    },
+    "ATCO-B.ST": {
+      "next_earnings": [
+        "2026-10-22"
+      ]
+    },
+    "AZN.ST": {
+      "next_earnings": [
+        "2026-07-27"
+      ]
+    },
+    "INVE-A.ST": {
+      "next_earnings": null,
+      "note": "no earnings date returned"
+    },
+    "SHB-A.ST": {
+      "next_earnings": [
+        "2026-10-21"
+      ]
+    },
+    "VOLV-B.ST": {
+      "next_earnings": [
+        "2026-10-23"
+      ]
+    }
+  },
+  "macro_events": {
+    "upcoming": [
+      {
+        "date": "2026-08-25",
+        "name": "Riksbank monetary policy minutes",
+        "type": "riksbank_minutes"
+      }
+    ],
+    "calendar_last_verified": "2026-08-03",
+    "unverified_sources": [
+      "US/SE CPI release dates missing - fill month by month from BLS/SCB schedules"
+    ]
+  }
+}

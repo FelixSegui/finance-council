@@ -23,40 +23,37 @@ a one-line resolution — never delete an item silently.
 ## This sweep's recommended emphasis
 
 **Emphasis:** portfolio-tending
-**Set by meta, 2026-08-18 (supersedes the 2026-08-17 "balanced" call):**
-Neither of the two conditions the prior sweep named for revisiting fired
-cleanly — `scout`'s five 2026-08-17 candidates (MSCI, SNPS, ARM, SCCO, STL)
-are still not added to the Watchlist or screened (confirmed directly
-against `data/cache/watchlist.json`, see S18), which on its own would have
-kept this balanced. But a cluster of portfolio-tending signal accumulated
-independently and now outweighs it: **AZN.ST's BUY has been the Council's
-top or near-top call for two consecutive sweeps (2026-08-17, 2026-08-18) at
-High/zero-dissent conviction and has still not executed** — the same shape
-as the PayPal and pre-closure swedish-equity-review patterns already in
-this system's history; **D4 has escalated from a bookkeeping question to
-directly gating 11,183 / ~7,917 / 0 SEK of real spendable ISK cash**
-depending on which reading the user picks, unconfirmed for a third
-consecutive sweep; **P3 (PayPal routing) is decided but still not
-executed**, recurring cost every ~2 months it stays that way; and **P6's
-ABB.ST break condition needs a second Finansinspektionen insider pull that
-has now gone untested for a second consecutive sweep**, with the
-2026-09-03 default date getting closer. This sweep's two new scorecard
-rows (100% large-cap concentration, ESG-UNKNOWN) are real but the memo
-itself is explicit they are "not worth fixing with a rushed... purchase" —
-named for the next contribution, not a reason to prospect this sweep. Per
-the rubric: an unresolved decision (D4) open several sessions and gating
-real capital, plus a recent high-conviction recommendation with no
-post-recommendation follow-through (AZN.ST, and P3), is portfolio-tending's
-own definition, not a coin flip. Revisit toward balanced/prospecting once
-D4 is answered and either AZN.ST executes or the user explicitly declines
-it — an explicit "no" closes the open loop just as well as a "yes."
-
-**2026-08-23 factual update (not a re-derivation of the call above — that's
-`meta`'s job at the next sweep):** D4 is now closed, ISK cash is
-broker-confirmed at 11,288 SEK, ABB.ST's second FI pull ran (no
-escalation), and P2/P8 are closed. AZN.ST's BUY and P3 (PayPal routing)
-are still unexecuted — those two remain the live portfolio-tending
-signal.
+**Set by meta, 2026-08-24 (supersedes the 2026-08-18 call — the same
+signal, now stronger, not resolved):** Every condition that drove the
+2026-08-18 call is still live and has compounded rather than cleared.
+**AZN.ST's BUY is now the Council's top call for a THIRD consecutive sweep
+(2026-08-17, 2026-08-18, 2026-08-24) at High conviction, and this is the
+first sweep the delay has a real, quantifiable price tag** — the position
+moved from below blended cost to +3.4% above it while waiting, on
+unchanged fundamentals. **P3 (PayPal routing) is decided but unexecuted
+for a third consecutive sweep too**, and this sweep changed its funding
+destination (GOOGL → META), adding a stale cross-reference in P3's own
+note on top of the execution gap. **ABB.ST escalated from HOLD-WATCH to
+its first-ever SELL call this sweep** — on the break condition's quieter
+second clause (a materially better alternative surfaced), not the insider
+clause everyone had been watching — which needs an actual decision, not
+continued monitoring. And this sweep opened **three brand-new decision
+forks (D-a, D-b, D-c)**: what to do with ABB's freed-up slot, whether to
+finally source Investor A's NAV discount/premium (S6/P5, second
+consecutive sweep a voice wanted to act and couldn't), and whether the
+user has any stated portfolio exclusions at all (the reason the ESG
+scorecard row is stuck at UNKNOWN). None of this is a prospecting gap:
+`scout`'s screen ran cleanly this sweep — after a mid-sweep scale-bug
+catch, see S19 — across the full 43-name candidate universe and surfaced a
+well-evidenced new BUY (META) without difficulty; idle cash is already
+earmarked (AZN.ST + META), not sitting with no plan. The constraint on
+returns right now is human-execution lag on calls already made, not a
+shortage of candidates. Per the rubric: three consecutive sweeps of an
+unexecuted High-conviction call, a newly escalated SELL, and three fresh
+open decisions is portfolio-tending's own definition, not a coin flip.
+Revisit toward balanced/prospecting once AZN.ST and P3 execute (or are
+explicitly declined) and D-a/D-b/D-c get answers — an explicit "no" closes
+an open loop as well as a "yes"; continued silence does not.
 
 ---
 
@@ -91,6 +88,12 @@ signal.
 - **2026-08-18 note:** still not executed; the Council's GOOGL candidate
   (#2 opportunity this sweep) is explicitly proposed to be funded from this
   conversion once it happens — see the 2026-08-18 memo.
+- **2026-08-24 note:** still not executed, third consecutive sweep. The
+  destination this note names is now stale — this sweep's Council memo
+  reverses the funding target from GOOGL to META (forward multiple
+  falling vs rising, PEG 0.82 vs 0.93, 28.0% vs 24.2% revenue growth). The
+  conversion decision itself is unchanged; only what it eventually buys
+  changed.
 - Full deliberation history (the Stripe-routing dead end, the
   multi-sweep repeated-advice pattern, the Revolut-balance/D3 cross-link):
   `reports/SESSION_LOG.md`'s 2026-08-10 through 2026-08-17 entries.
@@ -131,6 +134,11 @@ signal.
   contrarian holding — it is a crowded one I cannot measure"), resolved to
   HOLD only because the missing metric, not confidence, is the reason. Adds
   weight to S6 without changing P5's own status.
+- **2026-08-24 note:** the Contrarian voice flagged it again — second
+  consecutive sweep the same gap blocked a real call — resolved to HOLD on
+  the same missing-data grounds. Now also tracked as open decision **D-b**
+  below: get the NAV per share (Excel request H, ~10 min), sell on
+  absence-of-evidence, or keep holding and stop re-flagging.
 
 ### P6 — Build the medium tier (~26,400 SEK available)
 - **Status:** retroactive review DONE 2026-08-17 — decision on rotation is now
@@ -202,6 +210,16 @@ signal.
   **This closes out the 2026-09-03 default date — no further FI pull is
   needed for this condition.** Full detail:
   `data/company_profiles/ABB.ST.json`'s `insider_activity_cache`.
+- **2026-08-24 — ESCALATED to SELL, on the break condition's *other*
+  clause.** Clause one (insider selling continuing) tested negative
+  2026-08-23 and closes in ABB's favour. Clause two, written the same
+  morning — "re-test if a materially better-positioned Nordic-industrial
+  alternative surfaces via screening" — has now been quietly satisfiable
+  for three sweeps, and this sweep's Council formally acted on it: SELL
+  all 4 shares (~3,775 SEK), proceeds proposed to fund META (see the
+  memo's Top 5 #2/#3 and new open decision **D-a** below for the three
+  live options on where the freed-up slot goes). Not yet executed by the
+  user.
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated
@@ -329,6 +347,8 @@ signal.
   Avanza whether BTC0E.AS is genuinely the right listing and why the
   price disagrees this much. Position stays on the Excel-CRYPTO-DETAIL/
   user-relayed price path until then.
+- **2026-08-24 note:** no progress this sweep. Position report still
+  carries this as "no data"/user-relayed. Status unchanged.
 
 ### S6 — No source for holding-company NAV discount/premium
 - **Status:** open — blocks half of P5
@@ -343,6 +363,12 @@ signal.
   Option 1, now phrased as a ready-to-paste user ask rather than just a
   standing item here. Status otherwise unchanged — still open, still
   blocking a testable INVE-A.ST thesis.
+- **2026-08-24 note:** second consecutive sweep the Contrarian voice
+  wanted to act on INVE-A.ST (96.9% of its 52-week range, upside cited at
+  purchase already captured) and could not, purely on this missing metric
+  — resolved HOLD again for the same reason. Now also tracked as open
+  decision **D-b** in this sweep's memo. Status and fix unchanged; the
+  Excel request H ask is still outstanding.
 
 ### S9 — Excel import script: three data-quality flags (cross-field plausibility + purchase-without-thesis + Excel-vs-confirmed-override conflicts)
 - **Status:** partially closed 2026-08-23 — **fix (c) implemented and
@@ -356,7 +382,8 @@ signal.
   plausibility check, no purchase-without-thesis flag. Three real
   instances of gap (c) had occurred in six weeks before this fix (see
   below); this was the most-repeated, best-evidenced failure mode in the
-  backlog, so it was fixed first rather than all three at once.
+  backlog, so it was fixed first rather than all three at once. **New
+  2026-08-24: a fourth data-quality gap (d) confirmed, see below.**
 - **Why (a)/(b), from 2026-08-06:** the Transactions sheet has a row pairing
   ticker "ethereum" with a certificate's name/price/quantity (`BUY,
   ethereum, 1 unit, 2016.67 SEK/unit`) — a likely copy-paste artifact next
@@ -417,6 +444,35 @@ signal.
   (an unverified/ambiguous ticker silently returning the wrong company's
   data) recurs across more than one code path, strengthening the case for
   (a)'s cross-field check as a standing guard, not a one-off.
+- **Why (c), continued — 2026-08-22, a third confirmed instance.** The
+  10:20 UTC Excel import wrote `CASH_SEK (avanza-isk): quantity 11183 ->
+  20366 (from Excel)`. The gap (9,183 SEK) equals the un-logged Valour
+  Bitcoin Zero certificate purchase exactly — `data/transactions.csv` has
+  no BUY row for that purchase at all — and again this never became a
+  `flags` entry. Same root cause as the two prior instances, third
+  occurrence in six weeks: this is no longer an edge case, it's the
+  script's most reliable failure mode. See P8 for the user-facing action
+  (verify the real Avanza balance); this entry is the systemic fix still
+  not built.
+- **Why (d), new 2026-08-24 — a distinct manifestation of the same
+  failure family, this time in the Watchlist itself rather than a
+  transaction row.** This sweep's Council memo (section 12, data-gap #3)
+  found three held tickers structurally absent from `scout`'s own screen
+  digest: SHB-A.ST and ATCO-B.ST are held, but the Watchlist carries
+  INVE-B.ST (a different share class than the held INVE-A.ST) and
+  ATCO-A.ST (a different share class than the held ATCO-B.ST) instead,
+  and there is no Handelsbanken row in the Watchlist at all. Three of the
+  portfolio's seven individual holdings therefore got zero numeric triage
+  from any of the six Council voices this sweep and had to be reasoned
+  about from `valuation`'s prose alone — confirmed directly against
+  `data/cache/watchlist.json`'s categories, not just the memo's own
+  observation. Same root shape as (a) (an unverified/ambiguous ticker
+  silently diverging from reality with nothing to catch it), just
+  surfacing at the Watchlist-build step instead of the transaction-import
+  step — a second, independent code path with the same defect class,
+  strengthening the case that a standing cross-field/cross-file check
+  belongs in this script generally, not only at the one spot (a) already
+  names.
 - **How:** in `scripts/import_excel_holdings.py`: (a) in
   `process_transactions`, add a bounded plausibility check — if a row's
   `holdings_ticker` matches a known ticker in `data/company_profiles/` or
@@ -434,20 +490,16 @@ signal.
   with the incoming Excel figure; if so, add the conflict to `flags`
   (which reaches the prompt file) instead of silently overwriting it —
   same direction as this system's existing "a direct user statement
-  outranks Excel" rule, just enforced in code instead of relying on a human
-  noticing every time. All three reuse the existing `flags` list already
-  surfaced in `latest-summary.json` and read into the council memo —
-  no new plumbing needed.
-- **Why (c), continued — 2026-08-22, a third confirmed instance.** The
-  10:20 UTC Excel import wrote `CASH_SEK (avanza-isk): quantity 11183 ->
-  20366 (from Excel)`. The gap (9,183 SEK) equals the un-logged Valour
-  Bitcoin Zero certificate purchase exactly — `data/transactions.csv` has
-  no BUY row for that purchase at all — and again this never became a
-  `flags` entry. Same root cause as the two prior instances, third
-  occurrence in six weeks: this is no longer an edge case, it's the
-  script's most reliable failure mode. See P8 for the user-facing action
-  (verify the real Avanza balance); this entry is the systemic fix still
-  not built.
+  outranks Excel" rule, just enforced in code instead of relying on a
+  human noticing every time; (d), new 2026-08-24, in whichever function
+  builds `data/cache/watchlist.json` from the Universe/Watchlist tab,
+  cross-check the resulting ticker list against `portfolio.json`'s held
+  tickers after each import: flag any held ticker absent from the
+  Watchlist entirely, and flag any Watchlist entry that shares a company
+  name/base ticker with a held position but a different share-class
+  suffix (e.g. held ATCO-B.ST vs Watchlist's ATCO-A.ST). All four reuse
+  the existing `flags` list already surfaced in `latest-summary.json` and
+  read into the council memo — no new plumbing needed.
 
 ### S12 — Canonical definitions for ambiguous shared terms
 - **Status:** open — one known small gap only (D3 and D4 both closed).
@@ -491,6 +543,9 @@ signal.
   judged "useful, can wait" in this sweep's roadmap review, not urgent —
   small, cheap, real, but low-stakes (a secondary directional-proxy input,
   not the basis of a live buy/sell call).
+- **2026-08-24 note:** no incident this sweep either (BTC/ETH both fetched
+  cleanly, +18.8%/+27.4% moves recorded). Status unchanged — still "useful,
+  can wait."
 - **How:** in `scripts/fetch_market_data.py`'s `fetch_crypto()`, wrap the
   single request in a small retry loop (2-3 attempts) with short
   exponential backoff (e.g. 2s, then 5s) specifically on
@@ -502,9 +557,12 @@ signal.
   provider was considered and rejected).
 
 ### S15 — journal.md's instruction text lags behind its own already-correct behavior (SESSION_LOG.md prepend-safety AND data/valuations.csv append)
-- **Status:** open — three consecutive sweeps of evidence now (this item
-  absorbed S14 this session, see the Closed log entry — same defect shape,
-  two different fields `journal` owns, one instruction file)
+- **Status:** open — four sweeps of evidence now, including a third
+  distinct corruption/near-miss incident on the same file this sweep (see
+  the 2026-08-24 note below) — this is the single most-evidenced defect
+  in the backlog. (This item absorbed S14 in an earlier session, see the
+  Closed log — same defect shape, two different fields `journal` owns,
+  one instruction file.)
 - **Why (SESSION_LOG.md half, originally S15):** this session's [2026-08-17]
   `journal` subagent end-of-sweep write to `reports/SESSION_LOG.md` did not
   append/prepend correctly — it replaced the entire ~660-line append-only
@@ -541,6 +599,30 @@ signal.
   three correct manual executions in a row is stronger, not weaker,
   evidence that the fix should land in the instruction text before a
   fourth sweep happens to skip the ad hoc care.
+- **2026-08-24 note — a second, independently-discovered SESSION_LOG.md
+  corruption instance, of a different kind than the 2026-08-17 full
+  rewrite, plus a self-inflicted near-miss of the identical artifact
+  caught mid-write the same session.** While writing this sweep's own
+  entry, `journal` found the file's prior end carried two stray leaked
+  lines — literally `</content>` and `</invoke>`, tool-call syntax that
+  had been written into the file itself rather than staying inside a
+  prior write's own transcript — removed as corruption, not preserved as
+  a real entry. Then, writing *this* entry, the same artifact was
+  reintroduced by mistake on the first attempt and only caught by a
+  post-write read-back before the sweep closed (per `SESSION_LOG.md`'s own
+  2026-08-24 entry, which documents both incidents directly). That is now
+  a third distinct corruption/near-miss event on this one file
+  (2026-08-17 full overwrite; 2026-08-24 leaked XML found; 2026-08-24
+  leaked XML re-introduced and caught), combined with a fourth-plus
+  consecutive sweep of the correct SESSION_LOG.md/valuations.csv behavior
+  being re-derived by hand rather than required by the instruction file.
+  The fix S15 already specifies (a coded post-write self-check: line
+  count increased, prior top entry's date still present) would have
+  caught the leaked-XML instance mechanically instead of relying on a
+  human/agent noticing it by eye, exactly as it would have caught the
+  original 2026-08-17 overwrite. Cheap, well-specified, now evidenced
+  three times on the one file CLAUDE.md calls the system's only
+  calibration mechanism.
 - **How (two edits, same file, same PR):** (1) in `journal.md`'s Mode 2,
   make the SESSION_LOG.md-write instruction explicit that it is a targeted
   insert — read the current file, prepend the new entry above the existing
@@ -588,7 +670,9 @@ signal.
   fix proportionate.
 
 ### S17 — scout's digest CSV drops an already-fetched `currency` field, making `fcf_b`/`mcap_b` silently non-comparable across tickers
-- **Status:** open — new evidence this session, root cause confirmed in code
+- **Status:** open — SECOND consecutive sweep of confirmed evidence
+  (2026-08-18, 2026-08-24), root cause confirmed in code, fix unchanged
+  and unapplied
 - **Why:** this session's Council memo names, as its first Step-0 finding,
   that the digest's `fcf_b` (free cash flow, billions) and `mcap_b` (market
   cap, billions) are not on a consistent currency basis for the same
@@ -610,6 +694,14 @@ signal.
   or a slower, user-dependent Excel round-trip (Excel request E, 2026-08-18,
   asks for the same thing via the workbook) — the data already exists in
   this sweep's own snapshot and just isn't being carried through.
+- **2026-08-24 note — second consecutive sweep this exact gap has
+  degraded the Valuation voice, root cause and fix unchanged.** This
+  sweep's digest again produced non-credible FCF-yield ratios for every
+  non-SEK mega-cap under discussion (GOOGL 0.54%, MSFT 0.46%, META 1.54%,
+  AMZN 0.12%) — only SEK-denominated pairs (VOLV-B 3.4%, ERIC-B 9.7%) were
+  usable. Nothing about the fix has changed since it was identified in
+  code; this is now the strongest case in the backlog for a one-line
+  change with a proven, repeated, real cost.
 - **How:** in `scripts/funnel/screen_candidates.py`, add `"currency"` to
   `DIGEST_COLUMNS` and to the `row()` dict (`fields.get("currency")`, no
   transformation needed). This alone lets `council`'s Valuation voice see
@@ -648,6 +740,10 @@ signal.
   per-pick "Excel data request" lines about missing *fields* on
   already-listed tickers — never `scout`'s own suggestions for tickers to
   *add*.
+- **2026-08-24 note:** no new evidence this sweep — `scout` ran its
+  standard numeric screen, not a discretionary pass, so the five
+  2026-08-17 tickers (MSCI, SNPS, ARM, SCCO, STL) remain neither added to
+  the Watchlist nor superseded. Status unchanged.
 - **How:** in `.claude/agents/council.md`'s "Consolidated Excel-improvement
   prompt" section, add one instruction: if `scout`'s output this sweep
   names discretionary candidate tickers not already present in the
@@ -659,6 +755,37 @@ signal.
   `scout.md`'s own Job step 4 already half-anticipates ("tell them to add
   tickers to the Watchlist tab — or add them yourself if the user gave
   explicit tickers") to the one channel already proven to reach the user.
+
+### S19 — [prospecting] scout's `--max-debt-to-equity` flag accepts a decimal-scale threshold silently, producing a false "zero passed" screen
+- **Status:** open — new evidence this session, caught and corrected
+  before use, concrete fix identified
+- **Why:** this sweep's first screen run (`20260824T061207`) was invoked
+  with `--max-debt-to-equity 2.0` against a field that
+  `scripts/fetch_market_data.py` reports on a percentage-point scale (a
+  real D/E in this universe runs well into the double or triple digits,
+  not low single digits) — the threshold rejected every single candidate,
+  producing zero Passed names. `scripts/funnel/screen_candidates.py`'s own
+  docstring example already uses `--max-debt-to-equity 150`, confirming
+  the intended scale — this is a unit/parsing gap, not a data problem. It
+  was caught only because a human-in-the-loop step happened to review the
+  digest before council consumed it; a genuinely quiet market and a
+  silently-broken filter produce an identical, indistinguishable output
+  (an empty screen) with no error raised either way. This is exactly the
+  "was the screen wrong, or was the universe just thin" ambiguity the
+  prospecting-capability check exists to catch — confirmed this sweep to
+  be the screen, not the universe (the corrected run, `20260824T061349`,
+  cleared 43 candidates through to council normally).
+- **How:** in `scripts/funnel/screen_candidates.py`'s argument parsing,
+  range-validate `--max-debt-to-equity` (and any other flag on the same
+  known percentage-point scale) at parse time: if the supplied value is
+  below a threshold that's implausible for the field (e.g. <5, since a
+  real D/E ceiling in this system's usage has always been 100+), reject
+  with a clear error message naming the expected scale and the docstring's
+  own example, rather than silently proceeding to produce a screen with
+  zero or near-zero Passed names. Keep this a hard parse-time error, not a
+  warning, so a scheduled/automated run (like this sweep's) fails loudly
+  instead of quietly producing an empty candidate pool that looks like
+  "the market has nothing good in it."
 
 ---
 
@@ -930,6 +1057,35 @@ alongside the S-items, not silently.
 Resolutions kept short; full history in `data/portfolio_history_archive.md`
 and `reports/SESSION_LOG.md`.
 
+- **2026-08-24 — considered, not opened as a new S-item: thesis-review
+  incorrectly asserted OPEN_ITEMS.md hadn't been updated with ABB's
+  2026-08-23 second FI-pull result, when it actually had been.** This
+  sweep's Council memo (section 6) caught and corrected it directly — P6
+  already carries the full 2026-08-23 entry recording the pull (no
+  escalation, pattern quiet, 2026-09-03 default closed); only
+  `data/company_profiles/ABB.ST.json` was still dated 2026-08-17. Notable
+  as the *opposite* failure mode from the usual pattern this system
+  catches (true staleness going unflagged) — here a genuinely current
+  file was wrongly flagged as stale. Single instance, no diagnosed root
+  cause (which specific check in `thesis-review.md` produced the false
+  claim is unknown), self-corrected the same sweep with no downstream
+  harm. Same treatment as the 2026-08-18 precedent for single,
+  unconfirmed-pattern data mismatches: watch for a second instance before
+  opening a formal item.
+- **2026-08-24 — considered and rejected: restructuring `reports/
+  SESSION_LOG.md` away from one growing markdown file to eliminate the
+  overwrite/corruption risk S15 already tracks.** Raised after a second
+  independently-discovered corruption instance (leaked tool-call XML,
+  `</content>`/`</invoke>`, found and removed) plus a self-inflicted
+  near-miss of the identical artifact caught mid-write the same session —
+  see S15. Rejected: changing the file's read/write contract (e.g. one
+  file per entry, concatenated at read time) would touch every place that
+  already reads this file — `journal`'s own session-start read, this
+  session's own reconciliation read — to solve a problem S15's existing,
+  narrower proposal (a coded post-write self-check: line count increased,
+  prior top entry's date still present) already solves at far lower cost
+  with no format migration. Strengthens the case for landing S15 soon
+  rather than for a bigger rebuild.
 - **2026-08-23 (second pass, same day) — import_excel_holdings.py updated
   for master-6.xlsx's restructured workbook.** The user replaced master-5
   with a rebuilt master-6.xlsx (dropped the standalone Watchlist tab,
@@ -1053,7 +1209,17 @@ and `reports/SESSION_LOG.md`.
   doesn't support. Revisit only if a third consecutive sweep produces the
   identical unexecuted call with literally no user engagement at all,
   which would suggest the flagging isn't reaching the user, not that it
-  isn't loud enough.
+  isn't loud enough. **2026-08-24 note: this is now the third consecutive
+  sweep of the identical unexecuted AZN.ST call — but not revisited,
+  because the stated revisit condition ("no user engagement at all") did
+  not fire.** The user has been actively engaged with the system across
+  the intervening off-cycle sessions (2026-08-22/23: confirmed the real
+  ISK cash balance, executed the Valour BTC certificate swap, reviewed
+  and cleared the gold instrument, fixed several data-quality bugs) — the
+  flagging is reaching the user; this reads as a deliberate non-action on
+  this specific call, not a communication failure. The three-sweep
+  pattern is tracked as this sweep's portfolio-tending emphasis signal
+  instead (see the top of this file), not reopened as a system defect.
 - **2026-08-18 — considered and rejected: giving `council` the `Edit` tool
   instead of just `Read`/`Write`, to simplify its append to
   `data/learning_log.md`.** `council.md` already carries the exact
@@ -1234,7 +1400,7 @@ and `reports/SESSION_LOG.md`.
 - **2026-08-12 — S10 resolved, not just improved.** All three specific
   gaps the item named are directly fixed in the Watchlist as of the
   2026-08-12 Excel import: `HM B` (category `nordic_consumer_retail`),
-  `SEB A` + `SWED A` (category `nordic_financials`), and `SAAB B` (category
+  `SEB B` + `SWED A` (category `nordic_financials`), and `SAAB B` (category
   `nordic_aerospace_defense`) are all present, each with a note explaining
   what gap it fills. The `broad_index_etfs` category's US-domiciled entries
   (VOO, QQQ, IWDA) are no longer the only option — a new

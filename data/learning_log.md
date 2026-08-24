@@ -367,3 +367,50 @@ and dated; nothing here is a source of truth for a decision, that's still
   discipline.
 
 ---
+
+## 2026-08-24 — `reports/2026-08-24-council-memo.md`
+
+- **"Best company" and "best investment" came apart this sweep, and the
+  forward-vs-trailing P/E is what separated them.** Alphabet beats Meta on every
+  quality measure — 48.7% ROE vs 29.8%, 28.6% ROIC vs 18.6%, 54.8% margin vs
+  29.8%, net cash vs modest debt. And yet the memo buys Meta. The reason sits in
+  one pair of numbers: Alphabet's multiple goes 17.30 trailing → 23.28 forward,
+  Meta's goes 20.70 → 15.85. Trailing P/E divides today's price by the last
+  twelve months of *actual* earnings; forward P/E divides it by next year's
+  *estimate*. When forward is higher, the denominator is expected to shrink —
+  the market is saying earnings will fall. Two companies, same sector, same
+  week, opposite messages. Owning the better business at the worse entry is a
+  choice you should make knowingly, and this memo chose the other way.
+- **A break condition with two clauses can fire on either one, and forgetting
+  the second clause is how a position gets held forever.** ABB has been
+  HOLD-WATCH for three sweeps because everyone was watching clause one ("insider
+  selling continues into a second FI pull"), which was finally tested on
+  2026-08-23 and did *not* trigger. But the same condition, written the same
+  morning, has a second clause: *"re-test if a materially better-positioned
+  alternative surfaces via screening."* That one has been quietly satisfiable
+  for weeks. If you only ever check the dramatic clause, a condition designed to
+  produce a decision instead produces an indefinite wait. The general habit
+  worth building: when a break condition doesn't fire, re-read the whole
+  condition, not the part you were watching.
+- **Leverage is not a discount, and Volvo is the clearest example this book
+  contains.** Volvo's net-debt/EBITDA is 3.8x on a 7.6% profit margin — the
+  highest leverage and the thinnest margin of any operating company in the
+  43-name universe. The Valuation voice reads the low forward multiple (13.77)
+  as the market being cautious; the Defensive voice reads the same price as the
+  market being *correct*. What makes leverage different from any other risk is
+  that it makes losses **non-linear**: a 10% fall in revenue on a 7.6% margin
+  does not cut earnings by 10%, it can erase them, and the debt payment doesn't
+  care. That asymmetry is why "cheap on forward P/E" and "safe" are not the same
+  sentence, and why the resolution was hold-don't-add rather than buy-the-dip.
+- **Selling one share of Handelsbanken is the right call and still not worth
+  doing on its own.** Every analytical signal says exit: revenue -3.8%, forward
+  P/E above trailing, "underperform" consensus, price at 97.6% of its 52-week
+  range, break condition already satisfied. The position is worth 146 SEK. At
+  that size, courtage is a material fraction of the proceeds, and the portfolio
+  impact of the trade is 0.07%. This is a useful general reflex: before acting
+  on a strong signal, check the *size* of the thing it applies to. A correct
+  call on a trivial position is not a priority, and the honest instruction is
+  "fold it into an order you're placing anyway" rather than either pretending
+  it's urgent or pretending the signal isn't there.
+
+---

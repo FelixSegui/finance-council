@@ -11,3 +11,108 @@ You're working inside my personal finance workbook (master-6.xlsx). Please make 
 9. Watchlist tickers with a space in them (NOVO B, ERIC B, ASSA B, INVE B, INDU C, LATO B, KINV B, HEXA B, SEB A, SWED A, HM B, SAAB B, EPI B, NIBE B, TEL2 B, SECU B, LIFCO B, ADDT B, GETI B) are Excel's raw entity name, not a fetchable ticker symbol - these will fail every screen/valuation fetch until corrected. Replace each with its real exchange-suffixed symbol (e.g. 'SEB A' -> 'SEB-A.ST', 'HM B' -> 'HM-B.ST') - verify the exchange per name, don't assume .ST for all of them (e.g. Novo Nordisk is Copenhagen-listed, '.CO', not '.ST').
 
 After making a fix, leave the cell's normal formatting/data type in place - this workbook is read by a script that expects the existing column layout, so don't restructure a sheet to fix a row.
+
+
+================================================================
+COUNCIL DATA REQUESTS - added 2026-08-24
+================================================================
+
+These are ADDITIONS, not corrections. Each one is a field the analysis
+was actually blocked by this week, with the reason named. Same rules as
+above: don't restructure a sheet, keep the existing column layout, and
+add new fields as new columns/rows in the sheets named.
+
+A. WATCHLIST TAB - add the three held tickers that are missing entirely.
+   The Watchlist currently carries INVE-B.ST and ATCO-A.ST, which are the
+   WRONG SHARE CLASSES for what is actually held, and carries no
+   Handelsbanken entry at all. Add these three rows with the exact
+   symbols shown:
+     - SHB-A.ST   (Handelsbanken A)      category: nordic_large_cap
+     - INVE-A.ST  (Investor A)           category: nordic_large_cap
+     - ATCO-B.ST  (Atlas Copco B)        category: nordic_large_cap
+   Why: three of my seven individual stock holdings got no numeric
+   screening at all this week because they aren't in the screen universe.
+   Keep the existing INVE-B.ST / ATCO-A.ST rows too if you like - having
+   both share classes is fine - but the A/B class I actually own must be
+   present.
+
+B. WATCHLIST TAB - add a 52-week HIGH and 52-week LOW column for every
+   watchlist row (not just held names). Use the Stocks data type fields
+   if available.
+   Why: the contrarian/value screen's main filter is "price near its
+   52-week low," and right now that can only be run on the 7 positions I
+   already own - all 36 candidate names are invisible on this dimension.
+   This is the single highest-value addition on this list.
+
+C. WATCHLIST + STOCK DETAIL TABS - add a CURRENCY column (the reporting
+   currency of each company's financials: USD, SEK, EUR, DKK, CHF).
+   Why: free-cash-flow and market-cap figures are currently being
+   compared across companies that report in different currencies, which
+   produced obviously-wrong FCF yields this week (0.54% for Alphabet,
+   0.12% for Amazon). Note: a code-side fix for this is also identified,
+   so if it's awkward in Excel, skip it - but a currency tag on each row
+   is useful regardless.
+
+D. MANUAL DATA SHEET - add current FX rates as four labelled cells,
+   refreshed whenever you update the workbook:
+     SEK per USD, SEK per EUR, SEK per DKK, SEK per CHF
+   Why: SEK/DKK specifically blocked a Novo Nordisk decision for the
+   second consecutive week. SEK/CHF is needed to sanity-check ABB, whose
+   raw price-to-sales and price-to-book figures are known currency
+   artifacts.
+
+E. MANUAL DATA SHEET - NAV per share for the two holding companies, read
+   off their monthly IR reports (this is a repeat of request H from
+   2026-08-18, still not supplied):
+     - Investor AB (INVE-A.ST): reported NAV per share + report date
+     - Latour (LATO-B.ST): reported NAV per share + report date
+   Why: P/E is meaningless for a holding company; NAV discount/premium is
+   the only real valuation metric. Without it, Investor A cannot be
+   graded either way, and it has now been flagged as "unmeasurable" in two
+   consecutive weeks' analysis.
+
+F. CORE HOLDINGS TAB - add a REVENUE BY REGION note (even rough
+   percentages, from the annual report) for each individually-held stock:
+   AZN.ST, VOLV-B.ST, ATCO-B.ST, ALFA.ST, ABB.ST, SHB-A.ST, INVE-A.ST.
+   Why: the portfolio scorecard's "currency exposure (revenue basis)" row
+   currently reads UNKNOWN, and it's the row that matters most for
+   deciding whether adding more USD-revenue exposure is a real
+   diversification or a hidden concentration.
+
+G. FUNDS TAB (or a new one) - look-through data for the two funds:
+   top 10 holdings with weights, plus sector and country weights, for
+     - Avanza Global (54.2% of my portfolio)
+     - Avanza Auto 3  (7.3%)
+   Why: all diversification analysis currently covers only 12.6% of the
+   portfolio - the individual stock sleeve - because the two funds are
+   opaque. This is the biggest single blind spot in the whole system.
+   Annual/quarterly figures are fine; this doesn't need to be live.
+
+H. WATCHLIST/STOCK DETAIL - add an ESG or sustainability rating column if
+   the Stocks data type exposes one (any provider, any scale, just label
+   which).
+   Why: the sustainability row on the portfolio scorecard can only read
+   "no data" right now. Related open question for me to answer, not for
+   Excel: whether I actually have any exclusions at all.
+
+I. ADD TO WATCHLIST - five discretionary candidate tickers surfaced by
+   the screening agent on 2026-08-17 that have still never been added and
+   therefore have still never been screened. Add each with the category
+   and reason shown:
+     - MSCI  (US large-cap, financial data/index provider) - category:
+       us_large_cap. Reason: gap-filler against a 64% industrials
+       concentration.
+     - SNPS  (Synopsys, US semiconductor design software) - category:
+       us_large_cap. Reason: same gap-filler rationale.
+     - ARM   (Arm Holdings) - category: us_large_cap. Reason: same
+       gap-filler rationale.
+     - SCCO  (Southern Copper) - category: us_large_cap. Reason: flagged
+       as WORSENING the industrials/materials concentration - add it so
+       it can be screened and rejected on data rather than on memory.
+     - STL   (verify the correct exchange suffix before adding - this one
+       is ambiguous) - category: us_large_cap. Same rationale as SCCO.
+   Why: these were named as "screen them next sweep" on 2026-08-17 and
+   have now sat unscreened for a week with no channel to get them into
+   the workbook. This is that channel.
+
+================================================================

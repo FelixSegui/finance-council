@@ -17,6 +17,255 @@ Entry format:
 
 ---
 
+## 2026-08-24 — AZN.ST's BUY re-affirmed a third consecutive sweep, now above cost for the first time (the delay had a real, visible cost); ABB.ST escalates HOLD-WATCH → SELL on the break condition's *second* clause (a better alternative surfaced), not the insider clause everyone was watching, which went quiet instead; GOOGL reversed to HOLD-WATCH in favor of META, leaving P3's earmark note stale; crypto rallies 19-27% in six days without tripping the wire because it started underweight; a mid-sweep scout screening bug (D/E on the wrong scale) caught and fixed before it produced a false "nothing passed" result
+
+**Automated/scheduled sweep, not a live session** — no user interaction
+logged this session; every call below is a Council recommendation awaiting
+the user's review, same status as every prior sweep's headline calls until
+acted on.
+
+- **Snapshot:** data/cache/snapshots/20260824T060950.json. **Screen
+  digest:** data/cache/screens/20260824T061349-digest.csv — this
+  supersedes an earlier same-sweep run, `20260824T061207`, which used
+  `--max-debt-to-equity 2.0` against a field that is on a
+  percentage-point scale (the funnel script's own docstring example uses
+  150), producing zero Passed names; caught and corrected before any
+  persona reasoned from it. See the new S-item candidate below. **Calendar:**
+  data/cache/calendar/20260824-events.json — no collisions; nearest event
+  is Riksbank minutes tomorrow (2026-08-25), not load-bearing for any call
+  this sweep. No fresh Excel import this sweep (still 2026-08-23's
+  master-6.xlsx dry run).
+- **Memo:** reports/2026-08-24-council-memo.md
+- **Headline calls:**
+  1. **BUY 3 shares AZN.ST (~4,682 SEK) from ISK cash** → confidence
+     **High** → horizon **Long**. Third consecutive sweep as the Council's
+     top call, and the first on which the position sits above blended cost
+     (+3.4%, 1,509.70 basis) rather than below it.
+  2. **SELL all 4 shares ABB.ST (~3,775 SEK)** → confidence **Medium** →
+     horizon **Medium**. Rotation on relative merit, not a broken
+     business — see the reconciliation note below on which clause of the
+     break condition actually fired.
+  3. **BUY 1 share META (~5,200 SEK), funded by ABB proceeds + ~1,425 SEK
+     of ISK cash — no PayPal dependency** → confidence **Medium** →
+     horizon **Medium**. Explicitly reverses last sweep's #2 pick (GOOGL)
+     in favor of this name; P3's OPEN_ITEMS.md note still earmarks the
+     PayPal conversion for GOOGL and needs updating.
+  4. **Execute P3 (PayPal conversion), now destined for META not GOOGL** →
+     confidence **High** → horizon **Long**. Third consecutive sweep of
+     unexecuted identical advice.
+  5. **No crypto action** → confidence **High** → horizon **Medium**.
+     9.37% vs a 10% target is not a rebalancing trigger, and Fear&Greed 73
+     after a straight-line +19-27% six-day move is not the moment to close
+     a 0.63pp gap.
+- **User decisions:** none — automated/scheduled sweep, no live user
+  interaction this session.
+- **Reconciliation — the last entry with real headline calls to reconcile
+  against is 2026-08-18 (the two 2026-08-23 entries were off-cycle
+  backlog/hygiene sessions with explicitly "none" headline calls — nothing
+  to reconcile there), checked against this sweep's snapshot and this
+  session's Council/portfolio output:**
+  - **Call 1 (BUY 3 AZN.ST from ISK cash) — still unexecuted, now a third
+    consecutive sweep, and this is the sweep where the cost of not
+    executing became visible rather than theoretical.** `portfolio.json`
+    still shows 5 shares. The position has now moved from below cost
+    (22.1st percentile of range on 2026-08-18) to above it (+3.4%, 35th
+    percentile) — the same shares that were available at a discount three
+    sweeps ago now cost more to buy, on unchanged fundamentals (six of six
+    voices this sweep still rank it #1). The call did not age badly; the
+    non-execution has a real, quantifiable price tag for the first time.
+  - **Call 2 (GOOGL — new candidate, best evidence quality, funding tied
+    to PayPal/contribution) — EXPLICITLY REVERSED this sweep, not merely
+    superseded by new data.** Today's memo puts GOOGL at #5, HOLD-WATCH,
+    and picks META instead for the same money: META's forward multiple is
+    *falling* (20.70→15.85) while GOOGL's is *rising* (17.30→23.28) — the
+    Valuation voice's own read is that the market expects GOOGL's earnings
+    to fall and META's to climb, which is the opposite of what would
+    justify GOOGL as the better next-dollar investment even though Quality
+    ranks it the better business by a wide margin (ROE 48.7 vs 29.8, ROIC
+    28.6 vs 18.6). This is a genuine methodology-driven reversal on fresh
+    data, not a contradiction to paper over — but it leaves a real loose
+    end: **OPEN_ITEMS.md's P3 entry still names GOOGL as the PayPal
+    conversion's destination and was not updated before this sweep ran.**
+    Flagged in today's memo; needs a direct edit, not another mention.
+  - **Call 3 (deploy the then-11,183 SEK ISK cash after the 2026-08-20
+    Riksbank decision) — the cash figure firmed up in the interim
+    (P8/S12-D4 closed 2026-08-23, broker-confirmed 11,288 SEK) and today's
+    memo spends it directly: ~4,682 SEK to AZN.ST, ~1,425 SEK to META,
+    ~5,182 SEK left over.** The Riksbank-decision timing condition is now
+    moot (the decision landed 2026-08-20, four days before this sweep) and
+    was correctly not re-litigated.
+  - **Call 4 (D4 needs the user's answer, gates 11,183/~7,917/0 SEK) —
+    CLOSED 2026-08-23, reading 1 adopted (target governs sizing;
+    `profit_recycling_rule` governs only the surplus above target).** This
+    happened without a live user session — Council's own recommendation
+    across two sweeps carried no dissent and real broker data made the
+    question moot in practice (P8 closed the same day). Worth naming
+    plainly: this is a decision that got made by attrition/default rather
+    than an explicit user choice, which is a fine outcome here (no
+    dissent, no real money was mis-sized while it was open) but is a
+    different shape from D3, which the user picked against Council's own
+    recommendation. Not every open decision resolves the same way.
+  - **ABB.ST's HOLD-WATCH-pending-second-FI-pull call from 2026-08-18 —
+    the pull ran 2026-08-23 as scheduled (no escalation, the insider
+    pattern went quiet), and today's memo nonetheless escalates ABB to
+    SELL. This is worth stating precisely, because it would be easy to
+    misread as the insider clause firing after all — it did not.** ABB's
+    written break condition has two clauses: (a) insider selling continues
+    into a second pull, and (b) a materially better-positioned Nordic-
+    industrial alternative surfaces via screening. Clause (a) tested
+    negative 2026-08-23 and closes in ABB's favour. Clause (b) is what
+    fires today's SELL — this sweep's screen surfaced better-positioned
+    alternatives, and per today's memo section 2, that clause "has now been
+    sitting satisfiable for three sweeps" without anyone acting on it. This
+    is a **deliberate, reasoned escalation on the condition's other leg**,
+    not a data contradiction or a Council flip-flop — but it is also a
+    finding for `meta`: a two-clause break condition where everyone
+    watches the dramatic clause and forgets the quieter one is exactly how
+    a HOLD-WATCH becomes an indefinite hold. Named directly in this
+    sweep's own Learning Notes for that reason.
+  - **SHB-A.ST — third-consecutive-sweep SELL flag, correctly still sized
+    as noise.** Same call as 2026-08-18 (fold into the next order round,
+    not a standalone trade) — one share, 146.05 SEK, 0.07% of the
+    portfolio. Unchanged in substance; the size argument still holds and
+    the position still has not been sold.
+- **Other findings this sweep, not tied to a specific prior call:**
+  - **Crypto rallied hard (BTC +18.8%, ETH +27.4% in six days) and did not
+    trip the 10% target wire, because the position started underweight
+    (9.37% → still 9.37% after the move, per the memo's own read) rather
+    than at target.** A ~2,500 SEK gain on the ETH wallet alone. No action
+    taken; Fear&Greed moved from 29 to 73 over the same window, read as
+    froth rather than confirmation, and the position's stored `key_risks`
+    text (which cites Fear=29 as a reason for caution) is now stale and
+    flagged for correction at the next full thesis review — not urgent,
+    the thesis itself was never regime-dependent.
+  - **A real mid-sweep data-quality catch, not a persona finding:**
+    `scout`'s first screen run this sweep used a debt-to-equity ceiling
+    (2.0) against a field reported on a percentage-point scale, silently
+    returning zero Passed candidates — indistinguishable from "a genuinely
+    quiet market" without checking the flag's scale against the funnel
+    script's own documented example (150). Corrected mid-sweep; the
+    corrected digest (`20260824T061349`) is what every persona actually
+    reasoned from. New S-item candidate for `meta`, not yet formalized —
+    range-validate the flag at parse time so a sub-5 D/E ceiling is
+    rejected with a clear message instead of silently returning an empty
+    screen.
+  - **A file-integrity finding in this very log, found while reading it
+    for this entry.** `reports/SESSION_LOG.md` previously ended with two
+    stray lines — literally `</content>` and `</invoke>` — leaked
+    tool-call syntax that had been written into the file itself rather
+    than staying inside a prior write operation's own transcript. This is
+    not a log entry and carries no portfolio information; it has been
+    removed as part of this write rather than preserved as a "past entry"
+    (the append-only rule protects entries with content, not accidental
+    corruption artifacts). Flagged directly for `meta`/S15: `journal`'s
+    own instruction file already documents three consecutive sweeps of
+    silent-corruption risk on this exact file (the 2026-08-17 full-rewrite
+    incident) and recommends a post-write self-check (line-count increase,
+    prior top entry's date still present) that still has not been coded
+    into `journal.md` itself, only performed ad hoc. This is now a second,
+    independently-discovered corruption instance on the same file, of a
+    different kind (leaked XML rather than a full overwrite) — stronger
+    evidence the self-check needs to actually land in the instruction
+    text, not just be re-derived by hand indefinitely. **Self-referential
+    note added during this same write:** the first attempt to write this
+    very entry re-introduced the identical artifact by mistake; caught by
+    a post-write read-back and corrected before this sweep closed — itself
+    a live demonstration of exactly why S15's proposed automated
+    self-check (not a manual eyeball) is the right fix, not a one-off
+    carefulness fix.
+  - **Portfolio scorecard, largely stable.** Equity 71.11% (WATCH vs
+    85% target, gap mostly decided-but-unexecuted — P3 + idle ISK cash,
+    not a fundamental mismatch); Industrials 64.2% of the stock sleeve and
+    Sweden 58.4% both still ACT; 100% large-cap and ESG-UNKNOWN both named
+    again, neither treated as a reason to force a purchase this sweep.
+    Fee drag and wrapper both still OK/closed, no further comment by
+    design.
+  - **Three held tickers absent from the screen digest entirely** (SHB-A.ST,
+    INVE-A.ST, ATCO-B.ST — the Watchlist carries wrong share classes/no
+    entry) — three of seven individual holdings got no numeric triage from
+    any of the six voices this sweep, reasoned about from `valuation`'s
+    prose alone. Rolled into this sweep's data-gap summary for `meta`
+    alongside the standing S17 (digest currency field) gap, now confirmed
+    degrading the Valuation voice's FCF-yield proxy for a second
+    consecutive sweep.
+- **Open items carried forward (current `OPEN_ITEMS.md` state, plus this
+  sweep's new decisions):**
+  - **P1** — ETH cost basis, blocked on user.
+  - **P3** — PayPal routing, decided, pending execution, third consecutive
+    sweep unexecuted. **Destination changed this sweep: META, not GOOGL —
+    OPEN_ITEMS.md's own P3 note is now stale and needs a direct edit.**
+  - **P5/S6** — Investor A NAV discount/premium still has no source;
+    second consecutive sweep a voice wanted to act on INVE-A.ST and
+    couldn't. Now also **D-b** below.
+  - **P6** — rotation review substantively done (ABB now escalated to
+    SELL this sweep, see above); two flags remain open for future
+    contribution decisions (Spiltan/Investor A overlap, Swedbank Robur
+    Technology A concentration).
+  - **P7** — gold, instrument verified and cleared 2026-08-23, user
+    deferred ("not right now"). Not reopened.
+  - **P9** — AZN.ST phantom 6th-share Excel ledger row, open, blocks
+    nothing today (CONFIRMED-marker protected), needs the source-ledger
+    fix.
+  - **P10** — possible duplicate 5,000 SEK deposit (2026-08-17 vs
+    2026-08-22), open, needs the user's confirmation before either row is
+    touched. **Relevant to today's valuations.csv note below: this
+    ambiguity is exactly why net_contribution_since_last_sek is recorded
+    as unconfirmed this sweep rather than guessed.**
+  - **New — D-a:** what happens to ABB's freed-up slot (sell-ABB-buy-META
+    per this memo's call, vs. buy-more-AZN, vs. leave in cash) — three
+    options, none forced by the data.
+  - **New — D-b:** P5/S6's Investor A measurement gap — get the NAV per
+    share (Excel request H, ~10 min), sell on absence-of-evidence, or
+    keep holding and stop re-flagging.
+  - **New — D-c:** does the user have any stated exclusions
+    (sectors/countries/ESG lines)? `investor_profile.json.constraints`
+    reads "None stated yet," which is why the ESG scorecard row can only
+    ever read UNKNOWN. Directly relevant right now: EVO.ST (gambling) is
+    this sweep's most interesting contrarian screen result and would be
+    excluded outright under common exclusion lines.
+  - **S-items:** S1 (Valour certificate has a real ticker, `BTC0E.AS`, but
+    Yahoo's price is ~7x off the real value — not wired up as a live feed);
+    S6 (see P5/D-b above); S9(a)/(b) (cross-field plausibility,
+    purchase-without-thesis flags — still not built, (c) fixed 2026-08-23);
+    S12 (small gap — `risk_simulation_base` should be split from
+    `investable_capital_convention`, not yet done); S13 (CoinGecko
+    retry/backoff, no incident this sweep, still open on the strength of
+    the earlier confirmed incident); S15 (journal-write safety — **a
+    second, independent corruption instance found and fixed this sweep,
+    see above, and a third self-inflicted near-miss caught mid-write on
+    the same file the same session**; the SESSION_LOG.md/valuations.csv
+    behavior itself was executed correctly again this sweep, ad hoc,
+    without the instruction file changing — now a fourth-plus instance of
+    "the agent keeps re-deriving the right behavior by hand"); S16 (no
+    dependency manifest); S17 (digest currency field — confirmed degrading
+    the Valuation voice's FCF-yield proxy for a second consecutive sweep
+    this time, unchanged root cause, fix already identified in code); S18
+    (scout's discretionary candidates have no channel into the Watchlist
+    request — no new evidence this sweep). **New S-item candidate for
+    `meta` to formalize:** `scripts/funnel/screen_candidates.py`'s
+    `--max-debt-to-equity` flag accepts a decimal-scale value silently and
+    returns an empty screen rather than erroring — see the mid-sweep catch
+    above.
+  - Blocking-question rule check: no open item currently holds blocking
+    status; the memo correctly did not open with one (and explicitly
+    corrected a stale scheduled-task premise that it should).
+
+**Reminder / action taken directly (S15):** the portfolio was valued this
+sweep at **221,587.78 SEK** (full-portfolio convention, from this session's
+`portfolio` agent output) — the `data/valuations.csv` row has been appended
+directly per S15, not just reminded. **net_contribution_since_last_sek is
+recorded as unconfirmed, not guessed:** no new contribution was confirmed
+logged in `portfolio.json`/`data/transactions.csv` between 2026-08-18 and
+today, and P10's possible duplicate 5,000 SEK deposit remains an open,
+unconfirmed question that could — if it turns out to be a real second
+deposit rather than a mis-dated duplicate — retroactively mean some of the
+period's cash movement was new money rather than existing capital. See
+that file's row and note for the full accounting of what changed (data
+corrections during the 2026-08-22/23 off-cycle sessions vs. this week's
+actual market movement).
+
+---
+
 ## 2026-08-23 (second entry, same day) — master-6.xlsx migration: Universe-tab watchlist parser built, two real bugs fixed (false "missing" flag on a closed position, fundamentals silently reverting to a known-bad Excel value), AZN.ST's phantom 6th share and a possible duplicate deposit surfaced as user questions (P9/P10)
 - **Snapshot:** none new (fundamentals came from the user's master-6.xlsx, not a fresh fetch)
 - **Memo:** no memo — off-cycle follow-up, not a full sweep
@@ -1395,5 +1644,3 @@ through 2026-08-03) is the real contemporaneous record up to that date.
   copy going stale.
 
 ---
-</content>
-</invoke>

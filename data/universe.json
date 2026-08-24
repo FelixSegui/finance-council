@@ -3,8 +3,8 @@
   "generated_utc": "2026-08-24T20:39:14.977418+00:00",
   "refresh_interval_days": 30,
   "counts": {
-    "total": 538,
-    "manual": 35,
+    "total": 624,
+    "manual": 121,
     "auto": 503
   },
   "sources": [
@@ -22,6 +22,20 @@
       "region": "US",
       "cik": "0001090872",
       "source": "sp500"
+    },
+    "AAK.ST": {
+      "name": "AAK AB (publ.)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "AAPL": {
       "name": "Apple Inc.",
@@ -80,6 +94,20 @@
       "cik": "0000796343",
       "source": "sp500"
     },
+    "ADDT-B.ST": {
+      "name": "Addtech AB (publ.)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "ADI": {
       "name": "Analog Devices",
       "sector": "Information Technology",
@@ -136,6 +164,20 @@
       "cik": "0000004977",
       "source": "sp500"
     },
+    "AFRY.ST": {
+      "name": "Afry AB",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "AIG": {
       "name": "American International Group",
       "sector": "Financials",
@@ -172,12 +214,18 @@
       "source": "sp500"
     },
     "ALFA.ST": {
-      "name": "Alfa Laval",
+      "name": "Alfa Laval AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "ALGN": {
       "name": "Align Technology",
@@ -206,6 +254,20 @@
       "region": "US",
       "cik": "0000006951",
       "source": "sp500"
+    },
+    "AMBEA.ST": {
+      "name": "Ambea AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "AMCR": {
       "name": "Amcor",
@@ -319,6 +381,20 @@
       "cik": "0001521332",
       "source": "sp500"
     },
+    "AQ.ST": {
+      "name": "AQ Group AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "ARE": {
       "name": "Alexandria Real Estate Equities",
       "sector": "Real Estate",
@@ -334,7 +410,7 @@
       "source": "sp500"
     },
     "ASML": {
-      "name": null,
+      "name": "ASML Holding N.V.",
       "sector": null,
       "region": "Non-US ADR",
       "cik": null,
@@ -342,28 +418,46 @@
       "source": "manual"
     },
     "ASSA-B.ST": {
-      "name": null,
+      "name": "ASSA ABLOY AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "ATCO-A.ST": {
-      "name": null,
+      "name": "Atlas Copco AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "ATCO-B.ST": {
-      "name": "Atlas Copco B",
+      "name": "Atlas Copco AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "ATO": {
       "name": "Atmos Energy",
@@ -371,6 +465,20 @@
       "region": "US",
       "cik": "0000731802",
       "source": "sp500"
+    },
+    "ATT.ST": {
+      "name": "Attendo AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "AVGO": {
       "name": "Broadcom",
@@ -393,6 +501,20 @@
       "cik": "0001410636",
       "source": "sp500"
     },
+    "AXFO.ST": {
+      "name": "Axfood AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "AXON": {
       "name": "Axon Enterprise",
       "sector": "Industrials",
@@ -407,13 +529,33 @@
       "cik": "0000004962",
       "source": "sp500"
     },
-    "AZN.ST": {
-      "name": "AstraZeneca",
+    "AZA.ST": {
+      "name": "Avanza Bank Holding AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "AZN.ST": {
+      "name": "AstraZeneca PLC",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "AZO": {
       "name": "AutoZone",
@@ -435,6 +577,20 @@
       "region": "US",
       "cik": "0000070858",
       "source": "sp500"
+    },
+    "BALD-B.ST": {
+      "name": "Fastighets AB Balder (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "BALL": {
       "name": "Ball Corporation",
@@ -464,12 +620,40 @@
       "cik": "0000010795",
       "source": "sp500"
     },
+    "BEIJ-B.ST": {
+      "name": "Beijer Ref AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "BEN": {
       "name": "Franklin Resources",
       "sector": "Financials",
       "region": "US",
       "cik": "0000038777",
       "source": "sp500"
+    },
+    "BETS-B.ST": {
+      "name": "Betsson AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "BF.B": {
       "name": "Brown\u2013Forman",
@@ -485,12 +669,40 @@
       "cik": "0001996862",
       "source": "sp500"
     },
+    "BICO.ST": {
+      "name": "BICO Group AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "BIIB": {
       "name": "Biogen",
       "sector": "Health Care",
       "region": "US",
       "cik": "0000875045",
       "source": "sp500"
+    },
+    "BILI-A.ST": {
+      "name": "Bilia AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "BKNG": {
       "name": "Booking Holdings",
@@ -534,6 +746,48 @@
       "cik": "0001390777",
       "source": "sp500"
     },
+    "BOL.ST": {
+      "name": "Boliden AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "BONAV-B.ST": {
+      "name": "Bonava AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "BOOZT.ST": {
+      "name": "Boozt AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "BR": {
       "name": "Broadridge Financial Solutions",
       "sector": "Industrials",
@@ -563,7 +817,7 @@
       "source": "sp500"
     },
     "BTC-USD": {
-      "name": null,
+      "name": "Bitcoin USD",
       "sector": null,
       "region": "Global",
       "cik": null,
@@ -577,6 +831,34 @@
       "cik": null,
       "asset_class": "crypto",
       "source": "manual"
+    },
+    "BULTEN.ST": {
+      "name": "Bulten AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "BURE.ST": {
+      "name": "Bure Equity AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "BX": {
       "name": "Blackstone Inc.",
@@ -613,6 +895,20 @@
       "cik": "0001783180",
       "source": "sp500"
     },
+    "CAST.ST": {
+      "name": "Castellum AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "CASY": {
       "name": "Casey's",
       "sector": "Consumer Staples",
@@ -626,6 +922,20 @@
       "region": "US",
       "cik": "0000018230",
       "source": "sp500"
+    },
+    "CATE.ST": {
+      "name": "Catena AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "CB": {
       "name": "Chubb Limited",
@@ -746,6 +1056,20 @@
       "cik": "0000021665",
       "source": "sp500"
     },
+    "CLAS-B.ST": {
+      "name": "Clas Ohlson AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "CLX": {
       "name": "Clorox",
       "sector": "Consumer Staples",
@@ -843,6 +1167,20 @@
       "region": "US",
       "cik": "0001140859",
       "source": "sp500"
+    },
+    "CORE-B.ST": {
+      "name": "Corem Property Group AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "COST": {
       "name": "Costco",
@@ -1047,6 +1385,20 @@
       "cik": "0000313616",
       "source": "sp500"
     },
+    "DIOS.ST": {
+      "name": "Di\u00f6s Fastigheter AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "DIS": {
       "name": "Walt Disney Company (The)",
       "sector": "Communication Services",
@@ -1074,6 +1426,20 @@
       "region": "US",
       "cik": "0000765880",
       "source": "sp500"
+    },
+    "DOM.ST": {
+      "name": "Dometic Group AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "DOV": {
       "name": "Dover Corporation",
@@ -1116,6 +1482,20 @@
       "region": "US",
       "cik": "0001326160",
       "source": "sp500"
+    },
+    "DUNI.ST": {
+      "name": "Duni AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "DVA": {
       "name": "DaVita",
@@ -1187,12 +1567,54 @@
       "cik": "0000827052",
       "source": "sp500"
     },
+    "EKTA-B.ST": {
+      "name": "Elekta AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "EL": {
       "name": "Est\u00e9e Lauder Companies (The)",
       "sector": "Consumer Staples",
       "region": "US",
       "cik": "0001001250",
       "source": "sp500"
+    },
+    "ELUX-A.ST": {
+      "name": "AB Electrolux (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "ELUX-B.ST": {
+      "name": "AB Electrolux (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "ELV": {
       "name": "Elevance Health",
@@ -1215,12 +1637,54 @@
       "cik": "0000032604",
       "source": "sp500"
     },
+    "ENEA.ST": {
+      "name": "Enea AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "EOG": {
       "name": "EOG Resources",
       "sector": "Energy",
       "region": "US",
       "cik": "0000821189",
       "source": "sp500"
+    },
+    "EPI-A.ST": {
+      "name": "Epiroc AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "EPI-B.ST": {
+      "name": "Epiroc AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "EQIX": {
       "name": "Equinix",
@@ -1236,13 +1700,33 @@
       "cik": "0000033213",
       "source": "sp500"
     },
-    "ERIC-B.ST": {
-      "name": null,
+    "EQT.ST": {
+      "name": "EQT AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "ERIC-B.ST": {
+      "name": "Telefonaktiebolaget LM Ericsson (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "ERIE": {
       "name": "Erie Indemnity",
@@ -1265,8 +1749,22 @@
       "cik": "0000920522",
       "source": "sp500"
     },
+    "ESSITY-B.ST": {
+      "name": "Essity AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "ETH-USD": {
-      "name": null,
+      "name": "Ethereum USD",
       "sector": null,
       "region": "Global",
       "cik": null,
@@ -1288,7 +1786,7 @@
       "source": "sp500"
     },
     "EUNL.DE": {
-      "name": null,
+      "name": "iShares Core MSCI World UCITS ETF USD (Acc)",
       "sector": null,
       "region": "Global",
       "cik": null,
@@ -1296,12 +1794,18 @@
       "source": "manual"
     },
     "EVO.ST": {
-      "name": null,
+      "name": "Evolution AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "EVRG": {
       "name": "Evergy",
@@ -1358,6 +1862,34 @@
       "region": "US",
       "cik": "0000037996",
       "source": "sp500"
+    },
+    "FABG.ST": {
+      "name": "Fabege AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "FAG.ST": {
+      "name": "Fagerhult Group AB",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "FANG": {
       "name": "Diamondback Energy",
@@ -1428,6 +1960,20 @@
       "region": "US",
       "cik": "0000814547",
       "source": "sp500"
+    },
+    "FING-B.ST": {
+      "name": "Fingerprint Cards AB",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "FIS": {
       "name": "Fidelity National Information Services",
@@ -1506,8 +2052,36 @@
       "cik": "0001659166",
       "source": "sp500"
     },
+    "G5EN.ST": {
+      "name": "G5 Entertainment AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "GARO.ST": {
+      "name": "Garo Aktiebolag (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "GC=F": {
-      "name": null,
+      "name": "Gold Dec 26",
       "sector": null,
       "region": "Global",
       "cik": null,
@@ -1548,6 +2122,20 @@
       "region": "US",
       "cik": "0000849399",
       "source": "sp500"
+    },
+    "GETI-B.ST": {
+      "name": "Getinge AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "GEV": {
       "name": "GE Vernova",
@@ -1654,6 +2242,20 @@
       "cik": "0000045012",
       "source": "sp500"
     },
+    "HANZA.ST": {
+      "name": "Hanza AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "HAS": {
       "name": "Hasbro",
       "sector": "Consumer Discretionary",
@@ -1683,12 +2285,18 @@
       "source": "sp500"
     },
     "HEXA-B.ST": {
-      "name": null,
+      "name": "Hexagon AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "HIG": {
       "name": "Hartford (The)",
@@ -1712,12 +2320,32 @@
       "source": "sp500"
     },
     "HM-B.ST": {
-      "name": null,
+      "name": "H & M Hennes & Mauritz AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "HOFI.ST": {
+      "name": "Hoist Finance AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "HON": {
       "name": "Honeywell Technologies",
@@ -1796,6 +2424,20 @@
       "cik": "0000049071",
       "source": "sp500"
     },
+    "HUM.ST": {
+      "name": "Humana AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "HWM": {
       "name": "Howmet Aerospace",
       "sector": "Industrials",
@@ -1852,13 +2494,47 @@
       "cik": "0000879169",
       "source": "sp500"
     },
-    "INDU-C.ST": {
-      "name": null,
+    "INDT.ST": {
+      "name": "Indutrade AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "INDU-A.ST": {
+      "name": "AB Industriv\u00e4rden (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "INDU-C.ST": {
+      "name": "AB Industriv\u00e4rden (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "INTC": {
       "name": "Intel",
@@ -1883,12 +2559,18 @@
       "source": "manual"
     },
     "INVE-B.ST": {
-      "name": null,
+      "name": "Investor AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "INVH": {
       "name": "Invitation Homes",
@@ -1896,6 +2578,20 @@
       "region": "US",
       "cik": "0001687229",
       "source": "sp500"
+    },
+    "INWI.ST": {
+      "name": "Inwido AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "IP": {
       "name": "International Paper",
@@ -1926,7 +2622,7 @@
       "source": "sp500"
     },
     "IS3N.DE": {
-      "name": null,
+      "name": "iShares Core MSCI EM IMI UCITS ETF USD (Acc)",
       "sector": null,
       "region": "Global",
       "cik": null,
@@ -1996,6 +2692,20 @@
       "cik": "0000779152",
       "source": "sp500"
     },
+    "JM.ST": {
+      "name": "JM AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "JNJ": {
       "name": "Johnson & Johnson",
       "sector": "Health Care",
@@ -2046,12 +2756,18 @@
       "source": "sp500"
     },
     "KINV-B.ST": {
-      "name": null,
+      "name": "Kinnevik AB",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "KKR": {
       "name": "KKR & Co.",
@@ -2081,6 +2797,20 @@
       "cik": "0001506307",
       "source": "sp500"
     },
+    "KNOW.ST": {
+      "name": "Knowit AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "KO": {
       "name": "Coca-Cola Company (The)",
       "sector": "Consumer Staples",
@@ -2109,13 +2839,33 @@
       "cik": "0000060086",
       "source": "sp500"
     },
-    "LATO-B.ST": {
-      "name": null,
+    "LAGR-B.ST": {
+      "name": "Lagercrantz Group AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "LATO-B.ST": {
+      "name": "Investment AB Latour (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "LDOS": {
       "name": "Leidos",
@@ -2144,6 +2894,20 @@
       "region": "US",
       "cik": "0000202058",
       "source": "sp500"
+    },
+    "LIFCO-B.ST": {
+      "name": "Lifco AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "LII": {
       "name": "Lennox International",
@@ -2187,6 +2951,20 @@
       "cik": "0000352541",
       "source": "sp500"
     },
+    "LOOMIS.ST": {
+      "name": "Loomis AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "LOW": {
       "name": "Lowe's",
       "sector": "Consumer Discretionary",
@@ -2209,12 +2987,18 @@
       "source": "sp500"
     },
     "LUND-B.ST": {
-      "name": null,
+      "name": "L E Lundbergf\u00f6retagen AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "LUV": {
       "name": "Southwest Airlines",
@@ -2313,6 +3097,14 @@
       "region": "US",
       "cik": "0001613103",
       "source": "sp500"
+    },
+    "MEKO.ST": {
+      "name": "Meko AB",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual"
     },
     "MET": {
       "name": "MetLife",
@@ -2447,6 +3239,20 @@
       "cik": "0000068505",
       "source": "sp500"
     },
+    "MSON-A.ST": {
+      "name": "Midsona AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "MTB": {
       "name": "M&T Bank",
       "sector": "Financials",
@@ -2461,12 +3267,82 @@
       "cik": "0001037646",
       "source": "sp500"
     },
+    "MTG-B.ST": {
+      "name": "Modern Times Group MTG AB",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "MTRS.ST": {
+      "name": "Munters Group AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "MU": {
       "name": "Micron Technology",
       "sector": "Information Technology",
       "region": "US",
       "cik": "0000723125",
       "source": "sp500"
+    },
+    "MYCR.ST": {
+      "name": "Mycronic AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "NCC-A.ST": {
+      "name": "NCC AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "NCC-B.ST": {
+      "name": "NCC AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "NCLH": {
       "name": "Norwegian Cruise Line Holdings",
@@ -2517,12 +3393,40 @@
       "cik": "0001111711",
       "source": "sp500"
     },
+    "NIBE-B.ST": {
+      "name": "NIBE Industrier AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "NKE": {
       "name": "Nike, Inc.",
       "sector": "Consumer Discretionary",
       "region": "US",
       "cik": "0000320187",
       "source": "sp500"
+    },
+    "NOBI.ST": {
+      "name": "Nobia AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "NOC": {
       "name": "Northrop Grumman",
@@ -2531,8 +3435,36 @@
       "cik": "0001133421",
       "source": "sp500"
     },
+    "NOLA-B.ST": {
+      "name": "Nolato AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "NOTE.ST": {
+      "name": "NOTE AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "NOVO-B.CO": {
-      "name": null,
+      "name": "Novo Nordisk A/S",
       "sector": null,
       "region": "Nordic",
       "cik": null,
@@ -2665,6 +3597,20 @@
       "cik": "0000898173",
       "source": "sp500"
     },
+    "ORX.ST": {
+      "name": "Orexo AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "OTIS": {
       "name": "Otis Worldwide",
       "sector": "Industrials",
@@ -2706,6 +3652,20 @@
       "region": "US",
       "cik": "0001004980",
       "source": "sp500"
+    },
+    "PEAB-B.ST": {
+      "name": "Peab AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "PEG": {
       "name": "Public Service Enterprise Group",
@@ -2797,6 +3757,20 @@
       "region": "US",
       "cik": "0000713676",
       "source": "sp500"
+    },
+    "PNDX-B.ST": {
+      "name": "Pandox AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "PNR": {
       "name": "Pentair",
@@ -2897,12 +3871,40 @@
       "source": "sp500"
     },
     "QQQ": {
-      "name": null,
+      "name": "Invesco QQQ Trust",
       "sector": null,
       "region": "Global",
       "cik": null,
       "asset_class": "etf",
       "source": "manual"
+    },
+    "RATO-B.ST": {
+      "name": "Ratos AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "RAY-B.ST": {
+      "name": "RaySearch Laboratories AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "RCL": {
       "name": "Royal Caribbean Group",
@@ -3010,20 +4012,46 @@
       "source": "sp500"
     },
     "SAAB-B.ST": {
-      "name": null,
+      "name": "Saab AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "SAND.ST": {
-      "name": null,
+      "name": "Sandvik AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "SAVE.ST": {
+      "name": "Nordnet AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "SBAC": {
       "name": "SBA Communications",
@@ -3039,6 +4067,20 @@
       "cik": "0000829224",
       "source": "sp500"
     },
+    "SCA-B.ST": {
+      "name": "Svenska Cellulosa Aktiebolaget SCA (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "SCHW": {
       "name": "Charles Schwab Corporation",
       "sector": "Financials",
@@ -3047,15 +4089,35 @@
       "source": "sp500"
     },
     "SEB-A.ST": {
-      "name": null,
+      "name": "Skandinaviska Enskilda Banken AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "SECT-B.ST": {
+      "name": "Sectra AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "SGOL": {
-      "name": null,
+      "name": "abrdn Physical Gold Shares ETF",
       "sector": null,
       "region": "Global",
       "cik": null,
@@ -3063,12 +4125,32 @@
       "source": "manual"
     },
     "SHB-A.ST": {
-      "name": "Handelsbanken A (stock)",
+      "name": "Svenska Handelsbanken AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "SHOT.ST": {
+      "name": "Scandic Hotels Group AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "SHW": {
       "name": "Sherwin-Williams",
@@ -3077,12 +4159,54 @@
       "cik": "0000089800",
       "source": "sp500"
     },
+    "SINCH.ST": {
+      "name": "Sinch AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "SJM": {
       "name": "J.M. Smucker Company (The)",
       "sector": "Consumer Staples",
       "region": "US",
       "cik": "0000091419",
       "source": "sp500"
+    },
+    "SKA-B.ST": {
+      "name": "Skanska AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "SKF-B.ST": {
+      "name": "AB SKF (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "SLB": {
       "name": "Schlumberger",
@@ -3126,6 +4250,14 @@
       "cik": "0000092122",
       "source": "sp500"
     },
+    "SOBI.ST": {
+      "name": "Swedish Orphan Biovitrum AB",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual"
+    },
     "SOLV": {
       "name": "Solventum",
       "sector": "Health Care",
@@ -3148,7 +4280,7 @@
       "source": "sp500"
     },
     "SPY": {
-      "name": null,
+      "name": "State Street SPDR S&P 500 ETF Trust",
       "sector": null,
       "region": "Global",
       "cik": null,
@@ -3175,6 +4307,20 @@
       "region": "US",
       "cik": "0001022671",
       "source": "sp500"
+    },
+    "STORY-B.ST": {
+      "name": "Storytel AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "STT": {
       "name": "State Street Corporation",
@@ -3204,13 +4350,33 @@
       "cik": "0002005951",
       "source": "sp500"
     },
-    "SWED-A.ST": {
-      "name": null,
+    "SWEC-B.ST": {
+      "name": "Sweco AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "SWED-A.ST": {
+      "name": "Swedbank AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "SWK": {
       "name": "Stanley Black & Decker",
@@ -3239,6 +4405,20 @@
       "region": "US",
       "cik": "0000310764",
       "source": "sp500"
+    },
+    "SYSR.ST": {
+      "name": "Systemair AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "SYY": {
       "name": "Sysco",
@@ -3288,6 +4468,34 @@
       "region": "US",
       "cik": "0001385157",
       "source": "sp500"
+    },
+    "TEL2-B.ST": {
+      "name": "Tele2 AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "TELIA.ST": {
+      "name": "Telia Company AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "TER": {
       "name": "Teradyne",
@@ -3352,6 +4560,20 @@
       "cik": "0001116132",
       "source": "sp500"
     },
+    "TREL-B.ST": {
+      "name": "Trelleborg AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "TRGP": {
       "name": "Targa Resources",
       "sector": "Energy",
@@ -3366,12 +4588,40 @@
       "cik": "0000864749",
       "source": "sp500"
     },
+    "TROAX.ST": {
+      "name": "Troax Group AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
     "TROW": {
       "name": "T. Rowe Price",
       "sector": "Financials",
       "region": "US",
       "cik": "0001113169",
       "source": "sp500"
+    },
+    "TRUE-B.ST": {
+      "name": "Truecaller AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "TRV": {
       "name": "Travelers Companies (The)",
@@ -3395,7 +4645,7 @@
       "source": "sp500"
     },
     "TSM": {
-      "name": null,
+      "name": "Taiwan Semiconductor Manufacturing Company Limited",
       "sector": null,
       "region": "Non-US ADR",
       "cik": null,
@@ -3570,13 +4820,61 @@
       "cik": "0000906107",
       "source": "sp500"
     },
-    "VOLV-B.ST": {
-      "name": "Volvo B",
+    "VNV.ST": {
+      "name": "VNV Global AB (publ)",
       "sector": null,
       "region": "Nordic",
       "cik": null,
       "asset_class": "equity",
-      "source": "manual"
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "VOLCAR-B.ST": {
+      "name": "Volvo Car AB (publ.)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "VOLV-B.ST": {
+      "name": "AB Volvo (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
+    },
+    "VPLAY-A.ST": {
+      "name": "Viaplay Group AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "VRSK": {
       "name": "Verisk Analytics",
@@ -3628,7 +4926,7 @@
       "source": "sp500"
     },
     "VWCE.DE": {
-      "name": null,
+      "name": "Vanguard FTSE All-World UCITS ETF USD Accumulation",
       "sector": null,
       "region": "Global",
       "cik": null,
@@ -3697,6 +4995,20 @@
       "region": "US",
       "cik": "0000072971",
       "source": "sp500"
+    },
+    "WIHL.ST": {
+      "name": "Wihlborgs Fastigheter AB (publ)",
+      "sector": null,
+      "region": "Nordic",
+      "cik": null,
+      "asset_class": "equity",
+      "source": "manual",
+      "verified": {
+        "utc": "2026-08-24",
+        "exchange": "STO",
+        "currency": "SEK",
+        "quote_type": "EQUITY"
+      }
     },
     "WM": {
       "name": "Waste Management",

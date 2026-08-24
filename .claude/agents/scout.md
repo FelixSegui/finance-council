@@ -43,6 +43,13 @@ conviction. Picking winners from the pool is `council`'s job.
    Missing / Failed / Status. Never paraphrase the numbers and never report a
    screen without them.
 
+   Two lines you may also see, both worth carrying into your report:
+   `SHARE CLASSES COLLAPSED` (two lines of one company are one decision; the
+   survivor keeps the sibling in `share_class_siblings`, and a current holding
+   always survives its own class), and the sector cap — no lens may fill more
+   than 3 of its slots from one sector, so the five lenses give the Council
+   five perspectives rather than five sector bets.
+
    `Focus` is the limited refinement step: every holding plus the top-ranked
    candidates, ~20 names, marked `focus = Y` in the CSV. It tells `council`
    where to spend depth. It excludes nothing — every candidate stays in the

@@ -71,6 +71,7 @@ class Args:
         self.workers = 1
         self.lens_top_n = 5
         self.focus_top_n = 6
+        self.max_per_sector = 99      # fixtures are all one sector by design
         self.limit = None
         self.promote = False
         self.promote_top = 5
@@ -603,3 +604,145 @@ class TestNoArchiveDependency(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# ---------------------------------------------------------------------------
+# 11. Universe hygiene: verified tickers, no share-class duplicates, no
+#     single-sector lens shortlists. All three were live defects found by the
+#     2026-08-24 Swedish-CSV import test run.
+# ---------------------------------------------------------------------------
+class TestNameVerification(unittest.TestCase):
+    def test_same_company_different_wording_matches(self):
+        for claimed, actual in [
+            ("Volvo Group", "AB Volvo (publ)"),
+            ("Atlas Copco AB (A)", "Atlas Copco AB (publ)"),
+            ("Investor AB", "Investor AB (publ)"),
+            ("Kindred Group plc", "Kindred Group Plc"),
+        ]:
+            self.assertEqual(wl.name_matches(claimed, actual), "match", (claimed, actual))
+
+    def test_a_different_company_is_rejected(self):
+        """The dangerous case: VITR.ST resolves perfectly — to Vitrolife, not
+        to Sobi. A resolving ticker is not a correct ticker."""
+        for claimed, actual in [
+            ("Swedish Orphan Biovitrum AB (Sobi)", "Vitrolife AB (publ)"),
+            ("Catena AB", "Catella AB (publ)"),           # 0.6 similar, different company
+            ("Betsson AB", "Better Collective A/S"),
+            ("MediOver AB", "Malmbergs Elektriska AB (publ)"),
+            ("Alifrost AB", "AddLife AB (publ)"),
+        ]:
+            self.assertEqual(wl.name_matches(claimed, actual), "mismatch", (claimed, actual))
+
+    def test_a_typo_is_near_not_a_match_and_not_a_mismatch(self):
+        self.assertEqual(wl.name_matches("Bonavia AB", "Bonava AB (publ)"), "near")
+
+    def test_corporate_form_words_carry_no_identity(self):
+        self.assertEqual(wl.name_matches("AB", "Holding Group AB"), "mismatch")
+
+    def test_stockholm_share_class_queries_are_tried(self):
+        """Yahoo's index matches 'Elekta AB ser. B', not 'Elekta AB' — without
+        this the Stockholm listing is never found."""
+        qs = list(wl._search_queries("ELEK-B.ST", "Elekta AB"))
+        self.assertIn("Elekta AB ser. B", qs)
+        self.assertEqual(qs[0], "Elekta AB")
+
+
+class TestShareClassCollapse(unittest.TestCase):
+    NAMES = {
+        "ATCO-A.ST": "Atlas Copco AB (publ)", "ATCO-B.ST": "Atlas Copco AB (publ)",
+        "INVE-A.ST": "Investor AB (publ)", "INVE-B.ST": "Investor AB (publ)",
+        "EVO.ST": "Evolution AB (publ)",
+        "CAT-B.ST": "Catella AB (publ)", "CATE.ST": "Catena AB (publ)",
+    }
+
+    def test_a_holding_always_survives_its_own_share_class(self):
+        """Collapsing a held line into one the user does not own would
+        silently drop that position's hold/sell decision."""
+        dropped = scout.collapse_share_classes(
+            set(self.NAMES), self.NAMES,
+            holdings={"ATCO-B.ST"}, watch_tickers={"ATCO-A.ST"},
+            market_caps={"ATCO-A.ST": 9e11, "ATCO-B.ST": 1e9})
+        self.assertEqual(dropped.get("ATCO-A.ST"), "ATCO-B.ST")
+        self.assertNotIn("ATCO-B.ST", dropped)
+
+    def test_larger_market_cap_wins_when_neither_is_held(self):
+        dropped = scout.collapse_share_classes(
+            set(self.NAMES), self.NAMES, holdings=set(), watch_tickers=set(),
+            market_caps={"INVE-A.ST": 1e9, "INVE-B.ST": 5e9})
+        self.assertEqual(dropped.get("INVE-A.ST"), "INVE-B.ST")
+
+    def test_different_companies_never_merge(self):
+        """CAT-B.ST is Catella and CATE.ST is Catena — similar tickers, not
+        the same issuer."""
+        dropped = scout.collapse_share_classes(
+            set(self.NAMES), self.NAMES, holdings=set(), watch_tickers=set(),
+            market_caps={})
+        self.assertNotIn("CATE.ST", dropped)
+        self.assertNotIn("CAT-B.ST", dropped)
+
+    def test_a_single_class_ticker_is_untouched(self):
+        dropped = scout.collapse_share_classes(
+            {"EVO.ST"}, self.NAMES, set(), set(), {})
+        self.assertEqual(dropped, {})
+
+
+class TestSectorCap(unittest.TestCase):
+    def test_no_lens_shortlist_is_dominated_by_one_sector(self):
+        """Measured live before this cap existed: growth 8/10 Technology,
+        contrarian 5/10 Real Estate. Five lenses that each pick one sector are
+        not five perspectives."""
+        scores = {f"T{i:02d}": {lens: 10 - i * 0.1 for lens in scout.LENSES}
+                  for i in range(30)}
+        sectors = {f"T{i:02d}": ("Technology" if i < 20 else "Healthcare")
+                   for i in range(30)}
+        lists = scout.lens_shortlists(scores, top_n=6, sectors=sectors, max_per_sector=3)
+        for lens, names in lists.items():
+            tech = sum(1 for n in names if sectors[n] == "Technology")
+            self.assertLessEqual(tech, 3, f"{lens} took {tech} Technology slots")
+            self.assertEqual(len(names), 6, "the cap must not shorten the shortlist")
+
+    def test_yahoo_sector_aliases_are_folded_together(self):
+        self.assertEqual(scout.normalise_sector("Financials"),
+                         scout.normalise_sector("Financial Services"))
+        self.assertEqual(scout.normalise_sector("Information Technology"), "Technology")
+        self.assertIsNone(scout.normalise_sector(None))
+
+    def test_unknown_sector_is_never_capped_away(self):
+        scores = {f"T{i:02d}": {lens: 10 - i for lens in scout.LENSES} for i in range(8)}
+        lists = scout.lens_shortlists(scores, top_n=5, sectors={}, max_per_sector=1)
+        self.assertEqual(len(lists["value"]), 5)
+
+    def test_backfill_keeps_the_shortlist_full_when_the_cap_bites(self):
+        scores = {f"T{i:02d}": {lens: 10 - i for lens in scout.LENSES} for i in range(10)}
+        sectors = {t: "Technology" for t in scores}
+        lists = scout.lens_shortlists(scores, top_n=8, sectors=sectors, max_per_sector=2)
+        self.assertEqual(len(lists["quality"]), 8)
+
+
+class TestVerifyOrExit(unittest.TestCase):
+    """The single-ticker write paths must REFUSE, not warn. verify_ticker
+    returns a status string; an earlier version tested it for truthiness,
+    which silently accepted every bad ticker."""
+
+    def _patched(self, status, info):
+        orig = wl.verify_ticker
+        wl.verify_ticker = lambda t, n=None: (status, info)
+        self.addCleanup(lambda: setattr(wl, "verify_ticker", orig))
+
+    def test_unresolved_ticker_exits(self):
+        self._patched("unresolved", {"error": "HTTP Error 404: Not Found"})
+        with self.assertRaises(SystemExit) as cm:
+            wl._verify_or_exit("ZZQQ.ST", "Not Real AB")
+        self.assertIn("does not resolve", str(cm.exception))
+
+    def test_wrong_company_exits(self):
+        self._patched("name_mismatch", {"long_name": "Vitrolife AB (publ)"})
+        with self.assertRaises(SystemExit) as cm:
+            wl._verify_or_exit("VITR.ST", "Swedish Orphan Biovitrum AB")
+        self.assertIn("Vitrolife", str(cm.exception))
+
+    def test_a_good_ticker_returns_yahoos_name_not_the_typed_one(self):
+        self._patched("ok", {"long_name": "Meko AB (publ)", "exchange": "STO",
+                             "price": 72.6, "currency": "SEK"})
+        self.assertEqual(wl._verify_or_exit("MEKO.ST", "Mekonomen AB"),
+                         "Meko AB (publ)")

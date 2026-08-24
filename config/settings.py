@@ -34,6 +34,14 @@ CANDIDATE_POOL_SOFT_CAP = 80    # warn above this; Council reasoning gets expens
 # always in focus (each has a live hold/sell decision), and nothing outside
 # focus is excluded — a voice can always pull a non-focus name back in.
 FOCUS_TOP_N = 15
+
+# No lens may fill more than this many of its shortlist slots from one sector.
+# Without a cap, each lens finds the one sector where its metric naturally
+# clusters and the "five perspectives" collapse into five sector bets:
+# measured live on 2026-08-24, growth was 8/10 Technology, contrarian 5/10
+# Real Estate and defensive 5/10 Financial Services. The cap costs a slightly
+# worse average score and buys a genuinely wider opportunity set.
+LENS_MAX_PER_SECTOR = 3
 FACTOR_WINSOR_PCT = 0.02        # clip to [2nd, 98th] pct before z-scoring
 LENS_MIN_FIELDS = 2             # a lens score needs this many non-null inputs
 

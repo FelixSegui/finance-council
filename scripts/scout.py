@@ -52,7 +52,7 @@ from config.settings import (  # noqa: E402
     UNIVERSE_CACHE_DAYS, UNIVERSE_FETCH_WORKERS, UNIVERSE_REFRESH_INTERVAL_DAYS,
     LENS_TOP_N, CANDIDATE_POOL_SOFT_CAP, FACTOR_WINSOR_PCT, LENS_MIN_FIELDS,
     MISSING_DATA_RATE_ALERT, FETCH_FAILURE_RATE_ALERT, SINGLE_FILTER_KILL_RATE,
-    PERCENT_POINT_SCALE_FIELDS, DEFAULT_SCREEN, FOCUS_TOP_N,
+    PERCENT_POINT_SCALE_FIELDS, DEFAULT_SCREEN, FOCUS_TOP_N, LENS_MAX_PER_SECTOR,
 )
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -344,19 +344,114 @@ def rank_lenses(metric_rows, lenses=LENSES, min_fields=LENS_MIN_FIELDS):
     return scores, coverage
 
 
-def lens_shortlists(scores, top_n=LENS_TOP_N, eligible=None):
-    """Top `top_n` names per lens. The union is the discovered candidate pool.
+# Yahoo returns both "Financials" and "Financial Services" for the same kind
+# of business, and a sector cap that treats them as different sectors leaks.
+SECTOR_ALIASES = {"financials": "Financial Services", "financial services": "Financial Services",
+                  "information technology": "Technology", "technology": "Technology",
+                  "consumer discretionary": "Consumer Cyclical",
+                  "consumer staples": "Consumer Defensive",
+                  "health care": "Healthcare", "healthcare": "Healthcare"}
+
+
+def normalise_sector(sector):
+    if not sector:
+        return None
+    return SECTOR_ALIASES.get(sector.strip().lower(), sector.strip())
+
+
+def lens_shortlists(scores, top_n=LENS_TOP_N, eligible=None, sectors=None,
+                    max_per_sector=LENS_MAX_PER_SECTOR):
+    """Top `top_n` names per lens, with no sector allowed to fill more than
+    `max_per_sector` slots.
 
     Deliberately NOT one blended score: a deep-value name and a high-quality
     compounder are both allowed through on their own terms, and a name that
-    one lens's worldview rejects can still arrive via another."""
+    one lens's worldview rejects can still arrive via another.
+
+    The sector cap exists because that promise was not being kept. Each lens
+    ranks on metrics that cluster in one sector — growth metrics in tech,
+    price/book in real estate, leverage in banks — so an uncapped top-10 was
+    routinely 8/10 one sector. The Council then compares "the whole market"
+    while actually looking at one industry. Overflow names are not deleted;
+    the slot simply goes to the next-best name from an under-represented
+    sector, and everything remains in the full JSON.
+
+    Names with no sector data are never capped away — unknown is not a sector.
+    """
+    sectors = sectors or {}
     out = {}
     for lens in LENSES:
         ranked = [(t, s[lens]) for t, s in scores.items()
                   if s.get(lens) is not None and (eligible is None or t in eligible)]
         ranked.sort(key=lambda kv: kv[1], reverse=True)
-        out[lens] = [t for t, _ in ranked[:top_n]]
+        picked, used, overflow = [], {}, []
+        for t, _score in ranked:
+            if len(picked) >= top_n:
+                break
+            sec = normalise_sector(sectors.get(t))
+            if sec and used.get(sec, 0) >= max_per_sector:
+                overflow.append(t)
+                continue
+            picked.append(t)
+            if sec:
+                used[sec] = used.get(sec, 0) + 1
+        # If the cap left the shortlist short (a thin lens), backfill from the
+        # names it displaced rather than returning fewer candidates.
+        for t in overflow:
+            if len(picked) >= top_n:
+                break
+            picked.append(t)
+        out[lens] = picked
     return out
+
+
+def collapse_share_classes(tickers, names, holdings, watch_tickers, market_caps):
+    """Nasdaq Stockholm lists most large caps twice (INDU-A / INDU-C,
+    ATCO-A / ATCO-B, INVE-A / INVE-B). Two lines of the same company are ONE
+    investment decision, and letting both through spends scarce lens slots and
+    Council attention on a share-class question nobody asked.
+
+    Runs before the lens shortlists, so a duplicate never occupies a slot.
+
+    Collapses only when the ticker stem AND the company name agree — two
+    different companies must never merge. Survivor priority is strict:
+      1. a current holding   (it has a live hold/sell decision; collapsing it
+                              into a line the user does not own would silently
+                              drop that decision)
+      2. a watchlist name    (already curated)
+      3. the larger market cap (the more liquid line, usually the B share)
+    Returns {dropped_ticker: surviving_ticker}; the caller records the
+    survivors' siblings so the alternative class is never hidden.
+    """
+    import re
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from watchlist import _normalise_name
+
+    groups = {}
+    for t in tickers:
+        stem = re.sub(r"-(A|B|C|SDB)(\.[A-Z]+)?$", r"\2", t)
+        if stem != t:                       # only tickers that carry a class
+            groups.setdefault(stem, []).append(t)
+
+    def priority(t):
+        return (0 if t in holdings else 1 if t in watch_tickers else 2,
+                -(market_caps.get(t) or 0))
+
+    dropped = {}
+    for members in groups.values():
+        if len(members) < 2:
+            continue
+        tokens = {t: _normalise_name(names.get(t) or "")[0] for t in members}
+        base = members[0]
+        same = [t for t in members
+                if t == base or (tokens[t] and tokens[base] and tokens[t] & tokens[base])]
+        if len(same) < 2:
+            continue
+        keep = min(same, key=priority)
+        for t in same:
+            if t != keep:
+                dropped[t] = keep
+    return dropped
 
 
 # ---------------------------------------------------------------------------
@@ -604,28 +699,54 @@ def run(args):
     save_cache(cache)
 
     met = {t: metrics(r) for t, r in records.items() if "error" not in r}
+
+    # One company, one decision — before anything is ranked, so a duplicate
+    # share class never occupies a lens slot or a Council seat.
+    ticker_names = {t: ((universe.get(t) or {}).get("name")
+                        or (holdings.get(t) or {}).get("name")
+                        or ((watch["entries"].get(t) or {}).get("name")))
+                    for t in set(records) | set(holdings) | watch_tickers}
+    class_dupes = collapse_share_classes(
+        set(records) | set(holdings) | watch_tickers, ticker_names,
+        set(holdings), watch_tickers,
+        {t: (met.get(t) or {}).get("market_cap") for t in met})
+    siblings = {}
+    for dropped_t, keeper in class_dupes.items():
+        siblings.setdefault(keeper, []).append(dropped_t)
+
     rankable = {t for t in met
-                if (universe.get(t) or {}).get("asset_class", "equity")
+                if t not in class_dupes
+                and (universe.get(t) or {}).get("asset_class", "equity")
                 not in NON_RANKABLE_ASSET_CLASSES}
     scores, lens_coverage = rank_lenses(met)
-    shortlists = lens_shortlists(scores, args.lens_top_n, eligible=rankable)
+    sectors = {t: (records[t].get("sector") or (universe.get(t) or {}).get("sector"))
+               for t in met}
+    shortlists = lens_shortlists(scores, args.lens_top_n, eligible=rankable,
+                                 sectors=sectors, max_per_sector=args.max_per_sector)
 
     discovered = sorted({t for names in shortlists.values() for t in names})
 
     # ---- the candidate set: holdings + watchlist + newly discovered --------
     candidates = {}
-    for t in sorted(set(holdings) | watch_tickers | set(discovered)):
+    for t in sorted((set(holdings) | watch_tickers | set(discovered)) - set(class_dupes)):
+        uni_name = (universe.get(t) or {}).get("name")
         if t in holdings:
-            source, name = "holding", holdings[t].get("name")
+            source = "holding"
+            name = holdings[t].get("name") or uni_name
         elif t in watch_tickers:
-            source, name = "watchlist", (watch["entries"][t] or {}).get("name")
+            source = "watchlist"
+            # Watchlist entries are often added as a bare ticker. The universe
+            # carries Yahoo's verified name — use it rather than handing the
+            # Council a blank name column for a third of its candidates.
+            name = (watch["entries"][t] or {}).get("name") or uni_name
         else:
-            source, name = "new", (universe.get(t) or {}).get("name")
+            source, name = "new", uni_name
         s = scores.get(t, {})
         best = max(((lens, v) for lens, v in s.items() if v is not None),
                    key=lambda kv: kv[1], default=(None, None))
         candidates[t] = {"source": source, "name": name,
                          "best_lens": best[0], "lens_score": best[1],
+                         "share_class_siblings": sorted(siblings.get(t, [])),
                          "in_lens_shortlists": [ln for ln, names in shortlists.items()
                                                 if t in names]}
     # Rank the candidate set by its best lens score (a relative ordering for
@@ -673,6 +794,7 @@ def run(args):
         "watchlist": sum(1 for c in candidates.values() if c["source"] == "watchlist"),
         "new": sum(1 for c in candidates.values() if c["source"] == "new"),
         "focus": sum(1 for c in candidates.values() if c.get("focus")),
+        "share_class_collapsed": len(class_dupes),
         "screened": len(status),
         "passed": counts["PASS"],
         "missing": counts["MISSING"],
@@ -705,6 +827,7 @@ def run(args):
         "lens_definitions": LENSES,
         "lens_coverage": lens_coverage,
         "lens_shortlists": shortlists,
+        "share_class_collapsed": {k: v for k, v in class_dupes.items()},
         "universe_warnings": universe_warnings,
         "fetch_failures": failures,
         "candidates": {t: dict(candidates[t], screen_status=status.get(t),
@@ -744,6 +867,9 @@ def run(args):
 
     print()
     print(format_health(health))
+    if class_dupes:
+        print("\nSHARE CLASSES COLLAPSED (one company, one decision): "
+              + ", ".join(f"{k}->{v}" for k, v in sorted(class_dupes.items())))
     if diagnostics:
         print("\nDIAGNOSTICS")
         for d in diagnostics:
@@ -784,6 +910,8 @@ def main():
                    help="names each lens promotes into the candidate pool")
     p.add_argument("--focus-top-n", type=int, default=FOCUS_TOP_N,
                    help="how many top-ranked candidates to mark for full Council analysis")
+    p.add_argument("--max-per-sector", type=int, default=LENS_MAX_PER_SECTOR,
+                   help="cap on how many shortlist slots one sector may fill per lens")
     p.add_argument("--limit", type=int, default=None,
                    help="cap the universe slice (quick runs; holdings/watchlist always included)")
     p.add_argument("--promote", action="store_true",

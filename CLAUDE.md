@@ -45,7 +45,7 @@ never reach an LLM. Judgement is spent on ~10–20 names that survived.
 |---|---|---|
 | **UNIVERSE** (`data/universe.json`) | The broad pool the system is allowed to discover from. Hundreds to low thousands of names. Membership implies nothing about quality. | Not holdings. Not the watchlist. Not a recommendation list. |
 | **WATCHLIST** (`data/watchlist.json`) | Small, curated, persistent set worth monitoring. Survives between sweeps. Names arrive by hand, from Excel, or by scout promotion. | Not the discovery universe. Not rebuilt from scratch each sweep. |
-| **SCOUT** (`scripts/scout.py`) | The mechanism that reduces the universe to a candidate set. Deterministic screening and ranking. Runs **every** stock-selection sweep. | Not deep analysis. Not a stock picker. "Scout was not invoked" is not a valid outcome. |
+| **SCOUT** (`scripts/scout.py`) | The mechanism that reduces the universe to a candidate set. Deterministic screening and ranking, capped at 3 slots per sector per lens, with share classes of one company merged. Runs **every** stock-selection sweep. | Not deep analysis. Not a stock picker. "Scout was not invoked" is not a valid outcome. |
 | **COUNCIL** (`.claude/agents/council.md`) | Deep investment reasoning over a manageable candidate set. Compares holdings, watchlist names and new discoveries side by side. | Not a portfolio audit. Not a place to re-derive concentration math. |
 | **PORTFOLIO** (`.claude/agents/portfolio.md`) | What fits *this* portfolio, applied **after** opportunity selection. The single diversification authority. | Not a stock-picking voice. Never defines the discovery universe. |
 
@@ -79,6 +79,7 @@ selection or decision quality. When in doubt, delete a step.
 
 ```bash
 python scripts/build_universe.py            # periodic — discovery refresh (~30d)
+python scripts/watchlist.py universe-import <csv>   # add hand-collected tickers, verified
 python scripts/fetch_market_data.py --tickers ... --crypto ethereum,bitcoin \
        --insiders --fi-issuers "Handelsbanken,Investor"
 python scripts/scout.py                     # every sweep — the funnel
@@ -158,6 +159,16 @@ for both US and Nordic tickers. One real gap remains: Yahoo's legacy
 multi-year cash-flow module exposes only `netIncome` per year, so free cash
 flow is trailing-only, not a multi-year series. For a real FCF trend, use a
 company's own cash-flow statement (PDF via the `pdf` skill).
+
+**Never write an unverified ticker.** Every path that adds a ticker
+(`watchlist.py add`, `universe-add`, `universe-import`) checks with Yahoo that
+the symbol resolves *and* that its name is the company claimed. A resolving
+ticker is not a correct ticker: `VITR.ST` is Vitrolife, not Sobi. When a
+symbol fails, the company is looked up by name on the expected exchange and
+re-verified — a lookup against Yahoo's index, never a guessed suffix. Nasdaq
+Stockholm names share classes "Elekta AB ser. B", so the search tries that
+form too; a plain name search returns Frankfurt and Pink Sheet lines and
+misses the home listing entirely.
 
 **Swedish insider data.** Finansinspektionen's register is real and free, and
 `fetch_market_data.py --fi-issuers` reads it — but search is by **issuer name**

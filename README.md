@@ -11,11 +11,12 @@ No brokerage integration. It analyses and flags; you place every trade.
 ## The funnel in one picture
 
 ```
-data/universe.json         ~540 names (S&P 500 + user-verified Nordic/Europe)
+data/universe.json         ~620 names (S&P 500 + user-verified Nordic/Europe)
         |                  build_universe.py, refreshed ~monthly
         v
 scripts/scout.py           deterministic — five lens rankings, no LLM
         |                  quality / value / growth / defensive / contrarian
+        |                  max 3 slots per sector per lens; share classes merged
         v
 data/screens/*-candidates.csv    ~60-75 candidates, each tagged
         |                        holding | watchlist | new
@@ -104,13 +105,30 @@ python scripts/watchlist.py list
 python scripts/watchlist.py add EVO.ST --name "Evolution AB" --category nordic
 python scripts/watchlist.py remove EVO.ST --reason "thesis broken"
 python scripts/watchlist.py universe-add NIBE-B.ST --region Nordic
+python scripts/watchlist.py universe-import my_tickers.csv --dry-run
 python scripts/watchlist.py history          # rank over time
 python scripts/scout.py --promote            # scout adds its best new finds
 ```
 
-`add` and `universe-add` refuse to write a ticker that doesn't resolve to
-real price data — Nordic and European exchange suffixes are exactly where a
-plausible-looking guess produces garbage.
+Every write path verifies the ticker against Yahoo first, and **verifies the
+company name too** — "the ticker resolves" is not the same as "the ticker is
+the company you meant". `VITR.ST` resolves perfectly, to Vitrolife, not to
+Sobi; screening the wrong company on a real price feed produces confident,
+wrong analysis with nothing anywhere to flag it.
+
+`universe-import` takes a CSV of `ticker,company name` and sorts every row
+into one bucket:
+
+| Bucket | What happened |
+|---|---|
+| added / already | verified; stored under Yahoo's own name |
+| symbol corrected | the CSV's ticker was wrong, but the company was found by name on the expected exchange and re-verified |
+| name mismatch | the ticker is real but is a **different company**. Never written |
+| no longer trading | delisted, acquired or taken private. Correctly excluded |
+| unresolved | no listing found by symbol or by name. Never written |
+
+On a real 120-row Swedish list, 31 rows were wrong: 16 had recoverable
+symbols, 5 named a different company, 3 were delisted, 7 did not exist.
 
 ## Where the truth lives
 

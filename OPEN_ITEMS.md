@@ -349,23 +349,52 @@ IDs are never reused — an S-number in an old memo always means the same item.
   most of the gap. If not reachable, say so in the item and stop — a blocked
   source that is honestly labelled beats a half-source that gets guessed at.
 
-### S21 — [prospecting] The universe is 93% US
-- **Status:** open — new 2026-08-24, structural
-- **Why:** `data/universe.json` holds 539 names: 503 auto-fetched S&P 500
-  constituents and 36 hand-verified manual entries, of which ~20 are Nordic.
-  Discovery therefore works properly for US large caps and barely at all for
-  the Nordic and European market the user actually invests in. No free Nordic
-  or European constituent list is reachable from this network (Wikipedia and
-  Nasdaq Nordic are both proxy-blocked; the S&P 500 CSV works because it is
-  hosted on GitHub).
-- **How:** two independent paths, either helps. **(1)** Find a GitHub-hosted
-  or otherwise reachable constituent CSV for OMXS30 / OMXSPI / STOXX 600 and
-  add it as a source in `build_universe.py` — the mechanism already supports
-  multiple sources and preserves the manual block. **(2)** Have the user's
-  Excel Universe tab carry a wider Nordic list; `import_excel_holdings.py`
-  already merges it into the watchlist, and `watchlist.py universe-add`
-  verifies each ticker resolves before writing. Path 2 works today and needs
-  no new code — it needs the tickers.
+### S21 — [prospecting] Nordic coverage: 107 names, and a data asymmetry underneath
+- **Status:** open — the headline problem is fixed; a quieter one it exposed is not
+- **2026-08-24 (evening):** the user supplied a 120-row Swedish ticker CSV.
+  `scripts/watchlist.py universe-import` verified it and the universe went
+  from 538 names (20 Nordic) to 622 (107 Nordic, 17%). Swedish names now
+  reach the lens shortlists on their own merits — AZA.ST, INDU-C.ST, ORX.ST,
+  CATE.ST, BALD-B.ST, BURE.ST, CORE-B.ST, BETS-B.ST, KNOW.ST all appeared in
+  the first run. The original "discovery barely works for the market the user
+  actually invests in" complaint is answered.
+- **What remains, and it is a real distortion, not a cosmetic gap:** Yahoo's
+  fundamentals coverage is not symmetric across markets. Measured on the
+  2026-08-24 candidate set: `forward_pe` is missing for **9 of 26 Swedish
+  names (35%) and 0 of 37 US names (0%)**. `fcf_yield` is missing for 23% of
+  Swedish names vs 11% of US ones. The Valuation and Growth lenses both rank
+  partly on forward multiples, so **a Swedish company can lose a shortlist
+  slot for having no forward estimate rather than for being less attractive**
+  — a systematic tilt toward US names that no one would see in the output.
+  The `MISSING` label is honest per name; the aggregate bias is invisible.
+- **How:** two options, neither large. (1) Make each lens report per-market
+  coverage alongside its shortlist, so the tilt is at least visible to the
+  Council. (2) Better: z-score each lens *within* a coverage cohort, or drop
+  forward-looking fields from a lens's inputs when coverage for a name's
+  market is below a threshold, so names are compared on fields they can all
+  actually be measured on. Option 1 is an afternoon; option 2 is the real fix.
+- **Also still open:** no free Nordic/European *constituent feed* is
+  reachable (Wikipedia and Nasdaq Nordic are proxy-blocked), so the Nordic
+  block stays user-maintained. That is now a maintenance question, not a
+  capability gap — `universe-import` makes adding a batch a one-command job.
+
+### S22 — [data] 12 real Swedish companies still cannot be screened
+- **Status:** open — needs the user, not code
+- **Why:** the 2026-08-24 import could not resolve 12 rows. Seven do not
+  exist under any symbol Yahoo indexes and could not be found by company
+  name either (BIOT.ST/Biotage, COLLE.ST/Collector, CONC.ST/Concentric,
+  HALD.ST/Haldex, NYF.ST/Nyfosa, RESURS.ST/Resurs, SNDR.ST). Five resolve to
+  a **different company** than the CSV names them: `MEKO.ST` is Meko AB
+  (Mekonomen renamed, so the ticker is right and the CSV name is stale),
+  `IVSO.ST` is Invisio (CSV typo "Invisibleio"), `VITR.ST` is Vitrolife (NOT
+  Sobi — Sobi is `SOBI.ST`), `MEAB-B.ST` is Malmbergs Elektriska,
+  `ALIF-B.ST` is AddLife. Three more are correctly excluded as no longer
+  trading (Kindred, Probi, SAS).
+- **How:** for each name still wanted, confirm the symbol on Avanza and add
+  it with `python scripts/watchlist.py universe-add <TICKER> --name "<name>"`,
+  which verifies before writing. Two are already known and safe to add:
+  `SOBI.ST` (Sobi) and `MEKO.ST` (Meko AB). The rest need a human with a
+  broker screen — the system deliberately will not guess a suffix.
 
 ---
 

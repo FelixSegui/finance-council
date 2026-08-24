@@ -24,6 +24,8 @@ import argparse
 import json
 import os
 import sys
+import threading
+import time
 import urllib.request
 import urllib.error
 import urllib.parse
@@ -101,10 +103,20 @@ class _YahooCrumbSession:
         self._crumb = None
         self._init_error = None
         self._initialized = False
+        # The universe stage fetches hundreds of tickers concurrently; without
+        # this lock every worker would race to mint its own crumb and most
+        # would proceed with self._crumb still None.
+        self._init_lock = threading.Lock()
 
     def _ensure_init(self):
         if self._initialized:
             return
+        with self._init_lock:
+            if self._initialized:
+                return
+            self._do_init()
+
+    def _do_init(self):
         self._initialized = True
         try:
             import http.cookiejar
@@ -264,22 +276,56 @@ def _fetch_fundamentals_direct(ticker):
     return out
 
 
-def fetch_equities(tickers):
-    out = {}
-    for t in tickers:
+def fetch_one_equity(ticker):
+    """Fundamentals for one ticker, with a price-only chart fallback. Never
+    guesses a fundamental: a failure comes back as an explicit error field."""
+    try:
+        return _fetch_fundamentals_direct(ticker)
+    except Exception as e:
+        # Fundamentals fetch failed (network hiccup, ticker not covered,
+        # crumb session couldn't init). Fall back to the crumb-free chart
+        # endpoint for price only - never silently guess fundamentals.
         try:
-            out[t] = _fetch_fundamentals_direct(t)
-        except Exception as e:
-            # Fundamentals fetch failed (network hiccup, ticker not covered,
-            # crumb session couldn't init). Fall back to the crumb-free
-            # chart endpoint for price only - never silently guess
-            # fundamentals.
-            try:
-                chart = _fetch_chart_direct(t)
-                chart["fundamentals_error"] = f"fundamentals fetch failed: {e}"
-                out[t] = chart
-            except Exception as e2:
-                out[t] = {"error": f"{e}; chart fallback also failed: {e2}"}
+            chart = _fetch_chart_direct(ticker)
+            chart["fundamentals_error"] = f"fundamentals fetch failed: {e}"
+            return chart
+        except Exception as e2:
+            return {"error": f"{e}; chart fallback also failed: {e2}"}
+
+
+def fetch_equities(tickers, workers=1, progress=None):
+    """Fetch fundamentals for many tickers.
+
+    workers=1 keeps the original serial behaviour (holdings sweeps: a handful
+    of tickers, no reason to add threads). The universe stage passes
+    workers=8-12 - ~0.5s/ticker serially is five minutes over a 600-name
+    universe, which is the difference between a discovery funnel that runs
+    every sweep and one that gets skipped.
+    """
+    tickers = list(tickers)
+    if workers <= 1:
+        out = {}
+        for i, t in enumerate(tickers, 1):
+            out[t] = fetch_one_equity(t)
+            if progress:
+                progress(i, len(tickers), t)
+        return out
+
+    from concurrent.futures import ThreadPoolExecutor
+    # Mint the cookie/crumb once, up front, on this thread. Doing it inside
+    # the pool works (the session is locked) but serialises the first N
+    # workers behind it for no reason.
+    _yahoo_session._ensure_init()
+    out = {}
+    done = 0
+    lock = threading.Lock()
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        for t, rec in zip(tickers, pool.map(fetch_one_equity, tickers)):
+            out[t] = rec
+            with lock:
+                done += 1
+            if progress:
+                progress(done, len(tickers), t)
     return out
 
 
@@ -326,7 +372,11 @@ def fetch_insider_activity_fi(issuer_names, max_rows=15, timeout=15):
     return out
 
 
-def fetch_crypto(coin_ids):
+def fetch_crypto(coin_ids, tries=3, backoff_sec=1.5):
+    """CoinGecko's free tier rate-limits aggressively; a single HTTP 429 used
+    to take out the entire crypto price path for a sweep with no retry (S13).
+    Retries transient failures with linear backoff, then reports the error
+    honestly rather than guessing a price."""
     if not coin_ids:
         return {}
     ids = ",".join(coin_ids)
@@ -335,9 +385,18 @@ def fetch_crypto(coin_ids):
         f"?vs_currency=eur&ids={ids}&order=market_cap_desc"
         "&price_change_percentage=24h,7d,30d"
     )
+    last_error = None
+    for attempt in range(1, tries + 1):
+        try:
+            data = _coingecko_get(url)
+            break
+        except Exception as e:
+            last_error = e
+            if attempt < tries:
+                time.sleep(backoff_sec * attempt)
+    else:
+        return {"error": f"{last_error} (after {tries} attempts)"}
     try:
-        with urllib.request.urlopen(url, timeout=15) as resp:
-            data = json.loads(resp.read().decode())
         out = {}
         for coin in data:
             out[coin["id"]] = {
@@ -353,6 +412,11 @@ def fetch_crypto(coin_ids):
         return out
     except Exception as e:
         return {"error": str(e)}
+
+
+def _coingecko_get(url):
+    with urllib.request.urlopen(url, timeout=15) as resp:
+        return json.loads(resp.read().decode())
 
 
 def fetch_fred_series(series_id, last_n=1):

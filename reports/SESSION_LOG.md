@@ -14,6 +14,83 @@ Entry format:
 - **Reconciliation:** how last sweep's calls look against today's data
 - **Open items carried forward:** ...
 ```
+---
+
+## 2026-08-24 (second session, same day) — SYSTEM REFACTOR, not a sweep: the discovery funnel is rebuilt around a real 538-name universe, five deterministic lenses replace the single blended score, the watchlist becomes persistent, and the parked Excel-branch runtime is deleted
+
+**Refactor session, no market calls made.** No memo, no Council run, no
+recommendation. Every headline below is a change to the tool, not to the
+portfolio. `data/portfolio.json` was not modified.
+
+- **Snapshot:** none fetched this session (the 2026-08-24 06:09 sweep
+  snapshot stands). **Screen:**
+  `data/screens/20260824T210*-candidates.csv` — the first output of the
+  new funnel, run against live data: universe 538, fetched 538, ranked
+  528, 68 candidates (8 holdings / 32 watchlist / 28 newly discovered),
+  22 marked focus, 31 passed, status VALID.
+- **Memo:** no memo — this was a system change, not an investment sweep.
+- **What changed:**
+  1. **Universe is now real.** `data/universe.json` holds 538 names (503
+     auto-fetched S&P 500 constituents with GICS sector and CIK, plus 35
+     hand-verified Nordic/European/ETF/crypto/gold entries preserved
+     across refreshes). It used to hold ~43 tickers, which was a
+     watchlist wearing a universe's name. `scripts/build_universe.py`
+     refreshes it; `--wide` adds NASDAQ/NYSE listings.
+  2. **Five lenses, not one score.** `scripts/scout.py` ranks the universe
+     through quality / value / growth / defensive / contrarian
+     cross-sectional z-scores and takes each lens's own top slice. A
+     high-growth name rejected by a trailing-P/E rule now survives via the
+     growth lens — the exact failure this system hit before.
+  3. **Watchlist is persistent.** `data/watchlist.json` (32 curated names,
+     tracked in git) replaces the regenerated-and-gitignored
+     `data/cache/watchlist.json`. The Excel import now MERGES into it
+     instead of overwriting it, and `scripts/watchlist.py` adds/removes/
+     promotes names, refusing any ticker that doesn't resolve to real
+     price data.
+  4. **SCOUT HEALTH and zero-pass diagnostics.** Every run reports
+     universe/fetched/ranked/candidates/focus/screened/passed/missing/
+     failed plus a status. Zero passes triggers `INVESTIGATE_ZERO_PASS`
+     and a diagnostic, so "found nothing", "didn't look" and "the search
+     broke" can no longer be confused — the 2026-08-24 morning D/E scale
+     bug is now impossible to ship silently (thresholds are range-checked
+     at parse time).
+  5. **Copycat / Smart Money is the seventh Council voice.** Insider data
+     it can actually use (SEC Form 4 counts, Finansinspektionen) is now
+     fetched routinely by `market-data`; institutional/activist data is
+     explicitly marked missing rather than guessed (new S20).
+  6. **Candidate rank history.** `data/candidate_history.csv` records rank
+     / best lens / screen status per candidate per run
+     (`python scripts/watchlist.py history`).
+  7. **Deleted:** `run.py`, `data/sync/`, `scripts/fetchers/`,
+     `scripts/funnel/`, `master.xlsx` + `build_workbook.py` +
+     `retrofit_workbook_features.py` + `import_fundamentals_tab.py` +
+     `import_excel_stocks_data.py`, `generate_coverage_report.py`, three
+     one-time migration scripts, `add_manual_tickers.py` (its ticker
+     verification is folded into `watchlist.py`), and
+     `data/cache/controller_state.json`. None was reachable from the live
+     flow.
+  8. **Three live bugs fixed while auditing:** `scripts/performance.py`
+     could not run at all (it imported yfinance, which does not work on
+     this network, and choked on an annotated CSV cell) — it now uses the
+     same direct Yahoo chart path `backtest.py` uses and reports
+     +29,620 SEK vs VWCE.DE over the logged period; `fetch_crypto()` got
+     retry/backoff (S13); `journal.md` got explicit write-safety
+     instructions (S15).
+- **Reconciliation:** none — no prior calls were tested this session. The
+  2026-08-24 morning sweep's three open recommendations (BUY AZN.ST, SELL
+  ABB.ST, BUY META) are unchanged and still awaiting the user.
+- **Open items carried forward:** P1, P3, P4, P5, P6, P7, P9, P10
+  unchanged and untouched. S-items: S1, S6, S9 remain open; S20
+  (Copycat has no institutional data) and S21 (universe is 93% US) are
+  new; S12, S13, S15, S16, S17, S18, S19 closed. The closed log moved
+  verbatim to `data/portfolio_history_archive.md` with a one-line index
+  left in `OPEN_ITEMS.md`. Emphasis for the next sweep set to
+  **balanced**.
+- **Note for the next session:** paths changed. Screens are in
+  `data/screens/` (not `data/cache/screens/`), the watchlist is
+  `data/watchlist.json` (not `data/cache/watchlist.json`), and
+  definitions are `data/definitions.json` (not `data/cache/`). Read
+  `CLAUDE.md` before assuming any older path.
 
 ---
 

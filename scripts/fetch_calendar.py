@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 Fetch upcoming market events relevant to the portfolio:
-  - Earnings dates: yfinance, per ticker
+  - Earnings dates: Yahoo quoteSummary calendarEvents, per ticker (direct
+    urllib + crumb, same path as fetch_market_data.py - yfinance's own client
+    does not work on this network)
   - Macro events (FOMC, Riksbank, CPI releases): data/macro_calendar.json,
     which is MANUALLY maintained — this script only filters it to the
     lookahead window. It never invents a date.

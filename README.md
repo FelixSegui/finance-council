@@ -1,83 +1,147 @@
 # Finance Council
 
-Personal investment advisory system. No brokerage integration — you are the
-human-in-the-loop for every action. This produces analysis and flags; it
-never executes trades. See `CLAUDE.md` for the design philosophy and the
-rules every agent must follow.
+A personal investment advisory system that runs in Claude Code. It answers
+one question every sweep: **what are the best investments available to me
+right now?** — then, separately, whether they fit the portfolio you already
+have.
 
-## Where the truth lives
+No brokerage integration. It analyses and flags; you place every trade.
+`CLAUDE.md` holds the design rules every agent must follow.
 
-**`data/portfolio.json` is the source of truth.** Agents maintain it. You
-should rarely need to open it.
+## The funnel in one picture
 
-**`master.xlsx` is a generated view.** The `Overview` and `Holdings` sheets
-are rebuilt from the JSON every time and never read back by anything — look,
-don't maintain; any edit there is overwritten on the next rebuild. As of
-2026-08-04, `Overview`'s totals/allocation/drift are **live Excel formulas**
-(`SUMIF`/`SUMPRODUCT`) over the raw facts on `Holdings`, not Python-computed
-static numbers — open it, click a cell, see exactly what it's summing.
+```
+data/universe.json         ~540 names (S&P 500 + user-verified Nordic/Europe)
+        |                  build_universe.py, refreshed ~monthly
+        v
+scripts/scout.py           deterministic — five lens rankings, no LLM
+        |                  quality / value / growth / defensive / contrarian
+        v
+data/screens/*-candidates.csv    ~60-75 candidates, each tagged
+        |                        holding | watchlist | new
+        |                        ~20 marked focus=Y for full analysis
+        v
+council agent              seven analyst voices -> Chairman
+        |
+        v
+portfolio agent            fit: concentration, currency, cash, sizing
+        |
+        v
+reports/YYYY-MM-DD-council-memo.md    BUY / HOLD-WATCH / SELL / NO ACTION
+```
 
-Two sheets are the exception and survive every rebuild verbatim:
-- **`Manual Data`** — hand-entered figures, `ticker, field, value, currency,
-  as_of, source, notes`.
-- **`Fundamentals`** — pre-seeded with a row per tradeable holding
-  (ticker + name only). This is where **Excel's own "Stocks" data type**
-  comes in: this pipeline has no live path to it (needs a real, internet-
-  connected Microsoft 365 Excel session — confirmed empirically, see
-  `OPEN_ITEMS.md`'s closed items), but if YOU have it, use it directly in
-  this sheet — convert a ticker cell to the Stocks data type, pull whatever
-  fields you want (P/E, sector, market cap, dividend yield, 52-week range,
-  beta...) into that row, save. `python scripts/import_fundamentals_tab.py`
-  then folds whatever's filled in into `data/company_profiles/<TICKER>.json`
-  — the cache `swedish-equity-review` reads — tagged with source and date.
-  **Limitation, stated plainly:** this is a periodic manual refresh, not a
-  live feed. openpyxl can't read or preserve a live Stocks link, only the
-  last value Excel cached — redo the lookup in your own Excel and save again
-  whenever you want fresher numbers.
-
-This direction is deliberate. An earlier design made the workbook the source
-of truth and had the user keep it current; that puts the maintenance burden
-on the person, which is backwards. The Fundamentals tab doesn't reverse that
-— it's still optional, still just data you feed in when you have it.
+Hundreds of stocks are narrowed by **code**. Only the survivors cost
+reasoning. Five separate lenses instead of one blended score, so a
+high-growth name isn't killed by a static trailing-P/E rule and a deep-value
+name isn't killed by a growth rule.
 
 ## Running a sweep
 
+```bash
+pip install -r requirements.txt
+
+python scripts/build_universe.py                  # periodic discovery refresh
+python scripts/fetch_market_data.py --tickers SHB-A.ST,INVE-A.ST \
+       --crypto ethereum,bitcoin --insiders
+python scripts/scout.py                           # the funnel + SCOUT HEALTH
+python scripts/position_report.py                 # how positions are behaving
 ```
-pip install yfinance openpyxl
 
-python scripts/fetch_market_data.py --tickers SHB-A.ST,INVE-A.ST --crypto ethereum,bitcoin
-python scripts/fetch_calendar.py    --tickers SHB-A.ST,INVE-A.ST --days 45
-python scripts/position_report.py          # how the positions are behaving
-python scripts/build_workbook.py           # refresh master.xlsx
+Then open Claude Code here and run the agents in order:
+
+`journal` → `market-data` → `scout` → (`valuation`, `macro-regime`,
+`portfolio`, `thesis-review`) → `council` → `journal` → `meta`
+
+## SCOUT HEALTH
+
+Every scout run ends with a block like this:
+
+```
+SCOUT HEALTH
+
+  Universe:   538
+  Fetched:    538   (cache 498, new 40, failed 0)
+  Ranked:     528   (names that earned >=1 lens score)
+  Candidates: 68    (holdings 8, watchlist 32, new 28)
+  Focus:      22    (full Council analysis; the rest stay as context)
+  Screened:   68
+  Passed:     31
+  Missing:    20
+  Failed:     17
+
+  Status: VALID
 ```
 
-Then open a Claude Code session in this directory and run the agents in
-order: `journal` → the four lenses (`valuation`, `macro-regime`,
-`portfolio`, `thesis-review`) → `council` → `journal` again. `CLAUDE.md`
-documents the full flow and why the order matters.
+`Status` is the point. `VALID` means the pipeline was healthy, so a thin
+result is a real conclusion. `DEGRADED` names what to distrust.
+`INVESTIGATE_ZERO_PASS` fires whenever nothing passes and runs a diagnostic —
+was the universe loaded? did fetching fail? is the missing-data rate
+abnormal? is one threshold alone rejecting everything? are the units right? —
+because a broken filter and a quiet market produce identical-looking empty
+screens. "We found nothing", "we didn't look" and "the search broke" are
+never allowed to blur together.
 
-## The files that matter
+## The seven Council voices
+
+| Voice | Question |
+|---|---|
+| Fundamental / Quality | Is this an excellent business? |
+| Valuation | Is this price attractive relative to the business? |
+| Growth / Opportunity | Is the market underestimating future growth? |
+| Defensive / Risk | What can go wrong, and what should we own if it does? |
+| Contrarian / Risk Taker | Where is the market potentially wrong? |
+| Macro / Regime | Does the environment change this opportunity's attractiveness? |
+| Copycat / Smart Money | What are informed insiders actually doing? |
+
+The Chairman weighs the **quality of the arguments**, never a vote count, and
+never averages a disagreement away. Diversification is deliberately not a
+voice — it is the `portfolio` agent's job, applied once, afterwards.
+
+## Maintaining the lists
+
+```bash
+python scripts/watchlist.py list
+python scripts/watchlist.py add EVO.ST --name "Evolution AB" --category nordic
+python scripts/watchlist.py remove EVO.ST --reason "thesis broken"
+python scripts/watchlist.py universe-add NIBE-B.ST --region Nordic
+python scripts/watchlist.py history          # rank over time
+python scripts/scout.py --promote            # scout adds its best new finds
+```
+
+`add` and `universe-add` refuse to write a ticker that doesn't resolve to
+real price data — Nordic and European exchange suffixes are exactly where a
+plausible-looking guess produces garbage.
+
+## Where the truth lives
 
 | Path | What it is |
 |---|---|
 | `data/portfolio.json` | Source of truth: accounts, holdings, theses, targets |
 | `data/investor_profile.json` | Risk tolerance, horizon, constraints |
-| `OPEN_ITEMS.md` | **Single list of everything outstanding** (P = portfolio, S = system) |
-| `master.xlsx` | Generated read-only view (`Overview`/`Holdings`, formula-based) + two sheets that survive rebuilds: `Manual Data`, `Fundamentals` |
-| `reports/SESSION_LOG.md` | Append-only memory across sessions |
+| `data/universe.json` | Broad discovery universe |
+| `data/watchlist.json` | Curated, persistent watchlist |
+| `data/candidate_history.csv` | Candidate rank over time |
 | `data/cache/snapshots/` | Timestamped market data — every number traces here |
+| `data/screens/` | Scout output |
+| `OPEN_ITEMS.md` | Single list of everything outstanding (P = portfolio, S = system) |
+| `reports/SESSION_LOG.md` | Append-only memory across sessions |
+
+Your Excel workbook is an **input**, not a database: it supplies manual data,
+Nordic fundamentals and watchlist edits via
+`scripts/import_excel_holdings.py`, which is strictly read-only and *merges*
+into the watchlist rather than replacing it.
+
+`archive/` is historical reference only. Nothing active depends on it.
 
 ## Two things this system refuses to do
 
-1. **Invent a number.** Every figure traces to a file in `data/cache/`
-   fetched in the same session, or is explicitly labelled user-relayed. A
-   missing price reads "no data", never a stale or estimated one.
+1. **Invent a number.** Every figure traces to a fetched file or is labelled
+   user-relayed. A missing price reads "no data", never a stale or estimated
+   one.
 2. **Act.** It analyses and flags. You place every trade.
 
-## Parked capability
+## Tests
 
-`run.py`, `data/sync/`, `scripts/fetchers/` and `scripts/funnel/` came from
-a parallel Excel-backed branch merged on 2026-08-03. They are **not wired
-into the live flow** — they belong to that branch's runtime. Their agent
-definitions are preserved in `archive/agents-from-excel-branch/` with notes
-on what is worth porting. Tracked in `OPEN_ITEMS.md`.
+```bash
+python3 -m unittest discover -s tests -v
+```

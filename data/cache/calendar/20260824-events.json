@@ -1,43 +1,16 @@
 {
-  "fetched_at_utc": "2026-08-24T06:10:11.183574+00:00",
+  "fetched_at_utc": "2026-08-24T21:00:06.379904+00:00",
   "lookahead_days": 45,
   "earnings": {
-    "SHB-A.ST": {
-      "next_earnings": [
-        "2026-10-21"
-      ]
-    },
-    "INVE-A.ST": {
-      "next_earnings": null,
-      "note": "no earnings date returned"
-    },
-    "VOLV-B.ST": {
-      "next_earnings": [
-        "2026-10-23"
-      ]
-    },
-    "ATCO-B.ST": {
-      "next_earnings": [
-        "2026-10-22"
-      ]
-    },
     "AZN.ST": {
       "next_earnings": [
         "2026-07-27"
-      ]
-    },
-    "ALFA.ST": {
-      "next_earnings": [
-        "2026-10-27"
       ]
     },
     "ABB.ST": {
       "next_earnings": [
         "2026-10-20"
       ]
-    },
-    "BTC0E.AS": {
-      "error": "HTTP Error 404: Not Found"
     }
   },
   "macro_events": {

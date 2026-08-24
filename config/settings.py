@@ -1,74 +1,92 @@
 """
-Centralized tunable constants for the Finance Council system.
+Tunable constants for the Finance Council system, in one place.
 
-Before this file existed, these values were hardcoded across multiple scripts
-and agent .md files — changing a risk-score band, for example, meant finding
-and editing prose inside a script. This file is the one place to tune system
-behavior. It is machine-owned config (how the system behaves), not financial
-config (what the user decided about their own money — that lives in
-`data/investor_profile.json`).
+Machine config (how the system behaves), not financial config (what the user
+decided about their own money — that lives in `data/investor_profile.json`).
 
 Import with: from config.settings import ...
 """
 
-# --- import_excel_holdings.py: sanity-check bounds (flag, never block) ---
-EXCEL_STALE_AFTER_DAYS = 10  # an as_of older than this gets flagged, not dropped
-EXCEL_PE_SANITY_RANGE = (3, 80)  # outside this, flag the P/E as suspect (e.g. Atlas Copco's 2.05).
+HTTP_USER_AGENT = "finance-council personal research (seguifelix@gmail.com)"
+
+# ---------------------------------------------------------------------------
+# Discovery funnel — scripts/build_universe.py + scripts/scout.py
+# ---------------------------------------------------------------------------
+
+# How old data/universe.json may get before scout flags it as stale. The broad
+# universe is refreshed periodically (constituent changes are slow); the
+# watchlist and holdings are re-read every sweep regardless.
+UNIVERSE_REFRESH_INTERVAL_DAYS = 30
+
+# Fundamentals cache for the universe stage. Screening 600 names against a live
+# fetch every sweep is both slow and pointless — fundamentals move quarterly.
+# Holdings and watchlist names are always refetched (they drive live decisions).
+UNIVERSE_CACHE_DAYS = 7
+UNIVERSE_FETCH_WORKERS = 8
+
+# Funnel shape. universe -> (lens ranking) -> candidate pool -> Council.
+# Each of the five lenses contributes its own top slice, so a name that fails
+# one lens's view of the world can still reach the Council through another.
+LENS_TOP_N = 10                 # names each lens promotes
+CANDIDATE_POOL_SOFT_CAP = 80    # warn above this; Council reasoning gets expensive
+# Limited scout refinement: the pool stays broad, but the top slice is marked
+# `focus` so the Council knows where to spend depth. Every current holding is
+# always in focus (each has a live hold/sell decision), and nothing outside
+# focus is excluded — a voice can always pull a non-focus name back in.
+FOCUS_TOP_N = 15
+FACTOR_WINSOR_PCT = 0.02        # clip to [2nd, 98th] pct before z-scoring
+LENS_MIN_FIELDS = 2             # a lens score needs this many non-null inputs
+
+# Scout health thresholds. A screen that looks empty must be distinguishable
+# from a screen that broke — see scout.py's diagnose_zero_pass().
+MISSING_DATA_RATE_ALERT = 0.35  # >35% of screened names missing a filtered field
+FETCH_FAILURE_RATE_ALERT = 0.20
+SINGLE_FILTER_KILL_RATE = 0.90  # one filter alone rejecting >=90% of names
+
+# Unit guards (S19). These snapshot fields are on a percentage-POINT scale
+# (Yahoo reports debt_to_equity as 45.6, not 0.456). A threshold below the
+# guard is almost certainly a decimal-scale mistake, and silently produces an
+# empty screen that looks exactly like "the market has nothing good in it".
+# field -> (minimum plausible threshold, human explanation)
+PERCENT_POINT_SCALE_FIELDS = {
+    "debt_to_equity": (5.0, "Yahoo reports debt/equity in percentage points "
+                            "(45.6 = 0.46x). A ceiling of 2.0 rejects everything; "
+                            "use 150-200."),
+}
+
+# Default screen thresholds. Triage only — a FAIL is context for the Council,
+# never an automatic exclusion.
+DEFAULT_SCREEN = {
+    "max_pe": 40.0,
+    "max_forward_pe": 30.0,
+    "min_profit_margin": 0.0,
+    "max_debt_to_equity": 250.0,
+    "min_market_cap": 5e8,
+}
+
+# ---------------------------------------------------------------------------
+# scripts/import_excel_holdings.py — sanity bounds (flag, never block)
+# ---------------------------------------------------------------------------
+EXCEL_STALE_AFTER_DAYS = 10
+EXCEL_PE_SANITY_RANGE = (3, 80)
 # Lower bound deliberately not 0: an implausibly LOW P/E on a normally-profitable
 # large cap is exactly the failure mode observed (a wrong/mismatched field), and
-# a pure upper-bound check misses it entirely. 3 is loose enough not to flag a
-# genuine holding company (Investor A's ~6.7x is a legitimate NAV-driven artifact,
-# see portfolio.json's INVE-A.ST thesis) while still catching 2.05.
+# a pure upper-bound check misses it entirely.
 
-# --- derived_metrics.py / fetch_market_data.py: ROIC tax-rate assumption ---
-# No source in this pipeline provides a real effective tax rate (Yahoo's
-# incomeStatementHistory tax-line fields are broken/zero for most tickers,
-# confirmed empirically 2026-08). ROIC needs SOME tax rate, so this is an
-# explicit, labeled ASSUMPTION (statutory rate by listing country) used only
-# when no real effective rate is available - any ROIC computed with it must
-# be tagged quality_state "ESTIMATED", never "OK". Prefer a real effective
-# rate over this the moment one exists (e.g. from a filing or PDF extract).
+# ---------------------------------------------------------------------------
+# derived_metrics.py / fetch_market_data.py — ROIC tax-rate assumption
+# ---------------------------------------------------------------------------
+# No source in this pipeline provides a real effective tax rate. ROIC needs
+# SOME rate, so this is an explicit, labelled ASSUMPTION (statutory rate by
+# listing country); any ROIC computed with it is tagged quality_state
+# "ESTIMATED", never "OK".
 DEFAULT_CORPORATE_TAX_RATE_ASSUMPTION = {
     "Sweden": 0.206, "United Kingdom": 0.25, "United States": 0.21,
     "Switzerland": 0.147, "Germany": 0.298, "Denmark": 0.22, "Norway": 0.22,
 }
-DEFAULT_CORPORATE_TAX_RATE_FALLBACK = 0.25  # used when country isn't in the map above
+DEFAULT_CORPORATE_TAX_RATE_FALLBACK = 0.25
 
-# --- rank_candidates.py: hybrid risk score weights (must sum to 1.0) ---
-RISK_SCORE_WEIGHTS = {
-    "volatility": 0.40,
-    "max_drawdown": 0.35,
-    "leverage": 0.15,
-    "size": 0.10,
-}
-RISK_SCORE_VOLATILITY_BAND = (0.15, 0.60)     # (low, high) annualized vol -> 0-100
-RISK_SCORE_DRAWDOWN_BAND = (0.10, 0.60)       # (low, high) abs 1y max drawdown -> 0-100
-RISK_SCORE_LEVERAGE_BAND = (0.3, 3.0)         # (low, high) debt/equity -> 0-100
-RISK_SCORE_SIZE_BANDS = [                      # (market_cap_threshold, score)
-    (200e9, 5), (50e9, 20), (10e9, 40), (2e9, 65),
-]  # below the smallest threshold: 85 (micro/small cap)
-
-# --- rank_candidates.py: factor z-score winsorization ---
-FACTOR_WINSOR_PCT = 0.02  # clip to [2nd, 98th] percentile before z-scoring
-
-# --- fetch_fundamentals.py: multi-class share-count staleness guard ---
-SHARES_MAX_AGE_DAYS = 400  # a share-count row older than this is treated as missing, not current
-
-# --- fetch_fundamentals.py: retry policy for throttled Yahoo chart requests ---
-YAHOO_CHART_RETRY_TRIES = 3
-YAHOO_CHART_RETRY_BACKOFF_SEC = 0.6  # multiplied by attempt number
-
-# --- rank_candidates.py: universe cache freshness ---
-UNIVERSE_CACHE_DAYS = 7
-
-# --- generate_coverage_report.py: consecutive-sweeps-missing flag threshold ---
-COVERAGE_STREAK_FLAG_THRESHOLD = 2
-
-# --- performance.py / backtest.py: default benchmark ---
+# ---------------------------------------------------------------------------
+# performance.py / backtest.py
+# ---------------------------------------------------------------------------
 DEFAULT_BENCHMARK_TICKER = "VWCE.DE"
-
-# --- SEC EDGAR requests require an identifying User-Agent ---
-SEC_USER_AGENT = "finance-council personal research (seguifelix@gmail.com)"
-
-# --- Insynsregistret (Finansinspektionen Swedish insider register) ---
-INSYNSREGISTRET_BASE_URL = "https://marknadssok.fi.se/Publiceringsklient/sv-SE/Search/Search"

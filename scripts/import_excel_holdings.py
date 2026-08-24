@@ -3,7 +3,7 @@
 Fold a user-maintained Excel workbook (Holdings/Transactions/FX Rates/
 Watchlist, built on Excel's live "Stocks" data type) into this system's
 actual state files: data/company_profiles/<TICKER>.json, data/portfolio.json
-holdings, data/transactions.csv, and data/cache/watchlist.json.
+holdings, data/transactions.csv, and data/watchlist.json.
 
 WHY THIS EXISTS
 ----------------
@@ -57,14 +57,16 @@ from datetime import datetime, timezone
 
 from openpyxl import load_workbook
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import watchlist as wl  # noqa: E402
 from config.settings import EXCEL_STALE_AFTER_DAYS, EXCEL_PE_SANITY_RANGE  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROFILES_DIR = os.path.join(ROOT, "data", "company_profiles")
 PORTFOLIO_PATH = os.path.join(ROOT, "data", "portfolio.json")
 TRANSACTIONS_CSV = os.path.join(ROOT, "data", "transactions.csv")
-WATCHLIST_JSON = os.path.join(ROOT, "data", "cache", "watchlist.json")
+
 IMPORT_SUMMARY_JSON = os.path.join(ROOT, "data", "cache", "excel_import", "latest-summary.json")
 CLAUDE_EXCEL_PROMPT_PATH = os.path.join(ROOT, "data", "cache", "excel_import", "claude_excel_prompt.txt")
 
@@ -496,7 +498,7 @@ def process_watchlist(wb, flags, dry_run):
     positions and watchlist candidates, distinguished by a `status` column)
     takes priority; falls back to the older standalone 'Watchlist' sheet
     (master-5) if Universe isn't present. Output shape is identical either
-    way - scout/screen_candidates.py don't need to know which source ran."""
+    way - scripts/scout.py doesn't need to know which source ran."""
     source_label = None
     if "Universe" in wb.sheetnames:
         ws = wb["Universe"]
@@ -515,9 +517,10 @@ def process_watchlist(wb, flags, dry_run):
         source_label = "Watchlist tab, master-5.xlsx (Drive, read-only)"
         status_col = None
     else:
-        flags.append("No 'Universe' or 'Watchlist' sheet in this workbook yet - data/universe.json "
-                     "stays in use until one is added. See the Watchlist spec (ticker, name, "
-                     "category, price_sek, pe_ratio, market_cap, sector, beta, as_of, notes).")
+        flags.append("No 'Universe' or 'Watchlist' sheet in this workbook yet - "
+                     "data/watchlist.json keeps whatever it already holds. See the Watchlist "
+                     "spec (ticker, name, category, price_sek, pe_ratio, market_cap, sector, "
+                     "beta, as_of, notes).")
         return None
 
     headers = [_norm(c.value) for c in ws[header_row]]
@@ -558,28 +561,26 @@ def process_watchlist(wb, flags, dry_run):
             f"assume .ST for all of them (e.g. Novo Nordisk is Copenhagen-listed, '.CO', not '.ST')."
         )
 
-    # "categories" groups tickers by the Watchlist's category column, in the
-    # same {category: [tickers]} shape data/universe.json used - this is
-    # what scripts/funnel/screen_candidates.py actually reads for a screen.
-    # "entries" carries the full per-ticker record (including Excel's own
-    # fundamentals and any per-row notes) for anything that wants more than
-    # just the ticker list. Tickers with a space are excluded from
-    # categories (not screenable as-is, see the flag above) but kept in
-    # entries so the raw data isn't lost.
-    categories = {}
-    for rec in entries:
-        if " " in rec["ticker"]:
-            continue
-        cat = rec.get("category") or "uncategorized"
-        categories.setdefault(cat, []).append(rec["ticker"])
-
+    # MERGE into the persistent curated watchlist, never overwrite it. The
+    # watchlist survives between sweeps by design (see scripts/watchlist.py);
+    # a missing or half-filled Excel tab must not silently wipe names the user
+    # or a scout promotion put there. Tickers with a space are Excel's raw
+    # entity display name, not a fetchable symbol - kept in the returned
+    # entries so the data isn't lost, but never written as a watchlist ticker.
     if not dry_run:
-        os.makedirs(os.path.dirname(WATCHLIST_JSON), exist_ok=True)
-        with open(WATCHLIST_JSON, "w") as f:
-            json.dump({"source": source_label,
-                      "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
-                      "categories": categories,
-                      "entries": entries}, f, indent=2)
+        data = wl.load()
+        added, updated = [], []
+        for rec in entries:
+            t = rec["ticker"]
+            if " " in t:
+                continue
+            is_new = wl.add(t, name=rec.get("name"), category=rec.get("category"),
+                            source="excel", note=rec.get("notes"),
+                            data=data, persist=False)
+            (added if is_new else updated).append(t)
+        wl.save(data)
+        print(f"Watchlist merge: {len(added)} added, {len(updated)} updated, "
+              f"{len(data['entries'])} total (source: {source_label})")
     return entries
 
 

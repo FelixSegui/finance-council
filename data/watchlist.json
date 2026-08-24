@@ -1,0 +1,262 @@
+{
+  "note": "CURATED WATCHLIST \u2014 persistent between sweeps, deliberately much smaller than data/universe.json. Maintained by scripts/watchlist.py, the Excel import, and scout promotions. Presence here means 'worth monitoring', not 'buy'.",
+  "updated_utc": "2026-08-24T20:58:36.049850+00:00",
+  "entries": {
+    "AAPL": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_mega_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "ABBV": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_quality_dividend",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "AMD": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "semis_and_ai_infra",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "AMZN": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_mega_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "ASML": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "semis_and_ai_infra",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "ASSA-B.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_large_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "ATCO-A.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_large_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "AVGO": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "semis_and_ai_infra",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "ERIC-B.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_large_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "EVO.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_large_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "GOOGL": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_mega_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "HD": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_quality_dividend",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "HEXA-B.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_swedish_equity_review_candidates",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "HM-B.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_large_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "INDU-C.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_swedish_equity_review_candidates",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "INVE-B.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_large_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "JNJ": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_quality_dividend",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "KINV-B.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_swedish_equity_review_candidates",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "KO": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_quality_dividend",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "LATO-B.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_swedish_equity_review_candidates",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "LUND-B.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_swedish_equity_review_candidates",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "META": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_mega_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "MSFT": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_mega_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "NOVO-B.CO": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_large_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "NVDA": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_mega_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "PEP": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_quality_dividend",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "PG": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "us_quality_dividend",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "SAAB-B.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_swedish_equity_review_candidates",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "SAND.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_large_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "SEB-A.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_large_cap",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "SWED-A.ST": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "nordic_swedish_equity_review_candidates",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    },
+    "TSM": {
+      "added": "2026-08-24",
+      "source": "curated-2026-08-03",
+      "category": "semis_and_ai_infra",
+      "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
+      "name": null,
+      "last_seen": "2026-08-24"
+    }
+  }
+}

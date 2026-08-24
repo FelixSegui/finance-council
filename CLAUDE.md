@@ -1,353 +1,262 @@
 # Finance Council — Investment Analytics System
 
-Personal investment advisory system. Runs locally via Claude Code. No brokerage
-integration — you are the human-in-the-loop for every action. This system
-produces analysis and flags; it never executes trades.
+Personal investment advisory system, run locally through Claude Code. No
+brokerage integration — you are the human-in-the-loop for every action. This
+system produces analysis and flags. It never executes a trade.
 
-Data sources (all free, no keys): yfinance (price + full fundamentals as
-of 2026-07-28 - see note below), CoinGecko, FRED, Riksbank SWEA, SCB
-PxWeb, ECB Data Portal, alternative.me Fear & Greed, SEC EDGAR (Form 4
-insider counts, US tickers, `--insiders` flag).
+## What this system is for
 
-**yfinance data-availability note (RESOLVED 2026-07-28):** Yahoo's
-fundamentals endpoint (P/E, dividend yield, sector, margins, growth,
-debt/equity, 4-year revenue history) requires a "crumb" token from
-fc.yahoo.com, which the user unblocked in this environment's network
-policy. yfinance's own Python client still fails on this network (its
-curl_cffi-based browser-TLS-fingerprint impersonation gets
-connection-reset by Yahoo's anti-bot layer) - `scripts/fetch_market_data.py`
-bypasses yfinance's client entirely and talks to Yahoo's quoteSummary API
-directly via plain `urllib` + a cookie jar, which works reliably and is
-NOT detected the way curl_cffi is. Full fundamentals now fetch cleanly for
-both US and Nordic tickers. One real gap remains: Yahoo's legacy
-multi-year cash-flow module only exposes `netIncome` per year, not
-capex/FCF - free cash flow is trailing-only (a single current figure), not
-a multi-year series. For a genuine FCF trend, use a company's own cash
-flow statement (PDF via the `pdf` skill).
+**Stock selection.** It exists to keep answering one question:
 
-**Swedish-equity data sources (for the `swedish-equity-review` skill):**
-Finansinspektionen's Insynsregister (insider transactions) does have real
-public data (PDMR transaction register, free, attribution only), but the
-actual search/data tool lives at `marknadssok.fi.se` - a DIFFERENT
-subdomain from `www.fi.se` (which the user unblocked 2026-07-28).
-`marknadssok.fi.se` is still blocked by this environment's egress policy,
-confirmed via the proxy status log - would need that specific subdomain
-added too. Until then, insider activity for Swedish names stays
-user-relayed, not fetched. Börsdata requires registration/API key - NOT
-free/no-key,
-usable only if that tradeoff is deliberately accepted for one source.
-Placera, Dagens Industri, Affärsvärlden, Börskollen are editorial content,
-not structured APIs - treat as user-relayed information, not a fetch
-target. Kvartalsrapporter/årsredovisningar are PDFs - use the `pdf` skill
-to extract real figures from a user-provided report rather than asking
-for manual transcription.
+> *What are the best investments available to me right now?*
 
-## Scope (Phase 1 — locked 2026-07-03)
+That is **not** the same question as *"what should I do with the stocks I
+already own?"* Both matter, but they are separate stages and the order is
+fixed: find the best opportunities first, then decide what fits the
+portfolio. A sweep that only reviews current holdings is a system failure.
 
-Covered: **equities, ETFs/index funds, crypto**, with **macro (rates, yield
-curve, inflation, dollar)** as regime context, not a tradeable asset class.
+## The canonical flow
 
-Explicitly out of scope until a paid data feed is added: individual bonds,
-options, alternatives. Free data for these is either non-existent (bonds,
-alts) or too thin to trust (options IV/skew). Do not let any agent generate
-options or alts recommendations from scraped/free data — that is false
-confidence, not analysis. If asked, agents should say so and stop.
+```
+DATA                     fetch_market_data.py -> data/cache/snapshots/
+  |
+BROAD UNIVERSE           data/universe.json      (~500-2,000 names)
+  |
+MECHANICAL SCOUT         scripts/scout.py        (code, not an LLM)
+  |                      five lens rankings -> ~50-75 plausible names
+WATCHLIST + CANDIDATES   data/watchlist.json + newly discovered names
+  |                      -> data/screens/<ts>-candidates.csv
+  |                      ~20 marked focus=Y (holdings + top ranked)
+SPECIALIST COUNCIL       seven independent analyst voices
+  |
+CHAIRMAN                 weighs argument quality, not vote counts
+  |
+PORTFOLIO FIT            portfolio agent's diversification/capital read
+  |
+FINAL ACTION             BUY / HOLD-WATCH / SELL / NO ACTION
+```
 
-**Narrow exception, added 2026-08-22: gold.** At the user's explicit
-direction (crash-hedge diversifier against equity/bond/sovereign-debt
-stress), gold is in scope as a single named commodity — not a general
-opening of the "alternatives" ban above, which still holds for everything
-else (no other commodity, no bonds, no options). What makes gold
-different from the rest of the alts ban is that real free data exists and
-is already fetchable through the exact same pipeline as equities:
-`scripts/fetch_market_data.py --tickers` accepts `GC=F` (COMEX gold
-futures, USD/troy oz spot proxy) and any listed physical-gold ETF/ETC
-ticker (e.g. `SGOL`) via Yahoo's quoteSummary, same as any other equity
-ticker — confirmed working 2026-08-22. `valuation` and `macro-regime` may
-reason about gold using this fetched data like any other holding/
-candidate. What's still NOT solved: which specific ISK-eligible gold ETC
-the user actually buys is a real-instrument/ticker choice (e.g. a
-Stockholm- or Xetra-listed physical-backed ETC) that must be verified by
-the user or looked up explicitly, never guessed the way Nordic exchange
-suffixes are never guessed elsewhere in this system — `GC=F`/`SGOL` are
-directional price proxies for sizing/valuation discussion only, not
-purchase-ready tickers.
+The wide part of the funnel is **deterministic code**. Hundreds of stocks
+never reach an LLM. Judgement is spent on ~10–20 names that survived.
+
+## The four words, defined exactly
+
+| Term | What it means | What it is NOT |
+|---|---|---|
+| **UNIVERSE** (`data/universe.json`) | The broad pool the system is allowed to discover from. Hundreds to low thousands of names. Membership implies nothing about quality. | Not holdings. Not the watchlist. Not a recommendation list. |
+| **WATCHLIST** (`data/watchlist.json`) | Small, curated, persistent set worth monitoring. Survives between sweeps. Names arrive by hand, from Excel, or by scout promotion. | Not the discovery universe. Not rebuilt from scratch each sweep. |
+| **SCOUT** (`scripts/scout.py`) | The mechanism that reduces the universe to a candidate set. Deterministic screening and ranking. Runs **every** stock-selection sweep. | Not deep analysis. Not a stock picker. "Scout was not invoked" is not a valid outcome. |
+| **COUNCIL** (`.claude/agents/council.md`) | Deep investment reasoning over a manageable candidate set. Compares holdings, watchlist names and new discoveries side by side. | Not a portfolio audit. Not a place to re-derive concentration math. |
+| **PORTFOLIO** (`.claude/agents/portfolio.md`) | What fits *this* portfolio, applied **after** opportunity selection. The single diversification authority. | Not a stock-picking voice. Never defines the discovery universe. |
+
+## The three outcomes that must never be conflated
+
+1. **"We searched and found nothing"** — the funnel ran, the health block is
+   `VALID`, and no name cleared the bar. A legitimate conclusion.
+2. **"We did not search"** — scout didn't run. Never acceptable on a normal
+   sweep; the memo must say so outright.
+3. **"The search failed"** — the funnel ran and broke. Status
+   `INVESTIGATE_ZERO_PASS` or `DEGRADED`: universe empty, fetches failing,
+   missing-data rate abnormal, one threshold killing everything, a unit/scale
+   mistake. `scripts/scout.py` runs this diagnostic automatically whenever
+   zero names pass, because a broken filter and a quiet market produce an
+   identical-looking empty screen.
 
 ## Why this exists (read before extending)
 
-The single biggest risk in an LLM-based investment system is **confident
-structure built on stale or hallucinated numbers**. Every numerical claim in
-every agent's output must trace to a file in `/data` written by
-`scripts/fetch_market_data.py` in the same session. No agent invents a price,
-ratio, or macro figure. If data wasn't fetched, the agent says "no data" —
-it does not estimate from training knowledge, which is stale by definition.
+The biggest risk in an LLM-based investment system is **confident structure
+built on stale or hallucinated numbers.** Every numerical claim in every
+agent's output must trace to a file under `data/` written in the same
+session. No agent invents a price, ratio or macro figure. If data wasn't
+fetched, the agent says "no data" — it does not estimate from training
+knowledge, which is stale by definition.
 
-## Priority order (Swedish retail context, ~200-250k SEK)
+The second-biggest risk is **process for its own sake.** Extra agents, extra
+reports and elaborate structure are worthless unless they improve stock
+selection or decision quality. When in doubt, delete a step.
 
-At this portfolio size, the return hierarchy is:
-1. **Account wrapper efficiency** (ISK tax-free allowance vs taxed AF) —
-   structural, certain, largest. **STATUS 2026-08-03: DONE.** All capital
-   sits in the ISK; the Handelsbanken and SEB taxable accounts are exited.
-2. **Fee drag** (bank funds at 1%+ vs index at ~0.2%) — structural,
-   certain, second largest. **STATUS 2026-08-03: SUBSTANTIALLY DONE.**
-   Avanza Global (the largest holding) is 0.10%, Auto 3 is 0.39%, the 2.6%
-   Tundra fund is sold. One item left: the 2.5% BTC certificate (P4).
-3. **Allocation / drift** — controllable, probabilistic. **Live.**
-4. **Selection** (which stock/fund/coin) — smallest edge, most effort.
-   **Now the main active work**, because 1-2 are finished.
+## Running a sweep
 
-The portfolio agent owns 1-3. Valuation/thesis own 4.
+```bash
+python scripts/build_universe.py            # periodic — discovery refresh (~30d)
+python scripts/fetch_market_data.py --tickers ... --crypto ethereum,bitcoin \
+       --insiders --fi-issuers "Handelsbanken,Investor"
+python scripts/scout.py                     # every sweep — the funnel
+python scripts/position_report.py           # how the positions are behaving
+```
 
-**Phase shift, 2026-08-03.** Levers 1 and 2 were the reason this system
-front-loaded structural work, and they are now closed. The rule "never
-lead with a stock pick while a wrapper inefficiency sits unaddressed"
-still holds — but it is no longer binding, because there is no such
-inefficiency left. Sweeps should now lead with **how the positions are
-behaving** and **what should change**, and mention structure only when
-something actually breaks. Re-flagging settled structural facts every
-week is noise, not diligence.
+Then, in the Claude Code session:
 
-Currencies: base currency is SEK. Equity data may arrive in USD/EUR;
-convert using the sek_per_usd rate in the macro snapshot before computing
-weights. Crypto certificates trade on Nasdaq Stockholm in SEK — fetch them
-as .ST tickers via yfinance, not via CoinGecko.
+0. **`journal`** (session-start mode) — where the last sweep left off, pending
+   decisions, open items, and `meta`'s recommended emphasis. No analysis
+   before this runs.
+1. **`market-data`** — one snapshot; everything else reads it.
+1a. *(optional)* the user's Excel workbook, if a fresh copy is available:
+   download via the Google Drive connector, then
+   `python scripts/import_excel_holdings.py --xlsx <path>`. Read-only. It
+   supplies Nordic fundamentals no free headless source reaches, and **merges**
+   into `data/watchlist.json` — it never overwrites it. Skip it if there's no
+   fresh copy; nothing downstream blocks.
+2. **`scout`** — runs the funnel, reports SCOUT HEALTH, hands over the
+   candidate CSV. Every sweep.
+3. **`valuation`, `macro-regime`, `portfolio`, `thesis-review`** — the lenses,
+   over holdings *and* candidates. Optional: `calendar` (event collisions),
+   `backtest` (risk profile of a proposed allocation).
+4. **`council`** — last. Seven voices → Chairman → portfolio fit → one memo in
+   `reports/`.
+5. **`journal`** (sweep-end) — reconcile last sweep's calls against today's
+   data, append the entry. An unlogged sweep is invisible to the next session.
+6. **`meta`** — did the system get better at deciding? Maintains S-items.
+7. `python scripts/check_unmerged_work.py`, then push. Not optional — on
+   2026-08-03 the repo was found forked in two for 12 days with ~25 commits
+   invisible on each side.
 
-## Open items — one list, one place
+Separately, roughly monthly: the `monthly-contribution` skill (how much new
+money to deploy) and `swedish-equity-review` (deep dive on the Swedish sleeve).
 
-**`/OPEN_ITEMS.md` is the single review surface** (consolidated 2026-08-03
-at the user's request). It replaced two separate lists: the
-`open_structural_questions` array that used to live in `portfolio.json`
-(now **P-items**) and the `IMPROVEMENTS.md` backlog (now **S-items**).
-`IMPROVEMENTS.md` itself was deleted 2026-08-23 (it had been a stub
-pointing here since 2026-08-03; nothing of substance was lost).
+## Data ownership — one canonical owner per concept
 
-Rules:
-- Agents read `OPEN_ITEMS.md` for what's outstanding. Do not recreate a
-  question list inside `portfolio.json` — that split is what was fixed.
-- Every Council memo pulls its open actions from this file, and closed
-  items move to the bottom log with a one-line resolution. Never delete
-  an item silently.
-- The `meta` agent proposes S-items; nothing self-applies; the user
-  approves with "apply S3".
+| Path | Owns |
+|---|---|
+| `data/portfolio.json` | Portfolio truth: accounts, holdings, theses, targets |
+| `data/investor_profile.json` | Client profile: risk tolerance, horizon, buffer, constraints |
+| `data/universe.json` | Broad investable universe |
+| `data/watchlist.json` | Curated persistent watchlist |
+| `data/candidate_history.csv` | Candidate rank over time |
+| `data/cache/snapshots/` | Market-data snapshots (every number traces here) |
+| `data/screens/` | Scout outputs (candidates CSV + full JSON) |
+| `data/company_profiles/` | Per-company research that doesn't change monthly |
+| `data/definitions.json` | Pinned definitions of ambiguous shared terms |
+| `reports/` | Human-readable memos + `SESSION_LOG.md` |
+| `OPEN_ITEMS.md` | The single list of everything outstanding |
 
-**Blocking-question rule (still live, now general):** if an open item makes
-a conclusion untrustworthy, the memo leads with it rather than burying it.
-The original instance — the Handelsbanken wrapper, which gated 70% of the
-portfolio — was resolved 2026-07-07 and the account fully exited, so no
-item currently holds that status. The rule stays because the situation
-will recur; it is not a permanent instruction to open with any particular
-question.
+Do not create a competing "truth" file. If one appears, migrate its content
+and delete it.
 
-## Flow
+**Excel stays an input, never a database.** `portfolio.json` is authoritative.
+The user's workbook supplies manual data, Nordic fundamentals and watchlist
+edits; `import_excel_holdings.py` reads it and never writes back.
 
-0. **Every session starts with `journal`** — it reads the tail of
-   `reports/SESSION_LOG.md` and reports where the last sweep left off,
-   pending decisions, and open items, including OPEN_ITEMS.md's "This
-   sweep's recommended emphasis" block (prospecting / portfolio-tending /
-   balanced — `meta`'s call from last session, a recommendation to weigh
-   when deciding whether to invoke `scout` this round, not a rule). No
-   analysis before this runs.
-1. Run `python scripts/fetch_market_data.py` (or let the `market-data`
-   subagent do it) → writes timestamped JSON to `/data/snapshots/`.
-   Include `--crypto ethereum,bitcoin`: BTC is the agreed directional
-   proxy for the XBT certificate, which has no working ticker.
-1a. **Read the user's Excel workbook (added 2026-08-06)**, if a fresh copy
-   is available: download it via the Google Drive connector, then run
-   `python scripts/import_excel_holdings.py --xlsx <path>`. This is the
-   primary source for Nordic-equity fundamentals (P/E, sector, market cap
-   — via Excel's live "Stocks" data type, which no free headless source can
-   reach) and feeds `data/company_profiles/`, `data/portfolio.json`
-   holdings (quantity/cost-basis deltas, always surfaced not silently
-   applied), `data/transactions.csv`, and `data/cache/watchlist.json`.
-   Strictly read-only — the script never writes back to the workbook. If
-   no fresh copy is available this sweep, skip it; nothing downstream
-   blocks on it, same "no data is fine" rule as everywhere else.
-   **Format/data-quality check (added 2026-08-11):** any flags this run
-   raises (missing sheet or block, unmatched TBD ticker, stale value,
-   inverted 52-week range, a held ticker missing from STOCK DETAIL) are
-   also written as a short, ready-to-paste fix prompt to
-   `data/cache/excel_import/claude_excel_prompt.txt`, for the user's
-   Claude-for-Excel extension to act on directly in the workbook. No
-   flags, no file. See `scripts/import_excel_holdings.py`'s docstring.
-1b. Run `python scripts/position_report.py` → the per-position movement
-   table (price, move since last sweep, move vs cost, 52-week range).
-   This is the user's primary weekly output and leads the memo.
-2. Invoke `valuation`, `macro-regime`, `portfolio`, `thesis-review`,
-   `scout` — they read the latest snapshot, never fetch data themselves
-   redundantly. As of 2026-08-17, `scout` runs every sweep, not only when
-   new candidates are wanted: its full categorized watchlist screen
-   (Passed / Missing data / Failed) is the candidate pool `council` needs
-   for stock selection, not an optional extra. `scout`'s compact digest
-   CSV (`data/cache/screens/<timestamp>-digest.csv`) should be sent
-   directly to the user as a file each sweep it's regenerated — this is
-   the actual dataset every Council persona reasons from, and the user
-   asked to be able to see it directly rather than trust it's centralized
-   somewhere unopened. Optional, when relevant: `calendar` (event
-   collisions), `backtest` (risk profile of a proposed allocation).
-3. Invoke `council` last. It reads all outputs, forces disagreements into
-   the open, and writes one memo to `/reports/`. Its primary method (as of
-   2026-08-17, revised same day) is the **Stock Selection Council**: six
-   independent analyst personas (Fundamental/Quality, Valuation,
-   Growth/Opportunity, Defensive/Risk, Contrarian/Risk Taker, Macro/
-   Regime) each rank BUY candidates and flag SELLs across the FULL
-   candidate universe — every current holding plus every watchlist entry,
-   not just names already flagged — before a Chairman weighs the quality
-   of their arguments (not vote counts) into a Top 5 Opportunities list,
-   each with a portfolio-fit-adjusted BUY/HOLD-WATCH/SELL/NO ACTION call.
-   Diversification/allocation-fit is deliberately not one of the six
-   voices — it is `portfolio`'s expanded job (industry/country/market-cap/
-   sustainability, across holdings and candidates alike), consulted once
-   by the Chairman rather than re-derived per-voice; a first live test
-   found running it as a seventh equal voice produced redundant,
-   double-counted output. A separate, lighter Portfolio Governance method
-   (five short voices, unchanged from the prior design) handles non-stock
-   decisions — wrapper, fee-routing, cash-allocation mechanics. `scout`'s
-   screen also now writes a compact digest CSV alongside its full JSON
-   (same-day fix) — council reads the digest for its main pass, the full
-   JSON only for a field the digest doesn't carry, after the first live
-   test found the full JSON alone was consuming most of a run's token
-   budget on reading rather than reasoning. See `council.md` for the full
-   method; this reflects the priority-order shift below (levers 1-2
-   closed, lever 4 — selection — is now the main work, and the Council
-   method now matches that emphasis structurally, not just in prose).
-4. **Every sweep ends with `journal`** — it reconciles last sweep's calls
-   against today's data and appends the session entry. An unlogged sweep
-   is invisible to the next session.
-5. Invoke `meta` — it reviews how the system itself performed and
-   maintains the S-items in `/OPEN_ITEMS.md`, plus two structural jobs
-   (added 2026-08-04): a prospecting-capability check specifically for
-   `scout`/`data/cache/watchlist.json` (built from the Excel Watchlist tab
-   — see 1a above; `data/universe.json` is retired for this purpose as of
-   2026-08-06, and stays only as the fallback until a Watchlist tab
-   exists), and the next-sweep emphasis recommendation (step 0 above). No
-   longer purely optional — run it most sessions so the emphasis
-   recommendation stays current, not stale. Before proposing anything new,
-   it checks whether an existing S-item or V2 Roadmap phase already
-   solves the problem, and separately reviews standing roadmap items on
-   their own merits (valuable soon / can wait / blocked / redundant /
-   obsolete), ending with a short "Recommended next improvement(s)" list
-   (see `meta.md`). It also runs a six-voice system-persona debate (see
-   `meta.md`) on friction evidence before updating S-items.
-6. You read the memo. You decide. Nothing here executes anything.
-   Separately, roughly monthly (not every sweep), the `monthly-contribution`
-   skill helps decide how much new money to move from available to
-   invested that month — see its own file for why that's a different
-   cadence from this flow.
-7. **Every sweep ends with `python scripts/check_unmerged_work.py`** and a
-   push. This is not optional bookkeeping. On 2026-08-03 we found the repo
-   had been forked in two since 07-22, with ~25 commits on each side
-   invisible to the other, duplicating fixes and each missing the other's
-   work — undetected for 12 days. The user does not write the code and
-   cannot be the one to catch this. If the check exits non-zero, resolve it
-   before ending the session.
+**`archive/` is history only.** No active code, prompt, workflow, doc or
+import may depend on anything under it. Port an idea deliberately if it is
+worth having; leave the archived version unused.
 
-## Branching rule
+## Data sources (all free, no keys)
 
-Branches for testing before "prod" are fine and encouraged. What is not
-fine is leaving one unmerged and unannounced. Any branch that still holds
-commits `main` doesn't have at the end of a session must be either merged
-or explicitly reported to the user as pending, by name, with what's on it.
-Never let work go quiet on a branch.
+Yahoo Finance quoteSummary (price + full fundamentals), CoinGecko, FRED,
+Riksbank SWEA, SCB PxWeb, ECB Data Portal, alternative.me Fear & Greed, SEC
+EDGAR Form 4 counts (`--insiders`), Finansinspektionen Insynsregister
+(`--fi-issuers`), and the S&P 500 / NASDAQ / NYSE constituent CSVs used to
+build the universe.
+
+**Yahoo fundamentals note.** Yahoo's fundamentals endpoint needs a "crumb"
+token from fc.yahoo.com. yfinance's own client fails on this network (its
+curl_cffi browser-TLS impersonation gets connection-reset by Yahoo's anti-bot
+layer). `scripts/fetch_market_data.py` bypasses yfinance entirely and talks to
+the quoteSummary API via plain `urllib` + a cookie jar, which works reliably
+for both US and Nordic tickers. One real gap remains: Yahoo's legacy
+multi-year cash-flow module exposes only `netIncome` per year, so free cash
+flow is trailing-only, not a multi-year series. For a real FCF trend, use a
+company's own cash-flow statement (PDF via the `pdf` skill).
+
+**Swedish insider data.** Finansinspektionen's register is real and free, and
+`fetch_market_data.py --fi-issuers` reads it — but search is by **issuer name**
+with exact Swedish spelling (å/ä/ö). ASCII transliteration returns zero rows,
+which is indistinguishable from "no insider activity". Börsdata needs a key.
+Placera / Dagens Industri / Affärsvärlden are editorial, not APIs — treat
+anything from them as user-relayed.
+
+## Scope
+
+**In:** equities, ETFs/index funds, crypto, and gold as a single named
+commodity (crash-hedge diversifier, user-directed 2026-08-22 —
+`fetch_market_data.py` handles `GC=F` and listed physical-gold ETCs like
+`SGOL` through the same pipeline). Macro (rates, curve, inflation, dollar) is
+regime context, not a tradeable class.
+
+**Out until a paid feed exists:** individual bonds, options, other
+alternatives. Free data for these is non-existent or too thin to trust. Do
+not let any agent generate options or alternatives recommendations from
+scraped data — that is false confidence, not analysis. Say so and stop.
+
+Which specific ISK-eligible gold ETC the user actually buys is a real-ticker
+choice that must be verified, never guessed. `GC=F`/`SGOL` are directional
+price proxies for sizing discussion only.
+
+## Currencies
+
+Base currency is SEK. Equity data may arrive in USD/EUR/DKK — convert using
+`sek_per_usd` / `sek_per_eur` from the macro snapshot before computing
+weights. A missing FX rate is a missing weight, never an assumed 1:1. Crypto
+certificates trade on Nasdaq Stockholm in SEK — fetch them as `.ST` tickers,
+not via CoinGecko.
+
+## Priority order (Swedish retail, ~200–250k SEK)
+
+1. **Account wrapper efficiency** (ISK vs taxed AF) — **DONE 2026-08-03.** All
+   capital is in the ISK.
+2. **Fee drag** — **SUBSTANTIALLY DONE.** One item left: the 2.5% BTC
+   certificate (P4).
+3. **Allocation / drift** — live, mechanical, owned by `portfolio`.
+4. **Selection** — **the main active work**, because 1–3 are closed. This is
+   why the system is built as a discovery funnel rather than a portfolio audit.
+
+The old rule "never lead with a stock pick while a wrapper inefficiency sits
+unaddressed" still holds but is no longer binding — there is no such
+inefficiency left. Re-flagging settled structural facts every week is noise,
+not diligence.
 
 ## Time horizons
 
-Every Council call carries a horizon tag. The system's edge shrinks as
-the horizon shortens — weight effort accordingly:
+Every Council call carries a horizon tag. The system's edge shrinks as the
+horizon shortens.
 
-- **Long (3y+)** — wrapper efficiency, fee drag, allocation. Owned by
-  `portfolio`. Highest edge, structural, this is where the money is.
+- **Long (3y+)** — allocation, wrapper, fees. Structural, highest edge.
 - **Medium (6mo–3y)** — valuation entry/exit, thesis health, regime
-  positioning. Owned by `valuation` + `thesis-review` + `macro-regime`.
-- **Short (<6mo)** — tactical overlay ONLY: capped at 10% of portfolio,
-  never High confidence, always flagged as tactical in the memo. LLMs on
-  free data have no demonstrated short-term edge; the system says so
-  rather than pretending otherwise.
+  positioning. Where selection work lands.
+- **Short (<6mo)** — tactical overlay only: capped at 10% of portfolio, never
+  High confidence, always flagged as tactical. LLMs on free data have no
+  demonstrated short-term edge, and the system says so rather than pretending.
+
+## Open items
+
+`OPEN_ITEMS.md` is the single review surface. **P-items** are the user's
+portfolio questions — only the user closes those, and `meta` must never edit
+them. **S-items** are system improvements — `meta` proposes, nothing
+self-applies, the user approves with "apply S3". Closed items move to the
+bottom log with a one-line resolution; never delete an item silently.
+
+If an open item makes a conclusion untrustworthy, the memo leads with it
+rather than burying it.
 
 ## Session continuity
 
-`reports/SESSION_LOG.md` is the system's memory across sessions —
-append-only, one entry per sweep, written by `journal`, which also
-reconciles previous calls against current data (the only calibration
-mechanism this system has). `data/valuations.csv` accumulates portfolio
-value observations for `scripts/performance.py` (are we beating "just
-buy the index"?). If a session did meaningful work without a log entry,
-that's a process failure — fix it before ending the session.
+`reports/SESSION_LOG.md` is the memory across sessions — append-only, one
+entry per sweep, written by `journal`, which also reconciles previous calls
+against current data. That reconciliation is the only calibration mechanism
+this system has. `data/valuations.csv` accumulates portfolio-value
+observations for `scripts/performance.py` ("are we beating just buying the
+index?"). A session that did meaningful work without a log entry is a process
+failure — fix it before ending.
 
-**Token/cost hygiene (added 2026-07-28):** `data/portfolio.json` keeps
-short current-state summaries only — resolved questions and superseded
-account/holding narratives live in `data/portfolio_history_archive.md`
-instead, read only during `journal` reconciliation or deep audits, not
-every sweep. Per-company research that doesn't change monthly (business
-description, quarterly-report figures) lives in
-`data/company_profiles/<TICKER>.json` (schema:
-`data/company_profiles/_SCHEMA.md`), checked before re-asking the user or
-re-parsing a report. When editing `portfolio.json`, keep this shape: trim
-to current state, archive the history, don't let notes/thesis fields
-regrow into essays.
+**Token hygiene.** `data/portfolio.json` keeps short current-state summaries
+only; superseded narratives live in `data/portfolio_history_archive.md`, read
+during reconciliation or deep audits, not every sweep. Per-company research
+that doesn't change monthly lives in `data/company_profiles/<TICKER>.json`
+(schema: `_SCHEMA.md`). Don't let notes and thesis fields regrow into essays.
+`data/learning_log.md` accumulates each memo's Learning-notes section —
+append-only, never a source of truth for a decision.
 
-`data/learning_log.md` (added 2026-08-04) accumulates the "Learning notes"
-section from every council memo — plain-English explanations of the
-reasoning behind that sweep's concepts/decisions, at the user's request to
-learn from the process, not just receive its output. Append-only, never a
-source of truth for a decision.
+## Model tiering
 
-## Self-improvement
+`council` runs on `opus` — the single highest-stakes synthesis point and the
+only output the user acts on directly. `market-data`, `scout` and `calendar`
+run on `haiku` — script execution, mechanical screening, event fetching.
+Everything else inherits the default.
 
-The `meta` agent owns the **S-items** section of `/OPEN_ITEMS.md`, a
-numbered backlog of changes to the system itself, each with evidence and a
-concrete how. It proposes, never applies — the user applies by saying
-"apply S3". It must not edit P-items (the user's portfolio questions).
-Recurring bad calls in the session log are a system defect to be traced,
-not bad luck.
+## Branching rule
 
-**Structural-level jobs (added 2026-08-04):** `meta` also runs a
-prospecting-capability check every session (is `scout`'s discovery
-capability structurally limited — universe too narrow, screen miscalibrated,
-a missing data source — tagged `[prospecting]` in the S-item title) and
-sets the "This sweep's recommended emphasis" block at the top of
-`OPEN_ITEMS.md` (prospecting / portfolio-tending / balanced, with a
-one-line reason from real signal — idle cash, unreviewed recent
-purchases, stale theses). `journal` surfaces it at the next session's
-start; it's advisory, never binding.
-
-**Model tiering (added 2026-08-04):** subagent frontmatter now sets
-`model:` where the task's stakes/mechanical-ness clearly argue for
-something other than the default. `council` runs on `opus` — it's the
-single highest-stakes synthesis point, the only output the user acts on
-directly. `market-data`, `scout`, and `calendar` run on `haiku` — pure
-script execution, hard numeric filtering, and event-fetching respectively,
-none requiring strong judgment. Everything else (`valuation`,
-`macro-regime`, `portfolio`, `thesis-review`, `journal`, `meta`,
-`backtest`) is left on the default (`inherit`) — real judgment involved,
-but not the one point where a stronger model buys the most. Revisit if a
-tier turns out wrong in practice; this was a reasoned first pass, not
-tested against outcomes yet.
-
-## Your portfolio state
-
-`data/portfolio.json` is the source of truth — you maintain it manually
-(no brokerage API). Update it whenever you actually place a trade. Every
-agent treats this file, not memory, as ground truth for what you hold.
-
-`data/investor_profile.json` is the client profile — risk tolerance,
-horizon, buffer, constraints. It is what a human advisor would establish
-first, and it is what turns the portfolio agent's balance scorecard from
-generic rules of thumb into advice measured against your situation.
-Every Council memo carries the scorecard; TBDs in the profile are named
-in the memo until filled.
-
-## Council rule
-
-The Council subagent's job is adversarial synthesis over the *entire*
-candidate universe, not just an audit of current holdings. If two
-agents/personas agree, that's not interesting — the memo should foreground
-*where they disagree* and force an explicit confidence call. A memo with
-no tension in it means the Council didn't do its job; re-run it. Since
-2026-08-17 the Council's main method is stock selection first (find the
-best opportunities across holdings + watchlist via six independent
-analyst lenses), portfolio fit second (filter those opportunities through
-`portfolio`'s diversification/capital/tax read, revised same day to be a
-single consolidated authority rather than a seventh council voice) — see
-`council.md`. The two stages must stay visibly separate in the memo: a
-high-conviction opportunity that resolves to WATCH for portfolio-fit
-reasons is a correct output, not a contradiction to paper over.
+Branches for testing are fine and encouraged. Leaving one unmerged and
+unannounced is not. Any branch holding commits `main` doesn't have at the end
+of a session must be merged or explicitly reported to the user by name, with
+what's on it. Never let work go quiet on a branch.

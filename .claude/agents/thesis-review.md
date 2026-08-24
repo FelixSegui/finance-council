@@ -18,7 +18,7 @@ buying stopped being true, because nothing forced a re-check.
   graded. If a holding has no `why_owned`/`expected_driver` recorded (or
   they're `null`), that IS the finding — see UNTESTED below, don't try to
   reverse-engineer a story from price action to fill the gap.
-- Latest `data/snapshots/*.json` for current fundamentals.
+- Latest `data/cache/snapshots/*.json` for current fundamentals.
 - Latest macro-regime and valuation agent outputs if available in this
   session.
 

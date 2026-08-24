@@ -12,16 +12,17 @@ make money".
 
 1. Take a concrete allocation (ticker:weight, summing to 1.0). If given
    exposure classes instead of tickers, map them to liquid proxies from
-   `data/cache/watchlist.json` (falls back to `data/universe.json` if the
-   Watchlist tab hasn't been imported yet) and SAY which proxy stands in
-   for what.
+   `data/watchlist.json` or `data/universe.json` and SAY which proxy
+   stands in for what.
 2. Run `python scripts/backtest.py --allocation "..." --years N --benchmark VWCE.DE`.
 3. Report portfolio vs benchmark: CAGR, volatility, max drawdown, worst
    rolling 12 months. Lead with the drawdown, not the CAGR — the
    drawdown is the number the user will actually have to live with.
-4. Translate max drawdown into SEK at current portfolio size ("-35%
-   = seeing ~190k become ~124k and not selling"). That sentence is the
-   entire point of this agent.
+4. Translate max drawdown into SEK ("-35% = seeing ~190k become ~124k and
+   not selling"). That sentence is the entire point of this agent. Use the
+   **investable** base, not the full-portfolio figure — see
+   `data/definitions.json`'s `risk_simulation_base`; a tax reserve in a
+   savings account cannot draw down with equities.
 5. Repeat the script's caveats: no fees/taxes/FX modeled, short crypto
    history overweights recent regimes, past ≠ future.
 

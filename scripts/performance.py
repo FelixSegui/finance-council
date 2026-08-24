@@ -18,10 +18,26 @@ Usage:
 """
 import argparse
 import csv
+import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 
 VALUATIONS_PATH = "data/valuations.csv"
+
+
+def _num(raw, field, date):
+    """Parse a numeric CSV cell that a human may have annotated (this file is
+    hand-appended, and a real row reads `0 (no confirmed contribution
+    logged)`). Take the leading number and keep the annotation out of the
+    math; refuse rows with no number at all rather than assuming zero."""
+    if raw is None or str(raw).strip() == "":
+        return 0.0
+    head = str(raw).strip().split()[0].replace(",", "")
+    try:
+        return float(head)
+    except ValueError:
+        sys.exit(f"{VALUATIONS_PATH}: row {date} has an unparseable "
+                 f"{field}: {raw!r}. Fix the row; do not guess it.")
 
 
 def load_valuations():
@@ -31,8 +47,9 @@ def load_valuations():
             for row in csv.DictReader(f):
                 rows.append({
                     "date": datetime.strptime(row["date"], "%Y-%m-%d"),
-                    "value": float(row["total_value_sek"]),
-                    "contribution": float(row["net_contribution_since_last_sek"] or 0),
+                    "value": _num(row["total_value_sek"], "total_value_sek", row["date"]),
+                    "contribution": _num(row["net_contribution_since_last_sek"],
+                                         "net_contribution_since_last_sek", row["date"]),
                     "note": row.get("note", ""),
                 })
     except FileNotFoundError:
@@ -45,20 +62,33 @@ def load_valuations():
 
 
 def benchmark_prices_sek(benchmark, start):
-    import yfinance as yf
-    period_days = (datetime.now() - start).days + 30
-    years = max(1, period_days // 365 + 1)
-    data = yf.download([benchmark, "EURSEK=X"], period=f"{years}y",
-                       interval="1d", auto_adjust=True, progress=False)["Close"]
-    data = data.dropna()
-    return data[benchmark] * data["EURSEK=X"]
+    """{(year, month): benchmark price in SEK}, fetched through the same
+    direct Yahoo v8 chart path scripts/backtest.py uses. yfinance's own client
+    does not work on this network (see CLAUDE.md's Yahoo note), and this
+    script used to depend on it — a benchmark comparison that silently could
+    not run is worse than none.
+
+    A month is only usable when BOTH the benchmark and the FX rate have a
+    bar; a month with one and not the other is dropped, never carried."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from backtest import _fetch_monthly_series
+    period1 = int(start.replace(tzinfo=timezone.utc).timestamp()) - 60 * 86400
+    period2 = int(datetime.now(timezone.utc).timestamp())
+    bench = _fetch_monthly_series(benchmark, period1, period2)
+    fx = _fetch_monthly_series("EURSEK=X", period1, period2)
+    if not bench:
+        raise RuntimeError(f"no price history returned for {benchmark}")
+    if not fx:
+        raise RuntimeError("no EURSEK history returned — refusing to assume a rate")
+    return {k: bench[k] * fx[k] for k in sorted(set(bench) & set(fx))}
 
 
 def nearest_price(prices, when):
-    eligible = prices[prices.index <= when.strftime("%Y-%m-%d")]
-    if eligible.empty:
-        return None
-    return float(eligible.iloc[-1])
+    """Most recent monthly bar at or before `when`. None if there is none —
+    never the closest bar in either direction, which would use a future price."""
+    key = (when.year, when.month)
+    eligible = [k for k in prices if k <= key]
+    return float(prices[max(eligible)]) if eligible else None
 
 
 def main():
@@ -86,7 +116,7 @@ def main():
         shadow_units += amount / px
         contributions.append(amount)
 
-    latest_px = float(prices.iloc[-1])
+    latest_px = float(prices[max(prices)])
     shadow_value = shadow_units * latest_px
     actual_value = rows[-1]["value"]
     total_in = sum(contributions)

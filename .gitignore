@@ -1,32 +1,12 @@
 .DS_Store
 __pycache__/
 
-# ranker working cache (regenerated, 7-day TTL) and run logs
-data/cache/universe_cache/
-data/cache/rankings/*.log
+# Fundamentals cache for the universe stage — regenerated on a TTL by
+# scripts/scout.py, large, and never a source of truth.
+data/cache/universe_fundamentals.json
 
-# fully mechanically regenerated on every sync/build (same reasoning as
-# data/sync/*.json above) — data/cache/universe.json via
-# scripts/build_universe.py + run.py sync's merge step; thesis_candidates.json
-# is rebuilt from the Watchlist/Investment Thesis sheets on every sync
-data/cache/universe.json
-data/cache/thesis_candidates.json
-
-# fully regenerated each sweep from the user's Excel Watchlist tab by
-# scripts/import_excel_holdings.py (added 2026-08-06) — same reasoning as
-# data/cache/universe.json above, which this replaces as scout's input
-data/cache/watchlist.json
-
-# downloaded Excel workbooks used as import_excel_holdings.py's input -
-# these are a copy of the user's own file, not something this repo owns
+# Downloaded copies of the user's own Excel workbook (input, not repo state)
 data/cache/excel_import/*.xlsx
 
-# data/sync/*.json is fully regenerated from master.xlsx by `python run.py sync`
-# — committing it would recreate the duplicated-state problem this project's
-# architecture is built to avoid. Only the sync CODE (schema.py, sync.py,
-# workbook.py) is tracked; run `python run.py sync` after cloning to produce
-# the JSON locally.
-data/sync/*.json
-
-# Excel lock file (created while master.xlsx is open in Excel/LibreOffice)
-~$master.xlsx
+# Excel lock file
+~$*.xlsx

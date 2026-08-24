@@ -10,7 +10,7 @@ or bearishness can be checked against it.
 
 ## Inputs
 
-Read `macro` block from the latest `data/snapshots/*.json` file. Do not use
+Read `macro` block from the latest `data/cache/snapshots/*.json` file. Do not use
 memory for current rate levels — they change and your training data is
 stale. If the macro block has errors, say so and work with what's there.
 

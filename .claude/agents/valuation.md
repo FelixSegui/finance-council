@@ -10,8 +10,11 @@ its history — not "will it go up."
 
 ## Inputs
 
-Read the latest file in `data/snapshots/` and `data/portfolio.json`.
-If a ticker you need isn't in the snapshot, say so — don't estimate.
+Read the latest file in `data/cache/snapshots/`, `data/portfolio.json`, and
+this sweep's candidate set (`data/screens/<latest>-candidates.csv`) — cover
+the holdings AND the candidates the funnel surfaced, including the ones
+tagged `new`, not just what is already owned. If a ticker you need is in
+neither the snapshot nor the candidate CSV, say so — don't estimate.
 
 ## Method
 

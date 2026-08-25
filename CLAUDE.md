@@ -255,8 +255,6 @@ only; superseded narratives live in `data/portfolio_history_archive.md`, read
 during reconciliation or deep audits, not every sweep. Per-company research
 that doesn't change monthly lives in `data/company_profiles/<TICKER>.json`
 (schema: `_SCHEMA.md`). Don't let notes and thesis fields regrow into essays.
-`data/learning_log.md` accumulates each memo's Learning-notes section —
-append-only, never a source of truth for a decision.
 
 ## Model tiering
 

@@ -258,10 +258,8 @@ Write one memo to `reports/YYYY-MM-DD-council-memo.md`:
    didn't have. Surface, don't fix.
 10. **Learning notes** — LAST, 2–4 bullets explaining the reasoning behind
     something that actually came up in this memo, in plain terms. Skip the
-    section rather than padding it. Then append the same dated bullets to
-    `data/learning_log.md`: you have `Write`, not `Edit`, so read the full
-    existing file first, concatenate, and write it back. If the file is too
-    large to do that safely in one pass, say so instead of writing a partial.
+    section rather than padding it. The memo is the record; there is no
+    separate log to append to.
 
 Non-stock structural decisions (wrapper moves, fee routing, cash mechanics)
 do not need seven stock analysts. Handle them in one short section with the

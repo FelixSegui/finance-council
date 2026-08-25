@@ -400,10 +400,11 @@ IDs are never reused — an S-number in an old memo always means the same item.
 
 ## V2 Roadmap — user-authored
 
-Full spec: `docs/v2-upgrade-spec.md` (verbatim, received 2026-08-09). This is
-the user's roadmap, not evidence-driven S-items; `meta` does not prune it, and
-it sits outside the S-item cap. Status updated 2026-08-24 after the
-discovery-funnel refactor.
+The user's roadmap (received 2026-08-09), not evidence-driven S-items;
+`meta` does not prune it, and it sits outside the S-item cap. Status updated
+2026-08-24. The original verbatim spec lived in `docs/v2-upgrade-spec.md`,
+removed 2026-08-24 — every phase's real status is below, and git history
+holds the original text if it is ever wanted.
 
 - **Phase 1 — DONE (2026-08-09).** Structured thesis schema on every active
   holding, the Chairman's structured action format, per-field data-quality
@@ -477,6 +478,14 @@ archived verbatim 2026-08-24"), moved there so this file holds what is
 outstanding rather than what is finished. Nothing was deleted.
 
 ### Closed by the 2026-08-24 discovery-funnel refactor
+
+- **Removed: `data/learning_log.md` and `docs/v2-upgrade-spec.md`.** Both were
+  write-mostly. The learning log was append-only and explicitly never a source
+  of truth for a decision — the same bullets live in each dated Council memo,
+  which is the actual record, and the append instruction was one of the more
+  fragile things `council` had to do (read a growing file in full, concatenate,
+  rewrite). The V2 spec was superseded: every phase's real status is in the V2
+  Roadmap section above. Neither improved a decision. Git history holds both.
 
 - **S12 — canonical definitions for ambiguous shared terms.** Closed: the
   remaining gap (one label covering two different bases) is fixed —

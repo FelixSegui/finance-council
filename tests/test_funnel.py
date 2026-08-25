@@ -10,6 +10,7 @@ Run with: python3 -m unittest discover -s tests -v
 import json
 import os
 import shutil
+import statistics
 import sys
 import tempfile
 import unittest
@@ -168,7 +169,7 @@ class TestUniverseLoads(TempRepo):
 class TestRanking(unittest.TestCase):
     def test_lens_scores_are_produced_per_lens(self):
         met = {t: scout.metrics(r) for t, r in universe_records(40).items()}
-        scores, coverage = scout.rank_lenses(met)
+        scores, coverage, _fcov = scout.rank_lenses(met)
         for lens in scout.LENSES:
             self.assertGreater(coverage[lens], 30, f"{lens} coverage collapsed")
             self.assertIsNotNone(scores["T00"][lens])
@@ -178,7 +179,7 @@ class TestRanking(unittest.TestCase):
         """The whole point of five lenses is that they don't produce one
         ranking wearing five hats."""
         met = {t: scout.metrics(r) for t, r in universe_records(40).items()}
-        scores, _ = scout.rank_lenses(met)
+        scores, _c, _f = scout.rank_lenses(met)
         shortlists = scout.lens_shortlists(scores, top_n=5)
         self.assertNotEqual(set(shortlists["value"]), set(shortlists["quality"]))
 
@@ -194,7 +195,7 @@ class TestRanking(unittest.TestCase):
                                     {"fiscal_year_end": "2024-12-31", "total_revenue": 1800},
                                     {"fiscal_year_end": "2023-12-31", "total_revenue": 1000}])
         met = {t: scout.metrics(r) for t, r in recs.items()}
-        scores, _ = scout.rank_lenses(met)
+        scores, _c, _f = scout.rank_lenses(met)
         shortlists = scout.lens_shortlists(scores, top_n=5)
         self.assertIn("GROWTH", shortlists["growth"])
         self.assertNotIn("GROWTH", shortlists["value"])
@@ -217,7 +218,7 @@ class TestRanking(unittest.TestCase):
         """A 'quality score' derived from one number is not a quality score."""
         met = {t: scout.metrics(r) for t, r in universe_records(10).items()}
         met["THIN"] = scout.metrics({"price": 10, "return_on_equity": 0.3})
-        scores, _ = scout.rank_lenses(met)
+        scores, _c, _f = scout.rank_lenses(met)
         self.assertIsNone(scores["THIN"]["quality"])
 
 
@@ -422,7 +423,8 @@ class TestWatchlistPersistence(TempRepo):
         self.write_universe(["AAPL"])
         self.assertTrue(wl.universe_add("EVO.ST", name="Evolution",
                                         region="Nordic", path=self.universe_path))
-        uni = json.load(open(self.universe_path))
+        with open(self.universe_path) as f:
+            uni = json.load(f)
         self.assertEqual(uni["tickers"]["EVO.ST"]["source"], "manual")
         self.assertEqual(uni["counts"]["manual"], 1)
 
@@ -746,3 +748,72 @@ class TestVerifyOrExit(unittest.TestCase):
                              "price": 72.6, "currency": "SEK"})
         self.assertEqual(wl._verify_or_exit("MEKO.ST", "Mekonomen AB"),
                          "Meko AB (publ)")
+
+
+# ---------------------------------------------------------------------------
+# 12. Missing data must not buy a shortlist slot.
+#     Measured on the live 2026-08-24 universe: growth scores built on partial
+#     data averaged |1.048| vs |0.396| for full-coverage names — 2.6x more
+#     extreme, and a top-N shortlist is a cut on exactly those tails.
+# ---------------------------------------------------------------------------
+class TestCoverageShrinkage(unittest.TestCase):
+    LENS = {"solo": {"a": "high", "b": "high", "c": "high", "d": "high"}}
+
+    def _rows(self, n=40):
+        """A spread of names so z-scores discriminate, plus two names with the
+        same average signal but different amounts of evidence behind it."""
+        rows = {f"T{i:02d}": {k: (i - n / 2) / 5 for k in "abcd"} for i in range(n)}
+        rows["FULL"] = {"a": 3.0, "b": 3.0, "c": 3.0, "d": 3.0}
+        rows["THIN"] = {"a": 3.0, "b": 3.0, "c": None, "d": None}
+        return rows
+
+    def test_a_thin_score_is_shrunk_toward_neutral(self):
+        scores, _cov, fcov = scout.rank_lenses(self._rows(), lenses=self.LENS)
+        self.assertEqual(fcov["THIN"]["solo"], (2, 4))
+        self.assertEqual(fcov["FULL"]["solo"], (4, 4))
+        self.assertLess(scores["THIN"]["solo"], scores["FULL"]["solo"],
+                        "half the evidence must not score the same as all of it")
+
+    def test_full_coverage_is_left_alone(self):
+        """The correction must not quietly rescale names that have all their
+        inputs — sqrt(K/K) is 1."""
+        rows = self._rows()
+        scores, _c, _f = scout.rank_lenses(rows, lenses=self.LENS)
+        raw = statistics.fmean([
+            scout.zscores({t: r["a"] for t, r in rows.items()})["FULL"],
+            scout.zscores({t: r["b"] for t, r in rows.items()})["FULL"],
+            scout.zscores({t: r["c"] for t, r in rows.items()})["FULL"],
+            scout.zscores({t: r["d"] for t, r in rows.items()})["FULL"],
+        ])
+        self.assertAlmostEqual(scores["FULL"]["solo"], round(raw, 3), places=3)
+
+    def test_shrinkage_is_exactly_sqrt_of_coverage(self):
+        rows = self._rows()
+        scores, _c, _f = scout.rank_lenses(rows, lenses=self.LENS)
+        za = scout.zscores({t: r["a"] for t, r in rows.items()})
+        zb = scout.zscores({t: r["b"] for t, r in rows.items()})
+        expected = statistics.fmean([za["THIN"], zb["THIN"]]) * (2 / 4) ** 0.5
+        self.assertAlmostEqual(scores["THIN"]["solo"], round(expected, 3), places=3)
+
+    def test_a_thin_name_is_still_ranked_not_excluded(self):
+        """Missing data lowers conviction; it never disqualifies."""
+        scores, _c, _f = scout.rank_lenses(self._rows(), lenses=self.LENS)
+        self.assertIsNotNone(scores["THIN"]["solo"])
+
+    def test_thin_coverage_is_disclosed_in_the_candidate_csv(self):
+        self.assertIn("thin_lenses", scout.DIGEST_COLUMNS)
+
+
+class TestThinLensDisclosure(TestScoutHealth):
+    def test_thin_lenses_column_is_populated_when_data_is_partial(self):
+        self.write_universe([f"T{i:03d}" for i in range(self.UNIVERSE_SIZE)])
+        self.write_portfolio(["T000"])
+        recs = universe_records(self.UNIVERSE_SIZE)
+        recs["T000"] = record()
+        # a name with no forward-looking data at all — the real Nordic pattern
+        recs["T005"] = record(fpe=None, peg=None)
+        self._patch(recs)
+        result = scout.run(Args())
+        thin = result["candidates"].get("T005", {}).get("thin_lenses")
+        self.assertTrue(thin, "a name missing forward data must be flagged thin")
+        self.assertTrue(any("growth" in t for t in thin), thin)

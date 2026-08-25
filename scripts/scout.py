@@ -53,6 +53,7 @@ from config.settings import (  # noqa: E402
     LENS_TOP_N, CANDIDATE_POOL_SOFT_CAP, FACTOR_WINSOR_PCT, LENS_MIN_FIELDS,
     MISSING_DATA_RATE_ALERT, FETCH_FAILURE_RATE_ALERT, SINGLE_FILTER_KILL_RATE,
     PERCENT_POINT_SCALE_FIELDS, DEFAULT_SCREEN, FOCUS_TOP_N, LENS_MAX_PER_SECTOR,
+    THIN_LENS_COVERAGE,
 )
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -319,16 +320,40 @@ def zscores(values, winsor=FACTOR_WINSOR_PCT):
 def rank_lenses(metric_rows, lenses=LENSES, min_fields=LENS_MIN_FIELDS):
     """Cross-sectional z-score per metric, then one score per lens per name.
 
-    Returns (scores, coverage) where scores[ticker][lens] is a float or None.
+    Returns (scores, coverage, field_coverage):
+      scores[ticker][lens]         float or None
+      coverage[lens]               how many names earned a score
+      field_coverage[ticker][lens] (fields_present, fields_in_lens)
+
     A name is scored on a lens only if at least `min_fields` of that lens's
     metrics are present — a "quality score" derived from one number is not a
-    quality score."""
+    quality score.
+
+    **Thin scores are shrunk toward neutral, and this matters more than it
+    looks.** Averaging fewer z-scores produces a NOISIER average, not a more
+    cautious one: the mean of k independent z-scores has standard deviation
+    1/sqrt(k), so a name missing half a lens's inputs lands further out in the
+    tails than a fully-covered one — and a top-N shortlist is precisely a cut
+    on the tails. Measured on the 2026-08-24 universe before this correction,
+    growth scores built on partial data averaged |1.048| against |0.396| for
+    full-coverage names, 2.6x more extreme, and Swedish names (whose PEG and
+    forward-P/E coverage is ~28 points below US names') took 6 of 10 slots on
+    both the defensive and contrarian lenses against an expected 1.7. Missing
+    data was buying shortlist slots.
+
+    Multiplying by sqrt(k/K) rescales a k-field mean back onto the full-
+    coverage scale, so extremity reflects evidence rather than the absence of
+    it. Nothing is imputed and no name is excluded — a thin score is simply
+    not allowed to claim more conviction than its inputs support, and the name
+    still reaches the Council with its coverage stated. (The fields inside a
+    lens are correlated, so 1/sqrt(k) understates the true variance somewhat;
+    this is a deliberate under-correction, not an exact one.)"""
     fields = sorted({f for spec in lenses.values() for f in spec})
     z = {f: zscores({t: row.get(f) for t, row in metric_rows.items()}) for f in fields}
 
-    scores, coverage = {}, {lens: 0 for lens in lenses}
+    scores, coverage, field_coverage = {}, {lens: 0 for lens in lenses}, {}
     for t in metric_rows:
-        scores[t] = {}
+        scores[t], field_coverage[t] = {}, {}
         for lens, spec in lenses.items():
             vals = []
             for field, direction in spec.items():
@@ -336,12 +361,15 @@ def rank_lenses(metric_rows, lenses=LENSES, min_fields=LENS_MIN_FIELDS):
                 if v is None:
                     continue
                 vals.append(-v if direction == "low" else v)
-            if len(vals) >= min_fields:
-                scores[t][lens] = round(statistics.fmean(vals), 3)
+            k, total = len(vals), len(spec)
+            field_coverage[t][lens] = (k, total)
+            if k >= min_fields:
+                shrink = (k / total) ** 0.5
+                scores[t][lens] = round(statistics.fmean(vals) * shrink, 3)
                 coverage[lens] += 1
             else:
                 scores[t][lens] = None
-    return scores, coverage
+    return scores, coverage, field_coverage
 
 
 # Yahoo returns both "Financials" and "Financial Services" for the same kind
@@ -555,7 +583,8 @@ DIGEST_COLUMNS = [
     "op_margin_pct", "roe_pct", "roic_pct", "de_ratio", "net_debt_to_ebitda",
     "rev_growth_pct", "rev_cagr3y_pct", "fcf_yield_pct", "div_yield_pct",
     "mcap_b", "beta", "pct_52w_range",
-    "z_quality", "z_value", "z_growth", "z_defensive", "z_contrarian", "note",
+    "z_quality", "z_value", "z_growth", "z_defensive", "z_contrarian",
+    "thin_lenses", "note",
 ]
 
 
@@ -611,6 +640,7 @@ def digest_rows(candidates, records, met, scores, status, detail, universe):
             "z_growth": s.get("growth"),
             "z_defensive": s.get("defensive"),
             "z_contrarian": s.get("contrarian"),
+            "thin_lenses": "; ".join(cand.get("thin_lenses") or []),
             "note": note,
         })
     order = {"holding": 0, "watchlist": 1, "new": 2}
@@ -718,7 +748,7 @@ def run(args):
                 if t not in class_dupes
                 and (universe.get(t) or {}).get("asset_class", "equity")
                 not in NON_RANKABLE_ASSET_CLASSES}
-    scores, lens_coverage = rank_lenses(met)
+    scores, lens_coverage, field_coverage = rank_lenses(met)
     sectors = {t: (records[t].get("sector") or (universe.get(t) or {}).get("sector"))
                for t in met}
     shortlists = lens_shortlists(scores, args.lens_top_n, eligible=rankable,
@@ -744,8 +774,11 @@ def run(args):
         s = scores.get(t, {})
         best = max(((lens, v) for lens, v in s.items() if v is not None),
                    key=lambda kv: kv[1], default=(None, None))
+        thin = [f"{ln} {k}/{n}" for ln, (k, n) in (field_coverage.get(t) or {}).items()
+                if n and k and k / n < THIN_LENS_COVERAGE]
         candidates[t] = {"source": source, "name": name,
                          "best_lens": best[0], "lens_score": best[1],
+                         "thin_lenses": thin,
                          "share_class_siblings": sorted(siblings.get(t, [])),
                          "in_lens_shortlists": [ln for ln, names in shortlists.items()
                                                 if t in names]}

@@ -42,6 +42,13 @@ FOCUS_TOP_N = 15
 # Real Estate and defensive 5/10 Financial Services. The cap costs a slightly
 # worse average score and buys a genuinely wider opportunity set.
 LENS_MAX_PER_SECTOR = 3
+
+# A lens score built on less than this fraction of its inputs is flagged
+# `thin_lenses` in the candidates CSV, so the Council can see that a ranking
+# rests on partial evidence. The score itself is already shrunk toward neutral
+# in proportion to its coverage (see rank_lenses) — this is the disclosure,
+# not the correction.
+THIN_LENS_COVERAGE = 0.6
 FACTOR_WINSOR_PCT = 0.02        # clip to [2nd, 98th] pct before z-scoring
 LENS_MIN_FIELDS = 2             # a lens score needs this many non-null inputs
 

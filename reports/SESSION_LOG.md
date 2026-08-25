@@ -13,7 +13,66 @@ Entry format:
 - **User decisions:** what you actually decided/did (or "none yet")
 - **Reconciliation:** how last sweep's calls look against today's data
 - **Open items carried forward:** ...
-```
+```---
+
+## 2026-08-25 — SYSTEM, not a sweep: a 120-row Swedish ticker CSV imported under verification (universe 538 -> 624, Nordic 20 -> 109), and three defects it exposed fixed — single-sector lens shortlists, duplicated share classes, and thin data buying shortlist slots
+
+**System session, no market calls made.** No memo, no Council run, no
+recommendation. `data/portfolio.json` was not modified.
+
+- **Snapshot:** none fetched. **Screen:** the first run of the widened funnel —
+  universe 624, fetched 624 (0 failures), ranked 614, 72 candidates
+  (8 holdings / 30 watchlist / 34 new), 22 focus, 35 passed, status VALID.
+  Cold run 27s.
+- **Memo:** no memo — system change, not an investment sweep.
+- **What changed:**
+  1. **Ticker verification now checks the COMPANY, not just the symbol.**
+     `VITR.ST` resolves perfectly — to Vitrolife, not Sobi. The old
+     "does it resolve" check would have passed it and the Council would have
+     analysed the wrong company on a live price feed. Every write path now
+     verifies the name and stores Yahoo's, never the typed one.
+  2. **`watchlist.py universe-import <csv>`** — bulk import with per-row
+     verdicts. On the user's 120-row list, 31 rows were wrong: 16 had
+     recoverable symbols (found by name on the expected exchange and
+     re-verified), 5 named a different company, 3 were delisted, 7 do not
+     exist. Nordic coverage went 20 -> 109 names.
+  3. **Sector cap on lens shortlists (max 3 per sector).** Before it, growth
+     was 8/10 Technology, contrarian 5/10 Real Estate, defensive 5/10
+     Financial Services — five lenses that each picked one sector are not five
+     perspectives. All five are now cross-sector.
+  4. **Share classes merged before ranking.** INDU-A and INDU-C were taking
+     two Council focus slots for one decision. Survivor priority is
+     holding > watchlist > larger market cap; a held line can never be
+     collapsed into one the user does not own.
+  5. **Coverage shrinkage — the most important fix of the session.** A claim
+     made earlier this session (that missing data pushed Swedish names OUT of
+     shortlists) was measured and found BACKWARDS. Thin data makes a score
+     more extreme, not less: mean of k z-scores has SD 1/sqrt(k), so partial
+     names land further out in the tails, which is where a top-N cut bites.
+     Growth thin scores averaged |1.048| vs |0.396| full; Swedish names took
+     6/10 slots on two lenses against an expected 1.7. **Missing data was
+     buying shortlist slots.** Lens scores are now scaled by sqrt(coverage);
+     the artefact largely closed (value thin 0.606 -> 0.435, defensive
+     0.526 -> 0.401) and a `thin_lenses` column discloses what remains.
+     FISV, previously rank 3 overall on partial data, correctly dropped out
+     of the focus set.
+  6. **Removed** `data/learning_log.md` and `docs/v2-upgrade-spec.md`. Both
+     write-mostly; neither improved a decision. The learning bullets live in
+     each dated memo, which is the real record, and the append instruction was
+     one of the more fragile things `council` had to do. Git history holds
+     both.
+- **Reconciliation:** none — no prior calls tested. The 2026-08-24 morning
+  sweep's three open recommendations (BUY AZN.ST, SELL ABB.ST, BUY META) are
+  unchanged and still awaiting the user.
+- **Open items carried forward:** P-items untouched. S1, S6, S9, S20 open;
+  S21 rewritten (Nordic coverage fixed; the coverage-asymmetry finding it
+  exposed is now measured, and the mechanical half of it is fixed);
+  S22 opened — 12 Swedish names still need a human with a broker screen,
+  of which SOBI.ST and MEKO.ST were verified and added.
+- **Note for the next session:** the funnel's calibration knobs are
+  `LENS_MAX_PER_SECTOR = 3`, `FOCUS_TOP_N = 15` and `THIN_LENS_COVERAGE = 0.6`
+  in `config/settings.py`. These are judgement, not derived values.
+
 ---
 
 ## 2026-08-24 (second session, same day) — SYSTEM REFACTOR, not a sweep: the discovery funnel is rebuilt around a real 538-name universe, five deterministic lenses replace the single blended score, the watchlist becomes persistent, and the parked Excel-branch runtime is deleted

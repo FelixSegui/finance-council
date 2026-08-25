@@ -11,12 +11,13 @@ No brokerage integration. It analyses and flags; you place every trade.
 ## The funnel in one picture
 
 ```
-data/universe.json         ~620 names (S&P 500 + user-verified Nordic/Europe)
+data/universe.json         ~624 names (S&P 500 + user-verified Nordic/Europe)
         |                  build_universe.py, refreshed ~monthly
         v
 scripts/scout.py           deterministic — five lens rankings, no LLM
         |                  quality / value / growth / defensive / contrarian
-        |                  max 3 slots per sector per lens; share classes merged
+        |                  max 3 slots per sector per lens; share classes merged;
+        |                  scores shrunk toward neutral in proportion to coverage
         v
 data/screens/*-candidates.csv    ~60-75 candidates, each tagged
         |                        holding | watchlist | new
@@ -60,15 +61,15 @@ Every scout run ends with a block like this:
 ```
 SCOUT HEALTH
 
-  Universe:   538
-  Fetched:    538   (cache 498, new 40, failed 0)
-  Ranked:     528   (names that earned >=1 lens score)
-  Candidates: 68    (holdings 8, watchlist 32, new 28)
+  Universe:   624
+  Fetched:    624   (cache 0, new 624, failed 0)
+  Ranked:     614   (names that earned >=1 lens score)
+  Candidates: 72    (holdings 8, watchlist 30, new 34)
   Focus:      22    (full Council analysis; the rest stay as context)
-  Screened:   68
-  Passed:     31
-  Missing:    20
-  Failed:     17
+  Screened:   72
+  Passed:     35
+  Missing:    19
+  Failed:     18
 
   Status: VALID
 ```
@@ -97,6 +98,22 @@ never allowed to blur together.
 The Chairman weighs the **quality of the arguments**, never a vote count, and
 never averages a disagreement away. Diversification is deliberately not a
 voice — it is the `portfolio` agent's job, applied once, afterwards.
+
+## Missing data must not buy a shortlist slot
+
+Averaging fewer inputs makes a score *noisier*, not more cautious — the mean
+of k z-scores has standard deviation 1/√k, so a half-covered name lands
+further out in the tails, and a top-N shortlist is a cut on exactly those
+tails. Measured before the fix: growth scores built on partial data averaged
+|1.048| against |0.396| for full-coverage names, and Swedish names (whose PEG
+and forward-P/E coverage runs ~28 points below US names') took 6 of 10 slots
+on two lenses against an expected 1.7.
+
+Lens scores are now scaled by √(coverage), which puts a partial score back on
+the full-coverage scale. Nothing is imputed and no name is excluded — a thin
+score simply cannot claim more conviction than its inputs support, and the
+`thin_lenses` column tells the Council which rankings rest on partial
+evidence.
 
 ## Maintaining the lists
 

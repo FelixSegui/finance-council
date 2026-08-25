@@ -62,7 +62,6 @@ SINGLE_FILTER_KILL_RATE = 0.90  # one filter alone rejecting >=90% of names
 # (Yahoo reports debt_to_equity as 45.6, not 0.456). A threshold below the
 # guard is almost certainly a decimal-scale mistake, and silently produces an
 # empty screen that looks exactly like "the market has nothing good in it".
-# field -> (minimum plausible threshold, human explanation)
 PERCENT_POINT_SCALE_FIELDS = {
     "debt_to_equity": (5.0, "Yahoo reports debt/equity in percentage points "
                             "(45.6 = 0.46x). A ceiling of 2.0 rejects everything; "
@@ -77,6 +76,39 @@ DEFAULT_SCREEN = {
     "min_profit_margin": 0.0,
     "max_debt_to_equity": 250.0,
     "min_market_cap": 5e8,
+}
+
+# Plausible ranges for derived metrics, in the units scout.metrics() produces
+# (fractions for margins/growth/yields, percentage points for debt_to_equity).
+#
+# A value outside its range is treated as NOT EVIDENCE: it is excluded from the
+# lens z-scores, which lowers that name's coverage and therefore shrinks its
+# lens score toward neutral — the same mechanism that handles genuinely missing
+# data. It is never dropped from the report and never corrected; the raw figure
+# still reaches the Council with a `suspect` flag attached.
+#
+# This exists because a lens will otherwise rank a name on an artefact.
+# Industrivarden screens at 1198% "revenue growth" (Yahoo counts investment
+# gains as revenue for a holding company) and Orexo at a 2775% profit margin —
+# both real numbers, both meaningless, both were helping those names place on
+# the growth and contrarian lenses.
+METRIC_SANITY_RANGES = {
+    "earnings_yield": (-1.0, 1.0),
+    "forward_earnings_yield": (-1.0, 1.0),
+    "fcf_yield": (-1.0, 1.0),
+    "price_to_book": (0, 100),
+    "price_to_sales": (0, 100),
+    "peg": (-20, 20),
+    "roe": (-2.0, 3.0),
+    "roic": (-1.0, 2.0),
+    "profit_margin": (-2.0, 1.0),
+    "operating_margin": (-2.0, 1.0),
+    "revenue_growth": (-1.0, 3.0),
+    "revenue_cagr_3y": (-1.0, 3.0),
+    "debt_to_equity": (0, 2000),
+    "net_debt_to_ebitda": (-50, 50),
+    "dividend_yield": (0, 0.25),
+    "beta": (-3, 5),
 }
 
 # ---------------------------------------------------------------------------

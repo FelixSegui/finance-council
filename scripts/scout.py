@@ -53,7 +53,7 @@ from config.settings import (  # noqa: E402
     LENS_TOP_N, CANDIDATE_POOL_SOFT_CAP, FACTOR_WINSOR_PCT, LENS_MIN_FIELDS,
     MISSING_DATA_RATE_ALERT, FETCH_FAILURE_RATE_ALERT, SINGLE_FILTER_KILL_RATE,
     PERCENT_POINT_SCALE_FIELDS, DEFAULT_SCREEN, FOCUS_TOP_N, LENS_MAX_PER_SECTOR,
-    THIN_LENS_COVERAGE,
+    THIN_LENS_COVERAGE, METRIC_SANITY_RANGES,
 )
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -584,12 +584,49 @@ DIGEST_COLUMNS = [
     "rev_growth_pct", "rev_cagr3y_pct", "fcf_yield_pct", "div_yield_pct",
     "mcap_b", "beta", "pct_52w_range",
     "z_quality", "z_value", "z_growth", "z_defensive", "z_contrarian",
-    "thin_lenses", "note",
+    "thin_lenses", "suspect", "note",
 ]
 
 
 def _pct(x, nd=1):
     return round(x * 100, nd) if isinstance(x, (int, float)) else None
+
+
+def sanity_flags(metric_row, ranges=None):
+    """Which of a name's metrics fall outside a plausible range for their field.
+
+    Flags, never fixes. A holding company's 1198% "revenue growth" is Yahoo
+    counting investment gains as revenue — real data, wrong meaning. Naming it
+    lets a voice discount it; deleting it would hide a data problem, and
+    correcting it would be inventing a number."""
+    ranges = ranges or METRIC_SANITY_RANGES
+    out = []
+    for field, (lo, hi) in ranges.items():
+        v = metric_row.get(field)
+        if isinstance(v, (int, float)) and not (lo <= v <= hi):
+            out.append(f"{field}={round(v, 4)}")
+    return out
+
+
+def drop_implausible(metric_rows, ranges=None):
+    """Return (metrics_for_ranking, flags_by_ticker).
+
+    An implausible value is withheld from the lens z-scores. It is not
+    evidence, so it must not earn a name a shortlist slot — and because the
+    lens score is already shrunk in proportion to coverage, removing it
+    automatically lowers that name's conviction rather than silently
+    substituting something."""
+    ranges = ranges or METRIC_SANITY_RANGES
+    cleaned, flags = {}, {}
+    for t, row in metric_rows.items():
+        bad = sanity_flags(row, ranges)
+        flags[t] = bad
+        if not bad:
+            cleaned[t] = row
+            continue
+        bad_fields = {b.split("=")[0] for b in bad}
+        cleaned[t] = {k: (None if k in bad_fields else v) for k, v in row.items()}
+    return cleaned, flags
 
 
 def digest_rows(candidates, records, met, scores, status, detail, universe):
@@ -641,6 +678,7 @@ def digest_rows(candidates, records, met, scores, status, detail, universe):
             "z_defensive": s.get("defensive"),
             "z_contrarian": s.get("contrarian"),
             "thin_lenses": "; ".join(cand.get("thin_lenses") or []),
+            "suspect": "; ".join(cand.get("suspect") or []),
             "note": note,
         })
     order = {"holding": 0, "watchlist": 1, "new": 2}
@@ -744,11 +782,12 @@ def run(args):
     for dropped_t, keeper in class_dupes.items():
         siblings.setdefault(keeper, []).append(dropped_t)
 
+    met_for_ranking, suspect_flags = drop_implausible(met)
     rankable = {t for t in met
                 if t not in class_dupes
                 and (universe.get(t) or {}).get("asset_class", "equity")
                 not in NON_RANKABLE_ASSET_CLASSES}
-    scores, lens_coverage, field_coverage = rank_lenses(met)
+    scores, lens_coverage, field_coverage = rank_lenses(met_for_ranking)
     sectors = {t: (records[t].get("sector") or (universe.get(t) or {}).get("sector"))
                for t in met}
     shortlists = lens_shortlists(scores, args.lens_top_n, eligible=rankable,
@@ -779,6 +818,7 @@ def run(args):
         candidates[t] = {"source": source, "name": name,
                          "best_lens": best[0], "lens_score": best[1],
                          "thin_lenses": thin,
+                         "suspect": suspect_flags.get(t) or [],
                          "share_class_siblings": sorted(siblings.get(t, [])),
                          "in_lens_shortlists": [ln for ln, names in shortlists.items()
                                                 if t in names]}
@@ -852,6 +892,8 @@ def run(args):
                            f"if the Council run gets expensive")
 
     rows = digest_rows(candidates, records, met, scores, status, detail, universe)
+    suspect_rows = [r for r in rows if r["suspect"]]
+    health["suspect_values"] = len(suspect_rows)
     result = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "health": health,
@@ -875,9 +917,21 @@ def run(args):
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S")
     csv_path, json_path = write_outputs(rows, result, stamp=stamp)
 
-    hist_rows = [{"ticker": t, "source": c["source"], "rank": c.get("rank"),
-                  "best_lens": c.get("best_lens"), "lens_score": c.get("lens_score"),
-                  "screen_status": status.get(t)} for t, c in candidates.items()]
+    hist_rows = []
+    for t, c in candidates.items():
+        z = scores.get(t, {})
+        hist_rows.append({
+            "ticker": t, "source": c["source"], "rank": c.get("rank"),
+            "best_lens": c.get("best_lens"), "lens_score": c.get("lens_score"),
+            "screen_status": status.get(t),
+            # Price at ranking time — the only thing that makes a past rank
+            # measurable against what actually happened afterwards.
+            "price": (met.get(t) or {}).get("price"),
+            "currency": (records.get(t) or {}).get("currency"),
+            "z_quality": z.get("quality"), "z_value": z.get("value"),
+            "z_growth": z.get("growth"), "z_defensive": z.get("defensive"),
+            "z_contrarian": z.get("contrarian"),
+        })
     wl.append_history(hist_rows)
 
     promoted = []
@@ -900,6 +954,11 @@ def run(args):
 
     print()
     print(format_health(health))
+    if suspect_rows:
+        print("\nIMPLAUSIBLE VALUES (flagged, not corrected — a lens may be ranking "
+              "on an artefact):")
+        for r in suspect_rows:
+            print(f"  {r['ticker']:<12} {r['suspect']}")
     if class_dupes:
         print("\nSHARE CLASSES COLLAPSED (one company, one decision): "
               + ", ".join(f"{k}->{v}" for k, v in sorted(class_dupes.items())))

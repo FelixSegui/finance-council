@@ -159,6 +159,8 @@ symbols, 5 named a different company, 3 were delisted, 7 did not exist.
 | `data/cache/snapshots/` | Timestamped market data — every number traces here |
 | `data/screens/` | Scout output |
 | `OPEN_ITEMS.md` | Single list of everything outstanding (P = portfolio, S = system) |
+| `data/decisions.csv` | Decision ledger — every pick, with the evidence it was made on |
+| `reports/system-scorecard.md` | Six-pillar answer to "is this getting better?" |
 | `reports/SESSION_LOG.md` | Append-only memory across sessions |
 
 Your Excel workbook is an **input**, not a database: it supplies manual data,

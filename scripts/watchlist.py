@@ -40,8 +40,14 @@ WATCHLIST_PATH = os.path.join(ROOT, "data", "watchlist.json")
 UNIVERSE_PATH = os.path.join(ROOT, "data", "universe.json")
 HISTORY_PATH = os.path.join(ROOT, "data", "candidate_history.csv")
 
+# `price` and `currency` are what make this file measurable rather than merely
+# descriptive: without a price recorded AT the moment of the ranking, no
+# forward return can ever be attributed to a lens, and "does the mechanical
+# screen actually rank anything real?" stays unanswerable forever.
 HISTORY_COLUMNS = ["run_utc", "ticker", "source", "rank", "best_lens",
-                   "lens_score", "screen_status"]
+                   "lens_score", "screen_status", "price", "currency",
+                   "z_quality", "z_value", "z_growth", "z_defensive",
+                   "z_contrarian"]
 
 WATCHLIST_NOTE = (
     "CURATED WATCHLIST — persistent between sweeps, deliberately much smaller "
@@ -462,11 +468,8 @@ def append_history(rows, path=None, run_utc=None):
         if is_new:
             w.writeheader()
         for r in rows:
-            w.writerow({"run_utc": run_utc, "ticker": r["ticker"],
-                        "source": r.get("source"), "rank": r.get("rank"),
-                        "best_lens": r.get("best_lens"),
-                        "lens_score": r.get("lens_score"),
-                        "screen_status": r.get("screen_status")})
+            w.writerow({c: r.get(c) for c in HISTORY_COLUMNS if c != "run_utc"}
+                       | {"run_utc": run_utc})
     return path
 
 

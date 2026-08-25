@@ -14,6 +14,59 @@ Entry format:
 - **Reconciliation:** how last sweep's calls look against today's data
 - **Open items carried forward:** ...
 ```---
+## 2026-08-25 (second session) — SYSTEM: the measurement layer. Six pillars, a decision ledger that records every voice's picks with the evidence joined, and a hard refusal to report any number computed on fewer than 20 observations
+
+**System session, no market calls made.** No memo, no Council run.
+`data/portfolio.json` untouched.
+
+- **Snapshot:** none fetched. **Screen:** universe 624, 71 candidates, 22 focus,
+  36 passed, status VALID.
+- **Memo:** no memo — system change.
+- **What changed:**
+  1. **Six pillars, one script.** `scripts/scorecard.py` measures DISCOVERY /
+     DATA / MECHANICAL / JUDGEMENT / DECISION / OUTCOME, plus a derived GAPS
+     section. Each pillar fails in a way the memos would never reveal.
+  2. **The anti-flattery rule, in code.** Every skill figure is excess return
+     versus the benchmark, never raw — a raw return mostly measures the market.
+     Any bucket under 20 observations prints its count and **withholds the
+     number**. Three pillars correctly report "insufficient evidence" today;
+     that is the honest state, not a gap to paper over.
+  3. **`data/decisions.csv` — the decision ledger.** Every voice pick and
+     Chairman call, recorded before the outcome is known. `council` writes
+     seven columns to `data/picks/<date>-picks.csv`; price, screen status, lens
+     scores and every metric are **joined from the mechanical sweep, never
+     typed**. A pick for a ticker outside the candidate set is rejected.
+  4. **Decision-basis report** (`decisions.py basis --write`) — one table:
+     every surfaced name, which voices picked it, and the exact metrics behind
+     it. Answers "did the sweep work and did the agents have enough data?"
+     without reading a memo.
+  5. **Implausible values no longer earn shortlist slots.** Nine values per run
+     are real numbers with the wrong meaning — Industrivarden at 1198%
+     "revenue growth" (investment gains counted as revenue), Orexo at a 2775%
+     margin, ASML at price/book 1456. These are now withheld from lens scoring
+     and shown with a `suspect` flag. ORX.ST had been placing on two lens
+     shortlists on the strength of one of them and correctly no longer does.
+  6. **`scripts/performance.py` absorbed** into the scorecard's OUTCOME pillar
+     and deleted — one place for measurement, not two.
+  7. **`reports/excel-upgrade-prompt.md`** — paste-ready workbook spec. The
+     three that matter: `entity_type` (fixes the artefact class in 5 at the
+     root), `nav_per_share` for holding companies (no free source exists;
+     blocks valuing Investor A), and `forward_pe` for Nordic names (closes the
+     32pp coverage gap between the two markets).
+- **Reconciliation:** none — no prior calls tested this session. AZN.ST BUY,
+  ABB.ST SELL and META BUY from 2026-08-24 remain open and unexecuted.
+- **Open items carried forward:** P-items untouched. S23 opened (pillars 3-5
+  have no data yet — resolves only with elapsed time; explicitly blocks any
+  weighting of the Council). S24 opened (metrics with the wrong meaning;
+  mitigated in code, root fix is the Excel `entity_type` column). V2 Phase 7d
+  marked DELIVERED; Phase 8 added — a multi-asset specialist voice, designed
+  and deliberately NOT built, because the blocker is data, not architecture.
+- **Note for the next session:** the first sweep that runs `council` should
+  write `data/picks/<date>-picks.csv` and record it. Until that happens
+  pillars 4 and 5 stay unmeasurable, and that is currently the single largest
+  gap in the system.
+
+---
 
 ## 2026-08-25 — SYSTEM, not a sweep: a 120-row Swedish ticker CSV imported under verification (universe 538 -> 624, Nordic 20 -> 109), and three defects it exposed fixed — single-sector lens shortlists, duplicated share classes, and thin data buying shortlist slots
 

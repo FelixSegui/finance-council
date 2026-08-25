@@ -396,6 +396,45 @@ IDs are never reused — an S-number in an old memo always means the same item.
   `SOBI.ST` (Sobi) and `MEKO.ST` (Meko AB). The rest need a human with a
   broker screen — the system deliberately will not guess a suffix.
 
+### S23 — [measurement] Pillars 3, 4 and 5 have no data yet, and that is the binding constraint
+- **Status:** open — structural, resolves only with elapsed time
+- **Why:** `scripts/scorecard.py` now measures six pillars, and three of them
+  correctly report "insufficient evidence": MECHANICAL needs at least two
+  scout runs with recorded prices before a rank can be tested against what
+  happened next, and JUDGEMENT and DECISION need `data/decisions.csv` to have
+  rows, which only happens once `council` starts writing its picks file. **The
+  scorecard's threshold is 20 observations per bucket and it withholds the
+  number below that** — at one sweep a week with a handful of picks, the
+  earliest a per-voice figure can mean anything is several months out.
+- **How:** nothing to build. Run the sweep, let `council` write
+  `data/picks/<date>-picks.csv`, record it, and wait. The failure mode to
+  guard against is impatience: quoting a provisional median as though it were
+  a finding, or lowering `MIN_OBSERVATIONS` to make the report look fuller.
+  Both would defeat the entire purpose of the pillar.
+- **Explicitly blocked on this:** any weighting of the Council. Until pillar 4
+  shows the voices beating the mechanical shortlists they were handed, a
+  weighted Council would be fitting weights to noise.
+
+### S24 — [data] Nine metrics per sweep are real numbers with the wrong meaning
+- **Status:** open — mitigated in code, root cause is upstream
+- **Why:** the 2026-08-25 run flagged nine values outside plausible ranges,
+  including Industrivärden at 1198% "revenue growth" (Yahoo counts investment
+  gains as revenue for a holding company), Orexo at a 2775% profit margin, and
+  ASML at a price/book of 1456. These are not fetch errors — they are correctly
+  transmitted figures that do not mean what their field name says. Before this
+  was caught, ORX.ST was placing on two lens shortlists on the strength of one
+  of them.
+- **Mitigated, not fixed:** implausible values are now withheld from lens
+  scoring (so they cannot earn a shortlist slot) and shown with a `suspect`
+  flag (so nothing is hidden or silently corrected). The name still reaches the
+  Council, with less conviction, which is the honest outcome.
+- **The real fix is an `entity_type` column** — holding company / bank / REIT /
+  operating company — which no free source provides but a human can fill in
+  once. It is request A1 in `reports/excel-upgrade-prompt.md`. With it, the
+  screen can apply the right metrics per entity type instead of flagging
+  healthy companies as data gaps: banks legitimately have no debt-to-equity,
+  and holding companies legitimately have no meaningful revenue line.
+
 ---
 
 ## V2 Roadmap — user-authored
@@ -462,6 +501,25 @@ holds the original text if it is ever wanted.
     `data/candidate_history.csv` tracks rank, best lens and screen status per
     candidate per run (`python scripts/watchlist.py history`). Per-voice
     conviction over time still requires 7a's per-voice output files.
+  - **Phase 7d (historical tracking) — DELIVERED 2026-08-25.**
+    `data/decisions.csv` records every voice pick and Chairman call with
+    conviction, horizon and the metrics it was made on, joined from the
+    mechanical sweep rather than typed. `scripts/scorecard.py`'s JUDGEMENT
+    pillar compares each voice against the benchmark and the Chairman against
+    its own inputs. What this phase asked for as "log scores now, correlate
+    later" is now live; the correlating needs elapsed time (S23).
+
+  - **Phase 8 (new, roadmapped 2026-08-25) — a multi-asset specialist voice.**
+    One eighth Council voice owning non-equity opportunities: bonds,
+    commodities, funds/ETFs, crypto. Preferable to stretching the seven equity
+    voices over instruments their metrics do not describe — a P/E-based voice
+    has nothing useful to say about a bond, and asking it anyway produces
+    confident noise. **Not built, and the blocker is data, not architecture:**
+    free sources cover equities well and bonds/options not at all, so the voice
+    would reason from scraped or remembered figures. Build when a real feed
+    exists for at least one class, with the same evidence rules as every other
+    voice — including a `MISSING` label it is expected to use often.
+
   - **Item 4 (keep portfolio analysis distinct from stock selection) —
     satisfied and now structural**, not just instructed: `portfolio` is
     consumed at the Chairman's PORTFOLIO FIT stage only, and the candidate

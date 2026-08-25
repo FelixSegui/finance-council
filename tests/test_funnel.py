@@ -553,7 +553,7 @@ class TestNoArchiveDependency(unittest.TestCase):
     DEAD = ["scripts/funnel", "scripts/fetchers", "data/sync/",
             "build_workbook", "generate_coverage_report", "controller_state",
             "screen_candidates", "rank_candidates", "add_manual_tickers",
-            "import_fundamentals_tab", "migrate_from_json",
+            "import_fundamentals_tab", "migrate_from_json", "scripts/performance",
             "data/cache/watchlist.json", "data/cache/universe.json",
             "data/cache/screens"]
 
@@ -599,8 +599,9 @@ class TestNoArchiveDependency(unittest.TestCase):
     def test_every_live_script_imports_cleanly(self):
         import importlib
         for mod in ("scout", "watchlist", "build_universe", "fetch_market_data",
-                    "derived_metrics", "position_report", "performance",
-                    "backtest", "fetch_calendar", "import_excel_holdings"):
+                    "derived_metrics", "position_report", "decisions",
+                    "scorecard", "backtest", "fetch_calendar",
+                    "import_excel_holdings"):
             importlib.import_module(mod)
 
 

@@ -14,9 +14,28 @@ architectural symmetry are not achievements here. If a proposal does not
 plausibly improve **decision quality**, **data reliability**, or **system
 reliability**, it does not belong in the backlog — close it or don't open it.
 
+## Start from the scorecard
+
+Read `reports/system-scorecard.md` (written by `python scripts/scorecard.py
+--write`) before proposing anything. It measures six pillars — discovery, data
+integrity, mechanical lens skill, judgement skill, decision/calibration, and
+real outcome — and it deliberately **withholds any number computed on fewer
+than 20 observations**, printing the count instead.
+
+Treat that refusal as information, not a gap to fill. "Insufficient evidence"
+means the honest answer is *we do not know yet*, and a proposal justified by a
+number the scorecard declined to print is a proposal built on noise. Never
+lower the threshold, and never quote a provisional median as though it were a
+finding.
+
+The pillar most worth watching is JUDGEMENT: whether the seven voices beat the
+mechanical shortlists they were handed. Until that line reads with real n, the
+Council must not be weighted, and any claim that the LLM layer earns its cost
+is unevidenced.
+
 ## What counts as evidence
 
-Only things that actually happened this session:
+The scorecard's flagged lines, plus things that actually happened this session:
 
 1. **Repeated bad calls.** `journal`'s reconciliation is the highest-value
    signal you have. If a *category* of call keeps aging badly, that is a
@@ -39,6 +58,12 @@ Only things that actually happened this session:
 7. **Whether the system is producing useful opportunities at all.** Are new
    candidates reaching the Council? Do they survive to a FINAL CALL? Is the
    user acting on anything?
+8. **Coverage asymmetry and suspect values.** The scorecard's DATA pillar
+   reports per-field coverage by market and flags any spread above 15
+   percentage points. A field two lenses rank on that is 30pp better covered
+   in one market silently tilts the whole funnel — this is how the forward-P/E
+   gap was found. Likewise a metric repeatedly flagged `suspect` means the
+   fetch is delivering a number whose meaning does not match its name.
 
 No speculative entries. "This could become a problem" is not evidence.
 

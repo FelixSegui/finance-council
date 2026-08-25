@@ -21,25 +21,24 @@ the memo leads with it rather than burying it.
 
 ## This sweep's recommended emphasis
 
-**Emphasis:** balanced
+**Emphasis:** portfolio-tending
 
-**Set by the 2026-08-24 discovery-funnel refactor.** The previous
-portfolio-tending call was made when discovery was structurally capped at a
-43-name list, so "there is no shortage of candidates" was true only inside
-that list. The funnel now screens ~540 names and produced 35 candidates that
-are neither held nor previously watchlisted — the discovery side of the
-system changed materially and its first live output needs looking at. The
-portfolio-tending signals that drove the last call are still live and still
-matter: **AZN.ST's BUY has been the top call for three consecutive sweeps**
-and the delay now has a price tag (the position moved from below blended cost
-to +3.4% above it on unchanged fundamentals); **P3 (PayPal routing) is decided
-but unexecuted for a third sweep**; **ABB.ST escalated to its first SELL call**
-on 2026-08-24 and needs an actual decision, not more monitoring; and the three
-2026-08-24 decision forks (ABB's freed slot, Investor A's NAV source, whether
-any portfolio exclusions exist at all) are still unanswered. Balanced, not
-prospecting: execute the standing calls *and* review what the wider funnel
-surfaced. Revisit once AZN.ST and P3 execute or are explicitly declined — an
-explicit "no" closes a loop as well as a "yes"; silence does not.
+**Set 2026-08-25, after the first full sweep on the rebuilt funnel.**
+Discovery is no longer the constraint and the evidence says so: 624 names
+screened, zero fetch failures, 33 candidates neither held nor watchlisted, and
+the funnel surfaced a genuinely new best idea (VICI) plus a re-rated existing
+one (SHB-A.ST) without difficulty. The constraint is now entirely on the
+human side of the loop. **Four consecutive sweeps have recommended AZN.ST and
+none has been executed; ABB.ST has carried a SELL for two sweeps; P3 has been
+decided-but-unexecuted for four.** This sweep also cut AZN's size and
+confidence because a supporting metric proved wrong — which means the cost of
+the delay is no longer just price drift, it is that the position was sized on
+an evidence base that has since changed.
+
+Next sweep should lead with execution status on those three, not with new
+names. An explicit "no" closes a loop as well as a "yes" does; silence does
+not. Revisit toward balanced once they are resolved, or once the NVDA print
+(2026-08-26) changes the picture.
 
 ---
 
@@ -434,6 +433,25 @@ IDs are never reused — an S-number in an old memo always means the same item.
   screen can apply the right metrics per entity type instead of flagging
   healthy companies as data gaps: banks legitimately have no debt-to-equity,
   and holding companies legitimately have no meaningful revenue line.
+
+### S25 — [data] SEC EDGAR is unreachable through this environment's proxy
+- **Status:** open — confirmed live 2026-08-25, blocks half of the Copycat voice
+- **Why:** `fetch_market_data.py --insiders` returned
+  `CIK mapping fetch failed: Tunnel connection failed: 403 Forbidden` for
+  `www.sec.gov`. The result: this sweep's Copycat voice had insider data for
+  **7 Swedish issuers and 0 US names**, while the focus set was 14 US names
+  and 8 Nordic. The voice covered SHB-A.ST, INVE-A.ST, VOLV-B.ST, ABB.ST,
+  ALFA.ST, AZN.ST and ATCO-B.ST and was silent on NVDA, APP, V, MA, VICI, EG,
+  MU, SNDK, SMCI, CHTR, LLY and TPL.
+- **The dangerous reading, named explicitly:** that silence is a fetch
+  failure, not an absence of insider activity. A voice that speaks only about
+  Swedish names will systematically make Swedish names look better evidenced,
+  and nothing in the output says why unless this item is read.
+- **How:** test whether `data.sec.gov` (the JSON API host) is reachable where
+  `www.sec.gov` is not — they are different hosts and the proxy may treat them
+  differently. If neither works, say so in the item and have the Copycat voice
+  state its coverage explicitly every sweep rather than leaving the asymmetry
+  implicit.
 
 ---
 

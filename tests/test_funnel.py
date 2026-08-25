@@ -818,3 +818,119 @@ class TestThinLensDisclosure(TestScoutHealth):
         thin = result["candidates"].get("T005", {}).get("thin_lenses")
         self.assertTrue(thin, "a name missing forward data must be flagged thin")
         self.assertTrue(any("growth" in t for t in thin), thin)
+
+
+# ---------------------------------------------------------------------------
+# 13. Cross-currency ratios. Yahoo reports statements in the company's
+#     reporting currency and market cap in the listing currency. For a
+#     cross-listed name they differ — TSM's market cap is USD, its cash flow
+#     TWD — and any ratio mixing them is wrong by the exchange rate, silently.
+#     TSM screened at a 34% FCF yield before this was caught, and ABB.ST and
+#     AZN.ST (both held) carried a meaningless ROIC.
+# ---------------------------------------------------------------------------
+class TestCrossCurrency(unittest.TestCase):
+    def test_fcf_yield_and_roic_are_withheld_when_currencies_differ(self):
+        rec = record(fcf=730_826_014_720, mcap=2_127_076_655_104,
+                     roic=1.837, currency="USD",
+                     financial_currency="TWD", currency_mismatch=True)
+        m = scout.metrics(rec)
+        self.assertIsNone(m["fcf_yield"], "a 32x-wrong FCF yield must not reach a lens")
+        self.assertIsNone(m["roic"])
+
+    def test_same_currency_names_are_untouched(self):
+        m = scout.metrics(record(fcf=46_335_873_024, mcap=5_049_593_888_768,
+                                 roic=0.63, currency="USD",
+                                 financial_currency="USD"))
+        self.assertAlmostEqual(m["fcf_yield"], 46_335_873_024 / 5_049_593_888_768)
+        self.assertAlmostEqual(m["roic"], 0.63)
+
+    def test_statement_only_ratios_survive_a_mismatch(self):
+        """net debt / EBITDA is numerator and denominator in the SAME
+        currency, so it stays valid — withholding it would lose real data."""
+        m = scout.metrics(record(debt=2e11, cash=5e10, ebitda=1e11,
+                                 currency="USD", financial_currency="TWD",
+                                 currency_mismatch=True))
+        self.assertAlmostEqual(m["net_debt_to_ebitda"], 1.5)
+        self.assertIsNotNone(m["profit_margin"])
+        self.assertIsNotNone(m["earnings_yield"])
+
+    def test_a_withheld_metric_lowers_coverage_rather_than_being_imputed(self):
+        rows = {f"T{i:02d}": scout.metrics(record(roic=0.05 + i * 0.01)) for i in range(30)}
+        rows["MIXED"] = scout.metrics(record(currency="USD", financial_currency="TWD",
+                                             currency_mismatch=True))
+        _scores, _cov, fcov = scout.rank_lenses(rows)
+        k_mixed, total = fcov["MIXED"]["quality"]
+        k_clean, _ = fcov["T00"]["quality"]
+        self.assertLess(k_mixed, k_clean,
+                        "a cross-currency name must lose inputs, not gain a wrong one")
+
+
+class TestMacroValuesAreNumeric(unittest.TestCase):
+    """FRED hands back CSV strings. A macro rate that is a string rather than
+    a number is a trap: sek_per_usd fed into a SEK conversion raises at best
+    and silently repeats the string at worst. Caught live when the portfolio
+    allocation math failed on `'9.4632' * 1177.49`."""
+
+    def test_fred_values_parse_as_floats(self):
+        import fetch_market_data as fmd
+        rows = [["DATE", "VALUE"], ["2026-08-21", "9.4632"],
+                ["2026-08-22", "."], ["2026-08-23", "not-a-number"]]
+        import csv as _csv
+        import io as _io
+        buf = _io.StringIO()
+        _csv.writer(buf).writerows(rows)
+        payload = buf.getvalue()
+
+        class _Resp:
+            def read(self_inner):
+                return payload.encode()
+            def __enter__(self_inner):
+                return self_inner
+            def __exit__(self_inner, *a):
+                return False
+
+        orig = fmd.urllib.request.urlopen
+        fmd.urllib.request.urlopen = lambda *a, **k: _Resp()
+        try:
+            out = fmd.fetch_fred_series("DEXSDUS", last_n=5)
+        finally:
+            fmd.urllib.request.urlopen = orig
+        self.assertEqual(len(out), 1, "unparseable rows must be dropped, not passed through")
+        self.assertIsInstance(out[0]["value"], float)
+        self.assertAlmostEqual(out[0]["value"], 9.4632)
+        self.assertEqual(out[0]["value"] * 2, 18.9264)   # arithmetic must work
+
+
+class TestHistoryHeaderGuard(unittest.TestCase):
+    """Appending to a file whose header does not match would misalign every
+    row and corrupt every later read. Hit for real when a manual cleanup left
+    a one-column header behind and scout appended 70 full rows under it."""
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        self.path = os.path.join(self.tmp, "candidate_history.csv")
+        self.addCleanup(shutil.rmtree, self.tmp, True)
+
+    def _row(self):
+        return [{"ticker": "AZN.ST", "source": "holding", "rank": 1,
+                 "best_lens": "value", "lens_score": 1.0, "screen_status": "PASS",
+                 "price": 1568.0, "currency": "SEK"}]
+
+    def test_a_mismatched_header_is_refused(self):
+        with open(self.path, "w") as f:
+            f.write("run_utc\n")
+        with self.assertRaises(SystemExit) as cm:
+            wl.append_history(self._row(), path=self.path)
+        self.assertIn("misalign", str(cm.exception))
+
+    def test_a_correct_header_appends_normally(self):
+        wl.append_history(self._row(), path=self.path, run_utc="2026-08-25T00:00:00+00:00")
+        wl.append_history(self._row(), path=self.path, run_utc="2026-08-26T00:00:00+00:00")
+        rows = wl.read_history(self.path)
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(rows[0]["ticker"], "AZN.ST")
+
+    def test_an_empty_file_is_treated_as_new(self):
+        open(self.path, "w").close()
+        wl.append_history(self._row(), path=self.path)
+        self.assertEqual(len(wl.read_history(self.path)), 1)

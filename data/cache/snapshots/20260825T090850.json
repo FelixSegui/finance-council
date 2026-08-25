@@ -1,0 +1,161 @@
+{
+  "fetched_at_utc": "2026-08-25T09:08:44.517436+00:00",
+  "equities": {
+    "SHB-A.ST": {
+      "financial_currency": "SEK",
+      "currency_mismatch": null,
+      "price": 144.55,
+      "prev_close": 144.55,
+      "52w_high": 149.7,
+      "52w_low": 116.8,
+      "market_cap": 291893968896,
+      "trailing_pe": 12.15359,
+      "forward_pe": 12.760736,
+      "price_to_sales": 5.2886047,
+      "price_to_book": 1.5634732,
+      "peg_ratio": 20.24,
+      "dividend_yield": 0.0544,
+      "payout_ratio": 0.66830003,
+      "beta": 0.504,
+      "revenue_growth": -0.038,
+      "total_revenue": 55193001984,
+      "free_cashflow": null,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 56796000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 62345000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 62249000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 50249000000
+        }
+      ],
+      "gross_margins": 0.0,
+      "operating_margins": 0.50089,
+      "ebitda_margins": 0.0,
+      "profit_margins": 0.42583,
+      "return_on_equity": 0.12749,
+      "return_on_assets": 0.0063099996,
+      "debt_to_equity": null,
+      "recommendation": "underperform",
+      "sector": "Financial Services",
+      "industry": "Banks - Diversified",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": null,
+      "total_cash": 656419979264,
+      "total_debt": 1673300934656,
+      "operating_cashflow": -41221001216,
+      "capex": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 27645622763.76576,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 181109318267.79,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 1854410252923.79,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.011836983989827039,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.206 (assumed statutory rate for Sweden, NOT a real effective rate - no source provides one)"
+      }
+    }
+  },
+  "crypto": {
+    "ethereum": {
+      "price_eur": 2127.22,
+      "market_cap": 256590890067,
+      "market_cap_rank": 2,
+      "change_24h_pct": 0.82845,
+      "change_7d_pct": 30.9,
+      "change_30d_pct": 32.1,
+      "ath": 4229.76,
+      "ath_change_pct": -49.70829
+    }
+  },
+  "macro": {
+    "fed_funds_rate": {
+      "date": "2026-07-01",
+      "value": 3.63
+    },
+    "us_10y_yield": {
+      "date": "2026-08-21",
+      "value": 4.74
+    },
+    "us_2y_yield": {
+      "date": "2026-08-21",
+      "value": 4.24
+    },
+    "dollar_index": {
+      "date": "2026-08-21",
+      "value": 118.0628
+    },
+    "sek_per_usd": {
+      "date": "2026-08-21",
+      "value": 9.4632
+    },
+    "usd_per_eur": {
+      "date": "2026-08-21",
+      "value": 1.1684
+    },
+    "vix": {
+      "date": "2026-08-21",
+      "value": 15.13
+    },
+    "us_cpi_yoy": {
+      "date": "2026-07-01",
+      "value": 3.54
+    },
+    "riksbank_policy_rate": {
+      "date": "2026-08-25",
+      "value": 1.75
+    },
+    "ecb_deposit_rate": {
+      "date": "2026-08-25",
+      "value": "2.25"
+    },
+    "se_cpi_yoy": {
+      "period": "2026M07",
+      "value": 0.2
+    },
+    "10y_2y_spread": 0.5,
+    "sek_per_eur": {
+      "date": "2026-08-21",
+      "value": 11.0568,
+      "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)"
+    }
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "value": 74,
+      "classification": "Greed"
+    }
+  }
+}

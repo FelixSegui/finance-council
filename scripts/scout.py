@@ -254,17 +254,26 @@ def metrics(rec):
     debt, cash, ebitda = g("total_debt"), g("total_cash"), g("ebitda")
     hi, lo, px = g("52w_high"), g("52w_low"), g("price")
 
+    # A ratio that divides a statement figure by a market figure is only
+    # meaningful when both are in the same currency (see
+    # fetch_market_data._fetch_fundamentals_direct). For a cross-listed name
+    # they are not, and no FX rate exists here to reconcile them, so the
+    # honest value is None — which lowers the name's lens coverage and
+    # therefore its conviction, rather than handing a lens a number that is
+    # wrong by an exchange rate.
+    mixed_ccy = bool(rec.get("currency_mismatch"))
+
     m = {
         "price": px,
         "market_cap": mcap,
         "earnings_yield": (1.0 / pe) if pe and pe > 0 else None,
         "forward_earnings_yield": (1.0 / fpe) if fpe and fpe > 0 else None,
-        "fcf_yield": (fcf / mcap) if (fcf is not None and mcap) else None,
+        "fcf_yield": None if mixed_ccy else ((fcf / mcap) if (fcf is not None and mcap) else None),
         "price_to_book": g("price_to_book"),
         "price_to_sales": g("price_to_sales"),
         "peg": g("peg_ratio"),
         "roe": g("return_on_equity"),
-        "roic": g("roic_pct"),
+        "roic": None if mixed_ccy else g("roic_pct"),
         "profit_margin": g("profit_margins"),
         "operating_margin": g("operating_margins"),
         "revenue_growth": g("revenue_growth"),
@@ -815,10 +824,15 @@ def run(args):
                    key=lambda kv: kv[1], default=(None, None))
         thin = [f"{ln} {k}/{n}" for ln, (k, n) in (field_coverage.get(t) or {}).items()
                 if n and k and k / n < THIN_LENS_COVERAGE]
+        flags = list(suspect_flags.get(t) or [])
+        if (records.get(t) or {}).get("currency_mismatch"):
+            flags.append(f"reports in {(records.get(t) or {}).get('financial_currency')}, "
+                         f"priced in {(records.get(t) or {}).get('currency')} — FCF yield and "
+                         f"ROIC not computable")
         candidates[t] = {"source": source, "name": name,
                          "best_lens": best[0], "lens_score": best[1],
                          "thin_lenses": thin,
-                         "suspect": suspect_flags.get(t) or [],
+                         "suspect": flags,
                          "share_class_siblings": sorted(siblings.get(t, [])),
                          "in_lens_shortlists": [ln for ln, names in shortlists.items()
                                                 if t in names]}

@@ -1,9 +1,9 @@
 {
-  "generated_utc": "2026-08-25T08:38:54.830315+00:00",
+  "generated_utc": "2026-08-25T09:04:27.164284+00:00",
   "health": {
     "universe": 624,
-    "from_cache": 584,
-    "newly_fetched": 40,
+    "from_cache": 0,
+    "newly_fetched": 624,
     "fetch_failed": 0,
     "fetched": 624,
     "ranked": 614,
@@ -15,10 +15,10 @@
     "share_class_collapsed": 6,
     "screened": 71,
     "passed": 36,
-    "missing": 16,
-    "failed": 19,
+    "missing": 17,
+    "failed": 18,
     "status": "VALID",
-    "suspect_values": 8
+    "suspect_values": 14
   },
   "diagnostics": [],
   "filters": [
@@ -77,7 +77,7 @@
       "NVDA",
       "MA",
       "V",
-      "TSM",
+      "MU",
       "INDU-C.ST",
       "TPL",
       "LLY",
@@ -93,13 +93,13 @@
       "CORE-B.ST",
       "DOM.ST",
       "AFRY.ST",
-      "MEKO.ST"
+      "UHS"
     ],
     "growth": [
       "NVDA",
       "SMCI",
       "APO",
-      "PLTR",
+      "AVGO",
       "GPN",
       "FANG",
       "APP",
@@ -133,11 +133,11 @@
     ]
   },
   "share_class_collapsed": {
-    "ATCO-A.ST": "ATCO-B.ST",
-    "INDU-A.ST": "INDU-C.ST",
-    "ELUX-B.ST": "ELUX-A.ST",
     "INVE-B.ST": "INVE-A.ST",
     "NCC-B.ST": "NCC-A.ST",
+    "ATCO-A.ST": "ATCO-B.ST",
+    "ELUX-B.ST": "ELUX-A.ST",
+    "INDU-A.ST": "INDU-C.ST",
     "EPI-B.ST": "EPI-A.ST"
   },
   "universe_warnings": [],
@@ -152,7 +152,7 @@
       "suspect": [],
       "share_class_siblings": [],
       "in_lens_shortlists": [],
-      "rank": 19,
+      "rank": 20,
       "focus": false,
       "screen_status": "FAIL",
       "screen_detail": {
@@ -165,10 +165,11 @@
       "source": "holding",
       "name": "ABB",
       "best_lens": "quality",
-      "lens_score": 0.237,
+      "lens_score": 0.149,
       "thin_lenses": [],
       "suspect": [
-        "price_to_book=107.5342"
+        "price_to_book=107.4201",
+        "reports in USD, priced in SEK \u2014 FCF yield and ROIC not computable"
       ],
       "share_class_siblings": [],
       "in_lens_shortlists": [],
@@ -177,7 +178,7 @@
       "screen_status": "FAIL",
       "screen_detail": {
         "reasons": [
-          "forward_pe=35.75 > 30.0"
+          "forward_pe=35.712 > 30.0"
         ]
       }
     },
@@ -203,14 +204,14 @@
       "source": "new",
       "name": "Afry AB",
       "best_lens": "value",
-      "lens_score": 1.454,
+      "lens_score": 1.447,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
       "in_lens_shortlists": [
         "value"
       ],
-      "rank": 30,
+      "rank": 31,
       "focus": false,
       "screen_status": "PASS",
       "screen_detail": {}
@@ -224,7 +225,7 @@
       "suspect": [],
       "share_class_siblings": [],
       "in_lens_shortlists": [],
-      "rank": 65,
+      "rank": 66,
       "focus": true,
       "screen_status": "PASS",
       "screen_detail": {}
@@ -233,7 +234,7 @@
       "source": "new",
       "name": "Allstate",
       "best_lens": "value",
-      "lens_score": 1.724,
+      "lens_score": 1.714,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -267,7 +268,7 @@
       "source": "watchlist",
       "name": "Amazon",
       "best_lens": "quality",
-      "lens_score": 0.037,
+      "lens_score": 0.036,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -288,8 +289,8 @@
       "in_lens_shortlists": [
         "growth"
       ],
-      "rank": 15,
-      "focus": true,
+      "rank": 16,
+      "focus": false,
       "screen_status": "FAIL",
       "screen_detail": {
         "reasons": [
@@ -322,7 +323,7 @@
       "thin_lenses": [],
       "suspect": [
         "price_to_book=1455.7097",
-        "roic=4.0181"
+        "reports in EUR, priced in USD \u2014 FCF yield and ROIC not computable"
       ],
       "share_class_siblings": [],
       "in_lens_shortlists": [],
@@ -360,7 +361,7 @@
       "source": "holding",
       "name": "Atlas Copco B",
       "best_lens": "quality",
-      "lens_score": 0.563,
+      "lens_score": 0.568,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [
@@ -384,7 +385,9 @@
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
-      "in_lens_shortlists": [],
+      "in_lens_shortlists": [
+        "growth"
+      ],
       "rank": 21,
       "focus": false,
       "screen_status": "FAIL",
@@ -421,7 +424,9 @@
       "best_lens": "defensive",
       "lens_score": 0.463,
       "thin_lenses": [],
-      "suspect": [],
+      "suspect": [
+        "reports in USD, priced in SEK \u2014 FCF yield and ROIC not computable"
+      ],
       "share_class_siblings": [],
       "in_lens_shortlists": [],
       "rank": 59,
@@ -437,14 +442,14 @@
       "source": "new",
       "name": "Fastighets AB Balder (publ)",
       "best_lens": "contrarian",
-      "lens_score": 1.663,
+      "lens_score": 1.669,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
       "in_lens_shortlists": [
         "contrarian"
       ],
-      "rank": 20,
+      "rank": 19,
       "focus": false,
       "screen_status": "PASS",
       "screen_detail": {}
@@ -455,7 +460,9 @@
       "best_lens": "defensive",
       "lens_score": 1.187,
       "thin_lenses": [],
-      "suspect": [],
+      "suspect": [
+        "reports in EUR, priced in SEK \u2014 FCF yield and ROIC not computable"
+      ],
       "share_class_siblings": [],
       "in_lens_shortlists": [
         "defensive"
@@ -465,7 +472,7 @@
       "screen_status": "FAIL",
       "screen_detail": {
         "reasons": [
-          "forward_pe=60.677 > 30.0"
+          "forward_pe=60.774 > 30.0"
         ]
       }
     },
@@ -494,7 +501,7 @@
       "source": "new",
       "name": "Catena AB (publ)",
       "best_lens": "contrarian",
-      "lens_score": 1.799,
+      "lens_score": 1.805,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -510,7 +517,7 @@
       "source": "new",
       "name": "Charter Communications",
       "best_lens": "value",
-      "lens_score": 1.741,
+      "lens_score": 1.739,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -531,7 +538,7 @@
       "source": "new",
       "name": "Comcast",
       "best_lens": "value",
-      "lens_score": 1.563,
+      "lens_score": 1.56,
       "thin_lenses": [],
       "suspect": [
         "peg=142.98"
@@ -540,7 +547,7 @@
       "in_lens_shortlists": [
         "value"
       ],
-      "rank": 23,
+      "rank": 22,
       "focus": false,
       "screen_status": "PASS",
       "screen_detail": {}
@@ -565,7 +572,7 @@
       "source": "new",
       "name": "Corem Property Group AB (publ)",
       "best_lens": "value",
-      "lens_score": 1.507,
+      "lens_score": 1.506,
       "thin_lenses": [
         "growth 2/4"
       ],
@@ -574,7 +581,7 @@
       "in_lens_shortlists": [
         "value"
       ],
-      "rank": 26,
+      "rank": 25,
       "focus": false,
       "screen_status": "FAIL",
       "screen_detail": {
@@ -587,7 +594,7 @@
       "source": "new",
       "name": "Dometic Group AB (publ)",
       "best_lens": "value",
-      "lens_score": 1.478,
+      "lens_score": 1.463,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -603,7 +610,7 @@
       "source": "new",
       "name": "Everest Group",
       "best_lens": "value",
-      "lens_score": 1.827,
+      "lens_score": 1.824,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -619,7 +626,7 @@
       "source": "watchlist",
       "name": "Telefonaktiebolaget LM Ericsson (publ)",
       "best_lens": "value",
-      "lens_score": 0.705,
+      "lens_score": 0.703,
       "thin_lenses": [
         "growth 2/4"
       ],
@@ -641,7 +648,9 @@
       "best_lens": "defensive",
       "lens_score": 1.455,
       "thin_lenses": [],
-      "suspect": [],
+      "suspect": [
+        "reports in EUR, priced in SEK \u2014 FCF yield and ROIC not computable"
+      ],
       "share_class_siblings": [],
       "in_lens_shortlists": [
         "defensive"
@@ -680,7 +689,7 @@
       "in_lens_shortlists": [
         "growth"
       ],
-      "rank": 31,
+      "rank": 30,
       "focus": false,
       "screen_status": "FAIL",
       "screen_detail": {
@@ -693,7 +702,7 @@
       "source": "new",
       "name": "Fidelity National Information Services",
       "best_lens": "value",
-      "lens_score": 1.725,
+      "lens_score": 1.722,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -710,7 +719,7 @@
       "source": "new",
       "name": "Fiserv",
       "best_lens": "value",
-      "lens_score": 1.526,
+      "lens_score": 1.527,
       "thin_lenses": [
         "value 2/5",
         "growth 2/4",
@@ -722,7 +731,7 @@
         "value",
         "contrarian"
       ],
-      "rank": 25,
+      "rank": 24,
       "focus": false,
       "screen_status": "MISSING",
       "screen_detail": {
@@ -736,7 +745,7 @@
       "source": "watchlist",
       "name": "Alphabet Inc. (Class A)",
       "best_lens": "quality",
-      "lens_score": 1.378,
+      "lens_score": 1.382,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -757,7 +766,7 @@
       "in_lens_shortlists": [
         "growth"
       ],
-      "rank": 27,
+      "rank": 26,
       "focus": false,
       "screen_status": "FAIL",
       "screen_detail": {
@@ -788,13 +797,15 @@
     "HEXA-B.ST": {
       "source": "watchlist",
       "name": "Hexagon AB (publ)",
-      "best_lens": "defensive",
-      "lens_score": 0.116,
+      "best_lens": "quality",
+      "lens_score": 0.141,
       "thin_lenses": [],
-      "suspect": [],
+      "suspect": [
+        "reports in EUR, priced in SEK \u2014 FCF yield and ROIC not computable"
+      ],
       "share_class_siblings": [],
       "in_lens_shortlists": [],
-      "rank": 66,
+      "rank": 65,
       "focus": false,
       "screen_status": "PASS",
       "screen_detail": {}
@@ -803,7 +814,7 @@
       "source": "watchlist",
       "name": "H & M Hennes & Mauritz AB (publ)",
       "best_lens": "value",
-      "lens_score": 0.094,
+      "lens_score": 0.089,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -817,7 +828,7 @@
       "source": "watchlist",
       "name": "AB Industriv\u00e4rden (publ)",
       "best_lens": "quality",
-      "lens_score": 1.892,
+      "lens_score": 1.898,
       "thin_lenses": [
         "growth 2/4"
       ],
@@ -844,7 +855,7 @@
       "source": "holding",
       "name": "Investor A (stock)",
       "best_lens": "quality",
-      "lens_score": 1.812,
+      "lens_score": 1.817,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [
@@ -871,7 +882,7 @@
       "suspect": [],
       "share_class_siblings": [],
       "in_lens_shortlists": [],
-      "rank": 54,
+      "rank": 55,
       "focus": false,
       "screen_status": "PASS",
       "screen_detail": {}
@@ -885,7 +896,7 @@
         "growth 2/4"
       ],
       "suspect": [
-        "price_to_sales=-2.0043"
+        "price_to_sales=-2.0112"
       ],
       "share_class_siblings": [],
       "in_lens_shortlists": [],
@@ -902,12 +913,12 @@
       "source": "watchlist",
       "name": "Coca-Cola Company (The)",
       "best_lens": "quality",
-      "lens_score": 0.585,
+      "lens_score": 0.586,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
       "in_lens_shortlists": [],
-      "rank": 55,
+      "rank": 54,
       "focus": false,
       "screen_status": "PASS",
       "screen_detail": {}
@@ -916,7 +927,7 @@
       "source": "watchlist",
       "name": "Investment AB Latour (publ)",
       "best_lens": "contrarian",
-      "lens_score": 0.681,
+      "lens_score": 0.68,
       "thin_lenses": [
         "growth 2/4"
       ],
@@ -936,7 +947,7 @@
       "source": "new",
       "name": "Lilly (Eli)",
       "best_lens": "quality",
-      "lens_score": 1.733,
+      "lens_score": 1.738,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -944,8 +955,8 @@
         "quality",
         "growth"
       ],
-      "rank": 16,
-      "focus": false,
+      "rank": 15,
+      "focus": true,
       "screen_status": "FAIL",
       "screen_detail": {
         "reasons": [
@@ -991,22 +1002,6 @@
         ]
       }
     },
-    "MEKO.ST": {
-      "source": "new",
-      "name": "Meko AB",
-      "best_lens": "value",
-      "lens_score": 1.41,
-      "thin_lenses": [],
-      "suspect": [],
-      "share_class_siblings": [],
-      "in_lens_shortlists": [
-        "value"
-      ],
-      "rank": 32,
-      "focus": false,
-      "screen_status": "PASS",
-      "screen_detail": {}
-    },
     "META": {
       "source": "watchlist",
       "name": "Meta Platforms",
@@ -1025,7 +1020,7 @@
       "source": "new",
       "name": "Altria",
       "best_lens": "quality",
-      "lens_score": 1.552,
+      "lens_score": 1.559,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -1033,7 +1028,7 @@
         "quality",
         "defensive"
       ],
-      "rank": 24,
+      "rank": 23,
       "focus": false,
       "screen_status": "MISSING",
       "screen_detail": {
@@ -1046,7 +1041,7 @@
       "source": "watchlist",
       "name": "Microsoft",
       "best_lens": "quality",
-      "lens_score": 0.983,
+      "lens_score": 0.985,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -1056,11 +1051,35 @@
       "screen_status": "PASS",
       "screen_detail": {}
     },
+    "MU": {
+      "source": "new",
+      "name": "Micron Technology",
+      "best_lens": "quality",
+      "lens_score": 1.924,
+      "thin_lenses": [
+        "growth 2/4"
+      ],
+      "suspect": [
+        "revenue_growth=3.457"
+      ],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "quality"
+      ],
+      "rank": 6,
+      "focus": true,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "market_cap"
+        ]
+      }
+    },
     "NOVO-B.CO": {
       "source": "watchlist",
       "name": "Novo Nordisk A/S",
       "best_lens": "quality",
-      "lens_score": 1.309,
+      "lens_score": 1.314,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -1115,27 +1134,6 @@
       "screen_status": "PASS",
       "screen_detail": {}
     },
-    "PLTR": {
-      "source": "new",
-      "name": "Palantir Technologies",
-      "best_lens": "growth",
-      "lens_score": 1.644,
-      "thin_lenses": [],
-      "suspect": [],
-      "share_class_siblings": [],
-      "in_lens_shortlists": [
-        "growth"
-      ],
-      "rank": 22,
-      "focus": false,
-      "screen_status": "FAIL",
-      "screen_detail": {
-        "reasons": [
-          "trailing_pe=154.289 > 40.0",
-          "forward_pe=76.003 > 30.0"
-        ]
-      }
-    },
     "RDDT": {
       "source": "new",
       "name": "Reddit",
@@ -1166,8 +1164,8 @@
       "screen_status": "FAIL",
       "screen_detail": {
         "reasons": [
-          "trailing_pe=48.55 > 40.0",
-          "forward_pe=64.261 > 30.0"
+          "trailing_pe=48.618 > 40.0",
+          "forward_pe=64.352 > 30.0"
         ]
       }
     },
@@ -1302,7 +1300,7 @@
       "source": "new",
       "name": "Texas Pacific Land Corporation",
       "best_lens": "quality",
-      "lens_score": 1.851,
+      "lens_score": 1.856,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -1322,15 +1320,31 @@
       "source": "watchlist",
       "name": "Taiwan Semiconductor Manufacturing Company Limited",
       "best_lens": "quality",
-      "lens_score": 1.932,
+      "lens_score": 1.49,
+      "thin_lenses": [],
+      "suspect": [
+        "reports in TWD, priced in USD \u2014 FCF yield and ROIC not computable"
+      ],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 27,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "UHS": {
+      "source": "new",
+      "name": "Universal Health Services",
+      "best_lens": "value",
+      "lens_score": 1.405,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
       "in_lens_shortlists": [
-        "quality"
+        "value"
       ],
-      "rank": 6,
-      "focus": true,
+      "rank": 32,
+      "focus": false,
       "screen_status": "PASS",
       "screen_detail": {}
     },
@@ -1338,7 +1352,7 @@
       "source": "new",
       "name": "Visa Inc.",
       "best_lens": "quality",
-      "lens_score": 1.944,
+      "lens_score": 1.95,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],
@@ -1393,7 +1407,7 @@
       "source": "holding",
       "name": "Volvo B",
       "best_lens": "value",
-      "lens_score": 0.29,
+      "lens_score": 0.289,
       "thin_lenses": [],
       "suspect": [],
       "share_class_siblings": [],

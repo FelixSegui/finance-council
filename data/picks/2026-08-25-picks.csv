@@ -1,0 +1,30 @@
+voice,ticker,action,conviction,confidence,horizon,thesis
+fundamental,NVDA,BUY,8,,Medium,ROIC 63.1% net margin 63.0% net cash rev +85.2% - best measured economics in the set
+fundamental,V,BUY,7,,Long,ROIC 41.5% margin 50.8% moderate leverage; durable network economics
+fundamental,APP,BUY,6,,Medium,ROIC 65.5% margin 64.6% rev +52.8% at 2% of 52w range; D/E 111 caps conviction
+fundamental,ABB.ST,SELL,6,,Medium,36.6x trailing on 14.1% margin; weakest quality-per-price of the four industrials
+valuation,VICI,BUY,7,,Medium,8.96x forward 6.79% yield at 9% of 52w range; REIT leverage is structural not distress
+valuation,EG,BUY,6,,Medium,6.31x forward 14.29% FCF yield beta 0.28; -11.3% revenue is the reinsurance cycle
+valuation,MU,BUY,5,,Medium,fwd 5.87 vs trailing 21.8 implies a large earnings step-up; a cycle bet not a value bet
+valuation,ABB.ST,SELL,7,,Medium,most expensive holding on both trailing and forward; worst value z among industrials
+growth,NVDA,BUY,7,,Medium,rev +85.2% PEG 0.59 forward multiple half of trailing; earnings print tomorrow
+growth,APP,BUY,6,,Medium,rev +52.8% PEG 0.86 40% multiple compression while price sits at 52w low
+growth,MU,BUY,5,,Medium,PEG 0.14 and 73% multiple compression; growth score rests on 2 of 4 inputs
+defensive,SHB-A.ST,BUY,7,,Long,beta 0.504 div 5.44% highest defensive z in focus; NIM risk if Riksbank cuts
+defensive,VICI,BUY,6,,Medium,beta 0.687 contractual rent escalators 6.79% yield
+defensive,AZN.ST,BUY,6,,Long,beta 0.211 lowest in set; only holding in the lower half of its 52w range
+contrarian,AZN.ST,BUY,7,,Long,36% of 52w range vs 69-92% for every other holding; sector de-rating not company-specific
+contrarian,CATE.ST,BUY,5,,Medium,5% of 52w range; Swedish property levered to a Riksbank cut with CPI at 0.2%
+contrarian,APP,BUY,4,,Medium,most extreme dislocation in the set but no news source to explain it - thesis incomplete
+macro,CATE.ST,BUY,6,,Medium,SE CPI 0.2% and policy 1.75% give the Riksbank room; property is most levered to it
+macro,SHB-A.ST,BUY,5,,Long,Swedish financial with a steep curve; hedges the CATE rate call rather than doubling it
+macro,AZN.ST,BUY,5,,Long,least macro-sensitive sector in the set; SEK-denominated UK earner
+copycat,SHB-A.ST,BUY,8,,Long,Chairman Boman bought ~1.1m shares open-market 2026-07-21 at 139-141; Lundberg alongside
+copycat,INVE-A.ST,BUY,6,,Long,CEO plus four other insiders all acquiring across 2026; broad accumulation
+copycat,VOLV-B.ST,BUY,5,,Long,board member paid ~360 for ~540k shares 2026-07-27; stock now 347
+copycat,ABB.ST,SELL,6,,Medium,Terwiesch disposed 48799 shares across three filings Jul-Aug; all buys predate May
+chairman,SHB-A.ST,BUY,7,Medium,Long,strongest insider evidence in the sweep; position is a 0.5% placeholder
+chairman,AZN.ST,BUY,6,Medium,Long,downgraded from High and cut to 2 shares - the ROIC supporting prior sweeps was never computable
+chairman,ABB.ST,SELL,7,Medium,Medium,three independent sources agree; takes industrials from 64.3% to 56.9%
+chairman,VICI,HOLD-WATCH,6,Medium,Medium,best new candidate but no capital and USD at 9.46 SEK is a poor entry
+chairman,NVDA,NO_ACTION,7,High,Medium,best economics in the set but earnings tomorrow on a 2.2 beta - no edge on one print

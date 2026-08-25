@@ -198,9 +198,29 @@ def _fetch_fundamentals_direct(ticker):
     shares_outstanding = _raw(stats.get("sharesOutstanding"))
     country = profile.get("country")
 
+    # Yahoo reports the financial STATEMENTS in the company's reporting
+    # currency and the PRICE/market-cap figures in the listing currency, and
+    # for a cross-listed name those differ. TSM's market cap is in USD while
+    # its cash flow and balance sheet are in TWD - a ~32x gap. Any ratio
+    # mixing the two is wrong by the exchange rate, silently and plausibly:
+    # before this was caught, TSM screened at a 34% free-cash-flow yield.
+    # No FX rate is available here (and there is none for TWD anywhere in
+    # this pipeline), so the honest output is "not computable", never a
+    # number scaled by an assumed rate.
+    price_currency = summary.get("currency") or _raw(fin.get("financialCurrency"))
+    financial_currency = fin.get("financialCurrency")
+    mixed_currency = bool(price_currency and financial_currency
+                          and price_currency != financial_currency)
+    mixed_note = (f"cross-currency: statements in {financial_currency}, price/market cap "
+                  f"in {price_currency}, and no FX rate is available to reconcile them")
+
     capex = derived_metrics.capex_from_ocf_fcf(operating_cashflow, free_cashflow)
     ebit_estimated = derived_metrics.ebit_from_margin(operating_margins, total_revenue)
-    equity_book = derived_metrics.equity_from_book_value(book_value_per_share, shares_outstanding)
+    # book_value_per_share is quoted in the PRICE currency; total_debt is in the
+    # statement currency. Combining them across a currency boundary produces a
+    # meaningless invested-capital figure, and therefore a meaningless ROIC.
+    equity_book = (None if mixed_currency else
+                   derived_metrics.equity_from_book_value(book_value_per_share, shares_outstanding))
     invested_capital = derived_metrics.invested_capital(total_debt, equity_book)
     tax_rate_assumed = (DEFAULT_CORPORATE_TAX_RATE_ASSUMPTION.get(country)
                         or DEFAULT_CORPORATE_TAX_RATE_FALLBACK)
@@ -221,10 +241,12 @@ def _fetch_fundamentals_direct(ticker):
                              "calculation_method": "not available from Yahoo quoteSummary for any ticker "
                                                     "checked - needs a filing or PDF extract (source tier 1)"},
         "equity_book": {"value": equity_book, "quality_state": "OK" if equity_book is not None else "MISSING",
-                        "calculation_method": "book_value_per_share * shares_outstanding"},
+                        "calculation_method": ("book_value_per_share * shares_outstanding"
+                                               if not mixed_currency else mixed_note)},
         "invested_capital": {"value": invested_capital,
                              "quality_state": "OK" if invested_capital is not None else "MISSING",
-                             "calculation_method": "total_debt + equity_book (cash not netted out)"},
+                             "calculation_method": ("total_debt + equity_book (cash not netted out)"
+                                                    if not mixed_currency else mixed_note)},
         "roic_pct": {"value": roic_estimated,
                     "quality_state": "ESTIMATED" if roic_estimated is not None else "MISSING",
                     "calculation_method": f"ebit*(1-tax_rate)/invested_capital, tax_rate={tax_rate_assumed} "
@@ -232,6 +254,8 @@ def _fetch_fundamentals_direct(ticker):
                                           f"NOT a real effective rate - no source provides one)"},
     }
     out = {
+        "financial_currency": financial_currency,
+        "currency_mismatch": mixed_currency or None,
         "price": _raw(summary.get("regularMarketPreviousClose")) or _raw(fin.get("currentPrice")),
         "prev_close": _raw(summary.get("previousClose")),
         "52w_high": _raw(summary.get("fiftyTwoWeekHigh")),
@@ -421,16 +445,30 @@ def _coingecko_get(url):
 
 def fetch_fred_series(series_id, last_n=1):
     """Return the last_n observations of a FRED series as a list of
-    {date, value} dicts (oldest first), or {"error": ...}."""
+    {date, value} dicts (oldest first), or {"error": ...}.
+
+    Values are coerced to float. FRED's CSV hands back strings, and a macro
+    rate that is a string rather than a number is a trap rather than a
+    nuisance: `sek_per_usd` fed straight into a SEK conversion raises a
+    TypeError at best and silently repeats the string at worst. Every other
+    number in the snapshot is numeric; these must be too. A row that will not
+    parse is dropped rather than passed through as text."""
     url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series_id}"
     try:
         with urllib.request.urlopen(url, timeout=15) as resp:
             text = resp.read().decode()
         reader = csv.reader(io.StringIO(text))
-        rows = [r for r in list(reader)[1:] if len(r) == 2 and r[1] not in ("", ".")]
-        if not rows:
+        out = []
+        for row in list(reader)[1:]:
+            if len(row) != 2 or row[1] in ("", "."):
+                continue
+            try:
+                out.append({"date": row[0], "value": float(row[1])})
+            except ValueError:
+                continue
+        if not out:
             return {"error": "no data returned"}
-        return [{"date": d, "value": v} for d, v in rows[-last_n:]]
+        return out[-last_n:]
     except Exception as e:
         return {"error": str(e)}
 

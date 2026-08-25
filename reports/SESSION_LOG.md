@@ -13,7 +13,88 @@ Entry format:
 - **User decisions:** what you actually decided/did (or "none yet")
 - **Reconciliation:** how last sweep's calls look against today's data
 - **Open items carried forward:** ...
-```---
+```---## 2026-08-25 (third session) — FULL SWEEP. SHB-A.ST takes the top slot on the strongest insider evidence the system has ever fetched; ABB.ST SELL corroborated by a second, independent source; AZN.ST's four-sweep BUY DOWNGRADED and halved because a metric supporting the last three memos turned out to be non-computable; two data defects found and fixed mid-sweep
+
+- **Snapshot:** data/cache/snapshots/20260825T090036.json. **Screen:**
+  data/screens/20260825T090427-candidates.csv — universe 624, fetched 624,
+  0 failures, ranked 614, 71 candidates (8 held / 30 watchlist / 33 new),
+  22 focus, 36 passed, status VALID. **Calendar:**
+  data/cache/calendar/20260825-events.json — one live collision: NVDA reports
+  2026-08-26. No Excel import this sweep.
+- **Memo:** reports/2026-08-25-council-memo.md
+- **Decisions:** data/picks/2026-08-25-picks.csv -> data/decisions.csv.
+  **First sweep ever recorded into the ledger:** 29 picks across 8 voices,
+  12 distinct names, metrics joined from the mechanical sweep rather than
+  typed. Pillars 4 and 5 now have data — at n=2-3 the scorecard correctly
+  refuses to report any of it.
+- **Headline calls:**
+  1. **BUY 20 SHB-A.ST (~2,891 SEK) from ISK cash** -> confidence **Medium**
+     -> horizon **Long**. New top call. Chairman Par Boman bought ~1.1m shares
+     open-market on 2026-07-21 at 139-141 SEK with Fredrik Lundberg alongside;
+     price 144.55. The position was 1 share (0.5% of the sleeve) — a
+     placeholder, not a position.
+  2. **SELL all 4 ABB.ST (~3,698 SEK)** -> **Medium** -> **Medium**. Second
+     consecutive sweep, now corroborated by a second independent source:
+     Terwiesch disposed of 48,799 shares across three filings Jul-Aug while
+     every acquisition on file predates May. Takes industrials from 64.3% to
+     56.9% of the individual-stock sleeve.
+  3. **BUY 2 AZN.ST (~3,136 SEK)** -> **Medium** -> **Long**. Fourth
+     consecutive sweep, but **downgraded from High and cut from 3 shares to
+     2** — see reconciliation.
+  4. **NO ACTION on NVDA until after the 2026-08-26 print** -> **High** ->
+     **Medium**. Best measured economics in the set (ROIC 63.1%, PEG 0.59) but
+     beta 2.215 the day before earnings is a coin flip.
+  5. **Execute or explicitly decline P3** -> **High** -> **Long**. Fourth
+     consecutive sweep of identical unexecuted advice.
+- **User decisions:** none — no live user interaction during the sweep itself.
+- **Reconciliation of the 2026-08-24 calls:**
+  - **AZN.ST BUY (3 shares, High) — the call survives but its evidence base
+    did not.** Part of the quality case in the last three memos rested on a
+    ROIC computed from a USD balance sheet against a SEK market cap. That
+    figure was never computable and is now correctly withheld. AZN also
+    carries the WORST value z-score (-1.604) of all 22 focus names this sweep.
+    It still earns a BUY on contrarian and defensive grounds (36% of its 52w
+    range against 69-92% for every other holding; beta 0.211, the lowest in
+    the set) — at 2 shares and Medium, not 3 and High. **Repetition had been
+    reading as accumulating conviction when it was the same unverified input
+    being re-read.**
+  - **ABB.ST SELL (Medium) — aged well and strengthened.** Down 2.0% since the
+    last snapshot, and this sweep added insider selling as a second
+    independent source alongside the valuation case. Still unexecuted.
+  - **META BUY (Medium) — dropped out.** META did not reach this sweep's focus
+    set. Not a reversal on the merits: the universe grew from 538 to 624 names
+    and the sector cap now limits any one sector's shortlist slots, so it was
+    out-competed rather than downgraded. Worth stating plainly rather than
+    letting it vanish.
+  - **No crypto action (High) — still correct.** Crypto is 8.59% against a 10%
+    target, below rather than above. No trigger.
+- **Two data defects found and fixed mid-sweep, both of which had been
+  corrupting earlier sweeps:**
+  1. **Cross-currency ratios.** Yahoo reports statements in the reporting
+     currency and market cap in the listing currency. TSM screened at a 34%
+     FCF yield (TWD over USD, wrong by ~32x) and 184% ROIC. Eight universe
+     names affected including two holdings (AZN.ST, ABB.ST). Now withheld
+     rather than computed wrong; TSM dropped out of the quality shortlist.
+  2. **Every FRED macro value was a string, not a number.** sek_per_usd came
+     back as '9.4632'; any SEK conversion would raise or silently concatenate.
+     Found when this memo's own allocation math failed.
+  Both have regression tests. Tests 127 -> 131.
+- **Also fixed:** `append_history` would append under a mismatched header and
+  silently misalign every row — hit for real during this session's cleanup.
+  Now refuses.
+- **Open items carried forward:** P1, P3, P4, P5, P6, P7, P9, P10 unchanged.
+  S1 still open and still load-bearing — the Valour certificate is priced from
+  a user-relayed number, and Yahoo's BTC0E.AS feed remains ~7x off. S6 blocked
+  two voices again this sweep (INVE-A and INDU-C uninterpretable on P/E). S20
+  confirmed live: SEC EDGAR returned 403, so Copycat covered 7 Swedish issuers
+  and zero US names. New: S25 (SEC EDGAR unreachable through the proxy).
+- **Note for the next session:** the decision ledger has rows for the first
+  time. Do not read any per-voice number until n reaches 20 — the scorecard
+  withholds them deliberately, and the earliest they can mean anything is
+  several months out.
+
+---
+
 ## 2026-08-25 (second session) — SYSTEM: the measurement layer. Six pillars, a decision ledger that records every voice's picks with the evidence joined, and a hard refusal to report any number computed on fewer than 20 observations
 
 **System session, no market calls made.** No memo, no Council run.

@@ -462,7 +462,18 @@ def append_history(rows, path=None, run_utc=None):
     path = path or HISTORY_PATH
     run_utc = run_utc or datetime.now(timezone.utc).isoformat(timespec="seconds")
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    is_new = not os.path.exists(path)
+    is_new = not os.path.exists(path) or os.path.getsize(path) == 0
+    if not is_new:
+        # An existing file whose header does not match would silently take
+        # misaligned rows and corrupt every later read. Appending is only safe
+        # against a header we recognise.
+        with open(path, newline="") as f:
+            existing = next(csv.reader(f), [])
+        if existing != HISTORY_COLUMNS:
+            raise SystemExit(
+                f"{path} has an unexpected header:\n  found    {existing}\n"
+                f"  expected {HISTORY_COLUMNS}\n"
+                f"Appending would misalign every row. Fix or remove the file.")
     with open(path, "a", newline="") as f:
         w = csv.DictWriter(f, fieldnames=HISTORY_COLUMNS)
         if is_new:

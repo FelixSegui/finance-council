@@ -223,6 +223,23 @@ class TestExcessReturn(unittest.TestCase):
 
 
 class TestScorecardStructure(unittest.TestCase):
+    """These must not read the live repo. A test that passes only while
+    data/decisions.csv happens to be empty is not a test — it broke the moment
+    the first real sweep recorded picks."""
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.tmp, True)
+        self._orig = (sc.LEDGER_PATH, sc.HISTORY_PATH, sc.SCREENS_DIR)
+        sc.LEDGER_PATH = os.path.join(self.tmp, "decisions.csv")
+        sc.HISTORY_PATH = os.path.join(self.tmp, "candidate_history.csv")
+        sc.SCREENS_DIR = os.path.join(self.tmp, "screens")
+        os.makedirs(sc.SCREENS_DIR)
+        self.addCleanup(self._restore)
+
+    def _restore(self):
+        sc.LEDGER_PATH, sc.HISTORY_PATH, sc.SCREENS_DIR = self._orig
+
     def test_it_builds_offline_without_inventing_numbers(self):
         text = sc.build(["discovery", "data", "gaps"], offline=True)
         for heading in ("1. DISCOVERY", "2. DATA", "GAPS"):
@@ -231,6 +248,21 @@ class TestScorecardStructure(unittest.TestCase):
     def test_an_empty_ledger_reports_unknown_rather_than_estimating(self):
         text = sc.build(["judgement"], offline=True)
         self.assertIn("cannot be measured", text)
+        self.assertNotIn("beat baseline", text)
+
+    def test_a_populated_ledger_still_withholds_below_the_threshold(self):
+        """The failure mode this whole layer exists to prevent: having a few
+        rows must not start producing numbers."""
+        with open(sc.LEDGER_PATH, "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=dec.LEDGER_COLUMNS)
+            w.writeheader()
+            for i in range(3):
+                w.writerow({"decided_utc": "2026-08-25T00:00:00+00:00",
+                            "voice": "valuation", "ticker": f"T{i}",
+                            "action": "BUY", "entry_price": "100",
+                            "conviction": "8", "status": "open"})
+        text = sc.build(["judgement"], offline=True)
+        self.assertIn("insufficient evidence", text)
         self.assertNotIn("beat baseline", text)
 
     def test_every_pillar_is_reachable(self):

@@ -10,6 +10,7 @@ Run with: python3 -m unittest discover -s tests -v
 import json
 import os
 import shutil
+import statistics
 import sys
 import tempfile
 import unittest
@@ -71,6 +72,7 @@ class Args:
         self.workers = 1
         self.lens_top_n = 5
         self.focus_top_n = 6
+        self.max_per_sector = 99      # fixtures are all one sector by design
         self.limit = None
         self.promote = False
         self.promote_top = 5
@@ -167,7 +169,7 @@ class TestUniverseLoads(TempRepo):
 class TestRanking(unittest.TestCase):
     def test_lens_scores_are_produced_per_lens(self):
         met = {t: scout.metrics(r) for t, r in universe_records(40).items()}
-        scores, coverage = scout.rank_lenses(met)
+        scores, coverage, _fcov = scout.rank_lenses(met)
         for lens in scout.LENSES:
             self.assertGreater(coverage[lens], 30, f"{lens} coverage collapsed")
             self.assertIsNotNone(scores["T00"][lens])
@@ -177,7 +179,7 @@ class TestRanking(unittest.TestCase):
         """The whole point of five lenses is that they don't produce one
         ranking wearing five hats."""
         met = {t: scout.metrics(r) for t, r in universe_records(40).items()}
-        scores, _ = scout.rank_lenses(met)
+        scores, _c, _f = scout.rank_lenses(met)
         shortlists = scout.lens_shortlists(scores, top_n=5)
         self.assertNotEqual(set(shortlists["value"]), set(shortlists["quality"]))
 
@@ -193,7 +195,7 @@ class TestRanking(unittest.TestCase):
                                     {"fiscal_year_end": "2024-12-31", "total_revenue": 1800},
                                     {"fiscal_year_end": "2023-12-31", "total_revenue": 1000}])
         met = {t: scout.metrics(r) for t, r in recs.items()}
-        scores, _ = scout.rank_lenses(met)
+        scores, _c, _f = scout.rank_lenses(met)
         shortlists = scout.lens_shortlists(scores, top_n=5)
         self.assertIn("GROWTH", shortlists["growth"])
         self.assertNotIn("GROWTH", shortlists["value"])
@@ -216,7 +218,7 @@ class TestRanking(unittest.TestCase):
         """A 'quality score' derived from one number is not a quality score."""
         met = {t: scout.metrics(r) for t, r in universe_records(10).items()}
         met["THIN"] = scout.metrics({"price": 10, "return_on_equity": 0.3})
-        scores, _ = scout.rank_lenses(met)
+        scores, _c, _f = scout.rank_lenses(met)
         self.assertIsNone(scores["THIN"]["quality"])
 
 
@@ -421,7 +423,8 @@ class TestWatchlistPersistence(TempRepo):
         self.write_universe(["AAPL"])
         self.assertTrue(wl.universe_add("EVO.ST", name="Evolution",
                                         region="Nordic", path=self.universe_path))
-        uni = json.load(open(self.universe_path))
+        with open(self.universe_path) as f:
+            uni = json.load(f)
         self.assertEqual(uni["tickers"]["EVO.ST"]["source"], "manual")
         self.assertEqual(uni["counts"]["manual"], 1)
 
@@ -550,7 +553,7 @@ class TestNoArchiveDependency(unittest.TestCase):
     DEAD = ["scripts/funnel", "scripts/fetchers", "data/sync/",
             "build_workbook", "generate_coverage_report", "controller_state",
             "screen_candidates", "rank_candidates", "add_manual_tickers",
-            "import_fundamentals_tab", "migrate_from_json",
+            "import_fundamentals_tab", "migrate_from_json", "scripts/performance",
             "data/cache/watchlist.json", "data/cache/universe.json",
             "data/cache/screens"]
 
@@ -596,10 +599,222 @@ class TestNoArchiveDependency(unittest.TestCase):
     def test_every_live_script_imports_cleanly(self):
         import importlib
         for mod in ("scout", "watchlist", "build_universe", "fetch_market_data",
-                    "derived_metrics", "position_report", "performance",
-                    "backtest", "fetch_calendar", "import_excel_holdings"):
+                    "derived_metrics", "position_report", "decisions",
+                    "scorecard", "backtest", "fetch_calendar",
+                    "import_excel_holdings"):
             importlib.import_module(mod)
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# ---------------------------------------------------------------------------
+# 11. Universe hygiene: verified tickers, no share-class duplicates, no
+#     single-sector lens shortlists. All three were live defects found by the
+#     2026-08-24 Swedish-CSV import test run.
+# ---------------------------------------------------------------------------
+class TestNameVerification(unittest.TestCase):
+    def test_same_company_different_wording_matches(self):
+        for claimed, actual in [
+            ("Volvo Group", "AB Volvo (publ)"),
+            ("Atlas Copco AB (A)", "Atlas Copco AB (publ)"),
+            ("Investor AB", "Investor AB (publ)"),
+            ("Kindred Group plc", "Kindred Group Plc"),
+        ]:
+            self.assertEqual(wl.name_matches(claimed, actual), "match", (claimed, actual))
+
+    def test_a_different_company_is_rejected(self):
+        """The dangerous case: VITR.ST resolves perfectly — to Vitrolife, not
+        to Sobi. A resolving ticker is not a correct ticker."""
+        for claimed, actual in [
+            ("Swedish Orphan Biovitrum AB (Sobi)", "Vitrolife AB (publ)"),
+            ("Catena AB", "Catella AB (publ)"),           # 0.6 similar, different company
+            ("Betsson AB", "Better Collective A/S"),
+            ("MediOver AB", "Malmbergs Elektriska AB (publ)"),
+            ("Alifrost AB", "AddLife AB (publ)"),
+        ]:
+            self.assertEqual(wl.name_matches(claimed, actual), "mismatch", (claimed, actual))
+
+    def test_a_typo_is_near_not_a_match_and_not_a_mismatch(self):
+        self.assertEqual(wl.name_matches("Bonavia AB", "Bonava AB (publ)"), "near")
+
+    def test_corporate_form_words_carry_no_identity(self):
+        self.assertEqual(wl.name_matches("AB", "Holding Group AB"), "mismatch")
+
+    def test_stockholm_share_class_queries_are_tried(self):
+        """Yahoo's index matches 'Elekta AB ser. B', not 'Elekta AB' — without
+        this the Stockholm listing is never found."""
+        qs = list(wl._search_queries("ELEK-B.ST", "Elekta AB"))
+        self.assertIn("Elekta AB ser. B", qs)
+        self.assertEqual(qs[0], "Elekta AB")
+
+
+class TestShareClassCollapse(unittest.TestCase):
+    NAMES = {
+        "ATCO-A.ST": "Atlas Copco AB (publ)", "ATCO-B.ST": "Atlas Copco AB (publ)",
+        "INVE-A.ST": "Investor AB (publ)", "INVE-B.ST": "Investor AB (publ)",
+        "EVO.ST": "Evolution AB (publ)",
+        "CAT-B.ST": "Catella AB (publ)", "CATE.ST": "Catena AB (publ)",
+    }
+
+    def test_a_holding_always_survives_its_own_share_class(self):
+        """Collapsing a held line into one the user does not own would
+        silently drop that position's hold/sell decision."""
+        dropped = scout.collapse_share_classes(
+            set(self.NAMES), self.NAMES,
+            holdings={"ATCO-B.ST"}, watch_tickers={"ATCO-A.ST"},
+            market_caps={"ATCO-A.ST": 9e11, "ATCO-B.ST": 1e9})
+        self.assertEqual(dropped.get("ATCO-A.ST"), "ATCO-B.ST")
+        self.assertNotIn("ATCO-B.ST", dropped)
+
+    def test_larger_market_cap_wins_when_neither_is_held(self):
+        dropped = scout.collapse_share_classes(
+            set(self.NAMES), self.NAMES, holdings=set(), watch_tickers=set(),
+            market_caps={"INVE-A.ST": 1e9, "INVE-B.ST": 5e9})
+        self.assertEqual(dropped.get("INVE-A.ST"), "INVE-B.ST")
+
+    def test_different_companies_never_merge(self):
+        """CAT-B.ST is Catella and CATE.ST is Catena — similar tickers, not
+        the same issuer."""
+        dropped = scout.collapse_share_classes(
+            set(self.NAMES), self.NAMES, holdings=set(), watch_tickers=set(),
+            market_caps={})
+        self.assertNotIn("CATE.ST", dropped)
+        self.assertNotIn("CAT-B.ST", dropped)
+
+    def test_a_single_class_ticker_is_untouched(self):
+        dropped = scout.collapse_share_classes(
+            {"EVO.ST"}, self.NAMES, set(), set(), {})
+        self.assertEqual(dropped, {})
+
+
+class TestSectorCap(unittest.TestCase):
+    def test_no_lens_shortlist_is_dominated_by_one_sector(self):
+        """Measured live before this cap existed: growth 8/10 Technology,
+        contrarian 5/10 Real Estate. Five lenses that each pick one sector are
+        not five perspectives."""
+        scores = {f"T{i:02d}": {lens: 10 - i * 0.1 for lens in scout.LENSES}
+                  for i in range(30)}
+        sectors = {f"T{i:02d}": ("Technology" if i < 20 else "Healthcare")
+                   for i in range(30)}
+        lists = scout.lens_shortlists(scores, top_n=6, sectors=sectors, max_per_sector=3)
+        for lens, names in lists.items():
+            tech = sum(1 for n in names if sectors[n] == "Technology")
+            self.assertLessEqual(tech, 3, f"{lens} took {tech} Technology slots")
+            self.assertEqual(len(names), 6, "the cap must not shorten the shortlist")
+
+    def test_yahoo_sector_aliases_are_folded_together(self):
+        self.assertEqual(scout.normalise_sector("Financials"),
+                         scout.normalise_sector("Financial Services"))
+        self.assertEqual(scout.normalise_sector("Information Technology"), "Technology")
+        self.assertIsNone(scout.normalise_sector(None))
+
+    def test_unknown_sector_is_never_capped_away(self):
+        scores = {f"T{i:02d}": {lens: 10 - i for lens in scout.LENSES} for i in range(8)}
+        lists = scout.lens_shortlists(scores, top_n=5, sectors={}, max_per_sector=1)
+        self.assertEqual(len(lists["value"]), 5)
+
+    def test_backfill_keeps_the_shortlist_full_when_the_cap_bites(self):
+        scores = {f"T{i:02d}": {lens: 10 - i for lens in scout.LENSES} for i in range(10)}
+        sectors = {t: "Technology" for t in scores}
+        lists = scout.lens_shortlists(scores, top_n=8, sectors=sectors, max_per_sector=2)
+        self.assertEqual(len(lists["quality"]), 8)
+
+
+class TestVerifyOrExit(unittest.TestCase):
+    """The single-ticker write paths must REFUSE, not warn. verify_ticker
+    returns a status string; an earlier version tested it for truthiness,
+    which silently accepted every bad ticker."""
+
+    def _patched(self, status, info):
+        orig = wl.verify_ticker
+        wl.verify_ticker = lambda t, n=None: (status, info)
+        self.addCleanup(lambda: setattr(wl, "verify_ticker", orig))
+
+    def test_unresolved_ticker_exits(self):
+        self._patched("unresolved", {"error": "HTTP Error 404: Not Found"})
+        with self.assertRaises(SystemExit) as cm:
+            wl._verify_or_exit("ZZQQ.ST", "Not Real AB")
+        self.assertIn("does not resolve", str(cm.exception))
+
+    def test_wrong_company_exits(self):
+        self._patched("name_mismatch", {"long_name": "Vitrolife AB (publ)"})
+        with self.assertRaises(SystemExit) as cm:
+            wl._verify_or_exit("VITR.ST", "Swedish Orphan Biovitrum AB")
+        self.assertIn("Vitrolife", str(cm.exception))
+
+    def test_a_good_ticker_returns_yahoos_name_not_the_typed_one(self):
+        self._patched("ok", {"long_name": "Meko AB (publ)", "exchange": "STO",
+                             "price": 72.6, "currency": "SEK"})
+        self.assertEqual(wl._verify_or_exit("MEKO.ST", "Mekonomen AB"),
+                         "Meko AB (publ)")
+
+
+# ---------------------------------------------------------------------------
+# 12. Missing data must not buy a shortlist slot.
+#     Measured on the live 2026-08-24 universe: growth scores built on partial
+#     data averaged |1.048| vs |0.396| for full-coverage names — 2.6x more
+#     extreme, and a top-N shortlist is a cut on exactly those tails.
+# ---------------------------------------------------------------------------
+class TestCoverageShrinkage(unittest.TestCase):
+    LENS = {"solo": {"a": "high", "b": "high", "c": "high", "d": "high"}}
+
+    def _rows(self, n=40):
+        """A spread of names so z-scores discriminate, plus two names with the
+        same average signal but different amounts of evidence behind it."""
+        rows = {f"T{i:02d}": {k: (i - n / 2) / 5 for k in "abcd"} for i in range(n)}
+        rows["FULL"] = {"a": 3.0, "b": 3.0, "c": 3.0, "d": 3.0}
+        rows["THIN"] = {"a": 3.0, "b": 3.0, "c": None, "d": None}
+        return rows
+
+    def test_a_thin_score_is_shrunk_toward_neutral(self):
+        scores, _cov, fcov = scout.rank_lenses(self._rows(), lenses=self.LENS)
+        self.assertEqual(fcov["THIN"]["solo"], (2, 4))
+        self.assertEqual(fcov["FULL"]["solo"], (4, 4))
+        self.assertLess(scores["THIN"]["solo"], scores["FULL"]["solo"],
+                        "half the evidence must not score the same as all of it")
+
+    def test_full_coverage_is_left_alone(self):
+        """The correction must not quietly rescale names that have all their
+        inputs — sqrt(K/K) is 1."""
+        rows = self._rows()
+        scores, _c, _f = scout.rank_lenses(rows, lenses=self.LENS)
+        raw = statistics.fmean([
+            scout.zscores({t: r["a"] for t, r in rows.items()})["FULL"],
+            scout.zscores({t: r["b"] for t, r in rows.items()})["FULL"],
+            scout.zscores({t: r["c"] for t, r in rows.items()})["FULL"],
+            scout.zscores({t: r["d"] for t, r in rows.items()})["FULL"],
+        ])
+        self.assertAlmostEqual(scores["FULL"]["solo"], round(raw, 3), places=3)
+
+    def test_shrinkage_is_exactly_sqrt_of_coverage(self):
+        rows = self._rows()
+        scores, _c, _f = scout.rank_lenses(rows, lenses=self.LENS)
+        za = scout.zscores({t: r["a"] for t, r in rows.items()})
+        zb = scout.zscores({t: r["b"] for t, r in rows.items()})
+        expected = statistics.fmean([za["THIN"], zb["THIN"]]) * (2 / 4) ** 0.5
+        self.assertAlmostEqual(scores["THIN"]["solo"], round(expected, 3), places=3)
+
+    def test_a_thin_name_is_still_ranked_not_excluded(self):
+        """Missing data lowers conviction; it never disqualifies."""
+        scores, _c, _f = scout.rank_lenses(self._rows(), lenses=self.LENS)
+        self.assertIsNotNone(scores["THIN"]["solo"])
+
+    def test_thin_coverage_is_disclosed_in_the_candidate_csv(self):
+        self.assertIn("thin_lenses", scout.DIGEST_COLUMNS)
+
+
+class TestThinLensDisclosure(TestScoutHealth):
+    def test_thin_lenses_column_is_populated_when_data_is_partial(self):
+        self.write_universe([f"T{i:03d}" for i in range(self.UNIVERSE_SIZE)])
+        self.write_portfolio(["T000"])
+        recs = universe_records(self.UNIVERSE_SIZE)
+        recs["T000"] = record()
+        # a name with no forward-looking data at all — the real Nordic pattern
+        recs["T005"] = record(fpe=None, peg=None)
+        self._patch(recs)
+        result = scout.run(Args())
+        thin = result["candidates"].get("T005", {}).get("thin_lenses")
+        self.assertTrue(thin, "a name missing forward data must be flagged thin")
+        self.assertTrue(any("growth" in t for t in thin), thin)

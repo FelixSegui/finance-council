@@ -45,7 +45,7 @@ never reach an LLM. Judgement is spent on ~10–20 names that survived.
 |---|---|---|
 | **UNIVERSE** (`data/universe.json`) | The broad pool the system is allowed to discover from. Hundreds to low thousands of names. Membership implies nothing about quality. | Not holdings. Not the watchlist. Not a recommendation list. |
 | **WATCHLIST** (`data/watchlist.json`) | Small, curated, persistent set worth monitoring. Survives between sweeps. Names arrive by hand, from Excel, or by scout promotion. | Not the discovery universe. Not rebuilt from scratch each sweep. |
-| **SCOUT** (`scripts/scout.py`) | The mechanism that reduces the universe to a candidate set. Deterministic screening and ranking. Runs **every** stock-selection sweep. | Not deep analysis. Not a stock picker. "Scout was not invoked" is not a valid outcome. |
+| **SCOUT** (`scripts/scout.py`) | The mechanism that reduces the universe to a candidate set. Deterministic screening and ranking, capped at 3 slots per sector per lens, with share classes of one company merged. Runs **every** stock-selection sweep. | Not deep analysis. Not a stock picker. "Scout was not invoked" is not a valid outcome. |
 | **COUNCIL** (`.claude/agents/council.md`) | Deep investment reasoning over a manageable candidate set. Compares holdings, watchlist names and new discoveries side by side. | Not a portfolio audit. Not a place to re-derive concentration math. |
 | **PORTFOLIO** (`.claude/agents/portfolio.md`) | What fits *this* portfolio, applied **after** opportunity selection. The single diversification authority. | Not a stock-picking voice. Never defines the discovery universe. |
 
@@ -79,10 +79,12 @@ selection or decision quality. When in doubt, delete a step.
 
 ```bash
 python scripts/build_universe.py            # periodic — discovery refresh (~30d)
+python scripts/watchlist.py universe-import <csv>   # add hand-collected tickers, verified
 python scripts/fetch_market_data.py --tickers ... --crypto ethereum,bitcoin \
        --insiders --fi-issuers "Handelsbanken,Investor"
 python scripts/scout.py                     # every sweep — the funnel
 python scripts/position_report.py           # how the positions are behaving
+python scripts/scorecard.py --write         # six-pillar system scorecard
 ```
 
 Then, in the Claude Code session:
@@ -103,9 +105,17 @@ Then, in the Claude Code session:
    over holdings *and* candidates. Optional: `calendar` (event collisions),
    `backtest` (risk profile of a proposed allocation).
 4. **`council`** — last. Seven voices → Chairman → portfolio fit → one memo in
-   `reports/`.
+   `reports/`, plus `data/picks/<date>-picks.csv`.
+4a. `python scripts/decisions.py record --picks data/picks/<date>-picks.csv`
+   then `python scripts/decisions.py basis --write`. The first turns the memo's
+   picks into ledger rows with the evidence joined from the mechanical sweep;
+   the second writes the table showing exactly which metrics each pick rests
+   on. Neither is optional — they are what makes the system measurable.
 5. **`journal`** (sweep-end) — reconcile last sweep's calls against today's
    data, append the entry. An unlogged sweep is invisible to the next session.
+5a. `python scripts/scorecard.py --write` — the six-pillar system scorecard.
+   Read it before `meta` proposes anything, so proposals answer measured
+   weaknesses rather than remembered ones.
 6. **`meta`** — did the system get better at deciding? Maintains S-items.
 7. `python scripts/check_unmerged_work.py`, then push. Not optional — on
    2026-08-03 the repo was found forked in two for 12 days with ~25 commits
@@ -113,6 +123,41 @@ Then, in the Claude Code session:
 
 Separately, roughly monthly: the `monthly-contribution` skill (how much new
 money to deploy) and `swedish-equity-review` (deep dive on the Swedish sleeve).
+
+## Measuring the system — the six pillars
+
+A system that only reports its own conclusions will always sound like it is
+working. These six pillars each fail in a way the memos would never reveal, so
+each is measured separately by `scripts/scorecard.py`:
+
+| Pillar | Question | Fails silently as |
+|---|---|---|
+| **1 Discovery** | Is the funnel still finding names it has not seen? | A stable, comfortable watchlist that looks curated |
+| **2 Data** | Is the evidence sound, and even across markets? | Confident rankings built on unequal coverage |
+| **3 Mechanical** | Do the lens rankings predict anything? | Five lenses that sort names but not outcomes |
+| **4 Judgement** | Do the seven voices beat the mechanics they were handed? | Expensive reasoning that adds nothing over a screen |
+| **5 Decision** | Does conviction mean anything, and does the human act? | High-conviction calls that never get executed |
+| **6 Outcome** | Is the real portfolio beating just buying the index? | Activity mistaken for return |
+
+**Two rules make this measurement honest, and both are enforced in code:**
+
+1. **Every skill figure is excess return versus a stated benchmark**, never a
+   raw return. In a rising market a raw return makes every pillar look
+   brilliant while proving nothing.
+2. **Any bucket with fewer than 20 observations prints its count and withholds
+   the number.** At roughly one sweep a week, a hit rate computed on six picks
+   is noise that reads like skill. The refusal is the feature. Do not lower
+   the threshold to make the report look fuller, and never quote a provisional
+   median as a finding.
+
+`data/decisions.csv` is what makes pillars 4 and 5 possible: every voice pick
+and Chairman call, recorded before the outcome is known, with price and metrics
+**joined from the mechanical sweep, never typed by an agent.** A transcription
+slip in an entry price corrupts every performance figure derived from it
+forever.
+
+Until pillar 4 reads with real n, **the Council must not be weighted** and no
+claim that the LLM layer earns its cost is evidenced.
 
 ## Data ownership — one canonical owner per concept
 
@@ -122,7 +167,8 @@ money to deploy) and `swedish-equity-review` (deep dive on the Swedish sleeve).
 | `data/investor_profile.json` | Client profile: risk tolerance, horizon, buffer, constraints |
 | `data/universe.json` | Broad investable universe |
 | `data/watchlist.json` | Curated persistent watchlist |
-| `data/candidate_history.csv` | Candidate rank over time |
+| `data/candidate_history.csv` | Mechanical rank + price per candidate per run |
+| `data/decisions.csv` | The decision ledger: every voice pick and Chairman call, with the evidence joined |
 | `data/cache/snapshots/` | Market-data snapshots (every number traces here) |
 | `data/screens/` | Scout outputs (candidates CSV + full JSON) |
 | `data/company_profiles/` | Per-company research that doesn't change monthly |
@@ -159,6 +205,16 @@ multi-year cash-flow module exposes only `netIncome` per year, so free cash
 flow is trailing-only, not a multi-year series. For a real FCF trend, use a
 company's own cash-flow statement (PDF via the `pdf` skill).
 
+**Never write an unverified ticker.** Every path that adds a ticker
+(`watchlist.py add`, `universe-add`, `universe-import`) checks with Yahoo that
+the symbol resolves *and* that its name is the company claimed. A resolving
+ticker is not a correct ticker: `VITR.ST` is Vitrolife, not Sobi. When a
+symbol fails, the company is looked up by name on the expected exchange and
+re-verified — a lookup against Yahoo's index, never a guessed suffix. Nasdaq
+Stockholm names share classes "Elekta AB ser. B", so the search tries that
+form too; a plain name search returns Frankfurt and Pink Sheet lines and
+misses the home listing entirely.
+
 **Swedish insider data.** Finansinspektionen's register is real and free, and
 `fetch_market_data.py --fi-issuers` reads it — but search is by **issuer name**
 with exact Swedish spelling (å/ä/ö). ASCII transliteration returns zero rows,
@@ -173,6 +229,18 @@ commodity (crash-hedge diversifier, user-directed 2026-08-22 —
 `fetch_market_data.py` handles `GC=F` and listed physical-gold ETCs like
 `SGOL` through the same pipeline). Macro (rates, curve, inflation, dollar) is
 regime context, not a tradeable class.
+
+**Designed, deliberately not built — a multi-asset specialist voice.** The
+natural home for bonds, commodities, funds/ETFs and crypto is one eighth
+Council voice that owns *non-equity* opportunities, rather than stretching the
+seven equity voices over instruments their metrics do not describe. It is not
+built because the blocker is data, not architecture: the free sources here
+cover equities well and bonds/options not at all, and a voice reasoning about
+an asset class from scraped or remembered data would produce exactly the
+confident-but-baseless output the rest of this system is built to prevent.
+Build it when a real feed exists for at least one of those classes — and give
+it the same evidence requirements as every other voice, including a `MISSING`
+label it is expected to use.
 
 **Out until a paid feed exists:** individual bonds, options, other
 alternatives. Free data for these is non-existent or too thin to trust. Do
@@ -235,8 +303,8 @@ rather than burying it.
 entry per sweep, written by `journal`, which also reconciles previous calls
 against current data. That reconciliation is the only calibration mechanism
 this system has. `data/valuations.csv` accumulates portfolio-value
-observations for `scripts/performance.py` ("are we beating just buying the
-index?"). A session that did meaningful work without a log entry is a process
+observations for the scorecard's OUTCOME pillar ("are we beating just buying
+the index?"). A session that did meaningful work without a log entry is a process
 failure — fix it before ending.
 
 **Token hygiene.** `data/portfolio.json` keeps short current-state summaries
@@ -244,8 +312,6 @@ only; superseded narratives live in `data/portfolio_history_archive.md`, read
 during reconciliation or deep audits, not every sweep. Per-company research
 that doesn't change monthly lives in `data/company_profiles/<TICKER>.json`
 (schema: `_SCHEMA.md`). Don't let notes and thesis fields regrow into essays.
-`data/learning_log.md` accumulates each memo's Learning-notes section —
-append-only, never a source of truth for a decision.
 
 ## Model tiering
 

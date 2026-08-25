@@ -1,13 +1,13 @@
 {
   "note": "CURATED WATCHLIST \u2014 persistent between sweeps, deliberately much smaller than data/universe.json. Maintained by scripts/watchlist.py, the Excel import, and scout promotions. Presence here means 'worth monitoring', not 'buy'.",
-  "updated_utc": "2026-08-24T20:58:36.049850+00:00",
+  "updated_utc": "2026-08-24T21:38:12.934344+00:00",
   "entries": {
     "AAPL": {
       "added": "2026-08-24",
       "source": "curated-2026-08-03",
       "category": "us_mega_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Apple Inc.",
       "last_seen": "2026-08-24"
     },
     "ABBV": {
@@ -15,7 +15,7 @@
       "source": "curated-2026-08-03",
       "category": "us_quality_dividend",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "AbbVie",
       "last_seen": "2026-08-24"
     },
     "AMD": {
@@ -23,7 +23,7 @@
       "source": "curated-2026-08-03",
       "category": "semis_and_ai_infra",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Advanced Micro Devices",
       "last_seen": "2026-08-24"
     },
     "AMZN": {
@@ -31,7 +31,7 @@
       "source": "curated-2026-08-03",
       "category": "us_mega_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Amazon",
       "last_seen": "2026-08-24"
     },
     "ASML": {
@@ -39,7 +39,7 @@
       "source": "curated-2026-08-03",
       "category": "semis_and_ai_infra",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "ASML Holding N.V.",
       "last_seen": "2026-08-24"
     },
     "ASSA-B.ST": {
@@ -47,7 +47,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_large_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "ASSA ABLOY AB (publ)",
       "last_seen": "2026-08-24"
     },
     "ATCO-A.ST": {
@@ -55,7 +55,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_large_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Atlas Copco AB (publ)",
       "last_seen": "2026-08-24"
     },
     "AVGO": {
@@ -63,7 +63,7 @@
       "source": "curated-2026-08-03",
       "category": "semis_and_ai_infra",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Broadcom",
       "last_seen": "2026-08-24"
     },
     "ERIC-B.ST": {
@@ -71,7 +71,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_large_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Telefonaktiebolaget LM Ericsson (publ)",
       "last_seen": "2026-08-24"
     },
     "EVO.ST": {
@@ -79,7 +79,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_large_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Evolution AB (publ)",
       "last_seen": "2026-08-24"
     },
     "GOOGL": {
@@ -87,7 +87,7 @@
       "source": "curated-2026-08-03",
       "category": "us_mega_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Alphabet Inc. (Class A)",
       "last_seen": "2026-08-24"
     },
     "HD": {
@@ -95,7 +95,7 @@
       "source": "curated-2026-08-03",
       "category": "us_quality_dividend",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Home Depot (The)",
       "last_seen": "2026-08-24"
     },
     "HEXA-B.ST": {
@@ -103,7 +103,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_swedish_equity_review_candidates",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Hexagon AB (publ)",
       "last_seen": "2026-08-24"
     },
     "HM-B.ST": {
@@ -111,7 +111,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_large_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "H & M Hennes & Mauritz AB (publ)",
       "last_seen": "2026-08-24"
     },
     "INDU-C.ST": {
@@ -119,7 +119,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_swedish_equity_review_candidates",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "AB Industriv\u00e4rden (publ)",
       "last_seen": "2026-08-24"
     },
     "INVE-B.ST": {
@@ -127,7 +127,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_large_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Investor AB (publ)",
       "last_seen": "2026-08-24"
     },
     "JNJ": {
@@ -135,7 +135,7 @@
       "source": "curated-2026-08-03",
       "category": "us_quality_dividend",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Johnson & Johnson",
       "last_seen": "2026-08-24"
     },
     "KINV-B.ST": {
@@ -143,7 +143,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_swedish_equity_review_candidates",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Kinnevik AB",
       "last_seen": "2026-08-24"
     },
     "KO": {
@@ -151,7 +151,7 @@
       "source": "curated-2026-08-03",
       "category": "us_quality_dividend",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Coca-Cola Company (The)",
       "last_seen": "2026-08-24"
     },
     "LATO-B.ST": {
@@ -159,7 +159,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_swedish_equity_review_candidates",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Investment AB Latour (publ)",
       "last_seen": "2026-08-24"
     },
     "LUND-B.ST": {
@@ -167,7 +167,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_swedish_equity_review_candidates",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "L E Lundbergf\u00f6retagen AB (publ)",
       "last_seen": "2026-08-24"
     },
     "META": {
@@ -175,7 +175,7 @@
       "source": "curated-2026-08-03",
       "category": "us_mega_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Meta Platforms",
       "last_seen": "2026-08-24"
     },
     "MSFT": {
@@ -183,7 +183,7 @@
       "source": "curated-2026-08-03",
       "category": "us_mega_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Microsoft",
       "last_seen": "2026-08-24"
     },
     "NOVO-B.CO": {
@@ -191,7 +191,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_large_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Novo Nordisk A/S",
       "last_seen": "2026-08-24"
     },
     "NVDA": {
@@ -199,7 +199,7 @@
       "source": "curated-2026-08-03",
       "category": "us_mega_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Nvidia",
       "last_seen": "2026-08-24"
     },
     "PEP": {
@@ -207,7 +207,7 @@
       "source": "curated-2026-08-03",
       "category": "us_quality_dividend",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "PepsiCo",
       "last_seen": "2026-08-24"
     },
     "PG": {
@@ -215,7 +215,7 @@
       "source": "curated-2026-08-03",
       "category": "us_quality_dividend",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Procter & Gamble",
       "last_seen": "2026-08-24"
     },
     "SAAB-B.ST": {
@@ -223,7 +223,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_swedish_equity_review_candidates",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Saab AB (publ)",
       "last_seen": "2026-08-24"
     },
     "SAND.ST": {
@@ -231,7 +231,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_large_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Sandvik AB (publ)",
       "last_seen": "2026-08-24"
     },
     "SEB-A.ST": {
@@ -239,7 +239,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_large_cap",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Skandinaviska Enskilda Banken AB (publ)",
       "last_seen": "2026-08-24"
     },
     "SWED-A.ST": {
@@ -247,7 +247,7 @@
       "source": "curated-2026-08-03",
       "category": "nordic_swedish_equity_review_candidates",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Swedbank AB (publ)",
       "last_seen": "2026-08-24"
     },
     "TSM": {
@@ -255,7 +255,7 @@
       "source": "curated-2026-08-03",
       "category": "semis_and_ai_infra",
       "note": "carried over from the retired data/universe.json curated categories (user-confirmed tickers, see OPEN_ITEMS closed log)",
-      "name": null,
+      "name": "Taiwan Semiconductor Manufacturing Company Limited",
       "last_seen": "2026-08-24"
     }
   }

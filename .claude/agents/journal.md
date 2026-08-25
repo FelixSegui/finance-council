@@ -49,9 +49,14 @@ You are the system's memory and its scorekeeper. Two modes.
 
 3. Append a row to `data/valuations.csv`
    (`date,total_value_sek,net_contribution_since_last_sek,note`) if the
-   portfolio was valued this sweep — `scripts/performance.py` is dead
+   portfolio was valued this sweep — the scorecard's OUTCOME pillar is dead
    without it. Same write-safety rule: read the whole CSV, concatenate your
    row, write it back; never write a CSV assembled from a partial read.
+
+4. Run `python scripts/scorecard.py --write` and quote its **Status** lines
+   into the entry: which pillars are measurable yet, and which are still
+   "insufficient evidence". A pillar that has been unmeasurable for many
+   sweeps is itself a finding — pass it to `meta`.
 
 ## Rules
 

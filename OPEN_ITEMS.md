@@ -349,32 +349,101 @@ IDs are never reused — an S-number in an old memo always means the same item.
   most of the gap. If not reachable, say so in the item and stop — a blocked
   source that is honestly labelled beats a half-source that gets guessed at.
 
-### S21 — [prospecting] The universe is 93% US
-- **Status:** open — new 2026-08-24, structural
-- **Why:** `data/universe.json` holds 539 names: 503 auto-fetched S&P 500
-  constituents and 36 hand-verified manual entries, of which ~20 are Nordic.
-  Discovery therefore works properly for US large caps and barely at all for
-  the Nordic and European market the user actually invests in. No free Nordic
-  or European constituent list is reachable from this network (Wikipedia and
-  Nasdaq Nordic are both proxy-blocked; the S&P 500 CSV works because it is
-  hosted on GitHub).
-- **How:** two independent paths, either helps. **(1)** Find a GitHub-hosted
-  or otherwise reachable constituent CSV for OMXS30 / OMXSPI / STOXX 600 and
-  add it as a source in `build_universe.py` — the mechanism already supports
-  multiple sources and preserves the manual block. **(2)** Have the user's
-  Excel Universe tab carry a wider Nordic list; `import_excel_holdings.py`
-  already merges it into the watchlist, and `watchlist.py universe-add`
-  verifies each ticker resolves before writing. Path 2 works today and needs
-  no new code — it needs the tickers.
+### S21 — [prospecting] Nordic coverage: 107 names, and a data asymmetry underneath
+- **Status:** open — the headline problem is fixed; a quieter one it exposed is not
+- **2026-08-24 (evening):** the user supplied a 120-row Swedish ticker CSV.
+  `scripts/watchlist.py universe-import` verified it and the universe went
+  from 538 names (20 Nordic) to 622 (107 Nordic, 17%). Swedish names now
+  reach the lens shortlists on their own merits — AZA.ST, INDU-C.ST, ORX.ST,
+  CATE.ST, BALD-B.ST, BURE.ST, CORE-B.ST, BETS-B.ST, KNOW.ST all appeared in
+  the first run. The original "discovery barely works for the market the user
+  actually invests in" complaint is answered.
+- **What remains, and it is a real distortion, not a cosmetic gap:** Yahoo's
+  fundamentals coverage is not symmetric across markets. Measured on the
+  2026-08-24 candidate set: `forward_pe` is missing for **9 of 26 Swedish
+  names (35%) and 0 of 37 US names (0%)**. `fcf_yield` is missing for 23% of
+  Swedish names vs 11% of US ones. The Valuation and Growth lenses both rank
+  partly on forward multiples, so **a Swedish company can lose a shortlist
+  slot for having no forward estimate rather than for being less attractive**
+  — a systematic tilt toward US names that no one would see in the output.
+  The `MISSING` label is honest per name; the aggregate bias is invisible.
+- **How:** two options, neither large. (1) Make each lens report per-market
+  coverage alongside its shortlist, so the tilt is at least visible to the
+  Council. (2) Better: z-score each lens *within* a coverage cohort, or drop
+  forward-looking fields from a lens's inputs when coverage for a name's
+  market is below a threshold, so names are compared on fields they can all
+  actually be measured on. Option 1 is an afternoon; option 2 is the real fix.
+- **Also still open:** no free Nordic/European *constituent feed* is
+  reachable (Wikipedia and Nasdaq Nordic are proxy-blocked), so the Nordic
+  block stays user-maintained. That is now a maintenance question, not a
+  capability gap — `universe-import` makes adding a batch a one-command job.
+
+### S22 — [data] 12 real Swedish companies still cannot be screened
+- **Status:** open — needs the user, not code
+- **Why:** the 2026-08-24 import could not resolve 12 rows. Seven do not
+  exist under any symbol Yahoo indexes and could not be found by company
+  name either (BIOT.ST/Biotage, COLLE.ST/Collector, CONC.ST/Concentric,
+  HALD.ST/Haldex, NYF.ST/Nyfosa, RESURS.ST/Resurs, SNDR.ST). Five resolve to
+  a **different company** than the CSV names them: `MEKO.ST` is Meko AB
+  (Mekonomen renamed, so the ticker is right and the CSV name is stale),
+  `IVSO.ST` is Invisio (CSV typo "Invisibleio"), `VITR.ST` is Vitrolife (NOT
+  Sobi — Sobi is `SOBI.ST`), `MEAB-B.ST` is Malmbergs Elektriska,
+  `ALIF-B.ST` is AddLife. Three more are correctly excluded as no longer
+  trading (Kindred, Probi, SAS).
+- **How:** for each name still wanted, confirm the symbol on Avanza and add
+  it with `python scripts/watchlist.py universe-add <TICKER> --name "<name>"`,
+  which verifies before writing. Two are already known and safe to add:
+  `SOBI.ST` (Sobi) and `MEKO.ST` (Meko AB). The rest need a human with a
+  broker screen — the system deliberately will not guess a suffix.
+
+### S23 — [measurement] Pillars 3, 4 and 5 have no data yet, and that is the binding constraint
+- **Status:** open — structural, resolves only with elapsed time
+- **Why:** `scripts/scorecard.py` now measures six pillars, and three of them
+  correctly report "insufficient evidence": MECHANICAL needs at least two
+  scout runs with recorded prices before a rank can be tested against what
+  happened next, and JUDGEMENT and DECISION need `data/decisions.csv` to have
+  rows, which only happens once `council` starts writing its picks file. **The
+  scorecard's threshold is 20 observations per bucket and it withholds the
+  number below that** — at one sweep a week with a handful of picks, the
+  earliest a per-voice figure can mean anything is several months out.
+- **How:** nothing to build. Run the sweep, let `council` write
+  `data/picks/<date>-picks.csv`, record it, and wait. The failure mode to
+  guard against is impatience: quoting a provisional median as though it were
+  a finding, or lowering `MIN_OBSERVATIONS` to make the report look fuller.
+  Both would defeat the entire purpose of the pillar.
+- **Explicitly blocked on this:** any weighting of the Council. Until pillar 4
+  shows the voices beating the mechanical shortlists they were handed, a
+  weighted Council would be fitting weights to noise.
+
+### S24 — [data] Nine metrics per sweep are real numbers with the wrong meaning
+- **Status:** open — mitigated in code, root cause is upstream
+- **Why:** the 2026-08-25 run flagged nine values outside plausible ranges,
+  including Industrivärden at 1198% "revenue growth" (Yahoo counts investment
+  gains as revenue for a holding company), Orexo at a 2775% profit margin, and
+  ASML at a price/book of 1456. These are not fetch errors — they are correctly
+  transmitted figures that do not mean what their field name says. Before this
+  was caught, ORX.ST was placing on two lens shortlists on the strength of one
+  of them.
+- **Mitigated, not fixed:** implausible values are now withheld from lens
+  scoring (so they cannot earn a shortlist slot) and shown with a `suspect`
+  flag (so nothing is hidden or silently corrected). The name still reaches the
+  Council, with less conviction, which is the honest outcome.
+- **The real fix is an `entity_type` column** — holding company / bank / REIT /
+  operating company — which no free source provides but a human can fill in
+  once. It is request A1 in `reports/excel-upgrade-prompt.md`. With it, the
+  screen can apply the right metrics per entity type instead of flagging
+  healthy companies as data gaps: banks legitimately have no debt-to-equity,
+  and holding companies legitimately have no meaningful revenue line.
 
 ---
 
 ## V2 Roadmap — user-authored
 
-Full spec: `docs/v2-upgrade-spec.md` (verbatim, received 2026-08-09). This is
-the user's roadmap, not evidence-driven S-items; `meta` does not prune it, and
-it sits outside the S-item cap. Status updated 2026-08-24 after the
-discovery-funnel refactor.
+The user's roadmap (received 2026-08-09), not evidence-driven S-items;
+`meta` does not prune it, and it sits outside the S-item cap. Status updated
+2026-08-24. The original verbatim spec lived in `docs/v2-upgrade-spec.md`,
+removed 2026-08-24 — every phase's real status is below, and git history
+holds the original text if it is ever wanted.
 
 - **Phase 1 — DONE (2026-08-09).** Structured thesis schema on every active
   holding, the Chairman's structured action format, per-field data-quality
@@ -432,6 +501,25 @@ discovery-funnel refactor.
     `data/candidate_history.csv` tracks rank, best lens and screen status per
     candidate per run (`python scripts/watchlist.py history`). Per-voice
     conviction over time still requires 7a's per-voice output files.
+  - **Phase 7d (historical tracking) — DELIVERED 2026-08-25.**
+    `data/decisions.csv` records every voice pick and Chairman call with
+    conviction, horizon and the metrics it was made on, joined from the
+    mechanical sweep rather than typed. `scripts/scorecard.py`'s JUDGEMENT
+    pillar compares each voice against the benchmark and the Chairman against
+    its own inputs. What this phase asked for as "log scores now, correlate
+    later" is now live; the correlating needs elapsed time (S23).
+
+  - **Phase 8 (new, roadmapped 2026-08-25) — a multi-asset specialist voice.**
+    One eighth Council voice owning non-equity opportunities: bonds,
+    commodities, funds/ETFs, crypto. Preferable to stretching the seven equity
+    voices over instruments their metrics do not describe — a P/E-based voice
+    has nothing useful to say about a bond, and asking it anyway produces
+    confident noise. **Not built, and the blocker is data, not architecture:**
+    free sources cover equities well and bonds/options not at all, so the voice
+    would reason from scraped or remembered figures. Build when a real feed
+    exists for at least one class, with the same evidence rules as every other
+    voice — including a `MISSING` label it is expected to use often.
+
   - **Item 4 (keep portfolio analysis distinct from stock selection) —
     satisfied and now structural**, not just instructed: `portfolio` is
     consumed at the Chairman's PORTFOLIO FIT stage only, and the candidate
@@ -448,6 +536,14 @@ archived verbatim 2026-08-24"), moved there so this file holds what is
 outstanding rather than what is finished. Nothing was deleted.
 
 ### Closed by the 2026-08-24 discovery-funnel refactor
+
+- **Removed: `data/learning_log.md` and `docs/v2-upgrade-spec.md`.** Both were
+  write-mostly. The learning log was append-only and explicitly never a source
+  of truth for a decision — the same bullets live in each dated Council memo,
+  which is the actual record, and the append instruction was one of the more
+  fragile things `council` had to do (read a growing file in full, concatenate,
+  rewrite). The V2 spec was superseded: every phase's real status is in the V2
+  Roadmap section above. Neither improved a decision. Git history holds both.
 
 - **S12 — canonical definitions for ambiguous shared terms.** Closed: the
   remaining gap (one label covering two different bases) is fixed —

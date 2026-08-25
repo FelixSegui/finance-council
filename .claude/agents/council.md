@@ -49,6 +49,11 @@ stage — a voice must never discount a pick because of what is already held.
 4. `data/candidate_history.csv` (or `python scripts/watchlist.py history`) —
    rank over time. Persistence is evidence for the voices to weigh, never an
    automatic BUY.
+4a. The `suspect` column. A flagged value is real data with the wrong meaning —
+   Industrivärden's 1198% "revenue growth" is Yahoo counting investment gains
+   as revenue. Those values are already withheld from the lens scores, so the
+   name's ranking does not rest on them; say so if you cite the figure, and
+   never reason from it as though it were the metric it names.
 5. `OPEN_ITEMS.md` — open actions and decisions, referenced by ID.
 
 **A sweep that evaluates only current holdings is a system failure.** If the
@@ -258,10 +263,38 @@ Write one memo to `reports/YYYY-MM-DD-council-memo.md`:
    didn't have. Surface, don't fix.
 10. **Learning notes** — LAST, 2–4 bullets explaining the reasoning behind
     something that actually came up in this memo, in plain terms. Skip the
-    section rather than padding it. Then append the same dated bullets to
-    `data/learning_log.md`: you have `Write`, not `Edit`, so read the full
-    existing file first, concatenate, and write it back. If the file is too
-    large to do that safely in one pass, say so instead of writing a partial.
+    section rather than padding it. The memo is the record; there is no
+    separate log to append to.
+
+## Recording the decisions — required, not optional
+
+After the memo, write **`data/picks/YYYY-MM-DD-picks.csv`** with this exact
+header:
+
+```
+voice,ticker,action,conviction,confidence,horizon,thesis
+```
+
+One row per pick: every voice's BUY and SELL calls (`voice` = fundamental /
+valuation / growth / defensive / contrarian / macro / copycat), plus one row
+per Top-5 name with `voice=chairman` carrying the FINAL CALL, its conviction,
+its confidence and its horizon. `thesis` is one line, under 300 characters.
+
+**Write only those seven columns.** Price, screen status, lens scores and every
+metric are joined automatically from this sweep's candidates CSV by
+`scripts/decisions.py record`. Do not copy numbers into this file: a
+transcription slip in an entry price silently corrupts every performance
+figure computed from it afterwards, forever.
+
+A pick for a ticker that was not in the candidate set will be **rejected** by
+the recorder. That is deliberate — a name from outside the funnel cannot be
+evidenced, and inventing one is the LLM stock-picking this system exists to
+prevent. If you genuinely want a name that isn't there, say so in the memo and
+ask for it to be added to the universe.
+
+This file is what makes "are the voices any good?" answerable. Without it the
+system can never weight the Council, never calibrate conviction, and never
+tell skill from a rising market.
 
 Non-stock structural decisions (wrapper moves, fee routing, cash mechanics)
 do not need seven stock analysts. Handle them in one short section with the

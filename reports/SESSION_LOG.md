@@ -13,7 +13,119 @@ Entry format:
 - **User decisions:** what you actually decided/did (or "none yet")
 - **Reconciliation:** how last sweep's calls look against today's data
 - **Open items carried forward:** ...
-```
+```---
+## 2026-08-25 (second session) — SYSTEM: the measurement layer. Six pillars, a decision ledger that records every voice's picks with the evidence joined, and a hard refusal to report any number computed on fewer than 20 observations
+
+**System session, no market calls made.** No memo, no Council run.
+`data/portfolio.json` untouched.
+
+- **Snapshot:** none fetched. **Screen:** universe 624, 71 candidates, 22 focus,
+  36 passed, status VALID.
+- **Memo:** no memo — system change.
+- **What changed:**
+  1. **Six pillars, one script.** `scripts/scorecard.py` measures DISCOVERY /
+     DATA / MECHANICAL / JUDGEMENT / DECISION / OUTCOME, plus a derived GAPS
+     section. Each pillar fails in a way the memos would never reveal.
+  2. **The anti-flattery rule, in code.** Every skill figure is excess return
+     versus the benchmark, never raw — a raw return mostly measures the market.
+     Any bucket under 20 observations prints its count and **withholds the
+     number**. Three pillars correctly report "insufficient evidence" today;
+     that is the honest state, not a gap to paper over.
+  3. **`data/decisions.csv` — the decision ledger.** Every voice pick and
+     Chairman call, recorded before the outcome is known. `council` writes
+     seven columns to `data/picks/<date>-picks.csv`; price, screen status, lens
+     scores and every metric are **joined from the mechanical sweep, never
+     typed**. A pick for a ticker outside the candidate set is rejected.
+  4. **Decision-basis report** (`decisions.py basis --write`) — one table:
+     every surfaced name, which voices picked it, and the exact metrics behind
+     it. Answers "did the sweep work and did the agents have enough data?"
+     without reading a memo.
+  5. **Implausible values no longer earn shortlist slots.** Nine values per run
+     are real numbers with the wrong meaning — Industrivarden at 1198%
+     "revenue growth" (investment gains counted as revenue), Orexo at a 2775%
+     margin, ASML at price/book 1456. These are now withheld from lens scoring
+     and shown with a `suspect` flag. ORX.ST had been placing on two lens
+     shortlists on the strength of one of them and correctly no longer does.
+  6. **`scripts/performance.py` absorbed** into the scorecard's OUTCOME pillar
+     and deleted — one place for measurement, not two.
+  7. **`reports/excel-upgrade-prompt.md`** — paste-ready workbook spec. The
+     three that matter: `entity_type` (fixes the artefact class in 5 at the
+     root), `nav_per_share` for holding companies (no free source exists;
+     blocks valuing Investor A), and `forward_pe` for Nordic names (closes the
+     32pp coverage gap between the two markets).
+- **Reconciliation:** none — no prior calls tested this session. AZN.ST BUY,
+  ABB.ST SELL and META BUY from 2026-08-24 remain open and unexecuted.
+- **Open items carried forward:** P-items untouched. S23 opened (pillars 3-5
+  have no data yet — resolves only with elapsed time; explicitly blocks any
+  weighting of the Council). S24 opened (metrics with the wrong meaning;
+  mitigated in code, root fix is the Excel `entity_type` column). V2 Phase 7d
+  marked DELIVERED; Phase 8 added — a multi-asset specialist voice, designed
+  and deliberately NOT built, because the blocker is data, not architecture.
+- **Note for the next session:** the first sweep that runs `council` should
+  write `data/picks/<date>-picks.csv` and record it. Until that happens
+  pillars 4 and 5 stay unmeasurable, and that is currently the single largest
+  gap in the system.
+
+---
+
+## 2026-08-25 — SYSTEM, not a sweep: a 120-row Swedish ticker CSV imported under verification (universe 538 -> 624, Nordic 20 -> 109), and three defects it exposed fixed — single-sector lens shortlists, duplicated share classes, and thin data buying shortlist slots
+
+**System session, no market calls made.** No memo, no Council run, no
+recommendation. `data/portfolio.json` was not modified.
+
+- **Snapshot:** none fetched. **Screen:** the first run of the widened funnel —
+  universe 624, fetched 624 (0 failures), ranked 614, 72 candidates
+  (8 holdings / 30 watchlist / 34 new), 22 focus, 35 passed, status VALID.
+  Cold run 27s.
+- **Memo:** no memo — system change, not an investment sweep.
+- **What changed:**
+  1. **Ticker verification now checks the COMPANY, not just the symbol.**
+     `VITR.ST` resolves perfectly — to Vitrolife, not Sobi. The old
+     "does it resolve" check would have passed it and the Council would have
+     analysed the wrong company on a live price feed. Every write path now
+     verifies the name and stores Yahoo's, never the typed one.
+  2. **`watchlist.py universe-import <csv>`** — bulk import with per-row
+     verdicts. On the user's 120-row list, 31 rows were wrong: 16 had
+     recoverable symbols (found by name on the expected exchange and
+     re-verified), 5 named a different company, 3 were delisted, 7 do not
+     exist. Nordic coverage went 20 -> 109 names.
+  3. **Sector cap on lens shortlists (max 3 per sector).** Before it, growth
+     was 8/10 Technology, contrarian 5/10 Real Estate, defensive 5/10
+     Financial Services — five lenses that each picked one sector are not five
+     perspectives. All five are now cross-sector.
+  4. **Share classes merged before ranking.** INDU-A and INDU-C were taking
+     two Council focus slots for one decision. Survivor priority is
+     holding > watchlist > larger market cap; a held line can never be
+     collapsed into one the user does not own.
+  5. **Coverage shrinkage — the most important fix of the session.** A claim
+     made earlier this session (that missing data pushed Swedish names OUT of
+     shortlists) was measured and found BACKWARDS. Thin data makes a score
+     more extreme, not less: mean of k z-scores has SD 1/sqrt(k), so partial
+     names land further out in the tails, which is where a top-N cut bites.
+     Growth thin scores averaged |1.048| vs |0.396| full; Swedish names took
+     6/10 slots on two lenses against an expected 1.7. **Missing data was
+     buying shortlist slots.** Lens scores are now scaled by sqrt(coverage);
+     the artefact largely closed (value thin 0.606 -> 0.435, defensive
+     0.526 -> 0.401) and a `thin_lenses` column discloses what remains.
+     FISV, previously rank 3 overall on partial data, correctly dropped out
+     of the focus set.
+  6. **Removed** `data/learning_log.md` and `docs/v2-upgrade-spec.md`. Both
+     write-mostly; neither improved a decision. The learning bullets live in
+     each dated memo, which is the real record, and the append instruction was
+     one of the more fragile things `council` had to do. Git history holds
+     both.
+- **Reconciliation:** none — no prior calls tested. The 2026-08-24 morning
+  sweep's three open recommendations (BUY AZN.ST, SELL ABB.ST, BUY META) are
+  unchanged and still awaiting the user.
+- **Open items carried forward:** P-items untouched. S1, S6, S9, S20 open;
+  S21 rewritten (Nordic coverage fixed; the coverage-asymmetry finding it
+  exposed is now measured, and the mechanical half of it is fixed);
+  S22 opened — 12 Swedish names still need a human with a broker screen,
+  of which SOBI.ST and MEKO.ST were verified and added.
+- **Note for the next session:** the funnel's calibration knobs are
+  `LENS_MAX_PER_SECTOR = 3`, `FOCUS_TOP_N = 15` and `THIN_LENS_COVERAGE = 0.6`
+  in `config/settings.py`. These are judgement, not derived values.
+
 ---
 
 ## 2026-08-24 (second session, same day) — SYSTEM REFACTOR, not a sweep: the discovery funnel is rebuilt around a real 538-name universe, five deterministic lenses replace the single blended score, the watchlist becomes persistent, and the parked Excel-branch runtime is deleted

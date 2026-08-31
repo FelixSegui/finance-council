@@ -1,0 +1,37 @@
+{
+  "run_at_utc": "2026-08-31T06:17:37.884204+00:00",
+  "allocation": {
+    "VWCE.DE": 0.9,
+    "BTC-USD": 0.1
+  },
+  "period": {
+    "start": "2019-06-01",
+    "end": "2026-08-01"
+  },
+  "tickers_missing_data": [],
+  "caveats": [
+    "Past performance is not predictive. Use for risk tolerance, not return expectation.",
+    "FX drift between currency legs not modeled \u2014 each leg in native currency.",
+    "No fees, taxes, or spreads modeled. ISK schablonskatt and fund fees reduce these numbers.",
+    "Only 7.2 years of overlapping data \u2014 short histories (esp. crypto) overweight recent regimes.",
+    "Data fetched via direct Yahoo v8 chart endpoint (urllib), not yfinance's client \u2014 see the module docstring; same underlying Yahoo data, different transport."
+  ],
+  "portfolio": {
+    "months": 86,
+    "cagr_pct": 16.33,
+    "annual_vol_pct": 14.45,
+    "max_drawdown_pct": -20.62,
+    "worst_rolling_12m_pct": -20.62,
+    "sharpe_rf0": 1.13
+  },
+  "benchmark": {
+    "VWCE.DE": {
+      "months": 86,
+      "cagr_pct": 12.7,
+      "annual_vol_pct": 13.41,
+      "max_drawdown_pct": -19.14,
+      "worst_rolling_12m_pct": -13.47,
+      "sharpe_rf0": 0.96
+    }
+  }
+}

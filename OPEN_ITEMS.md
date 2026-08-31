@@ -21,25 +21,29 @@ the memo leads with it rather than burying it.
 
 ## This sweep's recommended emphasis
 
-**Emphasis:** balanced
+**Emphasis:** portfolio-tending
 
-**Set by the 2026-08-24 discovery-funnel refactor.** The previous
-portfolio-tending call was made when discovery was structurally capped at a
-43-name list, so "there is no shortage of candidates" was true only inside
-that list. The funnel now screens ~540 names and produced 35 candidates that
-are neither held nor previously watchlisted — the discovery side of the
-system changed materially and its first live output needs looking at. The
-portfolio-tending signals that drove the last call are still live and still
-matter: **AZN.ST's BUY has been the top call for three consecutive sweeps**
-and the delay now has a price tag (the position moved from below blended cost
-to +3.4% above it on unchanged fundamentals); **P3 (PayPal routing) is decided
-but unexecuted for a third sweep**; **ABB.ST escalated to its first SELL call**
-on 2026-08-24 and needs an actual decision, not more monitoring; and the three
-2026-08-24 decision forks (ABB's freed slot, Investor A's NAV source, whether
-any portfolio exclusions exist at all) are still unanswered. Balanced, not
-prospecting: execute the standing calls *and* review what the wider funnel
-surfaced. Revisit once AZN.ST and P3 execute or are explicitly declined — an
-explicit "no" closes a loop as well as a "yes"; silence does not.
+**Set by the 2026-08-31 review.** Scout itself is healthy and needs no extra
+attention this time — status VALID, 33 new candidates, 4% turnover, zero
+fetch failures — so this is not a call to go looking harder. It is a call to
+stop letting found things sit. Three separate signals are now stacking, not
+just repeating: **AZN.ST's BUY has been the top call for a fourth consecutive
+sweep**, and the delay is no longer a rounding error — the 3-share tranche
+priced at ~4,440 SEK on 2026-08-17 and now prices at ~4,715 SEK, a ~275 SEK
+(+6.2%) cost of not acting on unchanged fundamentals. **ABB.ST's SELL has been
+reaffirmed a second consecutive sweep** on a break condition the memo itself
+says "has now been sitting satisfiable for four sweeps." And the capital those
+ABB proceeds should fund has **churned across three different names in three
+sweeps — GOOGL (08-18) → META (08-24) → VICI (08-31) — without the underlying
+trade ever executing once.** That churn is not evidence against any of the
+three names; it is evidence that a decided rotation is not converting into an
+order. P3 (PayPal routing) adds a fourth thread, unexecuted for a fourth
+sweep. None of this requires new analysis — the analysis exists, repeatedly,
+across multiple sweeps. What it requires is the human executing, declining, or
+explicitly re-deciding D-a (Section 7 of the 2026-08-31 memo), so the same
+capital stops being re-argued from scratch every week. Revisit once AZN.ST,
+the ABB rotation, and P3 execute or are explicitly declined — an explicit "no"
+closes a loop as well as a "yes"; silence does not.
 
 ---
 
@@ -80,6 +84,12 @@ explicit "no" closes a loop as well as a "yes"; silence does not.
   falling vs rising, PEG 0.82 vs 0.93, 28.0% vs 24.2% revenue growth). The
   conversion decision itself is unchanged; only what it eventually buys
   changed.
+- **2026-08-31 note:** still not executed, fourth consecutive sweep. Capital
+  check re-verified against this sweep's portfolio output: PayPal balance is
+  now 14,093.69 SEK at current FX; genuinely deployable total (ISK cash +
+  PayPal, excluding the tax reserve and checking float) is 25,381.69 SEK.
+  Merits unchanged; the inflow keeps recurring regardless of when this
+  executes.
 - Full deliberation history (the Stripe-routing dead end, the
   multi-sweep repeated-advice pattern, the Revolut-balance/D3 cross-link):
   `reports/SESSION_LOG.md`'s 2026-08-10 through 2026-08-17 entries.
@@ -125,6 +135,10 @@ explicit "no" closes a loop as well as a "yes"; silence does not.
   the same missing-data grounds. Now also tracked as open decision **D-b**
   below: get the NAV per share (Excel request H, ~10 min), sell on
   absence-of-evidence, or keep holding and stop re-flagging.
+- **2026-08-31 note:** third consecutive sweep the same gap blocked the same
+  voice's call (Contrarian again, plus Copycat reading only "acquisitions,
+  no disposals"). D-b unchanged, now costing a voice's attention every
+  single sweep — see S6.
 
 ### P6 — Build the medium tier (~26,400 SEK available)
 - **Status:** retroactive review DONE 2026-08-17 — decision on rotation is now
@@ -206,6 +220,10 @@ explicit "no" closes a loop as well as a "yes"; silence does not.
   memo's Top 5 #2/#3 and new open decision **D-a** below for the three
   live options on where the freed-up slot goes). Not yet executed by the
   user.
+- **2026-08-31 note — SELL reaffirmed a second consecutive sweep**, price
+  essentially flat (938.40, -0.6% week-over-week), conviction 7. Proceeds
+  now proposed for VICI rather than META — third destination in three
+  sweeps (GOOGL → META → VICI), none executed. See D-a.
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated
@@ -290,6 +308,13 @@ IDs are never reused — an S-number in an old memo always means the same item.
 
 ### S1 — Verified SEK crypto-certificate ticker for the held Valour position
 - **Status:** open — blocks P4's verification (not P4's search, which is done)
+- **Reviewed 2026-08-31: can wait.** Still actively relevant — this sweep's
+  memo again carried the "KNOWN BAD" annotation and used the broker figure
+  (11,031-11,658 SEK depending on snapshot) instead of Yahoo's ~7x-off
+  price, so the workaround continues to be followed correctly every sweep.
+  No progress possible without a human at Avanza; not closing because the
+  position (~4.9% of the portfolio) still has no live feed and the flag is
+  what prevents anyone from trusting the wrong number.
 - **Why:** the user holds a Valour Bitcoin Zero SEK certificate (ISIN
   CH0585378661). master-6.xlsx's Universe tab resolved it to `BTC0E.AS`
   (Euronext Amsterdam) and Yahoo recognises that ticker, but **the price does
@@ -301,15 +326,20 @@ IDs are never reused — an S-number in an old memo always means the same item.
 - **How:** verify on Avanza whether `BTC0E.AS` is genuinely this instrument's
   listing and why the price disagrees. Until then the position stays on the
   user-relayed price path and is excluded from automated repricing/drift
-  checks — a 9,183 SEK position (~4.2%) with no live feed.
+  checks — a position with no live feed.
 - **Note:** `python scripts/watchlist.py add/universe-add` now refuses to
   write a ticker that doesn't resolve to real price data, which prevents a
   *wrong* ticker being added — it cannot tell you whether a resolving ticker
   is the *right* instrument. That still needs a human at Avanza.
 
 ### S6 — No source for holding-company NAV discount/premium
-- **Status:** open — blocks half of P5, and a Council voice wanted it on two
-  consecutive sweeps and couldn't act
+- **Status:** open — blocks half of P5, and a Council voice wanted it on
+  three consecutive sweeps and couldn't act
+- **Reviewed 2026-08-31: valuable soon.** This is the item costing the most
+  live attention per sweep of anything on this list — a real voice, every
+  sweep, reaches a real conclusion it cannot act on. The fix is ~10 minutes
+  of human work (Excel request H), not a code change; recommending it
+  directly rather than waiting for it to keep resurfacing.
 - **Why:** Investor A and Industrivärden cannot be valued on P/E; the real
   metric is NAV discount/premium, and no free automated source has been found.
   The funnel's `value` lens has the same blind spot — it ranks these names on
@@ -320,21 +350,15 @@ IDs are never reused — an S-number in an old memo always means the same item.
   `data/company_profiles/INVE-A.ST.json` with source and date. One number,
   refreshed quarterly, not a fetcher.
 
-### S9 — Excel import: two remaining data-quality checks
-- **Status:** open — part (c) implemented and verified 2026-08-23
-- **Why:** `import_excel_holdings.py` catches stale `as_of` dates, implausible
-  P/E values and unfetchable tickers, and (since 2026-08-23) refuses to
-  overwrite a CONFIRMED broker-sourced value with an Excel one. Two checks are
-  still missing: **(a)** cross-field plausibility (a market cap and a share
-  count that can't both be right), and **(b)** a flag when a new position
-  appears in the workbook with no thesis recorded anywhere — a purchase the
-  system has no stated reason for is exactly what `thesis-review` exists to
-  catch, and it currently arrives silently.
-- **How:** two more checks in the same `flags` mechanism, which already routes
-  into `claude_excel_prompt.txt`. No new file, no new agent.
-
 ### S20 — [prospecting] Copycat/Smart Money has only half its data
-- **Status:** open — new 2026-08-24, evidence is the voice's own named gaps
+- **Status:** open — evidence reaffirmed 2026-08-31
+- **Reviewed 2026-08-31: valuable soon, but scope-narrow it against S25.**
+  This item is specifically the *source* gap (no script fetches
+  institutional ownership/13F at all, for anyone). This sweep's own
+  fetch-scope gap (US insider Form 4 never submitted for candidates — a
+  *working* fetcher invoked too narrowly) is a distinct, cheaper-to-fix
+  problem and is tracked separately as **S25**. Don't conflate the two when
+  scoping work: S25 is a one-line fix; this one needs a new data source.
 - **Why:** the Copycat voice was added to `council.md` this sweep. Two of its
   four named inputs are fetched (SEC Form 4 counts via `--insiders`,
   Finansinspektionen Insynsregister via `--fi-issuers`). **Institutional
@@ -351,6 +375,16 @@ IDs are never reused — an S-number in an old memo always means the same item.
 
 ### S21 — [prospecting] Nordic coverage: 107 names, and a data asymmetry underneath
 - **Status:** open — the headline problem is fixed; a quieter one it exposed is not
+- **Reviewed 2026-08-31: valuable soon — reconfirmed independently by the
+  scorecard, not just by memo narrative.** `reports/system-scorecard.md`'s
+  DATA pillar this run measures `fwd_pe` coverage at 68% Sweden vs 100% US —
+  a 32pp spread, flagged by the scorecard's own >15pp rule — the same
+  distortion this item named on 2026-08-24 (then measured at 35% missing on
+  Swedish names). Two runs now show the same gap by two different
+  measurement methods; this has moved from "a finding" to "a standing,
+  reproducible property of the data," which raises the case for actually
+  building option 1 (per-market coverage surfaced alongside each lens
+  shortlist) rather than continuing to only note it.
 - **2026-08-24 (evening):** the user supplied a 120-row Swedish ticker CSV.
   `scripts/watchlist.py universe-import` verified it and the universe went
   from 538 names (20 Nordic) to 622 (107 Nordic, 17%). Swedish names now
@@ -378,26 +412,20 @@ IDs are never reused — an S-number in an old memo always means the same item.
   block stays user-maintained. That is now a maintenance question, not a
   capability gap — `universe-import` makes adding a batch a one-command job.
 
-### S22 — [data] 12 real Swedish companies still cannot be screened
-- **Status:** open — needs the user, not code
-- **Why:** the 2026-08-24 import could not resolve 12 rows. Seven do not
-  exist under any symbol Yahoo indexes and could not be found by company
-  name either (BIOT.ST/Biotage, COLLE.ST/Collector, CONC.ST/Concentric,
-  HALD.ST/Haldex, NYF.ST/Nyfosa, RESURS.ST/Resurs, SNDR.ST). Five resolve to
-  a **different company** than the CSV names them: `MEKO.ST` is Meko AB
-  (Mekonomen renamed, so the ticker is right and the CSV name is stale),
-  `IVSO.ST` is Invisio (CSV typo "Invisibleio"), `VITR.ST` is Vitrolife (NOT
-  Sobi — Sobi is `SOBI.ST`), `MEAB-B.ST` is Malmbergs Elektriska,
-  `ALIF-B.ST` is AddLife. Three more are correctly excluded as no longer
-  trading (Kindred, Probi, SAS).
-- **How:** for each name still wanted, confirm the symbol on Avanza and add
-  it with `python scripts/watchlist.py universe-add <TICKER> --name "<name>"`,
-  which verifies before writing. Two are already known and safe to add:
-  `SOBI.ST` (Sobi) and `MEKO.ST` (Meko AB). The rest need a human with a
-  broker screen — the system deliberately will not guess a suffix.
-
 ### S23 — [measurement] Pillars 3, 4 and 5 have no data yet, and that is the binding constraint
 - **Status:** open — structural, resolves only with elapsed time
+- **Reviewed 2026-08-31: valuable soon to watch, nothing to build.** This
+  sweep's scorecard produced the first partial MECHANICAL read: `quality`
+  clears the 20-observation floor (n=22, median +1.6%, beats baseline 59%),
+  and separately, top-half vs bottom-half ranks both read +0.7% —
+  **"ranking is not adding signal."** Per this item's own standing rule, that
+  line is *provisional evidence about the whole set*, not a per-lens finding
+  (four of five lenses are still below n=20), and it must not be quoted as a
+  verdict on the funnel. It is exactly the kind of early signal this item
+  exists to hold until it either firms up over more sweeps or resolves as
+  noise. JUDGEMENT and DECISION remain unmeasurable (all voices n=2-4,
+  need 20) — unchanged from last sweep, as expected since
+  `data/decisions.csv` only began filling 2026-08-25.
 - **Why:** `scripts/scorecard.py` now measures six pillars, and three of them
   correctly report "insufficient evidence": MECHANICAL needs at least two
   scout runs with recorded prices before a rank can be tested against what
@@ -417,6 +445,16 @@ IDs are never reused — an S-number in an old memo always means the same item.
 
 ### S24 — [data] Nine metrics per sweep are real numbers with the wrong meaning
 - **Status:** open — mitigated in code, root cause is upstream
+- **Reviewed 2026-08-31: valuable soon, evidence reaffirmed.** This run
+  flagged nine suspect values again (SHB-A `peg=20.28`, INDU-C
+  `revenue_growth=1198%`, SNDK `revenue_growth=372%`, MU
+  `revenue_growth=346%`, ABB `price_to_book=108`, ASML `price_to_book=1423`
+  and `roic=4.02`, KINV-B `price_to_sales=-2.21`, CMCSA `peg=142.98`, FANG
+  `peg=20.69`). Two of those sit on the funnel's #2 and #4 ranked names this
+  run (SNDK, MU) — the mitigation worked exactly as designed (withheld from
+  scoring, shown flagged, and the Chairman correctly returned NO ACTION on
+  both citing the suspect flag by name) — but the same nine-per-sweep rate
+  suggests the underlying cause is stable, not shrinking.
 - **Why:** the 2026-08-25 run flagged nine values outside plausible ranges,
   including Industrivärden at 1198% "revenue growth" (Yahoo counts investment
   gains as revenue for a holding company), Orexo at a 2775% profit margin, and
@@ -434,6 +472,71 @@ IDs are never reused — an S-number in an old memo always means the same item.
   screen can apply the right metrics per entity type instead of flagging
   healthy companies as data gaps: banks legitimately have no debt-to-equity,
   and holding companies legitimately have no meaningful revenue line.
+
+### S25 — [judgement] `--insiders` fetch never targets newly discovered candidates
+- **Status:** open — new 2026-08-31
+- **Why:** `fetch_market_data.py --insiders` was invoked this sweep only
+  against the 8 holding tickers, all non-US, so SEC EDGAR returned "skipped:
+  non-US ticker" eight times and nothing else. The 11 US-listed names in the
+  22-name focus set — NVDA, APP, MA, V, VICI, TPL, EG, SMCI, APO, MU, SNDK —
+  were never submitted, even though EDGAR covers all of them. This is a
+  scope gap in an *already-working* fetcher, not a missing source — distinct
+  from S20, which is about institutional/13F data that no script fetches at
+  all for anyone. Consequence this sweep: the Copycat voice had zero insider
+  read on the entire newly-discovered half of the candidate set, including
+  **VICI, the Chairman's own #3 Top-5 BUY this sweep.**
+- **Root cause:** the canonical sweep order runs `fetch_market_data.py`
+  (with `--insiders`) *before* `scout.py` produces the candidate/focus list
+  (CLAUDE.md's "Running a sweep," step 1 precedes step 2). The insiders call
+  can therefore only target tickers already known before discovery happens —
+  holdings and watchlist — never a name scout surfaces fresh that same
+  sweep.
+- **How:** after `scout.py` writes the focus list, run a second, narrow
+  `fetch_market_data.py --tickers <US-listed focus names> --insiders` pass
+  (Form 4 lookups are per-ticker and idempotent, so this doesn't disturb any
+  other field in the snapshot) and merge the result in before `council`
+  runs. Concretely: have `scout.py` emit the US-listed subset of its focus
+  list to a small file (or print it to stdout for the sweep script to
+  capture), and add one command to CLAUDE.md's "Running a sweep" section
+  that reads it. No new agent, no new fetcher — the source already works.
+- **Improves:** judgement (Copycat is currently blind on exactly the names
+  that most need a second opinion — new discoveries with no track record)
+  and decision quality (this sweep's Top-5 BUY was made with a named,
+  avoidable data gap on the newest position in the book).
+
+### S26 — [data] Drawdown backtest window contains no real shock to test the stated tolerance
+- **Status:** open — new 2026-08-31, narrowed successor to the closed S5
+- **Why:** S5 (does the adopted 85/10/5/0 target respect the -30% drawdown
+  tolerance) was marked resolved 2026-08-17 and reaffirmed within 0.7pp this
+  sweep: a 90/10 equity/crypto proxy over 2019-06 to 2026-08 (86 months)
+  shows max drawdown -20.62%, inside the -30% line. **But the window's own
+  worst equity drawdown is -19.14%** — the data contains no crash on the
+  scale the -30% tolerance was written to describe. "-20.62% clears -30%"
+  from a window whose deepest hole is -19% does not actually validate the
+  tolerance; it says the tolerance was not tested. This is a data-reliability
+  issue: the number is real and correctly computed, but the portfolio-health
+  scorecard's "Drawdown-tolerance fit: OK" row currently implies more than
+  the backtest can support. A second, smaller finding from the same run:
+  the 10% BTC sleeve "barely registered" in the result because monthly
+  rebalancing dilutes crypto's path, while the real portfolio is not
+  rebalanced monthly and crypto has been allowed to drift to 9.4-10.1% —
+  so the backtest also does not test the scenario the crypto position
+  actually poses (a sustained drift above target, then a crash).
+- **How:** run `backtest.py` over a fixed window that actually contains a
+  real >=-30% equity shock (e.g. 2007-2009 or 2020-02/03), using whatever
+  longest-history equity-index proxy is available — VWCE.DE itself does not
+  reach back that far, so a longer-history substitute (e.g. an MSCI
+  World/ACWI-tracking series) is needed. First confirm whether
+  `backtest.py` already supports a fixed `--start`/`--end` (the V2 roadmap's
+  Phase 6 entry says this was previously missing; this sweep's
+  fixed-looking date range suggests it may already work and just needs
+  verifying). Report the result as a second, clearly-labelled "shock
+  window" figure alongside the existing rolling-lookback one — not a
+  replacement for it, since both answer different questions.
+- **Improves:** data reliability (the scorecard/portfolio-health row rests
+  on a window that cannot test what it claims to) and decision quality (the
+  crypto sleeve — the position most likely to actually blow through a shock
+  scenario — is the one part of the target this backtest tests least).
 
 ---
 
@@ -478,9 +581,10 @@ holds the original text if it is ever wanted.
 - **Phase 6 — instrumentation started.** Sell discipline (the seven
   legitimate sell triggers; "would I buy it today?" is already in
   `thesis-review.md`), crisis-window backtesting (`backtest.py` still only
-  supports a rolling N-year lookback, no fixed `--start`/`--end`), and score
-  calibration. `data/candidate_history.csv` is the calibration store this
-  phase asked for — mechanical rank per candidate per run, correlatable
+  supports a rolling N-year lookback, no fixed `--start`/`--end` — **verify
+  this against the 2026-08-31 run, whose dates look fixed; see S26**), and
+  score calibration. `data/candidate_history.csv` is the calibration store
+  this phase asked for — mechanical rank per candidate per run, correlatable
   against realised returns later. It records the funnel's ranks, not each
   voice's conviction; that is Phase 7d.
 - **Phase 7 — Council architecture.** User-prioritised 2026-08-18.
@@ -492,7 +596,8 @@ holds the original text if it is ever wanted.
     anchoring is ever actually observed — not on principle.
   - **7b (Copycat / Smart Money) — DELIVERED 2026-08-24** as the seventh voice
     in `council.md`, with its data sources and its named gaps explicit. Its
-    missing institutional/activist data is now tracked as S20.
+    missing institutional/activist data is now tracked as S20; its narrower
+    US-insider fetch-scope gap is tracked separately as S25 (2026-08-31).
   - **7c (formal disagreement register) — DELIVERED 2026-08-24.** The
     Chairman's per-candidate block now requires KEY DISAGREEMENT, STRONGEST
     CASE FOR, STRONGEST CASE AGAINST, DATA GAPS and WHAT WOULD CHANGE THIS as
@@ -534,6 +639,47 @@ One line each. **Full text of every entry is in
 `data/portfolio_history_archive.md`** (section: "OPEN_ITEMS.md closed log,
 archived verbatim 2026-08-24"), moved there so this file holds what is
 outstanding rather than what is finished. Nothing was deleted.
+
+### Closed by the 2026-08-31 session
+
+- **S9 — closed under cap pressure (8-item cap reached; two new
+  evidence-backed items opened this session, S25/S26), not because
+  resolved.** Parts (a) cross-field plausibility and (b) new-position-with-
+  no-thesis flag remain undone. No fresh evidence this session that either
+  gap actually bit. Reopen if a future Excel import shows a plausibility
+  error or a silent unthesised new position.
+- **S22 — closed: the system side of this item is done.** Two safe tickers
+  were already identified (SOBI.ST for Sobi, MEKO.ST for Meko AB) with the
+  exact verified command to add them; the remaining ten names need a human
+  at a broker screen to confirm a listing, which is not further system
+  work. Add the two known-safe tickers whenever convenient. Reopen only if
+  one of the ten unresolved names starts blocking a live decision (e.g. it
+  would otherwise reach the candidate set).
+- **S5 amended, not reopened under its own number.** The 2026-08-17 closure
+  ("both the current mix and the adopted 85/10/5/0 target cleared") is
+  reaffirmed on the number but overstated on the claim: the 2026-08-31
+  Council memo found the backtest window's own worst equity drawdown is
+  -19.14%, so it never actually contained a shock large enough to test a
+  -30% tolerance. Per the never-reuse-an-ID rule, the narrower remaining
+  question (a fixed-window test across a real >=-30% shock) is tracked as
+  the new **S26**, not as a reopened S5.
+- **Considered, not opened as a new S-item: second occurrence of the
+  scheduled task's stored prompt containing stale premises.** First
+  occurrence 2026-08-17 (contradicted CLAUDE.md, not opened, flagged
+  directly to the user). This session's prompt separately (1) asked the
+  memo to open with the Handelsbanken wrapper question, resolved
+  2026-07-07/2026-08-03; (2) asserted `investor_profile.json.reference_targets`
+  were still null, though they were adopted 2026-07-27; and (3) asserted
+  this sweep's backtest was the first ever run, though one ran 2026-08-17.
+  All three were caught and corrected in the memo itself with no wrong
+  action taken, so this still self-mitigates rather than causing bad
+  output — the same reasoning that kept the first occurrence off this list.
+  But it is now two confirmed occurrences two weeks apart, not one: **if a
+  third occurs, open the S-item without further deliberation.** In the
+  meantime, whatever stores the scheduled task's prompt text should be
+  reviewed and refreshed against current file state — the drift is coming
+  from real progress (items closing, targets being adopted) outpacing a
+  prompt written once and left alone.
 
 ### Closed by the 2026-08-24 discovery-funnel refactor
 

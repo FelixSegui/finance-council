@@ -14,6 +14,207 @@ Entry format:
 - **Reconciliation:** how last sweep's calls look against today's data
 - **Open items carried forward:** ...
 ```---
+## 2026-08-31 — AZN.ST's BUY reaffirmed a fourth consecutive sweep with the delay now carrying a real SEK cost, ABB.ST's SELL reaffirmed a second consecutive sweep, and META drops out of the Top 5 entirely after two sweeps naming it the destination for ABB's proceeds — VICI (a REIT, the funnel's first genuinely new individual-name buy) takes that slot instead; a scorecard finding that the mechanical lens rankings show no separation between top-half and bottom-half outcomes; two stale scheduled-prompt premises corrected in the memo itself; and a real fetch-scope gap found — US insider data was never requested for any of this sweep's US-listed candidates
+
+**Automated/scheduled sweep, not a live session** — no user interaction
+logged this session; every call below is a Council recommendation awaiting
+the user's review, same status as every prior sweep's headline calls until
+acted on.
+
+- **Snapshot:** data/cache/snapshots/20260831T060914.json (previous:
+  data/cache/snapshots/20260824T060950.json). **Screen:**
+  data/screens/20260831T061021-candidates.csv /
+  data/screens/20260831T061021-scout.json — universe 624, fetched 624
+  (0 failures), ranked 614, candidates 71 (8 holdings / 30 watchlist / 33
+  new), focus 22, screened 71, passed 38, missing 16, failed 17, suspect
+  values 9, status **VALID**. Three names entered the candidate set for the
+  first time this run (MU rank 4, UHS rank 31, ZTS rank 42); three left it
+  (PLTR, MEKO.ST, TEL2-B.ST). **Calendar:**
+  data/cache/calendar/20260831-events.json — no earnings collisions for any
+  holding inside the 45-day window; FOMC 2026-09-15/16 and the Riksbank rate
+  decision 2026-09-24 both fall inside it, flagged (not resolved) against
+  the new VICI buy. **Backtest:**
+  data/cache/backtests/20260831T061737.json — see below, S5.
+- **Memo:** reports/2026-08-31-council-memo.md. **Picks:**
+  data/picks/2026-08-31-picks.csv (38 rows, recorded via
+  `scripts/decisions.py record`). **Decision basis:**
+  reports/2026-08-31-decision-basis.md.
+- **Headline calls:**
+  1. **BUY 3 shares AZN.ST (~4,715 SEK) from the 11,288 SEK
+     broker-confirmed ISK cash** → confidence **High** → horizon **Long**.
+     Fourth consecutive sweep as the top call.
+  2. **SELL all 4 shares ABB.ST (~3,754 SEK) and the single SHB-A.ST share
+     (~147 SEK) in one order session** → confidence **Medium** → horizon
+     **Medium**. Second consecutive sweep as a SELL call on ABB.ST.
+  3. **BUY ~15 shares VICI (~3,658 SEK), funded by the ABB + SHB-A
+     proceeds** → confidence **Medium** → horizon **Medium**. First
+     genuinely new individual name the discovery funnel has produced a
+     Top-5 buy call on; first Real Estate exposure; first non-SEK-listed
+     stock in the sleeve.
+  4. **Route the residual ~6,574 SEK of ISK cash into Avanza Global** →
+     confidence **High** → horizon **Long**.
+  5. **Execute P3 (the PayPal conversion), unexecuted for a fourth
+     consecutive sweep** → confidence **High** → horizon **Long**.
+- **User decisions:** none — automated/scheduled sweep, no live user
+  interaction logged this session.
+- **Reconciliation — the previous session entry (2026-08-25, second
+  session, system-only) explicitly carried forward the three still-open,
+  still-unexecuted calls from the 2026-08-24 sweep. Checked against today's
+  snapshot and today's Council memo:**
+  - **AZN.ST BUY — still unexecuted, now the 4th consecutive sweep as the
+    top call, and the cost of the delay is no longer trivial.**
+    `portfolio.json` still shows 5 shares; none of the four identical BUY
+    calls (2026-08-17, 2026-08-18, 2026-08-24, 2026-08-31) has executed.
+    The 3-share tranche was first priced at ~4,440 SEK (2026-08-17,
+    ~1,480/share); today it prices at ~4,715 SEK (1,571.50/share) — **+275
+    SEK (+6.2%) purely from not acting**, on unchanged fundamentals
+    (six/seven voices still favor it every sweep it has run). The position
+    itself has moved from below blended cost (2026-08-18) to +4.1% above
+    it today. The call did not age badly — the evidence for it (lowest
+    beta in the book, two-officer insider accumulation, the only holding
+    on the right side of a strong dollar) is materially unchanged — but
+    the non-execution now has a real, compounding price tag, not a
+    theoretical one.
+  - **ABB.ST SELL — still unexecuted, now the 2nd consecutive sweep as a
+    SELL call.** `portfolio.json` still shows 4 shares. Escalated
+    2026-08-24 on the break condition's second clause (a materially
+    better-positioned alternative surfacing via screening, not the insider
+    clause, which tested negative and closed in ABB's favour 2026-08-23);
+    today's Council reaffirms the same SELL at conviction 7, price
+    essentially flat week-over-week (938.40, -0.6%). Today's memo states
+    the underlying clause "has now been sitting satisfiable for four
+    sweeps" without anyone acting on it — the same two-clause-break-
+    condition pattern flagged for `meta` on 2026-08-24 (everyone watches
+    the dramatic clause, the quieter one goes unenforced) is repeating
+    exactly as predicted.
+  - **META BUY — dropped entirely from the Chairman's Top 5 this sweep,
+    worth naming plainly rather than letting it quietly disappear.**
+    2026-08-24 named META as the #3 opportunity and the explicit
+    destination for ABB's sale proceeds; today's Growth voice still picks
+    it (BUY, conviction 6, per `data/picks/2026-08-31-picks.csv`) and its
+    case is intact (28.0% revenue growth, forward P/E 16.53 below trailing,
+    PEG 0.85, price +3.9% since 2026-08-25) — but it did not reach the
+    Chairman's Top 5 because the same capital (the ABB proceeds) has a
+    better-fitting use this sweep in VICI, which diversifies a sector
+    sitting at 0% rather than one already represented. Today's memo names
+    the pattern directly: the earmarked destination for this pool of
+    proceeds has now been **GOOGL (2026-08-18) → META (2026-08-24) → VICI
+    (2026-08-31)** — three different names in three sweeps for money that
+    has never actually moved. That churn is a finding about unexecuted
+    decisions, not evidence against any of the three names (open decision
+    D-a in `OPEN_ITEMS.md`).
+- **Other findings this sweep, not tied to a specific prior call:**
+  - **Two stale premises in the scheduled prompt that launched this sweep,
+    corrected rather than followed** (same handling as the 2026-08-17
+    precedent, and the memo says so directly). The prompt (a) assumed
+    OPEN_ITEMS.md's "structural question #1" — the Handelsbanken wrapper —
+    was still unresolved and required the memo to open with it; it was
+    closed 2026-07-07/2026-08-03. (b) It asserted
+    `investor_profile.json.reference_targets` were still null and asked
+    for a fresh proposed allocation; they were adopted 2026-07-27, written
+    2026-08-03. **Instead, a real backtest ran**
+    (`data/cache/backtests/20260831T061737.json`) against OPEN_ITEMS.md's
+    S5 (does the adopted 85/10/5/0 target respect the -30% drawdown
+    tolerance): a 90/10 equity/crypto proxy over 86 months produced max
+    drawdown **-20.62%**, inside the -30% tolerance with ~9.4pp headroom.
+    **Council's own read is that this only partially closes S5**: the
+    backtest window's own worst equity drawdown is -19.14%, so the window
+    contains no shock of the size the tolerance was written for —
+    "-20.62% clears -30%" from a window whose worst case is -19% is close
+    to circular. Recommend S5 be re-labelled "partially answered," scope
+    narrowed to a fixed-window run across a real -40%+ equity shock (the V2
+    roadmap's Phase 6 gap: `backtest.py` fixed-date support needs
+    verifying, and no free VWCE.DE-equivalent history reaches back to 2008
+    anyway).
+  - **A real fetch-scope gap, not a source gap: US insider data was never
+    requested for any candidate this sweep.** `--insiders` (SEC EDGAR) ran
+    only against this sweep's 8 holding tickers, all non-US, so it
+    returned "skipped" eight times and nothing else. The 11 US-listed
+    names in the 22-name focus set — including APP, VICI, NVDA, MU, SNDK,
+    V, MA, TPL, SMCI, APO, EG — were never submitted, even though EDGAR
+    covers all of them. **The Copycat voice therefore had zero
+    insider-activity read on the entire newly-discovered half of the
+    candidate set**, including on VICI, this sweep's own #3 Top-5 buy
+    call. This looks like a one-line fix (expand `--insiders` to the full
+    focus list, not just holdings) and is the highest-value item in the
+    memo's own §9 data-gaps list — flagged directly for `meta`.
+  - **Scorecard finding worth surfacing on its own: the mechanical lens
+    rankings currently show no separation between top-half and bottom-half
+    outcomes** (`top-half ranks median +0.7% vs bottom-half +0.7%` —
+    MECHANICAL pillar, `reports/system-scorecard.md`). Only the `quality`
+    lens has enough observations to read at all (n=22, median +1.6%, beats
+    baseline 59% of the time); `contrarian`, `defensive`, `growth` and
+    `value` all still sit below the 20-observation floor. This is early —
+    n=22 on one lens is not yet a verdict on the funnel — but it is
+    exactly the kind of finding pillar 3 exists to surface, and it
+    deserves tracking sweep over sweep rather than being read as either
+    "the funnel doesn't work" or "too early to matter."
+- **Scorecard status** (`scripts/scorecard.py --write`, run this session,
+  `reports/system-scorecard.md`):
+  1. **DISCOVERY** — measurable. Universe 624, candidates 71 (8 held/30
+     watchlist/33 new), focus 22, status VALID. Runs recorded: 2. Candidate
+     turnover vs previous run: 4% new to the set; new candidates per run
+     (last 2): 33, 33.
+  2. **DATA** — measurable. Fetch failures 0/624 (0.0%). `fwd_pe` coverage:
+     68% Sweden vs 100% US — a 32pp spread flagged as tilting any lens that
+     ranks on it. Candidates with a thin lens score: 10/71.
+  3. **MECHANICAL** — partially measurable for the first time. `quality`:
+     n=22, median +1.6%, beats baseline 59% of the time. `contrarian`
+     (n=8), `defensive` (n=15), `growth` (n=12), `value` (n=13) all still
+     below the 20-observation floor and print "insufficient evidence."
+     Top-half vs bottom-half: both +0.7% — **ranking is not adding
+     signal**, per the report's own line.
+  4. **JUDGEMENT** — insufficient evidence, all eight voices n=2-4, need
+     20. "This is the number that would justify ever weighting the
+     Council — do not weight it before this line reads," per the report
+     itself.
+  5. **DECISION** — thin but real for the first time: 6 open Chairman
+     calls, 2 open BUY calls (AZN.ST, VICI), both 0 days old, so price
+     drift while unexecuted reads +0.0% for both (nothing to reconcile
+     there yet — check again next sweep). Calibration by conviction band:
+     insufficient evidence in every band (n=1 medium, n=1 high).
+  6. **OUTCOME** — measurable. Period 2026-07-13 → 2026-08-24 (12
+     observations). Money in 192,500 SEK; actual 221,588 SEK (+15.1%);
+     same money in VWCE.DE would read 194,973 SEK (+1.3%); difference
+     **+26,615 SEK**.
+  - **Standing observation for `meta`:** JUDGEMENT and DECISION remain
+    unmeasurable by the 20-observation floor — expected, since
+    `data/decisions.csv` only began filling 2026-08-25 (S23's own
+    prediction). Not yet "unmeasurable for many sweeps" in the sense that
+    would itself be a finding; worth checking again once n climbs past
+    single digits.
+- **Open items carried forward:** P1 (ETH cost basis, blocked on user), P3
+  (PayPal routing, decided, unexecuted for a fourth consecutive sweep),
+  P5/S6 (Investor A NAV, third-plus consecutive sweep a voice wanted to act
+  and couldn't — now also **D-b**), P6 (ABB now reaffirmed SELL a second
+  consecutive sweep; **D-a** — what funds what, now three destinations in
+  three sweeps — still open), P7 (gold, deferred by the user, not
+  reopened), P9, P10 (both open, both need the user), **D-c** (exclusions —
+  MO and BETS-B.ST/EVO.ST keep surfacing and would vanish under common
+  exclusion lines, still unanswered). S-items: S1, S6, S9(a)/(b), S20, S21,
+  S22, S23, S24 unchanged, no new evidence against or for any of them this
+  sweep. **New file-hygiene item, not yet formalized:** two stale strings —
+  `portfolio.json.targets.notes` and
+  `investor_profile.json.reference_targets.ADOPTED_2026-07-27` — both
+  still say "no backtest has ever confirmed" the target, contradicted by
+  both the 2026-08-17 and this sweep's backtests; flagged in the memo
+  itself, worth a direct edit next time either file is touched rather than
+  a new S-item. **New S-item candidate for `meta` to formalize:** the
+  `--insiders` fetch-scope gap above (expand to the full focus list, not
+  just holdings).
+
+**Action taken directly this session:** the portfolio was valued this
+sweep at **~224,017 SEK** (full-portfolio convention, per this sweep's
+`portfolio` lens) — the `data/valuations.csv` row has been appended
+directly, not just reminded; net_contribution_since_last_sek recorded as 0
+(no contribution confirmed logged in `portfolio.json`/`data/transactions.csv`
+this period; P10's possible-duplicate-deposit question remains open and
+unconfirmed, unchanged from every prior sweep it has been carried).
+`scripts/scorecard.py --write` was already run this session before this
+entry — see the Scorecard status block above for its quoted Status lines.
+
+---
+
 ## 2026-08-25 (second session) — SYSTEM: the measurement layer. Six pillars, a decision ledger that records every voice's picks with the evidence joined, and a hard refusal to report any number computed on fewer than 20 observations
 
 **System session, no market calls made.** No memo, no Council run.
@@ -1317,7 +1518,7 @@ split invocations.
   tickers), P6 (retroactive `swedish-equity-review` on ATCO-B/ALFA/ABB —
   sixth consecutive sweep unexecuted; thesis half now closed), P7 (ISK
   allowance unverified with Skatteverket, low priority), S4 (Swedish CPI
-  stale period), S5 (85/10/5/0 vs -30% drawdown tolerance — `backtest`
+  stale period), S5 (85/10/5/0 vs. -30% drawdown tolerance — `backtest`
   still never run), S6 (no NAV discount/premium source for Investor A),
   S8 (critical-file-loss guard), S9 (Excel cross-field plausibility +
   purchase-without-thesis flags), S10 (Watchlist prospecting gaps —

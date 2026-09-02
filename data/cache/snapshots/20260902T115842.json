@@ -1,0 +1,148 @@
+{
+  "fetched_at_utc": "2026-09-02T11:58:35.874396+00:00",
+  "equities": {
+    "VICI": {
+      "price": 25.65,
+      "prev_close": 25.65,
+      "52w_high": 33.83,
+      "52w_low": 25.46,
+      "market_cap": 28121520128,
+      "trailing_pe": 9.937744,
+      "forward_pe": 8.541806,
+      "price_to_sales": 6.862918,
+      "price_to_book": 0.96402824,
+      "peg_ratio": null,
+      "dividend_yield": 0.0705,
+      "payout_ratio": 0.69769996,
+      "beta": 0.687,
+      "revenue_growth": 0.057,
+      "total_revenue": 4097604096,
+      "free_cashflow": 267028992,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 4006116000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 3849205000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 3611988000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 2600697000
+        }
+      ],
+      "gross_margins": 0.99271005,
+      "operating_margins": 0.70182997,
+      "ebitda_margins": 0.88813,
+      "profit_margins": 0.67496,
+      "return_on_equity": 0.09849,
+      "return_on_assets": 0.04818,
+      "debt_to_equity": 60.277,
+      "recommendation": "buy",
+      "sector": "Real Estate",
+      "industry": "REIT - Diversified",
+      "country": "United States",
+      "currency": "USD",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 3639224064,
+      "total_cash": 300947008,
+      "total_debt": 17843673088,
+      "operating_cashflow": 2638275072,
+      "capex": {
+        "value": 2371246080,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 2875821359.767557,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 29170847850.065998,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 47014520938.065994,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.048323344126152606,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.21 (assumed statutory rate for United States, NOT a real effective rate - no source provides one)"
+      }
+    }
+  },
+  "crypto": {},
+  "macro": {
+    "fed_funds_rate": {
+      "date": "2026-08-01",
+      "value": "3.63"
+    },
+    "us_10y_yield": {
+      "date": "2026-08-31",
+      "value": "4.75"
+    },
+    "us_2y_yield": {
+      "date": "2026-08-31",
+      "value": "4.34"
+    },
+    "dollar_index": {
+      "date": "2026-08-28",
+      "value": "118.7479"
+    },
+    "sek_per_usd": {
+      "date": "2026-08-28",
+      "value": "9.5949"
+    },
+    "usd_per_eur": {
+      "date": "2026-08-28",
+      "value": "1.1598"
+    },
+    "vix": {
+      "date": "2026-08-31",
+      "value": "14.92"
+    },
+    "us_cpi_yoy": {
+      "date": "2026-07-01",
+      "value": 3.54
+    },
+    "riksbank_policy_rate": {
+      "date": "2026-09-02",
+      "value": 1.75
+    },
+    "ecb_deposit_rate": {
+      "date": "2026-09-02",
+      "value": "2.25"
+    },
+    "se_cpi_yoy": {
+      "period": "2026M07",
+      "value": 0.2
+    },
+    "10y_2y_spread": 0.41,
+    "sek_per_eur": {
+      "date": "2026-08-28",
+      "value": 11.1282,
+      "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)"
+    }
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "value": 63,
+      "classification": "Greed"
+    }
+  }
+}

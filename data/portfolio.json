@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-08-04",
+  "last_updated": "2026-09-02",
   "base_currency": "SEK",
-  "total_estimate_sek": "~214,175 SEK as of 2026-08-04: hb-main 10,752.76 + hb-checking 611 + avanza-isk ~179,714 (see avanza-isk account notes for the medium-tier build breakdown; SHB-A.ST/INVE-A.ST/the 5 new stocks repriced from the 2026-08-04 snapshot) + paypal ~14,146 (repriced at sek_per_usd 9.5268 / sek_per_eur 10.9739) + eth-wallet ~8,951 (0.50185 ETH x live price). EXCLUDED by design: the Revolut everyday account (operating cash, not capital) and the frozen SEB Osteuropafond (unsellable, 0.25 SEK basis). Crypto exposure remains above the 10% target - held deliberately, not being trimmed. Medium-tier build (OPEN_ITEMS.md P6) executed 2026-08-03/04 - see below. Full history and superseded figures: data/portfolio_history_archive.md.",
+  "total_estimate_sek": "~223,211 SEK as of 2026-09-02 (COMPUTED, not a fresh full broker statement): hb-main 10,752.76 + hb-checking 611 + avanza-isk ~186,285 (7 stocks incl. AZN.ST now 8sh + new Xetra-Gold ETC 4 units, both repriced/added 2026-09-02, plus Auto 3/Global at book value, BTC0E.AS at the last broker-confirmed 11,031 SEK not the bad Yahoo feed, ISK cash 845.43 after the 2026-08-25 gold+AZN purchases) + paypal ~14,094 (2026-08-31 portfolio-lens figure, not refetched today) + eth-wallet ~11,469 (0.50185 ETH x 2026-09-02 live price). EXCLUDED by design: the Revolut everyday account (operating cash, not capital) and the frozen SEB Osteuropafond (unsellable, 0.25 SEK basis). Crypto exposure remains close to the 10% target. Gold tranche 1 EXECUTED 2026-08-25 (OPEN_ITEMS.md P7, closed) - see targets.gold_carve_applied. Medium-tier build (OPEN_ITEMS.md P6) executed 2026-08-03/04 - see below. Full history and superseded figures: data/portfolio_history_archive.md.",
   "cash": {
     "amount": 0,
     "currency": "SEK"
@@ -243,15 +243,15 @@
       "account_id": "avanza-isk",
       "instrument_type": "stock",
       "exposure_class": "equity",
-      "quantity": 5,
-      "cost_basis_per_unit": 1509.7,
-      "cost_basis_note": "Blended via genomsnittsmetoden (average cost, same method as exit_plans.hb-af-exit): 4sh @ 1507.00 (2026-08-03/04) + 1sh @ 1520.50 (2026-08-06, the Council's 2026-08-06 call D executed) = (6028.00 + 1520.50) / 5 = 1509.70. The 1520.50 execution price is the real, user-reported figure - not derived from any market snapshot.",
-      "market_value_sek": 7727.5,
-      "market_value_as_of": "2026-08-06 (computed: 5sh x 1,545.50 SEK, the last live price from data/cache/snapshots/20260806T130256.json)",
+      "quantity": 8,
+      "cost_basis_per_unit": 1537.73,
+      "cost_basis_note": "Blended via genomsnittsmetoden (average cost, same method as exit_plans.hb-af-exit): prior 5sh @ 1509.70 (7,548.50 SEK total) + 3sh bought 2026-08-25 @ 1,580.50 quoted, 4,753.35 SEK actual paid (includes ~11.85 SEK courtage over the raw 4,741.50 SEK price x quantity) = (7,548.50 + 4,753.35) / 8 = 1,537.73. User-reported directly 2026-09-02, not derived from any market snapshot.",
+      "market_value_sek": 12444.0,
+      "market_value_as_of": "2026-09-02 (computed: 8sh x 1,555.50 SEK, data/cache/snapshots/20260902T115447.json)",
       "annual_fee_pct": null,
       "date_acquired": null,
       "target_weight_pct": null,
-      "thesis_narrative": "Bought 2026-08-03/04 + 2026-08-06, defensive-quality thesis recorded 2026-08-06 in the user's own words - see why_owned/key_risks/break_conditions for the current structured thesis. Full text: data/portfolio_history_archive.md#thesis-narrative-full-text-archived-2026-08-17. QUANTITY CONFIRMED 2026-08-23 at 5 shares against the user's real Avanza transaktioner export (4 units @ 1,507 SEK 2026-08-04 + 1 unit @ 1,520.50 SEK 2026-08-06 = 5 total, 7,548.50 SEK). The Excel workbook's own ledger carries a phantom extra OPENING row that inflates this to 6 shares / 9,069 SEK cost - the workbook's own README flags this exact discrepancy ('If Avanza says 5 sh, correct the AZN Transactions rows'). Fix the Excel Transactions tab, don't trust its current AZN quantity over this confirmation.",
+      "thesis_narrative": "Bought 2026-08-03/04 + 2026-08-06 + 2026-08-25 (3sh), defensive-quality thesis recorded 2026-08-06 in the user's own words - see why_owned/key_risks/break_conditions for the current structured thesis. Full text: data/portfolio_history_archive.md#thesis-narrative-full-text-archived-2026-08-17. QUANTITY CONFIRMED 2026-08-23 at 5 shares against the user's real Avanza transaktioner export (4 units @ 1,507 SEK 2026-08-04 + 1 unit @ 1,520.50 SEK 2026-08-06 = 5 total, 7,548.50 SEK); 3 MORE SHARES user-reported 2026-09-02 (bought 2026-08-25 @ 1,580.50, 4,753.35 SEK actual, ahead of the 2026-08-31 Council memo's own BUY-3-more call, which was therefore computed on a stale 5-share/11,288-SEK-cash base it did not know was already partly spent - see OPEN_ITEMS.md note added 2026-09-02). Total now 8 shares, 12,301.85 SEK cost. The Excel workbook's own ledger carries a phantom extra OPENING row that inflates the pre-08-25 count to 6 shares / 9,069 SEK cost - the workbook's own README flags this exact discrepancy ('If Avanza says 5 sh, correct the AZN Transactions rows'). Fix the Excel Transactions tab, don't trust its current AZN quantity over this confirmation.",
       "last_reviewed": "2026-08-06",
       "thesis_status": "INTACT",
       "why_owned": "Historically resilient, defensive quality company; healthcare is lower-beta than high-valuation tech/growth; reasonable dividend history; diversifies away from the portfolio's industrials/technology concentration.",
@@ -259,6 +259,30 @@
       "valuation_reason": "PEG 1.33 (2026-08-06) is attractive for a large-cap pharma; priced ~20% off its 52-week high despite intact margins and 4 straight years of rising revenue.",
       "key_risks": "Revenue growth or margins deteriorate structurally; the dividend is cut; or it re-rates to trade at a premium indistinguishable from the growth assets it's meant to diversify against.",
       "break_conditions": "Any of the three key_risks above -> re-test the thesis."
+    },
+    {
+      "ticker": "DE000A0S9GB0",
+      "name": "Xetra-Gold (physically-backed gold ETC, ISIN DE000A0S9GB0)",
+      "account_id": "avanza-isk",
+      "instrument_type": "commodity_etc",
+      "exposure_class": "gold",
+      "quantity": 4,
+      "cost_basis_per_unit": 1422.31,
+      "cost_basis_note": "User-reported directly 2026-09-02: bought 2026-08-25, 4 units @ 128 EUR/share, 5,689.22 SEK total actual paid (implies ~11.11 SEK/EUR at execution, consistent with the ~11.06-11.13 range in fetched macro snapshots around that date). Not derived from any market snapshot.",
+      "market_value_sek": 5689.22,
+      "market_value_as_of": "2026-08-25 (cost basis carried forward - no live price feed, see market_value_source)",
+      "market_value_source": "NO LIVE FEED: Yahoo ticker DE000A0S9GB0.SG returned HTTP 404 on 2026-09-02 (chart-endpoint fallback also failed). Carried at cost basis until a working ticker is found or the user relays a fresh broker-screen value - same treatment as BTC0E.AS's S1 gap. Do not assume 0% change; this is a stale/unknown mark, not a confirmed flat price.",
+      "annual_fee_pct": 0.07,
+      "date_acquired": "2026-08-25",
+      "target_weight_pct": 5,
+      "thesis_narrative": "EXECUTED 2026-08-25, closing OPEN_ITEMS.md P7. Council's Portfolio Governance call (2026-08-22) recommended a first tranche ~7,500 SEK; user executed a smaller first tranche (~5,689 SEK) via Xetra-Gold, the exact instrument Council's verdict cleared (physically-backed, 0.07%/yr year-1 PRIIPs cost, Frankfurt-listed, disclosed risk 5/7 standard for the ETC asset class). portfolio.json.targets updated 2026-09-02 per P7's own recommended carve (equity 85 -> 80, new gold line at 5) now that the position actually exists.",
+      "last_reviewed": "2026-09-02",
+      "thesis_status": "TOO_EARLY",
+      "why_owned": "Crash-hedge diversifier, user-directed per CLAUDE.md scope (gold as a single named commodity) - not a return thesis.",
+      "expected_driver": "Portfolio ballast in a systemic-stress scenario; no re-rating case, no earnings to value against.",
+      "valuation_reason": "Not applicable - evaluated on structure (physical backing, cost, wrapper) not price multiples, same as the Bitcoin certificate.",
+      "key_risks": "Issuer/counterparty risk (an unsecured claim on the SPV issuer if it can't perform) - standard for the ETC structure, not specific to this instrument. No live price feed yet - position cannot be automatically repriced until a working ticker or broker-screen value is found.",
+      "break_conditions": "Re-test if a cheaper/better-verified alternative surfaces, or if a live price feed is found and reveals the position has moved materially from its cost basis."
     },
     {
       "ticker": "ALFA.ST",
@@ -389,11 +413,11 @@
       "instrument_type": "cash",
       "exposure_class": "cash",
       "currency": "SEK",
-      "quantity": 11288,
+      "quantity": 845.43,
       "cost_basis_per_unit": null,
       "annual_fee_pct": null,
-      "date_acquired": "2026-08-17",
-      "thesis": "BROKER-CONFIRMED 2026-08-23 via user-provided Avanza screenshot ('Tillgangligt for kop': 11,288 SEK, screenshot timestamped 'Senast uppdaterad: 1 min sedan'). Supersedes both prior readings: the 11,183 SEK computed figure and the 20,366 SEK 2026-08-22 Excel-import figure (which is now understood to have been a pre-Valour-purchase balance carried in the workbook, not a live figure - see OPEN_ITEMS.md P8, closed). This resolves S12/D4 in practice: the real spendable cash is what the broker screen shows, independent of which profit_recycling_rule reading is correct in principle. Full reconciliation trail: data/portfolio_history_archive.md#avanza-isk-cash.",
+      "date_acquired": "2026-08-25",
+      "thesis": "COMPUTED 2026-09-02 from the 2026-08-23 broker-confirmed 11,288 SEK base minus the two 2026-08-25 purchases user-reported 2026-09-02 (Xetra-Gold ETC 5,689.22 SEK + 3 more AZN.ST shares 4,753.35 SEK = 10,442.57 SEK spent): 11,288 - 10,442.57 = 845.43. User's own live figure given 2026-09-02 ('ca 850 SEK') matches this within ~5 SEK - treated as confirming, not superseding, since the computed figure traces to two itemized transactions. NOTE: the 2026-08-31 Council memo's AZN.ST BUY sizing and capital-availability check used the stale 11,288 SEK figure, not knowing these two purchases had already happened - that memo's specific SEK amounts for that call are superseded, see the AZN.ST holding's thesis_narrative and OPEN_ITEMS.md.",
       "target_weight_pct": null
     },
     {
@@ -518,12 +542,14 @@
     }
   ],
   "targets": {
-    "equity_pct": 85,
+    "equity_pct": 80,
     "crypto_pct": 10,
     "cash_pct": 5,
     "fixed_income_pct": 0,
+    "gold_pct": 5,
     "adopted": "2026-08-03",
-    "notes": "ADOPTED - written in 2026-08-03 on the user's explicit instruction ('You have my ok to write the 85/10/5 into the files'). Originally approved in chat 2026-07-27 but never recorded, so every sweep since re-derived drift against a target that existed only in memos; that gap is now closed. Targets are measured on EXPOSURE class, not account or product. Fixed income is deliberately 0 per the user's standing direction that fixed income should be near-zero at this portfolio size (see investor_profile.json risk_tier_framework_proposed.fixed_income_stance); the 5% cash line is ballast, not a bond sleeve. OPEN CAVEAT, unresolved and deliberately not hidden by the act of writing this in: no backtest has ever confirmed that 85% equity + 10% crypto respects the user's stated -30% max drawdown tolerance - see OPEN_ITEMS.md S5. Adopting the target and validating it are separate steps, and only the first has happened. The glidepath in investor_profile.json re-engages if the property goal firms up with a date inside ~3 years."
+    "gold_carve_applied": "2026-09-02 - the 85/10/5/0 split adopted 2026-08-03 becomes 80/10/5/0/5 (equity/crypto/cash/FI/gold) now that the first gold tranche actually executed (2026-08-25, Xetra-Gold ETC). This is the exact carve OPEN_ITEMS.md P7 specified in advance ('equity 85 -> 80, new gold line at 5 — apply once the first tranche actually executes, not before') - not a new decision, applying a pre-approved rule to a now-real position.",
+    "notes": "ADOPTED - written in 2026-08-03 on the user's explicit instruction ('You have my ok to write the 85/10/5 into the files'). Originally approved in chat 2026-07-27 but never recorded, so every sweep since re-derived drift against a target that existed only in memos; that gap is now closed. Targets are measured on EXPOSURE class, not account or product. Fixed income is deliberately 0 per the user's standing direction that fixed income should be near-zero at this portfolio size (see investor_profile.json risk_tier_framework_proposed.fixed_income_stance); the 5% cash line is ballast, not a bond sleeve. OPEN CAVEAT, PARTIALLY ADDRESSED 2026-08-31 (OPEN_ITEMS.md S26): a first backtest of the 85/10 equity/crypto split (now 80/10 equity/crypto with the gold carve) showed a -20.62% max drawdown over a 2019-2026 window, inside the -30% tolerance - but that window's own worst equity shock was only -19.14%, so it has not been stress-tested against anything drawdown-tolerance-sized. S26 tracks the residual question; not closed. The glidepath in investor_profile.json re-engages if the property goal firms up with a date inside ~3 years."
   },
   "exit_plans": {
     "hb-af-exit": {

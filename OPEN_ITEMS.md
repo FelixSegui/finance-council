@@ -232,8 +232,21 @@ closes a loop as well as a "yes"; silence does not.
   contributions) go toward them.
 
 ### P7 — Gold: new exposure class, instrument verified, ready to execute
-- **Status:** decided, instrument verified — pending only the user's actual
-  buy order. Council's Portfolio Governance call (2026-08-22): BUY, first
+- **Status: CLOSED — EXECUTED 2026-08-25, recorded 2026-09-02.** User bought
+  4 units of Xetra-Gold @ 128 EUR/share, 5,689.22 SEK total, in the Avanza
+  ISK — the exact instrument this item cleared. Recorded into
+  `data/portfolio.json` (new `DE000A0S9GB0` holding, `exposure_class: gold`)
+  and `targets` updated per this item's own pre-approved carve: equity
+  85 -> 80, new `gold_pct: 5`. No live price feed found (Yahoo
+  `DE000A0S9GB0.SG` 404s) — carried at cost basis, same treatment as
+  `S1`/BTC0E.AS, until a working ticker or a broker-screen value turns up.
+  **Note for the record:** this purchase (and 3 more AZN.ST shares, same
+  day) predates the 2026-08-31 sweep by 6 days but was not reported to the
+  system until 2026-09-02, after that sweep's memo had already run — the
+  2026-08-31 Council memo's AZN.ST BUY sizing and ISK-cash figure (11,288
+  SEK) are superseded; see the AZN.ST holding's `thesis_narrative`. Original
+  item text below, kept for history.
+- Council's Portfolio Governance call (2026-08-22): BUY, first
   tranche ~7,500 SEK, via an Avanza ISK-held physically-backed gold ETC.
   **2026-08-23: the user's own Xetra-Gold (DE000A0S9GB0) fact sheet
   reviewed and it clears every condition Council set** — physically

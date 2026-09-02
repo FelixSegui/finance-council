@@ -21,6 +21,22 @@ also wrong and is dealt with in §4: it said this sweep's backtest was the first
 ever run, but the repo's own closed log and the 2026-08-24 memo record one on
 2026-08-17.
 
+**POST-SWEEP CORRECTION, added 2026-09-02 — do not act on this memo's AZN.ST
+sizing or ISK-cash figure as written.** The user reported directly on
+2026-09-02 that two purchases had already been made on 2026-08-25, six days
+before this sweep ran, but never entered into `data/portfolio.json`: 3 more
+AZN.ST shares (4,753.35 SEK) and 4 units of Xetra-Gold ETC (5,689.22 SEK,
+closing OPEN_ITEMS.md P7). This sweep's Council therefore reasoned from a
+stale 5-share AZN.ST position and an 11,288 SEK ISK-cash figure that was
+actually already down to ~845 SEK by the time this memo was written. Below:
+AZN.ST holds 5 shares and the ISK cash figure is 11,288 SEK — both numbers
+are superseded. Current state (8 AZN.ST shares, ISK cash ~845 SEK, gold
+position added, targets updated to 80/10/5/0/5) is in `data/portfolio.json`
+and `OPEN_ITEMS.md`'s P7 entry. The AZN.ST BUY thesis itself is not
+contradicted by this — if anything the 2026-09-02 price (1,555.50, down from
+this memo's 1,571.50) is marginally cheaper — but any further sizing decision
+needs the real cash figure, not this memo's.
+
 ---
 
 ## 1. Position report

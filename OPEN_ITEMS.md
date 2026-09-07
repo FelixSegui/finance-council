@@ -23,27 +23,30 @@ the memo leads with it rather than burying it.
 
 **Emphasis:** portfolio-tending
 
-**Set by the 2026-08-31 review.** Scout itself is healthy and needs no extra
-attention this time — status VALID, 33 new candidates, 4% turnover, zero
-fetch failures — so this is not a call to go looking harder. It is a call to
-stop letting found things sit. Three separate signals are now stacking, not
-just repeating: **AZN.ST's BUY has been the top call for a fourth consecutive
-sweep**, and the delay is no longer a rounding error — the 3-share tranche
-priced at ~4,440 SEK on 2026-08-17 and now prices at ~4,715 SEK, a ~275 SEK
-(+6.2%) cost of not acting on unchanged fundamentals. **ABB.ST's SELL has been
-reaffirmed a second consecutive sweep** on a break condition the memo itself
-says "has now been sitting satisfiable for four sweeps." And the capital those
-ABB proceeds should fund has **churned across three different names in three
-sweeps — GOOGL (08-18) → META (08-24) → VICI (08-31) — without the underlying
-trade ever executing once.** That churn is not evidence against any of the
-three names; it is evidence that a decided rotation is not converting into an
-order. P3 (PayPal routing) adds a fourth thread, unexecuted for a fourth
-sweep. None of this requires new analysis — the analysis exists, repeatedly,
-across multiple sweeps. What it requires is the human executing, declining, or
-explicitly re-deciding D-a (Section 7 of the 2026-08-31 memo), so the same
-capital stops being re-argued from scratch every week. Revisit once AZN.ST,
-the ABB rotation, and P3 execute or are explicitly declined — an explicit "no"
-closes a loop as well as a "yes"; silence does not.
+**Set by the 2026-09-07 review, continuing the 2026-08-31 call.** Scout is
+healthy this sweep (status VALID, 40 of 74 screened passed, one fetch
+failure) — the frozen top-15 (APP/SNDK/NVDA holding ranks 1/2/3 for three
+consecutive runs) is a discovery-pillar watch item, not yet a failure, and
+does not itself argue for spending more depth on prospecting. What does argue
+for portfolio-tending: three calls that have already sat unexecuted across
+multiple sweeps are now joined by a fourth open fork. **ABB.ST's SELL is a
+third consecutive sweep**, and its own record only just caught up with two
+sweeps of live SELL calls (`thesis_status` WEAKENING → BROKEN, corrected this
+session). **VICI's BUY has held the same destination for a second
+consecutive sweep**, finally ending the GOOGL → META → VICI churn, but it is
+structurally linked to the ABB sale — no ABB sale, no VICI buy — and neither
+has executed. **AZN.ST's BUY is blocked on the fifth-plus-consecutive-sweep
+unexecuted P3 PayPal conversion** (~14,268 SEK); ISK cash is confirmed at
+only 845.43 SEK, not enough for one share. And this sweep adds a genuinely
+new fork: **D-c, the crypto sleeve** — portfolio's own stress arithmetic
+(explicitly not a backtest; see S26) now puts the 80/10/5/5 mix at roughly
+-36% against the stated -30% drawdown tolerance, with crypto itself sitting
+at 10.30% after a 30-day +22.8%/+30.7% move. None of this needs new
+analysis — the analysis exists, repeatedly, across multiple sweeps. What it
+needs is the user executing, declining, or explicitly re-deciding: the
+linked ABB/VICI order, the P3 conversion that funds AZN.ST, and D-c's
+crypto-sleeve question. An explicit "no" closes a loop as well as a "yes";
+letting a call reach a fourth or fifth sweep unactioned does not.
 
 ---
 
@@ -90,6 +93,10 @@ closes a loop as well as a "yes"; silence does not.
   PayPal, excluding the tax reserve and checking float) is 25,381.69 SEK.
   Merits unchanged; the inflow keeps recurring regardless of when this
   executes.
+- **2026-09-07 note:** still not executed, fifth-plus consecutive sweep.
+  PayPal balance now ~14,268 SEK; ISK cash independently verified at 845.43
+  SEK, so this is now the binding constraint on the AZN.ST BUY as well as the
+  original fee-drag rationale.
 - Full deliberation history (the Stripe-routing dead end, the
   multi-sweep repeated-advice pattern, the Revolut-balance/D3 cross-link):
   `reports/SESSION_LOG.md`'s 2026-08-10 through 2026-08-17 entries.
@@ -139,6 +146,12 @@ closes a loop as well as a "yes"; silence does not.
   voice's call (Contrarian again, plus Copycat reading only "acquisitions,
   no disposals"). D-b unchanged, now costing a voice's attention every
   single sweep — see S6.
+- **2026-09-07 note:** fourth consecutive sweep, and now a genuine
+  disagreement rather than a single blocked voice — Contrarian still wants
+  to sell (91% of range, no measurable valuation) while Copycat's FI pull
+  shows the CEO buying personally and repeatedly through 2026 at rising
+  prices (most recently 850 sh above today's price, 2026-09-01). The
+  Chairman's pick is Option 1 (get the NAV number) — see D-b.
 
 ### P6 — Build the medium tier (~26,400 SEK available)
 - **Status:** retroactive review DONE 2026-08-17 — decision on rotation is now
@@ -224,6 +237,20 @@ closes a loop as well as a "yes"; silence does not.
   essentially flat (938.40, -0.6% week-over-week), conviction 7. Proceeds
   now proposed for VICI rather than META — third destination in three
   sweeps (GOOGL → META → VICI), none executed. See D-a.
+- **2026-09-07 note — SELL reaffirmed a third consecutive sweep, conviction
+  7, and the record finally caught up with the decision.** ABB's
+  `thesis_status` field was corrected from WEAKENING to BROKEN this session —
+  it had not been updated after the 2026-08-24/08-31 escalations, leaving it
+  contradicting the system's own live SELL call for two full sweeps. ABB's
+  own numbers actually improved slightly since the 2026-08-17 review (P/E
+  37.3 → 35.3, PEG 2.71 → 2.11); the field changed because the record was
+  finally written, not because the business deteriorated further. This
+  sweep's FI pull also confirms the insider-selling clause has now tested
+  negative *twice* (2026-08-23 and 2026-09-07 both return the identical
+  Terwiesch/Meline transactions already on record since 2026-08-23) — the
+  SELL now stands on valuation alone. Proceeds still proposed for VICI
+  (second consecutive sweep at that destination) — see D-a. Still not
+  executed.
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated
@@ -328,6 +355,10 @@ IDs are never reused — an S-number in an old memo always means the same item.
   No progress possible without a human at Avanza; not closing because the
   position (~4.9% of the portfolio) still has no live feed and the flag is
   what prevents anyone from trusting the wrong number.
+- **Reviewed 2026-09-07: can wait, unchanged.** No new evidence this
+  session — this sweep's memo again used the broker figure (7,093.80 SEK)
+  with the KNOWN BAD flag correctly applied. Still nothing to build; still
+  needs a human at Avanza.
 - **Why:** the user holds a Valour Bitcoin Zero SEK certificate (ISIN
   CH0585378661). master-6.xlsx's Universe tab resolved it to `BTC0E.AS`
   (Euronext Amsterdam) and Yahoo recognises that ticker, but **the price does
@@ -353,6 +384,15 @@ IDs are never reused — an S-number in an old memo always means the same item.
   sweep, reaches a real conclusion it cannot act on. The fix is ~10 minutes
   of human work (Excel request H), not a code change; recommending it
   directly rather than waiting for it to keep resurfacing.
+- **Reviewed 2026-09-07: valuable soon, escalating.** Fourth consecutive
+  sweep the same gap blocked a real call — this time not just one silenced
+  voice but a genuine disagreement neither side can settle without the
+  number: Contrarian wants to sell INVE-A.ST on unmeasurable valuation (91%
+  of 52-week range), Copycat cites the CEO buying personally and repeatedly
+  through 2026 at rising prices (most recently above today's price,
+  2026-09-01) as evidence against. The Chairman's own pick this sweep is
+  Option 1 — get the NAV number. Recommending directly again: ~10 minutes of
+  human work with a real, compounding cost of not doing it.
 - **Why:** Investor A and Industrivärden cannot be valued on P/E; the real
   metric is NAV discount/premium, and no free automated source has been found.
   The funnel's `value` lens has the same blind spot — it ranks these names on
@@ -362,29 +402,6 @@ IDs are never reused — an S-number in an old memo always means the same item.
   report), or read it off Investor's IR page and record it in
   `data/company_profiles/INVE-A.ST.json` with source and date. One number,
   refreshed quarterly, not a fetcher.
-
-### S20 — [prospecting] Copycat/Smart Money has only half its data
-- **Status:** open — evidence reaffirmed 2026-08-31
-- **Reviewed 2026-08-31: valuable soon, but scope-narrow it against S25.**
-  This item is specifically the *source* gap (no script fetches
-  institutional ownership/13F at all, for anyone). This sweep's own
-  fetch-scope gap (US insider Form 4 never submitted for candidates — a
-  *working* fetcher invoked too narrowly) is a distinct, cheaper-to-fix
-  problem and is tracked separately as **S25**. Don't conflate the two when
-  scoping work: S25 is a one-line fix; this one needs a new data source.
-- **Why:** the Copycat voice was added to `council.md` this sweep. Two of its
-  four named inputs are fetched (SEC Form 4 counts via `--insiders`,
-  Finansinspektionen Insynsregister via `--fi-issuers`). **Institutional
-  ownership changes, activist positions and 13F filings are fetched by no
-  script in this system.** The voice is instructed to write `MISSING` rather
-  than reason from training knowledge, which is correct but means it runs at
-  roughly half strength on every US name.
-- **How:** evaluate whether SEC EDGAR's 13F endpoints are reachable through
-  this environment's proxy (`www.sec.gov` currently returns 403 through the
-  tunnel; `data.sec.gov` untested). If reachable, a `--institutional` fetch of
-  13F holder counts and quarter-over-quarter change per ticker would close
-  most of the gap. If not reachable, say so in the item and stop — a blocked
-  source that is honestly labelled beats a half-source that gets guessed at.
 
 ### S21 — [prospecting] Nordic coverage: 107 names, and a data asymmetry underneath
 - **Status:** open — the headline problem is fixed; a quieter one it exposed is not
@@ -398,6 +415,15 @@ IDs are never reused — an S-number in an old memo always means the same item.
   reproducible property of the data," which raises the case for actually
   building option 1 (per-market coverage surfaced alongside each lens
   shortlist) rather than continuing to only note it.
+- **Reviewed 2026-09-07: valuable soon, third measurement, same gap, and it
+  now decided a screen status directly.** This sweep's scorecard: `fwd_pe`
+  67% Sweden vs 100% US, a 33pp spread — essentially unchanged from 2026-08-31
+  (32pp) and 2026-08-24 (35% missing, earlier method). Three independent
+  measurements, same distortion. This sweep it stopped being abstract:
+  VOLCAR-B.ST — the one candidate this sweep with a genuine multi-insider
+  buying signal (CEO + two other insiders, all buying above today's price) —
+  screens MISSING rather than PASS/FAIL purely because of the absent forward
+  multiple, ranking it on fewer fields than any US peer.
 - **2026-08-24 (evening):** the user supplied a 120-row Swedish ticker CSV.
   `scripts/watchlist.py universe-import` verified it and the universe went
   from 538 names (20 Nordic) to 622 (107 Nordic, 17%). Swedish names now
@@ -439,6 +465,17 @@ IDs are never reused — an S-number in an old memo always means the same item.
   noise. JUDGEMENT and DECISION remain unmeasurable (all voices n=2-4,
   need 20) — unchanged from last sweep, as expected since
   `data/decisions.csv` only began filling 2026-08-25.
+- **Reviewed 2026-09-07: one more data point, not a verdict — say so
+  plainly.** This sweep's MECHANICAL pillar flips to "ranking adds signal"
+  (top-half median +0.7% vs bottom-half +0.4%), reversing 2026-08-31's
+  "ranking is not adding signal" (+0.7% vs +0.7%). Four of five lenses now
+  clear n=20 for the first time (defensive n=29, value n=27, quality n=44,
+  growth n=23; contrarian n=17, still short). Per this item's own standing
+  rule, two consecutive runs disagreeing is exactly the noise this item
+  exists to hold until it firms up — neither sweep's read should be quoted
+  as a finding about whether the funnel's ranking works. JUDGEMENT and
+  DECISION remain unmeasurable (all voices n<20; Chairman n=4, voices n=45).
+  Still explicitly blocked: any weighting of the Council.
 - **Why:** `scripts/scorecard.py` now measures six pillars, and three of them
   correctly report "insufficient evidence": MECHANICAL needs at least two
   scout runs with recorded prices before a rank can be tested against what
@@ -468,6 +505,19 @@ IDs are never reused — an S-number in an old memo always means the same item.
   scoring, shown flagged, and the Chairman correctly returned NO ACTION on
   both citing the suspect flag by name) — but the same nine-per-sweep rate
   suggests the underlying cause is stable, not shrinking.
+- **Reviewed 2026-09-07: valuable soon, and the mitigation has a confirmed
+  coverage hole.** The detector correctly flagged ASML's `roic_pct`/
+  `price_to_book` again this sweep and withheld ABB's `price_to_book=104.57`
+  — but it did **not** flag TSM's `roic_pct=183.7%` or `fcf_yield_pct=32.85%`,
+  both implausible for a capital-intensive foundry and both still feeding
+  TSM's `z_quality` 1.926 and its rank-7 position. The Quality voice caught
+  the problem manually and rested its case on ROE 40.0%/net_debt-EBITDA
+  -0.77 instead — that is a voice compensating for a detector gap, not the
+  detector working. Worth checking whether the plausibility bounds are
+  asymmetric across metric families (e.g. tighter on `price_to_book` than on
+  `roic_pct`/`fcf_yield_pct`), since a detector calibrated to catch ASML's
+  tail but not TSM's near-identical shape of implausibility is calibrated on
+  an incomplete distribution.
 - **Why:** the 2026-08-25 run flagged nine values outside plausible ranges,
   including Industrivärden at 1198% "revenue growth" (Yahoo counts investment
   gains as revenue for a holding company), Orexo at a 2775% profit margin, and
@@ -486,39 +536,19 @@ IDs are never reused — an S-number in an old memo always means the same item.
   healthy companies as data gaps: banks legitimately have no debt-to-equity,
   and holding companies legitimately have no meaningful revenue line.
 
-### S25 — [judgement] `--insiders` fetch never targets newly discovered candidates
-- **Status:** open — new 2026-08-31
-- **Why:** `fetch_market_data.py --insiders` was invoked this sweep only
-  against the 8 holding tickers, all non-US, so SEC EDGAR returned "skipped:
-  non-US ticker" eight times and nothing else. The 11 US-listed names in the
-  22-name focus set — NVDA, APP, MA, V, VICI, TPL, EG, SMCI, APO, MU, SNDK —
-  were never submitted, even though EDGAR covers all of them. This is a
-  scope gap in an *already-working* fetcher, not a missing source — distinct
-  from S20, which is about institutional/13F data that no script fetches at
-  all for anyone. Consequence this sweep: the Copycat voice had zero insider
-  read on the entire newly-discovered half of the candidate set, including
-  **VICI, the Chairman's own #3 Top-5 BUY this sweep.**
-- **Root cause:** the canonical sweep order runs `fetch_market_data.py`
-  (with `--insiders`) *before* `scout.py` produces the candidate/focus list
-  (CLAUDE.md's "Running a sweep," step 1 precedes step 2). The insiders call
-  can therefore only target tickers already known before discovery happens —
-  holdings and watchlist — never a name scout surfaces fresh that same
-  sweep.
-- **How:** after `scout.py` writes the focus list, run a second, narrow
-  `fetch_market_data.py --tickers <US-listed focus names> --insiders` pass
-  (Form 4 lookups are per-ticker and idempotent, so this doesn't disturb any
-  other field in the snapshot) and merge the result in before `council`
-  runs. Concretely: have `scout.py` emit the US-listed subset of its focus
-  list to a small file (or print it to stdout for the sweep script to
-  capture), and add one command to CLAUDE.md's "Running a sweep" section
-  that reads it. No new agent, no new fetcher — the source already works.
-- **Improves:** judgement (Copycat is currently blind on exactly the names
-  that most need a second opinion — new discoveries with no track record)
-  and decision quality (this sweep's Top-5 BUY was made with a named,
-  avoidable data gap on the newest position in the book).
-
 ### S26 — [data] Drawdown backtest window contains no real shock to test the stated tolerance
 - **Status:** open — new 2026-08-31, narrowed successor to the closed S5
+- **Reviewed 2026-09-07: valuable soon, and now gating a live decision, not
+  just a scorecard caveat.** This sweep's portfolio lens changed the
+  drawdown-tolerance row from OK to **WATCH-unverified-not-OK**, based on its
+  own stress arithmetic (explicitly labelled NOT a backtest) showing the
+  current 80/10/5/5 mix at roughly -36% against the stated -30% tolerance.
+  That produced a new open decision, **D-c** (trim crypto now / wait for
+  S26's real shock-window backtest / change the tolerance), with the
+  Chairman's own pick being to wait for this item's fix before deciding.
+  This item is no longer purely structural — it is now the named gate on a
+  live portfolio call, which raises its priority without changing what needs
+  building.
 - **Why:** S5 (does the adopted 85/10/5/0 target respect the -30% drawdown
   tolerance) was marked resolved 2026-08-17 and reaffirmed within 0.7pp this
   sweep: a 90/10 equity/crypto proxy over 2019-06 to 2026-08 (86 months)
@@ -555,6 +585,15 @@ IDs are never reused — an S-number in an old memo always means the same item.
 - **Status:** open — new 2026-09-07, opened without further deliberation per
   the standing instruction left in this file's own closed log 2026-08-31
   ("if a third occurs, open the S-item without further deliberation")
+- **2026-09-07 meta review — cap resolved without touching this item, as
+  instructed.** S20 closed this session (its own stated exit condition — "if
+  not reachable, say so and stop" — was met: SEC EDGAR's CIK-mapping fetch,
+  the same `www.sec.gov` gateway S20 asked about, returned a confirmed 403
+  rather than an untested unknown). S25 closed as a downstream symptom of
+  that same confirmed block, not a distinct live problem (see Closed log for
+  both). One new item, S28, opened from this session's AZN.ST
+  capital-timing-lag finding. Net: 8 open S-items (S1, S6, S21, S23, S24,
+  S26, S27, S28).
 - **Why:** the scheduled prompt that launches this weekly sweep is stored
   text, edited by hand outside a session, and it does not update itself when
   the facts it assumes change. Three confirmed occurrences now, each caught
@@ -594,11 +633,49 @@ IDs are never reused — an S-number in an old memo always means the same item.
   exact "process for its own sake" failure mode CLAUDE.md warns about, just
   running in reverse: not too much process, but a piece of it going stale
   unattended).
-- **Note on the 8-item S-cap:** opening this brings open S-items to 9 (S1,
-  S6, S20, S21, S23, S24, S25, S26, S27). Per the standing cap-pressure
-  precedent (S9 closed 2026-08-31 for exactly this reason), `meta` should
-  resolve this at its own step this sweep — this item's own text is what
-  triggered it and it should not be the one closed to fix it.
+
+### S28 — [process] Capital-availability premises go stale between real-world execution and when it's reported — now a confirmed recurring pattern
+- **Status:** open — new 2026-09-07, second confirmed recurrence of a
+  failure mode previously closed as "resolved" (2026-08-12)
+- **Why:** the 2026-08-31 memo's headline call (BUY 3 shares AZN.ST, ~4,715
+  SEK, funded from an 11,288 SEK ISK-cash figure) was marked `expired` in
+  `data/decisions.csv` this session because a real 3-share AZN.ST purchase
+  had already happened on 2026-08-25 — **before the 2026-08-31 memo was
+  even written** — but was not reported to the system until 2026-09-02. The
+  call was computed on a stale capital base that no longer existed by the
+  time it was made. `journal`'s own reconciliation this session names this
+  as "the same shape of failure first named 2026-08-11/12" — and that
+  earlier occurrence was explicitly closed 2026-08-12 as "resolved and
+  confirmed working." It has now recurred, which means the earlier fix did
+  not hold, or covered a narrower case than this one. Per the never-reuse-ID
+  rule this is tracked fresh rather than reopened under the old entry.
+- **Cost this time:** a full Council BUY call, sized and reasoned in detail,
+  had to be discarded rather than evaluated on its merits — not because the
+  thesis was wrong, but because the capital premise was already false when
+  the call was made. That is wasted judgement-layer work and a real risk:
+  if the mismatch had been smaller or less obviously wrong, it could have
+  gone unnoticed rather than been caught and marked `expired`.
+- **How:** the root cause is a reporting lag, not a computation error — the
+  system correctly used the most recent data it had; the data was just
+  stale because a real-world trade happened between sweeps and wasn't
+  entered until later. A deterministic mitigation: before computing
+  available capital for any BUY call, have `position_report.py` or
+  `journal`'s session-start step explicitly surface the gap between the
+  portfolio snapshot's `as_of` date and today, and ask "have any trades
+  executed since the last recorded snapshot that are not yet in
+  `portfolio.json`/`transactions.csv`?" A stronger version: timestamp each
+  BUY call's capital assumption in `data/decisions.csv`, and have a later
+  transaction that pre-dates the call's execution but post-dates its
+  snapshot auto-flag the call for review rather than waiting for the next
+  full reconciliation to catch it by hand.
+- **Improves:** decision quality (prevents a Council call being built on a
+  capital assumption already false at the time it's made — the same
+  "confident structure built on stale data" failure CLAUDE.md names as the
+  system's single biggest risk, here applied to the user's own reported
+  cash position rather than a fetched market number) and process
+  reliability (this is the same "stored premise drifting out of sync with
+  real state" shape as S27, in the capital/portfolio domain rather than the
+  scheduler-prompt domain).
 
 ---
 
@@ -701,6 +778,53 @@ One line each. **Full text of every entry is in
 `data/portfolio_history_archive.md`** (section: "OPEN_ITEMS.md closed log,
 archived verbatim 2026-08-24"), moved there so this file holds what is
 outstanding rather than what is finished. Nothing was deleted.
+
+### Closed by the 2026-09-07 session
+
+- **S20 — closed: its own question answered.** "Is `www.sec.gov` reachable
+  through this proxy?" is no longer untested — this sweep's Copycat voice
+  confirmed a `Tunnel connection failed: 403 Forbidden` on the SEC EDGAR
+  CIK-mapping fetch, the same gateway this item asked about, and the gap
+  landed on a Top-5 BUY (VICI) for the second consecutive sweep. Per this
+  item's own stated instruction ("if not reachable, say so and stop"), the
+  honest close is: not reachable through this environment's proxy, stop
+  pursuing it here. Reopen (under a fresh ID, per the never-reuse rule) only
+  if a future session confirms `data.sec.gov` — a distinct host, still
+  genuinely untested — is reachable; that would be new evidence, not a
+  reopening of this exact question.
+- **S25 — closed: superseded by S20's confirmed finding, not resolved on its
+  own terms.** S25 diagnosed a fetch-scope gap (US-listed candidates never
+  submitted to `--insiders` because the fetch runs before `scout.py`
+  produces the focus list) and proposed a second, narrower fetch pass after
+  discovery. That second pass was actually run this session and made no
+  difference — the CIK-mapping fetch itself is blocked (S20), upstream of
+  any ticker list a scope fix could submit. S25's diagnosis was real for the
+  sweep it was written on, but this session shows it was not the operative
+  cause this time, and no scope fix can reach past a blocked gateway. Not
+  reopening a distinct "scope" question under this ID if EDGAR ever becomes
+  reachable again — that would need a fresh evaluation of whether the scope
+  gap still bites once the gateway works, tracked under a new ID.
+- **Considered, not opened: ABB.ST's `thesis_status` field lagging two
+  sweeps of live SELL calls before this session's correction (WEAKENING ->
+  BROKEN).** A real gap — the record didn't keep up with a decision the
+  Chairman had already made twice — but this is its first confirmed
+  occurrence, it self-corrected within the same session's memo (the Council
+  itself named the discrepancy plainly: "partly a fact about this system's
+  record-keeping"), and it caused no wrong action. Per the same standing
+  pattern used for the scheduled-prompt drift (not opened as S27 until a
+  third occurrence), watching for a second confirmed instance of a stored
+  thesis/status field lagging repeated same-direction Chairman calls before
+  opening a mechanism to sync it automatically.
+- **Considered, not opened: `investor_profile.json.reference_targets` stale
+  against `portfolio.json.targets` since the 2026-09-02 gold carve (85/10/5/0
+  vs the authoritative 80/10/5/0/5).** Per CLAUDE.md's ownership table,
+  `portfolio.json` owns targets and is what every live figure in this
+  sweep's memo actually used, so nothing in this sweep's output was wrong.
+  This is a one-line stale-copy fix, not a standing system defect — flagged
+  directly for a direct correction (update the field to match
+  `portfolio.json.targets`, i.e. 80/10/5/0/5) rather than opened as an
+  S-item, the same treatment given to the "two stale strings" finding closed
+  directly in the 2026-08-31 session's log.
 
 ### Closed by the 2026-08-31 session
 
@@ -825,6 +949,10 @@ outstanding rather than what is finished. Nothing was deleted.
 - 2026-08-12 — S10 resolved, not just improved.
 - 2026-08-12 — Transaction-dedup bug found and fixed the same session, never carried forward as an open item.
 - 2026-08-12 — Capital-availability premise check (deferred 2026-08-11 as "one occurrence isn't a pattern") — now resolved and confirmed working.
+  **2026-09-07 note: this did not hold.** The same shape of failure recurred
+  (2026-08-25 AZN.ST purchase unreported until 2026-09-02, expiring the
+  2026-08-31 BUY call) — tracked fresh as **S28**, not reopened under this
+  entry, per the never-reuse-ID rule.
 - 2026-08-12 — D4 (profit-recycling gross-vs-realized-gain ambiguity) folded into S12, not opened as a separate item.
 - 2026-08-11 — S11 fixed and confirmed (two "% of 52-week range" definitions).
 - 2026-08-11 — the AZN-vs-Avanza-Global cash-routing premise check (raised as a possible new S-item, deferred, not opened).

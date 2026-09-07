@@ -551,6 +551,55 @@ IDs are never reused — an S-number in an old memo always means the same item.
   crypto sleeve — the position most likely to actually blow through a shock
   scenario — is the one part of the target this backtest tests least).
 
+### S27 — [process] The scheduled task's stored prompt drifts stale against real file state, and this is now the third confirmed occurrence
+- **Status:** open — new 2026-09-07, opened without further deliberation per
+  the standing instruction left in this file's own closed log 2026-08-31
+  ("if a third occurs, open the S-item without further deliberation")
+- **Why:** the scheduled prompt that launches this weekly sweep is stored
+  text, edited by hand outside a session, and it does not update itself when
+  the facts it assumes change. Three confirmed occurrences now, each caught
+  and corrected in the memo itself rather than causing a wrong action, which
+  is exactly why this sat at "considered, not opened" for two of them:
+  - **2026-08-17:** contradicted CLAUDE.md's canonical flow (specifics not
+    re-litigated here; see that date's SESSION_LOG entry).
+  - **2026-08-31:** asserted the Handelsbanken wrapper question was still
+    unresolved and required the memo to open with it (resolved
+    2026-07-07/2026-08-03); asserted `investor_profile.json.reference_targets`
+    were still null (adopted 2026-07-27, written 2026-08-03); asserted this
+    sweep's backtest was the first ever run (one ran 2026-08-17).
+  - **2026-09-07 (this sweep):** the identical two premises from 2026-08-31
+    recurred verbatim — Handelsbanken wrapper "unresolved, memo MUST open
+    with it" and reference_targets "are null" — both still false on the same
+    two files (`data/portfolio.json.open_structural_questions` is `null`,
+    moved to `OPEN_ITEMS.md` 2026-07-07/2026-08-03;
+    `investor_profile.json.reference_targets` carries adopted, non-null
+    values plus the 2026-08-25 gold-tranche amendment). The prompt text was
+    not refreshed between the second and third occurrence despite the
+    2026-08-31 closed-log entry naming exactly this fix.
+- **How:** whatever stores this scheduled task's prompt (outside this
+  repository — a trigger/routine configuration, not a file `meta` can edit)
+  needs its two stale lines removed or rewritten to reference the *current*
+  resolution status rather than restating a snapshot of facts from whenever
+  the prompt was last authored. Concretely: drop the Handelsbanken-wrapper
+  framing entirely (closed, two months resolved) and rewrite the
+  reference_targets line to ask "does the currently adopted target still
+  look right given the horizon/drawdown/glidepath considerations," not
+  "propose one from null." This is outside `meta`'s write access (it edits
+  `OPEN_ITEMS.md`, not the scheduler), so the fix is a recommendation to the
+  user, not a self-applying change.
+- **Improves:** decision quality (a stale premise that goes uncaught, unlike
+  the three confirmed self-mitigated instances, would produce a wrong
+  action, not just wasted words) and process reliability (this is the
+  system's own scheduling input drifting out of sync with itself — the
+  exact "process for its own sake" failure mode CLAUDE.md warns about, just
+  running in reverse: not too much process, but a piece of it going stale
+  unattended).
+- **Note on the 8-item S-cap:** opening this brings open S-items to 9 (S1,
+  S6, S20, S21, S23, S24, S25, S26, S27). Per the standing cap-pressure
+  precedent (S9 closed 2026-08-31 for exactly this reason), `meta` should
+  resolve this at its own step this sweep — this item's own text is what
+  triggered it and it should not be the one closed to fix it.
+
 ---
 
 ## V2 Roadmap — user-authored

@@ -23,30 +23,33 @@ the memo leads with it rather than burying it.
 
 **Emphasis:** portfolio-tending
 
-**Set by the 2026-09-07 review, continuing the 2026-08-31 call.** Scout is
-healthy this sweep (status VALID, 40 of 74 screened passed, one fetch
-failure) — the frozen top-15 (APP/SNDK/NVDA holding ranks 1/2/3 for three
-consecutive runs) is a discovery-pillar watch item, not yet a failure, and
-does not itself argue for spending more depth on prospecting. What does argue
-for portfolio-tending: three calls that have already sat unexecuted across
-multiple sweeps are now joined by a fourth open fork. **ABB.ST's SELL is a
-third consecutive sweep**, and its own record only just caught up with two
-sweeps of live SELL calls (`thesis_status` WEAKENING → BROKEN, corrected this
-session). **VICI's BUY has held the same destination for a second
-consecutive sweep**, finally ending the GOOGL → META → VICI churn, but it is
-structurally linked to the ABB sale — no ABB sale, no VICI buy — and neither
-has executed. **AZN.ST's BUY is blocked on the fifth-plus-consecutive-sweep
-unexecuted P3 PayPal conversion** (~14,268 SEK); ISK cash is confirmed at
-only 845.43 SEK, not enough for one share. And this sweep adds a genuinely
-new fork: **D-c, the crypto sleeve** — portfolio's own stress arithmetic
-(explicitly not a backtest; see S26) now puts the 80/10/5/5 mix at roughly
--36% against the stated -30% drawdown tolerance, with crypto itself sitting
-at 10.30% after a 30-day +22.8%/+30.7% move. None of this needs new
-analysis — the analysis exists, repeatedly, across multiple sweeps. What it
-needs is the user executing, declining, or explicitly re-deciding: the
-linked ABB/VICI order, the P3 conversion that funds AZN.ST, and D-c's
-crypto-sleeve question. An explicit "no" closes a loop as well as a "yes";
-letting a call reach a fourth or fifth sweep unactioned does not.
+**Set by the 2026-09-14 review, continuing three consecutive sweeps of the
+same call (2026-08-31, 2026-09-07).** The stack of unexecuted decisions did
+not shrink this sweep — it aged, and it gained a new hard trigger. **ABB.ST's
+SELL reaches a fourth consecutive sweep** unexecuted (cost so far ~0.2%, not
+the argument — the argument is that a decision reaching a fourth sweep stops
+being a decision). **VICI's linked BUY holds for a fourth run** at the same
+destination, structurally gated on the ABB sale that hasn't happened.
+**AZN.ST's BUY is now blocked on a sixth-plus-consecutive-sweep unexecuted P3
+PayPal conversion**, with ISK cash independently re-verified at 845.43 SEK —
+unchanged, still short of one share. **Institution concentration (Avanza ISK)
+crossed the 80% cap this sweep, now reading 83.12%, formally ACT** — a new
+binding constraint, not just an aging one, though the ABB-to-VICI trade (if
+executed) offsets it, since both sit inside the same ISK. **The crypto sleeve
+decision (D-c) reaches a third sweep deferred**, and this sweep adds real
+timing pressure: Fear & Greed moved from 29 ("Fear") to 57 ("Greed") in three
+weeks while ETH ran +33.6% over 30 days — portfolio's proposed 7%/8%
+crypto/gold rebalance is exactly the kind of call that gets harder to make
+calmly the longer it waits. One genuine piece of good news: the SHB-A.ST SELL
+was retired this sweep rather than carried again — the system correctly
+recognising a call too small to matter, a model for what should happen to the
+rest of this stack, one way or the other. None of this needs new analysis; it
+needs the user executing, declining, or explicitly re-deciding the ABB/VICI
+order, the P3 conversion, and D-c. Discovery is a real but secondary watch
+item this sweep (frozen top-15 for a fourth run, VOLCAR-B.ST dropping out
+unresolved) — scout runs every sweep regardless, so this argues for eventual
+attention to the funnel's coverage gaps (S21), not for reallocating this
+sweep's depth away from the standing execution backlog.
 
 ---
 
@@ -97,6 +100,11 @@ letting a call reach a fourth or fifth sweep unactioned does not.
   PayPal balance now ~14,268 SEK; ISK cash independently verified at 845.43
   SEK, so this is now the binding constraint on the AZN.ST BUY as well as the
   original fee-drag rationale.
+- **2026-09-14 note:** still not executed, sixth-plus consecutive sweep.
+  PayPal balance now 14,227.88 SEK at this sweep's FX; ISK cash re-verified
+  again at the identical 845.43 SEK. Nothing about the merit or the blocking
+  relationship to the AZN.ST BUY has changed since 2026-09-07 — only the
+  count of sweeps this has sat unexecuted.
 - Full deliberation history (the Stripe-routing dead end, the
   multi-sweep repeated-advice pattern, the Revolut-balance/D3 cross-link):
   `reports/SESSION_LOG.md`'s 2026-08-10 through 2026-08-17 entries.
@@ -108,9 +116,11 @@ letting a call reach a fourth or fifth sweep unactioned does not.
   `data/portfolio.json`'s Valour holding entry. A candidate replacement
   (BITC, a US-listed ETF) was evaluated and rejected first — see
   `reports/2026-08-17-council-memo-2.md`. Only remaining loose end: a
-  tradeable ticker for live pricing of the Valour certificate (S1) — a
-  pricing convenience, not a reason to reopen this item. Full
-  deliberation history: `data/portfolio_history_archive.md#p4-deliberation-history-full-text-archived-2026-08-17-item-is-closed`.
+  tradeable ticker for live pricing of the Valour certificate — a pricing
+  convenience, not a reason to reopen this item, and the ticker question
+  itself was closed under cap pressure this session (see S1's closed-log
+  entry, 2026-09-14). Full deliberation history:
+  `data/portfolio_history_archive.md#p4-deliberation-history-full-text-archived-2026-08-17-item-is-closed`.
 
 ### P5 — ETH thesis (the two stocks are now done)
 - **Status:** open for ETH only
@@ -152,6 +162,13 @@ letting a call reach a fourth or fifth sweep unactioned does not.
   shows the CEO buying personally and repeatedly through 2026 at rising
   prices (most recently 850 sh above today's price, 2026-09-01). The
   Chairman's pick is Option 1 (get the NAV number) — see D-b.
+- **2026-09-14 note:** fifth consecutive sweep, and the disagreement moved
+  rather than resolved. The Contrarian voice stood down this sweep on new
+  primary evidence — Jacob Lund bought 1,000 A-shares at 399.13 SEK on
+  2026-09-09, within 0.1% of today's price — the first datapoint suggesting
+  someone who can see the NAV thinks this price is acceptable. That is not
+  the missing number itself, and the Council memo says so plainly: it
+  "resolves nothing, it just moves the deadlock." D-b unchanged; see S6.
 
 ### P6 — Build the medium tier (~26,400 SEK available)
 - **Status:** retroactive review DONE 2026-08-17 — decision on rotation is now
@@ -251,6 +268,15 @@ letting a call reach a fourth or fifth sweep unactioned does not.
   SELL now stands on valuation alone. Proceeds still proposed for VICI
   (second consecutive sweep at that destination) — see D-a. Still not
   executed.
+- **2026-09-14 note — SELL reaffirmed a fourth consecutive sweep, conviction
+  7, cost of the delay still near zero.** ABB was 924.60 on 2026-08-25 and is
+  926.60 today, +0.2% — the point is not that waiting is costly, it is that a
+  decision reaching a fourth sweep unactioned stops being a decision.
+  Thesis-review independently reached BROKEN from this sweep's own numbers,
+  without being shown the Council's prior calls — an independent
+  confirmation, not a repeated opinion. Proceeds still proposed for VICI
+  (third consecutive sweep at that destination) — see D-a. Still not
+  executed.
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated
@@ -346,36 +372,6 @@ letting a call reach a fourth or fifth sweep unactioned does not.
 
 IDs are never reused — an S-number in an old memo always means the same item.
 
-### S1 — Verified SEK crypto-certificate ticker for the held Valour position
-- **Status:** open — blocks P4's verification (not P4's search, which is done)
-- **Reviewed 2026-08-31: can wait.** Still actively relevant — this sweep's
-  memo again carried the "KNOWN BAD" annotation and used the broker figure
-  (11,031-11,658 SEK depending on snapshot) instead of Yahoo's ~7x-off
-  price, so the workaround continues to be followed correctly every sweep.
-  No progress possible without a human at Avanza; not closing because the
-  position (~4.9% of the portfolio) still has no live feed and the flag is
-  what prevents anyone from trusting the wrong number.
-- **Reviewed 2026-09-07: can wait, unchanged.** No new evidence this
-  session — this sweep's memo again used the broker figure (7,093.80 SEK)
-  with the KNOWN BAD flag correctly applied. Still nothing to build; still
-  needs a human at Avanza.
-- **Why:** the user holds a Valour Bitcoin Zero SEK certificate (ISIN
-  CH0585378661). master-6.xlsx's Universe tab resolved it to `BTC0E.AS`
-  (Euronext Amsterdam) and Yahoo recognises that ticker, but **the price does
-  not reconcile**: Yahoo returns 47.292 EUR (~523 SEK) against a real known
-  value of ~73.54 SEK/unit per Avanza — roughly 7x off — with identical
-  52-week high and low, which suggests thin or stale data on that listing.
-  Nordic crypto-ETP tickers (Virtune, Valour, XBT Provider, CoinShares) change
-  and must be confirmed on Avanza, never guessed.
-- **How:** verify on Avanza whether `BTC0E.AS` is genuinely this instrument's
-  listing and why the price disagrees. Until then the position stays on the
-  user-relayed price path and is excluded from automated repricing/drift
-  checks — a position with no live feed.
-- **Note:** `python scripts/watchlist.py add/universe-add` now refuses to
-  write a ticker that doesn't resolve to real price data, which prevents a
-  *wrong* ticker being added — it cannot tell you whether a resolving ticker
-  is the *right* instrument. That still needs a human at Avanza.
-
 ### S6 — No source for holding-company NAV discount/premium
 - **Status:** open — blocks half of P5, and a Council voice wanted it on
   three consecutive sweeps and couldn't act
@@ -393,6 +389,17 @@ IDs are never reused — an S-number in an old memo always means the same item.
   2026-09-01) as evidence against. The Chairman's own pick this sweep is
   Option 1 — get the NAV number. Recommending directly again: ~10 minutes of
   human work with a real, compounding cost of not doing it.
+- **Reviewed 2026-09-14: valuable soon, fifth consecutive sweep — and the
+  deadlock moved rather than resolved.** The Contrarian voice stood down
+  this sweep, but on new *primary* evidence rather than on the missing
+  number ever being obtained: Jacob Lund bought 1,000 A-shares at 399.13 SEK
+  on 2026-09-09, within 0.1% of today's price — the first datapoint the
+  voice has ever had suggesting someone who can see the NAV thinks this
+  price is acceptable. The Council memo is explicit that this "resolves
+  nothing, it just moves the deadlock" back onto this item and D-b.
+  Recommending a fifth time: this is now a real voice reaching an
+  unresolved position on this holding in five consecutive sweeps it has
+  been asked to render one, for the cost of a single number.
 - **Why:** Investor A and Industrivärden cannot be valued on P/E; the real
   metric is NAV discount/premium, and no free automated source has been found.
   The funnel's `value` lens has the same blind spot — it ranks these names on
@@ -424,6 +431,17 @@ IDs are never reused — an S-number in an old memo always means the same item.
   buying signal (CEO + two other insiders, all buying above today's price) —
   screens MISSING rather than PASS/FAIL purely because of the absent forward
   multiple, ranking it on fewer fields than any US peer.
+- **Reviewed 2026-09-14: valuable soon, fourth measurement, same gap, and
+  this sweep the predicted harm went from partial to total.** This sweep's
+  scorecard: `fwd_pe` 69% Sweden vs 100% US, a 31pp spread — essentially
+  unchanged across four independent measurements (35% missing on 2026-08-24,
+  32pp on 2026-08-31, 33pp on 2026-09-07, 31pp today). VOLCAR-B.ST, the exact
+  name this item flagged last sweep as screening MISSING because of the
+  absent forward multiple, has now **dropped out of the candidate set
+  entirely**, without the underlying question — genuine buy candidate or
+  not — ever being resolved. A gap that used to cost a name its ranking now
+  costs it its presence in the funnel at all. Raises, again, the case for
+  building option 1 or 2 rather than continuing to only measure it.
 - **2026-08-24 (evening):** the user supplied a 120-row Swedish ticker CSV.
   `scripts/watchlist.py universe-import` verified it and the universe went
   from 538 names (20 Nordic) to 622 (107 Nordic, 17%). Swedish names now
@@ -476,6 +494,17 @@ IDs are never reused — an S-number in an old memo always means the same item.
   as a finding about whether the funnel's ranking works. JUDGEMENT and
   DECISION remain unmeasurable (all voices n<20; Chairman n=4, voices n=45).
   Still explicitly blocked: any weighting of the Council.
+- **Reviewed 2026-09-14: one more data point, not a verdict, and it flipped
+  back a second time.** This sweep's MECHANICAL pillar reads "RANKING IS NOT
+  ADDING SIGNAL" again (top-half median -2.3% vs bottom-half -1.7%),
+  reversing 2026-09-07's "adding signal" read, which had itself reversed
+  2026-08-31's "not adding signal" read. Three consecutive sweeps, three
+  different directions — this is exactly the noise this item exists to hold,
+  and none of the three reads should be quoted as a finding about the
+  funnel's ranking skill. JUDGEMENT and DECISION remain unmeasurable: every
+  voice and the Chairman still read "insufficient evidence" (per-voice n=6-12,
+  need 20; Chairman n=6, voices n=69). Still explicitly blocked: any
+  weighting of the Council.
 - **Why:** `scripts/scorecard.py` now measures six pillars, and three of them
   correctly report "insufficient evidence": MECHANICAL needs at least two
   scout runs with recorded prices before a rank can be tested against what
@@ -518,6 +547,16 @@ IDs are never reused — an S-number in an old memo always means the same item.
   `roic_pct`/`fcf_yield_pct`), since a detector calibrated to catch ASML's
   tail but not TSM's near-identical shape of implausibility is calibrated on
   an incomplete distribution.
+- **Reviewed 2026-09-14: valuable soon, and the coverage hole is now
+  confirmed on the identical name a second consecutive sweep.** TSM's
+  `roic_pct` 183.7% and `fcf_yield_pct` 32.52%/32.85% are again absent from
+  this run's suspect list and again feed `z_quality` (1.916 this run) and a
+  rank-7 position — same metric family, same name, two sweeps running. The
+  Quality voice again compensated manually, resting its TSM case on ROE
+  40.0% and net debt/EBITDA -0.77 rather than the two implausible figures.
+  Worth actually checking the plausibility-bounds calibration for
+  `roic_pct`/`fcf_yield_pct` now, rather than noting the identical gap a
+  third time next sweep.
 - **Why:** the 2026-08-25 run flagged nine values outside plausible ranges,
   including Industrivärden at 1198% "revenue growth" (Yahoo counts investment
   gains as revenue for a holding company), Orexo at a 2775% profit margin, and
@@ -549,6 +588,18 @@ IDs are never reused — an S-number in an old memo always means the same item.
   This item is no longer purely structural — it is now the named gate on a
   live portfolio call, which raises its priority without changing what needs
   building.
+- **Reviewed 2026-09-14: valuable soon, and now directly underwriting a
+  concrete rebalancing proposal, not just gating a decision.** This sweep's
+  portfolio lens proposed a specific reallocation (crypto 10%→7%, gold
+  5%→8%) explicitly contingent on "a real stress-tested backtest including
+  crypto's realistic drawdown distribution" — i.e. this item's own fix —
+  plus the user's direct confirmation. D-c is now deferred a **third**
+  consecutive sweep, and the timing argument sharpened this session: crypto
+  Fear & Greed moved from 29 ("Fear") to 57 ("Greed") in three weeks while
+  ETH ran +33.6% over 30 days — exactly the setup where momentum gets
+  misread as confirmation. The backtest this item asks for is no longer a
+  scorecard caveat; it is the stated precondition on a live rebalancing
+  proposal.
 - **Why:** S5 (does the adopted 85/10/5/0 target respect the -30% drawdown
   tolerance) was marked resolved 2026-08-17 and reaffirmed within 0.7pp this
   sweep: a 90/10 equity/crypto proxy over 2019-06 to 2026-08 (86 months)
@@ -579,9 +630,10 @@ IDs are never reused — an S-number in an old memo always means the same item.
 - **Improves:** data reliability (the scorecard/portfolio-health row rests
   on a window that cannot test what it claims to) and decision quality (the
   crypto sleeve — the position most likely to actually blow through a shock
-  scenario — is the one part of the target this backtest tests least).
+  scenario — is the one part of the target this backtest tests least, and is
+  now the direct precondition on a live rebalancing proposal).
 
-### S27 — [process] The scheduled task's stored prompt drifts stale against real file state, and this is now the third confirmed occurrence
+### S27 — [process] The scheduled task's stored prompt drifts stale against real file state, and this is now the fourth confirmed occurrence
 - **Status:** open — new 2026-09-07, opened without further deliberation per
   the standing instruction left in this file's own closed log 2026-08-31
   ("if a third occurs, open the S-item without further deliberation")
@@ -594,9 +646,21 @@ IDs are never reused — an S-number in an old memo always means the same item.
   both). One new item, S28, opened from this session's AZN.ST
   capital-timing-lag finding. Net: 8 open S-items (S1, S6, S21, S23, S24,
   S26, S27, S28).
+- **2026-09-14 meta review — fourth confirmed occurrence, and the two stale
+  lines are now verbatim-identical across three consecutive sweeps.** The
+  scheduled prompt that launched this sweep again asserted the Handelsbanken
+  wrapper question is unresolved and the memo must open with it, and again
+  asserted `investor_profile.json.reference_targets` are null. Both false,
+  both self-caught and corrected in today's memo (section 9, item 9), the
+  same as 2026-08-31 and 2026-09-07. No new premises drifted this time — it
+  is the identical two lines, unedited, a third time running, which argues
+  the prompt text simply has not been touched since it was last flagged.
+  Net this session: S1 closed under cap pressure (unchanged, workaround
+  stable), S29 opened (52-week high/low gap) — 8 open S-items (S6, S21, S23,
+  S24, S26, S27, S28, S29).
 - **Why:** the scheduled prompt that launches this weekly sweep is stored
   text, edited by hand outside a session, and it does not update itself when
-  the facts it assumes change. Three confirmed occurrences now, each caught
+  the facts it assumes change. Four confirmed occurrences now, each caught
   and corrected in the memo itself rather than causing a wrong action, which
   is exactly why this sat at "considered, not opened" for two of them:
   - **2026-08-17:** contradicted CLAUDE.md's canonical flow (specifics not
@@ -606,15 +670,18 @@ IDs are never reused — an S-number in an old memo always means the same item.
     2026-07-07/2026-08-03); asserted `investor_profile.json.reference_targets`
     were still null (adopted 2026-07-27, written 2026-08-03); asserted this
     sweep's backtest was the first ever run (one ran 2026-08-17).
-  - **2026-09-07 (this sweep):** the identical two premises from 2026-08-31
-    recurred verbatim — Handelsbanken wrapper "unresolved, memo MUST open
-    with it" and reference_targets "are null" — both still false on the same
-    two files (`data/portfolio.json.open_structural_questions` is `null`,
-    moved to `OPEN_ITEMS.md` 2026-07-07/2026-08-03;
+  - **2026-09-07:** the identical two premises from 2026-08-31 recurred
+    verbatim — Handelsbanken wrapper "unresolved, memo MUST open with it"
+    and reference_targets "are null" — both still false on the same two
+    files (`data/portfolio.json.open_structural_questions` is `null`, moved
+    to `OPEN_ITEMS.md` 2026-07-07/2026-08-03;
     `investor_profile.json.reference_targets` carries adopted, non-null
     values plus the 2026-08-25 gold-tranche amendment). The prompt text was
     not refreshed between the second and third occurrence despite the
     2026-08-31 closed-log entry naming exactly this fix.
+  - **2026-09-14:** the identical two premises recurred a third time
+    verbatim — no new drift, the same unedited text. Self-caught and
+    corrected in the memo's section 9 a fourth time overall.
 - **How:** whatever stores this scheduled task's prompt (outside this
   repository — a trigger/routine configuration, not a file `meta` can edit)
   needs its two stale lines removed or rewritten to reference the *current*
@@ -627,7 +694,7 @@ IDs are never reused — an S-number in an old memo always means the same item.
   `OPEN_ITEMS.md`, not the scheduler), so the fix is a recommendation to the
   user, not a self-applying change.
 - **Improves:** decision quality (a stale premise that goes uncaught, unlike
-  the three confirmed self-mitigated instances, would produce a wrong
+  the four confirmed self-mitigated instances, would produce a wrong
   action, not just wasted words) and process reliability (this is the
   system's own scheduling input drifting out of sync with itself — the
   exact "process for its own sake" failure mode CLAUDE.md warns about, just
@@ -637,6 +704,11 @@ IDs are never reused — an S-number in an old memo always means the same item.
 ### S28 — [process] Capital-availability premises go stale between real-world execution and when it's reported — now a confirmed recurring pattern
 - **Status:** open — new 2026-09-07, second confirmed recurrence of a
   failure mode previously closed as "resolved" (2026-08-12)
+- **Reviewed 2026-09-14: can wait — no new occurrence this session.** This
+  sweep's capital figures (ISK cash 845.43 SEK, PayPal 14,227.88 SEK) are
+  consistent with last sweep's reconciled numbers, and no new stale-premise
+  incident was found. Still unbuilt; the risk is unchanged for the next time
+  a real-world trade lands between sweeps and isn't reported promptly.
 - **Why:** the 2026-08-31 memo's headline call (BUY 3 shares AZN.ST, ~4,715
   SEK, funded from an 11,288 SEK ISK-cash figure) was marked `expired` in
   `data/decisions.csv` this session because a real 3-share AZN.ST purchase
@@ -676,6 +748,35 @@ IDs are never reused — an S-number in an old memo always means the same item.
   reliability (this is the same "stored premise drifting out of sync with
   real state" shape as S27, in the capital/portfolio domain rather than the
   scheduler-prompt domain).
+
+### S29 — [data] Candidates CSV carries `pct_52w_range` but not the 52-week high/low endpoints, capping a real Top-5 conviction
+- **Status:** open — new 2026-09-14
+- **Why:** `scout.py`'s candidate CSV outputs the derived `pct_52w_range`
+  percentage only, not the underlying `52w_high`/`52w_low` fields — even
+  though this sweep's snapshot already carries both per ticker
+  (`data/cache/snapshots/20260914T060927.json`). This sweep's #4 Top-5
+  opportunity, APP, has sat at "4% of range" for four consecutive sweeps
+  while the price itself barely moved (305.77 → 314.49, +2.9%) — meaning the
+  52-week high is far above the current price and the drawdown that
+  produced it happened before this system started watching, but the system
+  cannot see what, when, or from what level, because the only range field it
+  carries is the percentage. The Chairman's own conviction on APP (5, the
+  lowest of the Top 5, on the mechanical funnel's #1-ranked name out of 614)
+  was explicitly capped by exactly this gap: "That is not a reason to
+  disbelieve the quality metrics; it is a reason not to commit capital on
+  them." The same missing pair of fields also underlies item 2 in this
+  sweep's "Data gaps for meta" section — two different %-of-52-week-range
+  conventions (candidates CSV vs thesis-review) reading like a contradiction
+  in the same memo, which a shared source-of-truth pair of endpoints would
+  resolve alongside `data/definitions.json` naming both formulas.
+- **How:** add `week52_high` / `week52_low` columns to `scout.py`'s candidate
+  CSV output, sourced from fields the snapshot already fetches — no new data
+  source, no new fetch. The Council's own memo calls this "the cheapest
+  high-value fix on this memo's list."
+- **Improves:** decision quality (a Top-5 conviction score was measurably
+  reduced by an interpretability gap a one-column change removes) and data
+  reliability (closes the gap between what the snapshot captures and what
+  reaches the lenses and voices).
 
 ---
 
@@ -778,6 +879,44 @@ One line each. **Full text of every entry is in
 `data/portfolio_history_archive.md`** (section: "OPEN_ITEMS.md closed log,
 archived verbatim 2026-08-24"), moved there so this file holds what is
 outstanding rather than what is finished. Nothing was deleted.
+
+### Closed by the 2026-09-14 session
+
+- **S1 — closed under cap pressure (8-item cap reached; one new
+  evidence-backed item opened this session, S29), not because resolved.**
+  Three consecutive reviews (2026-08-31, 2026-09-07, 2026-09-14) found the
+  same unchanged state: the `KNOWN BAD` flag on BTC0E.AS's Yahoo feed
+  continues to be applied correctly every sweep, and the broker-confirmed
+  figure (150 units @ 73.54 SEK, 2026-08-23) is used in its place, so the
+  workaround is stable and no wrong number has reached a decision. Nothing
+  further can be built without a human verifying the instrument at Avanza —
+  that has not been true of any of the three reviews, and is unlikely to
+  become true through further code work. Reopen (fresh ID) if the flag is
+  ever missed, or if the position's share of the portfolio grows enough that
+  an unverified price starts to matter more than it does today.
+- **S25's closed entry — addendum, not a reopening.** This sweep's Council
+  memo confirms the scope gap S25 diagnosed (only the 8 portfolio tickers
+  are ever submitted to `--insiders`/`--fi-issuers`; zero of this sweep's 34
+  `new` candidates were covered) is still real and unfixed, independent of
+  S20's gateway block. The memo itself recommends a note here rather than a
+  reopening: "worth a note against S25's closed entry rather than a
+  reopening." Noted. A fresh evaluation under a new ID is warranted if
+  `data.sec.gov` or an equivalent gateway ever becomes reachable and the
+  scope gap is still unaddressed at that point — not before.
+- **Considered, not opened (second unapplied occurrence):
+  `investor_profile.json.reference_targets` still stale against
+  `portfolio.json.targets`.** The 2026-09-07 session flagged this directly
+  rather than opening an S-item, recommending a one-line fix (update the
+  field to 80/10/5/0/5). That fix was not applied, and this session's
+  portfolio lens found the same inconsistency independently, this time
+  formally rating the row **ACT** in the balance scorecard rather than just
+  noting it in prose. Still judged not to warrant a full S-item — the fix is
+  a single JSON field, not a process or code gap — but flagged as directly
+  as this file allows: apply it before the next sweep, or it will keep
+  producing a self-contradictory ACT rating against a target set that
+  `portfolio.json` (the correct owner, per CLAUDE.md) already has right. A
+  third unapplied occurrence should open an S-item without further
+  deliberation, on the same standing pattern used for S27.
 
 ### Closed by the 2026-09-07 session
 

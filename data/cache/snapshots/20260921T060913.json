@@ -1,0 +1,2076 @@
+{
+  "fetched_at_utc": "2026-09-21T06:08:54.428862+00:00",
+  "equities": {
+    "SHB-A.ST": {
+      "price": 155.05,
+      "prev_close": 155.05,
+      "52w_high": 155.35,
+      "52w_low": 116.8,
+      "market_cap": 307029901312,
+      "trailing_pe": 12.783806,
+      "forward_pe": 13.422436,
+      "price_to_sales": 5.562841,
+      "price_to_book": 1.644546,
+      "peg_ratio": 19.14,
+      "dividend_yield": 0.052199997,
+      "payout_ratio": 0.66830003,
+      "beta": 0.504,
+      "revenue_growth": -0.038,
+      "total_revenue": 55193001984,
+      "free_cashflow": null,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 56796000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 62345000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 62249000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 50249000000
+        }
+      ],
+      "gross_margins": 0.0,
+      "operating_margins": 0.50089,
+      "ebitda_margins": 0.0,
+      "profit_margins": 0.42583,
+      "return_on_equity": 0.12749,
+      "return_on_assets": 0.0063099996,
+      "debt_to_equity": null,
+      "recommendation": "underperform",
+      "sector": "Financial Services",
+      "industry": "Banks - Diversified",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": null,
+      "total_cash": 656419979264,
+      "total_debt": 1673300934656,
+      "operating_cashflow": -41221001216,
+      "capex": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 27645622763.76576,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 181109318267.79,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 1854410252923.79,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.011836983989827039,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.206 (assumed statutory rate for Sweden, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "INVE-A.ST": {
+      "price": 401.0,
+      "prev_close": 401.0,
+      "52w_high": 418.5,
+      "52w_low": 282.7,
+      "market_cap": 1228475465728,
+      "trailing_pe": 4.679659,
+      "forward_pe": null,
+      "price_to_sales": 3.7451694,
+      "price_to_book": 1.1313366,
+      "peg_ratio": 4.91,
+      "dividend_yield": 0.0139999995,
+      "payout_ratio": 0.0636,
+      "beta": 0.78,
+      "revenue_growth": 1.17,
+      "total_revenue": 328016003072,
+      "free_cashflow": 166005374976,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 64826000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 75681000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 71862000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 51812000000
+        }
+      ],
+      "gross_margins": 0.89444,
+      "operating_margins": 0.88697,
+      "ebitda_margins": 0.82917,
+      "profit_margins": 0.80067,
+      "return_on_equity": 0.27254,
+      "return_on_assets": 0.15066,
+      "debt_to_equity": 11.589,
+      "recommendation": "buy",
+      "sector": "Financial Services",
+      "industry": "Asset Management",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 271980494848,
+      "total_cash": 20027000832,
+      "total_debt": 125865000960,
+      "operating_cashflow": 23918000128,
+      "capex": {
+        "value": -142087374848,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 290940354244.77185,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 441912785096.448,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 567777786056.448,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.4068610060897704,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.206 (assumed statutory rate for Sweden, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "VOLV-B.ST": {
+      "price": 337.8,
+      "prev_close": 337.8,
+      "52w_high": 374.5,
+      "52w_low": 244.9,
+      "market_cap": 677139513344,
+      "trailing_pe": 18.898977,
+      "forward_pe": 13.373494,
+      "price_to_sales": 1.4360354,
+      "price_to_book": 3.8349035,
+      "peg_ratio": 0.97,
+      "dividend_yield": 0.0255,
+      "payout_ratio": 0.48240003,
+      "beta": 0.975,
+      "revenue_growth": 0.027,
+      "total_revenue": 471534010368,
+      "free_cashflow": 24019875840,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 479183000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 526816000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 552764000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 473479000000
+        }
+      ],
+      "gross_margins": 0.24358,
+      "operating_margins": 0.105629995,
+      "ebitda_margins": 0.119119994,
+      "profit_margins": 0.076009996,
+      "return_on_equity": 0.20883,
+      "return_on_assets": 0.04512,
+      "debt_to_equity": 147.349,
+      "recommendation": "buy",
+      "sector": "Industrials",
+      "industry": "Farm & Heavy Construction Machinery",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 56166998016,
+      "total_cash": 47068000256,
+      "total_debt": 260354998272,
+      "operating_cashflow": 49840001024,
+      "capex": {
+        "value": 25820125184,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 49808135157.50179,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 138301290527.312,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 398656288799.312,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.09920239671664921,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.206 (assumed statutory rate for Sweden, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "ATCO-B.ST": {
+      "price": 172.45,
+      "prev_close": 172.45,
+      "52w_high": 185.2,
+      "52w_low": 134.0,
+      "market_cap": 834488107008,
+      "trailing_pe": 31.327839,
+      "forward_pe": null,
+      "price_to_sales": 4.9111514,
+      "price_to_book": 7.849931,
+      "peg_ratio": 2.09,
+      "dividend_yield": 0.0175,
+      "payout_ratio": 0.5495,
+      "beta": 1.072,
+      "revenue_growth": 0.091,
+      "total_revenue": 169917005824,
+      "free_cashflow": 25972000768,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 168343000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 176771000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 172664000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 141325000000
+        }
+      ],
+      "gross_margins": 0.42188,
+      "operating_margins": 0.20565,
+      "ebitda_margins": 0.24853,
+      "profit_margins": 0.15665,
+      "return_on_equity": 0.25698,
+      "return_on_assets": 0.10741,
+      "debt_to_equity": 33.668,
+      "recommendation": "none",
+      "sector": "Industrials",
+      "industry": "Specialty Industrial Machinery",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 42228998144,
+      "total_cash": 14709000192,
+      "total_debt": 35858001920,
+      "operating_cashflow": 30532999168,
+      "capex": {
+        "value": 4560998400,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 34943432247.7056,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 34011488737.28,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 69869490657.28,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.39709871853470236,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.206 (assumed statutory rate for Sweden, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "AZN.ST": {
+      "price": 1626.5,
+      "prev_close": 1626.5,
+      "52w_high": 1925.5,
+      "52w_low": 1365.0,
+      "market_cap": 2541142933504,
+      "trailing_pe": 24.939117,
+      "forward_pe": null,
+      "price_to_sales": 41.409622,
+      "price_to_book": 50.528885,
+      "peg_ratio": 1.2,
+      "dividend_yield": 0.0185,
+      "payout_ratio": 0.4741,
+      "beta": 0.205,
+      "revenue_growth": 0.064,
+      "total_revenue": 61366001664,
+      "free_cashflow": 4905375232,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 58739000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 54073000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 45811000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 44351000000
+        }
+      ],
+      "gross_margins": 0.8169,
+      "operating_margins": 0.23459,
+      "ebitda_margins": 0.32435,
+      "profit_margins": 0.17021999,
+      "return_on_equity": 0.21965,
+      "return_on_assets": 0.080170006,
+      "debt_to_equity": 64.225,
+      "recommendation": "none",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "country": "United Kingdom",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 19904000000,
+      "total_cash": 4968000000,
+      "total_debt": 32349999104,
+      "operating_cashflow": 13699999744,
+      "capex": {
+        "value": 8794624512,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 14395850330.35776,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 50290901803.278,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 82640900907.278,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.13064823385556126,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.25 (assumed statutory rate for United Kingdom, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "ALFA.ST": {
+      "price": 556.0,
+      "prev_close": 556.0,
+      "52w_high": 592.2,
+      "52w_low": 421.3,
+      "market_cap": 225593491456,
+      "trailing_pe": 27.551743,
+      "forward_pe": 24.876936,
+      "price_to_sales": 3.20327,
+      "price_to_book": 4.9647517,
+      "peg_ratio": 1.72,
+      "dividend_yield": 0.0165,
+      "payout_ratio": 0.4541,
+      "beta": 0.783,
+      "revenue_growth": 0.077,
+      "total_revenue": 70426001408,
+      "free_cashflow": 4881999872,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 69674000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 66954000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 63598000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 52135000000
+        }
+      ],
+      "gross_margins": 0.36315,
+      "operating_margins": 0.16167,
+      "ebitda_margins": 0.19572,
+      "profit_margins": 0.11635,
+      "return_on_equity": 0.19059,
+      "return_on_assets": 0.07501,
+      "debt_to_equity": 45.751,
+      "recommendation": "buy",
+      "sector": "Industrials",
+      "industry": "Specialty Industrial Machinery",
+      "country": "Sweden",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 13784000512,
+      "total_cash": 4976999936,
+      "total_debt": 20991000576,
+      "operating_cashflow": 9251999744,
+      "capex": {
+        "value": 4369999872,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 11385771647.631361,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 45439028439.525,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 66430029015.525,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.13608759204525625,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.206 (assumed statutory rate for Sweden, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "ABB.ST": {
+      "price": 948.4,
+      "prev_close": 948.4,
+      "52w_high": 1058.5,
+      "52w_low": 638.8,
+      "market_cap": 1743040675840,
+      "trailing_pe": 35.9716,
+      "forward_pe": 36.531307,
+      "price_to_sales": 48.753654,
+      "price_to_book": 109.88584,
+      "peg_ratio": 1.32,
+      "dividend_yield": 0.0115,
+      "payout_ratio": 0.432,
+      "beta": 1.008,
+      "revenue_growth": 0.142,
+      "total_revenue": 35752001536,
+      "free_cashflow": 1570499968,
+      "revenue_history_last_n_fiscal_years": [
+        {
+          "fiscal_year_end": "2025-12-31",
+          "total_revenue": 33220000000
+        },
+        {
+          "fiscal_year_end": "2024-12-31",
+          "total_revenue": 32850000000
+        },
+        {
+          "fiscal_year_end": "2023-12-31",
+          "total_revenue": 32235000000
+        },
+        {
+          "fiscal_year_end": "2022-12-31",
+          "total_revenue": 29446000000
+        }
+      ],
+      "gross_margins": 0.40247002,
+      "operating_margins": 0.16908,
+      "ebitda_margins": 0.19993,
+      "profit_margins": 0.14086,
+      "return_on_equity": 0.32575,
+      "return_on_assets": 0.08951,
+      "debt_to_equity": 55.751,
+      "recommendation": "none",
+      "sector": "Industrials",
+      "industry": "Electrical Equipment & Parts",
+      "country": "Switzerland",
+      "currency": "SEK",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": 7148000256,
+      "total_cash": 5856999936,
+      "total_debt": 9146000384,
+      "operating_cashflow": 5904999936,
+      "capex": {
+        "value": 4334499968,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": 6044948419.706881,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": 15862286070.0,
+        "quality_state": "OK",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": 25008286454.0,
+        "quality_state": "OK",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": 0.20618529828081153,
+        "quality_state": "ESTIMATED",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.147 (assumed statutory rate for Switzerland, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "BTC0E.AS": {
+      "price": 47.292,
+      "prev_close": 47.292,
+      "52w_high": 47.735,
+      "52w_low": 47.735,
+      "market_cap": null,
+      "trailing_pe": null,
+      "forward_pe": null,
+      "price_to_sales": null,
+      "price_to_book": null,
+      "peg_ratio": null,
+      "dividend_yield": null,
+      "payout_ratio": null,
+      "beta": null,
+      "revenue_growth": null,
+      "total_revenue": null,
+      "free_cashflow": null,
+      "revenue_history_last_n_fiscal_years": [],
+      "gross_margins": null,
+      "operating_margins": null,
+      "ebitda_margins": null,
+      "profit_margins": null,
+      "return_on_equity": null,
+      "return_on_assets": null,
+      "debt_to_equity": null,
+      "recommendation": null,
+      "sector": null,
+      "industry": null,
+      "country": null,
+      "currency": "EUR",
+      "fundamentals_source": "Yahoo quoteSummary via direct crumb fetch (fc.yahoo.com + getcrumb) - yfinance's own client fails on this network (curl_cffi TLS fingerprint gets connection-reset by Yahoo's anti-bot layer), plain urllib does not.",
+      "note": "Multi-year revenue is real (Yahoo's own reported fiscal-year figures). Free cash flow, capex, EBIT, ROIC, and invested capital are TRAILING-ONLY snapshots (single current figures, not multi-year series) - Yahoo's legacy cashflowStatementHistory/incomeStatementHistory modules don't expose real multi-year capex/EBIT lines. capex, ebit, and roic_pct below are DERIVED (see each field's calculation_method), not filed figures - for a real FCF/EBIT trend, use a company's own cash flow statement (PDF via the pdf skill).",
+      "ebitda": null,
+      "total_cash": null,
+      "total_debt": null,
+      "operating_cashflow": null,
+      "capex": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "operating_cashflow - free_cashflow"
+      },
+      "ebit": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "operating_margins * total_revenue - Yahoo's own EBIT line (incomeStatementHistory) is broken/zero for this source, confirmed empirically, not fetched"
+      },
+      "interest_expense": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "not available from Yahoo quoteSummary for any ticker checked - needs a filing or PDF extract (source tier 1)"
+      },
+      "equity_book": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "book_value_per_share * shares_outstanding"
+      },
+      "invested_capital": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "total_debt + equity_book (cash not netted out)"
+      },
+      "roic_pct": {
+        "value": null,
+        "quality_state": "MISSING",
+        "calculation_method": "ebit*(1-tax_rate)/invested_capital, tax_rate=0.25 (assumed statutory rate for unknown country, NOT a real effective rate - no source provides one)"
+      }
+    },
+    "DE000A0S9GB0.SG": {
+      "error": "HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found"
+    }
+  },
+  "crypto": {
+    "bitcoin": {
+      "price_eur": 71139,
+      "market_cap": 1429133945005,
+      "market_cap_rank": 1,
+      "change_24h_pct": 1.55066,
+      "change_7d_pct": 5.0,
+      "change_30d_pct": 3.9,
+      "ath": 107662,
+      "ath_change_pct": -33.92339
+    },
+    "ethereum": {
+      "price_eur": 2324.56,
+      "market_cap": 283829445183,
+      "market_cap_rank": 2,
+      "change_24h_pct": 3.64483,
+      "change_7d_pct": 6.0,
+      "change_30d_pct": 5.9,
+      "ath": 4229.76,
+      "ath_change_pct": -45.04274
+    }
+  },
+  "macro": {
+    "fed_funds_rate": {
+      "date": "2026-08-01",
+      "value": "3.63"
+    },
+    "us_10y_yield": {
+      "date": "2026-09-17",
+      "value": "4.94"
+    },
+    "us_2y_yield": {
+      "date": "2026-09-17",
+      "value": "4.67"
+    },
+    "dollar_index": {
+      "date": "2026-09-11",
+      "value": "118.2126"
+    },
+    "sek_per_usd": {
+      "date": "2026-09-11",
+      "value": "9.6936"
+    },
+    "usd_per_eur": {
+      "date": "2026-09-11",
+      "value": "1.1604"
+    },
+    "vix": {
+      "date": "2026-09-17",
+      "value": "15.44"
+    },
+    "us_cpi_yoy": {
+      "date": "2026-08-01",
+      "value": 3.71
+    },
+    "riksbank_policy_rate": {
+      "date": "2026-09-18",
+      "value": 1.75
+    },
+    "ecb_deposit_rate": {
+      "date": "2026-09-21",
+      "value": "2.5"
+    },
+    "se_cpi_yoy": {
+      "period": "2026M08",
+      "value": 0.3
+    },
+    "10y_2y_spread": 0.27,
+    "sek_per_eur": {
+      "date": "2026-09-11",
+      "value": 11.2485,
+      "derived_from": "sek_per_usd (DEXSDUS) x usd_per_eur (DEXUSEU)"
+    }
+  },
+  "sentiment": {
+    "crypto_fear_greed": {
+      "value": 70,
+      "classification": "Greed"
+    }
+  },
+  "insider_activity": {
+    "SHB-A.ST": {
+      "skipped": "non-US ticker, not covered by SEC EDGAR"
+    },
+    "INVE-A.ST": {
+      "skipped": "non-US ticker, not covered by SEC EDGAR"
+    },
+    "VOLV-B.ST": {
+      "skipped": "non-US ticker, not covered by SEC EDGAR"
+    },
+    "ATCO-B.ST": {
+      "skipped": "non-US ticker, not covered by SEC EDGAR"
+    },
+    "AZN.ST": {
+      "skipped": "non-US ticker, not covered by SEC EDGAR"
+    },
+    "ALFA.ST": {
+      "skipped": "non-US ticker, not covered by SEC EDGAR"
+    },
+    "ABB.ST": {
+      "skipped": "non-US ticker, not covered by SEC EDGAR"
+    },
+    "BTC0E.AS": {
+      "skipped": "non-US ticker, not covered by SEC EDGAR"
+    },
+    "DE000A0S9GB0.SG": {
+      "skipped": "non-US ticker, not covered by SEC EDGAR"
+    }
+  },
+  "insider_activity_fi": {
+    "Handelsbanken": {
+      "transactions": [
+        {
+          "Publication date": "26/08/2026",
+          "Issuer": "Svenska Handelsbanken AB",
+          "Person discharging managerial responsibilities": "P\u00e4r Boman",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Svenska Handelsbanken ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0007100599",
+          "Transaction date": "26/08/2026",
+          "Volume": "1,715",
+          "Unit": "Quantity",
+          "Price": "145.975",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "26/08/2026",
+          "Issuer": "Svenska Handelsbanken AB",
+          "Person discharging managerial responsibilities": "P\u00e4r Boman",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Svenska Handelsbanken ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0007100599",
+          "Transaction date": "26/08/2026",
+          "Volume": "282,391",
+          "Unit": "Quantity",
+          "Price": "146.2439",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "26/08/2026",
+          "Issuer": "Svenska Handelsbanken AB",
+          "Person discharging managerial responsibilities": "P\u00e4r Boman",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Svenska Handelsbanken ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0007100599",
+          "Transaction date": "26/08/2026",
+          "Volume": "7,113",
+          "Unit": "Quantity",
+          "Price": "146.05",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "26/08/2026",
+          "Issuer": "Svenska Handelsbanken AB",
+          "Person discharging managerial responsibilities": "P\u00e4r Boman",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Svenska Handelsbanken ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0007100599",
+          "Transaction date": "26/08/2026",
+          "Volume": "559",
+          "Unit": "Quantity",
+          "Price": "146.225",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "26/08/2026",
+          "Issuer": "Svenska Handelsbanken AB",
+          "Person discharging managerial responsibilities": "P\u00e4r Boman",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Svenska Handelsbanken ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0007100599",
+          "Transaction date": "26/08/2026",
+          "Volume": "1,403",
+          "Unit": "Quantity",
+          "Price": "146.125",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "26/08/2026",
+          "Issuer": "Svenska Handelsbanken AB",
+          "Person discharging managerial responsibilities": "P\u00e4r Boman",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Svenska Handelsbanken ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0007100599",
+          "Transaction date": "26/08/2026",
+          "Volume": "411,472",
+          "Unit": "Quantity",
+          "Price": "145.8526",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "26/08/2026",
+          "Issuer": "Svenska Handelsbanken AB",
+          "Person discharging managerial responsibilities": "P\u00e4r Boman",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Svenska Handelsbanken ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0007100599",
+          "Transaction date": "26/08/2026",
+          "Volume": "387,039",
+          "Unit": "Quantity",
+          "Price": "145.55",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "26/08/2026",
+          "Issuer": "Svenska Handelsbanken AB",
+          "Person discharging managerial responsibilities": "P\u00e4r Boman",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Svenska Handelsbanken ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0007100599",
+          "Transaction date": "26/08/2026",
+          "Volume": "8,136",
+          "Unit": "Quantity",
+          "Price": "145.8893",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "26/08/2026",
+          "Issuer": "Svenska Handelsbanken AB",
+          "Person discharging managerial responsibilities": "P\u00e4r Boman",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Svenska Handelsbanken ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0007100599",
+          "Transaction date": "26/08/2026",
+          "Volume": "172",
+          "Unit": "Quantity",
+          "Price": "145.85",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "26/08/2026",
+          "Issuer": "Svenska Handelsbanken AB",
+          "Person discharging managerial responsibilities": "P\u00e4r Boman",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Svenska Handelsbanken ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0007100599",
+          "Transaction date": "26/08/2026",
+          "Volume": "750,000",
+          "Unit": "Quantity",
+          "Price": "145.70",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        }
+      ],
+      "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), free public data, attribution required. FI does not review notifications before publication - cannot guarantee completeness/correctness.",
+      "note": "showing up to 15 most recent transactions, may not be the full set"
+    },
+    "Investor": {
+      "transactions": [
+        {
+          "Publication date": "14/09/2026",
+          "Issuer": "Investor Aktiebolag",
+          "Person discharging managerial responsibilities": "Christian Cederholm",
+          "Position": "Chief\u00a0Executive\u00a0Officer\u00a0(CEO)/Managing\u00a0Directory",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Investor AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0015811955",
+          "Transaction date": "14/09/2026",
+          "Volume": "1,500",
+          "Unit": "Quantity",
+          "Price": "395.90",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "09/09/2026",
+          "Issuer": "Investor Aktiebolag",
+          "Person discharging managerial responsibilities": "Jacob Lund",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Investor AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0015811955",
+          "Transaction date": "09/09/2026",
+          "Volume": "1,000",
+          "Unit": "Quantity",
+          "Price": "399.13",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "02/09/2026",
+          "Issuer": "Investor Aktiebolag",
+          "Person discharging managerial responsibilities": "Ulrika Elfving",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Investor AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0015811963",
+          "Transaction date": "01/09/2026",
+          "Volume": "850",
+          "Unit": "Quantity",
+          "Price": "411.55",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "17/07/2026",
+          "Issuer": "Investor Aktiebolag",
+          "Person discharging managerial responsibilities": "Christian Cederholm",
+          "Position": "Chief\u00a0Executive\u00a0Officer\u00a0(CEO)/Managing\u00a0Directory",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Investor AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0015811955",
+          "Transaction date": "17/07/2026",
+          "Volume": "2,500",
+          "Unit": "Quantity",
+          "Price": "387.30",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "05/06/2026",
+          "Issuer": "Investor Aktiebolag",
+          "Person discharging managerial responsibilities": "Jessica H\u00e4ggstr\u00f6m",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Investor AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0015811955",
+          "Transaction date": "05/06/2026",
+          "Volume": "270",
+          "Unit": "Quantity",
+          "Price": "377.50",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "19/03/2026",
+          "Issuer": "Investor Aktiebolag",
+          "Person discharging managerial responsibilities": "Thomas Kidane",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Investor AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0015811963",
+          "Transaction date": "19/03/2026",
+          "Volume": "2,051",
+          "Unit": "Quantity",
+          "Price": "344.90",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "19/03/2026",
+          "Issuer": "Investor Aktiebolag",
+          "Person discharging managerial responsibilities": "Jacob Lund",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Investor AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0015811955",
+          "Transaction date": "19/03/2026",
+          "Volume": "1,000",
+          "Unit": "Quantity",
+          "Price": "338.38",
+          "Currency": "SEK",
+          "Status": "History",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "19/03/2026",
+          "Issuer": "Investor Aktiebolag",
+          "Person discharging managerial responsibilities": "Christian Cederholm",
+          "Position": "Chief\u00a0Executive\u00a0Officer\u00a0(CEO)/Managing\u00a0Directory",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Investor AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0015811955",
+          "Transaction date": "19/03/2026",
+          "Volume": "3,000",
+          "Unit": "Quantity",
+          "Price": "340.50",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "19/03/2026",
+          "Issuer": "Investor Aktiebolag",
+          "Person discharging managerial responsibilities": "Jacob Lund",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Investor AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0000107401",
+          "Transaction date": "19/03/2026",
+          "Volume": "1,000",
+          "Unit": "Quantity",
+          "Price": "338.38",
+          "Currency": "SEK",
+          "Status": "Revised",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "27/02/2026",
+          "Issuer": "Investor Aktiebolag",
+          "Person discharging managerial responsibilities": "Yuriy Prilutskiy",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Investor AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0015811963",
+          "Transaction date": "30/05/2024",
+          "Volume": "15,316",
+          "Unit": "Quantity",
+          "Price": "282.41",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        }
+      ],
+      "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), free public data, attribution required. FI does not review notifications before publication - cannot guarantee completeness/correctness.",
+      "note": "showing up to 15 most recent transactions, may not be the full set"
+    },
+    "Volvo": {
+      "transactions": [
+        {
+          "Publication date": "13/08/2026",
+          "Issuer": "Volvo Car AB",
+          "Person discharging managerial responsibilities": "Pieter Nota",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Volvo Car AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0021628898",
+          "Transaction date": "12/08/2026",
+          "Volume": "63,000",
+          "Unit": "Quantity",
+          "Price": "19.60",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "27/07/2026",
+          "Issuer": "AB Volvo",
+          "Person discharging managerial responsibilities": "Helena Stjernholm",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Volvo, AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0000115446",
+          "Transaction date": "27/07/2026",
+          "Volume": "297,987",
+          "Unit": "Quantity",
+          "Price": "360.6409",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "27/07/2026",
+          "Issuer": "AB Volvo",
+          "Person discharging managerial responsibilities": "Helena Stjernholm",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Volvo, AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0000115446",
+          "Transaction date": "27/07/2026",
+          "Volume": "162,090",
+          "Unit": "Quantity",
+          "Price": "360.2939",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "27/07/2026",
+          "Issuer": "AB Volvo",
+          "Person discharging managerial responsibilities": "Helena Stjernholm",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Volvo, AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0000115446",
+          "Transaction date": "27/07/2026",
+          "Volume": "74,808",
+          "Unit": "Quantity",
+          "Price": "360.3541",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "27/07/2026",
+          "Issuer": "AB Volvo",
+          "Person discharging managerial responsibilities": "Helena Stjernholm",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Volvo, AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0000115446",
+          "Transaction date": "27/07/2026",
+          "Volume": "5,115",
+          "Unit": "Quantity",
+          "Price": "360.4897",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "27/07/2026",
+          "Issuer": "AB Volvo",
+          "Person discharging managerial responsibilities": "Helena Stjernholm",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Volvo, AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0000115446",
+          "Transaction date": "27/07/2026",
+          "Volume": "60,000",
+          "Unit": "Quantity",
+          "Price": "360.75",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "27/07/2026",
+          "Issuer": "AB Volvo",
+          "Person discharging managerial responsibilities": "Helena Stjernholm",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Volvo, AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0000115446",
+          "Transaction date": "27/07/2026",
+          "Volume": "50,000",
+          "Unit": "Quantity",
+          "Price": "359.20",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "27/07/2026",
+          "Issuer": "AB Volvo",
+          "Person discharging managerial responsibilities": "Helena Stjernholm",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "Yes",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Volvo, AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0000115446",
+          "Transaction date": "27/07/2026",
+          "Volume": "650,000",
+          "Unit": "Quantity",
+          "Price": "360.9277",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "21/07/2026",
+          "Issuer": "Volvo Car AB",
+          "Person discharging managerial responsibilities": "Erik Severinson",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Volvo Car AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0016844831",
+          "Transaction date": "17/07/2026",
+          "Volume": "15,306",
+          "Unit": "Quantity",
+          "Price": "19.00",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "17/07/2026",
+          "Issuer": "Volvo Car AB",
+          "Person discharging managerial responsibilities": "H\u00e5kan Samuelsson",
+          "Position": "Chief\u00a0Executive\u00a0Officer\u00a0(CEO)/Managing\u00a0Directory",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Volvo Car AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0016844831",
+          "Transaction date": "17/07/2026",
+          "Volume": "50,000",
+          "Unit": "Quantity",
+          "Price": "19.295",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        }
+      ],
+      "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), free public data, attribution required. FI does not review notifications before publication - cannot guarantee completeness/correctness.",
+      "note": "showing up to 15 most recent transactions, may not be the full set"
+    },
+    "Atlas Copco": {
+      "transactions": [
+        {
+          "Publication date": "24/07/2026",
+          "Issuer": "ATLAS COPCO AKTIEBOLAG",
+          "Person discharging managerial responsibilities": "Henrik Elmin",
+          "Position": "Other\u00a0senior\u00a0executive",
+          "Closely associated": "",
+          "Nature of transaction": "Exercise decrease",
+          "Instrument name": "Options granting right to series A shares of the issuer",
+          "Intrument type": "Option",
+          "ISIN": "",
+          "Transaction date": "23/07/2026",
+          "Volume": "79,442",
+          "Unit": "Quantity",
+          "Price": "138.80",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "24/07/2026",
+          "Issuer": "ATLAS COPCO AKTIEBOLAG",
+          "Person discharging managerial responsibilities": "Henrik Elmin",
+          "Position": "Other\u00a0senior\u00a0executive",
+          "Closely associated": "",
+          "Nature of transaction": "Exercise increase",
+          "Instrument name": "Atlas Copco AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0017486889",
+          "Transaction date": "23/07/2026",
+          "Volume": "79,442",
+          "Unit": "Quantity",
+          "Price": "138.80",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "24/07/2026",
+          "Issuer": "ATLAS COPCO AKTIEBOLAG",
+          "Person discharging managerial responsibilities": "Henrik Elmin",
+          "Position": "Other\u00a0senior\u00a0executive",
+          "Closely associated": "",
+          "Nature of transaction": "Disposal",
+          "Instrument name": "Atlas Copco AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0017486889",
+          "Transaction date": "23/07/2026",
+          "Volume": "79,442",
+          "Unit": "Quantity",
+          "Price": "199.50",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "21/07/2026",
+          "Issuer": "Atlas Copco AB",
+          "Person discharging managerial responsibilities": "Sara H\u00e4gg Liljedal",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Exercise decrease",
+          "Instrument name": "option",
+          "Intrument type": "Option",
+          "ISIN": "",
+          "Transaction date": "21/07/2026",
+          "Volume": "18,850",
+          "Unit": "Quantity",
+          "Price": "143.94",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "21/07/2026",
+          "Issuer": "Atlas Copco AB",
+          "Person discharging managerial responsibilities": "Sara H\u00e4gg Liljedal",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Exercise increase",
+          "Instrument name": "Atlas Copco AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0017486889",
+          "Transaction date": "21/07/2026",
+          "Volume": "18,850",
+          "Unit": "Quantity",
+          "Price": "143.94",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "21/07/2026",
+          "Issuer": "Atlas Copco AB",
+          "Person discharging managerial responsibilities": "Sara H\u00e4gg Liljedal",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Internal transaction \u2013 Disposal",
+          "Instrument name": "Atlas Copco AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0017486889",
+          "Transaction date": "21/07/2026",
+          "Volume": "18,850",
+          "Unit": "Quantity",
+          "Price": "197.50",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "21/07/2026",
+          "Issuer": "Atlas Copco AB",
+          "Person discharging managerial responsibilities": "Sara H\u00e4gg Liljedal",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Exercise decrease",
+          "Instrument name": "option",
+          "Intrument type": "Option",
+          "ISIN": "",
+          "Transaction date": "21/07/2026",
+          "Volume": "42,762",
+          "Unit": "Quantity",
+          "Price": "138.21",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "21/07/2026",
+          "Issuer": "Atlas Copco AB",
+          "Person discharging managerial responsibilities": "Sara H\u00e4gg Liljedal",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Exercise increase",
+          "Instrument name": "Atlas Copco AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0017486889",
+          "Transaction date": "21/07/2026",
+          "Volume": "42,762",
+          "Unit": "Quantity",
+          "Price": "138.21",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "21/07/2026",
+          "Issuer": "Atlas Copco AB",
+          "Person discharging managerial responsibilities": "Sara H\u00e4gg Liljedal",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Internal transaction \u2013 Disposal",
+          "Instrument name": "Atlas Copco AB ser. A",
+          "Intrument type": "Share",
+          "ISIN": "SE0017486889",
+          "Transaction date": "21/07/2026",
+          "Volume": "42,762",
+          "Unit": "Quantity",
+          "Price": "197.50",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "09/06/2026",
+          "Issuer": "Atlas Copco AB",
+          "Person discharging managerial responsibilities": "Kenneth Lagerborg",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Atlas Copco AB ser. B",
+          "Intrument type": "Share",
+          "ISIN": "SE0000122467",
+          "Transaction date": "09/06/2026",
+          "Volume": "7,000",
+          "Unit": "Quantity",
+          "Price": "161.5681",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        }
+      ],
+      "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), free public data, attribution required. FI does not review notifications before publication - cannot guarantee completeness/correctness.",
+      "note": "showing up to 15 most recent transactions, may not be the full set"
+    },
+    "Alfa Laval": {
+      "transactions": [
+        {
+          "Publication date": "14/09/2026",
+          "Issuer": "Alfa Laval AB",
+          "Person discharging managerial responsibilities": "Carl Fredrik Ekstr\u00f6m",
+          "Position": "Chief\u00a0Financial\u00a0Officer\u00a0(CFO)",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Alfa Laval AB",
+          "Intrument type": "Share",
+          "ISIN": "SE0000695876",
+          "Transaction date": "11/09/2026",
+          "Volume": "1,000",
+          "Unit": "Quantity",
+          "Price": "547.49",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "24/04/2026",
+          "Issuer": "Alfa Laval AB",
+          "Person discharging managerial responsibilities": "Annica Evangelia Bresky",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Alfa Laval AB",
+          "Intrument type": "Share",
+          "ISIN": "SE0000695876",
+          "Transaction date": "24/04/2026",
+          "Volume": "553",
+          "Unit": "Quantity",
+          "Price": "542.00",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "19/08/2025",
+          "Issuer": "Alfa Laval AB",
+          "Person discharging managerial responsibilities": "Jan Martijn Bergink",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Alfa Laval AB",
+          "Intrument type": "Share",
+          "ISIN": "SE0000695876",
+          "Transaction date": "18/08/2025",
+          "Volume": "1,750",
+          "Unit": "Quantity",
+          "Price": "425.60",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "13/05/2025",
+          "Issuer": "Alfa Laval AB",
+          "Person discharging managerial responsibilities": "Carl Fredrik Ekstr\u00f6m",
+          "Position": "Chief\u00a0Financial\u00a0Officer\u00a0(CFO)",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Alfa Laval AB",
+          "Intrument type": "Share",
+          "ISIN": "SE0000695876",
+          "Transaction date": "07/05/2025",
+          "Volume": "1,000",
+          "Unit": "Quantity",
+          "Price": "394.15",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "24/10/2024",
+          "Issuer": "Alfa Laval AB",
+          "Person discharging managerial responsibilities": "Anna M\u00fcller",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Alfa Laval AB",
+          "Intrument type": "Share",
+          "ISIN": "SE0000695876",
+          "Transaction date": "24/10/2024",
+          "Volume": "1,050",
+          "Unit": "Quantity",
+          "Price": "476.00",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "11/09/2024",
+          "Issuer": "Alfa Laval AB",
+          "Person discharging managerial responsibilities": "Thomas M\u00f6ller",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Alfa Laval AB",
+          "Intrument type": "Share",
+          "ISIN": "SE0000695876",
+          "Transaction date": "11/09/2024",
+          "Volume": "1,000",
+          "Unit": "Quantity",
+          "Price": "439.80",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "11/09/2024",
+          "Issuer": "Alfa Laval AB",
+          "Person discharging managerial responsibilities": "Sameer Kalra",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Alfa Laval AB",
+          "Intrument type": "Share",
+          "ISIN": "SE0000695876",
+          "Transaction date": "11/09/2024",
+          "Volume": "1,000",
+          "Unit": "Quantity",
+          "Price": "439.70",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "16/06/2024",
+          "Issuer": "Alfa Laval AB",
+          "Person discharging managerial responsibilities": "Carl Fredrik Ekstr\u00f6m",
+          "Position": "Chief\u00a0Financial\u00a0Officer\u00a0(CFO)",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Alfa Laval AB",
+          "Intrument type": "Share",
+          "ISIN": "SE0000695876",
+          "Transaction date": "14/06/2024",
+          "Volume": "1,000",
+          "Unit": "Quantity",
+          "Price": "465.00",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "02/03/2024",
+          "Issuer": "Alfa Laval AB",
+          "Person discharging managerial responsibilities": "Anna M\u00fcller",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Alfa Laval AB",
+          "Intrument type": "Share",
+          "ISIN": "SE0000695876",
+          "Transaction date": "01/03/2024",
+          "Volume": "750",
+          "Unit": "Quantity",
+          "Price": "392.50",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "13/12/2023",
+          "Issuer": "Alfa Laval AB",
+          "Person discharging managerial responsibilities": "Nadine Crauwels",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Alfa Laval AB",
+          "Intrument type": "Share",
+          "ISIN": "SE0000695876",
+          "Transaction date": "12/12/2023",
+          "Volume": "920",
+          "Unit": "Quantity",
+          "Price": "388.00",
+          "Currency": "SEK",
+          "Status": "",
+          "Details": "Notification"
+        }
+      ],
+      "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), free public data, attribution required. FI does not review notifications before publication - cannot guarantee completeness/correctness.",
+      "note": "showing up to 15 most recent transactions, may not be the full set"
+    },
+    "AstraZeneca": {
+      "transactions": [
+        {
+          "Publication date": "17/09/2026",
+          "Issuer": "AstraZeneca PLC",
+          "Person discharging managerial responsibilities": "Pascal Soriot",
+          "Position": "Chief\u00a0Executive\u00a0Officer\u00a0(CEO)/Managing\u00a0Directory",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Ordinary Shares of US$0.25 each in AstraZeneca PLC",
+          "Intrument type": "Share",
+          "ISIN": "GB0009895292",
+          "Transaction date": "14/09/2026",
+          "Volume": "60,000",
+          "Unit": "Quantity",
+          "Price": "121.02",
+          "Currency": "GBP",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "15/09/2026",
+          "Issuer": "AstraZeneca PLC",
+          "Person discharging managerial responsibilities": "Aradhana Sarin",
+          "Position": "Chief\u00a0Financial\u00a0Officer\u00a0(CFO)",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Ordinary Shares of US$0.25 each in AstraZeneca PLC",
+          "Intrument type": "Share",
+          "ISIN": "GB0009895292",
+          "Transaction date": "14/09/2026",
+          "Volume": "73",
+          "Unit": "Quantity",
+          "Price": "0.00",
+          "Currency": "GBP",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "15/09/2026",
+          "Issuer": "AstraZeneca PLC",
+          "Person discharging managerial responsibilities": "Michel Demare",
+          "Position": "Chairman\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Ordinary Shares of US$0.25 each in AstraZeneca PLC",
+          "Intrument type": "Share",
+          "ISIN": "GB0009895292",
+          "Transaction date": "14/09/2026",
+          "Volume": "2,500",
+          "Unit": "Quantity",
+          "Price": "121.213296",
+          "Currency": "GBP",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "19/08/2026",
+          "Issuer": "AstraZeneca PLC",
+          "Person discharging managerial responsibilities": "Aradhana Sarin",
+          "Position": "Chief\u00a0Financial\u00a0Officer\u00a0(CFO)",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Ordinary Shares of US$0.25 each in AstraZeneca PLC",
+          "Intrument type": "Share",
+          "ISIN": "GB0009895292",
+          "Transaction date": "17/08/2026",
+          "Volume": "11,133",
+          "Unit": "Quantity",
+          "Price": "0.00",
+          "Currency": "GBP",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "18/05/2026",
+          "Issuer": "AstraZeneca PLC",
+          "Person discharging managerial responsibilities": "Pascal Soriot",
+          "Position": "Chief\u00a0Executive\u00a0Officer\u00a0(CEO)/Managing\u00a0Directory",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "Ordinary Shares of US$0.25 each in AstraZeneca PLC",
+          "Intrument type": "Share",
+          "ISIN": "GB0009895292",
+          "Transaction date": "14/05/2026",
+          "Volume": "18,359",
+          "Unit": "Quantity",
+          "Price": "0.00",
+          "Currency": "GBP",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/03/2026",
+          "Issuer": "AstraZeneca PLC",
+          "Person discharging managerial responsibilities": "Aradhana Sarin",
+          "Position": "Chief\u00a0Financial\u00a0Officer\u00a0(CFO)",
+          "Closely associated": "",
+          "Nature of transaction": "Allotment",
+          "Instrument name": "AstraZeneca PLC",
+          "Intrument type": "Share",
+          "ISIN": "GB0009895292",
+          "Transaction date": "04/03/2026",
+          "Volume": "42,393",
+          "Unit": "Quantity",
+          "Price": "152.42",
+          "Currency": "GBP",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/03/2026",
+          "Issuer": "AstraZeneca PLC",
+          "Person discharging managerial responsibilities": "Aradhana Sarin",
+          "Position": "Chief\u00a0Financial\u00a0Officer\u00a0(CFO)",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "AstraZeneca PLC",
+          "Intrument type": "Share",
+          "ISIN": "GB0009895292",
+          "Transaction date": "04/03/2026",
+          "Volume": "4,863",
+          "Unit": "Quantity",
+          "Price": "0.00",
+          "Currency": "GBP",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/03/2026",
+          "Issuer": "AstraZeneca PLC",
+          "Person discharging managerial responsibilities": "Pascal Soriot",
+          "Position": "Chief\u00a0Executive\u00a0Officer\u00a0(CEO)/Managing\u00a0Directory",
+          "Closely associated": "",
+          "Nature of transaction": "Allotment",
+          "Instrument name": "AstraZeneca PLC",
+          "Intrument type": "Share",
+          "ISIN": "GB0009895292",
+          "Transaction date": "04/03/2026",
+          "Volume": "103,581",
+          "Unit": "Quantity",
+          "Price": "152.42",
+          "Currency": "GBP",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/03/2026",
+          "Issuer": "AstraZeneca PLC",
+          "Person discharging managerial responsibilities": "Pascal Soriot",
+          "Position": "Chief\u00a0Executive\u00a0Officer\u00a0(CEO)/Managing\u00a0Directory",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "AstraZeneca PLC",
+          "Intrument type": "Share",
+          "ISIN": "GB0009895292",
+          "Transaction date": "04/03/2026",
+          "Volume": "14,967",
+          "Unit": "Quantity",
+          "Price": "0.00",
+          "Currency": "GBP",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/03/2026",
+          "Issuer": "AstraZeneca PLC",
+          "Person discharging managerial responsibilities": "Pascal Soriot",
+          "Position": "Chief\u00a0Executive\u00a0Officer\u00a0(CEO)/Managing\u00a0Directory",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "AstraZeneca PLC",
+          "Intrument type": "Share",
+          "ISIN": "GB0009895292",
+          "Transaction date": "05/03/2026",
+          "Volume": "101,495",
+          "Unit": "Quantity",
+          "Price": "0.00",
+          "Currency": "GBP",
+          "Status": "",
+          "Details": "Notification"
+        }
+      ],
+      "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), free public data, attribution required. FI does not review notifications before publication - cannot guarantee completeness/correctness.",
+      "note": "showing up to 15 most recent transactions, may not be the full set"
+    },
+    "ABB": {
+      "transactions": [
+        {
+          "Publication date": "14/08/2026",
+          "Issuer": "ABB Ltd",
+          "Person discharging managerial responsibilities": "Peter Terwiesch",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Disposal",
+          "Instrument name": "ABB Ltd",
+          "Intrument type": "Share",
+          "ISIN": "CH0012221716",
+          "Transaction date": "13/08/2026",
+          "Volume": "20,000",
+          "Unit": "Quantity",
+          "Price": "83.46",
+          "Currency": "CHF",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "07/08/2026",
+          "Issuer": "ABB Ltd",
+          "Person discharging managerial responsibilities": "David Meline",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Disposal",
+          "Instrument name": "ABB Ltd",
+          "Intrument type": "Share",
+          "ISIN": "CH0012221716",
+          "Transaction date": "05/08/2026",
+          "Volume": "2,456",
+          "Unit": "Quantity",
+          "Price": "82.12",
+          "Currency": "CHF",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "01/08/2026",
+          "Issuer": "ABB Ltd",
+          "Person discharging managerial responsibilities": "Peter Terwiesch",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Disposal",
+          "Instrument name": "ABB Ltd",
+          "Intrument type": "Share",
+          "ISIN": "CH0012221716",
+          "Transaction date": "30/07/2026",
+          "Volume": "10,000",
+          "Unit": "Quantity",
+          "Price": "77.30",
+          "Currency": "CHF",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "31/07/2026",
+          "Issuer": "ABB Ltd",
+          "Person discharging managerial responsibilities": "Peter Terwiesch",
+          "Position": "Other\u00a0member\u00a0of\u00a0the\u00a0company's\u00a0administrative,\u00a0management\u00a0or\u00a0supervisory\u00a0body",
+          "Closely associated": "",
+          "Nature of transaction": "Disposal",
+          "Instrument name": "ABB Ltd",
+          "Intrument type": "Share",
+          "ISIN": "CH0012221716",
+          "Transaction date": "29/07/2026",
+          "Volume": "18,799",
+          "Unit": "Quantity",
+          "Price": "76.76",
+          "Currency": "CHF",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/05/2026",
+          "Issuer": "ABB Ltd",
+          "Person discharging managerial responsibilities": "Mats Rahmstr\u00f6m",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "ABB Ltd",
+          "Intrument type": "Share",
+          "ISIN": "CH0012221716",
+          "Transaction date": "04/05/2026",
+          "Volume": "954",
+          "Unit": "Quantity",
+          "Price": "78.42",
+          "Currency": "CHF",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/05/2026",
+          "Issuer": "ABB Ltd",
+          "Person discharging managerial responsibilities": "Claudia Nemat",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "ABB Ltd",
+          "Intrument type": "Share",
+          "ISIN": "CH0012221716",
+          "Transaction date": "04/05/2026",
+          "Volume": "917",
+          "Unit": "Quantity",
+          "Price": "78.42",
+          "Currency": "CHF",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/05/2026",
+          "Issuer": "ABB Ltd",
+          "Person discharging managerial responsibilities": "David Meline",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "ABB Ltd",
+          "Intrument type": "Share",
+          "ISIN": "CH0012221716",
+          "Transaction date": "04/05/2026",
+          "Volume": "1,157",
+          "Unit": "Quantity",
+          "Price": "78.42",
+          "Currency": "CHF",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/05/2026",
+          "Issuer": "ABB Ltd",
+          "Person discharging managerial responsibilities": "Geraldine Matchett",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "ABB Ltd",
+          "Intrument type": "Share",
+          "ISIN": "CH0012221716",
+          "Transaction date": "04/05/2026",
+          "Volume": "1,114",
+          "Unit": "Quantity",
+          "Price": "78.42",
+          "Currency": "CHF",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/05/2026",
+          "Issuer": "ABB Ltd",
+          "Person discharging managerial responsibilities": "Jennifer Li",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "ABB Ltd",
+          "Intrument type": "Share",
+          "ISIN": "CH0012221716",
+          "Transaction date": "04/05/2026",
+          "Volume": "1,687",
+          "Unit": "Quantity",
+          "Price": "78.42",
+          "Currency": "CHF",
+          "Status": "",
+          "Details": "Notification"
+        },
+        {
+          "Publication date": "06/05/2026",
+          "Issuer": "ABB Ltd",
+          "Person discharging managerial responsibilities": "Denise Johnson",
+          "Position": "Member\u00a0of\u00a0the\u00a0Board\u00a0of\u00a0Directors",
+          "Closely associated": "",
+          "Nature of transaction": "Acquisition",
+          "Instrument name": "ABB Ltd",
+          "Intrument type": "Share",
+          "ISIN": "CH0012221716",
+          "Transaction date": "04/05/2026",
+          "Volume": "1,948",
+          "Unit": "Quantity",
+          "Price": "78.42",
+          "Currency": "CHF",
+          "Status": "",
+          "Details": "Notification"
+        }
+      ],
+      "source": "Finansinspektionen Insynsregister (marknadssok.fi.se), free public data, attribution required. FI does not review notifications before publication - cannot guarantee completeness/correctness.",
+      "note": "showing up to 15 most recent transactions, may not be the full set"
+    }
+  }
+}

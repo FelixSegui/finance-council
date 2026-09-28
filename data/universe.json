@@ -1,6 +1,6 @@
 {
   "note": "BROAD INVESTABLE UNIVERSE \u2014 the discovery pool, not a watchlist and not holdings. Auto-generated blocks are refreshed by scripts/build_universe.py; entries with source 'manual' are user-maintained and preserved verbatim (add via `python scripts/watchlist.py universe-add`). Membership implies nothing about quality \u2014 narrowing is scripts/scout.py's job.",
-  "generated_utc": "2026-08-24T20:39:14.977418+00:00",
+  "generated_utc": "2026-09-28T06:21:55.132181+00:00",
   "refresh_interval_days": 30,
   "counts": {
     "total": 624,
@@ -12,7 +12,7 @@
       "id": "sp500",
       "url": "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv",
       "count": 503,
-      "fetched_utc": "2026-08-24T20:39:14.977318+00:00"
+      "fetched_utc": "2026-09-28T06:21:55.132103+00:00"
     }
   ],
   "tickers": {
@@ -620,6 +620,13 @@
       "cik": "0000010795",
       "source": "sp500"
     },
+    "BE": {
+      "name": "Bloom Energy",
+      "sector": "Industrials",
+      "region": "US",
+      "cik": "0001664703",
+      "source": "sp500"
+    },
     "BEIJ-B.ST": {
       "name": "Beijer Ref AB (publ)",
       "sector": null,
@@ -716,13 +723,6 @@
       "sector": "Energy",
       "region": "US",
       "cik": "0001701605",
-      "source": "sp500"
-    },
-    "BLDR": {
-      "name": "Builders FirstSource",
-      "sector": "Industrials",
-      "region": "US",
-      "cik": "0001316835",
       "source": "sp500"
     },
     "BLK": {
@@ -2487,6 +2487,13 @@
       "cik": "0000051253",
       "source": "sp500"
     },
+    "ILMN": {
+      "name": "Illumina, Inc.",
+      "sector": "Health Care",
+      "region": "US",
+      "cik": "0001110803",
+      "source": "sp500"
+    },
     "INCY": {
       "name": "Incyte",
       "sector": "Health Care",
@@ -3625,6 +3632,13 @@
       "cik": "0000797468",
       "source": "sp500"
     },
+    "P": {
+      "name": "Everpure",
+      "sector": "Information Technology",
+      "region": "US",
+      "cik": "0001474432",
+      "source": "sp500"
+    },
     "PANW": {
       "name": "Palo Alto Networks",
       "sector": "Information Technology",
@@ -4434,13 +4448,6 @@
       "cik": "0000732717",
       "source": "sp500"
     },
-    "TAP": {
-      "name": "Molson Coors Beverage Company",
-      "sector": "Consumer Staples",
-      "region": "US",
-      "cik": "0000024545",
-      "source": "sp500"
-    },
     "TDG": {
       "name": "TransDigm Group",
       "sector": "Industrials",
@@ -4664,13 +4671,6 @@
       "sector": "Industrials",
       "region": "US",
       "cik": "0001466258",
-      "source": "sp500"
-    },
-    "TTD": {
-      "name": "Trade Desk (The)",
-      "sector": "Communication Services",
-      "region": "US",
-      "cik": "0001671933",
       "source": "sp500"
     },
     "TTWO": {

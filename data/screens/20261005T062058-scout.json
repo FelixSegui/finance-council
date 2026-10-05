@@ -1,0 +1,1471 @@
+{
+  "generated_utc": "2026-10-05T06:20:58.366516+00:00",
+  "health": {
+    "universe": 624,
+    "from_cache": 0,
+    "newly_fetched": 625,
+    "fetch_failed": 4,
+    "fetched": 621,
+    "ranked": 613,
+    "candidates": 74,
+    "holdings": 9,
+    "watchlist": 30,
+    "new": 35,
+    "focus": 23,
+    "share_class_collapsed": 6,
+    "screened": 74,
+    "passed": 38,
+    "missing": 17,
+    "failed": 19,
+    "status": "VALID",
+    "suspect_values": 8
+  },
+  "diagnostics": [],
+  "filters": [
+    "max_pe max 40.0",
+    "max_forward_pe max 30.0",
+    "min_profit_margin min 0.0",
+    "max_debt_to_equity max 250.0",
+    "min_market_cap min 500000000.0"
+  ],
+  "lens_definitions": {
+    "quality": {
+      "roic": "high",
+      "roe": "high",
+      "profit_margin": "high",
+      "operating_margin": "high",
+      "net_debt_to_ebitda": "low"
+    },
+    "value": {
+      "earnings_yield": "high",
+      "forward_earnings_yield": "high",
+      "fcf_yield": "high",
+      "price_to_book": "low",
+      "price_to_sales": "low"
+    },
+    "growth": {
+      "revenue_growth": "high",
+      "revenue_cagr_3y": "high",
+      "peg": "low",
+      "pe_compression": "high"
+    },
+    "defensive": {
+      "beta": "low",
+      "debt_to_equity": "low",
+      "net_debt_to_ebitda": "low",
+      "profit_margin": "high",
+      "dividend_yield": "high"
+    },
+    "contrarian": {
+      "pct_of_52w_range": "low",
+      "earnings_yield": "high",
+      "price_to_book": "low",
+      "profit_margin": "high"
+    }
+  },
+  "lens_coverage": {
+    "quality": 609,
+    "value": 610,
+    "growth": 608,
+    "defensive": 610,
+    "contrarian": 613
+  },
+  "lens_shortlists": {
+    "quality": [
+      "APP",
+      "SNDK",
+      "MU",
+      "NVDA",
+      "MA",
+      "V",
+      "INDU-C.ST",
+      "TPL",
+      "MO",
+      "LLY"
+    ],
+    "value": [
+      "CHTR",
+      "CMCSA",
+      "FIS",
+      "ALL",
+      "CTVA",
+      "FISV",
+      "EG",
+      "CORE-B.ST",
+      "DOM.ST",
+      "MEKO.ST"
+    ],
+    "growth": [
+      "NVDA",
+      "BE",
+      "AVGO",
+      "PLTR",
+      "APO",
+      "AXON",
+      "DASH",
+      "GPN",
+      "FANG",
+      "LLY"
+    ],
+    "defensive": [
+      "SHB-A.ST",
+      "SWED-A.ST",
+      "MO",
+      "CME",
+      "BETS-B.ST",
+      "VICI",
+      "NOVO-B.CO",
+      "TEL2-B.ST",
+      "TPL",
+      "EOG"
+    ],
+    "contrarian": [
+      "VICI",
+      "DIOS.ST",
+      "CATE.ST",
+      "FIS",
+      "INDU-C.ST",
+      "INVE-A.ST",
+      "EXE",
+      "FISV",
+      "EIX",
+      "MKC"
+    ]
+  },
+  "share_class_collapsed": {
+    "ATCO-A.ST": "ATCO-B.ST",
+    "EPI-B.ST": "EPI-A.ST",
+    "INDU-A.ST": "INDU-C.ST",
+    "ELUX-B.ST": "ELUX-A.ST",
+    "NCC-B.ST": "NCC-A.ST",
+    "INVE-B.ST": "INVE-A.ST"
+  },
+  "universe_warnings": [],
+  "fetch_failures": {
+    "BF.B": "HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found",
+    "BTC0E.AS": "HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found",
+    "DE000A0S9GB0": "HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found",
+    "FING-B.ST": "HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found"
+  },
+  "candidates": {
+    "AAPL": {
+      "source": "watchlist",
+      "name": "Apple Inc.",
+      "best_lens": "quality",
+      "lens_score": 1.652,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 27,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "forward_pe=34.822 > 30.0"
+        ]
+      }
+    },
+    "ABB.ST": {
+      "source": "holding",
+      "name": "ABB",
+      "best_lens": "quality",
+      "lens_score": 0.226,
+      "thin_lenses": [],
+      "suspect": [
+        "price_to_book=113.0594"
+      ],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 66,
+      "focus": true,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "forward_pe=37.586 > 30.0"
+        ]
+      }
+    },
+    "ABBV": {
+      "source": "watchlist",
+      "name": "AbbVie",
+      "best_lens": "growth",
+      "lens_score": 0.482,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 60,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=74.243 > 40.0"
+        ]
+      }
+    },
+    "ALFA.ST": {
+      "source": "holding",
+      "name": "Alfa Laval",
+      "best_lens": "defensive",
+      "lens_score": 0.182,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 68,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "ALL": {
+      "source": "new",
+      "name": "Allstate",
+      "best_lens": "value",
+      "lens_score": 1.784,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "value"
+      ],
+      "rank": 16,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "AMD": {
+      "source": "watchlist",
+      "name": "Advanced Micro Devices",
+      "best_lens": "growth",
+      "lens_score": 1.35,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 36,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=161.712 > 40.0",
+          "forward_pe=40.679 > 30.0"
+        ]
+      }
+    },
+    "AMZN": {
+      "source": "watchlist",
+      "name": "Amazon",
+      "best_lens": "quality",
+      "lens_score": 0.025,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 71,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "APO": {
+      "source": "new",
+      "name": "Apollo Global Management",
+      "best_lens": "growth",
+      "lens_score": 1.727,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "growth"
+      ],
+      "rank": 21,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=40.867 > 40.0"
+        ]
+      }
+    },
+    "APP": {
+      "source": "new",
+      "name": "AppLovin",
+      "best_lens": "quality",
+      "lens_score": 2.57,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "quality"
+      ],
+      "rank": 1,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "ASML": {
+      "source": "watchlist",
+      "name": "ASML Holding N.V.",
+      "best_lens": "quality",
+      "lens_score": 0.928,
+      "thin_lenses": [],
+      "suspect": [
+        "price_to_book=1621.9719",
+        "roic=4.0462"
+      ],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 50,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=60.607 > 40.0",
+          "forward_pe=32.068 > 30.0"
+        ]
+      }
+    },
+    "ASSA-B.ST": {
+      "source": "watchlist",
+      "name": "ASSA ABLOY AB (publ)",
+      "best_lens": "defensive",
+      "lens_score": 0.043,
+      "thin_lenses": [
+        "value 2/5"
+      ],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 70,
+      "focus": false,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "forward_pe",
+          "market_cap"
+        ]
+      }
+    },
+    "ATCO-B.ST": {
+      "source": "holding",
+      "name": "Atlas Copco B",
+      "best_lens": "quality",
+      "lens_score": 0.554,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [
+        "ATCO-A.ST"
+      ],
+      "in_lens_shortlists": [],
+      "rank": 57,
+      "focus": true,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "forward_pe"
+        ]
+      }
+    },
+    "AVGO": {
+      "source": "watchlist",
+      "name": "Broadcom",
+      "best_lens": "growth",
+      "lens_score": 1.754,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "growth"
+      ],
+      "rank": 19,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=45.356 > 40.0"
+        ]
+      }
+    },
+    "AXON": {
+      "source": "new",
+      "name": "Axon Enterprise",
+      "best_lens": "growth",
+      "lens_score": 1.545,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "growth"
+      ],
+      "rank": 29,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=171.515 > 40.0",
+          "forward_pe=39.203 > 30.0"
+        ]
+      }
+    },
+    "AZN.ST": {
+      "source": "holding",
+      "name": "AstraZeneca",
+      "best_lens": "defensive",
+      "lens_score": 0.503,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 59,
+      "focus": true,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "forward_pe"
+        ]
+      }
+    },
+    "BE": {
+      "source": "new",
+      "name": "Bloom Energy",
+      "best_lens": "growth",
+      "lens_score": 1.774,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "growth"
+      ],
+      "rank": 18,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=380.461 > 40.0",
+          "forward_pe=58.508 > 30.0"
+        ]
+      }
+    },
+    "BETS-B.ST": {
+      "source": "new",
+      "name": "Betsson AB (publ)",
+      "best_lens": "defensive",
+      "lens_score": 1.151,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "defensive"
+      ],
+      "rank": 45,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "forward_pe=60.258 > 30.0"
+        ]
+      }
+    },
+    "BTC0E.AS": {
+      "source": "holding",
+      "name": "Valour Bitcoin Zero SEK (certificate, ISIN CH0585378661)",
+      "best_lens": null,
+      "lens_score": null,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "focus": true,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "reason": "HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found"
+      }
+    },
+    "CATE.ST": {
+      "source": "new",
+      "name": "Catena AB (publ)",
+      "best_lens": "contrarian",
+      "lens_score": 1.71,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "contrarian"
+      ],
+      "rank": 23,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "CHTR": {
+      "source": "new",
+      "name": "Charter Communications",
+      "best_lens": "value",
+      "lens_score": 1.842,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "value"
+      ],
+      "rank": 9,
+      "focus": true,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "debt_to_equity=441.578 > 250.0"
+        ]
+      }
+    },
+    "CMCSA": {
+      "source": "new",
+      "name": "Comcast",
+      "best_lens": "value",
+      "lens_score": 1.814,
+      "thin_lenses": [],
+      "suspect": [
+        "peg=142.98"
+      ],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "value"
+      ],
+      "rank": 13,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "CME": {
+      "source": "new",
+      "name": "CME Group",
+      "best_lens": "defensive",
+      "lens_score": 1.226,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "defensive"
+      ],
+      "rank": 44,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "CORE-B.ST": {
+      "source": "new",
+      "name": "Corem Property Group AB (publ)",
+      "best_lens": "value",
+      "lens_score": 1.571,
+      "thin_lenses": [
+        "growth 2/4"
+      ],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "value"
+      ],
+      "rank": 28,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "profit_margins=-0.856 < 0.0"
+        ]
+      }
+    },
+    "CTVA": {
+      "source": "new",
+      "name": "Corteva",
+      "best_lens": "value",
+      "lens_score": 1.707,
+      "thin_lenses": [
+        "quality 2/5",
+        "defensive 2/5"
+      ],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "value"
+      ],
+      "rank": 24,
+      "focus": false,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "debt_to_equity"
+        ]
+      }
+    },
+    "DASH": {
+      "source": "new",
+      "name": "DoorDash",
+      "best_lens": "growth",
+      "lens_score": 1.475,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "growth"
+      ],
+      "rank": 31,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=99.553 > 40.0"
+        ]
+      }
+    },
+    "DE000A0S9GB0": {
+      "source": "holding",
+      "name": "Xetra-Gold (physically-backed gold ETC, ISIN DE000A0S9GB0)",
+      "best_lens": null,
+      "lens_score": null,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "focus": true,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "reason": "HTTP Error 404: Not Found; chart fallback also failed: HTTP Error 404: Not Found"
+      }
+    },
+    "DIOS.ST": {
+      "source": "new",
+      "name": "Di\u00f6s Fastigheter AB (publ)",
+      "best_lens": "contrarian",
+      "lens_score": 1.778,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "contrarian"
+      ],
+      "rank": 17,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "DOM.ST": {
+      "source": "new",
+      "name": "Dometic Group AB (publ)",
+      "best_lens": "value",
+      "lens_score": 1.494,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "value"
+      ],
+      "rank": 30,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "EG": {
+      "source": "new",
+      "name": "Everest Group",
+      "best_lens": "value",
+      "lens_score": 1.656,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "value"
+      ],
+      "rank": 26,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "EIX": {
+      "source": "new",
+      "name": "Edison International",
+      "best_lens": "contrarian",
+      "lens_score": 1.298,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "contrarian"
+      ],
+      "rank": 39,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "EOG": {
+      "source": "new",
+      "name": "EOG Resources",
+      "best_lens": "defensive",
+      "lens_score": 0.87,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "defensive"
+      ],
+      "rank": 51,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "ERIC-B.ST": {
+      "source": "watchlist",
+      "name": "Telefonaktiebolaget LM Ericsson (publ)",
+      "best_lens": "value",
+      "lens_score": 0.662,
+      "thin_lenses": [
+        "growth 2/4"
+      ],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 53,
+      "focus": false,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "forward_pe"
+        ]
+      }
+    },
+    "EVO.ST": {
+      "source": "watchlist",
+      "name": "Evolution AB (publ)",
+      "best_lens": "quality",
+      "lens_score": 1.345,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 37,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "EXE": {
+      "source": "new",
+      "name": "Expand Energy",
+      "best_lens": "contrarian",
+      "lens_score": 1.344,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "contrarian"
+      ],
+      "rank": 38,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "FANG": {
+      "source": "new",
+      "name": "Diamondback Energy",
+      "best_lens": "growth",
+      "lens_score": 1.436,
+      "thin_lenses": [],
+      "suspect": [
+        "peg=20.47"
+      ],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "growth"
+      ],
+      "rank": 33,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "FIS": {
+      "source": "new",
+      "name": "Fidelity National Information Services",
+      "best_lens": "value",
+      "lens_score": 1.803,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "value",
+        "contrarian"
+      ],
+      "rank": 14,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "FISV": {
+      "source": "new",
+      "name": "Fiserv",
+      "best_lens": "value",
+      "lens_score": 1.668,
+      "thin_lenses": [
+        "value 2/5",
+        "growth 2/4",
+        "contrarian 2/4"
+      ],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "value",
+        "contrarian"
+      ],
+      "rank": 25,
+      "focus": false,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "profit_margins",
+          "debt_to_equity"
+        ]
+      }
+    },
+    "GOOGL": {
+      "source": "watchlist",
+      "name": "Alphabet Inc. (Class A)",
+      "best_lens": "quality",
+      "lens_score": 1.362,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 35,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "GPN": {
+      "source": "new",
+      "name": "Global Payments",
+      "best_lens": "growth",
+      "lens_score": 1.468,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "growth"
+      ],
+      "rank": 32,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "profit_margins=-0.092 < 0.0"
+        ]
+      }
+    },
+    "HD": {
+      "source": "watchlist",
+      "name": "Home Depot (The)",
+      "best_lens": "quality",
+      "lens_score": 0.475,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 61,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "debt_to_equity=380.261 > 250.0"
+        ]
+      }
+    },
+    "HEXA-B.ST": {
+      "source": "watchlist",
+      "name": "Hexagon AB (publ)",
+      "best_lens": "defensive",
+      "lens_score": 0.158,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 69,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "HM-B.ST": {
+      "source": "watchlist",
+      "name": "H & M Hennes & Mauritz AB (publ)",
+      "best_lens": "contrarian",
+      "lens_score": 0.204,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 67,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "INDU-C.ST": {
+      "source": "watchlist",
+      "name": "AB Industriv\u00e4rden (publ)",
+      "best_lens": "quality",
+      "lens_score": 1.9,
+      "thin_lenses": [
+        "growth 2/4"
+      ],
+      "suspect": [
+        "revenue_growth=11.979"
+      ],
+      "share_class_siblings": [
+        "INDU-A.ST"
+      ],
+      "in_lens_shortlists": [
+        "quality",
+        "contrarian"
+      ],
+      "rank": 8,
+      "focus": true,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "forward_pe"
+        ]
+      }
+    },
+    "INVE-A.ST": {
+      "source": "holding",
+      "name": "Investor A (stock)",
+      "best_lens": "quality",
+      "lens_score": 1.82,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [
+        "INVE-B.ST"
+      ],
+      "in_lens_shortlists": [
+        "contrarian"
+      ],
+      "rank": 11,
+      "focus": true,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "forward_pe"
+        ]
+      }
+    },
+    "JNJ": {
+      "source": "watchlist",
+      "name": "Johnson & Johnson",
+      "best_lens": "defensive",
+      "lens_score": 0.629,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 54,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "KINV-B.ST": {
+      "source": "watchlist",
+      "name": "Kinnevik AB",
+      "best_lens": "growth",
+      "lens_score": 0.549,
+      "thin_lenses": [
+        "growth 2/4"
+      ],
+      "suspect": [
+        "price_to_sales=-2.174"
+      ],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 58,
+      "focus": false,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "trailing_pe"
+        ]
+      }
+    },
+    "KO": {
+      "source": "watchlist",
+      "name": "Coca-Cola Company (The)",
+      "best_lens": "quality",
+      "lens_score": 0.571,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 56,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "LATO-B.ST": {
+      "source": "watchlist",
+      "name": "Investment AB Latour (publ)",
+      "best_lens": "contrarian",
+      "lens_score": 0.445,
+      "thin_lenses": [
+        "growth 2/4"
+      ],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 62,
+      "focus": false,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "forward_pe"
+        ]
+      }
+    },
+    "LLY": {
+      "source": "new",
+      "name": "Lilly (Eli)",
+      "best_lens": "quality",
+      "lens_score": 1.719,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "quality",
+        "growth"
+      ],
+      "rank": 22,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "LUND-B.ST": {
+      "source": "watchlist",
+      "name": "L E Lundbergf\u00f6retagen AB (publ)",
+      "best_lens": "contrarian",
+      "lens_score": 1.114,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 46,
+      "focus": false,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "forward_pe"
+        ]
+      }
+    },
+    "MA": {
+      "source": "new",
+      "name": "Mastercard",
+      "best_lens": "quality",
+      "lens_score": 2.223,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "quality"
+      ],
+      "rank": 5,
+      "focus": true,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "debt_to_equity=439.583 > 250.0"
+        ]
+      }
+    },
+    "MEKO.ST": {
+      "source": "new",
+      "name": "Meko AB",
+      "best_lens": "value",
+      "lens_score": 1.419,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "value"
+      ],
+      "rank": 34,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "META": {
+      "source": "watchlist",
+      "name": "Meta Platforms",
+      "best_lens": "growth",
+      "lens_score": 0.737,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 52,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "MKC": {
+      "source": "new",
+      "name": "McCormick & Company",
+      "best_lens": "contrarian",
+      "lens_score": 1.296,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "contrarian"
+      ],
+      "rank": 40,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "MO": {
+      "source": "new",
+      "name": "Altria",
+      "best_lens": "quality",
+      "lens_score": 1.787,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "quality",
+        "defensive"
+      ],
+      "rank": 15,
+      "focus": true,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "debt_to_equity"
+        ]
+      }
+    },
+    "MSFT": {
+      "source": "watchlist",
+      "name": "Microsoft",
+      "best_lens": "quality",
+      "lens_score": 0.965,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 49,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "MU": {
+      "source": "new",
+      "name": "Micron Technology",
+      "best_lens": "quality",
+      "lens_score": 2.524,
+      "thin_lenses": [],
+      "suspect": [
+        "revenue_growth=3.793"
+      ],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "quality"
+      ],
+      "rank": 3,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "NOVO-B.CO": {
+      "source": "watchlist",
+      "name": "Novo Nordisk A/S",
+      "best_lens": "quality",
+      "lens_score": 1.295,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "defensive"
+      ],
+      "rank": 41,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "NVDA": {
+      "source": "watchlist",
+      "name": "Nvidia",
+      "best_lens": "quality",
+      "lens_score": 2.503,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "quality",
+        "growth"
+      ],
+      "rank": 4,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "PEP": {
+      "source": "watchlist",
+      "name": "PepsiCo",
+      "best_lens": "contrarian",
+      "lens_score": 0.353,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 64,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "PG": {
+      "source": "watchlist",
+      "name": "Procter & Gamble",
+      "best_lens": "defensive",
+      "lens_score": 0.604,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 55,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "PLTR": {
+      "source": "new",
+      "name": "Palantir Technologies",
+      "best_lens": "growth",
+      "lens_score": 1.74,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "growth"
+      ],
+      "rank": 20,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=162.716 > 40.0",
+          "forward_pe=80.519 > 30.0"
+        ]
+      }
+    },
+    "SAAB-B.ST": {
+      "source": "watchlist",
+      "name": "Saab AB (publ)",
+      "best_lens": "defensive",
+      "lens_score": 0.358,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 63,
+      "focus": false,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=46.728 > 40.0",
+          "forward_pe=61.568 > 30.0"
+        ]
+      }
+    },
+    "SAND.ST": {
+      "source": "watchlist",
+      "name": "Sandvik AB (publ)",
+      "best_lens": "growth",
+      "lens_score": -0.016,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 72,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "SEB-A.ST": {
+      "source": "watchlist",
+      "name": "Skandinaviska Enskilda Banken AB (publ)",
+      "best_lens": "defensive",
+      "lens_score": 1.055,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 47,
+      "focus": false,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "debt_to_equity"
+        ]
+      }
+    },
+    "SHB-A.ST": {
+      "source": "holding",
+      "name": "Handelsbanken A (stock)",
+      "best_lens": "defensive",
+      "lens_score": 1.271,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "defensive"
+      ],
+      "rank": 42,
+      "focus": true,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "debt_to_equity"
+        ]
+      }
+    },
+    "SNDK": {
+      "source": "new",
+      "name": "Sandisk",
+      "best_lens": "quality",
+      "lens_score": 2.532,
+      "thin_lenses": [
+        "growth 1/4"
+      ],
+      "suspect": [
+        "revenue_growth=3.716"
+      ],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "quality"
+      ],
+      "rank": 2,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "SWED-A.ST": {
+      "source": "watchlist",
+      "name": "Swedbank AB (publ)",
+      "best_lens": "defensive",
+      "lens_score": 1.259,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "defensive"
+      ],
+      "rank": 43,
+      "focus": false,
+      "screen_status": "MISSING",
+      "screen_detail": {
+        "missing_fields": [
+          "debt_to_equity"
+        ]
+      }
+    },
+    "TEL2-B.ST": {
+      "source": "new",
+      "name": "Tele2 AB (publ)",
+      "best_lens": "defensive",
+      "lens_score": 1.005,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "defensive"
+      ],
+      "rank": 48,
+      "focus": false,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "TPL": {
+      "source": "new",
+      "name": "Texas Pacific Land Corporation",
+      "best_lens": "quality",
+      "lens_score": 1.818,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "quality",
+        "defensive"
+      ],
+      "rank": 12,
+      "focus": true,
+      "screen_status": "FAIL",
+      "screen_detail": {
+        "reasons": [
+          "trailing_pe=43.392 > 40.0"
+        ]
+      }
+    },
+    "TSM": {
+      "source": "watchlist",
+      "name": "Taiwan Semiconductor Manufacturing Company Limited",
+      "best_lens": "quality",
+      "lens_score": 1.908,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 7,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "V": {
+      "source": "new",
+      "name": "Visa Inc.",
+      "best_lens": "quality",
+      "lens_score": 1.924,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "quality"
+      ],
+      "rank": 6,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "VICI": {
+      "source": "new",
+      "name": "Vici Properties",
+      "best_lens": "contrarian",
+      "lens_score": 1.836,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [
+        "defensive",
+        "contrarian"
+      ],
+      "rank": 10,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    },
+    "VOLV-B.ST": {
+      "source": "holding",
+      "name": "Volvo B",
+      "best_lens": "value",
+      "lens_score": 0.305,
+      "thin_lenses": [],
+      "suspect": [],
+      "share_class_siblings": [],
+      "in_lens_shortlists": [],
+      "rank": 65,
+      "focus": true,
+      "screen_status": "PASS",
+      "screen_detail": {}
+    }
+  },
+  "method": "Five independent lens rankings (cross-sectional z-scores, winsorized, equal-weighted within a lens). A lens score is a RELATIVE ordering within this run's universe \u2014 not a valuation, not a forecast, and not a buy signal. The hard screen labels candidates PASS/MISSING/FAIL and removes nothing."
+}

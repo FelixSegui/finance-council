@@ -1,6 +1,6 @@
 {
   "note": "BROAD INVESTABLE UNIVERSE \u2014 the discovery pool, not a watchlist and not holdings. Auto-generated blocks are refreshed by scripts/build_universe.py; entries with source 'manual' are user-maintained and preserved verbatim (add via `python scripts/watchlist.py universe-add`). Membership implies nothing about quality \u2014 narrowing is scripts/scout.py's job.",
-  "generated_utc": "2026-09-28T06:21:55.132181+00:00",
+  "generated_utc": "2026-11-02T06:16:15.407790+00:00",
   "refresh_interval_days": 30,
   "counts": {
     "total": 624,
@@ -12,7 +12,7 @@
       "id": "sp500",
       "url": "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv",
       "count": 503,
-      "fetched_utc": "2026-09-28T06:21:55.132103+00:00"
+      "fetched_utc": "2026-11-02T06:16:15.407656+00:00"
     }
   ],
   "tickers": {
@@ -1271,13 +1271,6 @@
       "sector": "Information Technology",
       "region": "US",
       "cik": "0001058290",
-      "source": "sp500"
-    },
-    "CTVA": {
-      "name": "Corteva",
-      "sector": "Materials",
-      "region": "US",
-      "cik": "0001755672",
       "source": "sp500"
     },
     "CVNA": {
@@ -3078,7 +3071,7 @@
       "source": "sp500"
     },
     "MCK": {
-      "name": "McKesson Corporation",
+      "name": "McKesson",
       "sector": "Health Care",
       "region": "US",
       "cik": "0000927653",
@@ -3835,13 +3828,6 @@
       "cik": "0001393311",
       "source": "sp500"
     },
-    "PSKY": {
-      "name": "Paramount Skydance Corporation",
-      "sector": "Communication Services",
-      "region": "US",
-      "cik": "0002041610",
-      "source": "sp500"
-    },
     "PSX": {
       "name": "Phillips 66",
       "sector": "Energy",
@@ -3970,7 +3956,7 @@
       "source": "sp500"
     },
     "RMD": {
-      "name": "ResMed|",
+      "name": "ResMed",
       "sector": "Health Care",
       "region": "US",
       "cik": "0000943819",
@@ -4221,6 +4207,13 @@
         "currency": "SEK",
         "quote_type": "EQUITY"
       }
+    },
+    "SKYD": {
+      "name": "Skydance",
+      "sector": "Communication Services",
+      "region": "US",
+      "cik": "0002041610",
+      "source": "sp500"
     },
     "SLB": {
       "name": "Schlumberger",
@@ -4680,6 +4673,13 @@
       "cik": "0000946581",
       "source": "sp500"
     },
+    "TWLO": {
+      "name": "Twilio",
+      "sector": "Information Technology",
+      "region": "US",
+      "cik": "0001447669",
+      "source": "sp500"
+    },
     "TXN": {
       "name": "Texas Instruments",
       "sector": "Information Technology",
@@ -4933,6 +4933,13 @@
       "asset_class": "etf",
       "source": "manual"
     },
+    "VYLR": {
+      "name": "Vylor",
+      "sector": "Consumer Staples",
+      "region": "US",
+      "cik": "0002128626",
+      "source": "sp500"
+    },
     "VZ": {
       "name": "Verizon",
       "sector": "Communication Services",
@@ -4952,13 +4959,6 @@
       "sector": "Health Care",
       "region": "US",
       "cik": "0001000697",
-      "source": "sp500"
-    },
-    "WBD": {
-      "name": "Warner Bros. Discovery",
-      "sector": "Communication Services",
-      "region": "US",
-      "cik": "0001437107",
       "source": "sp500"
     },
     "WDAY": {

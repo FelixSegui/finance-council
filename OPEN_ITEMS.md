@@ -23,68 +23,72 @@ the memo leads with it rather than burying it.
 
 **Emphasis:** portfolio-tending.
 
-**Why:** three live portfolio decisions landed fresh this sweep and need
-human review before they age, more than discovery needs more depth. (1)
-**ABB.ST's SELL is retired to NO_ACTION** as the Council corrects its own
-prior case — the "richest PEG of the trio, 2.71" that drove the BROKEN
-thesis has reversed to 1.24, now cheapest of the three. A `thesis_status`
-edit (BROKEN -> WEAKENING) is flagged for the user to apply in
-`portfolio.json`. (2) **VICI is downgraded from a standing BUY to
-HOLD-WATCH on genuine fundamental deterioration** (trailing EPS -17%, net
-margin 67.5%->56.5%, net debt/EBITDA 4.82->5.46) — not the mechanical
-price-effect S33 has correctly dismissed on two prior occasions, so this one
-is worth a real look rather than a repeat wave-off. (3) **P3 (PayPal
-routing) is unexecuted for a 13th consecutive sweep** and is now the funding
-constraint on a five-name queue (gold tranche 2, AZN.ST, NVDA, SHB-A.ST, and
-the Avanza Global remainder) — nothing this sweep changes the case for
-waiting, only the length of the queue behind it. Discovery stays a
-secondary watch item this sweep: scout ran VALID, but for the first time
-**zero** of the 34 `source=new` rows were genuinely first-seen across all 12
-runs (see new **S38**) — the funnel is not currently surfacing anything the
-system hasn't already looked at, which argues against spending more Council
-depth there this sweep, not for it.
+**Why:** discovery is not the constraint this sweep — S38's cross-check found
+this sweep's discovery count genuinely improved on last sweep's zero (12
+names entered the candidate set, with WDC, ECHO and MPC confirmed first-seen
+across all 12 recorded runs) — while what has already been decided keeps
+aging unexecuted. (1) **P3 (PayPal routing) is unexecuted a 14th consecutive
+sweep**, and even though two names dropped out of its funding queue this
+sweep (AZN.ST and SHB-A.ST both withdrawn on valuation/portfolio-fit
+grounds), what's left — gold tranche 2 (~4,930 SEK) and 1 NVDA share — still
+sits waiting on the same unexecuted conversion. (2) **Two thesis-status
+record-update flags have now sat unapplied across multiple sweeps** (ABB.ST
+BROKEN, VOLV-B.ST TOO_EARLY->INTACT) **and a third landed fresh this sweep**
+(AZN.ST INTACT->WEAKENING) — three live `portfolio.json` edits waiting on the
+user, not a system defect, but worth surfacing together rather than letting
+each re-flag separately next sweep. (3) **The DECISION pillar's own numbers
+make the case directly**: 21 open BUY calls, median age 35 days, oldest
+(VICI) 70 days, with real cost to the delay already visible in the
+price-drift table — AZN.ST has moved +11% to +21% away from six separate
+unexecuted entry points over the last 9 weeks. (4) **S1 (BTC0E.AS / gold ETC
+pricing) enters a 5th consecutive sweep with no live price for either** — a
+standing data gap on two live positions, not a new finding, but aging
+alongside everything else above. None of this is capital-allocation work
+`meta` can do — it is exactly the "human attention" this emphasis field
+exists to route.
 
-**Also flagged for the user, not capital-allocation work but worth reading
-before the next sweep:** a new, sizable data-reliability gap. Avanza Global
-and Avanza Auto 3 — roughly 80% of the equity sleeve by value, ~136,000 SEK
-of the ~223,644 SEK total portfolio — have not had their price marks
-refreshed in 14-15 weeks (since 2026-07-24/07-28), because no pipeline step
-refreshes fund NAVs the way individual-stock prices are refreshed every
-sweep (see new **S39**). This is not a cosmetic miss: the scorecard's
-OUTCOME pillar figure itself rests on these stale marks for the majority of
-the portfolio's measured value.
+**Judgement pillar — the pre-committed third-sweep bar is now met. Direct
+verdict: this does not lift "the Council must not be weighted," but it does
+open the narrower differential-per-voice-trust question the system's own
+prior entries said it would.**
 
-**Judgement pillar — second consecutive confirmation at real n, line held
-one more sweep, on a sharpened reason, not the same open-ended caution
-restated.** This sweep's scorecard: Chairman n=21 (up from n=20), median
-+5.4% (up from +2.8%), beat baseline 71% (up from 60%) vs voices' median
-+1.8%. This is the second consecutive sweep clearing the n=20 floor, and it
-reads *better* than the first, not just a repeat — exactly the confirmation
-the 2026-10-26 entry set as its own trigger to revisit the "Council must not
-be weighted" rule.
+This sweep's scorecard: Chairman n=22, median +9.6%, beat baseline 82% — a
+third consecutive sweep clearing the n=20 floor, and the best of the three
+(n=20/+2.8%/60% -> n=21/+5.4%/71% -> n=22/+9.6%/82%). The Chairman's
+synthesis sits at or above every individual voice this sweep except macro
+(contrarian +9.5%/77%, defensive +8.6%/82%, macro +12.8%/80%, valuation
++4.4%/61%, copycat +6.1%/69%, fundamental +0.0%/46%, growth -0.3%/42%) — not
+just above the voices' median, which is the stronger of the two synthesis
+claims this item has been tracking.
 
-**Decision: hold the line one more sweep, but on a sharper, explicitly
-updated reason rather than the same open-ended caution.** Two readings above
-an n=20 floor is still a thin base for a change this consequential and hard
-to reverse — weighting changes how every future sweep's picks get chosen,
-not just how they get scored — and, more specifically, the dispersion
-*underneath* the Chairman's aggregate has not narrowed between the two
-sweeps: growth (-7.0%, beat 16%) and fundamental (-4.2%, beat 40%) both read
-strongly negative in both sweeps, while macro (+10.3%, beat 82%) and
-defensive (+8.9%, beat 94%) read strongly positive in both. A Chairman
-median that beats the voices' median by synthesizing across that spread is
-real evidence the synthesis step itself has value — the narrower claim two
-sweeps now supports — but it is not yet evidence that the Council's seven
-voices, treated as a block, deserve more weight than the mechanical
-shortlist they were handed. **Explicit bar for a third sweep:** hold the
-"must not be weighted" rule if the third sweep's chairman-vs-voices reading
-is similar or better AND the per-voice dispersion pattern repeats a third
-time (the same voices consistently strong/weak, not noise reshuffling); if
-both hold, the live question to take up next is **differential per-voice
-trust** (upweight defensive/macro, discount growth/fundamental), not a
-blanket "weight the Council" rule — two sweeps of evidence supports the
-narrower claim, not the broader one. **The Council must not be weighted
-yet.**
+The 2026-10-26 entry set an explicit two-part trigger for revisiting the
+weighting rule on a third sweep: (a) a reading similar-or-better than the
+prior two, and (b) the same per-voice dispersion pattern repeating a third
+time (the same voices consistently strong/weak, not noise reshuffling).
+**Both conditions are met.** (a) is unambiguous — this is the best of the
+three readings. (b) also holds: growth and fundamental are the two weakest
+voices a third straight sweep (growth -0.3%/42%, fundamental +0.0%/46% —
+still weak, though less negative than the -7.0%/16% and -4.2%/40% seen
+across the prior two), while macro and defensive are the two strongest a
+third straight sweep (macro +12.8%/80%, defensive +8.6%/82%).
+
+Per the trigger's own stated logic, meeting both conditions does not
+authorize a blanket "weight the Council over the mechanical shortlist"
+rule — it authorizes taking up the narrower question next: **differential
+per-voice trust**. Concretely, the next step worth proposing (not applying —
+this is a design change to `council.md`'s Chairman synthesis guidance, for
+the user to approve) is to have the Chairman's synthesis explicitly treat
+macro and defensive as higher-trust voices and growth and fundamental as
+lower-trust voices when they disagree, rather than treating all seven as
+equally weighted inputs. This is categorically different from weighting the
+Council's output over scout's mechanical shortlist (S33's "ranking is not
+adding signal" finding is about the screen, not the Council, and stays
+completely untouched by this). **"The Council must not be weighted" (as a
+block) stays in force.** Three sweeps of real-n evidence support the
+narrower claim already established — that the synthesis step itself adds
+value over the voices it's handed — not the broader one, that the
+seven-voice block as a whole deserves more weight than the mechanical
+shortlist it was handed.
 
 ---
 
@@ -163,6 +167,13 @@ yet.**
   sweep. The funding queue grew to five names (gold tranche 2, AZN.ST, VICI,
   NVDA, and newly SHB-A.ST, sequenced last). Merit unchanged; only the count
   and the queue keep growing.
+- **2026-11-02 note:** still not executed, now a 13th consecutive sweep.
+- **2026-11-09 note:** still not executed, now a 14th consecutive sweep.
+  The queue actually shrank this time — AZN.ST and SHB-A.ST both dropped off
+  on valuation/portfolio-fit grounds — leaving gold tranche 2 (~4,930 SEK)
+  and 1 NVDA share as what's waiting on the conversion. Merit unchanged;
+  fewer names waiting does not mean less urgency, since the fee drag itself
+  recurs every ~2 months regardless.
 - Full deliberation history (the Stripe-routing dead end, the
   multi-sweep repeated-advice pattern, the Revolut-balance/D3 cross-link):
   `reports/SESSION_LOG.md`'s 2026-08-10 through 2026-08-17 entries.
@@ -272,6 +283,11 @@ yet.**
   clean mechanical result — SELL ABB.ST, all 4 shares (~3,302.40 SEK at
   825.60), proceeds to 13 VICI, stands at Low confidence, conviction 4,
   fresh judgement rather than a renewed streak.
+- **2026-11-09 — the SELL is retired to NO_ACTION, Council correcting its
+  own prior case.** The "richest PEG of the trio, 2.71" fact that drove the
+  original BROKEN thesis has reversed to 1.24, now cheapest of the three. A
+  `thesis_status` edit (BROKEN -> WEAKENING) is flagged for the user to
+  apply in `portfolio.json` directly, still unapplied as of this sweep.
 - **Two flags carried forward, still relevant to what remains uninvested:**
   Spiltan Aktiefond Investmentbolag structurally overlaps your existing
   Investor A position; Swedbank Robur Technology A is a concentrated
@@ -356,165 +372,31 @@ yet.**
 IDs are never reused — an S-number in an old memo always means the same item.
 
 ### S21 — [prospecting] Nordic coverage: 107 names, and a data asymmetry underneath
-- **Status:** open — the headline problem is fixed; a quieter one it exposed is not
-- **Reviewed 2026-08-31 through 2026-10-05: valuable soon, seven consecutive
-  measurements of the same 28-35pp `fwd_pe` Sweden-vs-US coverage spread**,
-  each tying the gap to a concrete cost (VOLCAR-B.ST screening MISSING then
-  dropping out of the candidate set entirely; AZN.ST — the portfolio's
-  largest holding — ranked 59-62 of ~75 while three Council voices call it a
-  BUY). Full history preserved in git log of this file; not re-quoted here to
-  avoid this item's own text regrowing into an essay.
-- **Reviewed 2026-10-19: valuable soon, 8th measurement, same magnitude,
-  still unbuilt.** This sweep's scorecard: `fwd_pe` 70% Sweden vs 100% US, a
-  30pp spread — within the same 28-35pp band measured every sweep since
-  2026-08-24, still above the scorecard's own >15pp flag threshold.
-  `fcf_yield_pct` also carries a 17pp spread this sweep, a second field
-  showing the same asymmetry. AZN.ST's `forward_pe` is now missing a 9th
-  consecutive run. Eight unchanged measurements with no build attempted is
-  not new evidence that the problem matters more — that case was already
-  made — it is evidence that repeating the recommendation a ninth time will
-  not be what moves it. Not escalating the wording further.
-- **Reviewed 2026-10-26: valuable soon, 9th measurement, same conclusion.**
-  This sweep's scorecard: `fwd_pe` 29pp spread (71% Sweden vs 100% US),
-  `fcf_yield_pct` 15pp spread — both still above or at the scorecard's own
-  flag threshold. No new build attempted; not re-arguing the case again.
-- **Reviewed 2026-11-02: valuable soon, 10th measurement, same conclusion.**
-  This sweep's scorecard: `fwd_pe` 70% Sweden vs 100% US, still a 30pp
-  spread, still the single explicitly flagged line in the DATA pillar. No
-  new build attempted; not re-arguing a case already made ten times.
-- **2026-08-24 (evening):** the user supplied a 120-row Swedish ticker CSV.
-  `scripts/watchlist.py universe-import` verified it and the universe went
-  from 538 names (20 Nordic) to 622 (107 Nordic, 17%). Swedish names now
-  reach the lens shortlists on their own merits.
-- **What remains, and it is a real distortion, not a cosmetic gap:** Yahoo's
-  fundamentals coverage is not symmetric across markets. The Valuation and
-  Growth lenses both rank partly on forward multiples, so **a Swedish
-  company can lose a shortlist slot for having no forward estimate rather
-  than for being less attractive** — a systematic tilt toward US names that
-  no one would see in the output. The `MISSING` label is honest per name;
-  the aggregate bias is invisible.
-- **How:** two options, neither large. (1) Make each lens report per-market
-  coverage alongside its shortlist, so the tilt is at least visible to the
-  Council. (2) Better: z-score each lens *within* a coverage cohort, or drop
-  forward-looking fields from a lens's inputs when coverage for a name's
-  market is below a threshold, so names are compared on fields they can all
-  actually be measured on. Option 1 is an afternoon; option 2 is the real fix.
-- **Also still open:** no free Nordic/European *constituent feed* is
+- **Status:** open — valuable soon, 11th measurement, same conclusion, no
+  build attempted
+- **Why:** Yahoo's fundamentals coverage is not symmetric across markets.
+  The Valuation and Growth lenses both rank partly on forward multiples, so
+  a Swedish company can lose a shortlist slot for having no forward
+  estimate rather than for being less attractive — a systematic tilt toward
+  US names invisible in the output. Full history (eight prior measurements,
+  each naming a concrete per-name cost — VOLCAR-B.ST dropping out of the
+  candidate set, AZN.ST ranking 59-62 of ~75 despite three Council BUY
+  calls) preserved in git log of this file, not re-quoted here.
+- **Reviewed 2026-11-09:** unchanged. This sweep's scorecard: `fwd_pe` 69%
+  Sweden vs 100% US (31pp spread), `fcf_yield_pct` 19pp spread — both still
+  above the scorecard's own >15pp flag threshold, the same band measured
+  every sweep since 2026-08-24. AZN.ST's `fwd_pe` is missing again this
+  sweep (GAPS section). Eleven unchanged measurements with no build
+  attempted; not re-arguing a case already made eleven times.
+- **How:** two options, neither large, both fully specified in prior
+  entries (git log): (1) report per-market coverage alongside each lens's
+  shortlist so the tilt is visible; (2) z-score each lens within a coverage
+  cohort, or drop forward-looking fields from a lens's inputs when a name's
+  market coverage is below a threshold.
+- **Also still open:** no free Nordic/European constituent feed is
   reachable (Wikipedia and Nasdaq Nordic are proxy-blocked), so the Nordic
   block stays user-maintained — a maintenance question, not a capability gap.
-
-### S27 — [process] The scheduled task's stored prompt drifts stale against real file state, and this is now the eleventh confirmed occurrence
-- **Status:** blocked (on the user — the fix lives in the scheduled task's
-  stored prompt, outside this repository), widened a fourth time 2026-11-02,
-  same ID, per this item's own precedent of widening scope on a repeat of
-  the same underlying shape (stored/asserted instructions diverging from
-  what the system actually requires) rather than proliferating IDs
-- **2026-09-07 through 2026-10-05 reviews: six confirmed occurrences of the
-  external scheduled-prompt drift** (the Handelsbanken-wrapper and
-  `reference_targets`-is-null premises, recurring verbatim), **plus three
-  same-family in-session instances**: a shell-substitution bug delivering
-  literal `$(cat ...)` strings to `council` instead of file contents; a
-  hand-counted streak claim ("7 consecutive runs") that didn't match
-  `candidate_history.csv`; and the 2026-09-28 Council memo itself writing
-  "Applied: Option 1" for a BTC0E.AS trim this system never executed — the
-  first confirmed instance of the drift originating *inside* a Council memo
-  rather than an external or shell-substitution source. Every occurrence
-  through 2026-10-05 was self-caught before any wrong action. Full history
-  preserved in git log of this file.
-- **2026-10-19 meta review — ninth confirmed occurrence of the external
-  drift, plus the most severe variant yet, plus a second recurrence of a
-  narrower scheduled-prompt-drift instance folded in from this sweep's
-  market-data fetch.** Three distinct findings this sweep, all the same
-  underlying shape:
-  1. **The scheduled prompt again asserted the Handelsbanken wrapper is
-     unresolved and `reference_targets` are null** — both false, both
-     declined before any script ran (ninth confirmed occurrence of this
-     exact pair of premises).
-  2. **The scheduled prompt omitted `scripts/scout.py` entirely**, jumping
-     from market-data/calendar straight to "the four lenses." This is
-     categorically worse than every prior occurrence: those were stale
-     *facts* that got corrected in prose; this one tried to skip a
-     *mandatory pipeline stage* that CLAUDE.md states explicitly runs every
-     sweep and is never a valid outcome to omit. The orchestrating session
-     ran scout anyway, overriding the prompt — self-caught, no wrong action,
-     but the closest this family has come to actually degrading the
-     pipeline rather than just the prose around it.
-  3. **The scheduled prompt's market-data fetch instruction named only
-     `ethereum`**, not `ethereum,bitcoin` as CLAUDE.md's own documented
-     fetch command specifies — the second consecutive sweep this exact
-     narrowing has produced a snapshot with zero BTC price fetched. Unlike
-     the first occurrence (2026-10-12, noted but not yet called a pattern),
-     this is now a repeat with a named, compounding cost: D-c's corrected
-     crypto-sizing band is unevaluable for a second sweep running because
-     there is no live BTC price to compare against the new ~14,080 SEK
-     trigger.
-  All three are the identical failure shape this item exists to track:
-  stored prompt text that does not match what the live system actually
-  requires, each one self-caught or overridden before causing a wrong
-  capital action. **Folding all three into S27 rather than opening new IDs**
-  — findings 1 and 3 are straightforward repeats of the external-drift and
-  narrowed-fetch-instruction patterns already in scope; finding 2 is a new,
-  more severe *degree* of the same shape (a pipeline stage instead of a
-  fact), which is exactly the kind of widening this item's own 2026-09-28
-  and 2026-10-05 reviews already set the precedent for.
-- **2026-10-26 meta review — tenth confirmed occurrence of the external
-  drift (same Handelsbanken-wrapper/null-`reference_targets` pair), plus a
-  second recurrence of the scout-omission variant** (self-caught, scout run
-  anyway, both times). The crypto-fetch-narrowing instance (finding 3
-  above) is reported fixed this sweep — CoinGecko fetched `ethereum,bitcoin`
-  together and returned a live bitcoin spot price for the first time in
-  three sweeps. **Re-labelling this item's status to `blocked` rather than
-  `open`**: the recommended fix has sat fully specified and unapplied for
-  more than ten sweeps since first raised 2026-09-07, and repeating the
-  occurrence count further is not what moves it — the lever is outside this
-  repository, with the user.
-- **2026-11-02 meta review — eleventh confirmed occurrence of the external
-  drift (identical Handelsbanken-wrapper/null-`reference_targets` pair),
-  plus a third recurrence of the scout-omission variant (self-caught, scout
-  run anyway) plus a recurrence of the crypto-fetch-narrowing variant (the
-  prompt again named only "ethereum," omitting bitcoin; both fetched anyway
-  per CLAUDE.md's canonical command).** **Walking back the 2026-10-26
-  framing:** that entry called the crypto-narrowing instance "fixed" after
-  one clean sweep. This sweep it recurred — 2026-10-26 was a one-time
-  non-recurrence, not a durable fix, and this item should not repeat that
-  mistake. Going forward, no S27 variant should be called "fixed" on fewer
-  than two consecutive clean sweeps; this item has now supplied its own
-  counter-example for why that bar matters, so the bar is adopted explicitly
-  rather than just noted.
-- **Explicitly NOT folded into S27: the 2026-10-12 sweep's skipped
-  `journal`/`meta` steps.** That failure has no self-catch at all (it was
-  invisible for seven days, found only by the next session noticing a stale
-  file timestamp), which breaks the defining feature of every S27 occurrence
-  to date — self-mitigation before causing harm. Tracked separately as the
-  new **S34** below (widened again 2026-10-26, see S34's own entry).
-- **Why:** the scheduled prompt that launches this weekly sweep is stored
-  text, edited by hand outside this repository, and does not update itself
-  when the facts it assumes change or when its own instructions fall out of
-  sync with CLAUDE.md's canonical flow. Eleven confirmed occurrences of the
-  external drift, each caught and corrected (or overridden) before causing a
-  wrong action — but the recommended fix (removing/rewriting the two stale
-  lines, and now also re-checking the scheduled prompt against CLAUDE.md's
-  full step list rather than just its two most commonly stale facts) has sat
-  unapplied since first recommended 2026-09-07, across more than eleven
-  sweeps.
-- **How:** whatever stores this scheduled task's prompt (outside this
-  repository) needs: (1) the Handelsbanken-wrapper and stale-`reference_targets`
-  lines removed; (2) its step list re-synced against CLAUDE.md's canonical
-  flow so a mandatory stage (scout) cannot be omitted again; (3) its
-  market-data fetch instruction corrected to request `ethereum,bitcoin`
-  together, matching CLAUDE.md's own documented command, not just ethereum.
-  None of these are code `meta` can apply — this is a direct recommendation
-  to the user, now overdue by more than eleven sweeps since first raised.
-  Separately, in-repository: any prompt assembled for a subagent should pass
-  file paths rather than shell-substituting content, and `council.md` should
-  never write "Applied"/"Executed" for an action this system did not itself
-  perform.
-- **Improves:** decision quality (a stale or incomplete premise that goes
-  uncaught would produce a wrong action, not just wasted words — this
-  sweep's scout-omission and BTC-fetch-narrowing instances came closer to
-  that than any prior occurrence) and process reliability (the system's own
-  scheduling and orchestration text drifting out of sync with live state and
-  with CLAUDE.md's own mandatory flow).
+- **Improves:** data reliability, decision quality.
 
 ### S32 — [data] Currency-unit mismatch in `fcf_yield_pct` (and `price_to_sales`/`price_to_book`) for issuers that report in a different currency than their listing — absorbs S24
 - **Status:** open — absorbs S24 (same root-cause family); widening with
@@ -554,6 +436,8 @@ IDs are never reused — an S-number in an old memo always means the same item.
   carried forward unchanged.** Nothing in this sweep's Council or lens
   output named a new TSM/EVO.ST/HEXA-B.ST data point; not re-arguing a case
   already made.
+- **Reviewed 2026-11-09:** valuable soon, no fresh TSM/EVO.ST/HEXA-B.ST
+  evidence this sweep — carried forward unchanged.
 - **Also check:** whether `price_to_sales` and `price_to_book` share the
   pattern more broadly — ABB.ST's `price_to_book` 113.06 is independently
   suspect-flagged every sweep.
@@ -611,6 +495,10 @@ IDs are never reused — an S-number in an old memo always means the same item.
   rather than "a rank move is never worth a look" — a falling rank is still
   a free, cheap prompt to check the underlying fundamentals before
   dismissing it, even though the rank number itself carries no score.
+- **Reviewed 2026-11-09: still open, same aggregate conclusion.** This
+  sweep's scorecard again reads "RANKING IS NOT ADDING SIGNAL" (top-half
+  median +2.2% vs bottom-half +4.8%), unchanged in sign and magnitude from
+  every sweep since this item opened. No new build attempted.
 - **How, two parts, not mutually exclusive:**
   1. **Make the non-predictiveness operational, not just descriptive.**
      State as an explicit rule (not left to each sweep's Chairman to
@@ -631,8 +519,9 @@ IDs are never reused — an S-number in an old memo always means the same item.
   stated purpose currently reads a repeated "no" without any proposal in
   response).
 
-### S34 — [process] No mechanism verifies mandatory pipeline/session outputs actually meet their own stated contract before a sweep ends — missed steps (2026-10-12), a silent content-integrity violation of SESSION_LOG.md's append-only guarantee (2026-10-26), and now a third specific shape on candidate_history.csv (2026-11-02)
-- **Status:** open — new 2026-10-19, widened 2026-10-26 and 2026-11-02
+### S34 — [process] No mechanism verifies mandatory pipeline/session outputs actually meet their own stated contract before a sweep ends — now five confirmed specific shapes of the same gap
+- **Status:** open — new 2026-10-19, widened 2026-10-26, 2026-11-02 and
+  2026-11-09
 - **Why:** the 2026-10-12 sweep ran market-data, scout, calendar and
   council in full — a real memo, real picks, a real scorecard refresh, all
   committed to git (`d1d5434`, `c1d9fb7`, `2306ab6`) — but the session ended
@@ -686,7 +575,36 @@ IDs are never reused — an S-number in an old memo always means the same item.
   "no recurrence since, not reopening." It has now recurred. Widening S34's
   "How" with a third check rather than reopening that closed note under a
   fresh ID, since the underlying gap is identical.
-- **How:** deterministic, no new agent, three checks now, not two.
+- **Widened 2026-11-09: two more specific instances of the same underlying
+  gap, no new ID.**
+  (d) **`SESSION_LOG.md`'s own size is now a recurring operational
+  problem, not a one-off.** This is the second consecutive sweep
+  (2026-11-02, now 2026-11-09) where `journal`'s own write-safety rule
+  (read the whole file before rewriting) could not be satisfied in one
+  LLM-context pass — the file is now 2807 lines. Both times the
+  orchestrating session had to splice the entry in via a script-level
+  head/cat/tail instead of `journal` writing it directly (verified
+  byte-identical on the untouched portion both times, so no data was
+  lost) — but the mechanism is fragile and gets worse every sweep the file
+  grows, and this is the exact failure mode behind the 2026-10-26 near-miss
+  this item already tracks (journal's own draft silently condensing
+  pre-2026-09-07 history). Likely fix: roll older entries into a dated
+  archive the way `portfolio_history_archive.md` already does for
+  `portfolio.json`, or give journal an append-only tool that doesn't
+  require a full read.
+  (e) **`check_unmerged_work.py` — the exact script this item's own "How"
+  section names as the natural home for these checks — has a real blind
+  spot, found pre-sweep.** It only checks named branches (`refs/heads`,
+  `refs/remotes/origin`) against `main`; it never checks whether HEAD
+  itself is detached and holding commits invisible to both. This sweep
+  found the entire 2026-11-02 sweep (5 commits) had been made on a detached
+  HEAD, never reached `main`/`origin`, and the script had reported "Clean"
+  the whole time those commits sat one `git` operation away from
+  unreachable. Fast-forwarded `main` onto them and pushed before this sweep
+  started — no work was lost, but the detection gap is real. One-line fix:
+  check if `git symbolic-ref -q HEAD` fails (detached) and, if so, whether
+  HEAD holds commits not on `main`.
+- **How:** deterministic, no new agent, five checks now.
   (a) The original S34 check: before the session is allowed to be
   considered complete, verify (i) `reports/SESSION_LOG.md`'s newest entry
   date matches the latest market-data snapshot's date; (ii)
@@ -700,73 +618,31 @@ IDs are never reused — an S-number in an old memo always means the same item.
   similar would pass a count check but fail a real diff. Concretely: compare
   the new file's content against `git show HEAD:reports/SESSION_LOG.md`
   (the pre-session commit) and assert the old content is an exact prefix of
-  the new one. (c) **New, for the candidate_history.csv repeat:** before
-  appending scout's output rows to `data/candidate_history.csv`, check
-  whether a row block for the same run-date (or snapshot timestamp) already
-  exists in the file and either skip the append or flag it loudly rather
-  than silently duplicating — a few lines in `scripts/scout.py` or
-  `watchlist.py history`, checked against the file's own run-date column
-  before writing. If any of the three checks fails, flag it loudly (a
-  printed warning, a non-zero exit) rather than silently ending — the same
-  philosophy CLAUDE.md's step 7 (`check_unmerged_work.py`) already applies
-  to the two-branch-fork problem, applied here to the dropped-pipeline-stage,
-  corrupted-append-only-file, and duplicate-rank-history problems. A few
-  lines added to `check_unmerged_work.py` or a sibling script would catch
-  all three mechanically next time rather than by luck.
+  the new one. (c) Before appending scout's output rows to
+  `data/candidate_history.csv`, check whether a row block for the same
+  run-date (or snapshot timestamp) already exists in the file and either
+  skip the append or flag it loudly rather than silently duplicating — a
+  few lines in `scripts/scout.py` or `watchlist.py history`, checked
+  against the file's own run-date column before writing. (d) Before the
+  session is considered done, check `SESSION_LOG.md`'s line count against a
+  threshold (e.g. 2,000 lines) and flag loudly that older entries should be
+  rolled into a dated archive file, rather than relying on journal
+  successfully reading an ever-growing file every sweep. (e) Add the
+  detached-HEAD check described above to `check_unmerged_work.py`. If any
+  check fails, flag it loudly (a printed warning, a non-zero exit) rather
+  than silently ending — the same philosophy CLAUDE.md's step 7
+  (`check_unmerged_work.py`) already applies to the two-branch-fork
+  problem, applied here to five related failure shapes instead of one. A
+  few lines added to `check_unmerged_work.py` or a sibling script would
+  catch all five mechanically next time rather than by luck.
 - **Improves:** system reliability (a dropped mandatory stage, a silently
-  corrupted memory file, or a duplicated history row is currently only
-  detectable by luck) and, indirectly, decision quality (every pillar the
-  scorecard measures depends on every sweep being logged, intact, and
-  reconciled exactly once — an invisible, corrupted, or doubled sweep is a
-  silent gap in the only calibration mechanism this system has).
-
-### S35 — [data] `investor_profile.json.reference_targets` still carries no `gold_pct` field and stale 85/10/0/5 weights against `portfolio.json.targets`' correct 80/10/5/0/5 — now doubly confirmed and overdue, not a live analytical question
-- **Status:** open — new 2026-10-19, opened per the standing rule set
-  2026-09-14 ("a third unapplied occurrence should open an S-item without
-  further deliberation"); functionally decided, pending execution
-- **Why:** flagged directly (not as an S-item) 2026-09-07, with a one-line
-  fix recommended. Found unapplied and flagged a second time 2026-09-14,
-  which set the explicit rule above. Found unapplied a third, fourth and
-  fifth time through 2026-10-05/10-12/10-19 — this sweep, both `portfolio`
-  and `council` independently flagged it as having "passed its own pre-set
-  open-an-S-item threshold." Verified directly this session:
-  `investor_profile.json.reference_targets` still reads `equity_pct: 85,
-  crypto_pct: 10, fixed_income_pct: 0, cash_pct: 5` with no `gold_pct` field
-  at all, while `portfolio.json.targets` (the authoritative owner per
-  CLAUDE.md's data-ownership table) correctly carries 80/10/5/0/5 including
-  the gold carve applied when P7 executed 2026-08-25. This produces a
-  self-contradictory ACT/WATCH rating every sweep a lens checks the stale
-  file instead of the correct one, and burns a portfolio-lens or Council
-  cycle re-explaining the same already-known discrepancy rather than
-  reasoning about something new.
-- **Reviewed 2026-10-26: unapplied a sixth time, now with the cleanest
-  possible confirmation.** This sweep's `portfolio` lens independently
-  derived a PROPOSED target allocation and it came out identical to the
-  already-correct `portfolio.json.targets`. There is no longer any live
-  disagreement to resolve by analysis — the fix is exactly the one-line
-  JSON edit specified below, ready for the user to apply directly or
-  approve via "apply S35."
-- **Reviewed 2026-11-02: unapplied an eighth time, but now doubly confirmed
-  and clearly overdue rather than a live analytical question.** This
-  sweep's Council memo names the proposed 80/10/5/0/5 allocation as a
-  **second consecutive identical independent derivation** (2026-10-26 and
-  2026-11-02 both re-derived it from scratch and reached the same answer as
-  `portfolio.json.targets`). There is nothing left to analyze — a third
-  re-derivation would spend a Council cycle confirming what is already
-  settled. **Instruction for the next sweep: stop re-deriving S35.** Either
-  the user has applied the one-line JSON edit by then, or it is still
-  pending and restating the derivation adds nothing new.
-- **How:** a one-line (well, four-field) JSON edit: update
-  `investor_profile.json.reference_targets`'s `equity_pct`/`crypto_pct`/
-  `fixed_income_pct`/`cash_pct` to 80/10/0/5 and add `gold_pct: 5`, matching
-  `portfolio.json.targets` exactly — or better, replace the duplicated
-  numbers with an explicit pointer/comment stating `portfolio.json.targets`
-  is authoritative, so the two files cannot silently diverge again. Not a
-  code change; editable directly whenever convenient.
-- **Improves:** data reliability (removes a recurring, avoidable
-  self-contradiction between two files that are supposed to agree) and
-  decision quality (stops a voice/lens repeating the same stale-data
-  correction instead of reasoning about something new).
+  corrupted memory file, a duplicated history row, an ever-growing log file
+  journal can no longer safely read, or an invisible detached-HEAD fork are
+  currently only detectable by luck) and, indirectly, decision quality
+  (every pillar the scorecard measures depends on every sweep being
+  logged, intact, and reconciled exactly once — an invisible, corrupted,
+  doubled or unmerged sweep is a silent gap in the only calibration
+  mechanism this system has).
 
 ### S38 — [discovery/data] `source=new` mislabels how many candidates are genuinely first-seen, and this sweep the miscount reached zero — the scorecard's own DISCOVERY pillar inherits the error
 - **Status:** open — new 2026-11-02, promoted from a standing watch note
@@ -777,20 +653,24 @@ IDs are never reused — an S-number in an old memo always means the same item.
   independently caught and corrected in the Council memo's own prose every
   single sweep since 2026-10-05 — 10-05 (only 5 of 35 genuinely new), 10-12
   (only GM of 33), 10-19 (only AZA.ST/FSLR of 35), 10-26 (only WIHL.ST of
-  34) — with zero downstream wrong action each time. **This sweep the count
-  reached zero**: of 34 rows carrying `source=new`, cross-referenced against
-  all 12 recorded runs, **none** are genuinely first-seen. Every prior
-  sweep's miscount was at least framed as "fewer new names than the label
-  implies"; this sweep's true answer is a legitimate "we found nothing new,"
-  which is exactly the kind of result CLAUDE.md says must never be conflated
-  with "the funnel is working normally" — and the current label hides that
-  distinction. It also means the scorecard's DISCOVERY pillar line itself
-  ("candidates 73 (9 held / 30 watchlist / 34 new)") is not just imprecise,
-  it is wrong about the one number that pillar exists to report. Five
-  sweeps of a correctly self-caught, zero-cost miscount was reasonable to
-  leave as a watch note; a sixth sweep where the true count is zero, feeding
-  directly into the pillar measuring whether discovery is working, crosses
-  into a data-reliability problem worth tracking formally.
+  34) — with zero downstream wrong action each time. The 2026-11-02 sweep's
+  count reached zero: of 34 rows carrying `source=new`, cross-referenced
+  against all 12 recorded runs at the time, none were genuinely first-seen.
+  Every prior sweep's miscount was at least framed as "fewer new names than
+  the label implies"; that sweep's true answer was a legitimate "we found
+  nothing new," which is exactly the kind of result CLAUDE.md says must
+  never be conflated with "the funnel is working normally" — and the
+  current label hides that distinction. It also means the scorecard's
+  DISCOVERY pillar line itself is not just imprecise, it can be wrong about
+  the one number that pillar exists to report.
+- **Reviewed 2026-11-09:** mislabel still unfixed, but this sweep's
+  underlying discovery count was genuinely better than last sweep's zero.
+  Of the 12 `source=new` rows, WDC, ECHO and MPC are confirmed first-seen
+  across all 12 recorded runs (the other 9 weren't individually checked).
+  This is evidence the funnel is surfacing fresh names again, not evidence
+  the label problem is fixed — `source=new` still conflates "genuinely
+  new" with "not held/watchlisted," so the count still needs a manual
+  cross-check every sweep until the column itself is fixed.
 - **How:** rename the column (e.g. `source=not_held`) or add a true
   `first_seen_date` column, populated by checking `candidate_history.csv`'s
   full run history before writing a row's status — the fix already
@@ -798,8 +678,8 @@ IDs are never reused — an S-number in an old memo always means the same item.
   question remains; this needs code, not more deliberation.
 - **Improves:** data reliability (the DISCOVERY pillar's headline figure is
   currently wrong, not just loosely worded) and decision quality (a human
-  reading "34 new" assumes the funnel is actively surfacing fresh
-  opportunity when, this sweep, it genuinely was not).
+  reading a "new" count assumes the funnel is actively surfacing fresh
+  opportunity when that has not always been true).
 
 ### S39 — [data] Avanza Global and Avanza Auto 3 — roughly 80% of the equity sleeve by value — have gone 14-15 weeks with no price-mark refresh, and no pipeline step owns fund NAVs
 - **Status:** open — new 2026-11-02
@@ -813,9 +693,8 @@ IDs are never reused — an S-number in an old memo always means the same item.
   every other position in the portfolio is repriced weekly. This is a
   bigger single-field blind spot than any other data gap currently tracked:
   every allocation percentage, every ACT/WATCH concentration flag, and the
-  scorecard's own "actual: 223,644 SEK (+16.2%)" OUTCOME figure this sweep
-  implicitly rest on a stale mark for the majority of the portfolio's
-  measured value.
+  scorecard's own OUTCOME figure implicitly rest on a stale mark for the
+  majority of the portfolio's measured value.
 - **How:** check whether Yahoo quoteSummary (or another free source already
   used elsewhere in this system) exposes a NAV field for these two fund
   ISINs/tickers; if so, add them to `fetch_market_data.py`'s regular fetch
@@ -828,6 +707,58 @@ IDs are never reused — an S-number in an old memo always means the same item.
   real portfolio value this session) and decision quality (every
   allocation and concentration call this sweep implicitly assumed a price
   that is 14-15 weeks old for most of the money it was weighing).
+
+### S40 — [process] FI insider `bs4` dependency failure reopened a third time; this time the structural fix was actually applied to `session-start.sh`
+- **Status:** open — new 2026-11-09 (fresh ID per S36's own closing
+  instruction); watching for a second clean sweep to confirm durability,
+  not yet "fixed"
+- **Why:** S36 closed 2026-11-02 on two consecutive clean sweeps, with an
+  explicit warning that the structural fix (`.claude/hooks/session-start.sh`'s
+  bare `pip install` -> `python3 -m pip install`) had never actually been
+  applied to the repo, and instructed: "apply the one-line `session-start.sh`
+  fix at [the next failure] rather than relying on the environment holding
+  by luck a third time." This sweep the `bs4` import failed again on the FI
+  insider fetch — exactly the predicted recurrence. Fixed the same way as
+  before mid-session (`python3 -m pip install beautifulsoup4`), and this
+  time the orchestrating session also applied the actual structural fix:
+  `.claude/hooks/session-start.sh`'s bare `pip install -q -r requirements.txt`
+  changed to `python3 -m pip install -q -r requirements.txt`
+  (`requirements.txt` already lists `beautifulsoup4>=4.12`).
+- **How:** fix applied this session; nothing further to do except confirm
+  it holds. Status should read "watching," not "fixed," until a sweep runs
+  cleanly with the new `session-start.sh` line already in place from the
+  start, not applied mid-session again.
+- **Improves:** data reliability (the FI insider fetch, used for Swedish
+  holdings) and system reliability (a dependency-install bug that has now
+  cost three sweeps of mid-session manual recovery).
+
+### S41 — [data] Price and EPS fields in the snapshot are not drawn from the same fetch moment, overstating absolute P/E on names that moved sharply the same week
+- **Status:** open — new 2026-11-09
+- **Why:** during an AI/memory-hardware sell-off week (VIX 17.2 -> 28.18),
+  Council found that for several of the week's biggest fallers (NVDA, MU,
+  SNDK, AVGO, FIX), the implied trailing AND forward EPS each moved by a
+  percentage matching that name's own price move for the week (-6.2% to
+  -16.4%) — a pattern consistent with EPS being derived from price rather
+  than fetched independently, rather than price and EPS-derived fields
+  being captured at the same instant within a single fetch. Net effect:
+  absolute P/E multiples on names that moved sharply this week are
+  overstated by roughly the price move's own percentage. Forward/trailing
+  ratios and PEG-style reasoning, which depend on the ratio between two
+  EPS-derived figures rather than an absolute multiple, are unaffected —
+  this is a fetch-moment-skew mechanism, not the currency-unit mechanism
+  S32 already tracks, so it is opened fresh rather than folded in.
+- **How:** locate where `fetch_market_data.py` or `derived_metrics.py`
+  derives `trailing_eps`/`forward_eps` versus where `price` is read — check
+  whether EPS is being computed by dividing a cached/trailing price by a
+  separately-fetched P/E rather than pulling Yahoo's own
+  `epsTrailingTwelveMonths`/`epsForward` fields directly, which would
+  explain exactly this symptom (EPS tracking a price move it shouldn't).
+  Confirm against one name (e.g. NVDA) by comparing the snapshot's raw
+  `quoteSummary` response fields directly.
+- **Improves:** data reliability (an overstated absolute multiple on
+  exactly the names most likely to be under Council scrutiny in a sell-off
+  week) and decision quality (valuation reasoning on fast-moving names
+  during volatile weeks).
 
 ---
 
@@ -902,14 +833,19 @@ holds the original text if it is ever wanted.
     conviction, horizon and the metrics it was made on, joined from the
     mechanical sweep rather than typed. `scripts/scorecard.py`'s JUDGEMENT
     pillar compares each voice against the benchmark and the Chairman against
-    its own inputs. Several voices now read with real n (n>=20); the
-    Chairman-vs-voices comparison, which is what would justify ever weighting
-    the Council, cleared n=20 for the first time 2026-10-26 (chairman n=20,
-    median +2.8% vs voices' median +0.0%) and cleared it a second, better
-    time 2026-11-02 (chairman n=21, median +5.4% vs voices' median +1.8%) —
-    see this file's "This sweep's recommended emphasis" block for the
-    explicit call on why the standing rule is not yet being lifted on two
-    readings. **The Council must still not be weighted.**
+    its own inputs. The Chairman-vs-voices comparison, which is what would
+    justify ever weighting the Council, cleared n=20 for the first time
+    2026-10-26 (n=20, median +2.8%, beat 60%), cleared it a second, better
+    time 2026-11-02 (n=21, +5.4%, beat 71%), and cleared it a third, better
+    time still 2026-11-09 (n=22, median +9.6%, beat baseline 82%) — the
+    pre-committed third-sweep bar (set 2026-10-26) is now met. See this
+    file's "This sweep's recommended emphasis" block for the full verdict:
+    the Council-as-a-block weighting rule stays in force, but the narrower
+    differential-per-voice-trust question (macro/defensive consistently
+    strong, growth/fundamental consistently weak across all three sweeps) is
+    now live, not yet applied. **The Council must still not be weighted as a
+    block; differential per-voice trust is the next question, not yet
+    applied.**
 
   - **Phase 8 (new, roadmapped 2026-08-25) — a multi-asset specialist voice.**
     One eighth Council voice owning non-equity opportunities: bonds,
@@ -935,7 +871,57 @@ holds the original text if it is ever wanted.
 One line each. **Full text of every entry is in
 `data/portfolio_history_archive.md`** (section: "OPEN_ITEMS.md closed log,
 archived verbatim 2026-08-24"), moved there so this file holds what is
-outstanding rather than what is finished. Nothing was deleted.
+outstanding rather than what is finished. Nothing was deleted — earlier
+closures' full text is preserved in this file's own git history.
+
+### Closed by the 2026-11-09 session
+
+- **S27 — closed under cap pressure (room needed for new evidence-backed
+  items this session: S40, S41), not because resolved.** At least a
+  twelfth confirmed occurrence this sweep (the Handelsbanken-wrapper/
+  `reference_targets` premises again declined before running anything; the
+  narrowed ethereum-only crypto-fetch variant again fetched bitcoin too
+  anyway per CLAUDE.md's canonical command). Every occurrence across twelve-
+  plus sweeps has self-mitigated before any wrong action, and the lever (the
+  scheduled task's stored prompt) is outside this repository, with the
+  user, fully specified since 2026-09-07. Logging a thirteenth identical
+  occurrence count was adding nothing new. Reopen (fresh ID) if a future
+  occurrence is NOT self-caught — i.e., if the drift is ever found to have
+  actually driven a wrong action rather than being caught and corrected or
+  overridden first.
+- **S35 — closed under cap pressure (room needed for new evidence-backed
+  items this session: S40, S41), not because resolved.** Unapplied for
+  nine consecutive sweeps; 2026-11-02 instructed "stop re-deriving S35" and
+  this sweep correctly did not (see the Considered-not-opened note below —
+  no fresh re-derivation was attempted). The one-line JSON fix remains
+  fully specified and can be applied directly by the user at any time, no
+  further deliberation needed. Reopen (fresh ID) only if a future sweep
+  shows live disagreement return, or if the stale file is ever shown to
+  have actually driven a wrong ACT/WATCH read rather than just prompting a
+  redundant confirmation.
+
+### Considered by the 2026-11-09 session, not opened
+
+- **S31 recheck — confirmed NOT a reopening; the predicted harmless
+  workaround held again.** This sweep's `journal` agent was invoked with no
+  Bash tool and could not run `scripts/scorecard.py --write` itself; the
+  orchestrating session ran it afterward — exactly the pattern S31's
+  2026-10-19 closure anticipated and accepted ("every occurrence was a
+  correctly-sequenced manual workaround... reopen only if a future
+  SESSION_LOG entry is ever found to have quoted a stale scorecard figure as
+  current"). No mislabeled or stale figure was quoted this sweep. S31's
+  underlying cause (`journal.md`'s Mode 2 step 4 instructs journal to run
+  `scorecard.py`, which it structurally cannot do with Read/Write-only
+  tools) is still unfixed in the repo, but the closure's own reopen bar was
+  not met — not reopening.
+- **Council self-corrected three of its own prior-sweep errors this
+  session** (thesis-review's stale "larger insider volumes" claim on
+  SHB-A.ST/VOLV-B.ST; portfolio's wrong "S26 still open" claim; a minor
+  ABB.ST board-count error) — the adversarial Council-over-lenses check
+  working as designed, zero downstream wrong action. Not an S-item;
+  recorded as a positive data point alongside the JUDGEMENT pillar's
+  quantitative case, since it is a different kind of evidence for the same
+  question (does the Council's existence earn its keep).
 
 ### Closed by the 2026-11-02 session
 
@@ -949,7 +935,9 @@ outstanding rather than what is finished. Nothing was deleted.
   -m pip install`, unapplied in the repo as of this session. Reopen (fresh
   ID) on the next `bs4`/FI-insider dependency failure, and apply the
   one-line `session-start.sh` fix at that point rather than relying on the
-  environment holding by luck a third time.
+  environment holding by luck a third time. **It did recur — see new S40,
+  2026-11-09, which also applied the structural fix this note called
+  for.**
 - **S37 — closed: the scope-widening fix this item asked for was applied
   and worked.** This sweep's calendar fetch was extended beyond
   holdings-only to the full focus/candidate set (per S37's own "How") and
@@ -963,6 +951,16 @@ outstanding rather than what is finished. Nothing was deleted.
   holdings-only gap cost VICI's FOMC-week visibility. Reopen (fresh ID) if a
   live decision is ever shown to depend on a correct forward-looking Swedish
   earnings date while the Yahoo staleness is still blocking it.
+  **Addendum 2026-11-09, not a reopening:** this sweep several non-Swedish
+  US names (ECHO, FIS, TPL, APP) also returned already-past earnings dates,
+  and Council's read is that Yahoo likely just returns the last-reported
+  date until the next one is scheduled/confirmed — i.e., APP's "past" date
+  was literally last week's real print, not a data gap. If this holds up,
+  the residual finding this item's 2026-11-02 closure called
+  "Nordic-specific staleness" may actually be a general Yahoo-field
+  behavior, not specific to the five Swedish-industrial holdings. Unproven;
+  not reopening without a case where it's shown to actually cost a live
+  decision, per this item's own already-stated reopen bar.
 
 ### Considered by the 2026-11-02 session, not opened
 
@@ -1035,7 +1033,9 @@ outstanding rather than what is finished. Nothing was deleted.
   without further deliberation. Reopen (fresh ID) if a future sweep's
   SESSION_LOG entry is ever found to have quoted a stale scorecard figure as
   current (mislabeled, not just late) — i.e. if the harmless workaround ever
-  actually fails.
+  actually fails. **Rechecked 2026-11-09: recurred identically, still a
+  harmless workaround, reopen bar still not met — see the Considered-not-
+  opened note for that session.**
 
 ### Considered by the 2026-10-19 session, not opened
 
@@ -1241,6 +1241,7 @@ outstanding rather than what is finished. Nothing was deleted.
   reliability of its installation.** **Note 2026-11-02: S36 is now itself
   closed (stable two consecutive sweeps), but the underlying `session-start.sh`
   one-liner this note flagged is still unapplied — see S36's closed entry.**
+  **Note 2026-11-09: the one-liner is now actually applied — see new S40.**
 - **S17 — the digest CSV dropped `currency`.** Closed: the candidates CSV
   carries `currency` and `country` per row.
 - **S18 — [prospecting] scout's discretionary suggestions had no channel into
@@ -1314,3 +1315,4 @@ outstanding rather than what is finished. Nothing was deleted.
 - 2026-07-28 — Avanza ISK itemization
 - 2026-07-28 — Handelsbanken wrapper
 - 2026-07-12 — Riksbank meeting dates
+</content>
